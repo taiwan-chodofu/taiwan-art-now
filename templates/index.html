@@ -8,53 +8,50 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fff; --text: #111; --text-sub: #888; --text-light: #aaa;
-      --accent: #000; --border: #e5e5e5; --hover-bg: #fafafa;
-      --section-line: #000;
+      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
+      --accent: #000; --border: #e8e8e8; --border-dark: #ccc;
+      --tag-bg: #f5f5f3; --hover-bg: #fafafa;
+      --red: #d63031; --red-light: #fff5f5;
+      --cat-public: #2d3436; --cat-alt: #6c5ce7;
+      --cat-commercial: #00b894; --cat-private: #e17055;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, "Helvetica Neue", sans-serif;
+      font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
-      line-height: 1.7; -webkit-font-smoothing: antialiased;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+      font-size: 14px;
     }
 
-    /* ヘッダー: ART iT風ミニマル */
+    /* ===== HEADER ===== */
     .site-header {
       border-bottom: 1px solid var(--border);
-      padding: 1.2rem 1.5rem;
+      padding: 0.8rem 1rem;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 0.8rem;
-      max-width: 960px; margin: 0 auto;
+      max-width: 720px; margin: 0 auto;
     }
     .site-title {
-      font-size: 1.1rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--accent);
+      font-size: 1rem; font-weight: 700; letter-spacing: 0.5px;
     }
     .site-title small {
-      display: block; font-size: 0.65rem; font-weight: 400;
-      letter-spacing: 0; text-transform: none; color: var(--text-sub);
-      margin-top: 0.1rem;
+      display: block; font-size: 0.6rem; font-weight: 300;
+      color: var(--text-sub); letter-spacing: 0; margin-top: 1px;
     }
-    .header-nav {
-      display: flex; align-items: center; gap: 0.3rem;
-    }
+    .header-nav { display: flex; align-items: center; gap: 2px; }
     .header-nav a {
-      color: var(--text-sub); text-decoration: none;
-      font-size: 0.72rem; padding: 0.25rem 0.6rem;
-      border: 1px solid var(--border); border-radius: 3px;
-      transition: all 0.12s;
+      color: var(--text-light); text-decoration: none; font-size: 0.7rem;
+      padding: 4px 8px; border-radius: 4px;
+      transition: all 0.15s;
     }
     .header-nav a:hover, .header-nav a.active {
-      color: var(--accent); border-color: var(--accent);
+      color: var(--accent); background: var(--tag-bg);
     }
-    .header-nav .refresh-btn {
-      border: none; color: var(--text-light); font-size: 0.75rem;
-    }
-    .header-nav .refresh-btn:hover { color: var(--accent); }
+    .refresh-btn { font-size: 0.8rem !important; }
 </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="site-title">
       Taiwan Art Now
@@ -64,168 +61,323 @@
       <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
-      <a href="?lang=pl" {% if current_lang == 'pl' %}class="active"{% endif %}>Pl</a>
       <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn">↻</a>
     </nav>
   </header>
 
+  <!-- FILTER BAR (sticky) -->
   <style>
-    /* メイン */
-    main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .filter-bar {
+      max-width: 720px; margin: 0 auto;
+      padding: 8px 1rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: rgba(255,255,255,0.97);
+      z-index: 100; backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .filter-row {
+      display: flex; gap: 6px; overflow-x: auto;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding-bottom: 2px;
+    }
+    .filter-row::-webkit-scrollbar { display: none; }
+    .filter-chip {
+      display: inline-flex; align-items: center;
+      padding: 4px 10px; border-radius: 20px;
+      font-size: 0.68rem; font-weight: 500;
+      border: 1px solid var(--border-dark);
+      background: var(--bg); color: var(--text-sub);
+      cursor: pointer; white-space: nowrap;
+      transition: all 0.15s; user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .filter-chip .chip-count {
+      display: inline-block; margin-left: 4px;
+      font-size: 0.6rem; opacity: 0.7;
+    }
+    .filter-label {
+      font-size: 0.6rem; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin-bottom: 4px; font-weight: 500;
+    }
+    .filter-section { margin-bottom: 6px; }
+    .filter-section:last-child { margin-bottom: 0; }
+  </style>
 
-    /* 美術館セクション: ART iT風 */
-    .museum-section {
-      margin-bottom: 3rem;
+  <div class="filter-bar">
+    <div class="filter-section">
+      <div class="filter-row" id="regionFilters">
+        <button class="filter-chip active" data-filter="region" data-value="all">All</button>
+        {% for region in regions %}
+        <button class="filter-chip" data-filter="region" data-value="{{ region.id }}">{{ region.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="filter-section">
+      <div class="filter-row" id="catFilters">
+        <button class="filter-chip active" data-filter="cat" data-value="all">All</button>
+        <button class="filter-chip" data-filter="cat" data-value="public">🏛 {{ labels.cat_public }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="alternative">⚡ {{ labels.cat_alt }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="commercial">🖼 {{ labels.cat_commercial }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="private">🏠 {{ labels.cat_private }}</button>
+      </div>
+    </div>
+    <div class="filter-section">
+      <div class="filter-row">
+        <button class="filter-chip" id="openTodayBtn" data-filter="open" data-value="off">🟢 {{ labels.open_today }}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <style>
+    main { max-width: 720px; margin: 0 auto; padding: 0 1rem 4rem; }
+
+    /* Region section */
+    .region-section { margin-top: 1.5rem; }
+    .region-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 0; margin-bottom: 4px;
+      border-bottom: 2px solid var(--accent);
     }
-    .section-header {
-      display: flex; align-items: baseline; justify-content: space-between;
-      border-bottom: 2px solid var(--section-line);
-      padding-bottom: 0.5rem; margin-bottom: 0.4rem;
-    }
-    .section-title {
-      font-size: 1.15rem; font-weight: 700; color: var(--accent);
-    }
-    .section-title a {
-      color: inherit; text-decoration: none;
-    }
-    .section-title a:hover { opacity: 0.6; }
-    .section-link {
-      font-size: 0.7rem; color: var(--text-sub); text-decoration: none;
-      white-space: nowrap;
-    }
-    .section-link:hover { color: var(--accent); }
-    .section-meta {
-      font-size: 0.7rem; color: var(--text-light);
-      padding: 0.4rem 0 0.8rem;
-      display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem;
+    .region-name { font-size: 0.9rem; font-weight: 700; }
+    .region-count {
+      font-size: 0.6rem; color: var(--text-light);
+      background: var(--tag-bg); padding: 2px 6px; border-radius: 10px;
     }
 
-    /* 展覧会リスト: ART iT風横スクロール */
-    .ex-scroll {
-      display: flex; gap: 1.2rem;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.5rem;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
-    }
-    .ex-scroll::-webkit-scrollbar { height: 4px; }
-    .ex-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-    /* 展覧会カード */
-    .ex-card {
-      flex: 0 0 260px; scroll-snap-align: start;
-      text-decoration: none; color: inherit;
-      display: block; transition: opacity 0.12s;
-      padding: 0.6rem 0;
-    }
-    .ex-card:hover { opacity: 0.7; }
-    .ex-card-title {
-      font-size: 0.85rem; font-weight: 600; line-height: 1.45;
-      display: -webkit-box; -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical; overflow: hidden;
-      margin-bottom: 0.25rem;
-    }
-    .ex-card-dates {
-      font-size: 0.72rem; color: var(--text-sub);
-    }
-    .badge-ending {
-      display: inline-block; background: #e63946; color: #fff;
-      font-size: 0.65rem; font-weight: 700;
-      padding: 0.1rem 0.45rem; border-radius: 3px;
-      margin-left: 0.4rem; white-space: nowrap;
-    }
-    .ex-card-venue {
-      font-size: 0.68rem; color: var(--text-light); margin-top: 0.1rem;
-    }
-
-    /* 展覧会が1件のみ or リンクのみの場合はリスト表示 */
-    .ex-single {
-      padding: 0.8rem 0;
+    /* Museum card — compact mobile-first */
+    .museum-card {
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
     }
-    .ex-single a {
-      color: var(--text); text-decoration: none;
-      font-size: 0.85rem;
-    }
-    .ex-single a:hover { opacity: 0.6; }
-    .ex-single .ex-card-dates {
-      margin-top: 0.15rem;
-    }
+    .museum-card:last-child { border-bottom: none; }
 
-    /* 空データ */
-    .no-data {
-      text-align: center; padding: 4rem 1rem;
-      color: var(--text-sub); font-size: 0.9rem;
+    .mc-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 6px;
     }
+    .mc-name {
+      font-size: 0.82rem; font-weight: 600; line-height: 1.4;
+      flex: 1;
+    }
+    .mc-name a { color: var(--text); text-decoration: none; }
+    .mc-name a:hover { opacity: 0.6; }
 
-    /* フッター */
-    .site-footer {
-      max-width: 960px; margin: 0 auto;
-      padding: 1.5rem; border-top: 1px solid var(--border);
+    .mc-cat {
+      font-size: 0.75rem; line-height: 1;
+      padding: 3px; border-radius: 3px;
+      white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .mc-cat[data-cat="public"] { background: #2d3436; color: #fff; }
+    .mc-cat[data-cat="alternative"] { background: #6c5ce7; color: #fff; }
+    .mc-cat[data-cat="commercial"] { background: #00b894; color: #fff; }
+    .mc-cat[data-cat="private"] { background: #e17055; color: #fff; }
+
+    .mc-meta {
       font-size: 0.65rem; color: var(--text-light);
-      display: flex; justify-content: space-between; flex-wrap: wrap;
+      margin-top: 2px; line-height: 1.4;
     }
 
-    /* モバイル */
-    @media (max-width: 600px) {
-      .site-header { padding: 1rem; }
-      main { padding: 1.5rem 1rem 3rem; }
-      .ex-card { flex: 0 0 200px; }
-      .section-title { font-size: 1rem; }
-      .ex-card-title { font-size: 0.8rem; }
+    .badge-closed {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: 0.58rem; font-weight: 700;
+      padding: 1px 5px; border-radius: 3px; margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* Exhibition items */
+    .ex-list { margin-top: 6px; }
+    .ex-item {
+      display: block; padding: 5px 0 5px 12px;
+      text-decoration: none; color: inherit;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.15s;
+    }
+    .ex-item:hover { border-left-color: var(--accent); background: var(--hover-bg); }
+    .ex-title { font-size: 0.78rem; font-weight: 500; line-height: 1.4; }
+    .ex-dates { font-size: 0.65rem; color: var(--text-sub); margin-top: 1px; }
+    .badge-ending {
+      display: inline-block; background: var(--red); color: #fff;
+      font-size: 0.58rem; font-weight: 700;
+      padding: 1px 5px; border-radius: 3px;
+      margin-left: 3px; vertical-align: middle;
+    }
+
+    .no-ex {
+      font-size: 0.7rem; color: var(--text-light);
+      padding: 4px 0 4px 12px; border-left: 2px solid var(--border);
+    }
+    .no-ex a { color: var(--text-sub); text-decoration: none; }
+    .no-ex a:hover { text-decoration: underline; }
+
+    /* Empty state for filtered results */
+    .empty-state {
+      text-align: center; padding: 3rem 1rem;
+      color: var(--text-light); font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Footer */
+    .site-footer {
+      max-width: 720px; margin: 0 auto; padding: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.6rem; color: var(--text-light);
+      display: flex; justify-content: space-between;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 480px) {
+      .site-header { padding: 0.6rem 0.8rem; }
+      main { padding: 0 0.8rem 3rem; }
+      .filter-bar { padding: 6px 0.8rem; }
+      .mc-name { font-size: 0.78rem; }
+      .ex-title { font-size: 0.75rem; }
     }
   </style>
 
   <main>
-    {% if museum_groups %}
-      {% for group in museum_groups %}
-      <section class="museum-section">
-        <div class="section-header">
-          <h2 class="section-title">
-            <a href="{{ group.info.url }}" target="_blank" rel="noopener noreferrer">
-              {{ group.info.name }}
-            </a>
-          </h2>
-          <a class="section-link" href="{{ group.info.url }}" target="_blank" rel="noopener noreferrer">
-            {{ labels.link }} →
-          </a>
-        </div>
-        <div class="section-meta">
-          {% if group.info.hours %}<span>{{ group.info.hours }}</span>{% endif %}
-          {% if group.info.address %}<span>{{ group.info.address }}</span>{% endif %}
-        </div>
+    <div class="empty-state" id="emptyState">No results matching filters</div>
 
-        {% if group.exhibitions|length > 1 %}
-        <div class="ex-scroll">
-          {% for ex in group.exhibitions %}
-          <a class="ex-card" href="{{ ex.link or '#' }}" target="_blank" rel="noopener noreferrer">
-            <div class="ex-card-title">{{ ex.title }}</div>
-            {% if ex.dates %}<div class="ex-card-dates">{{ ex.dates }}{% if ex.days_left is not none %} <span class="badge-ending">{{ ex.days_left }}d left</span>{% endif %}</div>{% endif %}
-            {% if ex.location %}<div class="ex-card-venue">{{ ex.location }}</div>{% endif %}
-          </a>
+    {% for region in regions %}
+    <section class="region-section" id="region-{{ region.id }}" data-region="{{ region.id }}">
+      <div class="region-header">
+        <span class="region-name">{{ region.name }}</span>
+        <span class="region-count">{{ region.museums|length }}</span>
+      </div>
+
+      {% for museum in region.museums %}
+      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}">
+        <div class="mc-top">
+          <div class="mc-name">
+            <a href="{{ museum.url }}" target="_blank" rel="noopener">{{ museum.name }}</a>
+            {% if museum.closed_today %}<span class="badge-closed">CLOSED TODAY</span>{% endif %}
+          </div>
+          <span class="mc-cat" data-cat="{{ museum.category }}">
+            {% if museum.category == 'public' %}🏛{% elif museum.category == 'alternative' %}⚡{% elif museum.category == 'commercial' %}🖼{% else %}🏠{% endif %}
+          </span>
+        </div>
+        {% if museum.hours or museum.address %}
+        <div class="mc-meta">
+          {% if museum.hours %}{{ museum.hours }}{% endif %}
+          {% if museum.hours and museum.address %} · {% endif %}
+          {% if museum.address %}{{ museum.address }}{% endif %}
+        </div>
+        {% endif %}
+
+        {% if museum.exhibitions %}
+        <div class="ex-list">
+          {% for ex in museum.exhibitions %}
+          {% if ex.link %}
+          <a class="ex-item" href="{{ ex.link }}" target="_blank" rel="noopener">
+          {% else %}
+          <div class="ex-item">
+          {% endif %}
+            <div class="ex-title">{{ ex.title }}</div>
+            {% if ex.dates %}
+            <div class="ex-dates">
+              {{ ex.dates }}
+              {% if ex.days_left is not none %}
+              <span class="badge-ending">{{ ex.days_left }}d left</span>
+              {% endif %}
+            </div>
+            {% endif %}
+          {% if ex.link %}</a>{% else %}</div>{% endif %}
           {% endfor %}
         </div>
         {% else %}
-          {% for ex in group.exhibitions %}
-          <div class="ex-single">
-            <a href="{{ ex.link or '#' }}" target="_blank" rel="noopener noreferrer">
-              {{ ex.title }}
-            </a>
-            {% if ex.dates %}<div class="ex-card-dates">{{ ex.dates }}{% if ex.days_left is not none %} <span class="badge-ending">{{ ex.days_left }}d left</span>{% endif %}</div>{% endif %}
-          </div>
-          {% endfor %}
+        <div class="no-ex">
+          {% if 'facebook.com' in museum.url %}
+          <a href="{{ museum.url }}" target="_blank" rel="noopener">📱 Facebook</a>
+          {% else %}
+          <a href="{{ museum.url }}" target="_blank" rel="noopener">→ {{ labels.link }}</a>
+          {% endif %}
+        </div>
         {% endif %}
-      </section>
+      </div>
       {% endfor %}
-    {% else %}
-      <div class="no-data">{{ labels.no_data }}</div>
-    {% endif %}
+    </section>
+    {% endfor %}
   </main>
 
   <footer class="site-footer">
     <span>Taiwan Art Now</span>
-    <span>Data sourced from museum websites</span>
+    <span>Data: museum sites + artemperor.tw</span>
   </footer>
+
+  <!-- FILTER JS -->
+  <script>
+  (function() {
+    let activeRegion = 'all';
+    let activeCat = 'all';
+    let openOnly = false;
+
+    function applyFilters() {
+      const sections = document.querySelectorAll('.region-section');
+      const cards = document.querySelectorAll('.museum-card');
+      let visibleCount = 0;
+
+      cards.forEach(function(card) {
+        const r = card.getAttribute('data-region');
+        const c = card.getAttribute('data-cat');
+        const closed = card.getAttribute('data-closed') === 'yes';
+        const regionOk = activeRegion === 'all' || r === activeRegion;
+        const catOk = activeCat === 'all' || c === activeCat;
+        const openOk = !openOnly || !closed;
+        card.style.display = (regionOk && catOk && openOk) ? '' : 'none';
+        if (regionOk && catOk && openOk) visibleCount++;
+      });
+
+      sections.forEach(function(sec) {
+        const rid = sec.getAttribute('data-region');
+        if (activeRegion !== 'all' && rid !== activeRegion) {
+          sec.style.display = 'none';
+          return;
+        }
+        const visCards = sec.querySelectorAll('.museum-card');
+        let count = 0;
+        visCards.forEach(function(c) { if (c.style.display !== 'none') count++; });
+        sec.style.display = count > 0 ? '' : 'none';
+        var countEl = sec.querySelector('.region-count');
+        if (countEl) countEl.textContent = count;
+      });
+
+      var empty = document.getElementById('emptyState');
+      if (empty) empty.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    document.querySelectorAll('.filter-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        var filterType = this.getAttribute('data-filter');
+        var value = this.getAttribute('data-value');
+
+        if (filterType === 'open') {
+          openOnly = !openOnly;
+          this.classList.toggle('active', openOnly);
+          applyFilters();
+          return;
+        }
+
+        var row = this.parentElement;
+        row.querySelectorAll('.filter-chip').forEach(function(c) {
+          c.classList.remove('active');
+        });
+        this.classList.add('active');
+
+        if (filterType === 'region') activeRegion = value;
+        if (filterType === 'cat') activeCat = value;
+
+        applyFilters();
+
+        if (filterType === 'region' && value !== 'all') {
+          var target = document.getElementById('region-' + value);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  })();
+  </script>
 </body>
 </html>
