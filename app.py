@@ -2,6 +2,8 @@
 
 from flask import Flask, render_template, request
 from scraper import fetch_all_exhibitions, MUSEUMS
+import json
+import os
 
 app = Flask(__name__)
 
@@ -20,8 +22,12 @@ UI_LABELS = {
         "lang_en": "English",
         "lang_ja": "日本語",
         "lang_zh": "中文",
-        "lang_pl": "Polski",
         "refresh": "Refresh",
+        "cat_public": "Public",
+        "cat_alt": "Alt",
+        "cat_commercial": "Gallery",
+        "cat_private": "Private",
+        "open_today": "Open Today",
     },
     "ja": {
         "title": "台湾 現代アート展覧会情報",
@@ -36,8 +42,12 @@ UI_LABELS = {
         "lang_en": "English",
         "lang_ja": "日本語",
         "lang_zh": "中文",
-        "lang_pl": "Polski",
         "refresh": "更新",
+        "cat_public": "公立",
+        "cat_alt": "オルタナ",
+        "cat_commercial": "ギャラリー",
+        "cat_private": "私立",
+        "open_today": "本日開館",
     },
     "zh": {
         "title": "台灣當代藝術展覽資訊",
@@ -52,24 +62,12 @@ UI_LABELS = {
         "lang_en": "English",
         "lang_ja": "日本語",
         "lang_zh": "中文",
-        "lang_pl": "Polski",
         "refresh": "重新整理",
-    },
-    "pl": {
-        "title": "Wystawy sztuki współczesnej na Tajwanie",
-        "subtitle": "Aktualne wystawy w głównych muzeach na Tajwanie",
-        "museum": "Muzeum",
-        "exhibition": "Wystawa",
-        "dates": "Termin",
-        "location": "Miejsce",
-        "link": "Szczegóły",
-        "no_data": "Brak danych o wystawach. Spróbuj ponownie później.",
-        "last_updated": "Ostatnia aktualizacja",
-        "lang_en": "English",
-        "lang_ja": "日本語",
-        "lang_zh": "中文",
-        "lang_pl": "Polski",
-        "refresh": "Odśwież",
+        "cat_public": "公立",
+        "cat_alt": "替代",
+        "cat_commercial": "畫廊",
+        "cat_private": "私立",
+        "open_today": "今日開放",
     },
 }
 
@@ -81,7 +79,7 @@ def _get_display_title(exhibition, lang):
     if title:
         return title
     # フォールバック: en → zh → ja → pl
-    for fallback in ["title_en", "title_zh", "title_ja", "title_pl"]:
+    for fallback in ["title_en", "title_zh", "title_ja"]:
         if exhibition.get(fallback):
             return exhibition[fallback]
     return "(Untitled)"
@@ -148,34 +146,56 @@ def _calc_days_left(end_dt):
 # 美術館の表示順序
 MUSEUM_ORDER = ["honggah", "moca", "tfam", "clab", "thecube", "kdmofa", "ntcart", "chiayi", "tcma"]
 
+# 地域の表示順序（北→南→東）
+REGION_ORDER = [
+    "taipei", "new_taipei", "taoyuan", "hsinchu", "yilan", "keelung",
+    "taichung", "nantou", "chiayi", "tainan", "kaohsiung",
+    "hualien", "taitung",
+]
+
+
+def _load_master():
+    """マスターデータJSONを読み込む。"""
+    import os
+    master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
+    try:
+        with open(master_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {"regions": {}, "categories": {}, "museums": []}
+
+
+def _get_localized(obj, lang):
+    """多言語辞書から言語に応じた値を返す（英語フォールバック）。"""
+    if isinstance(obj, dict):
+        return obj.get(lang, obj.get("en", ""))
+    return str(obj)
+
 
 @app.route("/")
 def index():
-    """メインページ: 美術館ごとにグループ化して展覧会一覧を表示する。"""
+    """メインページ: 地域・カテゴリでグループ化して展覧会一覧を表示する。"""
     lang = request.args.get("lang", "ja")
     if lang not in UI_LABELS:
         lang = "ja"
 
     force_refresh = request.args.get("refresh") == "1"
     if force_refresh:
-        import os
         cache_path = os.path.join(os.path.dirname(__file__), "cache.json")
         if os.path.exists(cache_path):
             os.remove(cache_path)
 
+    master = _load_master()
     exhibitions = fetch_all_exhibitions()
 
-    # 美術館ごとにグループ化
-    grouped = {}
+    # 展覧会データをmuseum IDでインデックス化
+    ex_by_museum = {}
     for ex in exhibitions:
-        key = ex.get("museum", "other")
-        if key not in grouped:
-            grouped[key] = {
-                "info": _get_museum_info(key, lang),
-                "exhibitions": [],
-            }
+        key = ex.get("museum", "")
+        if key not in ex_by_museum:
+            ex_by_museum[key] = []
         normalized, end_dt = _normalize_dates(ex.get("dates", ""))
-        grouped[key]["exhibitions"].append({
+        ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
             "dates": normalized,
             "days_left": _calc_days_left(end_dt),
@@ -183,19 +203,58 @@ def index():
             "link": ex.get("link", ""),
         })
 
-    # 表示順序に並べる
-    museum_groups = []
-    for key in MUSEUM_ORDER:
-        if key in grouped:
-            museum_groups.append(grouped[key])
+    # 地域ごとにグループ化
+    regions_data = []
+    for region_id in REGION_ORDER:
+        region_museums = [
+            m for m in master["museums"] if m["region"] == region_id
+        ]
+
+        if not region_museums:
+            continue
+
+        museum_entries = []
+        for m in region_museums:
+            mid = m["id"]
+            exs = ex_by_museum.get(mid, [])
+            is_closed_today = _is_closed_today(m.get("closed_day"))
+            museum_entries.append({
+                "id": mid,
+                "name": _get_localized(m["name"], lang),
+                "hours": _get_localized(m.get("hours", {}), lang),
+                "address": _get_localized(m.get("address", {}), lang),
+                "url": m.get("url", ""),
+                "category": m.get("category", ""),
+                "category_label": _get_localized(
+                    master["categories"].get(m.get("category", ""), {}), lang
+                ),
+                "closed_today": is_closed_today,
+                "exhibitions": exs,
+            })
+
+        regions_data.append({
+            "id": region_id,
+            "name": _get_localized(
+                master["regions"].get(region_id, {}), lang
+            ),
+            "museums": museum_entries,
+        })
 
     labels = UI_LABELS[lang]
     return render_template(
         "index.html",
         labels=labels,
-        museum_groups=museum_groups,
+        regions=regions_data,
         current_lang=lang,
     )
+
+
+def _is_closed_today(closed_day):
+    """本日が休館日かどうか判定する（0=月曜, 6=日曜）。"""
+    if closed_day is None:
+        return False
+    from datetime import datetime
+    return datetime.now().weekday() == closed_day
 
 
 if __name__ == "__main__":
