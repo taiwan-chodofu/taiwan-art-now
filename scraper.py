@@ -368,31 +368,31 @@ def _is_current_exhibition(dates_str, today=None):
         return True  # 日付なしは当期とみなす
     if today is None:
         today = datetime.now()
-    # 終了日を抽出する（複数パターン対応）
-    end_match = re.search(
-        r"[\-–]\s*(?:(\d{4})[./])?\s*(\d{2})[./](\d{2})", dates_str
-    )
-    if end_match:
-        # 終了日ありの場合: 終了日が未来なら当期
-        start_year_match = re.search(r"(\d{4})", dates_str)
-        start_year = int(start_year_match.group(1)) if start_year_match else today.year
-        end_year = int(end_match.group(1)) if end_match.group(1) else start_year
-        end_month = int(end_match.group(2))
-        end_day = int(end_match.group(3))
+    # 全角スラッシュを半角に正規化
+    s = dates_str.replace("／", "/")
+    # 全日付を抽出（YYYY.MM.DD, YYYY/MM/DD, YYYY-MM-DD 対応）
+    all_dates = re.findall(r"(\d{4})[-./](\d{1,2})[-./](\d{1,2})", s)
+    if len(all_dates) >= 2:
+        # 2つ目が終了日
+        y, m, d = int(all_dates[1][0]), int(all_dates[1][1]), int(all_dates[1][2])
         try:
-            return datetime(end_year, end_month, end_day) >= today
+            return datetime(y, m, d) >= today
         except ValueError:
             return True
-    # 終了日なし（開始日のみ）: 開始日から90日以内なら当期とみなす
-    start_match = re.search(r"(\d{4})[./](\d{2})[./](\d{2})", dates_str)
-    if start_match:
+    if len(all_dates) == 1:
+        # 年なし短縮終了日を探す（例: 2026.3.21 – 5.17）
+        short_end = re.search(r"[–—~\-]\s*(\d{1,2})[-./](\d{1,2})\s*$", s)
+        if short_end:
+            y = int(all_dates[0][0])
+            m, d = int(short_end.group(1)), int(short_end.group(2))
+            try:
+                return datetime(y, m, d) >= today
+            except ValueError:
+                pass
+        # 開始日のみ: 開始日から90日以内なら当期
+        y, m, d = int(all_dates[0][0]), int(all_dates[0][1]), int(all_dates[0][2])
         try:
-            start_date = datetime(
-                int(start_match.group(1)),
-                int(start_match.group(2)),
-                int(start_match.group(3)),
-            )
-            return (today - start_date).days <= 90
+            return (today - datetime(y, m, d)).days <= 90
         except ValueError:
             pass
     return True
@@ -683,6 +683,222 @@ def _merge_exhibitions(list_a, list_b):
     return merged
 
 
+# --- artemperor.tw アグリゲーター名 → museum ID マッピング ---
+# マスターデータの中国語名やartemperor上の表記ゆれに対応
+ARTEMPEROR_NAME_MAP = {
+    "台北當代藝術館": "moca",
+    "臺北市立美術館": "tfam",
+    "洪建全基金會": "honggah",  # Hong-Gah
+    "新北市美術館": "ntcart",
+    "臺中市立美術館": "tcma",
+    "空總臺灣當代文化實驗場": "clab",
+    "C-LAB": "clab",
+    "立方計劃空間": "thecube",
+    "TheCube": "thecube",
+    "嘉義市立美術館": "chiayi",
+    "關渡美術館": "kdmofa",
+    "國家攝影文化中心": "ncpi",
+    "國立臺灣美術館": "ntmofa",
+    "臺南市美術館": "tnam",
+    "高雄市立美術館": "kmfa",
+    "桃園市立美術館": "tmofa",
+    "蘭陽博物館": "lym",
+    "伊通公園": "itpark",
+    "IT Park": "itpark",
+    "非常廟": "vt",
+    "VT Artsalon": "vt",
+    "絕對空間": "absolute",
+    "Lightbox": "lightbox",
+    "朋丁": "ponding",
+    "Pon Ding": "ponding",
+    "耿畫廊": "tinakeng",
+    "Tina Keng Gallery": "tinakeng",
+    "TKG+": "tkgplus",
+    "大未來林舍畫廊": "linlin",
+    "Lin & Lin Gallery": "linlin",
+    "亞洲藝術中心": "asiaart",
+    "Asia Art Center": "asiaart",
+    "尊彩藝術中心": "liang",
+    "Liang Gallery": "liang",
+    "誠品畫廊": "eslite",
+    "Eslite Gallery": "eslite",
+    "亞紀畫廊": "eachmodern",
+    "Each Modern": "eachmodern",
+    "TAO ART": "taoart",
+    "谷公館": "michaelku",
+    "Michael Ku Gallery": "michaelku",
+    "也趣畫廊": "aki",
+    "AKI Gallery": "aki",
+    "双方藝廊": "doublesq",
+    "Double Square Gallery": "doublesq",
+    "索卡藝術": "soka",
+    "Soka Art": "soka",
+    "白石畫廊": "whitestone",
+    "Whitestone Gallery": "whitestone",
+    "333 Gallery": "g333",
+    "Bluerider ART": "bluerider",
+    "忠泰美術館": "jut",
+    "Jut Art Museum": "jut",
+    "富邦美術館": "fubon",
+    "朱銘美術館": "juming",
+    "毓繡美術館": "yuhsiu",
+    "永添藝術": "alien",
+    "ALIEN Art Centre": "alien",
+    "華山1914": "huashan",
+    "華山1914文化創意產業園區": "huashan",
+    "松山文創園區": "songshan",
+    "駁二藝術特區": "pier2",
+    "The Pier-2 Art Center": "pier2",
+    "福利社": "frees",
+    "FreeS Art Space": "frees",
+    "台北國際藝術村": "tav",
+    "新浜碼頭藝術空間": "sinpin",
+    "其玟畫廊": "chiwen",
+    "Chi-Wen Gallery": "chiwen",
+    "紅野畫廊": "powen",
+    "亦安畫廊": "yiyun",
+    "大得畫廊": "date",
+    "月臨畫廊": "moon",
+    "加力畫廊": "inart",
+    "花蓮文化創意產業園區": "hualiencp",
+    "府中15": "fuzhong15",
+}
+
+
+def _match_artemperor_name(gallery_name):
+    """artemperor.twのギャラリー名からmuseum IDを返す。"""
+    # 完全一致
+    if gallery_name in ARTEMPEROR_NAME_MAP:
+        return ARTEMPEROR_NAME_MAP[gallery_name]
+    # 部分一致（マップのキーがギャラリー名に含まれるか）
+    for key, mid in ARTEMPEROR_NAME_MAP.items():
+        if key in gallery_name or gallery_name in key:
+            return mid
+    return None
+
+
+def _scrape_artemperor(pages=3):
+    """artemperor.tw（非池中藝術網）から展覧会情報を取得する。
+
+    Args:
+        pages: 取得するページ数（1ページ約30件）
+    Returns:
+        list: 展覧会情報のリスト
+    """
+    exhibitions = []
+    today = datetime.now()
+    seen = set()
+
+    for page in range(1, pages + 1):
+        url = f"https://artemperor.tw/tidbits?page={page}"
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=15, verify=False)
+            resp.raise_for_status()
+            soup = BeautifulSoup(resp.text, "html.parser")
+
+            # div.list_text が各展覧会カード
+            for card in soup.find_all("div", class_="list_text"):
+                # ギャラリー名: <figure class="tag">
+                fig = card.find("figure", class_="tag")
+                gallery_name = fig.get_text(strip=True) if fig else ""
+
+                # 展覧会タイトル: <h2>
+                h2 = card.find("h2")
+                title = h2.get_text(strip=True) if h2 else ""
+
+                # 日付: <p> に「日期：YYYY-MM-DD ~ YYYY-MM-DD」
+                p_tag = card.find("p")
+                dates_str = ""
+                if p_tag:
+                    dm = re.search(
+                        r"(\d{4}-\d{2}-\d{2})\s*~\s*(\d{4}-\d{2}-\d{2})",
+                        p_tag.get_text(),
+                    )
+                    if dm:
+                        dates_str = f"{dm.group(1)} - {dm.group(2)}"
+
+                # リンク: <a> の href
+                link_tag = card.find("a", href=re.compile(r"/tidbits/\d+"))
+                detail_url = ""
+                if link_tag:
+                    href = link_tag.get("href", "")
+                    if href.startswith("//"):
+                        href = "https:" + href
+                    elif not href.startswith("http"):
+                        href = "https://artemperor.tw" + href
+                    detail_url = href
+
+                if not gallery_name or not title or not dates_str:
+                    continue
+                if not _is_current_exhibition(dates_str, today):
+                    continue
+
+                museum_id = _match_artemperor_name(gallery_name)
+                if not museum_id:
+                    continue
+
+                key = (museum_id, title)
+                if key in seen:
+                    continue
+                seen.add(key)
+
+                exhibitions.append({
+                    "museum": museum_id,
+                    "title_en": title,
+                    "title_zh": title,
+                    "title_ja": "",
+                    "dates": dates_str,
+                    "location": "",
+                    "link": detail_url,
+                })
+        except Exception as exc:
+            logger.warning("Artemperor page %d failed: %s", page, exc)
+
+    logger.info("Artemperor: %d exhibitions from %d pages", len(exhibitions), pages)
+    return exhibitions
+
+
+def _scrape_generic(museum_id, exhibition_url):
+    """汎用スクレイパー: 展覧会ページからタイトルと日付を自動抽出する。"""
+    exhibitions = []
+    today = datetime.now()
+    try:
+        soup = _fetch(exhibition_url)
+        text = soup.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        # 日付パターンを含む行とその前の行をペアで抽出
+        for i, line in enumerate(lines):
+            date_match = re.search(
+                r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})"
+                r".*?[–—~\-]\s*"
+                r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})",
+                line,
+            )
+            if date_match:
+                dates = (
+                    f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
+                    f" - {date_match.group(4)}/{date_match.group(5)}/{date_match.group(6)}"
+                )
+                if not _is_current_exhibition(dates, today):
+                    continue
+                title = lines[i - 1] if i > 0 else line
+                # タイトルが短すぎるか日付のみの場合はスキップ
+                if len(title) < 3 or re.match(r"^\d{4}", title):
+                    title = line.split(date_match.group(0))[0].strip()
+                if title and len(title) > 2:
+                    exhibitions.append({
+                        "museum": museum_id,
+                        "title_en": title,
+                        "title_ja": "", "title_zh": "",
+                        "dates": dates,
+                        "location": "",
+                        "link": exhibition_url,
+                    })
+    except Exception as exc:
+        logger.warning("Generic scrape failed for %s: %s", museum_id, exc)
+    return exhibitions
+
+
 def fetch_all_exhibitions():
     """全美術館の展覧会情報を取得する（キャッシュ付き）。"""
     cached = _load_cache()
@@ -691,34 +907,67 @@ def fetch_all_exhibitions():
 
     all_exhibitions = []
 
-    # MOCA: 英語・中文を取得してマージ
+    # 既存の専用スクレイパー
     moca_en = _scrape_moca(lang="en")
     moca_zh = _scrape_moca(lang="zh")
     all_exhibitions.extend(_merge_exhibitions(moca_en, moca_zh))
-
-    # TFAM: Ajax APIから取得
     all_exhibitions.extend(_scrape_tfam_api())
-
-    # 鳳甲美術館: HTMLスクレイピング
     all_exhibitions.extend(_scrape_honggah())
-
-    # 新北市美術館: HTMLスクレイピング
     all_exhibitions.extend(_scrape_ntcart())
-
-    # 台中市立美術館: サイト不安定のため取得失敗時は空
     all_exhibitions.extend(_scrape_tcma())
-
-    # C-LAB: HTMLスクレイピング
     all_exhibitions.extend(_scrape_clab())
-
-    # TheCube Project Space: HTMLスクレイピング
     all_exhibitions.extend(_scrape_thecube())
-
-    # 嘉義市立美術館: HTMLスクレイピング
     all_exhibitions.extend(_scrape_chiayi())
-
-    # 關渡美術館: サイトアクセス不安定のため直リンク
     all_exhibitions.extend(_scrape_kdmofa())
+
+    # マスターデータから汎用スクレイパー対象を取得
+    master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
+    try:
+        with open(master_path, "r", encoding="utf-8") as f:
+            master = json.load(f)
+        existing_ids = {e["museum"] for e in all_exhibitions}
+        for m in master["museums"]:
+            mid = m["id"]
+            if mid in existing_ids:
+                continue
+            scraper_type = m.get("scraper")
+            ex_url = m.get("exhibition_url")
+            if scraper_type == "generic" and ex_url:
+                all_exhibitions.extend(_scrape_generic(mid, ex_url))
+            elif scraper_type and scraper_type.endswith("_manual"):
+                manual_path = os.path.join(
+                    os.path.dirname(__file__), f"{mid}_manual.json"
+                )
+                try:
+                    with open(manual_path, "r", encoding="utf-8") as f2:
+                        items = json.load(f2)
+                    all_exhibitions.extend(
+                        [{"museum": mid, **item} for item in items]
+                    )
+                except Exception:
+                    pass
+
+        # artemperor.tw アグリゲーターで未取得館を補完
+        existing_ids = {e["museum"] for e in all_exhibitions}
+        artemperor_data = _scrape_artemperor(pages=10)
+        for ex in artemperor_data:
+            mid = ex["museum"]
+            if mid not in existing_ids:
+                # 新規館: そのまま追加
+                all_exhibitions.append(ex)
+                existing_ids.add(mid)
+            else:
+                # 既存館: 同一タイトルがなければ追加
+                existing_titles = {
+                    (e.get("title_en", "") or e.get("title_zh", ""))
+                    for e in all_exhibitions if e["museum"] == mid
+                }
+                new_title = ex.get("title_en", "") or ex.get("title_zh", "")
+                if new_title and new_title not in existing_titles:
+                    all_exhibitions.append(ex)
+
+    except Exception as exc:
+        logger.warning("Master data load failed: %s", exc)
 
     _save_cache(all_exhibitions)
     return all_exhibitions

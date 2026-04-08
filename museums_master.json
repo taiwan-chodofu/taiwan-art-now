@@ -1,0 +1,1643 @@
+{
+  "regions": {
+    "taipei": {
+      "en": "Taipei",
+      "ja": "台北",
+      "zh": "台北"
+    },
+    "new_taipei": {
+      "en": "New Taipei",
+      "ja": "新北",
+      "zh": "新北"
+    },
+    "taoyuan": {
+      "en": "Taoyuan",
+      "ja": "桃園",
+      "zh": "桃園"
+    },
+    "hsinchu": {
+      "en": "Hsinchu",
+      "ja": "新竹",
+      "zh": "新竹"
+    },
+    "taichung": {
+      "en": "Taichung",
+      "ja": "台中",
+      "zh": "台中"
+    },
+    "nantou": {
+      "en": "Nantou",
+      "ja": "南投",
+      "zh": "南投"
+    },
+    "chiayi": {
+      "en": "Chiayi",
+      "ja": "嘉義",
+      "zh": "嘉義"
+    },
+    "tainan": {
+      "en": "Tainan",
+      "ja": "台南",
+      "zh": "台南"
+    },
+    "kaohsiung": {
+      "en": "Kaohsiung",
+      "ja": "高雄",
+      "zh": "高雄"
+    },
+    "yilan": {
+      "en": "Yilan",
+      "ja": "宜蘭",
+      "zh": "宜蘭"
+    },
+    "hualien": {
+      "en": "Hualien",
+      "ja": "花蓮",
+      "zh": "花蓮"
+    },
+    "taitung": {
+      "en": "Taitung",
+      "ja": "台東",
+      "zh": "台東"
+    },
+    "keelung": {
+      "en": "Keelung",
+      "ja": "基隆",
+      "zh": "基隆"
+    }
+  },
+  "categories": {
+    "public": {
+      "en": "Public Museums",
+      "ja": "公立美術館",
+      "zh": "公立美術館"
+    },
+    "alternative": {
+      "en": "Alternative / Artist-Run",
+      "ja": "オルタナティブ",
+      "zh": "替代空間"
+    },
+    "commercial": {
+      "en": "Commercial Galleries",
+      "ja": "コマーシャルギャラリー",
+      "zh": "商業畫廊"
+    },
+    "private": {
+      "en": "Private Museums & Art Parks",
+      "ja": "私立美術館・複合施設",
+      "zh": "私立美術館・園區"
+    }
+  },
+  "museums": [
+    {
+      "id": "honggah",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "Hong-Gah Museum",
+        "ja": "鳳甲美術館（Hong-Gah Museum）",
+        "zh": "鳳甲美術館"
+      },
+      "address": {
+        "en": "11F., No.166, Daye Rd., Beitou Dist., Taipei",
+        "ja": "台北市北投區大業路166號11樓",
+        "zh": "台北市北投區大業路166號11樓"
+      },
+      "url": "https://hong-gah.org.tw",
+      "hours": {
+        "en": "Tue–Sun 10:30–17:30 | Closed Mon",
+        "ja": "火〜日 10:30–17:30｜月休",
+        "zh": "週二至週日 10:30–17:30｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "honggah_manual"
+    },
+    {
+      "id": "tfam",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Fine Arts Museum (TFAM)",
+        "ja": "台北市立美術館",
+        "zh": "臺北市立美術館"
+      },
+      "address": {
+        "en": "No.181, Sec.3, Zhongshan N. Rd., Taipei",
+        "ja": "台北市中山區中山北路三段181號",
+        "zh": "臺北市中山區中山北路三段181號"
+      },
+      "url": "https://www.tfam.museum",
+      "hours": {
+        "en": "Tue–Sun 09:30–17:30 | Sat until 20:30 | Closed Mon",
+        "ja": "火〜日 9:30–17:30｜土 20:30まで｜月休",
+        "zh": "週二至週日 9:30–17:30｜週六延長至20:30｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "tfam_api"
+    },
+    {
+      "id": "moca",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Museum of Contemporary Art, Taipei (MOCA)",
+        "ja": "台北當代藝術館",
+        "zh": "台北當代藝術館"
+      },
+      "address": {
+        "en": "No.39, Chang-An W. Rd., Taipei",
+        "ja": "台北市大同區長安西路39號",
+        "zh": "臺北市大同區長安西路39號"
+      },
+      "url": "https://www.mocataipei.org.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "moca"
+    },
+    {
+      "id": "ncpi",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "National Center of Photography and Images (NCPI)",
+        "ja": "国家撮影文化中心",
+        "zh": "國家攝影文化中心"
+      },
+      "address": {
+        "en": "No.70, Sec.1, Zhongxiao W. Rd., Taipei",
+        "ja": "台北市中正區忠孝西路一段70號",
+        "zh": "臺北市中正區忠孝西路一段70號"
+      },
+      "url": "https://ncpi.ntmofa.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://ncpi.ntmofa.gov.tw/Exhibition_Content_1.aspx"
+    },
+    {
+      "id": "clab",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "C-LAB (Taiwan Contemporary Culture Lab)",
+        "ja": "C-LAB（臺灣當代文化實驗場）",
+        "zh": "C-LAB 臺灣當代文化實驗場"
+      },
+      "address": {
+        "en": "No.177, Sec.1, Jianguo S. Rd., Taipei",
+        "ja": "台北市大安區建國南路一段177號",
+        "zh": "臺北市大安區建國南路一段177號"
+      },
+      "url": "https://clab.org.tw",
+      "hours": {
+        "en": "Tue–Sun 11:00–18:00 | Closed Mon",
+        "ja": "火〜日 11:00–18:00｜月休",
+        "zh": "週二至週日 11:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "clab"
+    },
+    {
+      "id": "thecube",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "TheCube Project Space",
+        "ja": "立方計劃空間（TheCube）",
+        "zh": "立方計劃空間"
+      },
+      "address": {
+        "en": "2F, No.13, Ln.136, Sec.4, Roosevelt Rd., Taipei",
+        "ja": "台北市大安區羅斯福路四段136巷13號2樓",
+        "zh": "臺北市大安區羅斯福路四段136巷13號2樓"
+      },
+      "url": "https://thecubespace.com",
+      "hours": {
+        "en": "Wed–Sun 13:00–19:00 | Closed Mon–Tue",
+        "ja": "水〜日 13:00–19:00｜月火休",
+        "zh": "週三至週日 13:00–19:00｜週一二休"
+      },
+      "closed_day": 1,
+      "scraper": "thecube"
+    },
+    {
+      "id": "kdmofa",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Kuandu Museum of Fine Arts (KdMoFA)",
+        "ja": "關渡美術館（KdMoFA）",
+        "zh": "關渡美術館"
+      },
+      "address": {
+        "en": "No.1, Xueyuan Rd., Beitou Dist., Taipei (TNUA campus)",
+        "ja": "台北市北投區學園路1號（國立臺北藝術大學内）",
+        "zh": "臺北市北投區學園路1號（國立臺北藝術大學內）"
+      },
+      "url": "https://kdmofa.tnua.edu.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
+        "ja": "火〜日 10:00–17:00｜月休",
+        "zh": "週二至週日 10:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "kdmofa"
+    },
+    {
+      "id": "ntmofa",
+      "category": "public",
+      "region": "taichung",
+      "name": {
+        "en": "National Taiwan Museum of Fine Arts (NTMoFA)",
+        "ja": "國立臺灣美術館",
+        "zh": "國立臺灣美術館"
+      },
+      "address": {
+        "en": "No.2, Sec.1, Wuquan W. Rd., Taichung",
+        "ja": "台中市西區五權西路一段2號",
+        "zh": "臺中市西區五權西路一段2號"
+      },
+      "url": "https://www.ntmofa.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.ntmofa.gov.tw/ExhibitionList_1.aspx"
+    },
+    {
+      "id": "chiayi",
+      "category": "public",
+      "region": "chiayi",
+      "name": {
+        "en": "Chiayi Art Museum",
+        "ja": "嘉義市立美術館",
+        "zh": "嘉義市立美術館"
+      },
+      "address": {
+        "en": "No.101, Guangning St., Chiayi",
+        "ja": "嘉義市西區廣寧街101號",
+        "zh": "嘉義市西區廣寧街101號"
+      },
+      "url": "https://chiayiartmuseum.chiayi.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "chiayi"
+    },
+    {
+      "id": "tnam",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Tainan Art Museum (TAM)",
+        "ja": "台南市美術館",
+        "zh": "臺南市美術館"
+      },
+      "address": {
+        "en": "No.1, Sec.2, Zhongyi Rd., Tainan",
+        "ja": "台南市中西區忠義路二段1號",
+        "zh": "臺南市中西區忠義路二段1號"
+      },
+      "url": "https://www.tnam.museum",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.tnam.museum/exhibition/current"
+    },
+    {
+      "id": "kmfa",
+      "category": "public",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Kaohsiung Museum of Fine Arts (KMFA)",
+        "ja": "高雄市立美術館",
+        "zh": "高雄市立美術館"
+      },
+      "address": {
+        "en": "No.80, Meishuguan Rd., Kaohsiung",
+        "ja": "高雄市鼓山區美術館路80號",
+        "zh": "高雄市鼓山區美術館路80號"
+      },
+      "url": "https://www.kmfa.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:30–17:30 | Closed Mon",
+        "ja": "火〜日 9:30–17:30｜月休",
+        "zh": "週二至週日 09:30–17:30｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.kmfa.gov.tw/exhibition"
+    },
+    {
+      "id": "ntcart",
+      "category": "public",
+      "region": "new_taipei",
+      "name": {
+        "en": "New Taipei City Art Museum",
+        "ja": "新北市美術館",
+        "zh": "新北市美術館"
+      },
+      "address": {
+        "en": "No.2, Guanqian Rd., Yingge, New Taipei",
+        "ja": "新北市鶯歌區館前路2號",
+        "zh": "新北市鶯歌區館前路2號"
+      },
+      "url": "https://ntcart.museum",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "ntcart_manual"
+    },
+    {
+      "id": "tmofa",
+      "category": "public",
+      "region": "taoyuan",
+      "name": {
+        "en": "Taoyuan Museum of Fine Arts",
+        "ja": "桃園市立美術館",
+        "zh": "桃園市立美術館"
+      },
+      "address": {
+        "en": "No.100, Daren Rd., Dayuan, Taoyuan",
+        "ja": "桃園市大園區大仁路100號",
+        "zh": "桃園市大園區大仁路100號"
+      },
+      "url": "https://tmofa.tycg.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
+        "ja": "火〜日 10:00–17:00｜月休",
+        "zh": "週二至週日 10:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions"
+    },
+    {
+      "id": "ttam",
+      "category": "public",
+      "region": "taitung",
+      "name": {
+        "en": "Taitung Art Museum",
+        "ja": "台東美術館",
+        "zh": "臺東美術館"
+      },
+      "address": {
+        "en": "No.350, Zhejiang Rd., Taitung",
+        "ja": "台東縣台東市浙江路350號",
+        "zh": "臺東縣臺東市浙江路350號"
+      },
+      "url": "https://www.facebook.com/taitungartmuseum",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "hcam",
+      "category": "public",
+      "region": "hualien",
+      "name": {
+        "en": "Hualien County Art Museum",
+        "ja": "花蓮縣立美術館",
+        "zh": "花蓮縣立美術館"
+      },
+      "address": {
+        "en": "No.4, Wenfu Rd., Hualien",
+        "ja": "花蓮縣花蓮市文復路4號",
+        "zh": "花蓮縣花蓮市文復路4號"
+      },
+      "url": "https://www.hccc.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.hccc.gov.tw/en/exhibition"
+    },
+    {
+      "id": "hcfam",
+      "category": "public",
+      "region": "hsinchu",
+      "name": {
+        "en": "Hsinchu City Art Museum",
+        "ja": "新竹市美術館",
+        "zh": "新竹市美術館"
+      },
+      "address": {
+        "en": "No.116, Zhongyang Rd., Hsinchu",
+        "ja": "新竹市中央路116號",
+        "zh": "新竹市中央路116號"
+      },
+      "url": "https://culture.hccg.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://culture.hccg.gov.tw"
+    },
+    {
+      "id": "lym",
+      "category": "public",
+      "region": "yilan",
+      "name": {
+        "en": "Lanyang Museum",
+        "ja": "蘭陽博物館",
+        "zh": "蘭陽博物館"
+      },
+      "address": {
+        "en": "No.750, Sec.3, Qingyun Rd., Toucheng, Yilan",
+        "ja": "宜蘭縣頭城鎮青雲路三段750號",
+        "zh": "宜蘭縣頭城鎮青雲路三段750號"
+      },
+      "url": "https://www.lym.gov.tw",
+      "hours": {
+        "en": "Thu–Tue 09:00–17:00 | Closed Wed",
+        "ja": "木〜火 9:00–17:00｜水休",
+        "zh": "週四至週二 09:00–17:00｜週三休"
+      },
+      "closed_day": 3,
+      "scraper": "generic",
+      "exhibition_url": "https://www.lym.gov.tw/en/exhibition"
+    },
+    {
+      "id": "tcma",
+      "category": "public",
+      "region": "taichung",
+      "name": {
+        "en": "Taichung City Museum of Art (TCMA)",
+        "ja": "臺中市立美術館",
+        "zh": "臺中市立美術館"
+      },
+      "address": {
+        "en": "Taichung Green Museumbrary, Xitun Dist., Taichung",
+        "ja": "台中市西屯區（台中綠美圖）",
+        "zh": "臺中市西屯區（臺中綠美圖）"
+      },
+      "url": "https://www.tcam.museum",
+      "hours": {
+        "en": "Tue–Fri,Sun 09:00–17:00 | Sat 09:00–20:00 | Closed Mon",
+        "ja": "火〜金・日 9:00–17:00｜土 9:00–20:00｜月休",
+        "zh": "週二至週五、週日 09:00–17:00｜週六 09:00–20:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "tcma_manual"
+    },
+    {
+      "id": "fotoaura",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Fotoaura Institute of Photography",
+        "ja": "海馬迴光畫館",
+        "zh": "海馬迴光畫館"
+      },
+      "address": {
+        "en": "No.76, Heping St., Tainan",
+        "ja": "台南市中西區和平街76號",
+        "zh": "臺南市中西區和平街76號"
+      },
+      "url": "https://www.facebook.com/fotoaura",
+      "hours": {
+        "en": "By appointment",
+        "ja": "予約制",
+        "zh": "預約制"
+      },
+      "closed_day": null,
+      "scraper": null
+    },
+    {
+      "id": "itpark",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "IT Park",
+        "ja": "伊通公園",
+        "zh": "伊通公園"
+      },
+      "address": {
+        "en": "No.41, Yitong St., Taipei",
+        "ja": "台北市中山區伊通街41號",
+        "zh": "臺北市中山區伊通街41號"
+      },
+      "url": "https://www.itpark.com.tw",
+      "hours": {
+        "en": "Tue–Sat 13:00–21:00 | Closed Sun–Mon",
+        "ja": "火〜土 13:00–21:00｜日月休",
+        "zh": "週二至週六 13:00–21:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.itpark.com.tw/exhibition"
+    },
+    {
+      "id": "frees",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "FreeS Art Space",
+        "ja": "福利社",
+        "zh": "福利社"
+      },
+      "address": {
+        "en": "B1, No.82, Sec.3, Xinsheng N. Rd., Taipei",
+        "ja": "台北市中山區新生北路三段82號B1",
+        "zh": "臺北市中山區新生北路三段82號B1"
+      },
+      "url": "https://www.facebook.com/freesartspace",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun–Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "vt",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "VT Artsalon",
+        "ja": "非常廟",
+        "zh": "非常廟"
+      },
+      "address": {
+        "en": "B1, No.17, Ln.56, Sec.3, Xinsheng N. Rd., Taipei",
+        "ja": "台北市中山區新生北路三段56巷17號B1",
+        "zh": "臺北市中山區新生北路三段56巷17號B1"
+      },
+      "url": "https://www.facebook.com/vtartsalon",
+      "hours": {
+        "en": "Tue–Sat 13:00–19:00 | Closed Sun–Mon",
+        "ja": "火〜土 13:00–19:00｜日月休",
+        "zh": "週二至週六 13:00–19:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "absolute",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Absolute Space for the Arts",
+        "ja": "絶対空間",
+        "zh": "絕對空間"
+      },
+      "address": {
+        "en": "No.11, Ln.64, Sec.2, Minquan Rd., Tainan",
+        "ja": "台南市中西區民權路二段64巷11號",
+        "zh": "臺南市中西區民權路二段64巷11號"
+      },
+      "url": "https://www.absoluteart.space",
+      "hours": {
+        "en": "Wed–Sun 14:00–20:00 | Closed Mon–Tue",
+        "ja": "水〜日 14:00–20:00｜月火休",
+        "zh": "週三至週日 14:00–20:00｜週一二休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.absoluteart.space"
+    },
+    {
+      "id": "goodug",
+      "category": "alternative",
+      "region": "hualien",
+      "name": {
+        "en": "Good Underground",
+        "ja": "好地下芸術空間",
+        "zh": "好地下藝術空間"
+      },
+      "address": {
+        "en": "No.37, Jieyue St., Hualien",
+        "ja": "花蓮縣花蓮市節約街37號",
+        "zh": "花蓮縣花蓮市節約街37號"
+      },
+      "url": "https://goodunderground.weebly.com",
+      "hours": {
+        "en": "Fri–Mon 12:00–20:00",
+        "ja": "金〜月 12:00–20:00",
+        "zh": "週五至週一 12:00–20:00"
+      },
+      "closed_day": 1,
+      "scraper": "goodug_manual"
+    },
+    {
+      "id": "sinpin",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Sin Pin Pier – Absolutely Art Space",
+        "ja": "新浜碼頭芸術空間",
+        "zh": "新浜碼頭藝術空間"
+      },
+      "address": {
+        "en": "2F, No.64, Dayong Rd., Kaohsiung",
+        "ja": "高雄市鹽埕區大勇路64號2F",
+        "zh": "高雄市鹽埕區大勇路64號2F"
+      },
+      "url": "https://www.facebook.com/sinpinpier",
+      "hours": {
+        "en": "Tue–Sun 11:00–19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "tav",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Artist Village (TAV)",
+        "ja": "台北国際芸術村",
+        "zh": "台北國際藝術村"
+      },
+      "address": {
+        "en": "No.7, Beiping E. Rd., Taipei",
+        "ja": "台北市中正區北平東路7號",
+        "zh": "臺北市中正區北平東路7號"
+      },
+      "url": "https://www.artistvillage.org",
+      "hours": {
+        "en": "Tue–Sun 11:00–21:00 | Closed Mon",
+        "ja": "火〜日 11:00–21:00｜月休",
+        "zh": "週二至週日 11:00–21:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "tav_manual"
+    },
+    {
+      "id": "lightbox",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Lightbox Photographic Library",
+        "ja": "Lightbox 攝影圖書室",
+        "zh": "Lightbox 攝影圖書室"
+      },
+      "address": {
+        "en": "No.14, Ln.269, Sec.3, Roosevelt Rd., Taipei",
+        "ja": "台北市大安區羅斯福路三段269巷14號",
+        "zh": "臺北市大安區羅斯福路三段269巷14號"
+      },
+      "url": "https://www.lightboxlib.org",
+      "hours": {
+        "en": "Wed–Sun 13:00–20:00 | Closed Mon–Tue",
+        "ja": "水〜日 13:00–20:00｜月火休",
+        "zh": "週三至週日 13:00–20:00｜週一二休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.lightboxlib.org"
+    },
+    {
+      "id": "fuzhong15",
+      "category": "alternative",
+      "region": "new_taipei",
+      "name": {
+        "en": "Fuzhong 15",
+        "ja": "府中15",
+        "zh": "府中15"
+      },
+      "address": {
+        "en": "No.15, Fuzhong Rd., Banqiao, New Taipei",
+        "ja": "新北市板橋區府中路15號",
+        "zh": "新北市板橋區府中路15號"
+      },
+      "url": "https://www.fuzhong15.ntpc.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:30–17:00 | Closed Mon",
+        "ja": "火〜日 9:30–17:00｜月休",
+        "zh": "週二至週日 09:30–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "ponding",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Pon Ding",
+        "ja": "ポンディン",
+        "zh": "朋丁"
+      },
+      "address": {
+        "en": "No.53, Tianjin St., Taipei",
+        "ja": "台北市中山區天津街53號",
+        "zh": "臺北市中山區天津街53號"
+      },
+      "url": "https://www.pon-ding.com",
+      "hours": {
+        "en": "Wed–Mon 10:00–19:00 | Closed Tue",
+        "ja": "水〜月 10:00–19:00｜火休",
+        "zh": "週三至週一 10:00–19:00｜週二休"
+      },
+      "closed_day": 2,
+      "scraper": "generic",
+      "exhibition_url": "https://www.pon-ding.com"
+    },
+    {
+      "id": "art182",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "182 Art Space",
+        "ja": "182 art space",
+        "zh": "182 art space"
+      },
+      "address": {
+        "en": "No.182, Xinmei St., Tainan",
+        "ja": "台南市中西區新美街182號",
+        "zh": "臺南市中西區新美街182號"
+      },
+      "url": "https://www.facebook.com/182artspace",
+      "hours": {
+        "en": "By appointment",
+        "ja": "予約制",
+        "zh": "預約制"
+      },
+      "closed_day": null,
+      "scraper": null
+    },
+    {
+      "id": "shumin",
+      "category": "alternative",
+      "region": "new_taipei",
+      "name": {
+        "en": "Shumin Art Museum",
+        "ja": "庶民美術館",
+        "zh": "庶民美術館"
+      },
+      "address": {
+        "en": "No.110, Minquan St., Sanxia, New Taipei",
+        "ja": "新北市三峽區民權街110號",
+        "zh": "新北市三峽區民權街110號"
+      },
+      "url": "https://www.facebook.com/shuminart",
+      "hours": {
+        "en": "Sat–Sun 10:00–18:00",
+        "ja": "土日 10:00–18:00",
+        "zh": "週六日 10:00–18:00"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "tinakeng",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Tina Keng Gallery",
+        "ja": "耿畫廊",
+        "zh": "耿畫廊"
+      },
+      "address": {
+        "en": "No.15, Ln.548, Ruiguang Rd., Taipei",
+        "ja": "台北市內湖區瑞光路548巷15號",
+        "zh": "臺北市內湖區瑞光路548巷15號"
+      },
+      "url": "https://www.tinakenggallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.tinakenggallery.com/en/exhibitions"
+    },
+    {
+      "id": "tkgplus",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "TKG+",
+        "ja": "TKG+",
+        "zh": "TKG+"
+      },
+      "address": {
+        "en": "B1, No.15, Ln.548, Ruiguang Rd., Taipei",
+        "ja": "台北市內湖區瑞光路548巷15號B1",
+        "zh": "臺北市內湖區瑞光路548巷15號B1"
+      },
+      "url": "https://www.tkgplus.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.tkgplus.com/en/exhibitions"
+    },
+    {
+      "id": "linlin",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Lin & Lin Gallery",
+        "ja": "大未來林舍畫廊",
+        "zh": "大未來林舍畫廊"
+      },
+      "address": {
+        "en": "No.16, Dongfeng St., Taipei",
+        "ja": "台北市大安區東豐街16號",
+        "zh": "臺北市大安區東豐街16號"
+      },
+      "url": "https://www.linlingallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.linlingallery.com"
+    },
+    {
+      "id": "asiaart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Asia Art Center",
+        "ja": "亞洲藝術中心",
+        "zh": "亞洲藝術中心"
+      },
+      "address": {
+        "en": "No.128, Lequn 3rd Rd., Taipei",
+        "ja": "台北市中山區樂群三路128號",
+        "zh": "臺北市中山區樂群三路128號"
+      },
+      "url": "https://www.asiaartcenter.org",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:30",
+        "ja": "火〜日 10:00–18:30",
+        "zh": "週二至週日 10:00–18:30"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.asiaartcenter.org/en/exhibitions"
+    },
+    {
+      "id": "chiwen",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Chi-Wen Gallery",
+        "ja": "其玟畫廊",
+        "zh": "其玟畫廊"
+      },
+      "address": {
+        "en": "No.32, Ln.2, Sec.6, Zhongshan N. Rd., Taipei",
+        "ja": "台北市士林區中山北路六段2巷32號",
+        "zh": "臺北市士林區中山北路六段2巷32號"
+      },
+      "url": "https://chiwengallery.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "liang",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Liang Gallery",
+        "ja": "尊彩藝術中心",
+        "zh": "尊彩藝術中心"
+      },
+      "address": {
+        "en": "No.366, Ruiguang Rd., Taipei",
+        "ja": "台北市內湖區瑞光路366號",
+        "zh": "臺北市內湖區瑞光路366號"
+      },
+      "url": "https://www.lianggallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.lianggallery.com"
+    },
+    {
+      "id": "eslite",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Eslite Gallery",
+        "ja": "誠品畫廊",
+        "zh": "誠品畫廊"
+      },
+      "address": {
+        "en": "B1, No.88, Yanchang Rd., Taipei",
+        "ja": "台北市信義區菸廠路88號B1",
+        "zh": "臺北市信義區菸廠路88號B1"
+      },
+      "url": "https://www.eslitegallery.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.eslitegallery.com"
+    },
+    {
+      "id": "eachmodern",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Each Modern",
+        "ja": "亞紀畫廊",
+        "zh": "亞紀畫廊"
+      },
+      "address": {
+        "en": "No.38, Sec.3, Heping E. Rd., Taipei",
+        "ja": "台北市信義區和平東路三段38號",
+        "zh": "臺北市信義區和平東路三段38號"
+      },
+      "url": "https://www.eachmodern.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.eachmodern.com/exhibitions"
+    },
+    {
+      "id": "taoart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "TAO ART",
+        "ja": "TAO ART",
+        "zh": "TAO ART"
+      },
+      "address": {
+        "en": "8F, No.79-1, Zhouzi St., Taipei",
+        "ja": "台北市內湖區洲子街79-1號8F",
+        "zh": "臺北市內湖區洲子街79-1號8F"
+      },
+      "url": "https://www.taoartspace.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "michaelku",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Michael Ku Gallery",
+        "ja": "谷公館",
+        "zh": "谷公館"
+      },
+      "address": {
+        "en": "4F, No.21, Sec.1, Dunhua S. Rd., Taipei",
+        "ja": "台北市松山區敦化南路一段21號4F",
+        "zh": "臺北市松山區敦化南路一段21號4F"
+      },
+      "url": "https://www.michaelkugallery.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.michaelkugallery.com/exhibitions"
+    },
+    {
+      "id": "aki",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "AKI Gallery",
+        "ja": "也趣畫廊",
+        "zh": "也趣畫廊"
+      },
+      "address": {
+        "en": "No.141, Minzu W. Rd., Taipei",
+        "ja": "台北市大同區民族西路141號",
+        "zh": "臺北市大同區民族西路141號"
+      },
+      "url": "https://www.galleryaki.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "doublesq",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Double Square Gallery",
+        "ja": "双方藝廊",
+        "zh": "双方藝廊"
+      },
+      "address": {
+        "en": "No.28, Ln.770, Bei'an Rd., Taipei",
+        "ja": "台北市中山區北安路770巷28號",
+        "zh": "臺北市中山區北安路770巷28號"
+      },
+      "url": "https://www.doublesquare.com.tw",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.doublesquare.com.tw"
+    },
+    {
+      "id": "inart",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "InArt Space",
+        "ja": "加力畫廊",
+        "zh": "加力畫廊"
+      },
+      "address": {
+        "en": "No.315, Youai St., Tainan",
+        "ja": "台南市中西區友愛街315號",
+        "zh": "臺南市中西區友愛街315號"
+      },
+      "url": "https://www.facebook.com/inartspace",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "soka",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "Soka Art",
+        "ja": "索卡藝術",
+        "zh": "索卡藝術"
+      },
+      "address": {
+        "en": "No.446, Qingping Rd., Tainan",
+        "ja": "台南市安平區慶平路446號",
+        "zh": "臺南市安平區慶平路446號"
+      },
+      "url": "https://www.soka-art.com",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00",
+        "ja": "火〜日 10:00–18:00",
+        "zh": "週二至週日 10:00–18:00"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.soka-art.com/en/exhibition"
+    },
+    {
+      "id": "whitestone",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Whitestone Gallery Taipei",
+        "ja": "白石畫廊",
+        "zh": "白石畫廊"
+      },
+      "address": {
+        "en": "No.1, Jihu Rd., Taipei",
+        "ja": "台北市內湖區基湖路1號",
+        "zh": "臺北市內湖區基湖路1號"
+      },
+      "url": "https://www.whitestone-gallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.whitestone-gallery.com/exhibitions"
+    },
+    {
+      "id": "g333",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "333 Gallery",
+        "ja": "333 Gallery",
+        "zh": "333 Gallery"
+      },
+      "address": {
+        "en": "No.130, Xinhu 2nd Rd., Taipei",
+        "ja": "台北市內湖區新湖二路130號",
+        "zh": "臺北市內湖區新湖二路130號"
+      },
+      "url": "https://www.333-gallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.333-gallery.com/exhibitions"
+    },
+    {
+      "id": "bluerider",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Bluerider ART",
+        "ja": "Bluerider ART",
+        "zh": "Bluerider ART"
+      },
+      "address": {
+        "en": "9F, No.25-1, Sec.4, Ren'ai Rd., Taipei",
+        "ja": "台北市大安區仁愛路四段25-1號9F",
+        "zh": "臺北市大安區仁愛路四段25-1號9F"
+      },
+      "url": "https://www.blueriderart.com",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": "artemperor",
+      "exhibition_url": "https://www.blueriderart.com/en/exhibitions"
+    },
+    {
+      "id": "powen",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Powen Gallery",
+        "ja": "紅野畫廊",
+        "zh": "紅野畫廊"
+      },
+      "address": {
+        "en": "No.11, Ln.164, Songjiang Rd., Taipei",
+        "ja": "台北市中山區松江路164巷11號",
+        "zh": "臺北市中山區松江路164巷11號"
+      },
+      "url": "https://www.facebook.com/powengallery",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "yiyun",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Yi Yun Art",
+        "ja": "亦安畫廊",
+        "zh": "亦安畫廊"
+      },
+      "address": {
+        "en": "No.1-1, Ln.75, Yongkang St., Taipei",
+        "ja": "台北市大安區永康街75巷1-1號",
+        "zh": "臺北市大安區永康街75巷1-1號"
+      },
+      "url": "https://www.facebook.com/yiyunart",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00",
+        "ja": "火〜土 11:00–19:00",
+        "zh": "週二至週六 11:00–19:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "date",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Date Gallery",
+        "ja": "大得畫廊",
+        "zh": "大得畫廊"
+      },
+      "address": {
+        "en": "No.20, Wuquan W. 4th Rd., Taichung",
+        "ja": "台中市西區五權西四路20號",
+        "zh": "臺中市西區五權西四路20號"
+      },
+      "url": "https://www.facebook.com/dategallery",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "moon",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Moon Gallery",
+        "ja": "月臨畫廊",
+        "zh": "月臨畫廊"
+      },
+      "address": {
+        "en": "No.6, Ln.589, Yingcai Rd., Taichung",
+        "ja": "台中市西區英才路589巷6號",
+        "zh": "臺中市西區英才路589巷6號"
+      },
+      "url": "https://www.moongallery.com.tw",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00",
+        "ja": "火〜土 10:00–18:00",
+        "zh": "週二至週六 10:00–18:00"
+      },
+      "closed_day": 0,
+      "scraper": null
+    },
+    {
+      "id": "jut",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "Jut Art Museum",
+        "ja": "忠泰美術館",
+        "zh": "忠泰美術館"
+      },
+      "address": {
+        "en": "No.178, Sec.3, Civic Blvd., Taipei",
+        "ja": "台北市大安區市民大道三段178號",
+        "zh": "臺北市大安區市民大道三段178號"
+      },
+      "url": "https://jam.jutfoundation.org.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://jam.jutfoundation.org.tw/en/exhibition"
+    },
+    {
+      "id": "fubon",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "Fubon Art Museum",
+        "ja": "富邦美術館",
+        "zh": "富邦美術館"
+      },
+      "address": {
+        "en": "No.79, Songgao Rd., Taipei",
+        "ja": "台北市信義區松高路79號",
+        "zh": "臺北市信義區松高路79號"
+      },
+      "url": "https://www.fubonart.org.tw",
+      "hours": {
+        "en": "Daily 11:00–19:00",
+        "ja": "毎日 11:00–19:00",
+        "zh": "每日 11:00–19:00"
+      },
+      "closed_day": null,
+      "scraper": "generic",
+      "exhibition_url": "https://www.fubonart.org.tw/exhibition"
+    },
+    {
+      "id": "juming",
+      "category": "private",
+      "region": "new_taipei",
+      "name": {
+        "en": "Juming Museum",
+        "ja": "朱銘美術館",
+        "zh": "朱銘美術館"
+      },
+      "address": {
+        "en": "No.2, Xishihu, Jinshan, New Taipei",
+        "ja": "新北市金山區西勢湖2號",
+        "zh": "新北市金山區西勢湖2號"
+      },
+      "url": "https://www.juming.org.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
+        "ja": "火〜日 10:00–17:00｜月休",
+        "zh": "週二至週日 10:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "yuhsiu",
+      "category": "private",
+      "region": "nantou",
+      "name": {
+        "en": "Yu-Hsiu Museum of Art",
+        "ja": "毓繡美術館",
+        "zh": "毓繡美術館"
+      },
+      "address": {
+        "en": "No.27, Ln.150, Jianxing Rd., Caotun, Nantou",
+        "ja": "南投縣草屯鎮健行路150巷27號",
+        "zh": "南投縣草屯鎮健行路150巷27號"
+      },
+      "url": "https://www.yu-hsiu.org",
+      "hours": {
+        "en": "Tue–Sun 09:30–17:30 | Closed Mon",
+        "ja": "火〜日 9:30–17:30｜月休",
+        "zh": "週二至週日 09:30–17:30｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://www.yu-hsiu.org/en/exhibition"
+    },
+    {
+      "id": "alien",
+      "category": "private",
+      "region": "kaohsiung",
+      "name": {
+        "en": "ALIEN Art Centre",
+        "ja": "永添藝術",
+        "zh": "永添藝術"
+      },
+      "address": {
+        "en": "No.111, Gushan 1st Rd., Kaohsiung",
+        "ja": "高雄市鼓山區鼓山一路111號",
+        "zh": "高雄市鼓山區鼓山一路111號"
+      },
+      "url": "https://www.alien.com.tw",
+      "hours": {
+        "en": "Thu–Tue 11:00–21:00 | Closed Wed",
+        "ja": "木〜火 11:00–21:00｜水休",
+        "zh": "週四至週二 11:00–21:00｜週三休"
+      },
+      "closed_day": 3,
+      "scraper": "generic",
+      "exhibition_url": "https://www.alien.com.tw"
+    },
+    {
+      "id": "daxin",
+      "category": "private",
+      "region": "tainan",
+      "name": {
+        "en": "Da Xin Art Museum",
+        "ja": "大新美術館",
+        "zh": "大新美術館"
+      },
+      "address": {
+        "en": "No.6, Ln.110, Sec.4, Ximen Rd., Tainan",
+        "ja": "台南市北區西門路四段110巷6號",
+        "zh": "臺南市北區西門路四段110巷6號"
+      },
+      "url": "https://www.facebook.com/daxinartmuseum",
+      "hours": {
+        "en": "By appointment",
+        "ja": "予約制",
+        "zh": "預約制"
+      },
+      "closed_day": null,
+      "scraper": null
+    },
+    {
+      "id": "huashan",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "Huashan 1914 Creative Park",
+        "ja": "華山1914文創園區",
+        "zh": "華山1914文化創意產業園區"
+      },
+      "address": {
+        "en": "No.1, Sec.1, Bade Rd., Taipei",
+        "ja": "台北市中正區八德路一段1號",
+        "zh": "臺北市中正區八德路一段1號"
+      },
+      "url": "https://www.huashan1914.com",
+      "hours": {
+        "en": "Daily 09:30–21:00",
+        "ja": "毎日 9:30–21:00",
+        "zh": "每日 09:30–21:00"
+      },
+      "closed_day": null,
+      "scraper": "generic",
+      "exhibition_url": "https://www.huashan1914.com"
+    },
+    {
+      "id": "songshan",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "Songshan Cultural & Creative Park",
+        "ja": "松山文創園區",
+        "zh": "松山文創園區"
+      },
+      "address": {
+        "en": "No.133, Guangfu S. Rd., Taipei",
+        "ja": "台北市信義區光復南路133號",
+        "zh": "臺北市信義區光復南路133號"
+      },
+      "url": "https://www.songshanculturalpark.org",
+      "hours": {
+        "en": "Daily 09:00–18:00",
+        "ja": "毎日 9:00–18:00",
+        "zh": "每日 09:00–18:00"
+      },
+      "closed_day": null,
+      "scraper": null
+    },
+    {
+      "id": "pier2",
+      "category": "private",
+      "region": "kaohsiung",
+      "name": {
+        "en": "The Pier-2 Art Center",
+        "ja": "駁二藝術特區",
+        "zh": "駁二藝術特區"
+      },
+      "address": {
+        "en": "No.1, Dayong Rd., Kaohsiung",
+        "ja": "高雄市鹽埕區大勇路1號",
+        "zh": "高雄市鹽埕區大勇路1號"
+      },
+      "url": "https://pier2.org",
+      "hours": {
+        "en": "Mon–Thu 10:00–18:00 | Fri–Sun 10:00–20:00",
+        "ja": "月〜木 10:00–18:00｜金〜日 10:00–20:00",
+        "zh": "週一至週四 10:00–18:00｜週五至週日 10:00–20:00"
+      },
+      "closed_day": null,
+      "scraper": "generic",
+      "exhibition_url": "https://pier2.org/exhibition"
+    },
+    {
+      "id": "cabcy",
+      "category": "private",
+      "region": "chiayi",
+      "name": {
+        "en": "Chiayi Railway Art Village",
+        "ja": "嘉義鐵道藝術村",
+        "zh": "嘉義鐵道藝術村"
+      },
+      "address": {
+        "en": "No.37-10, Beixing St., Chiayi",
+        "ja": "嘉義市北興街37-10號",
+        "zh": "嘉義市北興街37-10號"
+      },
+      "url": "https://cabcy.chiayi.gov.tw",
+      "hours": {
+        "en": "Wed–Sun 09:00–17:00 | Closed Mon–Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 09:00–17:00｜週一二休"
+      },
+      "closed_day": 1,
+      "scraper": "generic",
+      "exhibition_url": "https://cabcy.chiayi.gov.tw"
+    },
+    {
+      "id": "hcrav",
+      "category": "private",
+      "region": "hsinchu",
+      "name": {
+        "en": "Hsinchu Railway Art Village",
+        "ja": "新竹鐵道藝術村",
+        "zh": "新竹市鐵道藝術村"
+      },
+      "address": {
+        "en": "No.64, Huayuan St., Hsinchu",
+        "ja": "新竹市東區花園街64號",
+        "zh": "新竹市東區花園街64號"
+      },
+      "url": "https://www.facebook.com/hcrav",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "zhongxing",
+      "category": "private",
+      "region": "yilan",
+      "name": {
+        "en": "Zhongxing Cultural & Creative Park",
+        "ja": "中興文化創意園區",
+        "zh": "中興文化創意園區"
+      },
+      "address": {
+        "en": "No.6-8, Sec.2, Zhongzheng Rd., Wujie, Yilan",
+        "ja": "宜蘭縣五結鄉中正路二段6-8號",
+        "zh": "宜蘭縣五結鄉中正路二段6-8號"
+      },
+      "url": "https://www.facebook.com/zhongxingccp",
+      "hours": {
+        "en": "Wed–Sun 10:00–18:00 | Closed Mon–Tue",
+        "ja": "水〜日 10:00–18:00｜月火休",
+        "zh": "週三至週日 10:00–18:00｜週一二休"
+      },
+      "closed_day": 1,
+      "scraper": null
+    },
+    {
+      "id": "zhengbin",
+      "category": "private",
+      "region": "keelung",
+      "name": {
+        "en": "Zhengbin Art (Zhengbin Fishing Port)",
+        "ja": "正濱漁港",
+        "zh": "正濱漁港"
+      },
+      "address": {
+        "en": "Zhongzheng Dist., Keelung",
+        "ja": "基隆市中正區",
+        "zh": "基隆市中正區"
+      },
+      "url": "https://zhengbinart.com",
+      "hours": {
+        "en": "Open area",
+        "ja": "屋外エリア",
+        "zh": "戶外區域"
+      },
+      "closed_day": null,
+      "scraper": null
+    },
+    {
+      "id": "hualiencp",
+      "category": "private",
+      "region": "hualien",
+      "name": {
+        "en": "Hualien Cultural & Creative Park",
+        "ja": "花蓮文創園區",
+        "zh": "花蓮文化創意產業園區"
+      },
+      "address": {
+        "en": "No.144, Zhonghua Rd., Hualien",
+        "ja": "花蓮縣花蓮市中華路144號",
+        "zh": "花蓮縣花蓮市中華路144號"
+      },
+      "url": "https://www.facebook.com/hualienvcpp",
+      "hours": {
+        "en": "Daily 09:00–21:00",
+        "ja": "毎日 9:00–21:00",
+        "zh": "每日 09:00–21:00"
+      },
+      "closed_day": null,
+      "scraper": null
+    }
+  ]
+}
