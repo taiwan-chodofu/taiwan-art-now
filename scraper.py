@@ -215,7 +215,7 @@ def _save_cache(exhibitions):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def _fetch(url, timeout=15):
+def _fetch(url, timeout=8):
     """URLからHTMLを取得してBeautifulSoupオブジェクトを返す。"""
     try:
         resp = requests.get(url, headers=HEADERS, timeout=timeout)
@@ -399,48 +399,125 @@ def _is_current_exhibition(dates_str, today=None):
 
 
 def _scrape_honggah():
-    """鳳甲美術館の展覧会情報をJSONファイルから読み込む。"""
-    manual_path = os.path.join(os.path.dirname(__file__), "honggah_manual.json")
+    """鳳甲美術館の公式サイトから展覧会情報を取得する。"""
+    exhibitions = []
+    today = datetime.now()
+    url = "https://hong-gah.org.tw/en/exhibitions"
     try:
-        with open(manual_path, "r", encoding="utf-8") as f:
-            items = json.load(f)
-        return [{"museum": "honggah", **item} for item in items]
+        soup = _fetch(url)
+        for h4 in soup.find_all("h4"):
+            link = h4.find("a")
+            if not link:
+                continue
+            title = link.get_text(strip=True)
+            if not title or len(title) < 3:
+                continue
+            href = link.get("href", "")
+            if not href.startswith("http"):
+                href = "https://hong-gah.org.tw" + href
+            parent = h4.parent
+            text = parent.get_text(separator="\n", strip=True) if parent else ""
+            dm = re.search(
+                r"(\d{4}\.\d{2}\.\d{2})\s*[-–]\s*(\d{4}\.\d{2}\.\d{2})", text
+            )
+            dates = f"{dm.group(1)} – {dm.group(2)}" if dm else ""
+            if dates and not _is_current_exhibition(dates, today):
+                continue
+            if not dates:
+                sm = re.search(r"(\d{4}\.\d{2}\.\d{2})", text)
+                dates = sm.group(1) if sm else ""
+            exhibitions.append({
+                "museum": "honggah",
+                "title_en": title, "title_ja": "", "title_zh": "",
+                "dates": dates, "location": "Hong-Gah Museum",
+                "link": href,
+            })
     except Exception as exc:
-        logger.warning("Hong-Gah manual load failed: %s", exc)
-        base = MUSEUMS["honggah"]["url"]
-        return [{
-            "museum": "honggah",
-            "title_en": "See current exhibitions on website",
-            "title_ja": "公式サイトで当期展覧会を確認",
-            "title_zh": "請至官網查看當期展覽",
-            "dates": "", "location": "Hong-Gah Museum",
-            "link": f"{base}/en/exhibitions",
-        }]
+        logger.warning("Hong-Gah scrape failed: %s", exc)
+    if not exhibitions:
+        manual_path = os.path.join(os.path.dirname(__file__), "honggah_manual.json")
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                return [{"museum": "honggah", **i} for i in json.load(f)]
+        except Exception:
+            pass
     return exhibitions
 
 
 def _scrape_ntcart():
-    """新北市美術館の展覧会情報をJSONファイルから読み込む。"""
-    manual_path = os.path.join(os.path.dirname(__file__), "ntcart_manual.json")
+    """新北市美術館の公式サイトから展覧会情報を取得する。"""
+    exhibitions = []
+    today = datetime.now()
+    url = "https://ntcart.museum"
     try:
-        with open(manual_path, "r", encoding="utf-8") as f:
-            items = json.load(f)
-        return [{"museum": "ntcart", **item} for item in items]
+        soup = _fetch(url)
+        for link in soup.find_all("a", href=re.compile(r"exhibition_content")):
+            text = link.get_text(separator="\n", strip=True)
+            lines = [l.strip() for l in text.split("\n") if l.strip()]
+            if len(lines) < 2:
+                continue
+            title = lines[0]
+            dm = re.search(r"(\d{4}-\d{2}-\d{2})\s*[—–]\s*(\d{4}-\d{2}-\d{2})", text)
+            if not dm:
+                continue
+            dates = f"{dm.group(1)} - {dm.group(2)}"
+            if not _is_current_exhibition(dates, today):
+                continue
+            href = link.get("href", "")
+            if not href.startswith("http"):
+                href = "https://ntcart.museum/" + href
+            exhibitions.append({
+                "museum": "ntcart",
+                "title_en": "", "title_ja": "", "title_zh": title,
+                "dates": dates, "location": "新北市美術館",
+                "link": href,
+            })
     except Exception as exc:
-        logger.warning("NTCArt manual load failed: %s", exc)
-        return []
+        logger.warning("NTCArt scrape failed: %s", exc)
+    if not exhibitions:
+        manual_path = os.path.join(os.path.dirname(__file__), "ntcart_manual.json")
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                return [{"museum": "ntcart", **i} for i in json.load(f)]
+        except Exception:
+            pass
+    return exhibitions
 
 
 def _scrape_tcma():
-    """臺中市立美術館の展覧会情報をJSONファイルから読み込む。"""
-    manual_path = os.path.join(os.path.dirname(__file__), "tcma_manual.json")
+    """臺中市立美術館の公式サイトから展覧会情報を取得する。"""
+    exhibitions = []
+    today = datetime.now()
+    url = "https://www.tcam.museum/en/exhibition"
     try:
-        with open(manual_path, "r", encoding="utf-8") as f:
-            items = json.load(f)
-        return [{"museum": "tcma", **item} for item in items]
+        soup = _fetch(url)
+        for link in soup.find_all("a", href=re.compile(r"/exhibition/")):
+            title = link.get_text(strip=True)
+            if not title or len(title) < 3 or title.lower() in ("more", "exhibition"):
+                continue
+            href = link.get("href", "")
+            if not href.startswith("http"):
+                href = "https://www.tcam.museum" + href
+            # 詳細ページから日付を取得
+            dates = _fetch_tcma_dates(href)
+            if dates and not _is_current_exhibition(dates, today):
+                continue
+            exhibitions.append({
+                "museum": "tcma",
+                "title_en": title, "title_ja": "", "title_zh": "",
+                "dates": dates, "location": "TCMA",
+                "link": href,
+            })
     except Exception as exc:
-        logger.warning("TCMA manual load failed: %s", exc)
-        return []
+        logger.warning("TCMA scrape failed: %s", exc)
+    if not exhibitions:
+        manual_path = os.path.join(os.path.dirname(__file__), "tcma_manual.json")
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                return [{"museum": "tcma", **i} for i in json.load(f)]
+        except Exception:
+            pass
+    return exhibitions
 
 
 def _fetch_tcma_dates(detail_url):
@@ -650,6 +727,106 @@ def _scrape_kdmofa():
     return exhibitions
 
 
+def _scrape_goodug():
+    """好地下藝術空間（Good Underground）のweeblyサイトから展覧会情報を取得する。"""
+    exhibitions = []
+    today = datetime.now()
+    year = today.year
+    # 当年と前年のページを確認
+    for y in [year, year - 1]:
+        url = f"https://goodunderground.weebly.com/{y}.html"
+        try:
+            soup = _fetch(url)
+            text = soup.get_text(separator="\n", strip=True)
+            # パターン: YYYY.MM.DD - YYYY.MM.DD タイトル
+            for m in re.finditer(
+                r"(\d{4}\.\d{1,2}\.\d{1,2})\s*-\s*(\d{4}\.\d{1,2}\.\d{1,2})"
+                r"\s*(.+?)(?=\d{4}\.\d{1,2}\.\d{1,2}|\Z)",
+                text, re.DOTALL,
+            ):
+                dates = f"{m.group(1)} - {m.group(2)}"
+                if not _is_current_exhibition(dates, today):
+                    continue
+                title = m.group(3).strip().split("\n")[0].strip()
+                if title and len(title) > 2:
+                    exhibitions.append({
+                        "museum": "goodug",
+                        "title_en": title,
+                        "title_zh": title,
+                        "title_ja": "",
+                        "dates": dates,
+                        "location": "好地下藝術空間",
+                        "link": url,
+                    })
+        except Exception as exc:
+            logger.warning("Good Underground scrape failed for %d: %s", y, exc)
+    if not exhibitions:
+        # フォールバック: JSONファイル
+        manual_path = os.path.join(os.path.dirname(__file__), "goodug_manual.json")
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            return [{"museum": "goodug", **item} for item in items]
+        except Exception:
+            pass
+    return exhibitions
+
+
+def _scrape_tav():
+    """台北國際藝術村（寶藏巖）の公式サイトから展覧会情報を取得する。"""
+    exhibitions = []
+    today = datetime.now()
+    url = "https://www.artistvillage.org/event.php"
+    try:
+        soup = _fetch(url)
+        # 各イベントリンクから日付とタイトルを抽出
+        for link in soup.find_all("a", href=re.compile(r"event-detail")):
+            text = link.get_text(separator="\n", strip=True)
+            # 日付パターン: YYYY-MM-DD ~ YYYY-MM-DD
+            dm = re.search(
+                r"(\d{4}-\d{2}-\d{2})\s*~\s*(\d{4}-\d{2}-\d{2})", text
+            )
+            if not dm:
+                continue
+            dates = f"{dm.group(1)} - {dm.group(2)}"
+            if not _is_current_exhibition(dates, today):
+                continue
+            # タイトルは日付より前の行
+            lines = [l.strip() for l in text.split("\n") if l.strip()]
+            title = ""
+            for line in lines:
+                if re.search(r"\d{4}-\d{2}-\d{2}", line):
+                    break
+                if len(line) > 3:
+                    title = line
+                    break
+            if not title:
+                continue
+            href = link.get("href", "")
+            if not href.startswith("http"):
+                href = "https://www.artistvillage.org/" + href
+            exhibitions.append({
+                "museum": "tav",
+                "title_en": title,
+                "title_zh": title,
+                "title_ja": "",
+                "dates": dates,
+                "location": "寶藏巖國際藝術村",
+                "link": href,
+            })
+    except Exception as exc:
+        logger.warning("TAV scrape failed: %s", exc)
+    if not exhibitions:
+        manual_path = os.path.join(os.path.dirname(__file__), "tav_manual.json")
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            return [{"museum": "tav", **item} for item in items]
+        except Exception:
+            pass
+    return exhibitions
+
+
 def _merge_exhibitions(list_a, list_b):
     """2つの展覧会リストをマージする（同一美術館の同一順序で結合）。"""
     merged = []
@@ -792,7 +969,7 @@ def _scrape_artemperor(pages=3):
     for page in range(1, pages + 1):
         url = f"https://artemperor.tw/tidbits?page={page}"
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=15, verify=False)
+            resp = requests.get(url, headers=HEADERS, timeout=8, verify=False)
             resp.raise_for_status()
             soup = BeautifulSoup(resp.text, "html.parser")
 
@@ -919,6 +1096,8 @@ def fetch_all_exhibitions():
     all_exhibitions.extend(_scrape_thecube())
     all_exhibitions.extend(_scrape_chiayi())
     all_exhibitions.extend(_scrape_kdmofa())
+    all_exhibitions.extend(_scrape_goodug())
+    all_exhibitions.extend(_scrape_tav())
 
     # マスターデータから汎用スクレイパー対象を取得
     master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
@@ -949,7 +1128,7 @@ def fetch_all_exhibitions():
 
         # artemperor.tw アグリゲーターで未取得館を補完
         existing_ids = {e["museum"] for e in all_exhibitions}
-        artemperor_data = _scrape_artemperor(pages=10)
+        artemperor_data = _scrape_artemperor(pages=5)
         for ex in artemperor_data:
             mid = ex["museum"]
             if mid not in existing_ids:
