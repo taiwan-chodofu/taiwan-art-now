@@ -110,7 +110,7 @@
         "zh": "週二至週日 10:30–17:30｜週一休"
       },
       "closed_day": 1,
-      "scraper": "honggah_manual"
+      "scraper": "honggah"
     },
     {
       "id": "tfam",
@@ -367,7 +367,7 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 1,
-      "scraper": "ntcart_manual"
+      "scraper": "ntcart"
     },
     {
       "id": "tmofa",
@@ -509,7 +509,7 @@
         "zh": "週二至週五、週日 09:00–17:00｜週六 09:00–20:00｜週一休"
       },
       "closed_day": 1,
-      "scraper": "tcma_manual"
+      "scraper": "tcma"
     },
     {
       "id": "fotoaura",
@@ -649,7 +649,7 @@
         "zh": "週五至週一 12:00–20:00"
       },
       "closed_day": 1,
-      "scraper": "goodug_manual"
+      "scraper": "goodug"
     },
     {
       "id": "sinpin",
@@ -695,7 +695,7 @@
         "zh": "週二至週日 11:00–21:00｜週一休"
       },
       "closed_day": 1,
-      "scraper": "tav_manual"
+      "scraper": "tav"
     },
     {
       "id": "lightbox",
