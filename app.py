@@ -230,6 +230,7 @@ def index():
                     master["categories"].get(m.get("category", ""), {}), lang
                 ),
                 "closed_today": is_closed_today,
+                "has_schedule": m.get("closed_day") is not None,
                 "exhibitions": exs,
             })
 

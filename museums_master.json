@@ -109,7 +109,7 @@
         "ja": "火〜日 10:30–17:30｜月休",
         "zh": "週二至週日 10:30–17:30｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "honggah"
     },
     {
@@ -132,7 +132,7 @@
         "ja": "火〜日 9:30–17:30｜土 20:30まで｜月休",
         "zh": "週二至週日 9:30–17:30｜週六延長至20:30｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "tfam_api"
     },
     {
@@ -155,7 +155,7 @@
         "ja": "火〜日 10:00–18:00｜月休",
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "moca"
     },
     {
@@ -178,7 +178,7 @@
         "ja": "火〜日 10:00–18:00｜月休",
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://ncpi.ntmofa.gov.tw/Exhibition_Content_1.aspx"
     },
@@ -202,7 +202,7 @@
         "ja": "火〜日 11:00–18:00｜月休",
         "zh": "週二至週日 11:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "clab"
     },
     {
@@ -225,7 +225,7 @@
         "ja": "水〜日 13:00–19:00｜月火休",
         "zh": "週三至週日 13:00–19:00｜週一二休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "thecube"
     },
     {
@@ -248,7 +248,7 @@
         "ja": "火〜日 10:00–17:00｜月休",
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "kdmofa"
     },
     {
@@ -271,7 +271,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.ntmofa.gov.tw/ExhibitionList_1.aspx"
     },
@@ -295,7 +295,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "chiayi"
     },
     {
@@ -318,7 +318,7 @@
         "ja": "火〜日 10:00–18:00｜月休",
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.tnam.museum/exhibition/current"
     },
@@ -342,7 +342,7 @@
         "ja": "火〜日 9:30–17:30｜月休",
         "zh": "週二至週日 09:30–17:30｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.kmfa.gov.tw/exhibition"
     },
@@ -366,7 +366,7 @@
         "ja": "火〜日 10:00–18:00｜月休",
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "ntcart"
     },
     {
@@ -389,7 +389,7 @@
         "ja": "火〜日 10:00–17:00｜月休",
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions"
     },
@@ -413,7 +413,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -436,7 +436,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.hccc.gov.tw/en/exhibition"
     },
@@ -460,7 +460,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://culture.hccg.gov.tw"
     },
@@ -484,7 +484,7 @@
         "ja": "木〜火 9:00–17:00｜水休",
         "zh": "週四至週二 09:00–17:00｜週三休"
       },
-      "closed_day": 3,
+      "closed_day": 2,
       "scraper": "generic",
       "exhibition_url": "https://www.lym.gov.tw/en/exhibition"
     },
@@ -508,7 +508,7 @@
         "ja": "火〜金・日 9:00–17:00｜土 9:00–20:00｜月休",
         "zh": "週二至週五、週日 09:00–17:00｜週六 09:00–20:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "tcma"
     },
     {
@@ -531,7 +531,7 @@
         "ja": "水〜日 14:00–20:00｜月火休（展示開催中）",
         "zh": "週三至週日 14:00–20:00｜週一二休（展覽期間）"
       },
-      "closed_day": 1,
+      "closed_day": null,
       "scraper": null
     },
     {
@@ -624,7 +624,7 @@
         "ja": "水〜日 14:00–20:00｜月火休",
         "zh": "週三至週日 14:00–20:00｜週一二休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.absoluteart.space"
     },
@@ -671,7 +671,7 @@
         "ja": "火〜日 11:00–19:00｜月休",
         "zh": "週二至週日 11:00–19:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -694,7 +694,7 @@
         "ja": "火〜日 11:00–21:00｜月休",
         "zh": "週二至週日 11:00–21:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "tav"
     },
     {
@@ -717,7 +717,7 @@
         "ja": "水〜日 13:00–20:00｜月火休",
         "zh": "週三至週日 13:00–20:00｜週一二休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.lightboxlib.org"
     },
@@ -741,7 +741,7 @@
         "ja": "火〜日 9:30–17:00｜月休",
         "zh": "週二至週日 09:30–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -764,7 +764,7 @@
         "ja": "水〜月 10:00–19:00｜火休",
         "zh": "週三至週一 10:00–19:00｜週二休"
       },
-      "closed_day": 2,
+      "closed_day": 1,
       "scraper": "generic",
       "exhibition_url": "https://www.pon-ding.com"
     },
@@ -811,7 +811,7 @@
         "ja": "土日 10:00–18:00",
         "zh": "週六日 10:00–18:00"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -906,7 +906,7 @@
         "ja": "火〜日 10:00–18:30",
         "zh": "週二至週日 10:00–18:30"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.asiaartcenter.org/en/exhibitions"
     },
@@ -1142,7 +1142,7 @@
         "ja": "火〜日 10:00–18:00",
         "zh": "週二至週日 10:00–18:00"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.soka-art.com/en/exhibition"
     },
@@ -1307,7 +1307,7 @@
         "ja": "火〜日 10:00–18:00｜月休",
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://jam.jutfoundation.org.tw/en/exhibition"
     },
@@ -1355,7 +1355,7 @@
         "ja": "火〜日 10:00–17:00｜月休",
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -1378,7 +1378,7 @@
         "ja": "火〜日 9:30–17:30｜月休",
         "zh": "週二至週日 09:30–17:30｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.yu-hsiu.org/en/exhibition"
     },
@@ -1402,7 +1402,7 @@
         "ja": "木〜火 11:00–21:00｜水休",
         "zh": "週四至週二 11:00–21:00｜週三休"
       },
-      "closed_day": 3,
+      "closed_day": 2,
       "scraper": "generic",
       "exhibition_url": "https://www.alien.com.tw"
     },
@@ -1520,7 +1520,7 @@
         "ja": "水〜日 9:00–17:00｜月火休",
         "zh": "週三至週日 09:00–17:00｜週一二休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://cabcy.chiayi.gov.tw"
     },
@@ -1544,7 +1544,7 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
@@ -1567,7 +1567,7 @@
         "ja": "水〜日 10:00–18:00｜月火休",
         "zh": "週三至週日 10:00–18:00｜週一二休"
       },
-      "closed_day": 1,
+      "closed_day": 0,
       "scraper": null
     },
     {
