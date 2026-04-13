@@ -259,11 +259,16 @@
             {% if museum.category == 'public' %}🏛{% elif museum.category == 'alternative' %}⚡{% elif museum.category == 'commercial' %}🖼{% else %}🏠{% endif %}
           </span>
         </div>
-        {% if museum.hours or museum.address %}
+        {% if museum.has_schedule and (museum.hours or museum.address) %}
         <div class="mc-meta">
           {% if museum.hours %}{{ museum.hours }}{% endif %}
           {% if museum.hours and museum.address %} · {% endif %}
           {% if museum.address %}{{ museum.address }}{% endif %}
+        </div>
+        {% elif not museum.has_schedule %}
+        <div class="mc-meta">
+          <a href="{{ museum.url }}" target="_blank" rel="noopener" style="color:var(--text-sub);text-decoration:none">ℹ️ {{ labels.link }}</a>
+          {% if museum.address %} · {{ museum.address }}{% endif %}
         </div>
         {% endif %}
 
