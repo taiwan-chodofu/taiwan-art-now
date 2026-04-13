@@ -136,8 +136,9 @@ def _calc_days_left(end_dt):
     """終了日までの残日数を計算する。Noneまたは14日超はNone。"""
     if not end_dt:
         return None
-    from datetime import datetime
-    delta = (end_dt - datetime.now()).days
+    from datetime import datetime, timezone, timedelta
+    tw_tz = timezone(timedelta(hours=8))
+    delta = (end_dt - datetime.now(tw_tz).replace(tzinfo=None)).days
     if 0 <= delta <= 14:
         return delta
     return None
@@ -250,11 +251,12 @@ def index():
 
 
 def _is_closed_today(closed_day):
-    """本日が休館日かどうか判定する（0=月曜, 6=日曜）。"""
+    """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。"""
     if closed_day is None:
         return False
-    from datetime import datetime
-    return datetime.now().weekday() == closed_day
+    from datetime import datetime, timezone, timedelta
+    tw_tz = timezone(timedelta(hours=8))
+    return datetime.now(tw_tz).weekday() == closed_day
 
 
 if __name__ == "__main__":

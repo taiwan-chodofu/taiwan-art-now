@@ -1,4 +1,4 @@
-"""台湾現代アート美術館の展覧会情報スクレイパー"""
+﻿"""台湾現代アート美術館の展覧会情報スクレイパー"""
 
 import requests
 from bs4 import BeautifulSoup
@@ -12,6 +12,17 @@ logger = logging.getLogger(__name__)
 
 CACHE_FILE = os.path.join(os.path.dirname(__file__), "cache.json")
 CACHE_TTL_HOURS = 6
+
+# 台湾タイムゾーン (UTC+8)
+_TW_TZ = None
+
+def _now_tw():
+    """台湾時間(UTC+8)の現在時刻をnaive datetimeで返す。"""
+    global _TW_TZ
+    if _TW_TZ is None:
+        from datetime import timezone, timedelta
+        _TW_TZ = timezone(timedelta(hours=8))
+    return datetime.now(_TW_TZ).replace(tzinfo=None)
 
 HEADERS = {
     "User-Agent": (
@@ -197,7 +208,7 @@ def _load_cache():
         with open(CACHE_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
         cached_at = datetime.fromisoformat(data.get("cached_at", "2000-01-01"))
-        age_hours = (datetime.now() - cached_at).total_seconds() / 3600
+        age_hours = (_now_tw() - cached_at).total_seconds() / 3600
         if age_hours < CACHE_TTL_HOURS:
             return data.get("exhibitions", [])
     except (json.JSONDecodeError, ValueError):
@@ -208,7 +219,7 @@ def _load_cache():
 def _save_cache(exhibitions):
     """展覧会データをキャッシュに保存する。"""
     data = {
-        "cached_at": datetime.now().isoformat(),
+        "cached_at": _now_tw().isoformat(),
         "exhibitions": exhibitions,
     }
     with open(CACHE_FILE, "w", encoding="utf-8") as f:
@@ -259,7 +270,7 @@ def _scrape_moca(lang="en"):
     prefix = "/en" if lang == "en" else "/zh-tw"
     url = f"{base}{prefix}/ExhibitionAndEvent/Exhibitions/Current%20Exhibition"
     title_key = f"title_{lang}"
-    today = datetime.now()
+    today = _now_tw()
     skip_keywords = ["Artist Talk", "Screening", "Lecture", "Workshop",
                      "座談", "講座", "放映", "工作坊"]
     try:
@@ -367,7 +378,9 @@ def _is_current_exhibition(dates_str, today=None):
     if not dates_str:
         return True  # 日付なしは当期とみなす
     if today is None:
-        today = datetime.now()
+        from datetime import timezone, timedelta
+        tw_tz = timezone(timedelta(hours=8))
+        today = datetime.now(tw_tz).replace(tzinfo=None)
     # 全角スラッシュを半角に正規化
     s = dates_str.replace("／", "/")
     # 全日付を抽出（YYYY.MM.DD, YYYY/MM/DD, YYYY-MM-DD 対応）
@@ -401,7 +414,7 @@ def _is_current_exhibition(dates_str, today=None):
 def _scrape_honggah():
     """鳳甲美術館の公式サイトから展覧会情報を取得する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     url = "https://hong-gah.org.tw/en/exhibitions"
     try:
         soup = _fetch(url)
@@ -447,7 +460,7 @@ def _scrape_honggah():
 def _scrape_ntcart():
     """新北市美術館の公式サイトから展覧会情報を取得する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     url = "https://ntcart.museum"
     try:
         soup = _fetch(url)
@@ -487,7 +500,7 @@ def _scrape_ntcart():
 def _scrape_tcma():
     """臺中市立美術館の公式サイトから展覧会情報を取得する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     url = "https://www.tcam.museum/en/exhibition"
     try:
         soup = _fetch(url)
@@ -540,7 +553,7 @@ def _scrape_clab():
     exhibitions = []
     base = MUSEUMS["clab"]["url"]
     url = f"{base}/en/events/"
-    today = datetime.now()
+    today = _now_tw()
     try:
         soup = _fetch(url)
         seen = set()
@@ -689,7 +702,7 @@ def _scrape_kdmofa():
     exhibitions = []
     base = MUSEUMS["kdmofa"]["url"]
     url = f"{base}/en/mod/exhibition/index.php"
-    today = datetime.now()
+    today = _now_tw()
     try:
         soup = _fetch(url)
         text = soup.get_text(separator="\n", strip=True)
@@ -730,7 +743,7 @@ def _scrape_kdmofa():
 def _scrape_goodug():
     """好地下藝術空間（Good Underground）のweeblyサイトから展覧会情報を取得する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     year = today.year
     # 当年と前年のページを確認
     for y in [year, year - 1]:
@@ -775,7 +788,7 @@ def _scrape_goodug():
 def _scrape_tav():
     """台北國際藝術村（寶藏巖）の公式サイトから展覧会情報を取得する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     url = "https://www.artistvillage.org/event.php"
     try:
         soup = _fetch(url)
@@ -963,7 +976,7 @@ def _scrape_artemperor(pages=3):
         list: 展覧会情報のリスト
     """
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     seen = set()
 
     for page in range(1, pages + 1):
@@ -1038,7 +1051,7 @@ def _scrape_artemperor(pages=3):
 def _scrape_generic(museum_id, exhibition_url):
     """汎用スクレイパー: 展覧会ページからタイトルと日付を自動抽出する。"""
     exhibitions = []
-    today = datetime.now()
+    today = _now_tw()
     try:
         soup = _fetch(exhibition_url)
         text = soup.get_text(separator="\n", strip=True)
