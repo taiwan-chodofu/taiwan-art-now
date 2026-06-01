@@ -7,11 +7,15 @@ import json
 import os
 import logging
 import re
+import threading
 
 logger = logging.getLogger(__name__)
 
 CACHE_FILE = os.path.join(os.path.dirname(__file__), "cache.json")
 CACHE_TTL_HOURS = 6
+
+_bg_lock = threading.Lock()
+_bg_running = False
 
 # 台湾タイムゾーン (UTC+8)
 _TW_TZ = None
@@ -201,7 +205,7 @@ MUSEUMS = {
 
 
 def _load_cache():
-    """キャッシュファイルを読み込む。"""
+    """キャッシュファイルを読み込む。TTL内ならデータを返す。超過ならNone。"""
     if not os.path.exists(CACHE_FILE):
         return None
     try:
@@ -211,6 +215,21 @@ def _load_cache():
         age_hours = (_now_tw() - cached_at).total_seconds() / 3600
         if age_hours < CACHE_TTL_HOURS:
             return data.get("exhibitions", [])
+    except (json.JSONDecodeError, ValueError):
+        pass
+    return None
+
+
+def _load_cache_stale():
+    """キャッシュファイルからデータを返す（TTL無視、古くてもOK）。"""
+    if not os.path.exists(CACHE_FILE):
+        return None
+    try:
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        exhibitions = data.get("exhibitions", [])
+        if exhibitions:
+            return exhibitions
     except (json.JSONDecodeError, ValueError):
         pass
     return None
@@ -1089,12 +1108,8 @@ def _scrape_generic(museum_id, exhibition_url):
     return exhibitions
 
 
-def fetch_all_exhibitions():
-    """全美術館の展覧会情報を取得する（キャッシュ付き）。"""
-    cached = _load_cache()
-    if cached is not None:
-        return cached
-
+def _do_scrape_all():
+    """実際のスクレイピング処理（重い部分）。結果をキャッシュに保存して返す。"""
     all_exhibitions = []
 
     # 既存の専用スクレイパー
@@ -1145,11 +1160,9 @@ def fetch_all_exhibitions():
         for ex in artemperor_data:
             mid = ex["museum"]
             if mid not in existing_ids:
-                # 新規館: そのまま追加
                 all_exhibitions.append(ex)
                 existing_ids.add(mid)
             else:
-                # 既存館: 同一タイトルがなければ追加
                 existing_titles = {
                     (e.get("title_en", "") or e.get("title_zh", ""))
                     for e in all_exhibitions if e["museum"] == mid
@@ -1163,3 +1176,42 @@ def fetch_all_exhibitions():
 
     _save_cache(all_exhibitions)
     return all_exhibitions
+
+
+def _bg_refresh():
+    """バックグラウンドでスクレイピングを実行する。"""
+    global _bg_running
+    try:
+        logger.info("Background refresh started")
+        _do_scrape_all()
+        logger.info("Background refresh completed")
+    except Exception as exc:
+        logger.error("Background refresh failed: %s", exc)
+    finally:
+        with _bg_lock:
+            _bg_running = False
+
+
+def fetch_all_exhibitions():
+    """全美術館の展覧会情報を取得する（stale-while-revalidateキャッシュ）。"""
+    global _bg_running
+
+    # 1. TTL内のキャッシュがあれば即返す
+    cached = _load_cache()
+    if cached is not None:
+        return cached
+
+    # 2. TTL切れだが古いキャッシュが存在する場合:
+    #    古いデータを即返し、裏で更新を開始
+    stale = _load_cache_stale()
+    if stale is not None:
+        with _bg_lock:
+            if not _bg_running:
+                _bg_running = True
+                t = threading.Thread(target=_bg_refresh, daemon=True)
+                t.start()
+        return stale
+
+    # 3. キャッシュが完全に存在しない場合（初回デプロイ直後等）:
+    #    同期でスクレイピングして返す（これだけは待ちが発生する）
+    return _do_scrape_all()
