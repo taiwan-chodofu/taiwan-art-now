@@ -1175,6 +1175,7 @@ def _do_scrape_all():
         logger.warning("Master data load failed: %s", exc)
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
+    all_exhibitions = _remove_expired(all_exhibitions)
     _save_cache(all_exhibitions)
     return all_exhibitions
 
@@ -1217,6 +1218,25 @@ def _normalize_date_str(s):
     if not s:
         return ""
     return re.sub(r"[^\d]", "", s)
+
+
+def _remove_expired(exhibitions):
+    """終了日が過去の展覧会を除去する。終了日不明のものは残す。"""
+    today = _now_tw()
+    result = []
+    for ex in exhibitions:
+        dates = ex.get("dates", "")
+        date_matches = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", dates)
+        if len(date_matches) >= 2:
+            y, m, d = int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
+            try:
+                end_dt = datetime(y, m, d)
+                if end_dt < today:
+                    continue
+            except ValueError:
+                pass
+        result.append(ex)
+    return result
 
 
 def _bg_refresh():
