@@ -45,7 +45,7 @@ MUSEUMS = {
             "ja": "台北當代藝術館（MOCA Taipei）",
             "zh": "台北當代藝術館（MOCA Taipei）",
         },
-        "url": "https://www.mocataipei.org.tw",
+        "url": "https://www.moca.taipei",
         "hours": {
             "en": "Tue–Sun 10:00–18:00 | Closed Mon",
             "ja": "火〜日 10:00–18:00 ｜ 月曜休館",
@@ -286,7 +286,7 @@ def _scrape_moca(lang="en"):
     """MOCA Taipei から当期展覧会情報を取得する（詳細ページから日付取得）。"""
     exhibitions = []
     base = MUSEUMS["moca"]["url"]
-    prefix = "/en" if lang == "en" else "/zh-tw"
+    prefix = "/en" if lang == "en" else "/tw"
     url = f"{base}{prefix}/ExhibitionAndEvent/Exhibitions/Current%20Exhibition"
     title_key = f"title_{lang}"
     today = _now_tw()
@@ -568,39 +568,29 @@ def _fetch_tcma_dates(detail_url):
 
 
 def _scrape_clab():
-    """C-LAB（臺灣當代文化實驗場）から当期・近日開始の展覧会情報を取得する。"""
+    """C-LAB（臺灣當代文化實驗場）から当期展覧会情報を取得する。"""
     exhibitions = []
     base = MUSEUMS["clab"]["url"]
     url = f"{base}/en/events/"
     today = _now_tw()
     try:
         soup = _fetch(url)
-        seen = set()
-        for link_tag in soup.select("a[href*='/events/']"):
-            href = link_tag.get("href", "")
-            if href in seen or href.rstrip("/").endswith("/events"):
+        for card in soup.select("div.a-base-card.-event"):
+            cat_el = card.select_one(".a-base-card__category-wrapper")
+            cat = cat_el.get_text(strip=True) if cat_el else ""
+            if cat != "Exhibition":
                 continue
-            seen.add(href)
-            text = link_tag.get_text(separator="|", strip=True)
-            # Exhibitionカテゴリのみ対象
-            if "Exhibition" not in text:
-                continue
-            parts = [p.strip() for p in text.split("|") if p.strip()]
-            parts = [p for p in parts if p not in ("Exhibition", "+ MORE")]
-            title = parts[0] if parts else ""
-            dates = ""
-            date_match = re.search(
-                r"(\d{2}\.\d{2}.*?\d{4}.*?\d{2}\.\d{2}.*?\d{4})", text
-            )
-            if date_match:
-                dates = date_match.group(1).strip()
-            # 終了日で当期判定（C-LAB形式: MM.DD ... YYYY）
-            end_years = re.findall(r"(\d{4})\s*\.", dates)
-            date_pairs = re.findall(r"(\d{2})\.(\d{2})", dates)
-            if end_years and len(date_pairs) >= 2:
+            link_el = card.select_one("a[href]")
+            href = link_el.get("href", "") if link_el else ""
+            title_el = card.select_one("p.a-base-card__title, h2, h3, strong")
+            title = title_el.get_text(strip=True) if title_el else ""
+            time_el = card.select_one(".a-base-card__time")
+            time_text = time_el.get_text(separator=" ", strip=True) if time_el else ""
+            dates = _parse_clab_dates(time_text)
+            end_match = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", dates)
+            if len(end_match) >= 2:
                 try:
-                    ey = int(end_years[-1])
-                    em, ed = int(date_pairs[-1][0]), int(date_pairs[-1][1])
+                    ey, em, ed = int(end_match[1][0]), int(end_match[1][1]), int(end_match[1][2])
                     if datetime(ey, em, ed) < today:
                         continue
                 except ValueError:
@@ -620,6 +610,18 @@ def _scrape_clab():
     except Exception as exc:
         logger.warning("C-LAB scrape failed: %s", exc)
     return exhibitions
+
+
+def _parse_clab_dates(time_text):
+    """C-LABの日付形式 'MM.DD (DAY) YYYY . MM.DD (DAY) YYYY .' をYYYY/MM/DD形式に変換。"""
+    matches = re.findall(r"(\d{2})\.(\d{2})\s*\(\w+\)\s*(\d{4})", time_text)
+    if len(matches) >= 2:
+        start = f"{matches[0][2]}/{int(matches[0][0]):02d}/{int(matches[0][1]):02d}"
+        end = f"{matches[1][2]}/{int(matches[1][0]):02d}/{int(matches[1][1]):02d}"
+        return f"{start} - {end}"
+    if len(matches) == 1:
+        return f"{matches[0][2]}/{int(matches[0][0]):02d}/{int(matches[0][1]):02d} –"
+    return time_text
 
 
 def _scrape_thecube():
