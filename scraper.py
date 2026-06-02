@@ -1108,6 +1108,24 @@ def _scrape_generic(museum_id, exhibition_url):
     return exhibitions
 
 
+def _with_fallback(museum_id, scrape_fn):
+    """スクレイパーを実行し、0件なら手動JSONにフォールバックする。"""
+    result = scrape_fn()
+    if result:
+        return result
+    manual_path = os.path.join(os.path.dirname(__file__), f"{museum_id}_manual.json")
+    if os.path.exists(manual_path):
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            if items:
+                logger.info("Fallback to manual JSON for %s (%d items)", museum_id, len(items))
+                return [{"museum": museum_id, **item} for item in items]
+        except Exception:
+            pass
+    return []
+
+
 def _do_scrape_all():
     """実際のスクレイピング処理（重い部分）。結果をキャッシュに保存して返す。"""
     all_exhibitions = []
@@ -1117,15 +1135,15 @@ def _do_scrape_all():
     moca_zh = _scrape_moca(lang="zh")
     all_exhibitions.extend(_merge_exhibitions(moca_en, moca_zh))
     all_exhibitions.extend(_scrape_tfam_api())
-    all_exhibitions.extend(_scrape_honggah())
-    all_exhibitions.extend(_scrape_ntcart())
-    all_exhibitions.extend(_scrape_tcma())
-    all_exhibitions.extend(_scrape_clab())
+    all_exhibitions.extend(_with_fallback("honggah", _scrape_honggah))
+    all_exhibitions.extend(_with_fallback("ntcart", _scrape_ntcart))
+    all_exhibitions.extend(_with_fallback("tcma", _scrape_tcma))
+    all_exhibitions.extend(_with_fallback("clab", _scrape_clab))
     all_exhibitions.extend(_scrape_thecube())
     all_exhibitions.extend(_scrape_chiayi())
-    all_exhibitions.extend(_scrape_kdmofa())
-    all_exhibitions.extend(_scrape_goodug())
-    all_exhibitions.extend(_scrape_tav())
+    all_exhibitions.extend(_with_fallback("kdmofa", _scrape_kdmofa))
+    all_exhibitions.extend(_with_fallback("goodug", _scrape_goodug))
+    all_exhibitions.extend(_with_fallback("tav", _scrape_tav))
 
     # マスターデータから汎用スクレイパー対象を取得
     master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
