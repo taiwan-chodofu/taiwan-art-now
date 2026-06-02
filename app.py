@@ -260,5 +260,11 @@ def _is_closed_today(closed_day):
     return datetime.now(tw_tz).weekday() == closed_day
 
 
+@app.route("/health")
+def health():
+    """ヘルスチェック用（cron ping向け軽量エンドポイント）。"""
+    return "ok", 200
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
