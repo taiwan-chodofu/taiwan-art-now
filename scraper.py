@@ -1174,8 +1174,49 @@ def _do_scrape_all():
     except Exception as exc:
         logger.warning("Master data load failed: %s", exc)
 
+    all_exhibitions = _dedup_exhibitions(all_exhibitions)
     _save_cache(all_exhibitions)
     return all_exhibitions
+
+
+def _dedup_exhibitions(exhibitions):
+    """同一museum内でタイトルが包含関係かつ日程が同じ重複を除去する。"""
+    from collections import defaultdict
+    by_museum = defaultdict(list)
+    for ex in exhibitions:
+        by_museum[ex.get("museum", "")].append(ex)
+
+    result = []
+    for mid, items in by_museum.items():
+        if len(items) < 2:
+            result.extend(items)
+            continue
+        keep = []
+        for item in items:
+            title = item.get("title_en", "") or item.get("title_zh", "") or ""
+            dates_norm = _normalize_date_str(item.get("dates", ""))
+            is_dup = False
+            for other in items:
+                if other is item:
+                    continue
+                other_title = other.get("title_en", "") or other.get("title_zh", "") or ""
+                other_dates_norm = _normalize_date_str(other.get("dates", ""))
+                if not title or not other_title:
+                    continue
+                if title in other_title and title != other_title and dates_norm == other_dates_norm:
+                    is_dup = True
+                    break
+            if not is_dup:
+                keep.append(item)
+        result.extend(keep)
+    return result
+
+
+def _normalize_date_str(s):
+    """日付文字列から数字だけ抽出して比較用文字列にする。"""
+    if not s:
+        return ""
+    return re.sub(r"[^\d]", "", s)
 
 
 def _bg_refresh():
