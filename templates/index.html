@@ -126,6 +126,7 @@
     </div>
     <div class="filter-section">
       <div class="filter-row">
+        <button class="filter-chip active" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {{ labels.has_ex }}</button>
         <button class="filter-chip" id="openTodayBtn" data-filter="open" data-value="off">🟢 {{ labels.open_today }}</button>
       </div>
     </div>
@@ -249,7 +250,7 @@
       </div>
 
       {% for museum in region.museums %}
-      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}">
+      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}" data-has-ex="{{ 'yes' if museum.exhibitions else 'no' }}">
         <div class="mc-top">
           <div class="mc-name">
             <a href="{{ museum.url }}" target="_blank" rel="noopener">{{ museum.name }}</a>
@@ -318,6 +319,7 @@
     let activeRegion = 'all';
     let activeCat = 'all';
     let openOnly = false;
+    let hasExOnly = true;
 
     function applyFilters() {
       const sections = document.querySelectorAll('.region-section');
@@ -328,11 +330,13 @@
         const r = card.getAttribute('data-region');
         const c = card.getAttribute('data-cat');
         const closed = card.getAttribute('data-closed') === 'yes';
+        const hasEx = card.getAttribute('data-has-ex') === 'yes';
         const regionOk = activeRegion === 'all' || r === activeRegion;
         const catOk = activeCat === 'all' || c === activeCat;
         const openOk = !openOnly || !closed;
-        card.style.display = (regionOk && catOk && openOk) ? '' : 'none';
-        if (regionOk && catOk && openOk) visibleCount++;
+        const hasExOk = !hasExOnly || hasEx;
+        card.style.display = (regionOk && catOk && openOk && hasExOk) ? '' : 'none';
+        if (regionOk && catOk && openOk && hasExOk) visibleCount++;
       });
 
       sections.forEach(function(sec) {
@@ -357,6 +361,13 @@
       chip.addEventListener('click', function() {
         var filterType = this.getAttribute('data-filter');
         var value = this.getAttribute('data-value');
+
+        if (filterType === 'hasex') {
+          hasExOnly = !hasExOnly;
+          this.classList.toggle('active', hasExOnly);
+          applyFilters();
+          return;
+        }
 
         if (filterType === 'open') {
           openOnly = !openOnly;
