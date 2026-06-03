@@ -1356,7 +1356,8 @@
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": "generic",
+      "exhibition_url": "https://www.juming.org.tw"
     },
     {
       "id": "yuhsiu",
