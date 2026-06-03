@@ -1137,6 +1137,19 @@ def _scrape_generic(museum_id, exhibition_url):
     return exhibitions
 
 
+def _load_fb_json(museum_id):
+    """家PCが生成したfb_exhibitions.jsonから該当施設のデータを読む。"""
+    fb_path = os.path.join(os.path.dirname(__file__), "fb_exhibitions.json")
+    if not os.path.exists(fb_path):
+        return []
+    try:
+        with open(fb_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return [ex for ex in data.get("exhibitions", []) if ex.get("museum") == museum_id]
+    except Exception:
+        return []
+
+
 def _scrape_facebook(museum_id, fb_url):
     """Facebookページから展覧会情報を抽出する（Googlebot UA + curl_cffi）。"""
     exhibitions = []
@@ -1287,7 +1300,11 @@ def _do_scrape_all():
             elif not scraper_type:
                 museum_url = m.get("url", "")
                 if "facebook.com" in museum_url:
-                    all_exhibitions.extend(_scrape_facebook(mid, museum_url))
+                    fb_data = _load_fb_json(mid)
+                    if fb_data:
+                        all_exhibitions.extend(fb_data)
+                    else:
+                        all_exhibitions.extend(_scrape_facebook(mid, museum_url))
 
         # artemperor.tw アグリゲーターで未取得館を補完
         existing_ids = {e["museum"] for e in all_exhibitions}
