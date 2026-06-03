@@ -154,12 +154,18 @@ def main():
     all_exhibitions = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
-        context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        # Chromeのユーザーデータを使ってログイン状態を引き継ぐ
+        chrome_user_data = os.path.expandvars(
+            r"%LOCALAPPDATA%\Google\Chrome\User Data"
+        )
+        browser = p.chromium.launch_persistent_context(
+            user_data_dir=chrome_user_data,
+            channel="chrome",
+            headless=False,
+            args=["--disable-blink-features=AutomationControlled"],
             locale="zh-TW",
         )
-        page = context.new_page()
+        page = browser.new_page()
 
         for museum_id, fb_url in FB_MUSEUMS:
             print(f"Scraping {museum_id}... ", end="", flush=True)
@@ -168,7 +174,7 @@ def main():
             print(f"{len(results)} exhibitions found")
             time.sleep(2)
 
-        browser.close()
+        browser.close()  # persistent context も close() でOK
 
     # 保存
     output = {
