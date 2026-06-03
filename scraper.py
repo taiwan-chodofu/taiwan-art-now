@@ -1138,59 +1138,87 @@ def _scrape_generic(museum_id, exhibition_url):
 
 
 def _scrape_facebook(museum_id, fb_url):
-    """Facebookページから展覧会情報を抽出する（curl_cffi + HTMLソース解析）。"""
+    """Facebookページから展覧会情報を抽出する（Googlebot UA + curl_cffi）。"""
     exhibitions = []
     today = _now_tw()
     try:
         from curl_cffi import requests as cffi_requests
-        resp = cffi_requests.get(fb_url, impersonate="chrome", timeout=15)
+        googlebot_ua = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+        resp = cffi_requests.get(
+            fb_url, headers={"User-Agent": googlebot_ua},
+            impersonate="chrome", timeout=30,
+        )
         if resp.status_code != 200:
             return []
-        text = resp.text.encode().decode("unicode_escape", errors="ignore")
-        seen_dates = set()
-        for m in re.finditer(
-            r"(\d{4}\.\d{1,2}\.\d{1,2})\s*\w*\.?\s*[－\-–~]\s*(\d{4}\.\d{1,2}\.\d{1,2})",
-            text,
-        ):
-            start_str, end_str = m.group(1), m.group(2)
-            date_key = f"{start_str}-{end_str}"
-            if date_key in seen_dates:
+        # 投稿テキストを抽出
+        raw_messages = re.findall(r'"message":\{"text":"([^"]+)"', resp.text)
+        unique_messages = list(dict.fromkeys(raw_messages))
+        seen_titles = set()
+        for msg_raw in unique_messages:
+            try:
+                text = msg_raw.encode("raw_unicode_escape").decode("unicode_escape", errors="ignore")
+            except Exception:
+                text = msg_raw.replace("\\n", "\n")
+            if not any(kw in text for kw in ["展", "Exhibition", "exhibition", "個展", "聯展", "Opening", "開幕"]):
                 continue
-            seen_dates.add(date_key)
-            end_parts = re.match(r"(\d{4})\.(\d{1,2})\.(\d{1,2})", end_str)
-            if end_parts:
-                try:
-                    ey, em, ed = int(end_parts.group(1)), int(end_parts.group(2)), int(end_parts.group(3))
-                    if datetime(ey, em, ed) < today:
+            title, dates = _extract_fb_exhibition(text)
+            if not title or title in seen_titles:
+                continue
+            if dates:
+                end_match = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", dates)
+                if len(end_match) >= 2:
+                    try:
+                        ey, em, ed = int(end_match[1][0]), int(end_match[1][1]), int(end_match[1][2])
+                        if datetime(ey, em, ed) < today:
+                            continue
+                    except ValueError:
                         continue
-                except ValueError:
-                    continue
-            context_start = max(0, m.start() - 300)
-            context = text[context_start:m.start()]
-            lines = [l.strip() for l in context.replace("\\n", "\n").split("\n") if l.strip() and len(l.strip()) > 3]
-            title = ""
-            for line in reversed(lines):
-                if re.match(r"^\d{4}", line):
-                    continue
-                if any(skip in line.lower() for skip in ["exhibition dates", "venue", "http", "facebook"]):
-                    continue
-                title = line.strip('" ​')
-                break
-            if title and len(title) > 3:
-                dates = f"{start_str} – {end_str}"
-                exhibitions.append({
-                    "museum": museum_id,
-                    "title_en": title,
-                    "title_ja": "", "title_zh": "",
-                    "dates": dates,
-                    "location": "",
-                    "link": fb_url,
-                })
+            seen_titles.add(title)
+            exhibitions.append({
+                "museum": museum_id,
+                "title_en": title, "title_ja": "", "title_zh": title,
+                "dates": dates,
+                "location": "",
+                "link": fb_url,
+            })
     except ImportError:
         pass
     except Exception as exc:
         logger.warning("Facebook scrape failed for %s: %s", museum_id, exc)
     return exhibitions
+
+
+def _extract_fb_exhibition(text):
+    """Facebook投稿テキストから展覧会タイトルと日付を抽出する。"""
+    # 日付パターン（広め）
+    date_patterns = [
+        (r"(\d{4}[./]\d{1,2}[./]\d{1,2})\s*[（(]\w+[）)]\s*[－\-–~]\s*(\d{4}[./]\d{1,2}[./]\d{1,2})", "full_paren"),
+        (r"(\d{4}[./]\d{1,2}[./]\d{1,2})\s*\w*\.?\s*[－\-–~]\s*(\d{4}[./]\d{1,2}[./]\d{1,2})", "full"),
+        (r"展期[：:]*\s*(\d{4}[./]\d{1,2}[./]\d{1,2})\s*[－\-–~]\s*(\d{4}[./]\d{1,2}[./]\d{1,2})", "zhanqi_full"),
+        (r"展期[：:]*\s*(\d{1,2}[./]\d{1,2})\s*[－\-–~]\s*(\d{1,2}[./]\d{1,2})", "zhanqi_short"),
+    ]
+    dates = ""
+    for pattern, ptype in date_patterns:
+        m = re.search(pattern, text)
+        if m:
+            if ptype in ("full", "full_paren", "zhanqi_full"):
+                dates = f"{m.group(1)} – {m.group(2)}"
+            elif ptype == "zhanqi_short":
+                year = str(_now_tw().year)
+                dates = f"{year}/{m.group(1)} – {year}/{m.group(2)}"
+            break
+    # タイトル: 最初の意味のある行
+    lines = [l.strip() for l in text.split("\n") if l.strip()]
+    title = ""
+    for line in lines:
+        if re.match(r"^[\d./\-–（）() ]+$", line):
+            continue
+        if any(skip in line for skip in ["展期", "Exhibition Dates", "Venue", "http", "地點", "時間"]):
+            continue
+        if len(line) > 3:
+            title = re.sub(r"[#＃]", "", line).strip()
+            break
+    return title, dates
 
 
 def _with_fallback(museum_id, scrape_fn):
