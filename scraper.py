@@ -430,49 +430,76 @@ def _is_current_exhibition(dates_str, today=None):
     return True
 
 
+def _fetch_cffi(url):
+    """curl_cffiでCloudflare保護サイトにアクセスする。"""
+    try:
+        from curl_cffi import requests as cffi_requests
+        resp = cffi_requests.get(url, impersonate="chrome", timeout=15)
+        resp.raise_for_status()
+        return BeautifulSoup(resp.text, "lxml")
+    except ImportError:
+        logger.warning("curl_cffi not installed, falling back to requests")
+        return _fetch(url)
+
+
 def _scrape_honggah():
     """鳳甲美術館の公式サイトから展覧会情報を取得する。"""
     exhibitions = []
     today = _now_tw()
     url = "https://hong-gah.org.tw/en/exhibitions"
     try:
-        soup = _fetch(url)
-        for h4 in soup.find_all("h4"):
-            link = h4.find("a")
-            if not link:
+        soup = _fetch_cffi(url)
+        article = soup.find("article")
+        if not article:
+            raise ValueError("No article element found")
+        text = article.get_text(separator="|", strip=True)
+        parts = [p.strip() for p in text.split("|") if p.strip()]
+        i = 0
+        while i < len(parts):
+            title = parts[i]
+            dates = ""
+            if i + 1 < len(parts):
+                dm = re.search(r"(\d{4}\.\d{1,2}\.\d{1,2})\s*[-–]\s*(\d{1,2}\.\d{1,2})", parts[i + 1])
+                if dm:
+                    dates = parts[i + 1]
+                    i += 2
+                else:
+                    i += 1
+            else:
+                i += 1
+            if not title or len(title) < 3 or re.match(r"^\d{4}\.", title):
                 continue
-            title = link.get_text(strip=True)
-            if not title or len(title) < 3:
-                continue
-            href = link.get("href", "")
-            if not href.startswith("http"):
-                href = "https://hong-gah.org.tw" + href
-            parent = h4.parent
-            text = parent.get_text(separator="\n", strip=True) if parent else ""
-            dm = re.search(
-                r"(\d{4}\.\d{2}\.\d{2})\s*[-–]\s*(\d{4}\.\d{2}\.\d{2})", text
-            )
-            dates = f"{dm.group(1)} – {dm.group(2)}" if dm else ""
-            if dates and not _is_current_exhibition(dates, today):
-                continue
-            if not dates:
-                sm = re.search(r"(\d{4}\.\d{2}\.\d{2})", text)
-                dates = sm.group(1) if sm else ""
+            date_full = re.search(r"(\d{4})\.(\d{1,2})\.(\d{1,2})\s*[-–]\s*(\d{1,2})\.(\d{1,2})", dates)
+            normalized_dates = ""
+            if date_full:
+                y = int(date_full.group(1))
+                sm, sd = int(date_full.group(2)), int(date_full.group(3))
+                em, ed = int(date_full.group(4)), int(date_full.group(5))
+                normalized_dates = f"{y}.{sm:02d}.{sd:02d} – {y}.{em:02d}.{ed:02d}"
+                try:
+                    if datetime(y, em, ed) < today:
+                        continue
+                except ValueError:
+                    pass
+            link_el = soup.find("a", href=re.compile(re.escape(title[:15])), recursive=True)
+            href = ""
+            if not link_el:
+                links = article.find_all("a", href=True)
+                for a in links:
+                    if title[:10] in a.get_text():
+                        href = a.get("href", "")
+                        break
+            else:
+                href = link_el.get("href", "")
             exhibitions.append({
                 "museum": "honggah",
                 "title_en": title, "title_ja": "", "title_zh": "",
-                "dates": dates, "location": "Hong-Gah Museum",
+                "dates": normalized_dates or dates,
+                "location": "Hong-Gah Museum",
                 "link": href,
             })
     except Exception as exc:
         logger.warning("Hong-Gah scrape failed: %s", exc)
-    if not exhibitions:
-        manual_path = os.path.join(os.path.dirname(__file__), "honggah_manual.json")
-        try:
-            with open(manual_path, "r", encoding="utf-8") as f:
-                return [{"museum": "honggah", **i} for i in json.load(f)]
-        except Exception:
-            pass
     return exhibitions
 
 
