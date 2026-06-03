@@ -1137,6 +1137,62 @@ def _scrape_generic(museum_id, exhibition_url):
     return exhibitions
 
 
+def _scrape_facebook(museum_id, fb_url):
+    """Facebookページから展覧会情報を抽出する（curl_cffi + HTMLソース解析）。"""
+    exhibitions = []
+    today = _now_tw()
+    try:
+        from curl_cffi import requests as cffi_requests
+        resp = cffi_requests.get(fb_url, impersonate="chrome", timeout=15)
+        if resp.status_code != 200:
+            return []
+        text = resp.text.encode().decode("unicode_escape", errors="ignore")
+        seen_dates = set()
+        for m in re.finditer(
+            r"(\d{4}\.\d{1,2}\.\d{1,2})\s*\w*\.?\s*[－\-–~]\s*(\d{4}\.\d{1,2}\.\d{1,2})",
+            text,
+        ):
+            start_str, end_str = m.group(1), m.group(2)
+            date_key = f"{start_str}-{end_str}"
+            if date_key in seen_dates:
+                continue
+            seen_dates.add(date_key)
+            end_parts = re.match(r"(\d{4})\.(\d{1,2})\.(\d{1,2})", end_str)
+            if end_parts:
+                try:
+                    ey, em, ed = int(end_parts.group(1)), int(end_parts.group(2)), int(end_parts.group(3))
+                    if datetime(ey, em, ed) < today:
+                        continue
+                except ValueError:
+                    continue
+            context_start = max(0, m.start() - 300)
+            context = text[context_start:m.start()]
+            lines = [l.strip() for l in context.replace("\\n", "\n").split("\n") if l.strip() and len(l.strip()) > 3]
+            title = ""
+            for line in reversed(lines):
+                if re.match(r"^\d{4}", line):
+                    continue
+                if any(skip in line.lower() for skip in ["exhibition dates", "venue", "http", "facebook"]):
+                    continue
+                title = line.strip('" ​')
+                break
+            if title and len(title) > 3:
+                dates = f"{start_str} – {end_str}"
+                exhibitions.append({
+                    "museum": museum_id,
+                    "title_en": title,
+                    "title_ja": "", "title_zh": "",
+                    "dates": dates,
+                    "location": "",
+                    "link": fb_url,
+                })
+    except ImportError:
+        pass
+    except Exception as exc:
+        logger.warning("Facebook scrape failed for %s: %s", museum_id, exc)
+    return exhibitions
+
+
 def _with_fallback(museum_id, scrape_fn):
     """スクレイパーを実行し、0件なら手動JSONにフォールバックする。"""
     result = scrape_fn()
@@ -1200,6 +1256,10 @@ def _do_scrape_all():
                     )
                 except Exception:
                     pass
+            elif not scraper_type:
+                museum_url = m.get("url", "")
+                if "facebook.com" in museum_url:
+                    all_exhibitions.extend(_scrape_facebook(mid, museum_url))
 
         # artemperor.tw アグリゲーターで未取得館を補完
         existing_ids = {e["museum"] for e in all_exhibitions}
