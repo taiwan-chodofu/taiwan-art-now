@@ -241,8 +241,10 @@ def _save_cache(exhibitions):
         "cached_at": _now_tw().isoformat(),
         "exhibitions": exhibitions,
     }
+    text = json.dumps(data, ensure_ascii=False, indent=2)
+    text = re.sub(r"[\ud800-\udfff]", "", text)
     with open(CACHE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write(text)
 
 
 def _fetch(url, timeout=8):
@@ -1256,20 +1258,39 @@ def _do_scrape_all():
     """実際のスクレイピング処理（重い部分）。結果をキャッシュに保存して返す。"""
     all_exhibitions = []
 
-    # 既存の専用スクレイパー
-    moca_en = _scrape_moca(lang="en")
-    moca_zh = _scrape_moca(lang="zh")
-    all_exhibitions.extend(_merge_exhibitions(moca_en, moca_zh))
-    all_exhibitions.extend(_scrape_tfam_api())
-    all_exhibitions.extend(_with_fallback("honggah", _scrape_honggah))
-    all_exhibitions.extend(_with_fallback("ntcart", _scrape_ntcart))
-    all_exhibitions.extend(_with_fallback("tcma", _scrape_tcma))
-    all_exhibitions.extend(_with_fallback("clab", _scrape_clab))
-    all_exhibitions.extend(_scrape_thecube())
-    all_exhibitions.extend(_scrape_chiayi())
-    all_exhibitions.extend(_with_fallback("kdmofa", _scrape_kdmofa))
-    all_exhibitions.extend(_with_fallback("goodug", _scrape_goodug))
-    all_exhibitions.extend(_with_fallback("tav", _scrape_tav))
+    # 既存の専用スクレイパー（並列実行）
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    tasks = {
+        "moca_en": lambda: _scrape_moca(lang="en"),
+        "moca_zh": lambda: _scrape_moca(lang="zh"),
+        "tfam": _scrape_tfam_api,
+        "honggah": lambda: _with_fallback("honggah", _scrape_honggah),
+        "ntcart": lambda: _with_fallback("ntcart", _scrape_ntcart),
+        "tcma": lambda: _with_fallback("tcma", _scrape_tcma),
+        "clab": lambda: _with_fallback("clab", _scrape_clab),
+        "thecube": _scrape_thecube,
+        "chiayi": _scrape_chiayi,
+        "kdmofa": lambda: _with_fallback("kdmofa", _scrape_kdmofa),
+        "goodug": lambda: _with_fallback("goodug", _scrape_goodug),
+        "tav": lambda: _with_fallback("tav", _scrape_tav),
+    }
+    results = {}
+    with ThreadPoolExecutor(max_workers=6) as executor:
+        futures = {executor.submit(fn): name for name, fn in tasks.items()}
+        for future in as_completed(futures):
+            name = futures[future]
+            try:
+                results[name] = future.result()
+            except Exception as exc:
+                logger.warning("Parallel scrape failed for %s: %s", name, exc)
+                results[name] = []
+
+    all_exhibitions.extend(_merge_exhibitions(
+        results.get("moca_en", []), results.get("moca_zh", [])
+    ))
+    for key in ["tfam", "honggah", "ntcart", "tcma", "clab",
+                "thecube", "chiayi", "kdmofa", "goodug", "tav"]:
+        all_exhibitions.extend(results.get(key, []))
 
     # マスターデータから汎用スクレイパー対象を取得
     master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
