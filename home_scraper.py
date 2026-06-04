@@ -154,18 +154,26 @@ def main():
     all_exhibitions = []
 
     with sync_playwright() as p:
-        # Chromeのユーザーデータを使ってログイン状態を引き継ぐ
-        chrome_user_data = os.path.expandvars(
-            r"%LOCALAPPDATA%\Google\Chrome\User Data"
-        )
-        browser = p.chromium.launch_persistent_context(
-            user_data_dir=chrome_user_data,
-            channel="chrome",
+        state_path = os.path.join(os.path.dirname(__file__), "fb_state.json")
+        if not os.path.exists(state_path):
+            print("ERROR: fb_state.json が見つかりません。")
+            print("先に python fb_login.py を実行してFacebookにログインしてください。")
+            return
+
+        browser = p.chromium.launch(
             headless=False,
             args=["--disable-blink-features=AutomationControlled"],
+        )
+        context = browser.new_context(
+            storage_state=state_path,
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/131.0.0.0 Safari/537.36"
+            ),
             locale="zh-TW",
         )
-        page = browser.new_page()
+        page = context.new_page()
 
         for museum_id, fb_url in FB_MUSEUMS:
             print(f"Scraping {museum_id}... ", end="", flush=True)
@@ -174,7 +182,7 @@ def main():
             print(f"{len(results)} exhibitions found")
             time.sleep(2)
 
-        browser.close()  # persistent context も close() でOK
+        browser.close()
 
     # 保存
     output = {
