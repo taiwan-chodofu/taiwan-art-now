@@ -1,0 +1,3238 @@
+{
+  "generated": "2026-06-05T11:14:28.277916",
+  "source": "https://www.taishinart.org.tw",
+  "editions": [
+    {
+      "edition": 1,
+      "year": 2002,
+      "label": "第1屆 (2002/03)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "解放前衛－黃明川九○年代的影像收藏",
+          "artist_zh": "黃明川",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/17",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695782483u3XXk.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "金剛心",
+          "artist_zh": "優人神鼓",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/106",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783499j3Ib6.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "系統生活捷徑-表皮生活圈",
+          "artist_zh": "崔廣宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/108",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695782573RiXF5.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "人間失格",
+          "artist_zh": "袁廣鳴",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/154",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695782667fbvDW.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "林聽森音─東勢「大雪山林業舊製材場」再利用社區藝術節",
+          "artist_zh": "林平",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/155",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695782738QE9kR.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "美術館檳榔攤之施公檳榔茶",
+          "artist_zh": "施工忠昊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/156",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957828418BwNm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "涅槃 / 洪東祿個展",
+          "artist_zh": "洪東祿",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/157",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695782948PW6NF.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "暴喜圖3",
+          "artist_zh": "郭維國",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/158",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783133AtWm8.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "藤雲駕屋",
+          "artist_zh": "王文志",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/159",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783197BivAm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "2002發現貝多芬",
+          "artist_zh": "簡文彬與國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/160",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783260ZsEY5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "Zodiac",
+          "artist_zh": "莎士比亞的妹妹們的劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/161",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783321s3wIs.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "我是另一個你自己",
+          "artist_zh": "無獨有偶工作室劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/162",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783438eFsbx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "流轉",
+          "artist_zh": "光環舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/163",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783624a8BGg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "浦契尼－托斯卡",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/164",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783699BVRfJ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "煙",
+          "artist_zh": "雲門舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/165",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783779pmPPc.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "張愛玲，請留言",
+          "artist_zh": "表演工作坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/166",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783839gvaES.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "閻羅夢",
+          "artist_zh": "國立國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/167",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695783935yLpg3.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "韓熙載夜宴圖",
+          "artist_zh": "漢唐樂府",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2002/168",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784006aGDhr.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 2,
+      "year": 2003,
+      "label": "第2屆 (2003/04)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "梅氏解讀玩—梅丁衍個展",
+          "artist_zh": "梅丁衍",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/234",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784164QdJ5W.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "行草 貳",
+          "artist_zh": "雲門舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/233",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785566ycKzW.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "出世神韻—神秘卜湳文明遺跡特展：涂維政個展",
+          "artist_zh": "涂維政",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/232",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784588LrFdh.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "耗散的詩篇‧混沌的美學─胡坤榮的後極限繪畫個展2003",
+          "artist_zh": "胡坤榮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/181",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784653nUenn.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "造境─科技年代的影像詩學",
+          "artist_zh": "財團法人邱再興文教基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/180",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784716JmpKY.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "零‧零‧種‧種─賴九岑個展",
+          "artist_zh": "賴九岑",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/178",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695784878cEsQv.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "意識真空－陶亞倫個展",
+          "artist_zh": "陶亞倫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/179",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785109AhKEc.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "漫無目的─王德瑜個展",
+          "artist_zh": "王德瑜",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/172",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957851824WsWz.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "ART",
+          "artist_zh": "果陀劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/231",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785256XQMQs.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO歌劇系列--崔斯坦與伊索德",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/229",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785325VhQfk.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "王熙鳳—大鬧寧國府",
+          "artist_zh": "國立國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/228",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785415Ajvhm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "史派德奇遇記之八腳伶娜",
+          "artist_zh": "舞蹈空間舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/185",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785503zdNUn.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "再現東風",
+          "artist_zh": "舞蹈空間舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/184",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1700560476vGqLe.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "亂民全講",
+          "artist_zh": "表演工作坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/230",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695785737KUg7B.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "彎曲海岸長著一棵綠橡樹",
+          "artist_zh": "河左岸劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/183",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1700562970KICm2.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "驚異派對—夜夜夜麻2",
+          "artist_zh": "創作社劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2003/182",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957859155sWqF.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 3,
+      "year": 2004,
+      "label": "第3屆 (2004/05)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "迷宮中的朝聖─施工忠昊個展",
+          "artist_zh": "施工忠昊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/235",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786364dtXm5.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "嬉戲who-ga-sha-ga",
+          "artist_zh": "創作社劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/250",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1700730169F5c5v.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "美麗新世界—海安路藝術造街",
+          "artist_zh": "杜昭賢",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/244",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786295DtPMi.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "白蛇傳",
+          "artist_zh": "明華園戲劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/251",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695787031yR9AC.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "Bubble Love高俊宏1995-2004藝術紀錄",
+          "artist_zh": "高俊宏",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/237",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1700723109Vy96n.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "天空之路-周靈芝2004作品發表",
+          "artist_zh": "周靈芝",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/240",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786120hPPGH.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "於是，你看見這樣的我-陳松志個展",
+          "artist_zh": "陳松志",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/239",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786176NCkQw.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "城市漂旅-釋放與失落",
+          "artist_zh": "許淑真(策展人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/238",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786231ZYkTW.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "「連體嬰共生計畫」系列-偽科幻之前研究",
+          "artist_zh": "許淑真",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/236",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786438JWg6c.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "擊樂畫像",
+          "artist_zh": "朱宗慶打擊樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/249",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786500eYi8c.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO歌劇系列 ─《唐‧喬望尼》",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/248",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786543FLJvf.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO歌劇系列 ─《諾瑪》",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/247",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957866196EXen.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "十全十美女節--《柳‧夢‧梅》",
+          "artist_zh": "戴君芳",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/246",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786910esdEj.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "水域70%",
+          "artist_zh": "光環舞集舞蹈團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/245",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695786962ZJq9s.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "光‧音",
+          "artist_zh": "身聲演繹劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/243",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695787092XE6hQ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "海洋狂歡節",
+          "artist_zh": "世紀當代舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/242",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1700730409wrAUU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "影子般的思緒",
+          "artist_zh": "水影舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2004/241",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695787216BSbmH.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 4,
+      "year": 2005,
+      "label": "第4屆 (2005/06)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "我去旅行Ⅴ/一張風景明信片2005台灣篇",
+          "artist_zh": "湯皇珍",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/265",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695787709trH3b.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "狂草",
+          "artist_zh": "雲門舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/264",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788798Xav6F.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "三個人兒兩盞燈",
+          "artist_zh": "國立國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/263",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788420qyTzk.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "毛牛：曾御欽個展",
+          "artist_zh": "曾御欽",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/255",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701239652S2jqL.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "仙那度變奏曲",
+          "artist_zh": "王嘉驥 (策展人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/254",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695787650hNnAP.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "表˙面˙容˙積—城市建築的假說事件",
+          "artist_zh": "趙欣怡",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/253",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788255Uuysg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "潮間帶藝術偵測站-2005年年度計畫",
+          "artist_zh": "許淑真、盧明德、張新丕",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/252",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788314A6gTM.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "三探東風舞",
+          "artist_zh": "舞蹈空間舞蹈團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/262",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701247968qrrjv.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "如夢之夢",
+          "artist_zh": "表演工作坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/261",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957885602Gp6w.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "自東徂西—EXXJ與采風樂坊高峰",
+          "artist_zh": "國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/260",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701248356SebxF.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "大宰門",
+          "artist_zh": "榮興客家採茶劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/259",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788862Gkdky.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "浮沈烏托邦",
+          "artist_zh": "差事劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/258",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695788908NQfqK.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "曹七巧",
+          "artist_zh": "劉亮延",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/257",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695789043isX28.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "戀人絮語",
+          "artist_zh": "中國信託商業銀行文教基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2005/256",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695789112yviyr.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 5,
+      "year": 2006,
+      "label": "第5屆 (2006/07)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "Beware of GOD",
+          "artist_zh": "彭弘智",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/33",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794124jjMWc.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "朱文走鬼",
+          "artist_zh": "江之翠劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/34",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701768589EfLSP.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "家計畫 ，一個太遠的緬懷",
+          "artist_zh": "高俊宏",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/35",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794272V6tFr.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "自遊·自在 黃沛瀅創作個展",
+          "artist_zh": "黃沛瀅",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/36",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957942092rdUU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "後文件",
+          "artist_zh": "打開-當代藝術工作站",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/37",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794347NxTU2.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "嘉義縣2006北回歸線環境藝術行動",
+          "artist_zh": "吳瑪悧(策展人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/38",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794408VzmLe.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "英雄·美人·花月夜",
+          "artist_zh": "國家國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/39",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794487mEsMS.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "三氯乙烷釋放體",
+          "artist_zh": "8213肢體舞蹈劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/40",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794545rtIV9.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "小船幻想詩 為蒙娜麗莎而作",
+          "artist_zh": "二分之一Q劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/41",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794609gHTWM.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "水滸傳",
+          "artist_zh": "國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/43",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794691LKaUS.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "尼貝龍指環全系列",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/44",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695794754dSMdX.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "奇異的對話 台法之音",
+          "artist_zh": "十方雲集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/42",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701771328PGkvh.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "金鎖記",
+          "artist_zh": "國立國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/45",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17017691398ZYii.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "青塚前的對話",
+          "artist_zh": "國立國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/46",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701769722CGJgc.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "戀戀南柯",
+          "artist_zh": "二分之一Q劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2006/47",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701770649gjv8J.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 6,
+      "year": 2007,
+      "label": "第6屆 (2007/08)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "系統生活捷徑：城市瞎摸",
+          "artist_zh": "崔廣宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/92",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795409SpGfn.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "速度",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/93",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796064kSwnD.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "殘，。",
+          "artist_zh": "莎士比亞的妹妹的的劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/94",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796127Bn9rU.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "以藝術之名",
+          "artist_zh": "公共電視",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/95",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795266Lq88z.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "台西─希望之海參與式蚵貝壁畫",
+          "artist_zh": "許秀雲(策劃人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/96",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795330uarXv.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "郭奕臣個展──突變",
+          "artist_zh": "郭奕臣",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/97",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795483QH34i.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "槍下非亡魂──蘇匯宇個展",
+          "artist_zh": "蘇匯宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/98",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795546Tnx23.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NCO名家系列─梁祝~呂思清與NCO",
+          "artist_zh": "國家國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/105",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795603ZvHmE.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO發現理查‧史特勞斯系列五──英雄的生涯",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/107",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795664tHTIM.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "走快一點，型男！",
+          "artist_zh": "崎動力舞蹈劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/99",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795744BarqU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "破曉",
+          "artist_zh": "台北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/100",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795855hx3ND.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "馬克白 莎士比亞不插電3",
+          "artist_zh": "台南人劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/101",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695795968E5rAn.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "新胡撇仔 威尼斯雙胞案",
+          "artist_zh": "台灣春風歌劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/102",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796205TvCUd.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "夢蝶",
+          "artist_zh": "當代傳奇劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/103",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1701851744mShCq.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "斷章",
+          "artist_zh": "雲門舞集 ２",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2007/104",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796323A4Ry9.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 7,
+      "year": 2008,
+      "label": "第7屆 (2008/09)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "大衛計畫第三部 : 大衛天堂──王俊傑個展",
+          "artist_zh": "王俊傑",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/109",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16584850486zGvn.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "囲",
+          "artist_zh": "台北首督芭蕾舞團、賴翠霜",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/110",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796753GhFaU.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "懾．相",
+          "artist_zh": "吳天章",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/111",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796630BH3zi.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "很膚淺──周育正個展",
+          "artist_zh": "周育正",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/118",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16584851936ZbkR.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "閃燃──潘大謙個展",
+          "artist_zh": "潘大謙",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/112",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796452nbwJF.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "樹谷園區公共空間藝術設置",
+          "artist_zh": "台灣田野工場 (策展執行)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/113",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796570DvzxB.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "Double C舞團──反射",
+          "artist_zh": "吳俊憲",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/114",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796692rmi7v.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "看得見的城市，人  充滿空氣",
+          "artist_zh": "周書毅",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/115",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796833MxbUZ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "凍水牡丹 廖瓊枝與台灣國家國樂團",
+          "artist_zh": "國家國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/119",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796899JUZ5D.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "飛天行動島國 預言瘋狂喜劇",
+          "artist_zh": "同黨劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/116",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695796958wEyRS.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "漢字寓言：未來系青年觀點報告",
+          "artist_zh": "動見体劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/117",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695797018PW2vy.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "擊樂進行式",
+          "artist_zh": "朱宗慶打擊樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/122",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695797069C4dVZ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "給普拉斯",
+          "artist_zh": "莎士比亞的妹妹們的劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/120",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695797149UCDHC.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "請聽我說 豪華加長版",
+          "artist_zh": "莎士比亞的妹妹們的劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2008/121",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695797233iH4L4.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 8,
+      "year": 2009,
+      "label": "第8屆 (2009/10)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "植物新樂園：從菜園中誕生、河岸阿美的物質世界許淑真、盧建銘個展（策劃）",
+          "artist_zh": "許淑真、盧建銘",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/123",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658730874m8XZB.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "膚色的時光",
+          "artist_zh": "莎士比亞的妹妹們的劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/125",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695798315q7Izz.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "迷幻英雌 2009台北藝術節",
+          "artist_zh": "蘇文琪",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/126",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658733110ATdkf.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "Irdina 張立人個展",
+          "artist_zh": "張立人",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/127",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658727722DRmKe.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "我愛臺灣．更愛南臺灣",
+          "artist_zh": "李明則",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/128",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658729272bjIqb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "液態島嶼",
+          "artist_zh": "陳敬元",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/129",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658729554jaihN.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "軟抗爭",
+          "artist_zh": "P2P",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/130",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16587301219XfNx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "2012",
+          "artist_zh": "莫比斯圓環創作公社",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/131",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658731403C7pzh.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "新擊樂思潮 2009吳思珊打擊樂獨奏會",
+          "artist_zh": "財團法人擊樂文教基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/134",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658733977S78yp.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "長號超級玩家林柏格與北市國",
+          "artist_zh": "臺北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/135",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1658734556bINPz.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "雪夜客棧殺人事件",
+          "artist_zh": "臺灣春風歌劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/136",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702006849LHKau.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "最美的時刻",
+          "artist_zh": "無獨有偶工作室劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/137",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702006683MPXfx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "琴逢擊手 鋼琴&擊樂高峰會",
+          "artist_zh": "音樂時代劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/132",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695797554sJYBA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "薩克斯風怪傑克勞．德隆與北市國",
+          "artist_zh": "臺北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/138",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702007013JiEXj.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "觀",
+          "artist_zh": "無垢舞蹈劇場、國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2009/133",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957986652NyCS.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 9,
+      "year": 2010,
+      "label": "第9屆 (2010/11)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "東亞照明",
+          "artist_zh": "周育正",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/139",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695799041JjrYa.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "婚禮／春之祭",
+          "artist_zh": "世紀當代舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/140",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702444081wkgKR.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "透明之國",
+          "artist_zh": "黃明正",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/141",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702442860L5m3E.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "Fali-yos颱風計畫 ──消失後的入侵",
+          "artist_zh": "拉黑子．達立夫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/142",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695798831WzjIb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "使蒂諾斯家庭實境秀",
+          "artist_zh": "蘇匯宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/151",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957989889bwZJ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "創作論壇「望向彼方：亞洲新娘之歌 ──侯淑姿個展」",
+          "artist_zh": "侯淑姿",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/144",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702028738apMUH.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "當代藝術煉金術三部曲",
+          "artist_zh": "石晉華",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/145",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702029590DVLH3.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "SPIN 2010",
+          "artist_zh": "黃翊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/298",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695799243GeRt3.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "BIS搶先聽── 旋擊炫技",
+          "artist_zh": "臺北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/152",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695799442FGKfb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "奇幻旅程",
+          "artist_zh": "舞鈴劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/146",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695799776NPNLI.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "花嫁巫娘",
+          "artist_zh": "台灣豫劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/147",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695799911T9Mb5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "很久沒有敬我了你",
+          "artist_zh": "國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/153",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958008955tStN.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "時空情人音樂會──舒曼與南管的邂逅",
+          "artist_zh": "臺北藝術節",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/148",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1702442175v8Pw6.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "假戲真作",
+          "artist_zh": "Ex-亞洲劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/149",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695800756SyAqt.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "雲山雁邈",
+          "artist_zh": "小巨人絲竹樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2010/150",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695800814Vfqdn.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 10,
+      "year": 2011,
+      "label": "第10屆 (2011/12)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "REM Sleep",
+          "artist_zh": "饒加恩",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/169",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695801009VT8gH.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "鄭宗龍作品《在路上》",
+          "artist_zh": "鄭宗龍、國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/170",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958033388pNIJ.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "後民國 ──沒人共和國",
+          "artist_zh": "吳達坤 (策展人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/171",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695801860qSq7q.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《仙仙仙，福浪共開花》妙工俊陽個展",
+          "artist_zh": "李俊陽",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/173",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695801793Q65eY.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "海市蜃樓 : 台灣閒置公共設施攝影計劃",
+          "artist_zh": "姚瑞中+失落社會檔案室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/174",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695801918h39kG.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "鍋爐裡的劇場",
+          "artist_zh": "蔡明亮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/175",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958019648ybTH.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO歌劇音樂會──希臘悲劇 《艾蕾克特拉》2011TIFA台灣國際藝術節",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/176",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802046b9qVJ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "2011吳珮菁木琴獨奏會",
+          "artist_zh": "財團法人擊樂文教基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/177",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802415GLjtU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《風云》 2011臺北藝術節",
+          "artist_zh": "舞蹈空間舞蹈團／臺北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/197",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958022252A5Xb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "京典舞台劇《百年戲樓 》",
+          "artist_zh": "國立臺灣傳統藝術總處籌備處國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/200",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802296d34HD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "「開房間」戲劇節",
+          "artist_zh": "河床劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/202",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802368nnr9V.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《傳奇 ‧ Légendes！》十方樂集與里昂鍵盤打擊樂",
+          "artist_zh": "十方樂集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/207",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802501ELqFA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "賊變",
+          "artist_zh": "狂想劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/209",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s169580255367Hcz.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "歌仔新調—安平追想曲",
+          "artist_zh": "秀琴歌劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/210",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695802930Qky2a.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "繼承者Ⅰ、Ⅱ、Ⅲ",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2011/211",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695803461AttfJ.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 11,
+      "year": 2012,
+      "label": "第11屆 (2012/13)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "樹梅坑溪環境藝術行動",
+          "artist_zh": "吳瑪悧及竹圍工作室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/18",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804651fUWzn.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "寂靜時刻－Inllungan na Kneril",
+          "artist_zh": "UTUX泛靈樂舞劇會所",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/19",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695805126AYIsQ.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "評審團特別獎",
+          "title_zh": "亂紅",
+          "artist_zh": "二分之一Q劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/20",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958052293ukzY.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "院",
+          "artist_zh": "策展人 蔡明君",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/21",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695803585A3tTy.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "「重見 ╱ 建社會」系列展覽",
+          "artist_zh": "策展人 鄭慧華",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/22",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695803757x5xKp.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "迴返計劃：四部曲",
+          "artist_zh": "陳敬寶",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/23",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695803826Sz44f.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "尋畫—現實主義畫家 吳耀忠",
+          "artist_zh": "社團法人中華紫藤文化協會、交通大學亞太╱文化研究室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/24",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804586YCjJ2.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "NSO《心靈聖詠》─洪崇焜作品《Vox Naturae》",
+          "artist_zh": "國家交響樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/28",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804719xubGI.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "TCO反景入深林─向周文中致敬 I - II",
+          "artist_zh": "臺北市立國樂團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/29",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804771Hc8Ad.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《有機體》兩廳院與卡菲舞團跨國製作",
+          "artist_zh": "國立中正文化中心",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/30",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804818GNQNT.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《兩男關係》之古典與極簡",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/31",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695804870pwH8J.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "拉提琴",
+          "artist_zh": "創作社劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/32",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695805072yrdad.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "黃翊與庫卡",
+          "artist_zh": "黃翊工作室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/25",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958051758AZ7i.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "傳奇崑曲《南柯夢》",
+          "artist_zh": "財團法人建國工程文化藝術基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/26",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695805317L6cqA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "燕歌行",
+          "artist_zh": "唐美雲歌仔戲團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2012/27",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958053716mdbw.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 12,
+      "year": 2013,
+      "label": "第12屆 (2013/14)",
+      "winners": [
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "李銘宸《Dear All》 ──2013新人新視野",
+          "artist_zh": "李銘宸",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/49",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883457Vh4pV.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "凱吉一歲",
+          "artist_zh": "動見体",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/52",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958838363k6wP.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "廢墟影像晶體計畫：十個場景",
+          "artist_zh": "高俊宏",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/51",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695884047YfFNN.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "親愛的",
+          "artist_zh": "何曉玫Meimage舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/50",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695884164QqBnU.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "花山牆",
+          "artist_zh": "蘇育賢",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/48",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883521NZZzs.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "New Work Project | 新作輯 - 牛俊強、羅智信創作計劃",
+          "artist_zh": "牛俊強、羅智信",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/53",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883094HMegD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "土地計畫─金磚上的遺民",
+          "artist_zh": "蕭紫菡舞蹈劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/54",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883176Gb8Wk.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "【小．結】Small End-林文中﹝小﹞系列最終章",
+          "artist_zh": "林文中舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/55",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883307ResUC.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "合唱無設限VI《無》──人聲新媒體跨界製作",
+          "artist_zh": "台北室內合唱團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/56",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958833888RtVT.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "理解的尺度：台泰當代藝術交流展",
+          "artist_zh": "打開-當代藝術工作站",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/57",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883592CjT5b.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "莫拉克",
+          "artist_zh": "陳伯義",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/58",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883700gx7Yb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "陳仕瑛《山地話》 ──2013新人新視野",
+          "artist_zh": "陳仕瑛",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/59",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883768LizNt.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "塗鴉藝術",
+          "artist_zh": "糖果鳥 (Candy Brid)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/60",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s169588391975aGf.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "歲月／照堂 : 1959-2013影像展",
+          "artist_zh": "張照堂",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/61",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695883984Ayj5d.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "微光─亞洲當代工業圖景，台日韓協力計畫",
+          "artist_zh": "吳尚霖（總召集人／策展人）、楊佳璇（齁空間負責人／策展人)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2013/62",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958840998uvPX.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 13,
+      "year": 2014,
+      "label": "第13屆 (2014/15)",
+      "winners": [
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "長河",
+          "artist_zh": "林文中舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/64",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888173juiTk.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "紅毛港遷村實錄── 家",
+          "artist_zh": "陳伯義",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/65",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888270qGp4N.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "不舒適的明日",
+          "artist_zh": "袁廣鳴",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/66",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958883205GmbS.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "玄奘",
+          "artist_zh": "蔡明亮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/67",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888468BvBIr.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "造音翻土 ──戰後台灣聲響文化的探索",
+          "artist_zh": "立方計畫空間",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/63",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958877595wXcr.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "WAVE．微幅",
+          "artist_zh": "一當代舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/68",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958876383jwpy.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "聊齋，聊甚麼哉？",
+          "artist_zh": "山宛然劇團*弘宛然古典布袋戲團、導演王嘉明",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/69",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958877043pyYG.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "華格納革命指環── 諸神黃昏",
+          "artist_zh": "再一次拒絕長大劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/70",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695887818K2DQt.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《戀曲2010》──2014新點子劇展",
+          "artist_zh": "風格涉",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/71",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958878747aSPs.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《擺爛》──2014臺北藝穗節",
+          "artist_zh": "風格涉",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/72",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695887934awMMH.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "林其蔚個展「磁帶音樂2004-2013」",
+          "artist_zh": "林其蔚",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/73",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958879948PeJU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "看得見的城市，看不見的人",
+          "artist_zh": "周先生與舞者們",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/74",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888222eKFUX.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "華格納革命指環《女武神》",
+          "artist_zh": "黑眼睛跨劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/75",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958883634k7Mm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "Qai~i 愛遺憶",
+          "artist_zh": "蒂摩爾古薪舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2014/76",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958884177srHQ.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 14,
+      "year": 2015,
+      "label": "第14屆 (2015/16)",
+      "winners": [
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "李明維與他的關係",
+          "artist_zh": "李明維",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/78",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695638580RjvEu.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "2015TIFA身體氣象館《長夜漫漫路迢迢》",
+          "artist_zh": "身體氣象館",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/79",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703487831LTbzg.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "新編京劇《十八羅漢圖》",
+          "artist_zh": "國立傳統藝術中心國光劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/80",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16957123692LYSq.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度入選獎",
+          "title_zh": "牆上。痕Mailulay",
+          "artist_zh": "杵音文化藝術團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/81",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703496940uV3Ri.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "麥克風試音­─許哲瑜個展",
+          "artist_zh": "許哲瑜",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/77",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703493208A2eze.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "女媧變身",
+          "artist_zh": "差事劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/82",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695709579dUADG.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "生命與靈魂，回家的路",
+          "artist_zh": "王有邦",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/83",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695638043CNQuI.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "足跡 X 窮劇場──大世界娛樂場II",
+          "artist_zh": "窮劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/84",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16956393305yyIA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "南風攝影展：台西村的故事",
+          "artist_zh": "國立自然科學博物館、黃 旭、黃文山、劉德祥、鐘聖雄、許震唐",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/85",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695710873x7c4U.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "洪就是紅：洪素珍特展",
+          "artist_zh": "洪素珍",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/86",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695711163ucedT.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "海市蜃樓：台灣閒置公共設施攝影計畫",
+          "artist_zh": "姚瑞中＋失落社會檔案室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/87",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703491232etNSr.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "馬華文學劇場—區秀詒《山瘟》",
+          "artist_zh": "窮劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/88",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703492082ewMx4.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "橋下那個跳舞",
+          "artist_zh": "TAI身體劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/89",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703494189Uc85Y.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "邊界敘譜：五十步的空間—拉黑子．達立夫個展",
+          "artist_zh": "拉黑子‧達立夫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/90",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703495087TpyPU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《出入‧遊樂間》聲活奇想小劇場",
+          "artist_zh": "出入游樂",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2015/91",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1703495799pjIx5.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 15,
+      "year": 2016,
+      "label": "第15屆 (2016/17)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《立黑吞浪者》【日曜日式散步者】微型實驗行動ACT 1",
+          "artist_zh": "鬼丘鬼鏟、黃亞歷、謝仲其、丁麗萍、劉芳一、李世揚",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/187",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695890466e2gnQ.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "我知道的太多了",
+          "artist_zh": "劉冠詳",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/188",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695890716Vw7f3.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "回莫村",
+          "artist_zh": "許家維",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/186",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958906086s8k3.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《＃》創作社CS監製作品4號",
+          "artist_zh": "創作社劇團 （編劇魏于嘉、導演 李銘宸）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/199",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888590SIBrQ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《The Man》2016鈕扣計畫",
+          "artist_zh": "田采薇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/195",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958886639f6VB.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "十三聲",
+          "artist_zh": "雲門２",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/194",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695888948rgcKN.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "午夜場",
+          "artist_zh": "蘇匯宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/192",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695890400unTBy.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "百鳥歸巢入翟山",
+          "artist_zh": "心心南管樂坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/206",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958905227Lwu5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "阿棲睞",
+          "artist_zh": "布拉瑞揚舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/191",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958906574t4y6.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "孤單在一起",
+          "artist_zh": "李貞葳、Vakulya Zoltán",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/196",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958907795JQ4U.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "和光同塵",
+          "artist_zh": "馮君藍",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/190",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16958908645xRUH.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "造聲",
+          "artist_zh": "王仲堃",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/193",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891015aPLKr.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "彩虹的盡頭",
+          "artist_zh": "林宜瑾",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/198",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891092kAA6x.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "無無眠",
+          "artist_zh": "蔡明亮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/204",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891161JZdqA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "曾經未曾",
+          "artist_zh": "明日和合製作所",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/205",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891216yurbD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "第一屆《自己的劇本》原創戲劇節《颱風走在預報前》",
+          "artist_zh": "盜火劇團（編劇胡錦筵、導演林文尹）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/201",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891281wbGq7.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《蓬萊》南北管神話音樂劇",
+          "artist_zh": "拾念劇集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/203",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891360H5y5W.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "錢江衍派",
+          "artist_zh": "廖烜榛、黃奕捷、李佳泓、王又平",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/208",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891409fuaA4.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "關於生之重力的間奏式──第十屆第六種官能表演藝術祭．台灣－韓國匯演",
+          "artist_zh": "身體氣象館",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2016/189",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1695891482FtGHE.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 16,
+      "year": 2017,
+      "label": "第16屆 (2017/18)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《巨神連線》姚瑞中個展",
+          "artist_zh": "姚瑞中",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/213",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698908635HLeVh.jpeg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "無，或就以沈醉為名",
+          "artist_zh": "布拉瑞揚舞團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/214",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698910136KB28q.png",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《近未來的交陪》2017蕭壠國際當代藝術節",
+          "artist_zh": "龔卓軍 陳伯義、陳宣誠、陳盈瑛、黃瓊瑩",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/212",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909250ZWUec.jpeg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《It Takes Two to Tango》2017鈕扣計畫",
+          "artist_zh": "凃力元",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/215",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698908768RTfRI.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《人類派對》2017松菸Lab新主藝",
+          "artist_zh": "進港浪製作 洪唯堯",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/216",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699585034xfsdE.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "白色說書人",
+          "artist_zh": "同黨劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/217",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698908968ma9dm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "死死免了米",
+          "artist_zh": "娩娩工作室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/218",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16989091014k6Qr.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《更》2017鈕扣計畫",
+          "artist_zh": "劉奕伶",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/219",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909179cjjae.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《我身體就是空污監測站》林泰州影像個展",
+          "artist_zh": "林泰州、PM2.5影像小組",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/226",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909383pM8Dr.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《勇為》王鼎曄個展",
+          "artist_zh": "王鼎曄",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/227",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909476NJg6j.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "破身影",
+          "artist_zh": "游崴及在地實驗",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/220",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909581Z98SK.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《致深邃美麗的》2017臺北藝穗節",
+          "artist_zh": "梗劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/221",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698909911ARirJ.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《琥珀之夢》林羿綺個展",
+          "artist_zh": "林羿綺",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/222",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699589727EDbLL.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《透明》選自臺北市立美術館特展《社交場》",
+          "artist_zh": "孫尚綺",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/223",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698910054DSHcn.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "微塵．望鄉",
+          "artist_zh": "無獨有偶工作室劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/224",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698910293UmWjS.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "還陽記",
+          "artist_zh": "進港浪製作（創作概念詹慧君、編劇胡錦筵、導演孫唯真）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2017/225",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698910365GCHek.jpeg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 17,
+      "year": 2018,
+      "label": "第17屆 (2018/19)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "唐朝綺麗男（邱剛健，1985）",
+          "artist_zh": "蘇匯宇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/296",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698913304FKvhI.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《Break＆Break！無用之地》周書毅身體錄像展",
+          "artist_zh": "周書毅",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/295",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698914568ufp4N.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "路吶LUNA",
+          "artist_zh": "布拉瑞揚舞團文化基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/297",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16989177762P7cF.JPG",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "2018牛俊強個展",
+          "artist_zh": "牛俊強",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/294",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698912242VwBsb.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "南方以南—南迴藝術計劃",
+          "artist_zh": "山冶計畫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/293",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698913015vUqwV.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "刷新、犧牲、新衛生、傳染、清新、機器人、空氣、家政、潔客幫、香煙、戴森、現代人。三",
+          "artist_zh": "周育正",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/292",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698912554nVWHz.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《超日常》─「臺藝大有章藝術博物館」國際雙年展",
+          "artist_zh": "《超日常》策展團隊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/291",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16989142342cn3p.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《小姐免驚》2018新點子舞展「春之祭」微舞作",
+          "artist_zh": "林素蓮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/290",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698915146cKeyS.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《少女須知》2018臺北藝穗節",
+          "artist_zh": "蘇品文",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/289",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698915705zKakE.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《半身相》 皮歇‧克朗淳 X 陳武康",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/288",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698915948zx4tq.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《孟婆 • 湯》2018臺灣戲曲藝術節",
+          "artist_zh": "真快樂掌中劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/287",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698916217mxwf5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "范天寒和他的弟兄們",
+          "artist_zh": "差事劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/286",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698916771yLQ5S.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《從無止境回首》2018台灣國際藝術節",
+          "artist_zh": "一當代舞團 蘇文琪",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/285",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698917028XTn69.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《嫁妝一牛車》 阮劇團 X 流山兒★事務所",
+          "artist_zh": "阮劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/284",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1698917285kurTQ.JPG",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "跳島舞蹈節：新竹跳",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2018/283",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699859131Qrhsj.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 18,
+      "year": 2019,
+      "label": "第18屆 (2019/20)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《委託製作》陳以軒個展",
+          "artist_zh": "陳以軒",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/270",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699241205qfPxp.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《群眾》2019 松菸 Lab 新主藝",
+          "artist_zh": "王世偉",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/281",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699252178WiaKV.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "明白歌｜走唱白色記憶：未竟的故人事與未來歌",
+          "artist_zh": "再拒劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/277",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699250913SQGLy.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《STILL ALIVE》區秀詒個展",
+          "artist_zh": "區秀詒",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/266",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16992401944uTIK.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《再見》林冠名個展",
+          "artist_zh": "林冠名",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/267",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16992404634jGmF.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《冷鍊》侯怡亭個展",
+          "artist_zh": "侯怡亭",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/268",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699240743yppBw.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《我欠你的畫》謝牧歧個展",
+          "artist_zh": "謝牧岐",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/269",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699240976KGXVn.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《馴國》吳權倫個展",
+          "artist_zh": "吳權倫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/271",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699241459mjteZ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "＃是否",
+          "artist_zh": "布拉瑞揚舞團文化基金會",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/272",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16992417354xrGM.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《八八》2019 相遇舞蹈節",
+          "artist_zh": "林廷緒",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/273",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699241993ajj8v.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《不要臉》2019 TIFA台灣國際藝術節",
+          "artist_zh": "李貞葳",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/274",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16992422453JFdb.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "永恆的直線",
+          "artist_zh": "謝杰樺 X 安娜琪舞蹈劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/275",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699242418vNTfU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《自由步——一盞燈的景身》2019 TIFA 台灣國際藝術節",
+          "artist_zh": "驫舞劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/276",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699242659iZUYB.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《春華秋水》德國 E-MEX 樂團與臺灣中青世代作曲家(李政蔚、林梅芳、陳立立、劉韋志、蕭慶瑜)",
+          "artist_zh": "國立傳統藝術中心臺灣音樂館",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/278",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16992513173DUdM.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "悲傷ㄟ曼波",
+          "artist_zh": "圓劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/279",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699251918Fppfm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《感傷之旅》2019臺南藝術節",
+          "artist_zh": "再拒劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/280",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s169925194778h3v.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "關於消失的幾個提議Ⅲ",
+          "artist_zh": "余彥芳 X  黑眼睛跨劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2019/282",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699252449BcDbJ.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 19,
+      "year": 2020,
+      "label": "第19屆 (2020/21)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "台北機電人2.0 : 訊息瘟疫",
+          "artist_zh": "張碩尹、鄭先喻、廖銘和",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/3",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699324696yhYXK.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《攏是為著‧陳武康》2020臺北藝術節",
+          "artist_zh": "陳武康、傑宏・貝爾",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/4",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16993294238tupS.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "王大閎建築劇場X葉名樺《牆後的院宅》",
+          "artist_zh": "葉名樺",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/2",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699329219Ymvn2.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "未完成，黃華成",
+          "artist_zh": "張世倫",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/5",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699324017ygZQ9.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "成忘老太太，湯皇珍2019行動計劃",
+          "artist_zh": "湯皇珍",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/6",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16993250188Xmgn.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "快要降落的時候──王湘靈個展",
+          "artist_zh": "王湘靈",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/7",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699325374FSB7c.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "我媽媽是個好德國人",
+          "artist_zh": "黃立慧",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/8",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699326455XCU2d.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "秘密南方：典藏作品中的冷戰視角及全球南方",
+          "artist_zh": "高森信男",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/9",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699326488CvGwk.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "假使敘述是一場洪水──劉玗個展",
+          "artist_zh": "劉玗",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/10",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699326686VJb8d.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《日月潭是一個水泥盒》2020臺北藝術節",
+          "artist_zh": "林亭君、張欣、利安・摩根",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/11",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699326983kbPvp.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《Better Life?》2020桃園鐵玫瑰藝術節",
+          "artist_zh": "聚合舞",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/12",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699327315a9uSx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "白蛇?! —小丑們的終局之戰",
+          "artist_zh": "沙丁龐客劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/13",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699327492zhv9T.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "再   見",
+          "artist_zh": "賴翃中（翃舞製作）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/14",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699327786A2s2a.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "苔痕",
+          "artist_zh": "FOCA福爾摩沙馬戲團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/15",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699328633PvwSu.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《皇都電姬》2020夏至藝術節",
+          "artist_zh": "阮劇團、劇場空間",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2020/16",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699328956sIkZe.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 20,
+      "year": 2021,
+      "label": "第20屆 (2021/22)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《不好意思‧‧‧請問一下這個怎麼打開》",
+          "artist_zh": "李亦凡",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/594",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1662955718u7itI.jpeg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《王子‧哈姆雷特》",
+          "artist_zh": "身體氣象館、人力飛行劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/595",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1662975903IfLtd.jpeg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《感傷旅行（kanshooryokoo）─當你前往南方我漫長的憂鬱變成一座用遺忘構成的西伯利亞》",
+          "artist_zh": "人力飛行劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/596",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663835643gG7Vv.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《土步．土語｜洪政任研究展》",
+          "artist_zh": "洪政任、楊順發、吳孟真、林小溪",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/606",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663558633LQELy.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《父親的錄影帶＿碧兒不談》",
+          "artist_zh": "楊登棋",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/607",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663560467NFH8e.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《月桃B面》2021綠島人權藝術季",
+          "artist_zh": "黃立慧",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/608",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663560586AnWdP.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《勒法利計畫》",
+          "artist_zh": "臺灣當代文化實驗場   莊偉慈策展",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/610",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663560818LTxIu.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《最後身影之後》",
+          "artist_zh": "黃亦晨",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/611",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663560933aYDBm.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "「棉花研究計畫」之第三、四章暨番外篇",
+          "artist_zh": "康雅筑",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/605",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663238385ZfkSx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《裹山 Dungku Asang》2020-2021 Pulima藝術節",
+          "artist_zh": "林介文策展",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/604",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663558098hHEpg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《複本》",
+          "artist_zh": "廖烜榛、黃奕捷",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/603",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663056580qGRQR.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《總是春光乍現》",
+          "artist_zh": "致穎",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/602",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663056265eudY5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《王心心吟唱─長恨歌》",
+          "artist_zh": "心心南管樂坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/597",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1662976440huFDL.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《母親．李爾王》",
+          "artist_zh": "身體氣象館、窮劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/598",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663650972EMQeS.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《江／雲・之／間》2021 TIFA台灣國際藝術節",
+          "artist_zh": "表演工作坊",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/599",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663651840I53aP.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《共狂》2021桃園鐵玫瑰藝術節",
+          "artist_zh": "LEE\\VAKULYA 李貞葳",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/600",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1663652299VB6SL.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "土地計畫貳部曲《國姓爺之夢》",
+          "artist_zh": "三缺一劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2021/601",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1699331655eSinm.jpeg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 21,
+      "year": 2022,
+      "label": "第21屆 (2022/23)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《海洋與詮釋者》",
+          "artist_zh": "策展人高森信男",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/644",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194296hEbeF.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《崩—無盡之下》2022秋天藝術節",
+          "artist_zh": "李貞葳X法庫亞．佐坦",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/631",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681195536GQQYb.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《高枕無憂的你—黨若洪個展》從瘟疫到戰爭：關於災厄如慶典的一魚兩吃",
+          "artist_zh": "黨若洪",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/643",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194322Z75En.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《三羽—蔡咅璟個展》",
+          "artist_zh": "蔡咅璟",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/646",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194181ScYNg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《非遊記》",
+          "artist_zh": "策展人鍾適芳、協同策展人廖雲章、張正、格拉西亞‧卡威旺、塔農‧恰帕迪、阿堤‧穆桑",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/645",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681275117iRkTP.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《間奏請稍候—倪祥個展》",
+          "artist_zh": "倪祥",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/642",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194357asiHr.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《傾聽島嶼的聲音》選自「2022馬祖國際藝術島─島嶼釀」",
+          "artist_zh": "策展人陳宣誠、協同策展人廖億美",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/641",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s16811944498hdu8.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《複眼叢林—張徐展個展》",
+          "artist_zh": "張徐展",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/640",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194560WFJkk.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《褶肉記—蔡佳宏個展》",
+          "artist_zh": "蔡佳宏",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/639",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194590NPAJg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《邊角的風標—陳庭榕個展》",
+          "artist_zh": "陳庭榕",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/638",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1679628692UGyC4.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《bulabulay mun？》",
+          "artist_zh": "蒂摩爾古薪舞集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/637",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194819tAUAY.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《不存在的金烏》2022 KSAF高雄春天藝術節",
+          "artist_zh": "秋杉所在",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/636",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681194843SUhhD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《回家》2022臺北兒童藝術節",
+          "artist_zh": "複象公場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/635",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1679627789fcjmE.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《我好不浪漫的當代美式生活》選自部落劇會所「你有幾分熟：3OLO聯演計畫」",
+          "artist_zh": "Ihot Sinlay Cihek（卓家安）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/634",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681195161UaTsu.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《沿海六個夢》",
+          "artist_zh": "測不準工作室X洄遊式創作集",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/633",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681195341T6gIU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《陰間條例：冥戰篇》",
+          "artist_zh": "開拓動漫事業有限公司  演出：貪食德工作室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/632",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681195368kNEja.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "臺中國家歌劇院駐館藝術家周曼農《偵探學》",
+          "artist_zh": "周曼農",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2022/630",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1681195682hWkIG.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 22,
+      "year": 2023,
+      "label": "第22屆 (2023/24)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《宿舍Ký Túc Xá》 選自2023國際科技藝術大展「你正在工作嗎？」",
+          "artist_zh": "你哥影視社",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/671",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17128317267gE6g.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《國姓之鬼》",
+          "artist_zh": "臺北海鷗劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/675",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712905184qhadD.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《感謝公主》2023 臺灣戲曲藝術節、2023 NTT遇見巨人",
+          "artist_zh": "窮劇場 x 江之翠劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/678",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712906262ABc6M.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《「  」邱子晏個展》",
+          "artist_zh": "邱子晏",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/665",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712815156SLiwx.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《2022Mattauw大地藝術季：曾文溪的一千個名字》",
+          "artist_zh": "龔卓軍、龔義昭、洪淑青、郭嘉羚、洪榆橙、楊志彬、陳冠彰、沈昭良、黃瀞瑩、吳克威、蔡郁柔、林芳宜、Nakaw Putun、羅健毓",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/666",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712815798WNLDW.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《生活決定意識：高重黎》",
+          "artist_zh": "高重黎",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/667",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1710905321hsXDY.jpeg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《永福製品》選自「Signal Z」",
+          "artist_zh": "李承亮、蔡咅璟",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/668",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17128161088Z6Gz.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《香蕉幣》",
+          "artist_zh": "李奎壁",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/669",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712816383PKZzE.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《淺山行路人》選自「2023浪漫台三線藝術季」",
+          "artist_zh": "林怡華、港千尋、鄒婷、馮馨",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/670",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17128312408saxw.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《最佳地點地圖：蕭其珩個展》",
+          "artist_zh": "蕭其珩",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/672",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712889057VGzVL.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《狩瘟殘書》2023臺灣戲曲藝術節",
+          "artist_zh": "一心戲劇團（導演傅裕惠、編劇李易修 )",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/673",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712904411Eqqn4.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《逆斷口》NTT x C-LAB 2023 聲響藝術節",
+          "artist_zh": "葉于瑄、鄭道元、蕭育禮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/674",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17129048562CWRc.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《泰雅精神文創劇場》",
+          "artist_zh": "莎士比亞的妹妹們的劇團（導演徐堰鈴、編劇游以德Sayun Nomin)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/676",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712905696Cd7a5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《得時の夢》2023戲曲夢工場",
+          "artist_zh": "臺北木偶劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/677",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712906046zWrPd.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《嶼空對練》",
+          "artist_zh": "壞鞋子舞蹈劇場 x 劉昀 x 劉俊德",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/679",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712908783Z4hpc.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《藝術之子》2023 TIFA台灣國際藝術節",
+          "artist_zh": "黃郁晴 x 娩娩工作室",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/680",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712910743F9UC7.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《勸世三姊妹》",
+          "artist_zh": "躍演",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2023/681",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1712911092wDQG9.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 23,
+      "year": 2024,
+      "label": "第23屆 (2024/25)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《大家都來看你了—倪祥個展》",
+          "artist_zh": "倪祥",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/699",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744181470zWFn3.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《睡在風景畫旁勤儉打呼的鼠婆太，但實際上沒有風景畫！(白蘿蔔、釘牙、她的雞、(以及她的後人))》",
+          "artist_zh": "末路小花 X 許芃",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/713",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096530MGUHi.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《戰鬥之城．終》北師美術館2023年作夢計畫",
+          "artist_zh": "張立人",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/705",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1745915797LWuPF.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《北投複寫本》",
+          "artist_zh": "葉偉立",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/700",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744183472f2rBP.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《花蓮地震寫生團畫展》選自2024 PALAFANG花蓮跳浪藝術節《星球爆裂觀測站》",
+          "artist_zh": "地震寫生團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/701",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096926ZZDJQ.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《起始的地方—謝牧岐個展》",
+          "artist_zh": "謝牧岐",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/702",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096816fn6E5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《越南移民花園—靜默歷程 : 阮英俊個展》",
+          "artist_zh": "TUAN Mami(阮英俊)",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/703",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1742977379VWtv8.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《橫山豐水—陳亮璇個展》",
+          "artist_zh": "陳亮璇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/704",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096800KSCCs.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《Turn Out》2024新點子實驗場",
+          "artist_zh": "劉奕伶",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/706",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s174418383032iMt.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《人之島》2024秋天藝術節",
+          "artist_zh": "王宇光",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/707",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1745910094mw7RD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《有可能，但現在不行》2024臺南藝術節",
+          "artist_zh": "稻草人現代舞蹈團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/708",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096771x7FEV.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《時間就像是從來沒消逝過》林靖雁單人表演",
+          "artist_zh": "七転演劇部",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/709",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096750ETHvK.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《這不是個大使館》2024 TIFA台灣國際藝術節",
+          "artist_zh": "國家兩廳院 × 瑞士洛桑維蒂劇院 里米尼紀錄劇團",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/710",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1741855418Jnte6.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《寄聲之廟》2024高雄春天藝術節",
+          "artist_zh": "不二擊聲音製造所",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/711",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096728bVPW5.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《暗夜．腹語．鬼托邦》2024秋天藝術節",
+          "artist_zh": "窮劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2024/712",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1744096707fiqc9.jpg",
+          "is_winner": false
+        }
+      ]
+    },
+    {
+      "edition": 24,
+      "year": 2025,
+      "label": "第24屆 (2025/26)",
+      "winners": [
+        {
+          "category_zh": "視覺藝術獎",
+          "title_zh": "《宇宙寫生—豪華朗機工個展》",
+          "artist_zh": "豪華朗機工",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/734",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776314325mHKrQ.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "表演藝術獎",
+          "title_zh": "《Oh! Baby 2025》2025桃園鐵玫瑰藝術節",
+          "artist_zh": "身體氣象館",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/737",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774245681cVDix.jpg",
+          "is_winner": true
+        },
+        {
+          "category_zh": "年度大獎",
+          "title_zh": "《qaqay踩踏在水面上的聲音》2025太平洋左岸藝術季",
+          "artist_zh": "TAI身體劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/738",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774247701TBzvt.jpg",
+          "is_winner": true
+        }
+      ],
+      "finalists": [
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《Sounds of Babel——如果我們的語言是…》",
+          "artist_zh": "臺灣當代文化實驗場 C-LAB   莊偉慈",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/729",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1773890602pJb3f.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《The Rocking Dream—區秀詒✕陳侑汝個展》",
+          "artist_zh": "區秀詒、陳侑汝（她的實驗空間集）",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/730",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776753214u3fzr.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《文化與技術三部曲》—選自展覽《基進城市》",
+          "artist_zh": "黃孫權",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/731",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1773890623Cn3rg.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《未完成之作：彭弘智個展》",
+          "artist_zh": "彭弘智",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/732",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17763142312cLNU.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《行者十步：蔡明亮》",
+          "artist_zh": "蔡明亮、孫松榮",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/733",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776314248PvAfF.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "視覺藝術",
+          "title_zh": "《空間投影學—陳肇彤個展》",
+          "artist_zh": "陳肇彤",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/735",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776314623hTaUD.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《KINGDOM》",
+          "artist_zh": "趙亭婷✕安娜琪舞蹈劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/736",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776314846cnTvA.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《自由步｜百問 零式》2025 台灣國際藝術節",
+          "artist_zh": "驫舞劇場  蘇威嘉",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/739",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774249863Uv2Hk.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《乘上未知漂流去》衛武營高雄雄厲害",
+          "artist_zh": "二律悖反協作體",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/740",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1776314441Ra4In.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《祭典・馬克白》莎士比亞戲劇單人表演系列",
+          "artist_zh": "身體氣象館",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/741",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774255267LYk5Q.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《落頭氏》",
+          "artist_zh": "身聲劇場",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/742",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774257654HvqCe.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《漚 少年 àu siàu-liân》2025新點子實驗場",
+          "artist_zh": "楊乃璇",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/743",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s17763143923eGda.jpg",
+          "is_winner": false
+        },
+        {
+          "category_zh": "表演藝術",
+          "title_zh": "《瀑布Ⅱ－2025郭靖沐箏獨奏會》",
+          "artist_zh": "郭靖沐",
+          "detail_url": "https://www.taishinart.org.tw/art-award-year-detail/2025/744",
+          "image_url": "https://www.taishinart.org.tw/upload/award_art_works/s1774322503NcxRF.jpg",
+          "is_winner": false
+        }
+      ]
+    }
+  ]
+}

@@ -263,6 +263,57 @@ def _is_closed_today(closed_day):
     return datetime.now(tw_tz).weekday() == closed_day
 
 
+@app.route("/taishin")
+def taishin():
+    """台新藝術獎アーカイブページ。"""
+    lang = request.args.get("lang", "ja")
+    if lang not in TAISHIN_LABELS:
+        lang = "ja"
+
+    taishin_path = os.path.join(os.path.dirname(__file__), "taishin_award.json")
+    try:
+        with open(taishin_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        editions = list(reversed(data.get("editions", [])))
+    except Exception:
+        editions = []
+
+    return render_template(
+        "taishin.html",
+        labels=TAISHIN_LABELS[lang],
+        editions=editions,
+        current_lang=lang,
+    )
+
+
+TAISHIN_LABELS = {
+    "en": {
+        "title": "Taishin Arts Award — Winners & Finalists Archive",
+        "subtitle": "Complete archive of Taiwan's most prestigious contemporary art award (2002–present)",
+        "intro": "The Taishin Arts Award, established in 2002 by the Taishin Bank Foundation for Arts and Culture, is Taiwan's most important contemporary art prize. It recognizes outstanding works in visual arts and performing arts, with an annual Grand Prize of NT$1.5 million. This page archives all winners and finalists since the award's inception.",
+        "winners": "Winners",
+        "finalists": "Finalists",
+        "back": "Exhibitions",
+    },
+    "ja": {
+        "title": "台新芸術賞 — 受賞者・ファイナリスト一覧",
+        "subtitle": "台湾最高峰の現代芸術賞・全記録（2002年〜現在）",
+        "intro": "台新芸術賞（Taishin Arts Award）は、台新銀行文化芸術基金会が2002年に創設した台湾最重要の現代芸術賞です。視覚芸術と舞台芸術の優れた作品を表彰し、年度大賞の賞金はNT$150万（約700万円）。このページでは創設以来の全受賞者とファイナリストを一覧できます。",
+        "winners": "受賞者",
+        "finalists": "ファイナリスト",
+        "back": "展覧会情報",
+    },
+    "zh": {
+        "title": "台新藝術獎 — 歷屆得獎者與入圍名單",
+        "subtitle": "台灣最重要當代藝術獎項完整紀錄（2002年至今）",
+        "intro": "台新藝術獎由台新銀行文化藝術基金會於2002年創立，是台灣最具指標性的當代藝術獎項。表彰視覺藝術與表演藝術領域的傑出作品，年度大獎獎金為新台幣150萬元。本頁彙整自創獎以來所有得獎者與入圍作品。",
+        "winners": "得獎者",
+        "finalists": "入圍",
+        "back": "展覽資訊",
+    },
+}
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。"""
