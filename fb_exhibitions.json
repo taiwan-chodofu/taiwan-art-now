@@ -1,0 +1,59 @@
+{
+  "generated": "2026-06-05T12:00:00",
+  "exhibitions": [
+    {
+      "museum": "ttam",
+      "title_en": "Light Becomes Sea | Works as Field — Lai Chun-Chun Solo Exhibition",
+      "title_zh": "光成為海｜作品作為場 — 賴純純個展",
+      "title_ja": "",
+      "dates": "2026/04/30 - 2026/06/14",
+      "location": "臺東美術館",
+      "link": "https://www.facebook.com/taitungartmuseum"
+    },
+    {
+      "museum": "fotoaura",
+      "title_en": "On (B)lue — Yeh Tzu-Chi Solo Exhibition",
+      "title_zh": "說（不）露 — 葉子啓個展",
+      "title_ja": "",
+      "dates": "2026/05/02 - 2026/06/14",
+      "location": "海馬迴光畫館 Fotoaura Institute of Photography",
+      "link": "https://www.facebook.com/fotoaura.tw"
+    },
+    {
+      "museum": "art182",
+      "title_en": "Snow: 1% of the Universe",
+      "title_zh": "雪花：1%的宇宙",
+      "title_ja": "",
+      "dates": "2026/06/05 - 2026/06/14",
+      "location": "182 Art Space",
+      "link": "https://www.facebook.com/182artspace"
+    },
+    {
+      "museum": "sinpin",
+      "title_en": "FLOW: Dialogue Between Art and Ocean — Kuo Chia-Hsiu & Chao Shu-Chiao Group Exhibition",
+      "title_zh": "FLOW：心流—藝術與海洋的對話 — 郭家秀、趙書巧聯展",
+      "title_ja": "",
+      "dates": "2026/06/13 - 2026/07/08",
+      "location": "新浜碼頭藝術空間",
+      "link": "https://www.facebook.com/sinpinpier"
+    },
+    {
+      "museum": "yiyun",
+      "title_en": "If My Homeland — Chang Ling Solo Exhibition",
+      "title_zh": "假如故鄉 — 常陵個展",
+      "title_ja": "",
+      "dates": "2026/05/16 - 2026/06/20",
+      "location": "異雲書屋・青田館",
+      "link": "https://www.yiyun-art.com/exhibition/2026-06"
+    },
+    {
+      "museum": "daxin",
+      "title_en": "Between Fragments, Still a Universe",
+      "title_zh": "碎片之間 仍是宇宙",
+      "title_ja": "",
+      "dates": "2026/05/01 - 2026/07/19",
+      "location": "大新美術館",
+      "link": "https://www.facebook.com/DaXinArtMuseum/"
+    }
+  ]
+}
