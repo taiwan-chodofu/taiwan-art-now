@@ -73,6 +73,16 @@
       font-size: 0.7rem; font-weight: 600; color: var(--text-light);
       margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 0.5px;
     }
+    .edition-summary {
+      font-size: 0.72rem; color: var(--text-sub); line-height: 1.6;
+      margin-bottom: 10px; padding: 8px 12px;
+      background: var(--tag-bg); border-radius: 4px;
+    }
+    .award-desc {
+      font-size: 0.68rem; color: var(--text-sub); line-height: 1.6;
+      margin-top: 4px; padding-left: 0;
+      max-height: 4.8em; overflow: hidden;
+    }
     .articles-list { margin-top: 4px; }
     .article-link {
       display: block; font-size: 0.7rem; color: var(--text-sub);
@@ -126,6 +136,10 @@
         <span class="edition-year">{{ edition.label }}</span>
       </div>
 
+      {% if edition.summary_en and current_lang == 'en' %}
+      <p class="edition-summary">{{ edition.summary_en }}</p>
+      {% endif %}
+
       {% if edition.winners %}
       <div class="section-label">{{ labels.winners }}</div>
       {% for item in edition.winners %}
@@ -136,6 +150,9 @@
           {% else %}{{ item.title_zh }}{% endif %}
         </div>
         <div class="award-artist">{{ item.artist_zh }}</div>
+        {% if item.description_zh %}
+        <div class="award-desc">{{ item.description_zh }}</div>
+        {% endif %}
       </div>
       {% endfor %}
       {% endif %}
