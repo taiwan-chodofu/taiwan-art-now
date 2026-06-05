@@ -293,6 +293,7 @@ TAISHIN_LABELS = {
         "intro": "The Taishin Arts Award, established in 2002 by the Taishin Bank Foundation for Arts and Culture, is Taiwan's most important contemporary art prize. It recognizes outstanding works in visual arts and performing arts, with an annual Grand Prize of NT$1.5 million. This page archives all winners and finalists since the award's inception.",
         "winners": "Winners",
         "finalists": "Finalists",
+        "articles": "Related Articles",
         "back": "Exhibitions",
     },
     "ja": {
@@ -301,6 +302,7 @@ TAISHIN_LABELS = {
         "intro": "台新芸術賞（Taishin Arts Award）は、台新銀行文化芸術基金会が2002年に創設した台湾最重要の現代芸術賞です。視覚芸術と舞台芸術の優れた作品を表彰し、年度大賞の賞金はNT$150万（約700万円）。このページでは創設以来の全受賞者とファイナリストを一覧できます。",
         "winners": "受賞者",
         "finalists": "ファイナリスト",
+        "articles": "関連記事",
         "back": "展覧会情報",
     },
     "zh": {
@@ -309,6 +311,7 @@ TAISHIN_LABELS = {
         "intro": "台新藝術獎由台新銀行文化藝術基金會於2002年創立，是台灣最具指標性的當代藝術獎項。表彰視覺藝術與表演藝術領域的傑出作品，年度大獎獎金為新台幣150萬元。本頁彙整自創獎以來所有得獎者與入圍作品。",
         "winners": "得獎者",
         "finalists": "入圍",
+        "articles": "相關報導",
         "back": "展覽資訊",
     },
 }
