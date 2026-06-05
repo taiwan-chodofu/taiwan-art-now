@@ -582,29 +582,6 @@
       "scraper": null
     },
     {
-      "id": "vt",
-      "category": "alternative",
-      "region": "taipei",
-      "name": {
-        "en": "VT Artsalon",
-        "ja": "非常廟",
-        "zh": "非常廟"
-      },
-      "address": {
-        "en": "B1, No.17, Ln.56, Sec.3, Xinsheng N. Rd., Taipei",
-        "ja": "台北市中山區新生北路三段56巷17號B1",
-        "zh": "臺北市中山區新生北路三段56巷17號B1"
-      },
-      "url": "https://www.facebook.com/vtartsalon",
-      "hours": {
-        "en": "Tue–Sat 13:00–19:00 | Closed Sun–Mon",
-        "ja": "火〜土 13:00–19:00｜日月休",
-        "zh": "週二至週六 13:00–19:00｜週日一休"
-      },
-      "closed_day": 0,
-      "scraper": null
-    },
-    {
       "id": "absolute",
       "category": "alternative",
       "region": "tainan",
@@ -789,29 +766,6 @@
         "zh": "預約制"
       },
       "closed_day": null,
-      "scraper": null
-    },
-    {
-      "id": "shumin",
-      "category": "alternative",
-      "region": "new_taipei",
-      "name": {
-        "en": "Shumin Art Museum",
-        "ja": "庶民美術館",
-        "zh": "庶民美術館"
-      },
-      "address": {
-        "en": "No.110, Minquan St., Sanxia, New Taipei",
-        "ja": "新北市三峽區民權街110號",
-        "zh": "新北市三峽區民權街110號"
-      },
-      "url": "https://www.facebook.com/shuminart",
-      "hours": {
-        "en": "Sat–Sun 10:00–18:00",
-        "ja": "土日 10:00–18:00",
-        "zh": "週六日 10:00–18:00"
-      },
-      "closed_day": 0,
       "scraper": null
     },
     {
@@ -1100,29 +1054,6 @@
       "exhibition_url": "https://www.doublesquare.com.tw"
     },
     {
-      "id": "inart",
-      "category": "commercial",
-      "region": "tainan",
-      "name": {
-        "en": "InArt Space",
-        "ja": "加力畫廊",
-        "zh": "加力畫廊"
-      },
-      "address": {
-        "en": "No.315, Youai St., Tainan",
-        "ja": "台南市中西區友愛街315號",
-        "zh": "臺南市中西區友愛街315號"
-      },
-      "url": "https://www.facebook.com/inartspace",
-      "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
-      },
-      "closed_day": 0,
-      "scraper": null
-    },
-    {
       "id": "soka",
       "category": "commercial",
       "region": "tainan",
@@ -1217,29 +1148,6 @@
       "closed_day": 0,
       "scraper": "artemperor",
       "exhibition_url": "https://www.blueriderart.com/en/exhibitions"
-    },
-    {
-      "id": "powen",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Powen Gallery",
-        "ja": "紅野畫廊",
-        "zh": "紅野畫廊"
-      },
-      "address": {
-        "en": "No.11, Ln.164, Songjiang Rd., Taipei",
-        "ja": "台北市中山區松江路164巷11號",
-        "zh": "臺北市中山區松江路164巷11號"
-      },
-      "url": "https://www.facebook.com/powengallery",
-      "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
-      },
-      "closed_day": 0,
-      "scraper": null
     },
     {
       "id": "yiyun",
@@ -1526,52 +1434,6 @@
       "exhibition_url": "https://cabcy.chiayi.gov.tw"
     },
     {
-      "id": "hcrav",
-      "category": "private",
-      "region": "hsinchu",
-      "name": {
-        "en": "Hsinchu Railway Art Village",
-        "ja": "新竹鐵道藝術村",
-        "zh": "新竹市鐵道藝術村"
-      },
-      "address": {
-        "en": "No.64, Huayuan St., Hsinchu",
-        "ja": "新竹市東區花園街64號",
-        "zh": "新竹市東區花園街64號"
-      },
-      "url": "https://www.facebook.com/hcrav",
-      "hours": {
-        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
-        "ja": "火〜日 9:00–17:00｜月休",
-        "zh": "週二至週日 09:00–17:00｜週一休"
-      },
-      "closed_day": 0,
-      "scraper": null
-    },
-    {
-      "id": "zhongxing",
-      "category": "private",
-      "region": "yilan",
-      "name": {
-        "en": "Zhongxing Cultural & Creative Park",
-        "ja": "中興文化創意園區",
-        "zh": "中興文化創意園區"
-      },
-      "address": {
-        "en": "No.6-8, Sec.2, Zhongzheng Rd., Wujie, Yilan",
-        "ja": "宜蘭縣五結鄉中正路二段6-8號",
-        "zh": "宜蘭縣五結鄉中正路二段6-8號"
-      },
-      "url": "https://www.facebook.com/zhongxingccp",
-      "hours": {
-        "en": "Wed–Sun 10:00–18:00 | Closed Mon–Tue",
-        "ja": "水〜日 10:00–18:00｜月火休",
-        "zh": "週三至週日 10:00–18:00｜週一二休"
-      },
-      "closed_day": 0,
-      "scraper": null
-    },
-    {
       "id": "zhengbin",
       "category": "private",
       "region": "keelung",
@@ -1590,29 +1452,6 @@
         "en": "Open area",
         "ja": "屋外エリア",
         "zh": "戶外區域"
-      },
-      "closed_day": null,
-      "scraper": null
-    },
-    {
-      "id": "hualiencp",
-      "category": "private",
-      "region": "hualien",
-      "name": {
-        "en": "Hualien Cultural & Creative Park",
-        "ja": "花蓮文創園區",
-        "zh": "花蓮文化創意產業園區"
-      },
-      "address": {
-        "en": "No.144, Zhonghua Rd., Hualien",
-        "ja": "花蓮縣花蓮市中華路144號",
-        "zh": "花蓮縣花蓮市中華路144號"
-      },
-      "url": "https://www.facebook.com/hualienvcpp",
-      "hours": {
-        "en": "Daily 09:00–21:00",
-        "ja": "毎日 9:00–21:00",
-        "zh": "每日 09:00–21:00"
       },
       "closed_day": null,
       "scraper": null
