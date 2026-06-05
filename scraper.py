@@ -1324,8 +1324,6 @@ def _do_scrape_all():
                     fb_data = _load_fb_json(mid)
                     if fb_data:
                         all_exhibitions.extend(fb_data)
-                    else:
-                        all_exhibitions.extend(_scrape_facebook(mid, museum_url))
 
         # artemperor.tw アグリゲーターで未取得館を補完
         existing_ids = {e["museum"] for e in all_exhibitions}
