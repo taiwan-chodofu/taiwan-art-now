@@ -73,6 +73,18 @@
       font-size: 0.7rem; font-weight: 600; color: var(--text-light);
       margin: 12px 0 6px; text-transform: uppercase; letter-spacing: 0.5px;
     }
+    .articles-list { margin-top: 4px; }
+    .article-link {
+      display: block; font-size: 0.7rem; color: var(--text-sub);
+      text-decoration: none; padding: 3px 0 3px 12px;
+      border-left: 2px solid var(--border); transition: all 0.15s;
+    }
+    .article-link:hover { border-left-color: var(--accent); color: var(--text); }
+    .article-source {
+      display: inline-block; font-size: 0.6rem; font-weight: 600;
+      background: var(--tag-bg); padding: 1px 5px; border-radius: 3px;
+      margin-right: 4px; color: var(--text-light);
+    }
     .back-link {
       display: inline-block; margin-bottom: 1rem;
       font-size: 0.75rem; color: var(--text-sub); text-decoration: none;
@@ -140,6 +152,17 @@
         <div class="award-artist">{{ item.artist_zh }}</div>
       </div>
       {% endfor %}
+      {% endif %}
+
+      {% if edition.related_articles %}
+      <div class="section-label">{{ labels.articles }}</div>
+      <div class="articles-list">
+        {% for art in edition.related_articles %}
+        <a class="article-link" href="{{ art.url }}" target="_blank" rel="noopener">
+          <span class="article-source">{{ art.source }}</span> {{ art.title }}
+        </a>
+        {% endfor %}
+      </div>
       {% endif %}
     </section>
     {% endfor %}
