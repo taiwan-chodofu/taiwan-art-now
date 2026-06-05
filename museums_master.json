@@ -1455,6 +1455,78 @@
       },
       "closed_day": null,
       "scraper": null
+    },
+    {
+      "id": "projectfulfill",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Project Fulfill Art Space",
+        "ja": "就在藝術空間",
+        "zh": "就在藝術空間"
+      },
+      "address": {
+        "en": "1F, No.2, Aly. 45, Ln. 147, Sec. 3, Xinyi Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區信義路三段147巷45弄2號1F",
+        "zh": "台北市大安區信義路三段147巷45弄2號1F"
+      },
+      "url": "https://projectfulfill.com",
+      "hours": {
+        "en": "Tue–Sat 13:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 13:00–19:00｜日月休",
+        "zh": "週二至週六 13:00–19:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://projectfulfill.com/"
+    },
+    {
+      "id": "derhorng",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "Der-Horng Art Gallery",
+        "ja": "德鴻畫廊",
+        "zh": "德鴻畫廊"
+      },
+      "address": {
+        "en": "No.1, Zhongshan Rd., West Central Dist., Tainan",
+        "ja": "台南市中西區中山路1號",
+        "zh": "台南市中西區中山路1號"
+      },
+      "url": "https://www.derhorng.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://www.derhorng.com/"
+    },
+    {
+      "id": "yiriarts",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "YIRI ARTS",
+        "ja": "伊日藝術",
+        "zh": "伊日藝術"
+      },
+      "address": {
+        "en": "No.5, Aly. 6, Ln. 56, Sec. 4, Zhongxiao E. Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區忠孝東路四段56巷6弄5號",
+        "zh": "台北市大安區忠孝東路四段56巷6弄5號"
+      },
+      "url": "https://yiriarts.com.tw",
+      "hours": {
+        "en": "Tue–Sat 13:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 13:00–19:00｜日月休",
+        "zh": "週二至週六 13:00–19:00｜週日一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "exhibition_url": "https://yiriarts.com.tw/exhibitions/"
     }
   ]
 }

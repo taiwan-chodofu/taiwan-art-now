@@ -1098,6 +1098,34 @@ def _scrape_artemperor(pages=3):
     return exhibitions
 
 
+def _extract_generic_dates(line):
+    """様々な形式の日付ペアを抽出して統一形式で返す。"""
+    # パターン1: YYYY/MM/DD - YYYY/MM/DD 等
+    m = re.search(
+        r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})"
+        r".*?[–—~\-]\s*"
+        r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})",
+        line,
+    )
+    if m:
+        return f"{m.group(1)}/{m.group(2)}/{m.group(3)} - {m.group(4)}/{m.group(5)}/{m.group(6)}"
+    # パターン2: 2026年5月21日 - 7月4日（中国語）
+    m = re.search(
+        r"(\d{4})年(\d{1,2})月(\d{1,2})日\s*[–—~\-]\s*(\d{1,2})月(\d{1,2})日",
+        line,
+    )
+    if m:
+        return f"{m.group(1)}/{m.group(2)}/{m.group(3)} - {m.group(1)}/{m.group(4)}/{m.group(5)}"
+    # パターン3: 2026年5月21日 - 2026年7月4日
+    m = re.search(
+        r"(\d{4})年(\d{1,2})月(\d{1,2})日\s*[–—~\-]\s*(\d{4})年(\d{1,2})月(\d{1,2})日",
+        line,
+    )
+    if m:
+        return f"{m.group(1)}/{m.group(2)}/{m.group(3)} - {m.group(4)}/{m.group(5)}/{m.group(6)}"
+    return ""
+
+
 def _scrape_generic(museum_id, exhibition_url):
     """汎用スクレイパー: 展覧会ページからタイトルと日付を自動抽出する。"""
     exhibitions = []
@@ -1108,32 +1136,23 @@ def _scrape_generic(museum_id, exhibition_url):
         lines = [l.strip() for l in text.split("\n") if l.strip()]
         # 日付パターンを含む行とその前の行をペアで抽出
         for i, line in enumerate(lines):
-            date_match = re.search(
-                r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})"
-                r".*?[–—~\-]\s*"
-                r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})",
-                line,
-            )
-            if date_match:
-                dates = (
-                    f"{date_match.group(1)}/{date_match.group(2)}/{date_match.group(3)}"
-                    f" - {date_match.group(4)}/{date_match.group(5)}/{date_match.group(6)}"
-                )
-                if not _is_current_exhibition(dates, today):
-                    continue
-                title = lines[i - 1] if i > 0 else line
-                # タイトルが短すぎるか日付のみの場合はスキップ
-                if len(title) < 3 or re.match(r"^\d{4}", title):
-                    title = line.split(date_match.group(0))[0].strip()
-                if title and len(title) > 2:
-                    exhibitions.append({
-                        "museum": museum_id,
-                        "title_en": title,
-                        "title_ja": "", "title_zh": "",
-                        "dates": dates,
-                        "location": "",
-                        "link": exhibition_url,
-                    })
+            dates = _extract_generic_dates(line)
+            if not dates:
+                continue
+            if not _is_current_exhibition(dates, today):
+                continue
+            title = lines[i - 1] if i > 0 else line
+            if len(title) < 3 or re.match(r"^\d{4}", title):
+                title = line.split(dates)[0].strip() if dates in line else line
+            if title and len(title) > 2:
+                exhibitions.append({
+                    "museum": museum_id,
+                    "title_en": title,
+                    "title_ja": "", "title_zh": "",
+                    "dates": dates,
+                    "location": "",
+                    "link": exhibition_url,
+                })
     except Exception as exc:
         logger.warning("Generic scrape failed for %s: %s", museum_id, exc)
     return exhibitions
