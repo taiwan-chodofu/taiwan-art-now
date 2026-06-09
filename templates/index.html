@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ labels.title }}</title>
+  <meta name="description" content="{{ labels.subtitle }}">
+  <meta property="og:title" content="{{ labels.title }}">
+  <meta property="og:description" content="{{ labels.subtitle }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://taiwan-art-now.onrender.com/">
+  <meta property="og:locale" content="{{ 'ja_JP' if current_lang == 'ja' else ('en_US' if current_lang == 'en' else 'zh_TW') }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ labels.title }}">
+  <meta name="twitter:description" content="{{ labels.subtitle }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -111,7 +120,7 @@
       <div class="filter-row" id="regionFilters">
         <button class="filter-chip active" data-filter="region" data-value="all">All</button>
         {% for region in regions %}
-        <button class="filter-chip" data-filter="region" data-value="{{ region.id }}">{{ region.name }}</button>
+        <button class="filter-chip" data-filter="region" data-value="{{ region.id }}">{{ region.name }}{% if region.active_count %} <span class="chip-count">{{ region.active_count }}</span>{% endif %}</button>
         {% endfor %}
       </div>
     </div>
@@ -330,10 +339,36 @@
   <!-- FILTER JS -->
   <script>
   (function() {
-    let activeRegion = 'all';
-    let activeCat = 'all';
-    let openOnly = false;
-    let hasExOnly = true;
+    var params = new URLSearchParams(window.location.search);
+    let activeRegion = params.get('region') || 'all';
+    let activeCat = params.get('cat') || 'all';
+    let openOnly = params.get('open') === '1';
+    let hasExOnly = params.get('hasex') !== '0';
+
+    function syncURL() {
+      var p = new URLSearchParams(window.location.search);
+      if (p.get('lang')) p.set('lang', p.get('lang'));
+      if (activeRegion === 'all') p.delete('region'); else p.set('region', activeRegion);
+      if (activeCat === 'all') p.delete('cat'); else p.set('cat', activeCat);
+      if (openOnly) p.set('open', '1'); else p.delete('open');
+      if (!hasExOnly) p.set('hasex', '0'); else p.delete('hasex');
+      var qs = p.toString();
+      var newURL = window.location.pathname + (qs ? '?' + qs : '');
+      window.history.replaceState(null, '', newURL);
+    }
+
+    function syncChipsFromState() {
+      document.querySelectorAll('[data-filter="region"]').forEach(function(c) {
+        c.classList.toggle('active', c.getAttribute('data-value') === activeRegion);
+      });
+      document.querySelectorAll('[data-filter="cat"]').forEach(function(c) {
+        c.classList.toggle('active', c.getAttribute('data-value') === activeCat);
+      });
+      var openBtn = document.getElementById('openTodayBtn');
+      if (openBtn) openBtn.classList.toggle('active', openOnly);
+      var hasExBtn = document.getElementById('hasExBtn');
+      if (hasExBtn) hasExBtn.classList.toggle('active', hasExOnly);
+    }
 
     function applyFilters() {
       const sections = document.querySelectorAll('.region-section');
@@ -380,6 +415,7 @@
           hasExOnly = !hasExOnly;
           this.classList.toggle('active', hasExOnly);
           applyFilters();
+          syncURL();
           return;
         }
 
@@ -387,6 +423,7 @@
           openOnly = !openOnly;
           this.classList.toggle('active', openOnly);
           applyFilters();
+          syncURL();
           return;
         }
 
@@ -405,8 +442,12 @@
           var target = document.getElementById('region-' + value);
           if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        syncURL();
       });
     });
+
+    syncChipsFromState();
+    applyFilters();
   })();
   </script>
 </body>

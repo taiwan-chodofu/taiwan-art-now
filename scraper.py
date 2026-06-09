@@ -1495,6 +1495,41 @@ def _do_scrape_all():
     return all_exhibitions
 
 
+def get_artist_index():
+    """全展覧会から アーティスト→展覧会リスト のインデックスを生成。"""
+    cached = _load_cache_stale()
+    if not cached:
+        return {}
+    index = {}
+    for ex in cached:
+        for artist in ex.get("artists", []):
+            normalized = _normalize_artist_name(artist)
+            if not normalized:
+                continue
+            if normalized not in index:
+                index[normalized] = {
+                    "name": artist,
+                    "exhibitions": [],
+                }
+            index[normalized]["exhibitions"].append({
+                "title": ex.get("title_en") or ex.get("title_zh") or "",
+                "museum": ex.get("museum", ""),
+                "dates": ex.get("dates", ""),
+                "link": ex.get("link", ""),
+            })
+    return index
+
+
+def _normalize_artist_name(name):
+    """アーティスト名の表記揺れを統一する基本キー。"""
+    if not name:
+        return ""
+    # 全角スペースを半角に、前後空白除去、複数スペースを1つに
+    n = name.strip().replace("　", " ")
+    n = re.sub(r"\s+", " ", n)
+    return n.lower()
+
+
 def _filter_known_museums(exhibitions):
     """master.jsonに登録されている施設の展覧会のみ残す。"""
     master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
