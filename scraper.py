@@ -1144,6 +1144,18 @@ def _scrape_generic(museum_id, exhibition_url):
             title = lines[i - 1] if i > 0 else line
             if len(title) < 3 or re.match(r"^\d{4}", title):
                 title = line.split(dates)[0].strip() if dates in line else line
+            # タイトルは100文字以内、長すぎる場合は最初の文だけ取る
+            if len(title) > 100:
+                first_segment = re.split(r"[。、，,\.!?！？]", title)[0]
+                if 5 < len(first_segment) <= 100:
+                    title = first_segment
+                else:
+                    continue
+            # 「Solo Exhibition」「Group Exhibition」のような汎用タイトルは前行を見る
+            if title.lower().strip() in ("solo exhibition", "group exhibition", "exhibition", "duo exhibition") and i >= 2:
+                better = lines[i - 2]
+                if 3 < len(better) < 80 and not re.match(r"^\d", better):
+                    title = better + " — " + title
             if title and len(title) > 2:
                 exhibitions.append({
                     "museum": museum_id,
@@ -1208,7 +1220,7 @@ def _extract_exhibition_details(url):
                     if next_line in stop_keywords:
                         break
                     if len(next_line) < 60 and not next_line.startswith("http") and "•" not in next_line:
-                        if not re.match(r"^[\d\s./\-:]+$", next_line):
+                        if _is_valid_artist_name(next_line):
                             artists.append(next_line)
                     else:
                         break
@@ -1503,6 +1515,8 @@ def get_artist_index():
     index = {}
     for ex in cached:
         for artist in ex.get("artists", []):
+            if not _is_valid_artist_name(artist):
+                continue
             normalized = _normalize_artist_name(artist)
             if not normalized:
                 continue
@@ -1521,13 +1535,33 @@ def get_artist_index():
 
 
 def _normalize_artist_name(name):
-    """アーティスト名の表記揺れを統一する基本キー。"""
+    """アーティスト名のURLキーを生成する。"""
     if not name:
         return ""
-    # 全角スペースを半角に、前後空白除去、複数スペースを1つに
     n = name.strip().replace("　", " ")
     n = re.sub(r"\s+", " ", n)
-    return n.lower()
+    # URL safe key: スペースを-に、その他特殊文字を除去
+    key = re.sub(r"[^\w一-鿿぀-ゟ゠-ヿ -]", "", n.lower())
+    key = re.sub(r"\s+", "-", key)
+    key = re.sub(r"-+", "-", key).strip("-")
+    return key
+
+
+def _is_valid_artist_name(name):
+    """アーティスト名として妥当か判定する。"""
+    if not name or len(name) < 2 or len(name) > 60:
+        return False
+    # ノートや注記の典型パターンを除外
+    junk_patterns = [
+        r"按.*排序", r"^\*", r"^/", r"^[\d\s\-:./]+$",
+        r"^與談", r"^主辦", r"^協辦", r"^指導",
+        r"^Director", r"^Producer", r"^Organizer", r"^Sponsor",
+        r"基金會藝術總監", r"基金會董事", r"執行長",
+    ]
+    for pat in junk_patterns:
+        if re.search(pat, name):
+            return False
+    return True
 
 
 def _filter_known_museums(exhibitions):
@@ -1543,7 +1577,7 @@ def _filter_known_museums(exhibitions):
 
 
 def _dedup_exhibitions(exhibitions):
-    """同一museum内でタイトルが包含関係かつ日程が同じ重複を除去する。"""
+    """同一museum内のタイトル重複（完全一致・包含関係）を除去する。"""
     from collections import defaultdict
     by_museum = defaultdict(list)
     for ex in exhibitions:
@@ -1555,10 +1589,16 @@ def _dedup_exhibitions(exhibitions):
             result.extend(items)
             continue
         keep = []
+        seen_keys = set()
         for item in items:
             title = item.get("title_en", "") or item.get("title_zh", "") or ""
             dates_norm = _normalize_date_str(item.get("dates", ""))
-            is_dup = False
+            # 完全一致（タイトル+日付）
+            exact_key = (title.strip().lower(), dates_norm)
+            if exact_key in seen_keys:
+                continue
+            # タイトル包含 + 日付一致
+            is_subset = False
             for other in items:
                 if other is item:
                     continue
@@ -1567,9 +1607,10 @@ def _dedup_exhibitions(exhibitions):
                 if not title or not other_title:
                     continue
                 if title in other_title and title != other_title and dates_norm == other_dates_norm:
-                    is_dup = True
+                    is_subset = True
                     break
-            if not is_dup:
+            if not is_subset:
+                seen_keys.add(exact_key)
                 keep.append(item)
         result.extend(keep)
     return result
