@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ labels.title }}</title>
+  <meta name="description" content="{{ labels.subtitle }}">
+  <meta property="og:title" content="{{ labels.title }}">
+  <meta property="og:description" content="{{ labels.subtitle }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://taiwan-art-now.onrender.com/taishin">
+  <meta property="og:locale" content="{{ 'ja_JP' if current_lang == 'ja' else ('en_US' if current_lang == 'en' else 'zh_TW') }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ labels.title }}">
+  <meta name="twitter:description" content="{{ labels.subtitle }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>

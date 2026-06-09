@@ -243,11 +243,13 @@ def index():
                 "exhibitions": exs,
             })
 
+        active_count = sum(1 for me in museum_entries if me["exhibitions"])
         regions_data.append({
             "id": region_id,
             "name": _get_localized(
                 master["regions"].get(region_id, {}), lang
             ),
+            "active_count": active_count,
             "museums": museum_entries,
         })
 
