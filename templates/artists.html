@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ labels.title }}</title>
+  <meta name="description" content="{{ labels.subtitle }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
+      --accent: #000; --border: #e8e8e8; --tag-bg: #f5f5f3; --hover-bg: #fafafa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 14px;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 800px; margin: 0 auto;
+    }
+    .site-title { font-size: 1rem; font-weight: 700; }
+    .site-title small {
+      display: block; font-size: 0.6rem; font-weight: 300;
+      color: var(--text-sub); margin-top: 1px;
+    }
+    .header-nav { display: flex; align-items: center; gap: 2px; }
+    .header-nav a {
+      color: var(--text-light); text-decoration: none; font-size: 0.7rem;
+      padding: 4px 8px; border-radius: 4px; transition: all 0.15s;
+    }
+    .header-nav a:hover, .header-nav a.active {
+      color: var(--accent); background: var(--tag-bg);
+    }
+    main { max-width: 800px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 4px;
+    }
+    .artist-card {
+      padding: 8px 12px;
+      border-left: 2px solid var(--border);
+      transition: all 0.15s;
+      text-decoration: none; color: var(--text);
+    }
+    .artist-card:hover {
+      border-left-color: var(--accent); background: var(--hover-bg);
+    }
+    .artist-name { font-size: 0.82rem; font-weight: 500; }
+    .artist-count {
+      font-size: 0.65rem; color: var(--text-light); margin-top: 1px;
+    }
+    .empty-msg {
+      text-align: center; padding: 3rem 1rem;
+      color: var(--text-light); font-size: 0.85rem;
+    }
+    .site-footer {
+      max-width: 800px; margin: 0 auto; padding: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.6rem; color: var(--text-light);
+      display: flex; justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-title">
+      Artists
+      <small>{{ labels.subtitle }}</small>
+    </div>
+    <nav class="header-nav">
+      <a href="/artists?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
+      <a href="/artists?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
+      <a href="/artists?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
+      <a href="/?lang={{ current_lang }}">← {{ labels.back }}</a>
+    </nav>
+  </header>
+
+  <main>
+    {% if artists %}
+    <div class="artist-grid">
+      {% for a in artists %}
+      <a class="artist-card" href="/artist/{{ a.key }}?lang={{ current_lang }}">
+        <div class="artist-name">{{ a.name }}</div>
+        <div class="artist-count">{{ a.count }} {{ labels.exhibitions }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-msg">{{ labels.no_data }}</div>
+    {% endif %}
+  </main>
+
+  <footer class="site-footer">
+    <span>Taiwan Art Now</span>
+    <span>Total: {{ artists|length }} artists</span>
+  </footer>
+</body>
+</html>

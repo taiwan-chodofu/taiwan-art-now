@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ artist_name }} — Taiwan Art Now</title>
+  <meta name="description" content="Exhibitions by {{ artist_name }} in Taiwan">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
+      --accent: #000; --border: #e8e8e8; --tag-bg: #f5f5f3; --hover-bg: #fafafa;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 14px;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 720px; margin: 0 auto;
+    }
+    .site-title { font-size: 1rem; font-weight: 700; }
+    .header-nav a {
+      color: var(--text-light); text-decoration: none; font-size: 0.7rem;
+      padding: 4px 8px; border-radius: 4px;
+    }
+    .header-nav a:hover { color: var(--accent); background: var(--tag-bg); }
+    main { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    h1 {
+      font-size: 1.6rem; font-weight: 700; margin-bottom: 4px;
+    }
+    .artist-meta {
+      font-size: 0.75rem; color: var(--text-sub); margin-bottom: 1.5rem;
+    }
+    .ex-item {
+      display: block; padding: 10px 12px;
+      border-left: 2px solid var(--border);
+      margin-bottom: 6px; transition: all 0.15s;
+      text-decoration: none; color: inherit;
+    }
+    .ex-item:hover {
+      border-left-color: var(--accent); background: var(--hover-bg);
+    }
+    .ex-title { font-size: 0.85rem; font-weight: 500; }
+    .ex-meta {
+      font-size: 0.7rem; color: var(--text-sub); margin-top: 2px;
+    }
+    .site-footer {
+      max-width: 720px; margin: 0 auto; padding: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.6rem; color: var(--text-light);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-title">{{ artist_name }}</div>
+    <nav class="header-nav">
+      <a href="/artists?lang={{ current_lang }}">← Artists</a>
+      <a href="/?lang={{ current_lang }}">{{ labels.back }}</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>{{ artist_name }}</h1>
+    <div class="artist-meta">{{ exhibitions|length }} {{ labels.exhibitions }}</div>
+
+    {% for ex in exhibitions %}
+    {% if ex.link %}<a class="ex-item" href="{{ ex.link }}" target="_blank" rel="noopener">{% else %}<div class="ex-item">{% endif %}
+      <div class="ex-title">{{ ex.title }}</div>
+      <div class="ex-meta">
+        {{ ex.museum_name }}{% if ex.dates %} · {{ ex.dates }}{% endif %}
+      </div>
+    {% if ex.link %}</a>{% else %}</div>{% endif %}
+    {% endfor %}
+  </main>
+
+  <footer class="site-footer">
+    <span>Taiwan Art Now</span>
+  </footer>
+</body>
+</html>
