@@ -1158,6 +1158,121 @@ def _scrape_generic(museum_id, exhibition_url):
     return exhibitions
 
 
+DETAILS_FILE = os.path.join(os.path.dirname(__file__), "exhibition_details.json")
+DETAILS_TTL_DAYS = 14
+
+
+def _load_details_cache():
+    """既存の詳細キャッシュを読み込む。"""
+    if not os.path.exists(DETAILS_FILE):
+        return {}
+    try:
+        with open(DETAILS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_details_cache(details):
+    """詳細キャッシュを保存する。"""
+    text = json.dumps(details, ensure_ascii=False, indent=2)
+    text = re.sub(r"[\ud800-\udfff]", "", text)
+    with open(DETAILS_FILE, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+def _extract_exhibition_details(url):
+    """展覧会詳細ページからアーティスト・キュレーター・概要を抽出する。"""
+    try:
+        soup = _fetch(url, timeout=12)
+        text = soup.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+
+        artists = []
+        curator = ""
+        artist_keywords = ("Artists", "Artist", "藝術家", "參展藝術家", "アーティスト")
+        curator_keywords = ("Curator", "策展人", "キュレーター")
+        stop_keywords = (
+            "Supervisor", "Curator", "Organizer", "Sponsor", "Director",
+            "Producer", "Venue", "Address", "Schedule", "Hours", "Date",
+            "策展人", "主辦", "指導", "協辦", "贊助", "場地", "地點", "時間",
+        )
+
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            if line in artist_keywords:
+                j = i + 1
+                while j < len(lines) and j - i < 30:
+                    next_line = lines[j]
+                    if next_line in stop_keywords:
+                        break
+                    if len(next_line) < 60 and not next_line.startswith("http") and "•" not in next_line:
+                        if not re.match(r"^[\d\s./\-:]+$", next_line):
+                            artists.append(next_line)
+                    else:
+                        break
+                    j += 1
+                i = j
+                continue
+            if line in curator_keywords:
+                if i + 1 < len(lines) and len(lines[i + 1]) < 60:
+                    curator = lines[i + 1]
+            i += 1
+
+        ps = soup.find_all("p")
+        long_ps = [p.get_text(strip=True) for p in ps if len(p.get_text(strip=True)) > 80]
+        description = long_ps[0][:800] if long_ps else ""
+
+        return {
+            "artists": artists[:15],
+            "curator": curator,
+            "description": description,
+            "fetched_at": _now_tw().isoformat(),
+        }
+    except Exception as exc:
+        logger.warning("Detail extraction failed for %s: %s", url, exc)
+        return None
+
+
+def _enrich_exhibitions(exhibitions, max_to_fetch=5):
+    """既存キャッシュを参照しつつ、未取得展覧会の詳細を最大max_to_fetch件取得。"""
+    details_cache = _load_details_cache()
+    today = _now_tw()
+    targets = []
+    for ex in exhibitions:
+        link = ex.get("link", "")
+        if not link or "facebook.com" in link or link.count("/") < 4:
+            continue
+        cached = details_cache.get(link)
+        if cached:
+            ex["artists"] = cached.get("artists", [])
+            ex["curator"] = cached.get("curator", "")
+            ex["description"] = cached.get("description", "")
+            try:
+                fetched_at = datetime.fromisoformat(cached.get("fetched_at", "2000-01-01"))
+                age_days = (today - fetched_at).total_seconds() / 86400
+                if age_days < DETAILS_TTL_DAYS:
+                    continue
+            except (ValueError, TypeError):
+                pass
+        targets.append((ex, link))
+
+    if targets:
+        logger.info("Enriching %d exhibitions (max %d this round)", len(targets), max_to_fetch)
+
+    for ex, link in targets[:max_to_fetch]:
+        details = _extract_exhibition_details(link)
+        if details:
+            details_cache[link] = details
+            ex["artists"] = details.get("artists", [])
+            ex["curator"] = details.get("curator", "")
+            ex["description"] = details.get("description", "")
+
+    if targets:
+        _save_details_cache(details_cache)
+
+
 def _load_fb_json(museum_id):
     """家PCが生成したfb_exhibitions.jsonから該当施設のデータを読む。"""
     fb_path = os.path.join(os.path.dirname(__file__), "fb_exhibitions.json")
@@ -1366,6 +1481,7 @@ def _do_scrape_all():
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
     all_exhibitions = _remove_expired(all_exhibitions)
+    _enrich_exhibitions(all_exhibitions, max_to_fetch=8)
     _save_cache(all_exhibitions)
     return all_exhibitions
 

@@ -200,6 +200,14 @@
     .ex-item:hover { border-left-color: var(--accent); background: var(--hover-bg); }
     .ex-title { font-size: 0.78rem; font-weight: 500; line-height: 1.4; }
     .ex-dates { font-size: 0.65rem; color: var(--text-sub); margin-top: 1px; }
+    .ex-artists {
+      font-size: 0.65rem; color: var(--text-sub);
+      margin-top: 2px; font-style: italic;
+    }
+    .ex-curator {
+      font-size: 0.6rem; color: var(--text-light);
+      margin-top: 1px;
+    }
     .badge-ending {
       display: inline-block; background: var(--red); color: #fff;
       font-size: 0.58rem; font-weight: 700;
@@ -289,6 +297,12 @@
               <span class="badge-ending">{{ ex.days_left }}d left</span>
               {% endif %}
             </div>
+            {% endif %}
+            {% if ex.artists %}
+            <div class="ex-artists">{{ ex.artists|join(' · ') }}</div>
+            {% endif %}
+            {% if ex.curator %}
+            <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
             {% endif %}
           {% if ex.link %}</a>{% else %}</div>{% endif %}
           {% endfor %}
