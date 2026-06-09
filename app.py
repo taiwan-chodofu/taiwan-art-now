@@ -325,6 +325,228 @@ TAISHIN_LABELS = {
 }
 
 
+@app.route("/archive")
+def archive():
+    """過去（終了済み）展覧会アーカイブ。"""
+    from scraper import load_archive
+    lang = request.args.get("lang", "ja")
+    if lang not in ARCHIVE_LABELS:
+        lang = "ja"
+    master = _load_master()
+    museum_names = {m["id"]: _get_localized(m["name"], lang) for m in master["museums"]}
+    items = []
+    for ex in load_archive():
+        items.append({
+            "title": _get_display_title(ex, lang),
+            "museum_name": museum_names.get(ex.get("museum", ""), ex.get("museum", "")),
+            "dates": ex.get("dates", ""),
+            "link": ex.get("link", ""),
+            "artists": ex.get("artists", []),
+        })
+    items.sort(key=lambda x: x["dates"], reverse=True)
+    return render_template(
+        "archive.html",
+        labels=ARCHIVE_LABELS[lang],
+        items=items,
+        current_lang=lang,
+    )
+
+
+ARCHIVE_LABELS = {
+    "en": {
+        "title": "Archive — Taiwan Art Now",
+        "subtitle": "Past exhibitions in Taiwan",
+        "back": "Exhibitions",
+        "no_data": "No archived exhibitions yet.",
+    },
+    "ja": {
+        "title": "アーカイブ — Taiwan Art Now",
+        "subtitle": "台湾の過去の展覧会",
+        "back": "展覧会情報",
+        "no_data": "まだアーカイブはありません。",
+    },
+    "zh": {
+        "title": "歷年展覽 — Taiwan Art Now",
+        "subtitle": "台灣過去的展覽",
+        "back": "展覽資訊",
+        "no_data": "暫無歷年展覽資料。",
+    },
+}
+
+
+@app.route("/search")
+def search():
+    """展覧会・アーティスト・施設の横断検索。"""
+    from scraper import fetch_all_exhibitions, get_artist_index
+    lang = request.args.get("lang", "ja")
+    if lang not in SEARCH_LABELS:
+        lang = "ja"
+    query = request.args.get("q", "").strip().lower()
+    results = {"exhibitions": [], "artists": [], "museums": []}
+    if query and len(query) >= 2:
+        master = _load_master()
+        museum_names = {m["id"]: _get_localized(m["name"], lang) for m in master["museums"]}
+        # 展覧会検索
+        for ex in fetch_all_exhibitions():
+            haystack = " ".join([
+                ex.get("title_en", ""), ex.get("title_zh", ""), ex.get("title_ja", ""),
+                " ".join(ex.get("artists", [])), ex.get("curator", ""),
+            ]).lower()
+            if query in haystack:
+                results["exhibitions"].append({
+                    "title": _get_display_title(ex, lang),
+                    "museum_name": museum_names.get(ex.get("museum", ""), ex.get("museum", "")),
+                    "dates": ex.get("dates", ""),
+                    "link": ex.get("link", ""),
+                    "artists": ex.get("artists", []),
+                })
+        # アーティスト検索
+        index = get_artist_index()
+        for key, info in index.items():
+            if query in info["name"].lower():
+                results["artists"].append({
+                    "key": key,
+                    "name": info["name"],
+                    "count": len(info["exhibitions"]),
+                })
+        results["artists"].sort(key=lambda x: -x["count"])
+        # 施設検索
+        for m in master["museums"]:
+            names_text = " ".join(str(v) for v in m.get("name", {}).values()).lower()
+            if query in names_text:
+                results["museums"].append({
+                    "id": m["id"],
+                    "name": _get_localized(m["name"], lang),
+                    "url": m.get("url", ""),
+                })
+    return render_template(
+        "search.html",
+        labels=SEARCH_LABELS[lang],
+        query=query,
+        results=results,
+        current_lang=lang,
+    )
+
+
+SEARCH_LABELS = {
+    "en": {
+        "title": "Search — Taiwan Art Now",
+        "placeholder": "Search exhibitions, artists, museums…",
+        "back": "Exhibitions",
+        "exhibitions": "Exhibitions",
+        "artists": "Artists",
+        "museums": "Museums",
+        "no_results": "No results.",
+        "type_to_search": "Type at least 2 characters to search.",
+    },
+    "ja": {
+        "title": "検索 — Taiwan Art Now",
+        "placeholder": "展覧会・アーティスト・美術館を検索…",
+        "back": "展覧会情報",
+        "exhibitions": "展覧会",
+        "artists": "アーティスト",
+        "museums": "美術館",
+        "no_results": "結果なし。",
+        "type_to_search": "2文字以上入力してください。",
+    },
+    "zh": {
+        "title": "搜尋 — Taiwan Art Now",
+        "placeholder": "搜尋展覽、藝術家、美術館…",
+        "back": "展覽資訊",
+        "exhibitions": "展覽",
+        "artists": "藝術家",
+        "museums": "美術館",
+        "no_results": "無結果。",
+        "type_to_search": "請輸入2個字元以上進行搜尋。",
+    },
+}
+
+
+@app.route("/artists")
+def artists_index():
+    """全アーティスト一覧ページ（展覧会数の多い順）。"""
+    from scraper import get_artist_index
+    lang = request.args.get("lang", "ja")
+    if lang not in ARTIST_LABELS:
+        lang = "ja"
+    index = get_artist_index()
+    artists_list = sorted(
+        [{"key": k, "name": v["name"], "count": len(v["exhibitions"])}
+         for k, v in index.items()],
+        key=lambda x: -x["count"],
+    )
+    return render_template(
+        "artists.html",
+        labels=ARTIST_LABELS[lang],
+        artists=artists_list,
+        current_lang=lang,
+    )
+
+
+@app.route("/artist/<artist_key>")
+def artist_detail(artist_key):
+    """アーティスト個別ページ。"""
+    from scraper import get_artist_index, MUSEUMS
+    lang = request.args.get("lang", "ja")
+    if lang not in ARTIST_LABELS:
+        lang = "ja"
+    index = get_artist_index()
+    info = index.get(artist_key)
+    if not info:
+        return render_template(
+            "artists.html",
+            labels=ARTIST_LABELS[lang],
+            artists=[],
+            current_lang=lang,
+            not_found=artist_key,
+        )
+    master = _load_master()
+    museum_names = {m["id"]: _get_localized(m["name"], lang) for m in master["museums"]}
+    exhibitions = []
+    for ex in info["exhibitions"]:
+        exhibitions.append({
+            "title": ex["title"],
+            "dates": ex["dates"],
+            "museum_name": museum_names.get(ex["museum"], ex["museum"]),
+            "link": ex["link"],
+        })
+    return render_template(
+        "artist_detail.html",
+        labels=ARTIST_LABELS[lang],
+        artist_name=info["name"],
+        exhibitions=exhibitions,
+        current_lang=lang,
+    )
+
+
+ARTIST_LABELS = {
+    "en": {
+        "title": "Artists — Taiwan Art Now",
+        "subtitle": "Artists exhibiting in Taiwan",
+        "back": "Exhibitions",
+        "exhibitions": "Exhibitions",
+        "venue": "Venue",
+        "no_data": "No exhibition data available yet for this artist.",
+    },
+    "ja": {
+        "title": "アーティスト一覧 — Taiwan Art Now",
+        "subtitle": "台湾で展示中のアーティスト",
+        "back": "展覧会情報",
+        "exhibitions": "展覧会",
+        "venue": "会場",
+        "no_data": "このアーティストの展覧会データはまだありません。",
+    },
+    "zh": {
+        "title": "藝術家 — Taiwan Art Now",
+        "subtitle": "在台灣展出的藝術家",
+        "back": "展覽資訊",
+        "exhibitions": "展覽",
+        "venue": "場地",
+        "no_data": "暫無此藝術家的展覽資料。",
+    },
+}
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。"""

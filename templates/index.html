@@ -70,6 +70,7 @@
       <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
+      <a href="/search?lang={{ current_lang }}" class="refresh-btn">🔍</a>
       <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn">↻</a>
     </nav>
   </header>
@@ -332,7 +333,13 @@
   </main>
 
   <footer class="site-footer">
-    <span><a href="/taishin?lang={{ current_lang }}" style="color:inherit;text-decoration:none">🏆 Taishin Arts Award Archive</a></span>
+    <span>
+      <a href="/taishin?lang={{ current_lang }}" style="color:inherit;text-decoration:none">🏆 Taishin</a>
+      &nbsp;·&nbsp;
+      <a href="/artists?lang={{ current_lang }}" style="color:inherit;text-decoration:none">👥 Artists</a>
+      &nbsp;·&nbsp;
+      <a href="/archive?lang={{ current_lang }}" style="color:inherit;text-decoration:none">📚 Archive</a>
+    </span>
     <span>Data: museum sites + artemperor.tw</span>
   </footer>
 

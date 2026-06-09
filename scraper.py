@@ -2,7 +2,7 @@
 
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import os
 import logging
@@ -1582,23 +1582,79 @@ def _normalize_date_str(s):
     return re.sub(r"[^\d]", "", s)
 
 
+ARCHIVE_FILE = os.path.join(os.path.dirname(__file__), "archive.json")
+ARCHIVE_RETENTION_DAYS = 365
+
+
 def _remove_expired(exhibitions):
-    """終了日が過去の展覧会を除去する。終了日不明のものは残す。"""
+    """終了日が過去の展覧会を除去する。終了済みは archive.json に蓄積。"""
     today = _now_tw()
     result = []
+    expired = []
     for ex in exhibitions:
         dates = ex.get("dates", "")
         date_matches = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", dates)
+        is_expired = False
         if len(date_matches) >= 2:
             y, m, d = int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
             try:
                 end_dt = datetime(y, m, d)
                 if end_dt < today:
+                    is_expired = True
+            except ValueError:
+                pass
+        if is_expired:
+            expired.append(ex)
+        else:
+            result.append(ex)
+    if expired:
+        _archive_exhibitions(expired)
+    return result
+
+
+def _archive_exhibitions(expired):
+    """終了済み展覧会をアーカイブに追加する（重複なし）。"""
+    archive = []
+    if os.path.exists(ARCHIVE_FILE):
+        try:
+            with open(ARCHIVE_FILE, "r", encoding="utf-8") as f:
+                archive = json.load(f).get("exhibitions", [])
+        except Exception:
+            archive = []
+    seen_keys = {(ex.get("museum"), ex.get("title_zh") or ex.get("title_en"), ex.get("dates")) for ex in archive}
+    for ex in expired:
+        key = (ex.get("museum"), ex.get("title_zh") or ex.get("title_en"), ex.get("dates"))
+        if key not in seen_keys:
+            archive.append(ex)
+            seen_keys.add(key)
+    # 古すぎるものは削除（1年以上前）
+    cutoff = _now_tw() - timedelta(days=ARCHIVE_RETENTION_DAYS)
+    keep = []
+    for ex in archive:
+        end_match = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", ex.get("dates", ""))
+        if len(end_match) >= 2:
+            try:
+                end_dt = datetime(int(end_match[1][0]), int(end_match[1][1]), int(end_match[1][2]))
+                if end_dt < cutoff:
                     continue
             except ValueError:
                 pass
-        result.append(ex)
-    return result
+        keep.append(ex)
+    text = json.dumps({"exhibitions": keep}, ensure_ascii=False, indent=2)
+    text = re.sub(r"[\ud800-\udfff]", "", text)
+    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+def load_archive():
+    """アーカイブされた終了済み展覧会を返す。"""
+    if not os.path.exists(ARCHIVE_FILE):
+        return []
+    try:
+        with open(ARCHIVE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f).get("exhibitions", [])
+    except Exception:
+        return []
 
 
 def _bg_refresh():
