@@ -143,14 +143,16 @@
       {% if edition.winners %}
       <div class="section-label">{{ labels.winners }}</div>
       {% for item in edition.winners %}
+      {% set display_title = item.title_ja if current_lang == 'ja' and item.title_ja else (item.title_en if current_lang == 'en' and item.title_en else item.title_zh) %}
+      {% set display_artist = item.artist_en if current_lang in ('en','ja') and item.artist_en else item.artist_zh %}
       <div class="award-item winner">
         <div class="award-category">{{ item.category_zh }}</div>
         <div class="award-title">
-          {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ item.title_zh }}</a>
-          {% else %}{{ item.title_zh }}{% endif %}
+          {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ display_title }}</a>
+          {% else %}{{ display_title }}{% endif %}
         </div>
-        <div class="award-artist">{{ item.artist_zh }}</div>
-        {% if item.description_zh %}
+        <div class="award-artist">{{ display_artist }}</div>
+        {% if item.description_zh and current_lang == 'zh' %}
         <div class="award-desc">{{ item.description_zh }}</div>
         {% endif %}
       </div>
@@ -160,13 +162,15 @@
       {% if edition.finalists %}
       <div class="section-label">{{ labels.finalists }} ({{ edition.finalists|length }})</div>
       {% for item in edition.finalists %}
+      {% set display_title = item.title_ja if current_lang == 'ja' and item.title_ja else (item.title_en if current_lang == 'en' and item.title_en else item.title_zh) %}
+      {% set display_artist = item.artist_en if current_lang in ('en','ja') and item.artist_en else item.artist_zh %}
       <div class="award-item">
         <div class="award-category finalist">{{ item.category_zh }}</div>
         <div class="award-title">
-          {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ item.title_zh }}</a>
-          {% else %}{{ item.title_zh }}{% endif %}
+          {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ display_title }}</a>
+          {% else %}{{ display_title }}{% endif %}
         </div>
-        <div class="award-artist">{{ item.artist_zh }}</div>
+        <div class="award-artist">{{ display_artist }}</div>
       </div>
       {% endfor %}
       {% endif %}
