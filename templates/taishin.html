@@ -160,7 +160,7 @@
         {% set display_artist = item.artist_en or item.artist_zh %}
       {% endif %}
       <div class="award-item winner">
-        <div class="award-category">{{ item.category_zh }}</div>
+        <div class="award-category">{{ category_map.get(item.category_zh, item.category_zh) }}</div>
         <div class="award-title">
           {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ display_title }}</a>
           {% else %}{{ display_title }}{% endif %}
@@ -184,7 +184,7 @@
         {% set display_artist = item.artist_en or item.artist_zh %}
       {% endif %}
       <div class="award-item">
-        <div class="award-category finalist">{{ item.category_zh }}</div>
+        <div class="award-category finalist">{{ category_map.get(item.category_zh, item.category_zh) }}</div>
         <div class="award-title">
           {% if item.detail_url %}<a href="{{ item.detail_url }}" target="_blank" rel="noopener">{{ display_title }}</a>
           {% else %}{{ display_title }}{% endif %}
