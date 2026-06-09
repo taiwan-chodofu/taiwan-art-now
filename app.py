@@ -29,6 +29,7 @@ UI_LABELS = {
         "cat_private": "Private",
         "open_today": "Open Today",
         "has_ex": "With Exhibitions",
+        "curator": "Curator",
     },
     "ja": {
         "title": "台湾 現代アート展覧会情報",
@@ -50,6 +51,7 @@ UI_LABELS = {
         "cat_private": "私立",
         "open_today": "本日開館",
         "has_ex": "展覧会あり",
+        "curator": "キュレーター",
     },
     "zh": {
         "title": "台灣當代藝術展覽資訊",
@@ -71,6 +73,7 @@ UI_LABELS = {
         "cat_private": "私立",
         "open_today": "今日開放",
         "has_ex": "有展覽",
+        "curator": "策展人",
     },
 }
 
@@ -205,6 +208,9 @@ def index():
             "days_left": _calc_days_left(end_dt),
             "location": ex.get("location", ""),
             "link": ex.get("link", ""),
+            "artists": ex.get("artists", []),
+            "curator": ex.get("curator", ""),
+            "description": ex.get("description", ""),
         })
 
     # 地域ごとにグループ化
