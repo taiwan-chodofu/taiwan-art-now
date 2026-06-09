@@ -79,12 +79,19 @@ UI_LABELS = {
 
 
 def _get_display_title(exhibition, lang):
-    """言語に応じた展覧会タイトルを返す。"""
-    key = f"title_{lang}"
-    title = exhibition.get(key, "")
-    if title:
-        return title
-    # フォールバック: en → zh → ja → pl
+    """言語に応じた展覧会タイトルを返す。
+    日本語/英語ページでは固有名詞は英語優先、中国語ページは中国語優先。
+    """
+    if lang == "zh":
+        for key in ["title_zh", "title_en", "title_ja"]:
+            if exhibition.get(key):
+                return exhibition[key]
+        return "(Untitled)"
+    # ja or en: 英語優先
+    for key in ["title_en", "title_ja", "title_zh"]:
+        if exhibition.get(key):
+            return exhibition[key]
+    # 旧フォールバック（互換のため残す）
     for fallback in ["title_en", "title_zh", "title_ja"]:
         if exhibition.get(fallback):
             return exhibition[fallback]
