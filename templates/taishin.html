@@ -152,8 +152,13 @@
       {% if edition.winners %}
       <div class="section-label">{{ labels.winners }}</div>
       {% for item in edition.winners %}
-      {% set display_title = item.title_ja if current_lang == 'ja' and item.title_ja else (item.title_en if current_lang == 'en' and item.title_en else item.title_zh) %}
-      {% set display_artist = item.artist_en if current_lang in ('en','ja') and item.artist_en else item.artist_zh %}
+      {% if current_lang == 'zh' %}
+        {% set display_title = item.title_zh or item.title_en %}
+        {% set display_artist = item.artist_zh %}
+      {% else %}
+        {% set display_title = item.title_en or item.title_ja or item.title_zh %}
+        {% set display_artist = item.artist_en or item.artist_zh %}
+      {% endif %}
       <div class="award-item winner">
         <div class="award-category">{{ item.category_zh }}</div>
         <div class="award-title">
@@ -171,8 +176,13 @@
       {% if edition.finalists %}
       <div class="section-label">{{ labels.finalists }} ({{ edition.finalists|length }})</div>
       {% for item in edition.finalists %}
-      {% set display_title = item.title_ja if current_lang == 'ja' and item.title_ja else (item.title_en if current_lang == 'en' and item.title_en else item.title_zh) %}
-      {% set display_artist = item.artist_en if current_lang in ('en','ja') and item.artist_en else item.artist_zh %}
+      {% if current_lang == 'zh' %}
+        {% set display_title = item.title_zh or item.title_en %}
+        {% set display_artist = item.artist_zh %}
+      {% else %}
+        {% set display_title = item.title_en or item.title_ja or item.title_zh %}
+        {% set display_artist = item.artist_en or item.artist_zh %}
+      {% endif %}
       <div class="award-item">
         <div class="award-category finalist">{{ item.category_zh }}</div>
         <div class="award-title">
