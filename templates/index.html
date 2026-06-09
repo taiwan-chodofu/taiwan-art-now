@@ -264,7 +264,7 @@
     <section class="region-section" id="region-{{ region.id }}" data-region="{{ region.id }}">
       <div class="region-header">
         <span class="region-name">{{ region.name }}</span>
-        <span class="region-count">{{ region.museums|length }}</span>
+        <span class="region-count">{{ region.active_count }}</span>
       </div>
 
       {% for museum in region.museums %}
