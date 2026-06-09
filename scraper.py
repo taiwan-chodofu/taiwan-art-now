@@ -1242,7 +1242,15 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
     targets = []
     for ex in exhibitions:
         link = ex.get("link", "")
-        if not link or "facebook.com" in link or link.count("/") < 4:
+        if not link or "facebook.com" in link:
+            continue
+        # トップページのみのリンクは除外（クエリパラメータ付きやパス深いURLは詳細とみなす）
+        is_trunk = (
+            link.count("/") < 4
+            and "?" not in link
+            and "=" not in link
+        )
+        if is_trunk:
             continue
         cached = details_cache.get(link)
         if cached:
@@ -1481,9 +1489,22 @@ def _do_scrape_all():
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
     all_exhibitions = _remove_expired(all_exhibitions)
+    all_exhibitions = _filter_known_museums(all_exhibitions)
     _enrich_exhibitions(all_exhibitions, max_to_fetch=8)
     _save_cache(all_exhibitions)
     return all_exhibitions
+
+
+def _filter_known_museums(exhibitions):
+    """master.jsonに登録されている施設の展覧会のみ残す。"""
+    master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
+    try:
+        with open(master_path, "r", encoding="utf-8") as f:
+            master = json.load(f)
+        known_ids = {m["id"] for m in master.get("museums", [])}
+    except Exception:
+        return exhibitions
+    return [ex for ex in exhibitions if ex.get("museum") in known_ids]
 
 
 def _dedup_exhibitions(exhibitions):
