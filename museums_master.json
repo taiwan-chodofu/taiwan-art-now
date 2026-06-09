@@ -272,8 +272,8 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.ntmofa.gov.tw/News_Actives_photo.aspx?n=1462&sms=11893"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "chiayi",
@@ -1477,8 +1477,8 @@
         "zh": "週二至週六 13:00–19:00｜週日一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://projectfulfill.com/"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "derhorng",
