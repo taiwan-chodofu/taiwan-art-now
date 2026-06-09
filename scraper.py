@@ -1509,10 +1509,34 @@ def _do_scrape_all():
 
 def get_artist_index():
     """全展覧会から アーティスト→展覧会リスト のインデックスを生成。"""
-    cached = _load_cache_stale()
-    if not cached:
-        return {}
+    cached = _load_cache_stale() or []
+    details = _load_details_cache()
     index = {}
+
+    # link → 展覧会データのマップ
+    link_to_ex = {ex.get("link", ""): ex for ex in cached if ex.get("link")}
+
+    # 1. キャッシュ済み詳細データから（リッチ情報あり）
+    for link, detail in details.items():
+        ex = link_to_ex.get(link)
+        if not ex:
+            continue
+        for artist in detail.get("artists", []):
+            if not _is_valid_artist_name(artist):
+                continue
+            normalized = _normalize_artist_name(artist)
+            if not normalized:
+                continue
+            if normalized not in index:
+                index[normalized] = {"name": artist, "exhibitions": []}
+            index[normalized]["exhibitions"].append({
+                "title": ex.get("title_en") or ex.get("title_zh") or "",
+                "museum": ex.get("museum", ""),
+                "dates": ex.get("dates", ""),
+                "link": ex.get("link", ""),
+            })
+
+    # 2. 既にex内にartistsフィールドがある場合（家PCのfb_exhibitions等）
     for ex in cached:
         for artist in ex.get("artists", []):
             if not _is_valid_artist_name(artist):
@@ -1521,16 +1545,19 @@ def get_artist_index():
             if not normalized:
                 continue
             if normalized not in index:
-                index[normalized] = {
-                    "name": artist,
-                    "exhibitions": [],
-                }
-            index[normalized]["exhibitions"].append({
-                "title": ex.get("title_en") or ex.get("title_zh") or "",
-                "museum": ex.get("museum", ""),
-                "dates": ex.get("dates", ""),
-                "link": ex.get("link", ""),
-            })
+                index[normalized] = {"name": artist, "exhibitions": []}
+            # 重複チェック
+            already = any(
+                e.get("link") == ex.get("link", "") and e.get("title") == (ex.get("title_en") or ex.get("title_zh") or "")
+                for e in index[normalized]["exhibitions"]
+            )
+            if not already:
+                index[normalized]["exhibitions"].append({
+                    "title": ex.get("title_en") or ex.get("title_zh") or "",
+                    "museum": ex.get("museum", ""),
+                    "dates": ex.get("dates", ""),
+                    "link": ex.get("link", ""),
+                })
     return index
 
 
