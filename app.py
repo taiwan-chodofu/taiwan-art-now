@@ -298,7 +298,31 @@ def taishin():
         labels=TAISHIN_LABELS[lang],
         editions=editions,
         current_lang=lang,
+        category_map=TAISHIN_CATEGORY_LABELS.get(lang, {}),
     )
+
+
+TAISHIN_CATEGORY_LABELS = {
+    "ja": {
+        "視覺藝術獎": "視覚芸術賞",
+        "視覺藝術": "視覚芸術",
+        "表演藝術獎": "表演芸術賞",
+        "表演藝術": "表演芸術",
+        "年度大獎": "年度大賞",
+        "年度入選獎": "年度入選",
+        "評審團特別獎": "審査員特別賞",
+    },
+    "en": {
+        "視覺藝術獎": "Visual Arts Award",
+        "視覺藝術": "Visual Arts",
+        "表演藝術獎": "Performing Arts Award",
+        "表演藝術": "Performing Arts",
+        "年度大獎": "Grand Prize",
+        "年度入選獎": "Annual Selection",
+        "評審團特別獎": "Jury Special Prize",
+    },
+    "zh": {},
+}
 
 
 TAISHIN_LABELS = {
