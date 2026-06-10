@@ -770,7 +770,7 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "tinakeng_manual",
+      "scraper": "tinakeng",
       "exhibition_url": ""
     },
     {
@@ -842,7 +842,7 @@
         "zh": "週二至週日 10:00–18:30"
       },
       "closed_day": 0,
-      "scraper": "asiaart_manual",
+      "scraper": "asiaart",
       "exhibition_url": ""
     },
     {
