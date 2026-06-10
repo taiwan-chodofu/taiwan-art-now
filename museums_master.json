@@ -115,7 +115,9 @@
         "zh": "週二至週日 10:30–17:30｜週一休"
       },
       "closed_day": 0,
-      "scraper": "honggah"
+      "scraper": "honggah",
+      "lat": 25.131,
+      "lng": 121.507
     },
     {
       "id": "tfam",
@@ -138,7 +140,9 @@
         "zh": "週二至週日 9:30–17:30｜週六延長至20:30｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tfam_api"
+      "scraper": "tfam_api",
+      "lat": 25.0725,
+      "lng": 121.5247
     },
     {
       "id": "moca",
@@ -161,7 +165,9 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "moca"
+      "scraper": "moca",
+      "lat": 25.053,
+      "lng": 121.5181
     },
     {
       "id": "ncpi",
@@ -185,7 +191,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=8006&sms=15632"
+      "exhibition_url": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=8006&sms=15632",
+      "lat": 25.0475,
+      "lng": 121.513
     },
     {
       "id": "clab",
@@ -208,7 +216,9 @@
         "zh": "週二至週日 11:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "clab"
+      "scraper": "clab",
+      "lat": 25.0339,
+      "lng": 121.5342
     },
     {
       "id": "thecube",
@@ -231,7 +241,9 @@
         "zh": "週三至週日 13:00–19:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "thecube"
+      "scraper": "thecube",
+      "lat": 25.034,
+      "lng": 121.529
     },
     {
       "id": "kdmofa",
@@ -254,7 +266,9 @@
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "kdmofa"
+      "scraper": "kdmofa",
+      "lat": 25.1345,
+      "lng": 121.4625
     },
     {
       "id": "ntmofa",
@@ -278,7 +292,9 @@
       },
       "closed_day": 0,
       "scraper": "ntmofa_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 24.1418,
+      "lng": 120.6652
     },
     {
       "id": "chiayi",
@@ -301,7 +317,9 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "chiayi"
+      "scraper": "chiayi",
+      "lat": 23.482,
+      "lng": 120.439
     },
     {
       "id": "tnam",
@@ -325,7 +343,9 @@
       },
       "closed_day": 0,
       "scraper": "tnam",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 22.988,
+      "lng": 120.204
     },
     {
       "id": "kmfa",
@@ -349,7 +369,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.kmfa.gov.tw/exhibition"
+      "exhibition_url": "https://www.kmfa.gov.tw/exhibition",
+      "lat": 22.652,
+      "lng": 120.287
     },
     {
       "id": "ntcart",
@@ -372,7 +394,9 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "ntcart"
+      "scraper": "ntcart",
+      "lat": 25.006,
+      "lng": 121.44
     },
     {
       "id": "tmofa",
@@ -396,7 +420,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions"
+      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions",
+      "lat": 24.98,
+      "lng": 121.317
     },
     {
       "id": "ttam",
@@ -419,7 +445,9 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.755,
+      "lng": 121.145
     },
     {
       "id": "hcam",
@@ -514,7 +542,9 @@
         "zh": "週二至週五、週日 09:00–17:00｜週六 09:00–20:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tcma"
+      "scraper": "tcma",
+      "lat": 24.159,
+      "lng": 120.64
     },
     {
       "id": "fotoaura",
@@ -537,7 +567,9 @@
         "zh": "週三至週日 14:00–20:00｜週一二休（展覽期間）"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.995,
+      "lng": 120.194
     },
     {
       "id": "frees",
@@ -584,7 +616,9 @@
       },
       "closed_day": 0,
       "scraper": "absolute_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 22.992,
+      "lng": 120.197
     },
     {
       "id": "goodug",
@@ -630,7 +664,9 @@
         "zh": "週二至週日 11:00–19:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.62,
+      "lng": 120.28
     },
     {
       "id": "tav",
@@ -653,7 +689,9 @@
         "zh": "週二至週日 11:00–21:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tav"
+      "scraper": "tav",
+      "lat": 25.0073,
+      "lng": 121.5332
     },
     {
       "id": "lightbox",
@@ -747,7 +785,9 @@
         "zh": "預約制"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.996,
+      "lng": 120.195
     },
     {
       "id": "tinakeng",
@@ -771,7 +811,9 @@
       },
       "closed_day": 0,
       "scraper": "tinakeng",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.033,
+      "lng": 121.552
     },
     {
       "id": "tkgplus",
@@ -795,7 +837,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.tkgplus.com/en/exhibitions"
+      "exhibition_url": "https://www.tkgplus.com/en/exhibitions",
+      "lat": 25.034,
+      "lng": 121.552
     },
     {
       "id": "linlin",
@@ -843,7 +887,9 @@
       },
       "closed_day": 0,
       "scraper": "asiaart",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.038,
+      "lng": 121.559
     },
     {
       "id": "chiwen",
@@ -914,7 +960,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.eachmodern.com/exhibitions"
+      "exhibition_url": "https://www.eachmodern.com/exhibitions",
+      "lat": 25.051,
+      "lng": 121.543
     },
     {
       "id": "taoart",
@@ -1008,7 +1056,9 @@
       },
       "closed_day": 0,
       "scraper": "soka",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.049,
+      "lng": 121.543
     },
     {
       "id": "g333",
@@ -1079,7 +1129,9 @@
         "zh": "週二至週六 11:00–19:00"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 25.0288,
+      "lng": 121.528
     },
     {
       "id": "moon",
@@ -1126,7 +1178,9 @@
       },
       "closed_day": 0,
       "scraper": "jut",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.0418,
+      "lng": 121.5426
     },
     {
       "id": "fubon",
@@ -1150,7 +1204,9 @@
       },
       "closed_day": null,
       "scraper": "fubon",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.037,
+      "lng": 121.567
     },
     {
       "id": "juming",
@@ -1174,7 +1230,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.juming.org.tw"
+      "exhibition_url": "https://www.juming.org.tw",
+      "lat": 25.233,
+      "lng": 121.617
     },
     {
       "id": "yuhsiu",
@@ -1198,7 +1256,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.yu-hsiu.org/en/exhibition"
+      "exhibition_url": "https://www.yu-hsiu.org/en/exhibition",
+      "lat": 23.96,
+      "lng": 120.72
     },
     {
       "id": "alien",
@@ -1222,7 +1282,9 @@
       },
       "closed_day": 2,
       "scraper": "generic",
-      "exhibition_url": "https://www.alien.com.tw"
+      "exhibition_url": "https://www.alien.com.tw",
+      "lat": 22.628,
+      "lng": 120.291
     },
     {
       "id": "daxin",
@@ -1245,7 +1307,9 @@
         "zh": "預約制"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.989,
+      "lng": 120.21
     },
     {
       "id": "huashan",
@@ -1269,7 +1333,9 @@
       },
       "closed_day": null,
       "scraper": "huashan_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.044,
+      "lng": 121.529
     },
     {
       "id": "songshan",
@@ -1387,7 +1453,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.derhorng.com/"
+      "exhibition_url": "https://www.derhorng.com/",
+      "lat": 22.993,
+      "lng": 120.202
     },
     {
       "id": "yiriarts",
@@ -1434,7 +1502,9 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "pingtung"
+      "scraper": "pingtung",
+      "lat": 22.672,
+      "lng": 120.488
     },
     {
       "id": "montue",
@@ -1457,7 +1527,9 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "montue"
+      "scraper": "montue",
+      "lat": 25.0262,
+      "lng": 121.5383
     },
     {
       "id": "sssart",
@@ -1480,7 +1552,9 @@
         "zh": "週四至週日 11:00–17:30"
       },
       "closed_day": 0,
-      "scraper": "sssart_manual"
+      "scraper": "sssart_manual",
+      "lat": 25.148,
+      "lng": 121.41
     },
     {
       "id": "nmtl",
@@ -1503,7 +1577,9 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmtl_manual"
+      "scraper": "nmtl_manual",
+      "lat": 22.991,
+      "lng": 120.205
     },
     {
       "id": "nmth",
@@ -1526,7 +1602,9 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmth_manual"
+      "scraper": "nmth_manual",
+      "lat": 23.037,
+      "lng": 120.233
     }
   ]
 }
