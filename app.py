@@ -220,9 +220,9 @@ def _get_localized(obj, lang):
 @app.route("/")
 def index():
     """メインページ: 地域・カテゴリでグループ化して展覧会一覧を表示する。"""
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in UI_LABELS:
-        lang = "ja"
+        lang = "zh"
 
     force_refresh = request.args.get("refresh") == "1"
     if force_refresh:
@@ -329,9 +329,9 @@ def _is_closed_today(closed_day):
 @app.route("/taishin")
 def taishin():
     """台新藝術獎アーカイブページ。"""
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in TAISHIN_LABELS:
-        lang = "ja"
+        lang = "zh"
 
     taishin_path = os.path.join(os.path.dirname(__file__), "taishin_award.json")
     try:
@@ -408,9 +408,9 @@ TAISHIN_LABELS = {
 def archive():
     """過去（終了済み）展覧会アーカイブ。"""
     from scraper import load_archive
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in ARCHIVE_LABELS:
-        lang = "ja"
+        lang = "zh"
     master = _load_master()
     museum_names = {m["id"]: _get_localized(m["name"], lang) for m in master["museums"]}
     items = []
@@ -457,9 +457,9 @@ ARCHIVE_LABELS = {
 def search():
     """展覧会・アーティスト・施設の横断検索。"""
     from scraper import fetch_all_exhibitions, get_artist_index
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in SEARCH_LABELS:
-        lang = "ja"
+        lang = "zh"
     query = request.args.get("q", "").strip().lower()
     results = {"exhibitions": [], "artists": [], "museums": []}
     if query and len(query) >= 2:
@@ -545,9 +545,9 @@ SEARCH_LABELS = {
 def artists_index():
     """全アーティスト一覧ページ（展覧会数の多い順）。"""
     from scraper import get_artist_index
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in ARTIST_LABELS:
-        lang = "ja"
+        lang = "zh"
     index = get_artist_index()
     artists_list = sorted(
         [{"key": k, "name": v["name"], "count": len(v["exhibitions"])}
@@ -566,9 +566,9 @@ def artists_index():
 def artist_detail(artist_key):
     """アーティスト個別ページ。"""
     from scraper import get_artist_index, MUSEUMS
-    lang = request.args.get("lang", "ja")
+    lang = request.args.get("lang", "zh")
     if lang not in ARTIST_LABELS:
-        lang = "ja"
+        lang = "zh"
     index = get_artist_index()
     info = index.get(artist_key)
     if not info:
