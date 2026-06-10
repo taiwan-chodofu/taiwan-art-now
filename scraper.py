@@ -359,8 +359,11 @@ def _scrape_tfam_api():
         "X-Requested-With": "XMLHttpRequest",
         "Referer": f"{base}/Exhibition/Exhibition.aspx",
     }
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
     try:
-        payload = {"JJMethod": "GetEx", "Type": "1"}
+        # Type=3 で全件取得し、開催中・近日開始のみフィルタする
+        payload = {"JJMethod": "GetEx", "Type": "3"}
         try:
             resp = requests.post(
                 api_url, json=payload, headers=api_headers, timeout=15
@@ -379,18 +382,31 @@ def _scrape_tfam_api():
             end = item.get("EndDate", "")
             area = item.get("Area", "")
             ex_id = item.get("ExID", "")
+            if not name:
+                continue
+            # 開催中 or 90日以内に開始するもののみ
+            try:
+                if end:
+                    end_dt = datetime.strptime(end, "%Y/%m/%d")
+                    if end_dt < today:
+                        continue
+                if begin:
+                    begin_dt = datetime.strptime(begin, "%Y/%m/%d")
+                    if begin_dt > horizon:
+                        continue
+            except ValueError:
+                pass
             dates = f"{begin} - {end}" if begin and end else begin
             link = f"{base}/Exhibition/Exhibition_page.aspx?id={ex_id}"
-            if name:
-                exhibitions.append({
-                    "museum": "tfam",
-                    "title_en": "",
-                    "title_ja": "",
-                    "title_zh": name,
-                    "dates": dates,
-                    "location": area or "TFAM",
-                    "link": link,
-                })
+            exhibitions.append({
+                "museum": "tfam",
+                "title_en": "",
+                "title_ja": "",
+                "title_zh": name,
+                "dates": dates,
+                "location": area or "TFAM",
+                "link": link,
+            })
     except Exception as exc:
         logger.warning("TFAM API scrape failed: %s", exc)
     return exhibitions
