@@ -60,6 +60,25 @@
       font-size: 0.78rem;
     }
     .activity-item:hover { border-left-color: var(--accent); background: var(--hover-bg); }
+    .section-label-sm {
+      font-size: 0.65rem; font-weight: 600; color: var(--text-light);
+      margin: 10px 0 5px; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .exhibition-entry {
+      padding: 5px 12px; border-left: 3px solid var(--gold);
+      margin-bottom: 4px; font-size: 0.75rem;
+    }
+    .ex-venue {
+      font-weight: 600; margin-right: 8px;
+    }
+    .ex-name { color: var(--text-sub); }
+    .ex-period {
+      display: block; font-size: 0.65rem; color: var(--text-light); margin-top: 1px;
+    }
+    .activity-date {
+      font-size: 0.6rem; color: var(--text-light);
+      margin-right: 5px; font-variant-numeric: tabular-nums;
+    }
     .activity-source {
       font-size: 0.6rem; color: var(--text-light);
       background: var(--tag-bg); padding: 1px 5px; border-radius: 3px;
@@ -95,9 +114,22 @@
       </div>
       <div class="artist-zh">{{ artist.artist_zh }}</div>
 
+      {% if artist.current_exhibitions %}
+      <div class="section-label-sm">{{ labels.current_shows }}</div>
+      {% for ex in artist.current_exhibitions %}
+      <div class="exhibition-entry">
+        <span class="ex-venue">{{ ex.museum }}</span>
+        <span class="ex-name">{{ ex.title }}</span>
+        {% if ex.dates %}<span class="ex-period">{{ ex.dates }}</span>{% endif %}
+      </div>
+      {% endfor %}
+      {% endif %}
+
       {% if artist.articles %}
+      <div class="section-label-sm">{{ labels.recent_press }}</div>
       {% for art in artist.articles %}
       <a class="activity-item" href="{{ art.url }}" target="_blank" rel="noopener">
+        {% if art.date %}<span class="activity-date">{{ art.date }}</span>{% endif %}
         <span class="activity-source">{{ art.source }}</span>{{ art.title }}
       </a>
       {% endfor %}
