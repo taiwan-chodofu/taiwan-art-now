@@ -540,30 +540,6 @@
       "scraper": null
     },
     {
-      "id": "itpark",
-      "category": "alternative",
-      "region": "taipei",
-      "name": {
-        "en": "IT Park",
-        "ja": "伊通公園",
-        "zh": "伊通公園"
-      },
-      "address": {
-        "en": "No.41, Yitong St., Taipei",
-        "ja": "台北市中山區伊通街41號",
-        "zh": "臺北市中山區伊通街41號"
-      },
-      "url": "https://www.itpark.com.tw",
-      "hours": {
-        "en": "Tue–Sat 13:00–21:00 | Closed Sun–Mon",
-        "ja": "火〜土 13:00–21:00｜日月休",
-        "zh": "週二至週六 13:00–21:00｜週日一休"
-      },
-      "closed_day": 0,
-      "scraper": null,
-      "exhibition_url": ""
-    },
-    {
       "id": "frees",
       "category": "alternative",
       "region": "taipei",
@@ -917,30 +893,6 @@
       "exhibition_url": ""
     },
     {
-      "id": "eslite",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Eslite Gallery",
-        "ja": "誠品畫廊",
-        "zh": "誠品畫廊"
-      },
-      "address": {
-        "en": "B1, No.88, Yanchang Rd., Taipei",
-        "ja": "台北市信義區菸廠路88號B1",
-        "zh": "臺北市信義區菸廠路88號B1"
-      },
-      "url": "https://www.eslitegallery.com",
-      "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
-      },
-      "closed_day": 0,
-      "scraper": null,
-      "exhibition_url": ""
-    },
-    {
       "id": "eachmodern",
       "category": "commercial",
       "region": "taipei",
@@ -1035,30 +987,6 @@
       "scraper": null
     },
     {
-      "id": "doublesq",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Double Square Gallery",
-        "ja": "双方藝廊",
-        "zh": "双方藝廊"
-      },
-      "address": {
-        "en": "No.28, Ln.770, Bei'an Rd., Taipei",
-        "ja": "台北市中山區北安路770巷28號",
-        "zh": "臺北市中山區北安路770巷28號"
-      },
-      "url": "https://www.doublesquare.com.tw",
-      "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
-      },
-      "closed_day": 0,
-      "scraper": null,
-      "exhibition_url": ""
-    },
-    {
       "id": "soka",
       "category": "commercial",
       "region": "tainan",
@@ -1080,30 +1008,6 @@
       },
       "closed_day": 0,
       "scraper": "soka_manual",
-      "exhibition_url": ""
-    },
-    {
-      "id": "whitestone",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Whitestone Gallery Taipei",
-        "ja": "白石畫廊",
-        "zh": "白石畫廊"
-      },
-      "address": {
-        "en": "No.1, Jihu Rd., Taipei",
-        "ja": "台北市內湖區基湖路1號",
-        "zh": "臺北市內湖區基湖路1號"
-      },
-      "url": "https://www.whitestone-gallery.com",
-      "hours": {
-        "en": "Tue–Sat 10:00–18:00",
-        "ja": "火〜土 10:00–18:00",
-        "zh": "週二至週六 10:00–18:00"
-      },
-      "closed_day": 0,
-      "scraper": null,
       "exhibition_url": ""
     },
     {
@@ -1391,30 +1295,6 @@
       "scraper": null
     },
     {
-      "id": "pier2",
-      "category": "private",
-      "region": "kaohsiung",
-      "name": {
-        "en": "The Pier-2 Art Center",
-        "ja": "駁二藝術特區",
-        "zh": "駁二藝術特區"
-      },
-      "address": {
-        "en": "No.1, Dayong Rd., Kaohsiung",
-        "ja": "高雄市鹽埕區大勇路1號",
-        "zh": "高雄市鹽埕區大勇路1號"
-      },
-      "url": "https://pier2.org",
-      "hours": {
-        "en": "Mon–Thu 10:00–18:00 | Fri–Sun 10:00–20:00",
-        "ja": "月〜木 10:00–18:00｜金〜日 10:00–20:00",
-        "zh": "週一至週四 10:00–18:00｜週五至週日 10:00–20:00"
-      },
-      "closed_day": null,
-      "scraper": null,
-      "exhibition_url": ""
-    },
-    {
       "id": "cabcy",
       "category": "private",
       "region": "chiayi",
@@ -1578,6 +1458,29 @@
       },
       "closed_day": 0,
       "scraper": "montue_manual"
+    },
+    {
+      "id": "sssart",
+      "category": "alternative",
+      "region": "new_taipei",
+      "name": {
+        "en": "ss space space (SSS Art Space)",
+        "ja": "ss space space",
+        "zh": "ss space space"
+      },
+      "address": {
+        "en": "No. 199, Section 2, Zhonghua Rd., Bali Dist., New Taipei",
+        "ja": "新北市八里區中華路二段199號",
+        "zh": "新北市八里區中華路二段199號"
+      },
+      "url": "https://www.ssspacespace.work",
+      "hours": {
+        "en": "Thu–Sun 11:00–17:30",
+        "ja": "木〜日 11:00–17:30",
+        "zh": "週四至週日 11:00–17:30"
+      },
+      "closed_day": 0,
+      "scraper": "sssart_manual"
     }
   ]
 }
