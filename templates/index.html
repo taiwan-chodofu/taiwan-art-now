@@ -70,10 +70,40 @@
       <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
-      <a href="/search?lang={{ current_lang }}" class="refresh-btn">🔍</a>
-      <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn">↻</a>
+      <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
+      <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn" aria-label="Refresh" title="Refresh">↻</a>
     </nav>
   </header>
+
+  <!-- SUBNAV -->
+  <style>
+    .subnav {
+      max-width: 720px; margin: 0 auto;
+      padding: 6px 1rem;
+      display: flex; gap: 14px; align-items: center;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.7rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .subnav::-webkit-scrollbar { display: none; }
+    .subnav a {
+      color: var(--text-sub); text-decoration: none;
+      white-space: nowrap;
+      padding: 3px 0;
+      transition: color 0.15s;
+    }
+    .subnav a.current { color: var(--text); font-weight: 600; }
+    .subnav a:hover { color: var(--accent); }
+    .subnav-sep { color: var(--text-light); }
+  </style>
+  <nav class="subnav" aria-label="Site navigation">
+    <a href="/?lang={{ current_lang }}" class="current">{{ labels.title.split('—')[0].strip() if '—' in labels.title else 'Exhibitions' }}</a>
+    <span class="subnav-sep">·</span>
+    <a href="/taishin?lang={{ current_lang }}">🏆 Taishin Award</a>
+    <a href="/artists?lang={{ current_lang }}">👥 Artists</a>
+    <a href="/archive?lang={{ current_lang }}">📚 Archive</a>
+  </nav>
 
   <!-- FILTER BAR (sticky) -->
   <style>
@@ -142,10 +172,10 @@
     <div class="filter-section">
       <div class="filter-row" id="catFilters">
         <button class="filter-chip active" data-filter="cat" data-value="all">All</button>
-        <button class="filter-chip" data-filter="cat" data-value="public">🏛 {{ labels.cat_public }}</button>
-        <button class="filter-chip" data-filter="cat" data-value="alternative">⚡ {{ labels.cat_alt }}</button>
-        <button class="filter-chip" data-filter="cat" data-value="commercial">🖼 {{ labels.cat_commercial }}</button>
-        <button class="filter-chip" data-filter="cat" data-value="private">🏠 {{ labels.cat_private }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="public" aria-label="{{ labels.cat_public }}"><span aria-hidden="true">🏛</span> {{ labels.cat_public }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="alternative" aria-label="{{ labels.cat_alt }}"><span aria-hidden="true">⚡</span> {{ labels.cat_alt }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="commercial" aria-label="{{ labels.cat_commercial }}"><span aria-hidden="true">🖼</span> {{ labels.cat_commercial }}</button>
+        <button class="filter-chip" data-filter="cat" data-value="private" aria-label="{{ labels.cat_private }}"><span aria-hidden="true">🏠</span> {{ labels.cat_private }}</button>
       </div>
     </div>
     <div class="filter-section">
@@ -169,7 +199,17 @@
       display: flex; align-items: center; gap: 8px;
       padding: 6px 0; margin-bottom: 4px;
       border-bottom: 2px solid var(--accent);
+      cursor: pointer; user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
+    .region-header:hover .region-name { opacity: 0.7; }
+    .region-toggle {
+      margin-left: auto; font-size: 0.7rem; color: var(--text-light);
+      transition: transform 0.2s;
+    }
+    .region-section.collapsed .region-toggle { transform: rotate(-90deg); }
+    .region-section.collapsed .ex-list,
+    .region-section.collapsed .museum-card { display: none !important; }
     .region-name { font-size: 0.9rem; font-weight: 700; }
     .region-count {
       font-size: 0.6rem; color: var(--text-light);
@@ -256,6 +296,8 @@
     .tag-upcoming { background: #ecf3fb; color: #2980b9; border: 1px solid #b8dafa; }
     .ex-upcoming { border-left-color: #b8dafa; }
     .ex-upcoming:hover { border-left-color: #3498db; }
+    .ex-current { border-left-color: #c8e6c9; }
+    .ex-current:hover { border-left-color: #2ecc71; }
 
     .no-ex {
       font-size: 0.7rem; color: var(--text-light);
@@ -294,9 +336,10 @@
 
     {% for region in regions %}
     <section class="region-section" id="region-{{ region.id }}" data-region="{{ region.id }}">
-      <div class="region-header">
+      <div class="region-header" role="button" tabindex="0" aria-expanded="true">
         <span class="region-name">{{ region.name }}</span>
         <span class="region-count">{{ region.active_count }}</span>
+        <span class="region-toggle" aria-hidden="true">▾</span>
       </div>
 
       {% for museum in region.museums %}
@@ -362,7 +405,17 @@
             </div>
             {% endif %}
             {% if ex.artists %}
-            <div class="ex-artists">{{ ex.artists|join(' · ') }}</div>
+            <div class="ex-artists">
+              {% if ex.artists|length > 3 %}
+                {{ ex.artists[:3]|join(' · ') }}
+                {%- if current_lang == 'ja' %} 他{{ ex.artists|length - 3 }}名
+                {%- elif current_lang == 'zh' %} 等{{ ex.artists|length - 3 }}人
+                {%- else %} +{{ ex.artists|length - 3 }} more
+                {% endif %}
+              {% else %}
+                {{ ex.artists|join(' · ') }}
+              {% endif %}
+            </div>
             {% endif %}
             {% if ex.curator %}
             <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
@@ -386,14 +439,8 @@
   </main>
 
   <footer class="site-footer">
-    <span>
-      <a href="/taishin?lang={{ current_lang }}" style="color:inherit;text-decoration:none">🏆 Taishin</a>
-      &nbsp;·&nbsp;
-      <a href="/artists?lang={{ current_lang }}" style="color:inherit;text-decoration:none">👥 Artists</a>
-      &nbsp;·&nbsp;
-      <a href="/archive?lang={{ current_lang }}" style="color:inherit;text-decoration:none">📚 Archive</a>
-    </span>
-    <span>Data: museum sites + artemperor.tw</span>
+    <span>Taiwan Art Now</span>
+    <span>Data: museum sites · artemperor.tw · taishinart.org.tw</span>
   </footer>
 
   <!-- FILTER JS -->
@@ -535,6 +582,23 @@
 
     syncChipsFromState();
     applyFilters();
+
+    // Accordion: region header click toggles section
+    document.querySelectorAll('.region-header').forEach(function(header) {
+      var toggle = function() {
+        var section = header.closest('.region-section');
+        if (!section) return;
+        var collapsed = section.classList.toggle('collapsed');
+        header.setAttribute('aria-expanded', String(!collapsed));
+      };
+      header.addEventListener('click', toggle);
+      header.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
   })();
   </script>
 </body>
