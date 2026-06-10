@@ -904,6 +904,252 @@ def _scrape_artlogic_gallery(museum_id, exhibition_url, location_filter=None):
     return exhibitions
 
 
+def _scrape_fubon():
+    """富邦美術館 (Fubon Art Museum) から展覧会情報を取得する。
+    構造: 中文タイトル / 英文タイトル / YYYY.MM.DD - YYYY.MM.DD / 会場
+    の4行ブロックが繰り返し現れる。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    url = "https://www.fubonartmuseum.org/"
+    date_re = re.compile(r"^(\d{4})\.(\d{1,2})\.(\d{1,2})\s*-\s*(\d{4})\.(\d{1,2})\.(\d{1,2})$")
+    try:
+        soup = _fetch(url)
+        text = soup.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        i = 0
+        while i < len(lines) - 3:
+            m = date_re.match(lines[i + 2]) if i + 2 < len(lines) else None
+            if m:
+                title_zh = lines[i]
+                title_en = lines[i + 1]
+                venue = lines[i + 3] if i + 3 < len(lines) else ""
+                # 「美術館」が会場文字列に含まれているもののみ展覧会と判定
+                if "美術館" not in venue and "Museum" not in venue:
+                    i += 1
+                    continue
+                try:
+                    sy, sm, sd = int(m.group(1)), int(m.group(2)), int(m.group(3))
+                    ey, em, ed = int(m.group(4)), int(m.group(5)), int(m.group(6))
+                    start_dt = datetime(sy, sm, sd)
+                    end_dt = datetime(ey, em, ed)
+                    if end_dt < today or start_dt > horizon:
+                        i += 4
+                        continue
+                except ValueError:
+                    i += 1
+                    continue
+                if title_zh and 3 < len(title_zh) < 200:
+                    dates = f"{sy}/{sm:02d}/{sd:02d} - {ey}/{em:02d}/{ed:02d}"
+                    exhibitions.append({
+                        "museum": "fubon",
+                        "title_en": title_en or title_zh,
+                        "title_ja": "", "title_zh": title_zh,
+                        "dates": dates,
+                        "location": venue,
+                        "link": url,
+                    })
+                    i += 4
+                    continue
+            i += 1
+    except Exception as exc:
+        logger.warning("Fubon scrape failed: %s", exc)
+    return exhibitions
+
+
+def _scrape_jut():
+    """JUT Art Museum (忠泰美術館) から展覧会情報を取得する。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    base = "https://jam.jutfoundation.org.tw"
+    try:
+        for path in ["/en/online-exhibition", "/en/coming-exhibition"]:
+            url = base + path
+            try:
+                soup = _fetch(url)
+            except Exception:
+                continue
+            text = soup.get_text(separator="\n", strip=True)
+            lines = [l.strip() for l in text.split("\n") if l.strip()]
+            section_keywords = ("Current", "Forthcoming", "Upcoming", "Coming")
+            i = 0
+            while i < len(lines) - 4:
+                if lines[i] in section_keywords:
+                    title = lines[i + 1]
+                    start_str = lines[i + 2]
+                    sep = lines[i + 3]
+                    end_str = lines[i + 4]
+                    if (re.match(r"^\d{4}/\d{1,2}/\d{1,2}$", start_str) and
+                        sep in ("-", "–", "—") and
+                        re.match(r"^\d{4}/\d{1,2}/\d{1,2}$", end_str)):
+                        try:
+                            sy, sm, sd = [int(x) for x in start_str.split("/")]
+                            ey, em, ed = [int(x) for x in end_str.split("/")]
+                            start_dt = datetime(sy, sm, sd)
+                            end_dt = datetime(ey, em, ed)
+                            if end_dt < today or start_dt > horizon:
+                                i += 5
+                                continue
+                            if title and 3 < len(title) < 200:
+                                exhibitions.append({
+                                    "museum": "jut",
+                                    "title_en": title,
+                                    "title_ja": "", "title_zh": "",
+                                    "dates": f"{start_str} - {end_str}",
+                                    "location": "JUT Art Museum",
+                                    "link": url,
+                                })
+                                i += 5
+                                continue
+                        except ValueError:
+                            pass
+                i += 1
+    except Exception as exc:
+        logger.warning("JUT scrape failed: %s", exc)
+    return exhibitions
+
+
+def _scrape_soka():
+    """索卡藝術 (Soka Art) 台北・台南支店の展覧会情報を取得する。
+    詳細ページから location を確認して Taipei/Tainan のみ抽出。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    base = "https://www.soka-art.com"
+    list_url = f"{base}/en/exhibition"
+    months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,
+              "Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
+    date_re = re.compile(
+        r"(\w{3,9})\s+(\d{1,2})\s*[-–]\s*(\w{3,9})?\s*(\d{1,2}),?\s+(\d{4})"
+    )
+    try:
+        soup = _fetch(list_url)
+        items = soup.select(".exhibition-list-wrapper .item")
+        seen_links = set()
+        for item in items:
+            a = item.find("a", href=True)
+            if not a:
+                continue
+            href = a.get("href", "")
+            if not href.startswith("http"):
+                href = base + href
+            if href in seen_links:
+                continue
+            seen_links.add(href)
+            text = item.get_text(separator=" | ", strip=True)
+            # タイトル: h3 か itemの最初のテキスト断片
+            h3 = item.find("h3")
+            title = h3.get_text(strip=True) if h3 else ""
+            # 日付パターン
+            m = date_re.search(text)
+            if not m:
+                continue
+            try:
+                sm_str = m.group(1)[:3].title()
+                sm = months.get(sm_str, 0)
+                sd = int(m.group(2))
+                em_str = (m.group(3) or sm_str)[:3].title()
+                em = months.get(em_str, 0)
+                ed = int(m.group(4))
+                ey = int(m.group(5))
+                if not sm or not em:
+                    continue
+                sy = ey if (sm, sd) <= (em, ed) else ey - 1
+                start_dt = datetime(sy, sm, sd)
+                end_dt = datetime(ey, em, ed)
+                if end_dt < today or start_dt > horizon:
+                    continue
+            except (ValueError, KeyError):
+                continue
+            # location を確認するために詳細ページを取得
+            try:
+                detail = _fetch(href, timeout=8)
+                detail_text = detail.get_text(separator="\n", strip=True)
+                # 'Taipei' or 'Tainan' のロケーションを含むか
+                if not any(loc in detail_text for loc in ["Taipei", "Tainan"]):
+                    continue
+                location = "Soka Art Taipei" if "Taipei" in detail_text else "Soka Art Tainan"
+            except Exception:
+                location = "Soka Art"
+            if not title:
+                # itemから title らしきものを抽出
+                for line in text.split(" | "):
+                    line = line.strip()
+                    if line and len(line) > 5 and not date_re.search(line) and "View" not in line:
+                        title = line
+                        break
+            if title and len(title) > 3:
+                dates = f"{sy}/{sm:02d}/{sd:02d} - {ey}/{em:02d}/{ed:02d}"
+                exhibitions.append({
+                    "museum": "soka",
+                    "title_en": title,
+                    "title_ja": "", "title_zh": "",
+                    "dates": dates,
+                    "location": location,
+                    "link": href,
+                })
+    except Exception as exc:
+        logger.warning("Soka scrape failed: %s", exc)
+    return exhibitions
+
+
+def _scrape_tnam():
+    """臺南市美術館（TNAM）から展覧会情報を取得する。
+    構造: 開始日/開始時刻/終了日/終了時刻/タイトル/場所 の6行ブロック。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    base = "https://www.tnam.museum"
+    try:
+        for page_url in [f"{base}/exhibition/current", f"{base}/exhibition/upcoming"]:
+            try:
+                soup = _fetch(page_url)
+            except Exception:
+                continue
+            text = soup.get_text(separator="\n", strip=True)
+            lines = [l.strip() for l in text.split("\n") if l.strip()]
+            date_re = re.compile(r"^\d{4}/\d{1,2}/\d{1,2}$")
+            i = 0
+            while i < len(lines) - 5:
+                # パターン: YYYY/MM/DD / HH:MM / YYYY/MM/DD / HH:MM / Title / Venue
+                if (date_re.match(lines[i]) and
+                    re.match(r"^\d{1,2}:\d{2}$", lines[i + 1]) and
+                    date_re.match(lines[i + 2]) and
+                    re.match(r"^\d{1,2}:\d{2}$", lines[i + 3])):
+                    start = lines[i]
+                    end = lines[i + 2]
+                    title = lines[i + 4]
+                    venue = lines[i + 5] if i + 5 < len(lines) else ""
+                    try:
+                        sy, sm, sd = [int(x) for x in start.split("/")]
+                        ey, em, ed = [int(x) for x in end.split("/")]
+                        start_dt = datetime(sy, sm, sd)
+                        end_dt = datetime(ey, em, ed)
+                        if end_dt < today or start_dt > horizon:
+                            i += 1
+                            continue
+                    except ValueError:
+                        i += 1
+                        continue
+                    if title and 3 < len(title) < 200:
+                        dates = f"{start} - {end}"
+                        exhibitions.append({
+                            "museum": "tnam",
+                            "title_en": title,
+                            "title_ja": "", "title_zh": title,
+                            "dates": dates,
+                            "location": venue,
+                            "link": page_url,
+                        })
+                        i += 6
+                        continue
+                i += 1
+    except Exception as exc:
+        logger.warning("TNAM scrape failed: %s", exc)
+    return exhibitions
+
+
 def _scrape_pingtung():
     """屏東縣立美術館から展覧会情報を取得する。"""
     exhibitions = []
@@ -1694,6 +1940,10 @@ def _do_scrape_all():
             "tinakeng", "https://www.tinakenggallery.com/en/exhibitions", "Taipei")),
         "asiaart": lambda: _with_fallback("asiaart", lambda: _scrape_artlogic_gallery(
             "asiaart", "https://www.asiaartcenter.org/en/exhibitions", "Taipei")),
+        "tnam": lambda: _with_fallback("tnam", _scrape_tnam),
+        "soka": lambda: _with_fallback("soka", _scrape_soka),
+        "jut": lambda: _with_fallback("jut", _scrape_jut),
+        "fubon": lambda: _with_fallback("fubon", _scrape_fubon),
     }
     results = {}
     with ThreadPoolExecutor(max_workers=6) as executor:
@@ -1711,7 +1961,7 @@ def _do_scrape_all():
     ))
     for key in ["tfam", "honggah", "ntcart", "tcma", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
-                "montue", "pingtung", "tinakeng", "asiaart"]:
+                "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
         all_exhibitions.extend(results.get(key, []))
 
     # マスターデータから汎用スクレイパー対象を取得
