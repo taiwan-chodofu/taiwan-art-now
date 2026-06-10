@@ -163,7 +163,7 @@ MUSEUM_ORDER = ["honggah", "moca", "tfam", "clab", "thecube", "kdmofa", "ntcart"
 # 地域の表示順序（北→南→東）
 REGION_ORDER = [
     "taipei", "new_taipei", "taoyuan", "hsinchu", "yilan", "keelung",
-    "taichung", "nantou", "chiayi", "tainan", "kaohsiung",
+    "taichung", "nantou", "chiayi", "tainan", "kaohsiung", "pingtung",
     "hualien", "taitung",
 ]
 
