@@ -324,8 +324,8 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.tnam.museum/exhibition/current"
+      "scraper": "tnam_manual",
+      "exhibition_url": ""
     },
     {
       "id": "kmfa",
@@ -442,8 +442,8 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.hccc.gov.tw/en/exhibition"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "hcfam",
@@ -490,8 +490,8 @@
         "zh": "週四至週二 09:00–17:00｜週三休"
       },
       "closed_day": 2,
-      "scraper": "generic",
-      "exhibition_url": "https://www.lym.gov.tw/en/exhibition"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "tcma",
@@ -560,8 +560,8 @@
         "zh": "週二至週六 13:00–21:00｜週日一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.itpark.com.tw/exhibition"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "frees",
@@ -700,8 +700,8 @@
         "zh": "週三至週日 13:00–20:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.lightboxlib.org"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "fuzhong15",
@@ -747,8 +747,8 @@
         "zh": "週三至週一 10:00–19:00｜週二休"
       },
       "closed_day": 1,
-      "scraper": "generic",
-      "exhibition_url": "https://www.pon-ding.com"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "art182",
@@ -794,8 +794,8 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.tinakenggallery.com/en/exhibitions"
+      "scraper": "tinakeng_manual",
+      "exhibition_url": ""
     },
     {
       "id": "tkgplus",
@@ -842,8 +842,8 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.linlingallery.com"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "asiaart",
@@ -866,8 +866,8 @@
         "zh": "週二至週日 10:00–18:30"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.asiaartcenter.org/en/exhibitions"
+      "scraper": "asiaart_manual",
+      "exhibition_url": ""
     },
     {
       "id": "chiwen",
@@ -913,8 +913,8 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.lianggallery.com"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "eslite",
@@ -937,8 +937,8 @@
         "zh": "週二至週六 11:00–19:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.eslitegallery.com"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "eachmodern",
@@ -1008,8 +1008,8 @@
         "zh": "週二至週六 11:00–19:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.michaelkugallery.com/exhibitions"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "aki",
@@ -1055,8 +1055,8 @@
         "zh": "週二至週六 11:00–19:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.doublesquare.com.tw"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "soka",
@@ -1079,8 +1079,8 @@
         "zh": "週二至週日 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.soka-art.com/en/exhibition"
+      "scraper": "soka_manual",
+      "exhibition_url": ""
     },
     {
       "id": "whitestone",
@@ -1103,8 +1103,8 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.whitestone-gallery.com/exhibitions"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "g333",
@@ -1127,8 +1127,8 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.333-gallery.com/exhibitions"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "bluerider",
@@ -1221,8 +1221,8 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://jam.jutfoundation.org.tw/en/exhibition"
+      "scraper": "jut_manual",
+      "exhibition_url": ""
     },
     {
       "id": "fubon",
@@ -1238,15 +1238,15 @@
         "ja": "台北市信義區松高路79號",
         "zh": "臺北市信義區松高路79號"
       },
-      "url": "https://www.fubonart.org.tw",
+      "url": "https://www.fubonartmuseum.org/",
       "hours": {
         "en": "Daily 11:00–19:00",
         "ja": "毎日 11:00–19:00",
         "zh": "每日 11:00–19:00"
       },
       "closed_day": null,
-      "scraper": "generic",
-      "exhibition_url": "https://www.fubonart.org.tw/exhibition"
+      "scraper": "fubon_manual",
+      "exhibition_url": ""
     },
     {
       "id": "juming",
@@ -1364,8 +1364,8 @@
         "zh": "每日 09:30–21:00"
       },
       "closed_day": null,
-      "scraper": "generic",
-      "exhibition_url": "https://www.huashan1914.com"
+      "scraper": "huashan_manual",
+      "exhibition_url": ""
     },
     {
       "id": "songshan",
@@ -1411,8 +1411,8 @@
         "zh": "週一至週四 10:00–18:00｜週五至週日 10:00–20:00"
       },
       "closed_day": null,
-      "scraper": "generic",
-      "exhibition_url": "https://pier2.org/exhibition"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "cabcy",
@@ -1435,8 +1435,8 @@
         "zh": "週三至週日 09:00–17:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://cabcy.chiayi.gov.tw"
+      "scraper": null,
+      "exhibition_url": ""
     },
     {
       "id": "zhengbin",
@@ -1555,6 +1555,29 @@
       },
       "closed_day": 0,
       "scraper": "pingtung_manual"
+    },
+    {
+      "id": "montue",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "MoNTUE (Museum of NTUE)",
+        "ja": "北師美術館（MoNTUE）",
+        "zh": "北師美術館"
+      },
+      "address": {
+        "en": "No.134, Sec. 2, Heping E. Rd., Daan Dist., Taipei",
+        "ja": "台北市大安區和平東路二段134號",
+        "zh": "台北市大安區和平東路二段134號"
+      },
+      "url": "https://montue.ntue.edu.tw",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "montue_manual"
     }
   ]
 }
