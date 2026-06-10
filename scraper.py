@@ -1144,6 +1144,14 @@ def _scrape_generic(museum_id, exhibition_url):
             title = lines[i - 1] if i > 0 else line
             if len(title) < 3 or re.match(r"^\d{4}", title):
                 title = line.split(dates)[0].strip() if dates in line else line
+            # タイトル内に日付パターンが含まれる場合は除去
+            title = re.sub(
+                r"\s*\d{4}[./\-]\d{1,2}[./\-]\d{1,2}\s*[–—~\-]\s*\d{4}[./\-]\d{1,2}[./\-]\d{1,2}\s*$",
+                "", title,
+            ).strip()
+            title = re.sub(
+                r"\s*\d{4}[./\-]\d{1,2}[./\-]\d{1,2}\s*$", "", title,
+            ).strip()
             # タイトルは100文字以内、長すぎる場合は最初の文だけ取る
             if len(title) > 100:
                 first_segment = re.split(r"[。、，,\.!?！？]", title)[0]
@@ -1674,6 +1682,41 @@ ARCHIVE_RETENTION_DAYS = 365
 UPCOMING_HORIZON_DAYS = 90  # 3ヶ月先までを「近日開始」として扱う
 
 
+def _parse_date_range(dates_str):
+    """日付文字列から (start_dt, end_dt) を返す。取得失敗時は (None, None)。"""
+    if not dates_str:
+        return None, None
+    # 全角スラッシュを半角に
+    s = dates_str.replace("／", "/")
+    full_dates = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", s)
+    start_dt = None
+    end_dt = None
+    if len(full_dates) >= 1:
+        try:
+            start_dt = datetime(int(full_dates[0][0]), int(full_dates[0][1]), int(full_dates[0][2]))
+        except ValueError:
+            pass
+    if len(full_dates) >= 2:
+        try:
+            end_dt = datetime(int(full_dates[1][0]), int(full_dates[1][1]), int(full_dates[1][2]))
+        except ValueError:
+            pass
+    elif len(full_dates) == 1:
+        # 短縮終了日: "YYYY.MM.DD – MM.DD" or "YYYY.MM.DD - M/D"
+        short_end = re.search(r"[–—\-~]\s*(\d{1,2})[./\-](\d{1,2})\s*$", s)
+        if short_end:
+            try:
+                year = int(full_dates[0][0])
+                m, d = int(short_end.group(1)), int(short_end.group(2))
+                # 開始日より前の月日なら翌年
+                if start_dt and (m, d) < (start_dt.month, start_dt.day):
+                    year += 1
+                end_dt = datetime(year, m, d)
+            except ValueError:
+                pass
+    return start_dt, end_dt
+
+
 def _remove_expired(exhibitions):
     """終了日が過去の展覧会を除去 + 開始日が遠すぎる展覧会も除外。
     残った展覧会には status フィールドを付与する。"""
@@ -1683,29 +1726,19 @@ def _remove_expired(exhibitions):
     expired = []
     for ex in exhibitions:
         dates = ex.get("dates", "")
-        date_matches = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", dates)
+        start_dt, end_dt = _parse_date_range(dates)
         status = "unknown"
         is_expired = False
         skip_far_future = False
-        if len(date_matches) >= 2:
-            try:
-                start_dt = datetime(
-                    int(date_matches[0][0]), int(date_matches[0][1]), int(date_matches[0][2])
-                )
-                end_dt = datetime(
-                    int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
-                )
-                if end_dt < today:
-                    is_expired = True
-                elif start_dt > today:
-                    if start_dt > horizon:
-                        skip_far_future = True
-                    else:
-                        status = "upcoming"
-                else:
-                    status = "current"
-            except ValueError:
-                pass
+        if end_dt and end_dt < today:
+            is_expired = True
+        elif start_dt and start_dt > today:
+            if start_dt > horizon:
+                skip_far_future = True
+            else:
+                status = "upcoming"
+        elif start_dt and start_dt <= today:
+            status = "current"
         if is_expired:
             expired.append(ex)
             continue
