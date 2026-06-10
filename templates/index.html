@@ -80,6 +80,7 @@
       <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
+      <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
       <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn" aria-label="Refresh" title="Refresh">↻</a>
     </nav>
@@ -463,6 +464,95 @@
     <span>Taiwan Art Now</span>
     <span>Data: museum sites · artemperor.tw · taishinart.org.tw</span>
   </footer>
+
+  <!-- NEAR ME MODAL -->
+  <div id="nearMeModal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.5);">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--bg); border-radius:12px; padding:20px; max-width:90vw; width:400px; max-height:80vh; overflow-y:auto; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="font-size:0.9rem; font-weight:700;">📍 Near You — Open Today</h3>
+        <button onclick="document.getElementById('nearMeModal').style.display='none'" style="border:none; background:none; font-size:1.2rem; cursor:pointer; color:var(--text-light);">✕</button>
+      </div>
+      <div id="nearMeContent" style="font-size:0.75rem; color:var(--text-sub);">
+        Locating...
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // Museum coordinates data
+  var museumCoords = {
+    {% for region in regions %}{% for museum in region.museums %}{% if museum.exhibitions %}
+    "{{ museum.id }}": { name: "{{ museum.name }}", lat: {{ museum.lat|default(0) }}, lng: {{ museum.lng|default(0) }}, closed: {{ 'true' if museum.closed_today else 'false' }}, exCount: {{ museum.exhibitions|length }} },
+    {% endif %}{% endfor %}{% endfor %}
+  };
+
+  function showNearMe(e) {
+    e.preventDefault();
+    var modal = document.getElementById('nearMeModal');
+    var content = document.getElementById('nearMeContent');
+    modal.style.display = 'block';
+    content.innerHTML = '<p>📡 Getting your location...</p>';
+
+    if (!navigator.geolocation) {
+      content.innerHTML = '<p>Geolocation not supported.</p>';
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      var lat = pos.coords.latitude;
+      var lng = pos.coords.longitude;
+      var results = [];
+
+      for (var id in museumCoords) {
+        var m = museumCoords[id];
+        if (m.lat === 0 || m.closed) continue;
+        var dist = haversine(lat, lng, m.lat, m.lng);
+        if (dist <= 10) { // 10km以内
+          results.push({ id: id, name: m.name, dist: dist, exCount: m.exCount });
+        }
+      }
+
+      results.sort(function(a, b) { return a.dist - b.dist; });
+
+      if (results.length === 0) {
+        content.innerHTML = '<p>No open exhibitions found within 10km.</p>';
+        return;
+      }
+
+      var html = '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">Open museums within 10km:</div>';
+      results.slice(0, 8).forEach(function(r) {
+        var mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + museumCoords[r.id].lat + ',' + museumCoords[r.id].lng + '&travelmode=transit';
+        html += '<div style="padding:8px 0; border-bottom:1px solid var(--border);">';
+        html += '<div style="display:flex; justify-content:space-between; align-items:center;">';
+        html += '<span style="font-weight:600;">' + r.name + '</span>';
+        html += '<span style="font-size:0.6rem; color:#3498db; background:#ecf3fb; padding:2px 6px; border-radius:8px;">' + r.dist.toFixed(1) + 'km</span>';
+        html += '</div>';
+        html += '<div style="margin-top:4px;">';
+        html += '<a href="/nearby/' + r.id + '?lang={{ current_lang }}" style="font-size:0.65rem; color:var(--text-sub); text-decoration:none;">View exhibitions</a>';
+        html += ' · <a href="' + mapsUrl + '" target="_blank" style="font-size:0.65rem; color:#3498db; text-decoration:none;">🗺 Route</a>';
+        html += '</div></div>';
+      });
+      content.innerHTML = html;
+    }, function(err) {
+      content.innerHTML = '<p>Location access denied. Please allow location access.</p>';
+    }, { enableHighAccuracy: true, timeout: 10000 });
+  }
+
+  function haversine(lat1, lng1, lat2, lng2) {
+    var R = 6371;
+    var dLat = (lat2 - lat1) * Math.PI / 180;
+    var dLng = (lng2 - lng1) * Math.PI / 180;
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLng/2) * Math.sin(dLng/2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
+  // Close modal on background click
+  document.getElementById('nearMeModal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+  </script>
 
   <!-- FILTER JS -->
   <script>
