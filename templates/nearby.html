@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ museum_name }} — Nearby Exhibitions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
+      --accent: #000; --border: #e8e8e8; --tag-bg: #f5f5f3; --hover-bg: #fafafa;
+      --blue: #3498db;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #aaa; --text-light: #777;
+        --accent: #fff; --border: #333; --tag-bg: #2a2a2a; --hover-bg: #252525;
+        --blue: #74b9ff;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 14px;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 1rem;
+      max-width: 720px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-title { font-size: 1rem; font-weight: 700; }
+    .header-nav a {
+      color: var(--text-light); text-decoration: none; font-size: 0.7rem;
+      padding: 4px 8px; border-radius: 4px;
+    }
+    .header-nav a:hover { color: var(--accent); background: var(--tag-bg); }
+    main { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    .origin-label {
+      font-size: 0.75rem; color: var(--text-sub); margin-bottom: 1.5rem;
+    }
+    .origin-name { font-weight: 700; font-size: 1rem; color: var(--text); }
+    .nearby-card {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 16px; margin-bottom: 12px;
+      transition: border-color 0.15s;
+    }
+    .nearby-card:hover { border-color: var(--blue); }
+    .nearby-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .nearby-name { font-size: 0.85rem; font-weight: 600; }
+    .nearby-dist {
+      font-size: 0.65rem; color: var(--blue); font-weight: 600;
+      background: #ecf3fb; padding: 2px 8px; border-radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .nearby-dist { background: #1a2a3a; }
+    }
+    .nearby-ex {
+      font-size: 0.75rem; color: var(--text-sub);
+      padding: 3px 0 3px 10px; border-left: 2px solid var(--border);
+      margin-bottom: 3px;
+    }
+    .nearby-ex-title { font-weight: 500; }
+    .nearby-ex-dates { font-size: 0.65rem; color: var(--text-light); }
+    .empty-msg {
+      text-align: center; padding: 3rem 1rem;
+      color: var(--text-light); font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-title">📍 Nearby</div>
+    <nav class="header-nav">
+      <a href="/?lang={{ current_lang }}">← Back</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="origin-label">
+      Showing exhibitions near<br>
+      <span class="origin-name">{{ museum_name }}</span>
+    </div>
+
+    {% if nearby %}
+    {% for venue in nearby %}
+    <div class="nearby-card">
+      <div class="nearby-header">
+        <span class="nearby-name">{{ venue.name }}</span>
+        <span class="nearby-dist">{{ venue.distance_km }}km</span>
+      </div>
+      {% for ex in venue.exhibitions %}
+      <div class="nearby-ex">
+        <div class="nearby-ex-title">{{ ex.title }}</div>
+        {% if ex.dates %}<div class="nearby-ex-dates">{{ ex.dates }}</div>{% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="empty-msg">No nearby exhibitions found within 5km.</div>
+    {% endif %}
+  </main>
+</body>
+</html>
