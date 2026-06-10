@@ -79,6 +79,8 @@
       font-size: 0.6rem; color: var(--text-light);
       margin-right: 5px; font-variant-numeric: tabular-nums;
     }
+    .activity-item.intl { border-left-color: #3498db; }
+    .activity-item.intl:hover { border-left-color: #2980b9; background: #ecf3fb; }
     .activity-source {
       font-size: 0.6rem; color: var(--text-light);
       background: var(--tag-bg); padding: 1px 5px; border-radius: 3px;
@@ -125,15 +127,28 @@
       {% endfor %}
       {% endif %}
 
-      {% if artist.articles %}
+      {% set intl_articles = artist.articles|selectattr('international')|list %}
+      {% set local_articles = artist.articles|rejectattr('international')|list %}
+
+      {% if intl_articles %}
+      <div class="section-label-sm">🌏 {{ labels.international }}</div>
+      {% for art in intl_articles %}
+      <a class="activity-item intl" href="{{ art.url }}" target="_blank" rel="noopener">
+        {% if art.date %}<span class="activity-date">{{ art.date }}</span>{% endif %}
+        <span class="activity-source">{{ art.source }}</span>{{ art.title }}
+      </a>
+      {% endfor %}
+      {% endif %}
+
+      {% if local_articles %}
       <div class="section-label-sm">{{ labels.recent_press }}</div>
-      {% for art in artist.articles %}
+      {% for art in local_articles %}
       <a class="activity-item" href="{{ art.url }}" target="_blank" rel="noopener">
         {% if art.date %}<span class="activity-date">{{ art.date }}</span>{% endif %}
         <span class="activity-source">{{ art.source }}</span>{{ art.title }}
       </a>
       {% endfor %}
-      {% else %}
+      {% elif not intl_articles %}
       <div style="font-size:0.75rem; color:var(--text-light); padding:8px 12px;">{{ labels.no_articles }}</div>
       {% endif %}
     </section>
