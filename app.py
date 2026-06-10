@@ -404,6 +404,76 @@ TAISHIN_LABELS = {
 }
 
 
+@app.route("/featured")
+def featured():
+    """台新賞受賞アーティストの動向ページ。"""
+    lang = request.args.get("lang", "zh")
+    if lang not in FEATURED_LABELS:
+        lang = "zh"
+
+    activities_path = os.path.join(os.path.dirname(__file__), "artist_activities.json")
+    taishin_path = os.path.join(os.path.dirname(__file__), "taishin_award.json")
+
+    artists_data = []
+    try:
+        with open(activities_path, "r", encoding="utf-8") as f:
+            activities = json.load(f).get("artists", {})
+        with open(taishin_path, "r", encoding="utf-8") as f:
+            taishin = json.load(f)
+
+        # 対象: 直近10年の視覚芸術賞+年度大賞
+        target_cats = ["視覺藝術獎", "年度大獎"]
+        for ed in reversed(taishin.get("editions", [])):
+            if ed["edition"] < 15:
+                break
+            for w in ed.get("winners", []):
+                if w.get("category_zh") not in target_cats:
+                    continue
+                en = w.get("artist_en", "")
+                zh = w.get("artist_zh", "")
+                if not en:
+                    continue
+                activity = activities.get(en, {})
+                artists_data.append({
+                    "artist_en": en,
+                    "artist_zh": zh,
+                    "edition": ed["edition"],
+                    "category": w.get("category_zh", ""),
+                    "articles": activity.get("articles", []),
+                })
+    except Exception:
+        pass
+
+    return render_template(
+        "featured.html",
+        labels=FEATURED_LABELS[lang],
+        artists=artists_data,
+        current_lang=lang,
+    )
+
+
+FEATURED_LABELS = {
+    "en": {
+        "title": "Featured Artists — Taiwan Art Now",
+        "subtitle": "Recent activities of Taishin Arts Award visual arts winners",
+        "intro": "Tracking the latest exhibitions and activities of Taishin Arts Award winners in visual arts and grand prize categories (2016–present). Articles sourced from ARTouch and other media.",
+        "back": "Exhibitions",
+    },
+    "ja": {
+        "title": "注目アーティスト — Taiwan Art Now",
+        "subtitle": "台新芸術賞 視覚芸術賞受賞者の最新動向",
+        "intro": "台新芸術賞の視覚芸術賞・年度大賞の受賞者（2016年以降）の最新展示活動を追跡しています。記事はARTouch等のメディアから収集。",
+        "back": "展覧会情報",
+    },
+    "zh": {
+        "title": "焦點藝術家 — Taiwan Art Now",
+        "subtitle": "台新藝術獎視覺藝術得主近期動態",
+        "intro": "追蹤台新藝術獎視覺藝術獎與年度大獎得主（2016年至今）的最新展覽活動。報導來源為典藏ARTouch等藝術媒體。",
+        "back": "展覽資訊",
+    },
+}
+
+
 @app.route("/archive")
 def archive():
     """過去（終了済み）展覧会アーカイブ。"""
