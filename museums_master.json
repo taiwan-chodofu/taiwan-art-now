@@ -1434,7 +1434,7 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "pingtung_manual"
+      "scraper": "pingtung"
     },
     {
       "id": "montue",
@@ -1457,7 +1457,7 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "montue_manual"
+      "scraper": "montue"
     },
     {
       "id": "sssart",
@@ -1481,6 +1481,52 @@
       },
       "closed_day": 0,
       "scraper": "sssart_manual"
+    },
+    {
+      "id": "nmtl",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "National Museum of Taiwan Literature",
+        "ja": "国立台湾文学館",
+        "zh": "國立臺灣文學館"
+      },
+      "address": {
+        "en": "No.1, Zhongzheng Rd., West Central Dist., Tainan",
+        "ja": "台南市中西區中正路1號",
+        "zh": "台南市中西區中正路1號"
+      },
+      "url": "https://www.nmtl.gov.tw/",
+      "hours": {
+        "en": "Tue–Sun 09:00–18:00 | Closed Mon",
+        "ja": "火〜日 09:00–18:00｜月休",
+        "zh": "週二至週日 09:00–18:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "nmtl_manual"
+    },
+    {
+      "id": "nmth",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "National Museum of Taiwan History",
+        "ja": "国立台湾歴史博物館",
+        "zh": "國立臺灣歷史博物館"
+      },
+      "address": {
+        "en": "No.250, Sec. 1, Changhe Rd., Annan Dist., Tainan",
+        "ja": "台南市安南區長和路一段250號",
+        "zh": "台南市安南區長和路一段250號"
+      },
+      "url": "https://www.nmth.gov.tw/",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 09:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "nmth_manual"
     }
   ]
 }
