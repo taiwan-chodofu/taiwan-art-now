@@ -433,6 +433,10 @@ def featured():
                 zh = w.get("artist_zh", "")
                 if not en:
                     continue
+                # 表演芸術系を除外（視覚芸術フォーカス）
+                performing_keywords = ["劇團", "舞團", "劇場", "Theatre", "Dance", "Troupe"]
+                if any(kw in zh or kw in en for kw in performing_keywords):
+                    continue
                 activity = activities.get(en, {})
                 artists_data.append({
                     "artist_en": en,
@@ -458,18 +462,21 @@ FEATURED_LABELS = {
         "subtitle": "Recent activities of Taishin Arts Award visual arts winners",
         "intro": "Tracking the latest exhibitions and activities of Taishin Arts Award winners in visual arts and grand prize categories (2016–present). Articles sourced from ARTouch and other media.",
         "back": "Exhibitions",
+        "no_articles": "No recent articles found.",
     },
     "ja": {
         "title": "注目アーティスト — Taiwan Art Now",
         "subtitle": "台新芸術賞 視覚芸術賞受賞者の最新動向",
         "intro": "台新芸術賞の視覚芸術賞・年度大賞の受賞者（2016年以降）の最新展示活動を追跡しています。記事はARTouch等のメディアから収集。",
         "back": "展覧会情報",
+        "no_articles": "最近の記事が見つかりません。",
     },
     "zh": {
         "title": "焦點藝術家 — Taiwan Art Now",
         "subtitle": "台新藝術獎視覺藝術得主近期動態",
         "intro": "追蹤台新藝術獎視覺藝術獎與年度大獎得主（2016年至今）的最新展覽活動。報導來源為典藏ARTouch等藝術媒體。",
         "back": "展覽資訊",
+        "no_articles": "暫無近期報導。",
     },
 }
 
