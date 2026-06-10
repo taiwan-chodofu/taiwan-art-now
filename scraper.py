@@ -808,6 +808,102 @@ def _scrape_kdmofa():
     return exhibitions
 
 
+def _scrape_artlogic_gallery(museum_id, exhibition_url, location_filter=None):
+    """Artlogic CMS（Tina Keng, Asia Art Center 等）から展覧会情報を取得する。
+    日付パターン (例: '23 May - 11 Jul 2026') を持つ行を中心に、
+    その前にあるタイトル + 後にある場所を抽出する。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    date_re = re.compile(
+        r"^(\d{1,2})\s+(\w{3,9})\s*[–-]\s*(\d{1,2})\s+(\w{3,9})\s+(\d{4})$"
+    )
+    try:
+        soup = _fetch(exhibition_url)
+        text = soup.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        # 「Past」セクションの開始位置を検出
+        past_start = len(lines)
+        for idx, l in enumerate(lines):
+            if l in ("Past", "Archive", "Past Exhibition", "Past Exhibitions"):
+                # ヘッダーがコンテンツの前後どちらにあるか判定
+                # コンテンツ前: 後にもう一度「Current」が出る
+                later = lines[idx + 1: idx + 30]
+                if any(x in ("Current", "Current Exhibition") for x in later):
+                    continue  # ナビゲーション、無視
+                past_start = idx
+                break
+
+        i = 0
+        while i < min(past_start, len(lines)):
+            line = lines[i]
+            # 日付行を見つける
+            m = date_re.match(line)
+            if m and i > 0:
+                pass  # 後段で処理
+            else:
+                i += 1
+                continue
+            i += 1  # 日付行を進める前に
+            i -= 1  # 元に戻す（下のロジックで処理）
+            break
+        # 日付行を全部探す
+        for idx in range(past_start):
+            line = lines[idx]
+            m = date_re.match(line)
+            if not m:
+                continue
+            # 前の行: タイトル（または subtitle、その前が title）
+            prev1 = lines[idx - 1] if idx >= 1 else ""
+            prev2 = lines[idx - 2] if idx >= 2 else ""
+            # タイトル候補: prev2が短く意味あり且つprev1がサブタイトル
+            if prev2 and 3 < len(prev2) < 100 and not date_re.match(prev2) and prev2 not in (
+                "Current", "Past", "Forthcoming", "Current Exhibition", "Past Exhibition"
+            ):
+                title = prev2
+                subtitle = prev1
+            else:
+                title = prev1
+                subtitle = ""
+            # 後の行: location
+            loc_line = lines[idx + 1] if idx + 1 < past_start else ""
+            # 日付パース
+            months = {"Jan":1,"Feb":2,"Mar":3,"Apr":4,"May":5,"Jun":6,
+                      "Jul":7,"Aug":8,"Sep":9,"Oct":10,"Nov":11,"Dec":12}
+            try:
+                sd = int(m.group(1))
+                sm = months.get(m.group(2)[:3].title(), 0)
+                ed = int(m.group(3))
+                em = months.get(m.group(4)[:3].title(), 0)
+                ey = int(m.group(5))
+                sy = ey if (sm, sd) <= (em, ed) else ey - 1
+                if not sm or not em:
+                    continue
+                start_dt = datetime(sy, sm, sd)
+                end_dt = datetime(ey, em, ed)
+                if end_dt < today or start_dt > horizon:
+                    continue
+                if location_filter and location_filter.lower() not in loc_line.lower():
+                    continue
+                if not title or len(title) < 3:
+                    continue
+                dates = f"{sy}/{sm:02d}/{sd:02d} - {ey}/{em:02d}/{ed:02d}"
+                full_title = f"{title} — {subtitle}" if subtitle and subtitle != title else title
+                exhibitions.append({
+                    "museum": museum_id,
+                    "title_en": full_title,
+                    "title_ja": "", "title_zh": "",
+                    "dates": dates,
+                    "location": loc_line,
+                    "link": exhibition_url,
+                })
+            except (ValueError, KeyError):
+                continue
+    except Exception as exc:
+        logger.warning("Artlogic scrape failed for %s: %s", museum_id, exc)
+    return exhibitions
+
+
 def _scrape_pingtung():
     """屏東縣立美術館から展覧会情報を取得する。"""
     exhibitions = []
@@ -1594,6 +1690,10 @@ def _do_scrape_all():
         "tav": lambda: _with_fallback("tav", _scrape_tav),
         "montue": lambda: _with_fallback("montue", _scrape_montue),
         "pingtung": lambda: _with_fallback("pingtung", _scrape_pingtung),
+        "tinakeng": lambda: _with_fallback("tinakeng", lambda: _scrape_artlogic_gallery(
+            "tinakeng", "https://www.tinakenggallery.com/en/exhibitions", "Taipei")),
+        "asiaart": lambda: _with_fallback("asiaart", lambda: _scrape_artlogic_gallery(
+            "asiaart", "https://www.asiaartcenter.org/en/exhibitions", "Taipei")),
     }
     results = {}
     with ThreadPoolExecutor(max_workers=6) as executor:
@@ -1611,7 +1711,7 @@ def _do_scrape_all():
     ))
     for key in ["tfam", "honggah", "ntcart", "tcma", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
-                "montue", "pingtung"]:
+                "montue", "pingtung", "tinakeng", "asiaart"]:
         all_exhibitions.extend(results.get(key, []))
 
     # マスターデータから汎用スクレイパー対象を取得
