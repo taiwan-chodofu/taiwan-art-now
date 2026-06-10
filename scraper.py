@@ -1603,8 +1603,18 @@ def _filter_known_museums(exhibitions):
     return [ex for ex in exhibitions if ex.get("museum") in known_ids]
 
 
+def _normalize_title_for_compare(title):
+    """タイトル比較用の正規化（括弧・記号・空白を除去して小文字化）。"""
+    if not title:
+        return ""
+    # 括弧類とよく使われる装飾記号を除去
+    t = re.sub(r"[【】《》「」『』\[\]()（）\s\.,，。\-－—–:：;；!！\?？]+", "", title.lower())
+    return t
+
+
 def _dedup_exhibitions(exhibitions):
-    """同一museum内のタイトル重複（完全一致・包含関係）を除去する。"""
+    """同一museum内のタイトル重複（完全一致・包含関係）を除去する。
+    artemperor.tw 由来は優先的に除外する（公式ソース優先）。"""
     from collections import defaultdict
     by_museum = defaultdict(list)
     for ex in exhibitions:
@@ -1615,29 +1625,36 @@ def _dedup_exhibitions(exhibitions):
         if len(items) < 2:
             result.extend(items)
             continue
+        # artemperor由来を末尾にソート（除外されやすくする）
+        items_sorted = sorted(items, key=lambda x: 1 if "artemperor" in x.get("link", "") else 0)
         keep = []
         seen_keys = set()
-        for item in items:
+        seen_norm_titles = []
+        for item in items_sorted:
             title = item.get("title_en", "") or item.get("title_zh", "") or ""
             dates_norm = _normalize_date_str(item.get("dates", ""))
-            # 完全一致（タイトル+日付）
-            exact_key = (title.strip().lower(), dates_norm)
+            norm_title = _normalize_title_for_compare(title)
+            # 完全一致（正規化タイトル+日付）
+            exact_key = (norm_title, dates_norm)
             if exact_key in seen_keys:
                 continue
-            # タイトル包含 + 日付一致
-            is_subset = False
-            for other in items:
-                if other is item:
+            # 既存タイトルと包含関係（正規化後）
+            is_subset_or_dup = False
+            for kept_norm, kept_dates in seen_norm_titles:
+                if not norm_title or not kept_norm:
                     continue
-                other_title = other.get("title_en", "") or other.get("title_zh", "") or ""
-                other_dates_norm = _normalize_date_str(other.get("dates", ""))
-                if not title or not other_title:
-                    continue
-                if title in other_title and title != other_title and dates_norm == other_dates_norm:
-                    is_subset = True
+                # 同日程かつ片方が他方を含む
+                if dates_norm and dates_norm == kept_dates:
+                    if norm_title in kept_norm or kept_norm in norm_title:
+                        is_subset_or_dup = True
+                        break
+                # 日付不明同士で完全一致
+                elif not dates_norm and not kept_dates and norm_title == kept_norm:
+                    is_subset_or_dup = True
                     break
-            if not is_subset:
+            if not is_subset_or_dup:
                 seen_keys.add(exact_key)
+                seen_norm_titles.append((norm_title, dates_norm))
                 keep.append(item)
         result.extend(keep)
     return result

@@ -296,6 +296,9 @@ def index():
             })
 
         active_count = sum(1 for me in museum_entries if me["has_current"])
+        upcoming_count = sum(1 for me in museum_entries if me["has_upcoming"])
+        if active_count == 0 and upcoming_count == 0:
+            continue
         regions_data.append({
             "id": region_id,
             "name": _get_localized(
