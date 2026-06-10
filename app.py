@@ -468,6 +468,7 @@ FEATURED_LABELS = {
         "back": "Exhibitions",
         "no_articles": "No recent articles found.",
         "current_shows": "Current Exhibitions",
+        "international": "International",
         "recent_press": "Recent Press",
     },
     "ja": {
@@ -477,6 +478,7 @@ FEATURED_LABELS = {
         "back": "展覧会情報",
         "no_articles": "最近の記事が見つかりません。",
         "current_shows": "現在の展示",
+        "international": "国際的な活動",
         "recent_press": "最近の記事",
     },
     "zh": {
@@ -486,6 +488,7 @@ FEATURED_LABELS = {
         "back": "展覽資訊",
         "no_articles": "暫無近期報導。",
         "current_shows": "現正展出",
+        "international": "國際動態",
         "recent_press": "近期報導",
     },
 }
