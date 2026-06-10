@@ -292,6 +292,8 @@ def index():
                 "has_schedule": m.get("closed_day") is not None,
                 "has_current": has_current,
                 "has_upcoming": has_upcoming,
+                "lat": m.get("lat", 0),
+                "lng": m.get("lng", 0),
                 "exhibitions": exs,
             })
 
