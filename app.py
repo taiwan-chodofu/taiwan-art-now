@@ -698,8 +698,71 @@ ARTIST_LABELS = {
 
 @app.route("/health")
 def health():
-    """ヘルスチェック用（cron ping向け軽量エンドポイント）。"""
+    """ヘルスチェック用（cron ping向け軽量エンドポイント）。
+    バックグラウンドで1アーティストのARTouch記事を更新する。"""
+    import threading
+    t = threading.Thread(target=_update_one_artist_activity, daemon=True)
+    t.start()
     return "ok", 200
+
+
+def _update_one_artist_activity():
+    """1アーティストのARTouch記事を更新する（ローテーション）。"""
+    import urllib.parse
+    try:
+        from curl_cffi import requests as cffi_requests
+        from bs4 import BeautifulSoup
+    except ImportError:
+        return
+
+    activities_path = os.path.join(os.path.dirname(__file__), "artist_activities.json")
+    try:
+        with open(activities_path, "r", encoding="utf-8") as f:
+            activities = json.load(f)
+    except Exception:
+        return
+
+    artists = list(activities.get("artists", {}).keys())
+    if not artists:
+        return
+
+    # ローテーション: generated timestamp のハッシュで決定
+    import hashlib
+    gen = activities.get("generated", "")
+    idx = int(hashlib.md5(gen.encode()).hexdigest(), 16) % len(artists)
+    # 次のアーティスト
+    target_en = artists[(idx + 1) % len(artists)]
+    artist_data = activities["artists"].get(target_en, {})
+    zh = artist_data.get("artist_zh", "")
+    if not zh:
+        return
+
+    try:
+        import re
+        query = urllib.parse.quote(zh)
+        url = f"https://artouch.com/?s={query}"
+        resp = cffi_requests.get(url, impersonate="chrome", timeout=15)
+        if resp.status_code != 200:
+            return
+        soup = BeautifulSoup(resp.text, "lxml")
+        links = soup.find_all("a", href=re.compile(r"content-\d+\.html"))
+        seen = set()
+        articles = []
+        for a in links:
+            href = a.get("href", "")
+            title = a.get_text(strip=True)
+            if href not in seen and title and len(title) > 10:
+                seen.add(href)
+                articles.append({"title": title[:100], "url": href, "source": "ARTouch"})
+        if articles:
+            activities["artists"][target_en]["articles"] = articles[:10]
+            activities["generated"] = __import__("datetime").datetime.now().isoformat()
+            text = json.dumps(activities, ensure_ascii=False, indent=2)
+            text = re.sub(r"[\ud800-\udfff]", "", text)
+            with open(activities_path, "w", encoding="utf-8") as f:
+                f.write(text)
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":
