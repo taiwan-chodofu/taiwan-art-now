@@ -24,6 +24,16 @@
       --cat-public: #2d3436; --cat-alt: #6c5ce7;
       --cat-commercial: #00b894; --cat-private: #e17055;
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #aaa; --text-light: #777;
+        --accent: #fff; --border: #333; --border-dark: #444;
+        --tag-bg: #2a2a2a; --hover-bg: #252525;
+        --red: #ff6b6b; --red-light: #2d1f1f;
+        --cat-public: #74b9ff; --cat-alt: #a29bfe;
+        --cat-commercial: #55efc4; --cat-private: #fab1a0;
+      }
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
@@ -115,6 +125,10 @@
       position: sticky; top: 0; background: rgba(255,255,255,0.97);
       z-index: 100; backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+    }
+    @media (prefers-color-scheme: dark) {
+      .filter-bar { background: rgba(26,26,26,0.97); }
+      .filter-chip-open.active { background: #27ae60; border-color: #27ae60; }
     }
     .filter-row {
       display: flex; gap: 6px; overflow-x: auto;
