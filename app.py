@@ -443,7 +443,11 @@ def featured():
                     "artist_zh": zh,
                     "edition": ed["edition"],
                     "category": w.get("category_zh", ""),
-                    "articles": activity.get("articles", []),
+                    "articles": sorted(
+                        activity.get("articles", []),
+                        key=lambda a: a.get("date", ""), reverse=True,
+                    ),
+                    "current_exhibitions": activity.get("current_exhibitions", []),
                 })
     except Exception:
         pass
@@ -463,6 +467,8 @@ FEATURED_LABELS = {
         "intro": "Tracking the latest exhibitions and activities of Taishin Arts Award winners in visual arts and grand prize categories (2016–present). Articles sourced from ARTouch and other media.",
         "back": "Exhibitions",
         "no_articles": "No recent articles found.",
+        "current_shows": "Current Exhibitions",
+        "recent_press": "Recent Press",
     },
     "ja": {
         "title": "注目アーティスト — Taiwan Art Now",
@@ -470,6 +476,8 @@ FEATURED_LABELS = {
         "intro": "台新芸術賞の視覚芸術賞・年度大賞の受賞者（2016年以降）の最新展示活動を追跡しています。記事はARTouch等のメディアから収集。",
         "back": "展覧会情報",
         "no_articles": "最近の記事が見つかりません。",
+        "current_shows": "現在の展示",
+        "recent_press": "最近の記事",
     },
     "zh": {
         "title": "焦點藝術家 — Taiwan Art Now",
@@ -477,6 +485,8 @@ FEATURED_LABELS = {
         "intro": "追蹤台新藝術獎視覺藝術獎與年度大獎得主（2016年至今）的最新展覽活動。報導來源為典藏ARTouch等藝術媒體。",
         "back": "展覽資訊",
         "no_articles": "暫無近期報導。",
+        "current_shows": "現正展出",
+        "recent_press": "近期報導",
     },
 }
 
