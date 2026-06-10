@@ -808,6 +808,145 @@ def _scrape_kdmofa():
     return exhibitions
 
 
+def _scrape_pingtung():
+    """屏東縣立美術館から展覧会情報を取得する。"""
+    exhibitions = []
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    url = "https://www.cultural.pthg.gov.tw/pt1936/Default.aspx"
+    try:
+        soup = _fetch(url)
+        text = soup.get_text(separator="\n", strip=True)
+        # パターン: タイトル(YYYY.MM.DD-YYYY.MM.DD)
+        matches = re.findall(
+            r"([^\n\(\)]{3,100}?)\s*\((\d{4}\.\d{1,2}\.\d{1,2})-(\d{4}\.\d{1,2}\.\d{1,2})\)",
+            text,
+        )
+        seen = set()
+        for title, start, end in matches:
+            title = title.strip()
+            key = (title, start, end)
+            if key in seen:
+                continue
+            seen.add(key)
+            try:
+                start_parts = re.match(r"(\d{4})\.(\d{1,2})\.(\d{1,2})", start)
+                end_parts = re.match(r"(\d{4})\.(\d{1,2})\.(\d{1,2})", end)
+                if not start_parts or not end_parts:
+                    continue
+                start_dt = datetime(*[int(g) for g in start_parts.groups()])
+                end_dt = datetime(*[int(g) for g in end_parts.groups()])
+                if end_dt < today:
+                    continue
+                if start_dt > horizon:
+                    continue
+            except (ValueError, AttributeError):
+                continue
+            dates = f"{start} – {end}"
+            exhibitions.append({
+                "museum": "pingtung",
+                "title_en": title,
+                "title_ja": "", "title_zh": title,
+                "dates": dates,
+                "location": "Pingtung Art Museum",
+                "link": url,
+            })
+    except Exception as exc:
+        logger.warning("Pingtung scrape failed: %s", exc)
+    return exhibitions
+
+
+def _scrape_montue():
+    """北師美術館（MoNTUE）から展覧会情報を取得する。
+    一覧ページから個別展覧会のリンクを取得し、各ページのh2/og:titleから情報抽出。"""
+    exhibitions = []
+    base = "https://montue.ntue.edu.tw"
+    today = _now_tw()
+    horizon = today + timedelta(days=90)
+    try:
+        # 展覧会一覧ページから個別リンクを抽出
+        for page_url in [f"{base}/exhibitions/", f"{base}/exhibitions-upcoming/"]:
+            try:
+                soup = _fetch(page_url)
+            except Exception:
+                continue
+            # スキップすべきナビゲーションスラッグ
+            skip_slugs = {
+                "exhibitions", "exhibitions-upcoming", "exhibitions-past",
+                "dreamin-montue", "learning", "opm", "news", "about-montue",
+                "home", "visit", "site-map", "cookies", "cookies-policy",
+                "archive", "archive-gallery", "wp-content", "wp-admin",
+            }
+            seen_slugs = set()
+            for a in soup.find_all("a", href=True):
+                href = a.get("href", "")
+                if not href.startswith(base):
+                    continue
+                # /スラッグ/ 形式の個別ページのみ
+                path = href.replace(base, "").strip("/")
+                if "/" in path:
+                    continue
+                if not path or path in skip_slugs:
+                    continue
+                if path in seen_slugs:
+                    continue
+                seen_slugs.add(path)
+                # 詳細ページから情報取得
+                try:
+                    detail = _fetch(f"{base}/{path}/")
+                except Exception:
+                    continue
+                # h2 から「日付 タイトル」抽出
+                h2 = detail.find("h2")
+                title = ""
+                dates = ""
+                if h2:
+                    h2_text = h2.get_text(strip=True)
+                    m = re.search(r"(\d{4}\.\d{1,2}\.\d{1,2})\s*[\-~–]\s*(\d{4}\.\d{1,2}\.\d{1,2})\s*(.+)", h2_text)
+                    if m:
+                        dates = f"{m.group(1)} – {m.group(2)}"
+                        title = m.group(3).strip()
+                # og:title からタイトルを補完
+                if not title:
+                    og = detail.find("meta", property="og:title")
+                    if og:
+                        title = og.get("content", "").strip()
+                if not title or not dates:
+                    continue
+                # 90日horizonチェック
+                end_match = re.search(r"\d{4}\.\d{1,2}\.\d{1,2}", dates.split("–")[-1])
+                if end_match:
+                    try:
+                        end_dt = datetime.strptime(end_match.group(0), "%Y.%m.%d")
+                        if end_dt < today:
+                            continue
+                    except ValueError:
+                        pass
+                start_match = re.match(r"(\d{4})\.(\d{1,2})\.(\d{1,2})", dates)
+                if start_match:
+                    try:
+                        start_dt = datetime(
+                            int(start_match.group(1)),
+                            int(start_match.group(2)),
+                            int(start_match.group(3)),
+                        )
+                        if start_dt > horizon:
+                            continue
+                    except ValueError:
+                        pass
+                exhibitions.append({
+                    "museum": "montue",
+                    "title_en": title,
+                    "title_ja": "", "title_zh": title,
+                    "dates": dates,
+                    "location": "MoNTUE",
+                    "link": f"{base}/{path}/",
+                })
+    except Exception as exc:
+        logger.warning("MoNTUE scrape failed: %s", exc)
+    return exhibitions
+
+
 def _scrape_goodug():
     """好地下藝術空間（Good Underground）のweeblyサイトから展覧会情報を取得する。"""
     exhibitions = []
@@ -1453,6 +1592,8 @@ def _do_scrape_all():
         "kdmofa": lambda: _with_fallback("kdmofa", _scrape_kdmofa),
         "goodug": lambda: _with_fallback("goodug", _scrape_goodug),
         "tav": lambda: _with_fallback("tav", _scrape_tav),
+        "montue": lambda: _with_fallback("montue", _scrape_montue),
+        "pingtung": lambda: _with_fallback("pingtung", _scrape_pingtung),
     }
     results = {}
     with ThreadPoolExecutor(max_workers=6) as executor:
@@ -1469,7 +1610,8 @@ def _do_scrape_all():
         results.get("moca_en", []), results.get("moca_zh", [])
     ))
     for key in ["tfam", "honggah", "ntcart", "tcma", "clab",
-                "thecube", "chiayi", "kdmofa", "goodug", "tav"]:
+                "thecube", "chiayi", "kdmofa", "goodug", "tav",
+                "montue", "pingtung"]:
         all_exhibitions.extend(results.get(key, []))
 
     # マスターデータから汎用スクレイパー対象を取得
