@@ -1654,27 +1654,48 @@ ARCHIVE_FILE = os.path.join(os.path.dirname(__file__), "archive.json")
 ARCHIVE_RETENTION_DAYS = 365
 
 
+UPCOMING_HORIZON_DAYS = 90  # 3ヶ月先までを「近日開始」として扱う
+
+
 def _remove_expired(exhibitions):
-    """終了日が過去の展覧会を除去する。終了済みは archive.json に蓄積。"""
+    """終了日が過去の展覧会を除去 + 開始日が遠すぎる展覧会も除外。
+    残った展覧会には status フィールドを付与する。"""
     today = _now_tw()
+    horizon = today + timedelta(days=UPCOMING_HORIZON_DAYS)
     result = []
     expired = []
     for ex in exhibitions:
         dates = ex.get("dates", "")
         date_matches = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", dates)
+        status = "unknown"
         is_expired = False
+        skip_far_future = False
         if len(date_matches) >= 2:
-            y, m, d = int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
             try:
-                end_dt = datetime(y, m, d)
+                start_dt = datetime(
+                    int(date_matches[0][0]), int(date_matches[0][1]), int(date_matches[0][2])
+                )
+                end_dt = datetime(
+                    int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
+                )
                 if end_dt < today:
                     is_expired = True
+                elif start_dt > today:
+                    if start_dt > horizon:
+                        skip_far_future = True
+                    else:
+                        status = "upcoming"
+                else:
+                    status = "current"
             except ValueError:
                 pass
         if is_expired:
             expired.append(ex)
-        else:
-            result.append(ex)
+            continue
+        if skip_far_future:
+            continue
+        ex["status"] = status
+        result.append(ex)
     if expired:
         _archive_exhibitions(expired)
     return result

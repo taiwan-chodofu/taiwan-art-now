@@ -27,9 +27,13 @@ UI_LABELS = {
         "cat_alt": "Alt",
         "cat_commercial": "Gallery",
         "cat_private": "Private",
-        "open_today": "Open Today",
+        "open_today": "Open Now",
         "has_ex": "With Exhibitions",
+        "upcoming": "Upcoming",
         "curator": "Curator",
+        "opens_in": "opens in",
+        "days_left": "days left",
+        "days_short": "d",
     },
     "ja": {
         "title": "台湾 現代アート展覧会情報",
@@ -49,9 +53,13 @@ UI_LABELS = {
         "cat_alt": "オルタナ",
         "cat_commercial": "ギャラリー",
         "cat_private": "私立",
-        "open_today": "本日開館",
+        "open_today": "本日開館中",
         "has_ex": "展覧会あり",
+        "upcoming": "近日開始",
         "curator": "キュレーター",
+        "opens_in": "あと",
+        "days_left": "日で終了",
+        "days_short": "日",
     },
     "zh": {
         "title": "台灣當代藝術展覽資訊",
@@ -73,7 +81,11 @@ UI_LABELS = {
         "cat_private": "私立",
         "open_today": "今日開放",
         "has_ex": "有展覽",
+        "upcoming": "即將開幕",
         "curator": "策展人",
+        "opens_in": "還有",
+        "days_left": "天結束",
+        "days_short": "天",
     },
 }
 
@@ -111,26 +123,33 @@ def _get_museum_info(museum_key, lang):
 
 
 def _normalize_dates(raw_dates):
-    """日付文字列をYYYY.MM.DD – YYYY.MM.DD形式に統一する。"""
+    """日付文字列をYYYY.MM.DD – YYYY.MM.DD形式に統一する。
+    Returns: (normalized_str, start_dt, end_dt)
+    """
     import re
     from datetime import datetime
     if not raw_dates:
-        return "", None
-    # 全角スラッシュを半角に変換
+        return "", None, None
     s = raw_dates.replace("／", "/")
-    # 日付ペアを抽出
     dates = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", s)
     if len(dates) >= 2:
         start = f"{dates[0][0]}.{int(dates[0][1]):02d}.{int(dates[0][2]):02d}"
         end = f"{dates[1][0]}.{int(dates[1][1]):02d}.{int(dates[1][2]):02d}"
         try:
+            start_dt = datetime(int(dates[0][0]), int(dates[0][1]), int(dates[0][2]))
+        except ValueError:
+            start_dt = None
+        try:
             end_dt = datetime(int(dates[1][0]), int(dates[1][1]), int(dates[1][2]))
         except ValueError:
             end_dt = None
-        return f"{start} – {end}", end_dt
+        return f"{start} – {end}", start_dt, end_dt
     if len(dates) == 1:
         start = f"{dates[0][0]}.{int(dates[0][1]):02d}.{int(dates[0][2]):02d}"
-        # 終了日なしの場合（MM.DD形式の終了日を探す）
+        try:
+            start_dt = datetime(int(dates[0][0]), int(dates[0][1]), int(dates[0][2]))
+        except ValueError:
+            start_dt = None
         short_end = re.search(r"[–—\-]\s*(\d{1,2})[./](\d{1,2})", s)
         if short_end:
             em, ed = int(short_end.group(1)), int(short_end.group(2))
@@ -140,9 +159,9 @@ def _normalize_dates(raw_dates):
                 end_dt = datetime(ey, em, ed)
             except ValueError:
                 end_dt = None
-            return f"{start} – {end}", end_dt
-        return f"{start} –", None
-    return raw_dates, None
+            return f"{start} – {end}", start_dt, end_dt
+        return f"{start} –", start_dt, None
+    return raw_dates, None, None
 
 
 def _calc_days_left(end_dt):
@@ -153,6 +172,18 @@ def _calc_days_left(end_dt):
     tw_tz = timezone(timedelta(hours=8))
     delta = (end_dt - datetime.now(tw_tz).replace(tzinfo=None)).days
     if 0 <= delta <= 14:
+        return delta
+    return None
+
+
+def _calc_days_until_start(start_dt):
+    """開始日までの日数を計算する。未来でなければNone、90日超もNone。"""
+    if not start_dt:
+        return None
+    from datetime import datetime, timezone, timedelta
+    tw_tz = timezone(timedelta(hours=8))
+    delta = (start_dt - datetime.now(tw_tz).replace(tzinfo=None)).days
+    if delta > 0 and delta <= 90:
         return delta
     return None
 
@@ -208,11 +239,13 @@ def index():
         key = ex.get("museum", "")
         if key not in ex_by_museum:
             ex_by_museum[key] = []
-        normalized, end_dt = _normalize_dates(ex.get("dates", ""))
+        normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
         ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
             "dates": normalized,
             "days_left": _calc_days_left(end_dt),
+            "days_until_start": _calc_days_until_start(start_dt),
+            "status": ex.get("status", "unknown"),
             "location": ex.get("location", ""),
             "link": ex.get("link", ""),
             "artists": ex.get("artists", []),
@@ -234,7 +267,17 @@ def index():
         for m in region_museums:
             mid = m["id"]
             exs = ex_by_museum.get(mid, [])
+            # 開催中の展覧会を最初、近日開始を後ろにソート
+            exs.sort(key=lambda e: (
+                0 if e.get("status") == "current" else
+                (1 if e.get("status") == "upcoming" else 2),
+                e.get("days_until_start") or 0,
+            ))
             is_closed_today = _is_closed_today(m.get("closed_day"))
+            has_current = any(e.get("status") == "current" or (
+                e.get("status") == "unknown" and e.get("days_until_start") is None
+            ) for e in exs)
+            has_upcoming = any(e.get("status") == "upcoming" for e in exs)
             museum_entries.append({
                 "id": mid,
                 "name": _get_localized(m["name"], lang),
@@ -247,10 +290,12 @@ def index():
                 ),
                 "closed_today": is_closed_today,
                 "has_schedule": m.get("closed_day") is not None,
+                "has_current": has_current,
+                "has_upcoming": has_upcoming,
                 "exhibitions": exs,
             })
 
-        active_count = sum(1 for me in museum_entries if me["exhibitions"])
+        active_count = sum(1 for me in museum_entries if me["has_current"])
         regions_data.append({
             "id": region_id,
             "name": _get_localized(
