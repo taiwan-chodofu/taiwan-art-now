@@ -771,10 +771,12 @@ def nearby(museum_id):
                 })
 
     nearby_list.sort(key=lambda x: x["distance_km"])
-    return json.dumps({
-        "museum": _get_localized(target["name"], lang),
-        "nearby": nearby_list[:5],
-    }, ensure_ascii=False), 200, {"Content-Type": "application/json; charset=utf-8"}
+    return render_template(
+        "nearby.html",
+        museum_name=_get_localized(target["name"], lang),
+        nearby=nearby_list[:5],
+        current_lang=lang,
+    )
 
 
 @app.route("/health")
