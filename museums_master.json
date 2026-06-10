@@ -324,7 +324,7 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tnam_manual",
+      "scraper": "tnam",
       "exhibition_url": ""
     },
     {
@@ -1007,7 +1007,7 @@
         "zh": "週二至週日 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": "soka_manual",
+      "scraper": "soka",
       "exhibition_url": ""
     },
     {
@@ -1125,7 +1125,7 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "jut_manual",
+      "scraper": "jut",
       "exhibition_url": ""
     },
     {
