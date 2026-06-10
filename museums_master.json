@@ -1149,7 +1149,7 @@
         "zh": "每日 11:00–19:00"
       },
       "closed_day": null,
-      "scraper": "fubon_manual",
+      "scraper": "fubon",
       "exhibition_url": ""
     },
     {
