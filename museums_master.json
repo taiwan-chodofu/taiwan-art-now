@@ -64,6 +64,11 @@
       "en": "Keelung",
       "ja": "基隆",
       "zh": "基隆"
+    },
+    "pingtung": {
+      "en": "Pingtung",
+      "ja": "屏東",
+      "zh": "屏東"
     }
   },
   "categories": {
@@ -272,7 +277,7 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null,
+      "scraper": "ntmofa_manual",
       "exhibition_url": ""
     },
     {
@@ -602,8 +607,8 @@
         "zh": "週三至週日 14:00–20:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.absoluteart.space"
+      "scraper": "absolute_manual",
+      "exhibition_url": ""
     },
     {
       "id": "goodug",
@@ -1527,6 +1532,29 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://yiriarts.com.tw/exhibitions/"
+    },
+    {
+      "id": "pingtung",
+      "category": "public",
+      "region": "pingtung",
+      "name": {
+        "en": "Pingtung Art Museum",
+        "ja": "屏東縣立美術館",
+        "zh": "屏東縣立美術館"
+      },
+      "address": {
+        "en": "No.1, Yanchang Rd., Pingtung City, Pingtung County",
+        "ja": "屏東縣屏東市菸廠路1號",
+        "zh": "屏東縣屏東市菸廠路1號"
+      },
+      "url": "https://www.cultural.pthg.gov.tw/pt1936/Default.aspx",
+      "hours": {
+        "en": "Tue–Sun 09:00–18:00 | Closed Mon",
+        "ja": "火〜日 09:00–18:00｜月休",
+        "zh": "週二至週日 09:00–18:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "pingtung_manual"
     }
   ]
 }
