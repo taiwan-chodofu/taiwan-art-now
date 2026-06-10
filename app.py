@@ -703,6 +703,70 @@ ARTIST_LABELS = {
 }
 
 
+@app.route("/nearby/<museum_id>")
+def nearby(museum_id):
+    """指定施設の近くにある他の展示を返すAPIエンドポイント。"""
+    import math
+    lang = request.args.get("lang", "zh")
+    master = _load_master()
+    from scraper import fetch_all_exhibitions
+
+    # 対象施設を探す
+    target = None
+    for m in master["museums"]:
+        if m["id"] == museum_id:
+            target = m
+            break
+    if not target or not target.get("lat"):
+        return json.dumps({"error": "museum not found or no coordinates"}, ensure_ascii=False), 404
+
+    lat1, lng1 = target["lat"], target["lng"]
+
+    # 展覧会データ取得
+    exhibitions = fetch_all_exhibitions()
+    ex_by_museum = {}
+    for ex in exhibitions:
+        mid = ex.get("museum", "")
+        if mid != museum_id:
+            ex_by_museum.setdefault(mid, []).append(ex)
+
+    # 距離計算（簡易ハーバーサイン）
+    def distance_km(lat2, lng2):
+        R = 6371
+        dlat = math.radians(lat2 - lat1)
+        dlng = math.radians(lng2 - lng1)
+        a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlng/2)**2
+        return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+
+    # 近い施設を距離順で取得（5km以内）
+    nearby_list = []
+    for m in master["museums"]:
+        if m["id"] == museum_id or not m.get("lat"):
+            continue
+        dist = distance_km(m["lat"], m["lng"])
+        if dist <= 5.0:
+            exs = ex_by_museum.get(m["id"], [])
+            if exs:
+                nearby_list.append({
+                    "museum_id": m["id"],
+                    "name": _get_localized(m["name"], lang),
+                    "distance_km": round(dist, 1),
+                    "exhibitions": [
+                        {
+                            "title": _get_display_title(ex, lang),
+                            "dates": ex.get("dates", ""),
+                        }
+                        for ex in exs[:3]
+                    ],
+                })
+
+    nearby_list.sort(key=lambda x: x["distance_km"])
+    return json.dumps({
+        "museum": _get_localized(target["name"], lang),
+        "nearby": nearby_list[:5],
+    }, ensure_ascii=False), 200, {"Content-Type": "application/json; charset=utf-8"}
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。

@@ -368,6 +368,12 @@
         {% endif %}
 
         {% if museum.exhibitions %}
+        <div class="nearby-link" style="margin:4px 0;font-size:0.6rem;">
+          <a href="/nearby/{{ museum.id }}?lang={{ current_lang }}" target="_blank" rel="noopener"
+             style="color:var(--text-light);text-decoration:none;">
+            📍 nearby exhibitions
+          </a>
+        </div>
         <div class="ex-list">
           {% for ex in museum.exhibitions %}
           {% if ex.link %}
