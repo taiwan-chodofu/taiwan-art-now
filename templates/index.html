@@ -339,9 +339,25 @@
             <div class="ex-dates">
               {{ ex.dates }}
               {% if ex.days_until_start is not none %}
-              <span class="badge-opening">{{ labels.opens_in }} {{ ex.days_until_start }}{{ labels.days_short }}</span>
+              <span class="badge-opening">
+                {%- if current_lang == 'ja' -%}
+                  あと{{ ex.days_until_start }}日で開始
+                {%- elif current_lang == 'zh' -%}
+                  {{ ex.days_until_start }}天後開幕
+                {%- else -%}
+                  opens in {{ ex.days_until_start }}d
+                {%- endif -%}
+              </span>
               {% elif ex.days_left is not none %}
-              <span class="badge-ending">{{ ex.days_left }}{{ labels.days_short }} {{ labels.days_left if current_lang != 'en' else 'left' }}</span>
+              <span class="badge-ending">
+                {%- if current_lang == 'ja' -%}
+                  あと{{ ex.days_left }}日
+                {%- elif current_lang == 'zh' -%}
+                  剩{{ ex.days_left }}天
+                {%- else -%}
+                  {{ ex.days_left }}d left
+                {%- endif -%}
+              </span>
               {% endif %}
             </div>
             {% endif %}
