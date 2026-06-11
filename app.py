@@ -816,6 +816,7 @@ def nearby(museum_id):
                 nearby_list.append({
                     "museum_id": m["id"],
                     "name": _get_localized(m["name"], lang),
+                    "address": _get_localized(m.get("address", {}), lang),
                     "distance_km": round(dist, 1),
                     "exhibitions": [
                         {

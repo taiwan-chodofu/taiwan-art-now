@@ -318,6 +318,13 @@
     .tag-thisweek { background: #fef3cd; color: #92400e; }
     .tag-upcoming { background: #ede9fe; color: #5b21b6; }
 
+    .nearby-link {
+      display: block; padding: 8px 12px;
+      font-size: 0.7rem; color: var(--text-light);
+      text-decoration: none;
+    }
+    .nearby-link:active { color: var(--text-sub); }
+
     .no-ex {
       font-size: 0.75rem; color: var(--text-light);
       padding: 8px 12px;
@@ -436,6 +443,9 @@
             {% endif %}
           </a>
           {% endfor %}
+          <a href="/nearby/{{ museum.id }}?lang={{ current_lang }}" class="nearby-link">
+            📍 {% if current_lang == 'zh' %}附近展覽{% elif current_lang == 'ja' %}近くの展示{% else %}Nearby{% endif %}
+          </a>
         </div>
         {% else %}
         <div class="no-ex">
