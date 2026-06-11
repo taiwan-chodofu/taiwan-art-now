@@ -311,9 +311,9 @@
       padding: 2px 6px; border-radius: 3px;
     }
     .status-tag {
-      display: inline; font-size: 0.6rem; font-weight: 700;
-      padding: 2px 6px; border-radius: 3px;
-      vertical-align: middle;
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 3px;
+      vertical-align: middle; letter-spacing: 0.5px;
     }
     .tag-thisweek { background: #fef3cd; color: #92400e; }
     .tag-upcoming { background: #ede9fe; color: #5b21b6; }
@@ -390,7 +390,7 @@
           {% for ex in museum.exhibitions %}
           <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}">
             <div class="ex-title">
-              {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">🆕</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
+              {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
             </div>
             {% if ex.dates %}
             <div class="ex-dates">
