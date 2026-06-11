@@ -309,6 +309,7 @@
       margin-right: 5px; vertical-align: middle;
       letter-spacing: 0.3px; text-transform: uppercase;
     }
+    .tag-thisweek { background: #fef3cd; color: #856404; border: 1px solid #ffc107; font-weight: 700; }
     .tag-upcoming { background: #ecf3fb; color: #2980b9; border: 1px solid #b8dafa; }
     .ex-upcoming { border-left-color: #b8dafa; }
     .ex-upcoming:hover { border-left-color: #3498db; }
@@ -397,7 +398,9 @@
           <div class="ex-item ex-{{ ex.status }}" data-status="{{ ex.status }}">
           {% endif %}
             <div class="ex-title">
-              {% if ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span>{% endif %}
+              {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}
+              <span class="status-tag tag-thisweek">🆕 NEW</span>
+            {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span>{% endif %}
               {{ ex.title }}
             </div>
             {% if ex.dates %}
