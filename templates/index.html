@@ -277,48 +277,50 @@
     }
 
     /* Exhibition items */
-    .ex-list { margin-top: 6px; }
+    .ex-list { margin-top: 8px; padding-left: 0; }
     .ex-item {
-      display: block; padding: 8px 10px; margin-bottom: 4px;
+      display: block; padding: 10px 12px;
       text-decoration: none; color: inherit;
-      border-radius: 6px;
-      transition: background 0.15s;
+      border-bottom: 1px solid var(--border);
     }
+    .ex-item:last-child { border-bottom: none; }
     .ex-item:active { background: var(--hover-bg); }
-    .ex-title { font-size: 0.82rem; font-weight: 500; line-height: 1.4; }
-    .ex-dates { font-size: 0.68rem; color: var(--text-sub); margin-top: 2px; }
+    .ex-title {
+      font-size: 0.88rem; font-weight: 600; line-height: 1.45;
+    }
+    .ex-dates {
+      font-size: 0.72rem; color: var(--text-sub); margin-top: 3px;
+      display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
+    }
     .ex-artists {
-      font-size: 0.68rem; color: var(--text-sub);
-      margin-top: 2px; font-style: italic;
+      font-size: 0.72rem; color: var(--text-sub);
+      margin-top: 3px;
     }
     .ex-curator {
-      font-size: 0.65rem; color: var(--text-light);
-      margin-top: 1px;
+      font-size: 0.68rem; color: var(--text-light);
+      margin-top: 2px;
     }
     .badge-ending {
-      display: inline-block; background: var(--red); color: #fff;
-      font-size: 0.6rem; font-weight: 700;
+      display: inline-block; background: #fee2e2; color: #b91c1c;
+      font-size: 0.62rem; font-weight: 700;
       padding: 2px 6px; border-radius: 3px;
-      margin-left: 4px; vertical-align: middle;
     }
     .badge-opening {
-      display: inline-block; background: #3498db; color: #fff;
-      font-size: 0.6rem; font-weight: 700;
+      display: inline-block; background: #dbeafe; color: #1d4ed8;
+      font-size: 0.62rem; font-weight: 700;
       padding: 2px 6px; border-radius: 3px;
-      margin-left: 4px; vertical-align: middle;
     }
     .status-tag {
-      display: inline; font-size: 0.58rem; font-weight: 700;
-      padding: 2px 5px; border-radius: 3px;
+      display: inline; font-size: 0.6rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 3px;
       vertical-align: middle;
-      letter-spacing: 0.3px; text-transform: uppercase;
     }
-    .tag-thisweek { background: #fef3cd; color: #856404; border: 1px solid #ffc107; }
-    .tag-upcoming { background: #ecf3fb; color: #2980b9; border: 1px solid #b8dafa; }
+    .tag-thisweek { background: #fef3cd; color: #92400e; }
+    .tag-upcoming { background: #ede9fe; color: #5b21b6; }
 
     .no-ex {
-      font-size: 0.72rem; color: var(--text-light);
-      padding: 6px 10px;
+      font-size: 0.75rem; color: var(--text-light);
+      padding: 8px 12px;
     }
     .no-ex a { color: var(--text-sub); text-decoration: none; }
     .no-ex a:active { text-decoration: underline; }
