@@ -463,63 +463,69 @@ def _fetch_cffi(url):
 
 
 def _scrape_honggah():
-    """鳳甲美術館の公式サイトから展覧会情報を取得する。"""
+    """鳳甲美術館の公式サイトから展覧会情報を取得する。
+    中文版ページを正として取得し、英語版で英語タイトルを補完。"""
     exhibitions = []
     today = _now_tw()
-    url = "https://hong-gah.org.tw/en/exhibitions"
+    horizon = today + timedelta(days=90)
+
+    # 中文版ページから正式タイトルと日付を取得
+    zh_data = []
     try:
-        soup = _fetch_cffi(url)
-        article = soup.find("article")
-        if not article:
-            raise ValueError("No article element found")
-        text = article.get_text(separator="|", strip=True)
-        parts = [p.strip() for p in text.split("|") if p.strip()]
-        i = 0
-        while i < len(parts):
-            title = parts[i]
-            dates = ""
-            if i + 1 < len(parts):
-                dm = re.search(r"(\d{4}\.\d{1,2}\.\d{1,2})\s*[-–]\s*(\d{1,2}\.\d{1,2})", parts[i + 1])
-                if dm:
-                    dates = parts[i + 1]
-                    i += 2
-                else:
-                    i += 1
-            else:
-                i += 1
-            if not title or len(title) < 3 or re.match(r"^\d{4}\.", title):
-                continue
-            date_full = re.search(r"(\d{4})\.(\d{1,2})\.(\d{1,2})\s*[-–]\s*(\d{1,2})\.(\d{1,2})", dates)
-            normalized_dates = ""
-            if date_full:
-                y = int(date_full.group(1))
-                sm, sd = int(date_full.group(2)), int(date_full.group(3))
-                em, ed = int(date_full.group(4)), int(date_full.group(5))
-                normalized_dates = f"{y}.{sm:02d}.{sd:02d} – {y}.{em:02d}.{ed:02d}"
+        soup_zh = _fetch_cffi("https://hong-gah.org.tw/exhibitions-zh")
+        text = soup_zh.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        date_re = re.compile(r"^(\d{4})\.(\d{2})\.(\d{2})-(\d{2})\.(\d{2})$")
+        for i, line in enumerate(lines):
+            m = date_re.match(line)
+            if m and i > 0:
+                title_zh = lines[i - 1]
+                y, sm, sd = int(m.group(1)), int(m.group(2)), int(m.group(3))
+                em, ed = int(m.group(4)), int(m.group(5))
                 try:
-                    if datetime(y, em, ed) < today:
+                    end_dt = datetime(y, em, ed)
+                    start_dt = datetime(y, sm, sd)
+                    if end_dt < today:
+                        continue
+                    if start_dt > horizon:
                         continue
                 except ValueError:
-                    pass
-            link_el = soup.find("a", href=re.compile(re.escape(title[:15])), recursive=True)
-            href = ""
-            if not link_el:
-                links = article.find_all("a", href=True)
-                for a in links:
-                    if title[:10] in a.get_text():
-                        href = a.get("href", "")
-                        break
-            else:
-                href = link_el.get("href", "")
-            exhibitions.append({
-                "museum": "honggah",
-                "title_en": title, "title_ja": "", "title_zh": "",
-                "dates": normalized_dates or dates,
-                "location": "Hong-Gah Museum",
-                "link": href,
-            })
+                    continue
+                if title_zh and len(title_zh) > 2:
+                    zh_data.append({
+                        "title_zh": title_zh,
+                        "dates": f"{y}.{sm:02d}.{sd:02d} – {y}.{em:02d}.{ed:02d}",
+                    })
     except Exception as exc:
-        logger.warning("Hong-Gah scrape failed: %s", exc)
+        logger.warning("Hong-Gah ZH scrape failed: %s", exc)
+
+    # 英語版ページから英語タイトルを取得
+    en_titles = []
+    try:
+        soup_en = _fetch_cffi("https://hong-gah.org.tw/en/exhibitions")
+        text = soup_en.get_text(separator="\n", strip=True)
+        lines = [l.strip() for l in text.split("\n") if l.strip()]
+        date_re = re.compile(r"^(\d{4})\.(\d{2})\.(\d{2})-(\d{2})\.(\d{2})$")
+        for i, line in enumerate(lines):
+            m = date_re.match(line)
+            if m and i > 0:
+                en_titles.append(lines[i - 1])
+    except Exception:
+        pass
+
+    # 統合: 中文を正とし、英語を日付マッチで補完
+    for idx, zh_item in enumerate(zh_data):
+        title_en = en_titles[idx] if idx < len(en_titles) else ""
+        exhibitions.append({
+            "museum": "honggah",
+            "title_en": title_en,
+            "title_ja": "",
+            "title_zh": zh_item["title_zh"],
+            "dates": zh_item["dates"],
+            "location": "Hong-Gah Museum",
+            "link": "https://hong-gah.org.tw/exhibitions-zh",
+        })
+
     return exhibitions
 
 
