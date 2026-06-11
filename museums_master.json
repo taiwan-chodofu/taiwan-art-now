@@ -1682,6 +1682,206 @@
       "scraper": "nmth_manual",
       "lat": 23.058351,
       "lng": 120.235154
+    },
+    {
+      "id": "donnaart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Donna Art",
+        "ja": "多納藝術",
+        "zh": "多納藝術"
+      },
+      "address": {
+        "en": "7F, No. 112, Sec. 2, Keelung Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區基隆路二段112號7樓",
+        "zh": "台北市大安區基隆路二段112號7樓"
+      },
+      "url": "https://www.donnaart.com.tw",
+      "hours": {
+        "en": "Tue–Sat 10:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–19:00｜日月休",
+        "zh": "週二至週六 10:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.023314,
+      "lng": 121.55142
+    },
+    {
+      "id": "daxiangart",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Da Xiang Art Space",
+        "ja": "大象藝術空間館",
+        "zh": "大象藝術空間館"
+      },
+      "address": {
+        "en": "13F-5, No. 386, Shizheng Rd., Xitun Dist., Taichung",
+        "ja": "台中市西屯區市政路386號13樓之5",
+        "zh": "台中市西屯區市政路386號13樓之5"
+      },
+      "url": "https://www.daxiang.com.tw",
+      "hours": {
+        "en": "Tue–Sun 11:00–19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 24.165303,
+      "lng": 120.633655
+    },
+    {
+      "id": "1839cg",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "1839 Contemporary Gallery",
+        "ja": "1839當代藝廊",
+        "zh": "1839當代藝廊"
+      },
+      "address": {
+        "en": "B1, No. 120, Yanji St., Da'an Dist., Taipei",
+        "ja": "台北市大安區延吉街120號地下樓",
+        "zh": "台北市大安區延吉街120號地下樓"
+      },
+      "url": "https://www.1839cg.com",
+      "hours": {
+        "en": "Tue–Sun 11:00–19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 25.035507,
+      "lng": 121.555716
+    },
+    {
+      "id": "chinigallery",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Chini Gallery",
+        "ja": "采泥藝術",
+        "zh": "采泥藝術"
+      },
+      "address": {
+        "en": "1F, No. 48, Ln. 128, Jingye 1st Rd., Dazhi, Taipei",
+        "ja": "台北市大直敬業一路128巷48號1樓",
+        "zh": "台北市大直敬業一路128巷48號1樓"
+      },
+      "url": "https://www.chinigallery.com",
+      "hours": {
+        "en": "Tue–Sat 10:30–19:00 | Closed Mon",
+        "ja": "火〜土 10:30–19:00｜月休",
+        "zh": "週二至週六 10:30–19:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 25.082843,
+      "lng": 121.552274
+    },
+    {
+      "id": "maisonacme",
+      "category": "private",
+      "region": "taipei",
+      "name": {
+        "en": "MAISON ACME",
+        "ja": "MAISON ACME 圓山別邸",
+        "zh": "MAISON ACME 圓山別邸"
+      },
+      "address": {
+        "en": "No. 181-1, Sec. 3, Zhongshan N. Rd., Zhongshan Dist., Taipei",
+        "ja": "台北市中山區中山北路三段181-1號",
+        "zh": "台北市中山區中山北路三段181-1號"
+      },
+      "url": "https://acmetaipei.com/pages/maison-acme_",
+      "hours": {
+        "en": "Tue–Sun 11:00–17:00 | Closed Mon",
+        "ja": "火〜日 11:00–17:00｜月休",
+        "zh": "週二至週日 11:00–17:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 25.07203,
+      "lng": 121.524661
+    },
+    {
+      "id": "soulangh",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Soulangh Cultural Park",
+        "ja": "蕭壠文化園區",
+        "zh": "蕭壠文化園區"
+      },
+      "address": {
+        "en": "No. 130, Liu'an, Jiali Dist., Tainan",
+        "ja": "台南市佳里區六安里六安130號",
+        "zh": "台南市佳里區六安里六安130號"
+      },
+      "url": "https://soulangh.tnc.gov.tw",
+      "hours": {
+        "en": "Wed–Sun 09:00–17:00 | Closed Mon & Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 9:00–17:00｜週一二休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 23.174339,
+      "lng": 120.176896
+    },
+    {
+      "id": "ntnuart",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "NTNU Museum of Fine Arts",
+        "ja": "師大美術館",
+        "zh": "師大美術館"
+      },
+      "address": {
+        "en": "No. 1, Shida Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區師大路1號",
+        "zh": "臺北市大安區師大路1號"
+      },
+      "url": "https://www.facebook.com/NTNUArtMuseum",
+      "hours": {
+        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
+        "ja": "火〜日 10:00–17:00｜月休",
+        "zh": "週二至週日 10:00–17:00｜週一休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 25.027767,
+      "lng": 121.530059
+    },
+    {
+      "id": "yuanru",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Yuan Ru Gallery",
+        "ja": "宛儒畫廊",
+        "zh": "宛儒畫廊"
+      },
+      "address": {
+        "en": "2F, No. 343, Sec. 4, Ren'ai Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區仁愛路四段343號2樓",
+        "zh": "台北市大安區仁愛路四段343號2樓"
+      },
+      "url": "https://www.facebook.com/yuanrugallery",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–18:00｜日月休",
+        "zh": "週二至週六 10:00–18:00｜週日一休"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.037735,
+      "lng": 121.552169
     }
   ]
 }
