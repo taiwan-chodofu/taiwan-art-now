@@ -899,6 +899,60 @@ def nearby(museum_id):
     )
 
 
+@app.route("/calendar.ics")
+def calendar_ics():
+    """全展覧会のiCalカレンダーフィード。"""
+    from scraper import fetch_all_exhibitions
+    import re
+
+    exhibitions = fetch_all_exhibitions()
+    master = _load_master()
+    museum_names = {m["id"]: m["name"].get("zh", m["name"].get("en", "")) for m in master["museums"]}
+
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Taiwan Art Now//EN",
+        "CALSCALE:GREGORIAN",
+        "X-WR-CALNAME:Taiwan Art Now",
+    ]
+
+    for ex in exhibitions:
+        dates = ex.get("dates", "")
+        date_matches = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", dates)
+        if len(date_matches) < 2:
+            continue
+        try:
+            sy, sm, sd = int(date_matches[0][0]), int(date_matches[0][1]), int(date_matches[0][2])
+            ey, em, ed = int(date_matches[1][0]), int(date_matches[1][1]), int(date_matches[1][2])
+        except (ValueError, IndexError):
+            continue
+
+        title = ex.get("title_zh") or ex.get("title_en") or ""
+        museum = museum_names.get(ex.get("museum", ""), "")
+        link = ex.get("link", "")
+        uid = f"{ex.get('museum','')}-{sy}{sm:02d}{sd:02d}-{title[:10]}@taiwanartnow"
+
+        lines.extend([
+            "BEGIN:VEVENT",
+            f"DTSTART;VALUE=DATE:{sy}{sm:02d}{sd:02d}",
+            f"DTEND;VALUE=DATE:{ey}{em:02d}{ed:02d}",
+            f"SUMMARY:{title}",
+            f"LOCATION:{museum}",
+            f"URL:{link}" if link else "",
+            f"UID:{uid}",
+            "END:VEVENT",
+        ])
+
+    lines.append("END:VCALENDAR")
+    ical = "\r\n".join(l for l in lines if l)
+
+    return ical, 200, {
+        "Content-Type": "text/calendar; charset=utf-8",
+        "Content-Disposition": "attachment; filename=taiwan-art-now.ics",
+    }
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。
