@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map — Taiwan Art Now</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, sans-serif; }
+    #map { width: 100%; height: 100vh; }
+    .back-btn {
+      position: fixed; top: 12px; left: 12px; z-index: 1000;
+      background: #fff; border: 1px solid #ccc; border-radius: 6px;
+      padding: 6px 12px; font-size: 0.75rem; text-decoration: none;
+      color: #333; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    .back-btn:hover { background: #f5f5f5; }
+    .popup-title { font-weight: 700; font-size: 0.85rem; margin-bottom: 4px; }
+    .popup-status { font-size: 0.65rem; margin-bottom: 4px; }
+    .popup-status.open { color: #2ecc71; }
+    .popup-status.closed { color: #e74c3c; }
+    .popup-ex { font-size: 0.7rem; color: #555; padding: 2px 0; border-bottom: 1px solid #eee; }
+    .popup-link { font-size: 0.65rem; margin-top: 6px; }
+    .popup-link a { color: #3498db; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <a class="back-btn" href="/?lang={{ current_lang }}">← Back</a>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([25.04, 121.53], 12); // 台北中心
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap',
+      maxZoom: 18,
+    }).addTo(map);
+
+    var catColors = {
+      'public': '#2d3436',
+      'alternative': '#6c5ce7',
+      'commercial': '#00b894',
+      'private': '#e17055',
+    };
+
+    var markers = {{ markers | tojson }};
+
+    markers.forEach(function(m) {
+      if (!m.lat || !m.lng) return;
+      var color = catColors[m.category] || '#333';
+      var icon = L.divIcon({
+        className: '',
+        html: '<div style="background:' + color + '; width:12px; height:12px; border-radius:50%; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,0.3);"></div>',
+        iconSize: [12, 12],
+        iconAnchor: [6, 6],
+      });
+
+      var popupHtml = '<div class="popup-title">' + m.name + '</div>';
+      popupHtml += '<div class="popup-status ' + (m.closed_today ? 'closed' : 'open') + '">';
+      popupHtml += m.closed_today ? '🔴 Closed today' : '🟢 Open';
+      popupHtml += ' · ' + m.ex_count + ' exhibitions</div>';
+
+      m.exhibitions.forEach(function(ex) {
+        popupHtml += '<div class="popup-ex">' + ex.title;
+        if (ex.dates) popupHtml += '<br><small>' + ex.dates + '</small>';
+        popupHtml += '</div>';
+      });
+
+      popupHtml += '<div class="popup-link"><a href="/nearby/' + m.id + '?lang={{ current_lang }}">📍 Nearby</a></div>';
+
+      L.marker([m.lat, m.lng], {icon: icon}).addTo(map).bindPopup(popupHtml);
+    });
+
+    // 台湾全体が見えるようにフィット
+    if (markers.length > 0) {
+      var bounds = L.latLngBounds(markers.filter(function(m) { return m.lat && m.lng; }).map(function(m) { return [m.lat, m.lng]; }));
+      map.fitBounds(bounds, { padding: [30, 30] });
+    }
+  </script>
+</body>
+</html>

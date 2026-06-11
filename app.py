@@ -718,6 +718,45 @@ ARTIST_LABELS = {
 }
 
 
+@app.route("/map")
+def map_view():
+    """全施設を地図上に表示する。"""
+    lang = request.args.get("lang", "zh")
+    master = _load_master()
+    from scraper import fetch_all_exhibitions
+
+    exhibitions = fetch_all_exhibitions()
+    ex_by_museum = {}
+    for ex in exhibitions:
+        mid = ex.get("museum", "")
+        ex_by_museum.setdefault(mid, []).append(ex)
+
+    markers = []
+    for m in master["museums"]:
+        if not m.get("lat") or not m.get("lng"):
+            continue
+        exs = ex_by_museum.get(m["id"], [])
+        markers.append({
+            "id": m["id"],
+            "name": _get_localized(m["name"], lang),
+            "lat": m["lat"],
+            "lng": m["lng"],
+            "category": m.get("category", ""),
+            "closed_today": _is_closed_today(m.get("closed_day")),
+            "ex_count": len(exs),
+            "exhibitions": [
+                {"title": _get_display_title(ex, lang), "dates": ex.get("dates", "")}
+                for ex in exs[:3]
+            ],
+        })
+
+    return render_template(
+        "map.html",
+        markers=markers,
+        current_lang=lang,
+    )
+
+
 @app.route("/nearby/<museum_id>")
 def nearby(museum_id):
     """指定施設の近くにある他の展示を返すAPIエンドポイント。"""
