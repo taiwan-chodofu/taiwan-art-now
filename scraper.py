@@ -587,9 +587,12 @@ def _scrape_tcma():
             dates = _fetch_tcma_dates(href)
             if dates and not _is_current_exhibition(dates, today):
                 continue
+            has_cjk = bool(re.search(r"[一-鿿]", title))
             exhibitions.append({
                 "museum": "tcma",
-                "title_en": title, "title_ja": "", "title_zh": "",
+                "title_en": "" if has_cjk else title,
+                "title_ja": "",
+                "title_zh": title if has_cjk else "",
                 "dates": dates, "location": "TCMA",
                 "link": href,
             })
@@ -793,10 +796,12 @@ def _scrape_kdmofa():
                 if not _is_current_exhibition(dates, today):
                     continue
                 if title and len(title) > 3:
+                    has_cjk = bool(re.search(r"[一-鿿]", title))
                     exhibitions.append({
                         "museum": "kdmofa",
-                        "title_en": title,
-                        "title_ja": "", "title_zh": "",
+                        "title_en": "" if has_cjk else title,
+                        "title_ja": "",
+                        "title_zh": title if has_cjk else "",
                         "dates": dates,
                         "location": "KdMoFA",
                         "link": url,
@@ -1670,10 +1675,13 @@ def _scrape_generic(museum_id, exhibition_url):
                 if 3 < len(better) < 80 and not re.match(r"^\d", better):
                     title = better + " — " + title
             if title and len(title) > 2:
+                # CJK文字が含まれていればtitle_zh、なければtitle_en
+                has_cjk = bool(re.search(r"[一-鿿]", title))
                 exhibitions.append({
                     "museum": museum_id,
-                    "title_en": title,
-                    "title_ja": "", "title_zh": "",
+                    "title_en": "" if has_cjk else title,
+                    "title_ja": "",
+                    "title_zh": title if has_cjk else "",
                     "dates": dates,
                     "location": "",
                     "link": exhibition_url,
