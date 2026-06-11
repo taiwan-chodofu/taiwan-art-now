@@ -151,9 +151,35 @@
     {% endfor %}
     {% endif %}
 
-    {% if exhibition.link %}
-    <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener">View on official site →</a>
-    {% endif %}
+    <div style="margin-top:1rem; display:flex; gap:8px; flex-wrap:wrap;">
+      <button id="favBtn" onclick="toggleFav()" style="font-size:0.75rem; padding:6px 14px; border-radius:4px; border:1px solid var(--border); background:var(--bg); color:var(--text); cursor:pointer;">
+        ☆ Save
+      </button>
+      {% if exhibition.link %}
+      <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener" style="margin-top:0;">View on official site →</a>
+      {% endif %}
+    </div>
+
+    <script>
+    var favKey = 'taiwan_art_favs';
+    var exId = '{{ museum.name }}__{{ exhibition.title }}'.replace(/[^a-zA-Z0-9一-鿿]/g, '_');
+    function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
+    function toggleFav() {
+      var favs = getFavs();
+      if (favs[exId]) { delete favs[exId]; } else {
+        favs[exId] = { title: '{{ exhibition.title }}', museum: '{{ museum.name }}', dates: '{{ exhibition.dates }}', url: window.location.href };
+      }
+      localStorage.setItem(favKey, JSON.stringify(favs));
+      updateBtn();
+    }
+    function updateBtn() {
+      var favs = getFavs();
+      var btn = document.getElementById('favBtn');
+      btn.textContent = favs[exId] ? '★ Saved' : '☆ Save';
+      btn.style.background = favs[exId] ? '#fef3cd' : 'var(--bg)';
+    }
+    updateBtn();
+    </script>
   </div>
 
   {% if museum.lat %}
