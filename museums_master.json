@@ -158,7 +158,7 @@
         "ja": "台北市大同區長安西路39號",
         "zh": "臺北市大同區長安西路39號"
       },
-      "url": "https://www.mocataipei.org.tw",
+      "url": "https://www.moca.taipei",
       "hours": {
         "en": "Tue–Sun 10:00–18:00 | Closed Mon",
         "ja": "火〜日 10:00–18:00｜月休",
@@ -673,9 +673,9 @@
       "category": "alternative",
       "region": "taipei",
       "name": {
-        "en": "Taipei Artist Village (TAV)",
-        "ja": "台北国際芸術村",
-        "zh": "台北國際藝術村"
+        "en": "Treasure Hill Artist Village",
+        "ja": "台北寶藏巖國際藝術村",
+        "zh": "台北寶藏巖國際藝術村"
       },
       "address": {
         "en": "No.7, Beiping E. Rd., Taipei",
@@ -1113,9 +1113,9 @@
       "category": "commercial",
       "region": "taipei",
       "name": {
-        "en": "Yi Yun Art",
-        "ja": "亦安畫廊",
-        "zh": "亦安畫廊"
+        "en": "YIYUN ART",
+        "ja": "異雲書屋",
+        "zh": "異雲書屋"
       },
       "address": {
         "en": "No.1-1, Ln.75, Yongkang St., Taipei",
@@ -1265,9 +1265,9 @@
       "category": "private",
       "region": "kaohsiung",
       "name": {
-        "en": "ALIEN Art Centre",
-        "ja": "永添藝術",
-        "zh": "永添藝術"
+        "en": "ALIEN Art Centre (Jinma Guest House)",
+        "ja": "金馬賓館當代美術館",
+        "zh": "金馬賓館當代美術館"
       },
       "address": {
         "en": "No.111, Gushan 1st Rd., Kaohsiung",
