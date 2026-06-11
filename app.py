@@ -744,28 +744,6 @@ def exhibition_detail(museum_id, idx):
             museum_info = m
             break
 
-    # 近くの展示
-    nearby = []
-    if museum_info and museum_info.get("lat"):
-        import math
-        lat1, lng1 = museum_info["lat"], museum_info["lng"]
-        for m in master["museums"]:
-            if m["id"] == museum_id or not m.get("lat"):
-                continue
-            dlat = math.radians(m["lat"] - lat1)
-            dlng = math.radians(m["lng"] - lng1)
-            a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(m["lat"])) * math.sin(dlng/2)**2
-            dist = 6371 * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-            if dist <= 3:
-                m_exs = [e for e in exhibitions if e.get("museum") == m["id"]]
-                if m_exs:
-                    nearby.append({
-                        "name": _get_localized(m["name"], lang),
-                        "dist": round(dist, 1),
-                        "exhibition": _get_display_title(m_exs[0], lang),
-                    })
-        nearby.sort(key=lambda x: x["dist"])
-
     return render_template(
         "exhibition_detail_page.html",
         exhibition={
@@ -785,52 +763,10 @@ def exhibition_detail(museum_id, idx):
             "address": _get_localized(museum_info.get("address", {}), lang) if museum_info else "",
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "url": museum_info.get("url", "") if museum_info else "",
-            "lat": museum_info.get("lat", 0) if museum_info else 0,
-            "lng": museum_info.get("lng", 0) if museum_info else 0,
         },
-        nearby=nearby[:3],
         current_lang=lang,
     )
 
-
-@app.route("/map")
-def map_view():
-    """全施設を地図上に表示する。"""
-    lang = request.args.get("lang", "zh")
-    master = _load_master()
-    from scraper import fetch_all_exhibitions
-
-    exhibitions = fetch_all_exhibitions()
-    ex_by_museum = {}
-    for ex in exhibitions:
-        mid = ex.get("museum", "")
-        ex_by_museum.setdefault(mid, []).append(ex)
-
-    markers = []
-    for m in master["museums"]:
-        if not m.get("lat") or not m.get("lng"):
-            continue
-        exs = ex_by_museum.get(m["id"], [])
-        markers.append({
-            "id": m["id"],
-            "name": _get_localized(m["name"], lang),
-            "lat": m["lat"],
-            "lng": m["lng"],
-            "category": m.get("category", ""),
-            "closed_today": _is_closed_today(m.get("closed_day")),
-            "ex_count": len(exs),
-            "og_image": m.get("og_image", ""),
-            "exhibitions": [
-                {"title": _get_display_title(ex, lang), "dates": ex.get("dates", "")}
-                for ex in exs[:3]
-            ],
-        })
-
-    return render_template(
-        "map.html",
-        markers=markers,
-        current_lang=lang,
-    )
 
 
 @app.route("/nearby/<museum_id>")

@@ -9,160 +9,233 @@
   <meta property="og:description" content="{{ museum.name }} · {{ exhibition.dates }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
-      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
-      --accent: #000; --border: #e8e8e8; --tag-bg: #f5f5f3;
-      --blue: #3498db; --green: #2ecc71; --red: #d63031;
+      --bg: #fff; --text: #111; --text-sub: #555; --text-light: #888;
+      --accent: #111; --border: #e8e8e8; --tag-bg: #f5f5f3;
+      --card-bg: #fafafa;
+      --blue: #2563eb; --green: #16a34a; --red: #dc2626;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #aaa; --text-light: #777;
+        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #bbb; --text-light: #777;
         --accent: #fff; --border: #333; --tag-bg: #2a2a2a;
+        --card-bg: #222;
+        --blue: #60a5fa; --green: #4ade80; --red: #f87171;
       }
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Noto Sans TC", -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
-      line-height: 1.6; font-size: 14px;
+      line-height: 1.7; font-size: 15px;
     }
-    .container { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    .container { max-width: 640px; margin: 0 auto; padding: 1.2rem 1rem 3rem; }
+
+    /* Back link */
     .back-link {
-      font-size: 0.7rem; color: var(--text-light); text-decoration: none;
-      display: inline-block; margin-bottom: 1rem;
+      font-size: 0.8rem; color: var(--text-light); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 0; margin-bottom: 1.2rem;
     }
-    .back-link:hover { color: var(--accent); }
-    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .back-link:active { color: var(--accent); }
+
+    /* Title */
+    h1 {
+      font-size: 1.5rem; font-weight: 700; line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Badges */
     .meta-row {
       display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-      margin-bottom: 6px;
+      margin-bottom: 0.5rem;
     }
     .badge {
-      font-size: 0.6rem; font-weight: 700; padding: 2px 8px;
-      border-radius: 3px; display: inline-block;
+      font-size: 0.7rem; font-weight: 600; padding: 3px 10px;
+      border-radius: 4px; display: inline-block;
     }
-    .badge-current { background: #d4edda; color: #155724; }
-    .badge-upcoming { background: #cce5ff; color: #004085; }
-    .badge-ending { background: #f8d7da; color: #721c24; }
-    .dates { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 1rem; }
-    .section-title {
-      font-size: 0.7rem; font-weight: 600; color: var(--text-light);
-      text-transform: uppercase; margin: 1.2rem 0 0.5rem;
-      letter-spacing: 0.3px;
+    .badge-current { background: #dcfce7; color: #166534; }
+    .badge-upcoming { background: #dbeafe; color: #1e40af; }
+    .badge-ending { background: #fee2e2; color: #991b1b; }
+
+    /* Dates */
+    .dates {
+      font-size: 0.95rem; color: var(--text-sub); margin-bottom: 1.2rem;
     }
-    .museum-card {
-      border: 1px solid var(--border); border-radius: 8px;
-      padding: 12px 16px; margin-bottom: 1rem;
+
+    /* Subtitle (zh alt title) */
+    .alt-title {
+      font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.2rem;
     }
-    .museum-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-    .museum-info { font-size: 0.7rem; color: var(--text-sub); }
-    .museum-link { font-size: 0.65rem; margin-top: 6px; }
-    .museum-link a { color: var(--blue); text-decoration: none; }
+
+    /* Sections */
+    .section-label {
+      font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+      text-transform: uppercase; letter-spacing: 0.5px;
+      margin: 1.5rem 0 0.4rem;
+    }
+
     .artists-list {
-      font-size: 0.8rem; color: var(--text-sub); font-style: italic;
+      font-size: 0.9rem; color: var(--text-sub);
     }
-    .curator { font-size: 0.75rem; color: var(--text-sub); }
+    .curator { font-size: 0.85rem; color: var(--text-sub); }
     .description {
-      font-size: 0.8rem; color: var(--text-sub); line-height: 1.7;
-      margin-top: 8px;
+      font-size: 0.88rem; color: var(--text-sub); line-height: 1.8;
+      margin-top: 0.4rem;
     }
-    #mini-map { width: 100%; height: 200px; border-radius: 8px; margin: 8px 0; }
-    .nearby-item {
-      padding: 6px 0; border-bottom: 1px solid var(--border);
-      font-size: 0.75rem;
+
+    /* Venue card */
+    .venue-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 16px 18px; margin-top: 0.5rem;
     }
-    .nearby-item:last-child { border: none; }
-    .nearby-name { font-weight: 600; }
-    .nearby-dist { color: var(--blue); font-size: 0.65rem; }
+    .venue-name { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .venue-info {
+      font-size: 0.82rem; color: var(--text-sub); line-height: 1.6;
+    }
+    .venue-links {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px;
+    }
+    .venue-link {
+      font-size: 0.8rem; color: var(--blue); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 6px 12px; border-radius: 6px;
+      border: 1px solid var(--blue);
+      transition: background 0.15s, color 0.15s;
+    }
+    .venue-link:active { background: var(--blue); color: #fff; }
+
+    /* Action buttons */
+    .actions {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 1.5rem; padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+    }
+    .action-btn {
+      font-size: 0.82rem; padding: 8px 16px; border-radius: 6px;
+      border: 1px solid var(--border); background: var(--bg);
+      color: var(--text); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 5px;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .action-btn:active { border-color: var(--accent); background: var(--tag-bg); }
+    .action-btn.saved { background: #fef9c3; border-color: #facc15; }
+
     .ext-link {
-      display: inline-block; margin-top: 1rem;
-      font-size: 0.75rem; color: var(--blue); text-decoration: none;
-      border: 1px solid var(--blue); padding: 6px 14px; border-radius: 4px;
+      font-size: 0.82rem; padding: 8px 16px; border-radius: 6px;
+      border: 1px solid var(--blue); background: var(--bg);
+      color: var(--blue); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      transition: all 0.15s;
     }
-    .ext-link:hover { background: var(--blue); color: #fff; }
+    .ext-link:active { background: var(--blue); color: #fff; }
   </style>
 </head>
 <body>
   <div class="container">
-    <a class="back-link" href="/?lang={{ current_lang }}">← Back to exhibitions</a>
+    <a class="back-link" href="/?lang={{ current_lang }}">←
+      {% if current_lang == 'zh' %}返回展覽列表
+      {% elif current_lang == 'ja' %}展覧会一覧に戻る
+      {% else %}Back to exhibitions{% endif %}
+    </a>
 
     <h1>{{ exhibition.title }}</h1>
 
     <div class="meta-row">
       {% if exhibition.status == 'current' %}
-        <span class="badge badge-current">Now showing</span>
+        <span class="badge badge-current">
+          {% if current_lang == 'zh' %}展出中{% elif current_lang == 'ja' %}開催中{% else %}Now showing{% endif %}
+        </span>
       {% elif exhibition.status == 'upcoming' %}
-        <span class="badge badge-upcoming">Upcoming</span>
+        <span class="badge badge-upcoming">
+          {% if current_lang == 'zh' %}即將開展{% elif current_lang == 'ja' %}近日開催{% else %}Upcoming{% endif %}
+        </span>
       {% endif %}
       {% if exhibition.days_left is not none and exhibition.days_left <= 14 %}
-        <span class="badge badge-ending">{{ exhibition.days_left }}d left</span>
+        <span class="badge badge-ending">
+          {% if current_lang == 'zh' %}剩餘 {{ exhibition.days_left }} 天
+          {% elif current_lang == 'ja' %}残り {{ exhibition.days_left }} 日
+          {% else %}{{ exhibition.days_left }}d left{% endif %}
+        </span>
       {% endif %}
       {% if exhibition.days_until_start is not none %}
-        <span class="badge badge-upcoming">Opens in {{ exhibition.days_until_start }}d</span>
+        <span class="badge badge-upcoming">
+          {% if current_lang == 'zh' %}{{ exhibition.days_until_start }} 天後開展
+          {% elif current_lang == 'ja' %}{{ exhibition.days_until_start }} 日後開催
+          {% else %}Opens in {{ exhibition.days_until_start }}d{% endif %}
+        </span>
       {% endif %}
     </div>
 
     <div class="dates">{{ exhibition.dates }}</div>
 
     {% if exhibition.title_zh and exhibition.title != exhibition.title_zh %}
-    <div style="font-size:0.8rem; color:var(--text-sub); margin-bottom:1rem;">{{ exhibition.title_zh }}</div>
+    <div class="alt-title">{{ exhibition.title_zh }}</div>
     {% endif %}
 
     {% if exhibition.artists %}
-    <div class="section-title">Artists</div>
+    <div class="section-label">
+      {% if current_lang == 'zh' %}藝術家{% elif current_lang == 'ja' %}アーティスト{% else %}Artists{% endif %}
+    </div>
     <div class="artists-list">{{ exhibition.artists|join(' · ') }}</div>
     {% endif %}
 
     {% if exhibition.curator %}
-    <div class="section-title">Curator</div>
+    <div class="section-label">
+      {% if current_lang == 'zh' %}策展人{% elif current_lang == 'ja' %}キュレーター{% else %}Curator{% endif %}
+    </div>
     <div class="curator">{{ exhibition.curator }}</div>
     {% endif %}
 
     {% if exhibition.description %}
-    <div class="section-title">About</div>
+    <div class="section-label">
+      {% if current_lang == 'zh' %}關於{% elif current_lang == 'ja' %}概要{% else %}About{% endif %}
+    </div>
     <div class="description">{{ exhibition.description[:500] }}</div>
     {% endif %}
 
-    <div class="section-title">Venue</div>
-    <div class="museum-card">
-      <div class="museum-name">{{ museum.name }}</div>
-      <div class="museum-info">
+    <div class="section-label">
+      {% if current_lang == 'zh' %}展覽地點{% elif current_lang == 'ja' %}会場{% else %}Venue{% endif %}
+    </div>
+    <div class="venue-card">
+      <div class="venue-name">{{ museum.name }}</div>
+      <div class="venue-info">
         {% if museum.hours %}{{ museum.hours }}<br>{% endif %}
         {% if museum.address %}{{ museum.address }}{% endif %}
       </div>
-      {% if museum.lat %}
-      <div id="mini-map"></div>
-      {% endif %}
-      <div class="museum-link">
-        {% if museum.url %}<a href="{{ museum.url }}" target="_blank">Official site →</a>{% endif %}
+      <div class="venue-links">
+        {% if museum.address %}
+        <a class="venue-link" href="https://www.google.com/maps/search/?api=1&query={{ museum.address|urlencode }}" target="_blank" rel="noopener">
+          📍 Google Maps
+        </a>
+        {% endif %}
+        {% if museum.url %}
+        <a class="venue-link" href="{{ museum.url }}" target="_blank" rel="noopener">
+          🌐 {% if current_lang == 'zh' %}官方網站{% elif current_lang == 'ja' %}公式サイト{% else %}Official site{% endif %}
+        </a>
+        {% endif %}
       </div>
     </div>
 
-    {% if nearby %}
-    <div class="section-title">Nearby (within 3km)</div>
-    {% for n in nearby %}
-    <div class="nearby-item">
-      <span class="nearby-name">{{ n.name }}</span>
-      <span class="nearby-dist">{{ n.dist }}km</span>
-      <div style="font-size:0.7rem; color:var(--text-light);">{{ n.exhibition }}</div>
-    </div>
-    {% endfor %}
-    {% endif %}
-
-    <div style="margin-top:1rem; display:flex; gap:8px; flex-wrap:wrap;">
-      <button id="favBtn" onclick="toggleFav()" style="font-size:0.75rem; padding:6px 14px; border-radius:4px; border:1px solid var(--border); background:var(--bg); color:var(--text); cursor:pointer;">
-        ☆ Save
+    <div class="actions">
+      <button id="favBtn" class="action-btn" onclick="toggleFav()">
+        <span id="favIcon">☆</span>
+        <span id="favText">
+          {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}保存{% else %}Save{% endif %}
+        </span>
       </button>
       {% if exhibition.link %}
-      <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener" style="margin-top:0;">View on official site →</a>
+      <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener">
+        {% if current_lang == 'zh' %}查看官方頁面 →{% elif current_lang == 'ja' %}公式ページを見る →{% else %}View official page →{% endif %}
+      </a>
       {% endif %}
     </div>
 
     <script>
     var favKey = 'taiwan_art_favs';
-    var exId = '{{ museum.name }}__{{ exhibition.title }}'.replace(/[^a-zA-Z0-9一-鿿]/g, '_');
+    var exId = '{{ museum.name }}__{{ exhibition.title }}'.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
     function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
     function toggleFav() {
       var favs = getFavs();
@@ -175,23 +248,20 @@
     function updateBtn() {
       var favs = getFavs();
       var btn = document.getElementById('favBtn');
-      btn.textContent = favs[exId] ? '★ Saved' : '☆ Save';
-      btn.style.background = favs[exId] ? '#fef3cd' : 'var(--bg)';
+      var icon = document.getElementById('favIcon');
+      var text = document.getElementById('favText');
+      if (favs[exId]) {
+        icon.textContent = '★';
+        text.textContent = '{% if current_lang == "zh" %}已收藏{% elif current_lang == "ja" %}保存済み{% else %}Saved{% endif %}';
+        btn.classList.add('saved');
+      } else {
+        icon.textContent = '☆';
+        text.textContent = '{% if current_lang == "zh" %}收藏{% elif current_lang == "ja" %}保存{% else %}Save{% endif %}';
+        btn.classList.remove('saved');
+      }
     }
     updateBtn();
     </script>
   </div>
-
-  {% if museum.lat %}
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    var map = L.map('mini-map').setView([{{ museum.lat }}, {{ museum.lng }}], 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OSM', maxZoom: 18
-    }).addTo(map);
-    L.marker([{{ museum.lat }}, {{ museum.lng }}]).addTo(map)
-      .bindPopup('{{ museum.name }}').openPopup();
-  </script>
-  {% endif %}
 </body>
 </html>
