@@ -819,6 +819,7 @@ def map_view():
             "category": m.get("category", ""),
             "closed_today": _is_closed_today(m.get("closed_day")),
             "ex_count": len(exs),
+            "og_image": m.get("og_image", ""),
             "exhibitions": [
                 {"title": _get_display_title(ex, lang), "dates": ex.get("dates", "")}
                 for ex in exs[:3]

@@ -57,7 +57,11 @@
         iconAnchor: [6, 6],
       });
 
-      var popupHtml = '<div class="popup-title">' + m.name + '</div>';
+      var popupHtml = '';
+      if (m.og_image) {
+        popupHtml += '<img src="' + m.og_image + '" style="width:100%; height:80px; object-fit:cover; border-radius:4px; margin-bottom:6px;" onerror="this.style.display=\'none\'">';
+      }
+      popupHtml += '<div class="popup-title">' + m.name + '</div>';
       popupHtml += '<div class="popup-status ' + (m.closed_today ? 'closed' : 'open') + '">';
       popupHtml += m.closed_today ? '🔴 Closed today' : '🟢 Open';
       popupHtml += ' · ' + m.ex_count + ' exhibitions</div>';
