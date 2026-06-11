@@ -116,7 +116,9 @@
       },
       "closed_day": 0,
       "scraper": "honggah",
-      "og_image": "http://ddqe1b8m5jdmr.cloudfront.net/wp-content/uploads/2026/04/Qingming-Festival-819x1024.jpg"
+      "og_image": "http://ddqe1b8m5jdmr.cloudfront.net/wp-content/uploads/2026/04/Qingming-Festival-819x1024.jpg",
+      "lat": 25.125281,
+      "lng": 121.499149
     },
     {
       "id": "tfam",
@@ -139,7 +141,9 @@
         "zh": "週二至週日 9:30–17:30｜週六延長至20:30｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tfam_api"
+      "scraper": "tfam_api",
+      "lat": 25.07203,
+      "lng": 121.524661
     },
     {
       "id": "moca",
@@ -163,7 +167,9 @@
       },
       "closed_day": 0,
       "scraper": "moca",
-      "og_image": "http://www.moca.taipei18855"
+      "og_image": "http://www.moca.taipei18855",
+      "lat": 25.050781,
+      "lng": 121.518965
     },
     {
       "id": "ncpi",
@@ -187,7 +193,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=8006&sms=15632"
+      "exhibition_url": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=8006&sms=15632",
+      "lat": 25.045916,
+      "lng": 121.518295
     },
     {
       "id": "clab",
@@ -211,7 +219,9 @@
       },
       "closed_day": 0,
       "scraper": "clab",
-      "og_image": "https://clab.org.tw/wp-content/uploads/2020/06/feature-1.jpg"
+      "og_image": "https://clab.org.tw/wp-content/uploads/2020/06/feature-1.jpg",
+      "lat": 25.04328,
+      "lng": 121.536396
     },
     {
       "id": "thecube",
@@ -234,7 +244,9 @@
         "zh": "週三至週日 13:00–19:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "thecube"
+      "scraper": "thecube",
+      "lat": 25.015761,
+      "lng": 121.533385
     },
     {
       "id": "kdmofa",
@@ -258,7 +270,9 @@
       },
       "closed_day": 0,
       "scraper": "kdmofa",
-      "og_image": "https://kdmofa.tnua.edu.tw/images/fb_og_image.png"
+      "og_image": "https://kdmofa.tnua.edu.tw/images/fb_og_image.png",
+      "lat": 25.13345,
+      "lng": 121.471499
     },
     {
       "id": "ntmofa",
@@ -282,7 +296,9 @@
       },
       "closed_day": 0,
       "scraper": "ntmofa_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 24.14149,
+      "lng": 120.663268
     },
     {
       "id": "chiayi",
@@ -306,7 +322,9 @@
       },
       "closed_day": 0,
       "scraper": "chiayi",
-      "og_image": "https://chiayiartmuseum.chiayi.gov.tw/images/default-x.jpg"
+      "og_image": "https://chiayiartmuseum.chiayi.gov.tw/images/default-x.jpg",
+      "lat": 23.476641,
+      "lng": 120.440854
     },
     {
       "id": "tnam",
@@ -330,7 +348,9 @@
       },
       "closed_day": 0,
       "scraper": "tnam",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 23.308618,
+      "lng": 120.310349
     },
     {
       "id": "kmfa",
@@ -354,7 +374,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://www.kmfa.gov.tw/exhibition"
+      "exhibition_url": "https://www.kmfa.gov.tw/exhibition",
+      "lat": 22.656511,
+      "lng": 120.286174
     },
     {
       "id": "ntcart",
@@ -378,7 +400,9 @@
       },
       "closed_day": 0,
       "scraper": "ntcart",
-      "og_image": "https://ntcart.museum/assets/img/share.png"
+      "og_image": "https://ntcart.museum/assets/img/share.png",
+      "lat": 25.244219,
+      "lng": 121.611225
     },
     {
       "id": "tmofa",
@@ -402,7 +426,9 @@
       },
       "closed_day": 0,
       "scraper": "generic",
-      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions"
+      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions",
+      "lat": 24.971301,
+      "lng": 121.288594
     },
     {
       "id": "ttam",
@@ -425,7 +451,9 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.764606,
+      "lng": 121.150084
     },
     {
       "id": "hcam",
@@ -450,7 +478,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.hccc.gov.tw/Content/favicons/mstile-310x310.png"
+      "og_image": "https://www.hccc.gov.tw/Content/favicons/mstile-310x310.png",
+      "lat": 25.04377,
+      "lng": 121.512978
     },
     {
       "id": "hcfam",
@@ -475,7 +505,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.hccg.gov.tw/img/hccg.jpg"
+      "og_image": "https://www.hccg.gov.tw/img/hccg.jpg",
+      "lat": 24.80638,
+      "lng": 120.96968
     },
     {
       "id": "lym",
@@ -500,7 +532,9 @@
       "closed_day": 2,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.lym.gov.tw/system/modules/com.thesys.project.lym/resources/assets/img/main_parts_04.png"
+      "og_image": "https://www.lym.gov.tw/system/modules/com.thesys.project.lym/resources/assets/img/main_parts_04.png",
+      "lat": 24.868806,
+      "lng": 121.832677
     },
     {
       "id": "tcma",
@@ -524,7 +558,9 @@
       },
       "closed_day": 0,
       "scraper": "tcma",
-      "og_image": "https://www.tcam.museum/wp-content/uploads/2025/11/og_img.jpg"
+      "og_image": "https://www.tcam.museum/wp-content/uploads/2025/11/og_img.jpg",
+      "lat": 24.193019,
+      "lng": 120.654507
     },
     {
       "id": "fotoaura",
@@ -547,7 +583,9 @@
         "zh": "週三至週日 14:00–20:00｜週一二休（展覽期間）"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.997745,
+      "lng": 120.208635
     },
     {
       "id": "frees",
@@ -570,7 +608,9 @@
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 24.11452,
+      "lng": 120.76567
     },
     {
       "id": "absolute",
@@ -594,7 +634,9 @@
       },
       "closed_day": 0,
       "scraper": "absolute_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 22.994814,
+      "lng": 120.203627
     },
     {
       "id": "goodug",
@@ -618,7 +660,9 @@
       },
       "closed_day": 1,
       "scraper": "goodug",
-      "og_image": "http://goodunderground.weebly.com/uploads/7/0/4/1/70417169/13221301-270106080008387-8263632175537335811-o_1_orig.jpg"
+      "og_image": "http://goodunderground.weebly.com/uploads/7/0/4/1/70417169/13221301-270106080008387-8263632175537335811-o_1_orig.jpg",
+      "lat": 23.980106,
+      "lng": 121.609577
     },
     {
       "id": "sinpin",
@@ -641,7 +685,9 @@
         "zh": "週二至週日 11:00–19:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 22.626834,
+      "lng": 120.285729
     },
     {
       "id": "tav",
@@ -665,7 +711,9 @@
       },
       "closed_day": 0,
       "scraper": "tav",
-      "og_image": "https://www.artistvillage.org/upload/201511301911345797_crop.jpg"
+      "og_image": "https://www.artistvillage.org/upload/201511301911345797_crop.jpg",
+      "lat": 25.01062,
+      "lng": 121.532236
     },
     {
       "id": "lightbox",
@@ -690,7 +738,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.lightboxlib.org/sites/default/files/assets/new_logo_notext.jpg"
+      "og_image": "https://www.lightboxlib.org/sites/default/files/assets/new_logo_notext.jpg",
+      "lat": 25.019761,
+      "lng": 121.53065
     },
     {
       "id": "fuzhong15",
@@ -713,7 +763,9 @@
         "zh": "週二至週日 09:30–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 25.009427,
+      "lng": 121.45952
     },
     {
       "id": "ponding",
@@ -737,7 +789,9 @@
       },
       "closed_day": 1,
       "scraper": null,
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.061475,
+      "lng": 121.541671
     },
     {
       "id": "art182",
@@ -760,7 +814,9 @@
         "zh": "預約制"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 25.007813,
+      "lng": 121.538618
     },
     {
       "id": "tinakeng",
@@ -785,7 +841,9 @@
       "closed_day": 0,
       "scraper": "tinakeng",
       "exhibition_url": "",
-      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tinakenggallery/usr/library/images/main/pages/1/portrait-of-the-artist-su-xiaobai.-courtesy-the-artist-and-su-xiaobai-foundation.jpg"
+      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tinakenggallery/usr/library/images/main/pages/1/portrait-of-the-artist-su-xiaobai.-courtesy-the-artist-and-su-xiaobai-foundation.jpg",
+      "lat": 25.079207,
+      "lng": 121.567051
     },
     {
       "id": "tkgplus",
@@ -810,7 +868,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.tkgplus.com/en/exhibitions",
-      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tkg/usr/images/pages/slideshow_data/1/oyama_web_3200x2000_c.jpg"
+      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tkg/usr/images/pages/slideshow_data/1/oyama_web_3200x2000_c.jpg",
+      "lat": 25.07892,
+      "lng": 121.567033
     },
     {
       "id": "linlin",
@@ -835,7 +895,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.linlingallery.com/archive/image/header_info/1720754842719.png"
+      "og_image": "https://www.linlingallery.com/archive/image/header_info/1720754842719.png",
+      "lat": 25.035934,
+      "lng": 121.544402
     },
     {
       "id": "asiaart",
@@ -860,7 +922,9 @@
       "closed_day": 0,
       "scraper": "asiaart",
       "exhibition_url": "",
-      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2238/usr/images/exhibitions/home_page_image/items/e9/e9af0018a9254a0ab62a7665a8d45888/0z4a9759.jpg"
+      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite2238/usr/images/exhibitions/home_page_image/items/e9/e9af0018a9254a0ab62a7665a8d45888/0z4a9759.jpg",
+      "lat": 25.082452,
+      "lng": 121.554812
     },
     {
       "id": "chiwen",
@@ -884,7 +948,9 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "og_image": "https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvaTAud3AuY29tXC9jaGl3ZW5nYWxsZXJ5LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyMlwvMDRcL2Nyb3BwZWQtMTgxOTQ4NzVfODI5NDkxNzMzODY2NzI0XzQyOTA4NTQ5MzU5NzMxNDA4NzJfbi5qcGc_Zml0PTUxMiUyQzUxMiZzc2w9MSIsInR4dCI6IkNoaS1XZW4iLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM2MDU1MTI3fQ.TX8wb83RUmgtQsE5ks73RpAMOmYwMY0Z3SB9rCfLKpwMQ"
+      "og_image": "https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvaTAud3AuY29tXC9jaGl3ZW5nYWxsZXJ5LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyMlwvMDRcL2Nyb3BwZWQtMTgxOTQ4NzVfODI5NDkxNzMzODY2NzI0XzQyOTA4NTQ5MzU5NzMxNDA4NzJfbi5qcGc_Zml0PTUxMiUyQzUxMiZzc2w9MSIsInR4dCI6IkNoaS1XZW4iLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM2MDU1MTI3fQ.TX8wb83RUmgtQsE5ks73RpAMOmYwMY0Z3SB9rCfLKpwMQ",
+      "lat": 25.10327,
+      "lng": 121.525088
     },
     {
       "id": "liang",
@@ -908,7 +974,9 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.07709,
+      "lng": 121.573403
     },
     {
       "id": "eachmodern",
@@ -933,7 +1001,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.eachmodern.com/exhibitions",
-      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1566/usr/images/pages/slideshow_data/1/antone-ko-nst-heavy-hibiscus-2026-oil-pigment-stick-and-charcoal-on-linen-208.5-x-172.2-cm.jpg"
+      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1566/usr/images/pages/slideshow_data/1/antone-ko-nst-heavy-hibiscus-2026-oil-pigment-stick-and-charcoal-on-linen-208.5-x-172.2-cm.jpg",
+      "lat": 25.01091,
+      "lng": 121.563963
     },
     {
       "id": "taoart",
@@ -957,7 +1027,9 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "og_image": "https://c-p.rmcdn.net/5dd35a9843517554a578f499/1638575/Screenshot-4d7f79a0-9556-4c56-9cce-7d0b5b3ce6c9_readyscr_1024.jpg"
+      "og_image": "https://c-p.rmcdn.net/5dd35a9843517554a578f499/1638575/Screenshot-4d7f79a0-9556-4c56-9cce-7d0b5b3ce6c9_readyscr_1024.jpg",
+      "lat": 24.964869,
+      "lng": 121.29954
     },
     {
       "id": "michaelku",
@@ -982,7 +1054,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://data.michaelkugallery.com/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png"
+      "og_image": "https://data.michaelkugallery.com/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png",
+      "lat": 24.304398,
+      "lng": 120.724309
     },
     {
       "id": "aki",
@@ -1006,7 +1080,9 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "og_image": "https://galleryaki.com/assets/images/logo-line.jpg"
+      "og_image": "https://galleryaki.com/assets/images/logo-line.jpg",
+      "lat": 25.014549,
+      "lng": 121.520746
     },
     {
       "id": "soka",
@@ -1030,7 +1106,9 @@
       },
       "closed_day": 0,
       "scraper": "soka",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 24.252723,
+      "lng": 120.72932
     },
     {
       "id": "g333",
@@ -1055,7 +1133,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://333-gallery.com/wp-content/uploads/2022/08/Nathan-Paddison-_KEN-WE-TORQUE_-Solo-Exhibition.jpg"
+      "og_image": "https://333-gallery.com/wp-content/uploads/2022/08/Nathan-Paddison-_KEN-WE-TORQUE_-Solo-Exhibition.jpg",
+      "lat": 25.060797,
+      "lng": 121.575685
     },
     {
       "id": "bluerider",
@@ -1079,7 +1159,9 @@
       },
       "closed_day": 0,
       "scraper": "artemperor",
-      "exhibition_url": "https://www.blueriderart.com/en/exhibitions"
+      "exhibition_url": "https://www.blueriderart.com/en/exhibitions",
+      "lat": 25.037691,
+      "lng": 121.554198
     },
     {
       "id": "yiyun",
@@ -1102,7 +1184,9 @@
         "zh": "週二至週六 11:00–19:00"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 23.754469,
+      "lng": 120.681551
     },
     {
       "id": "moon",
@@ -1125,7 +1209,9 @@
         "zh": "週二至週六 10:00–18:00"
       },
       "closed_day": 0,
-      "scraper": null
+      "scraper": null,
+      "lat": 24.151591,
+      "lng": 120.665323
     },
     {
       "id": "jut",
@@ -1150,7 +1236,9 @@
       "closed_day": 0,
       "scraper": "jut",
       "exhibition_url": "",
-      "og_image": "https://jam.jutfoundation.org.tw/sites/all/themes/jutart/metatag-logo.jpg"
+      "og_image": "https://jam.jutfoundation.org.tw/sites/all/themes/jutart/metatag-logo.jpg",
+      "lat": 25.044618,
+      "lng": 121.537344
     },
     {
       "id": "fubon",
@@ -1174,7 +1262,9 @@
       },
       "closed_day": null,
       "scraper": "fubon",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.039284,
+      "lng": 121.571232
     },
     {
       "id": "juming",
@@ -1199,7 +1289,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.juming.org.tw",
-      "og_image": "https://comet.noonspace.com/w62/ec/MsgInfo/恆形_banner_官網最新消息.jpg"
+      "og_image": "https://comet.noonspace.com/w62/ec/MsgInfo/恆形_banner_官網最新消息.jpg",
+      "lat": 25.244219,
+      "lng": 121.611225
     },
     {
       "id": "yuhsiu",
@@ -1224,7 +1316,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.yu-hsiu.org/en/exhibition",
-      "og_image": "https://www.yu-hsiu.org/images/logo.png"
+      "og_image": "https://www.yu-hsiu.org/images/logo.png",
+      "lat": 23.992882,
+      "lng": 120.767085
     },
     {
       "id": "alien",
@@ -1248,7 +1342,9 @@
       },
       "closed_day": 2,
       "scraper": "generic",
-      "exhibition_url": "https://www.alien.com.tw"
+      "exhibition_url": "https://www.alien.com.tw",
+      "lat": 22.627794,
+      "lng": 120.278776
     },
     {
       "id": "daxin",
@@ -1271,7 +1367,9 @@
         "zh": "預約制"
       },
       "closed_day": null,
-      "scraper": null
+      "scraper": null,
+      "lat": 24.806341,
+      "lng": 120.969867
     },
     {
       "id": "huashan",
@@ -1295,7 +1393,9 @@
       },
       "closed_day": null,
       "scraper": "huashan_manual",
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 25.044609,
+      "lng": 121.529183
     },
     {
       "id": "songshan",
@@ -1319,7 +1419,9 @@
       },
       "closed_day": null,
       "scraper": null,
-      "og_image": "https://www.songshanculturalpark.org/assets/images/fbshare.jpg"
+      "og_image": "https://www.songshanculturalpark.org/assets/images/fbshare.jpg",
+      "lat": 25.043723,
+      "lng": 121.560797
     },
     {
       "id": "cabcy",
@@ -1343,7 +1445,9 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "exhibition_url": ""
+      "exhibition_url": "",
+      "lat": 23.480477,
+      "lng": 120.441069
     },
     {
       "id": "zhengbin",
@@ -1367,7 +1471,9 @@
       },
       "closed_day": null,
       "scraper": null,
-      "og_image": "https://static.wixstatic.com/media/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png/v1/fill/w_450,h_300,al_c/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png"
+      "og_image": "https://static.wixstatic.com/media/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png/v1/fill/w_450,h_300,al_c/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png",
+      "lat": 25.011091,
+      "lng": 121.537193
     },
     {
       "id": "projectfulfill",
@@ -1392,7 +1498,9 @@
       "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
-      "og_image": "https://www.projectfulfill.com/uploads/3/1/1/6/31169469/20260425-v5-a5size-orig_orig.png"
+      "og_image": "https://www.projectfulfill.com/uploads/3/1/1/6/31169469/20260425-v5-a5size-orig_orig.png",
+      "lat": 25.033538,
+      "lng": 121.540688
     },
     {
       "id": "derhorng",
@@ -1417,7 +1525,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.derhorng.com/",
-      "og_image": "https://www.derhorng.com/images/683506"
+      "og_image": "https://www.derhorng.com/images/683506",
+      "lat": 22.99308,
+      "lng": 120.205341
     },
     {
       "id": "yiriarts",
@@ -1442,7 +1552,9 @@
       "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://yiriarts.com.tw/exhibitions/",
-      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1218/usr/images/exhibitions/home_page_image/items/db/dbd7443a356844c684b37eca4bea6189/adz_5801.jpg"
+      "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1218/usr/images/exhibitions/home_page_image/items/db/dbd7443a356844c684b37eca4bea6189/adz_5801.jpg",
+      "lat": 24.155656,
+      "lng": 120.656585
     },
     {
       "id": "pingtung",
@@ -1466,7 +1578,9 @@
       },
       "closed_day": 0,
       "scraper": "pingtung",
-      "og_image": "https://www-ws.pthg.gov.tw/Upload/2015pthg/194/sites/pagebackimage/a45addfb-fc49-4039-aa40-b59ca0d415d8.png"
+      "og_image": "https://www-ws.pthg.gov.tw/Upload/2015pthg/194/sites/pagebackimage/a45addfb-fc49-4039-aa40-b59ca0d415d8.png",
+      "lat": 22.674869,
+      "lng": 120.489973
     },
     {
       "id": "montue",
@@ -1489,7 +1603,9 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "montue"
+      "scraper": "montue",
+      "lat": 25.024567,
+      "lng": 121.544385
     },
     {
       "id": "sssart",
@@ -1513,7 +1629,9 @@
       },
       "closed_day": 0,
       "scraper": "sssart_manual",
-      "og_image": "http://static1.squarespace.com/static/5f88002b4a0e7453ada4a150/t/6a243c7feacc412d23255a8b/1780759679315/ss+space+space+logo-01.png?format=1500w"
+      "og_image": "http://static1.squarespace.com/static/5f88002b4a0e7453ada4a150/t/6a243c7feacc412d23255a8b/1780759679315/ss+space+space+logo-01.png?format=1500w",
+      "lat": 25.14628,
+      "lng": 121.400942
     },
     {
       "id": "nmtl",
@@ -1536,7 +1654,9 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmtl_manual"
+      "scraper": "nmtl_manual",
+      "lat": 22.991801,
+      "lng": 120.204374
     },
     {
       "id": "nmth",
@@ -1559,7 +1679,9 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmth_manual"
+      "scraper": "nmth_manual",
+      "lat": 23.058351,
+      "lng": 120.235154
     }
   ]
 }
