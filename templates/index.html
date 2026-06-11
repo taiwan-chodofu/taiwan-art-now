@@ -522,7 +522,33 @@
         return;
       }
 
-      var html = '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">Open museums within 10km:</div>';
+      // ルート提案（上位3施設で巡回コース）
+      var route = results.slice(0, 3);
+      var routeUrl = 'https://www.google.com/maps/dir/?api=1'
+        + '&origin=' + lat + ',' + lng
+        + '&destination=' + museumCoords[route[route.length-1].id].lat + ',' + museumCoords[route[route.length-1].id].lng
+        + '&travelmode=transit';
+      if (route.length > 1) {
+        var waypoints = route.slice(0, -1).map(function(r) {
+          return museumCoords[r.id].lat + ',' + museumCoords[r.id].lng;
+        }).join('|');
+        routeUrl += '&waypoints=' + waypoints;
+      }
+
+      var html = '';
+      if (route.length >= 2) {
+        html += '<div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:10px 12px; margin-bottom:12px;">';
+        html += '<div style="font-size:0.7rem; font-weight:700; color:#166534; margin-bottom:6px;">🚶 Today\'s Art Route (' + route.length + ' stops)</div>';
+        html += '<div style="font-size:0.65rem; color:#166534;">';
+        route.forEach(function(r, idx) {
+          html += (idx > 0 ? ' → ' : '') + r.name;
+        });
+        html += '</div>';
+        html += '<a href="' + routeUrl + '" target="_blank" style="display:inline-block; margin-top:8px; font-size:0.65rem; background:#166534; color:#fff; padding:4px 12px; border-radius:4px; text-decoration:none;">🗺 Open Route in Google Maps</a>';
+        html += '</div>';
+      }
+
+      html += '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">Open museums within 10km:</div>';
       results.slice(0, 8).forEach(function(r) {
         var mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + museumCoords[r.id].lat + ',' + museumCoords[r.id].lng + '&travelmode=transit';
         html += '<div style="padding:8px 0; border-bottom:1px solid var(--border);">';
