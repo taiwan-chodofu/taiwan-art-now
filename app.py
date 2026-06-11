@@ -240,6 +240,8 @@ def index():
         if key not in ex_by_museum:
             ex_by_museum[key] = []
         normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
+        # 展覧会のインデックス（詳細ページ用）
+        museum_ex_idx = len([e for e in ex_by_museum.get(key, [])])
         ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
             "dates": normalized,
@@ -248,6 +250,7 @@ def index():
             "status": ex.get("status", "unknown"),
             "location": ex.get("location", ""),
             "link": ex.get("link", ""),
+            "detail_url": f"/exhibition/{key}/{museum_ex_idx}?lang={lang}",
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
             "description": ex.get("description", ""),
@@ -716,6 +719,78 @@ ARTIST_LABELS = {
         "no_data": "暫無此藝術家的展覽資料。",
     },
 }
+
+
+@app.route("/exhibition/<museum_id>/<int:idx>")
+def exhibition_detail(museum_id, idx):
+    """展覧会個別ページ。"""
+    lang = request.args.get("lang", "zh")
+    from scraper import fetch_all_exhibitions
+    master = _load_master()
+
+    exhibitions = fetch_all_exhibitions()
+    # museum_idに属する展覧会のidx番目
+    museum_exs = [ex for ex in exhibitions if ex.get("museum") == museum_id]
+    if idx >= len(museum_exs):
+        return "Exhibition not found", 404
+
+    ex = museum_exs[idx]
+    normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
+
+    # 施設情報
+    museum_info = None
+    for m in master["museums"]:
+        if m["id"] == museum_id:
+            museum_info = m
+            break
+
+    # 近くの展示
+    nearby = []
+    if museum_info and museum_info.get("lat"):
+        import math
+        lat1, lng1 = museum_info["lat"], museum_info["lng"]
+        for m in master["museums"]:
+            if m["id"] == museum_id or not m.get("lat"):
+                continue
+            dlat = math.radians(m["lat"] - lat1)
+            dlng = math.radians(m["lng"] - lng1)
+            a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(m["lat"])) * math.sin(dlng/2)**2
+            dist = 6371 * 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+            if dist <= 3:
+                m_exs = [e for e in exhibitions if e.get("museum") == m["id"]]
+                if m_exs:
+                    nearby.append({
+                        "name": _get_localized(m["name"], lang),
+                        "dist": round(dist, 1),
+                        "exhibition": _get_display_title(m_exs[0], lang),
+                    })
+        nearby.sort(key=lambda x: x["dist"])
+
+    return render_template(
+        "exhibition_detail_page.html",
+        exhibition={
+            "title": _get_display_title(ex, lang),
+            "title_zh": ex.get("title_zh", ""),
+            "dates": normalized,
+            "days_left": _calc_days_left(end_dt),
+            "days_until_start": _calc_days_until_start(start_dt),
+            "artists": ex.get("artists", []),
+            "curator": ex.get("curator", ""),
+            "description": ex.get("description", ""),
+            "link": ex.get("link", ""),
+            "status": ex.get("status", "unknown"),
+        },
+        museum={
+            "name": _get_localized(museum_info["name"], lang) if museum_info else museum_id,
+            "address": _get_localized(museum_info.get("address", {}), lang) if museum_info else "",
+            "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
+            "url": museum_info.get("url", "") if museum_info else "",
+            "lat": museum_info.get("lat", 0) if museum_info else 0,
+            "lng": museum_info.get("lng", 0) if museum_info else 0,
+        },
+        nearby=nearby[:3],
+        current_lang=lang,
+    )
 
 
 @app.route("/map")

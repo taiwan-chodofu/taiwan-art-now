@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ exhibition.title }} — Taiwan Art Now</title>
+  <meta name="description" content="{{ exhibition.title }} at {{ museum.name }}. {{ exhibition.dates }}">
+  <meta property="og:title" content="{{ exhibition.title }}">
+  <meta property="og:description" content="{{ museum.name }} · {{ exhibition.dates }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    :root {
+      --bg: #fff; --text: #111; --text-sub: #666; --text-light: #999;
+      --accent: #000; --border: #e8e8e8; --tag-bg: #f5f5f3;
+      --blue: #3498db; --green: #2ecc71; --red: #d63031;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #aaa; --text-light: #777;
+        --accent: #fff; --border: #333; --tag-bg: #2a2a2a;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans TC", -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 14px;
+    }
+    .container { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    .back-link {
+      font-size: 0.7rem; color: var(--text-light); text-decoration: none;
+      display: inline-block; margin-bottom: 1rem;
+    }
+    .back-link:hover { color: var(--accent); }
+    h1 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .meta-row {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .badge {
+      font-size: 0.6rem; font-weight: 700; padding: 2px 8px;
+      border-radius: 3px; display: inline-block;
+    }
+    .badge-current { background: #d4edda; color: #155724; }
+    .badge-upcoming { background: #cce5ff; color: #004085; }
+    .badge-ending { background: #f8d7da; color: #721c24; }
+    .dates { font-size: 0.85rem; color: var(--text-sub); margin-bottom: 1rem; }
+    .section-title {
+      font-size: 0.7rem; font-weight: 600; color: var(--text-light);
+      text-transform: uppercase; margin: 1.2rem 0 0.5rem;
+      letter-spacing: 0.3px;
+    }
+    .museum-card {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px 16px; margin-bottom: 1rem;
+    }
+    .museum-name { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .museum-info { font-size: 0.7rem; color: var(--text-sub); }
+    .museum-link { font-size: 0.65rem; margin-top: 6px; }
+    .museum-link a { color: var(--blue); text-decoration: none; }
+    .artists-list {
+      font-size: 0.8rem; color: var(--text-sub); font-style: italic;
+    }
+    .curator { font-size: 0.75rem; color: var(--text-sub); }
+    .description {
+      font-size: 0.8rem; color: var(--text-sub); line-height: 1.7;
+      margin-top: 8px;
+    }
+    #mini-map { width: 100%; height: 200px; border-radius: 8px; margin: 8px 0; }
+    .nearby-item {
+      padding: 6px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+    .nearby-item:last-child { border: none; }
+    .nearby-name { font-weight: 600; }
+    .nearby-dist { color: var(--blue); font-size: 0.65rem; }
+    .ext-link {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.75rem; color: var(--blue); text-decoration: none;
+      border: 1px solid var(--blue); padding: 6px 14px; border-radius: 4px;
+    }
+    .ext-link:hover { background: var(--blue); color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="/?lang={{ current_lang }}">← Back to exhibitions</a>
+
+    <h1>{{ exhibition.title }}</h1>
+
+    <div class="meta-row">
+      {% if exhibition.status == 'current' %}
+        <span class="badge badge-current">Now showing</span>
+      {% elif exhibition.status == 'upcoming' %}
+        <span class="badge badge-upcoming">Upcoming</span>
+      {% endif %}
+      {% if exhibition.days_left is not none and exhibition.days_left <= 14 %}
+        <span class="badge badge-ending">{{ exhibition.days_left }}d left</span>
+      {% endif %}
+      {% if exhibition.days_until_start is not none %}
+        <span class="badge badge-upcoming">Opens in {{ exhibition.days_until_start }}d</span>
+      {% endif %}
+    </div>
+
+    <div class="dates">{{ exhibition.dates }}</div>
+
+    {% if exhibition.title_zh and exhibition.title != exhibition.title_zh %}
+    <div style="font-size:0.8rem; color:var(--text-sub); margin-bottom:1rem;">{{ exhibition.title_zh }}</div>
+    {% endif %}
+
+    {% if exhibition.artists %}
+    <div class="section-title">Artists</div>
+    <div class="artists-list">{{ exhibition.artists|join(' · ') }}</div>
+    {% endif %}
+
+    {% if exhibition.curator %}
+    <div class="section-title">Curator</div>
+    <div class="curator">{{ exhibition.curator }}</div>
+    {% endif %}
+
+    {% if exhibition.description %}
+    <div class="section-title">About</div>
+    <div class="description">{{ exhibition.description[:500] }}</div>
+    {% endif %}
+
+    <div class="section-title">Venue</div>
+    <div class="museum-card">
+      <div class="museum-name">{{ museum.name }}</div>
+      <div class="museum-info">
+        {% if museum.hours %}{{ museum.hours }}<br>{% endif %}
+        {% if museum.address %}{{ museum.address }}{% endif %}
+      </div>
+      {% if museum.lat %}
+      <div id="mini-map"></div>
+      {% endif %}
+      <div class="museum-link">
+        {% if museum.url %}<a href="{{ museum.url }}" target="_blank">Official site →</a>{% endif %}
+      </div>
+    </div>
+
+    {% if nearby %}
+    <div class="section-title">Nearby (within 3km)</div>
+    {% for n in nearby %}
+    <div class="nearby-item">
+      <span class="nearby-name">{{ n.name }}</span>
+      <span class="nearby-dist">{{ n.dist }}km</span>
+      <div style="font-size:0.7rem; color:var(--text-light);">{{ n.exhibition }}</div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if exhibition.link %}
+    <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener">View on official site →</a>
+    {% endif %}
+  </div>
+
+  {% if museum.lat %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('mini-map').setView([{{ museum.lat }}, {{ museum.lng }}], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OSM', maxZoom: 18
+    }).addTo(map);
+    L.marker([{{ museum.lat }}, {{ museum.lng }}]).addTo(map)
+      .bindPopup('{{ museum.name }}').openPopup();
+  </script>
+  {% endif %}
+</body>
+</html>
