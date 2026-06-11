@@ -624,47 +624,67 @@ def _fetch_tcma_dates(detail_url):
 
 
 def _scrape_clab():
-    """C-LAB（臺灣當代文化實驗場）から当期展覧会情報を取得する。"""
+    """C-LAB（臺灣當代文化實驗場）から当期展覧会情報を取得する。
+    中文版を正として取得し、英語版で英語タイトルを補完。"""
     exhibitions = []
     base = MUSEUMS["clab"]["url"]
-    url = f"{base}/en/events/"
     today = _now_tw()
-    try:
-        soup = _fetch(url)
-        for card in soup.select("div.a-base-card.-event"):
-            cat_el = card.select_one(".a-base-card__category-wrapper")
-            cat = cat_el.get_text(strip=True) if cat_el else ""
-            if cat != "Exhibition":
-                continue
-            link_el = card.select_one("a[href]")
-            href = link_el.get("href", "") if link_el else ""
-            title_el = card.select_one("p.a-base-card__title, h2, h3, strong")
-            title = title_el.get_text(strip=True) if title_el else ""
-            time_el = card.select_one(".a-base-card__time")
-            time_text = time_el.get_text(separator=" ", strip=True) if time_el else ""
-            dates = _parse_clab_dates(time_text)
-            end_match = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", dates)
-            if len(end_match) >= 2:
-                try:
-                    ey, em, ed = int(end_match[1][0]), int(end_match[1][1]), int(end_match[1][2])
-                    if datetime(ey, em, ed) < today:
-                        continue
-                except ValueError:
-                    pass
-            if not href.startswith("http"):
-                href = base + href
-            if title and len(title) > 3:
-                exhibitions.append({
-                    "museum": "clab",
-                    "title_en": title,
-                    "title_ja": "",
-                    "title_zh": "",
-                    "dates": dates,
-                    "location": "C-LAB",
-                    "link": href,
-                })
-    except Exception as exc:
-        logger.warning("C-LAB scrape failed: %s", exc)
+
+    # 中文版と英語版の両方を取得
+    zh_titles = []
+    en_titles = []
+    for lang_path, cat_keyword, title_list in [
+        ("/events/", "展覽", zh_titles),
+        ("/en/events/", "Exhibition", en_titles),
+    ]:
+        url = f"{base}{lang_path}"
+        try:
+            soup = _fetch(url)
+            for card in soup.select("div.a-base-card.-event"):
+                cat_el = card.select_one(".a-base-card__category-wrapper")
+                cat = cat_el.get_text(strip=True) if cat_el else ""
+                if cat != cat_keyword:
+                    continue
+                title_el = card.select_one("p.a-base-card__title, h2, h3, strong")
+                title = title_el.get_text(strip=True) if title_el else ""
+                time_el = card.select_one(".a-base-card__time")
+                time_text = time_el.get_text(separator=" ", strip=True) if time_el else ""
+                link_el = card.select_one("a[href]")
+                href = link_el.get("href", "") if link_el else ""
+                title_list.append({"title": title, "time_text": time_text, "href": href})
+        except Exception:
+            pass
+
+    # 中文版を正として使い、英語版をマッチ
+    for idx, zh_item in enumerate(zh_titles):
+        title_zh = zh_item["title"]
+        dates = _parse_clab_dates(zh_item["time_text"])
+        href = zh_item["href"]
+        if not href.startswith("http"):
+            href = base + href
+        title_en = en_titles[idx]["title"] if idx < len(en_titles) else ""
+
+        # 日付フィルタ
+        end_match = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", dates)
+        if len(end_match) >= 2:
+            try:
+                ey, em, ed = int(end_match[1][0]), int(end_match[1][1]), int(end_match[1][2])
+                if datetime(ey, em, ed) < today:
+                    continue
+            except ValueError:
+                pass
+
+        if title_zh and len(title_zh) > 3:
+            exhibitions.append({
+                "museum": "clab",
+                "title_en": title_en,
+                "title_ja": "",
+                "title_zh": title_zh,
+                "dates": dates,
+                "location": "C-LAB",
+                "link": href,
+            })
+
     return exhibitions
 
 
