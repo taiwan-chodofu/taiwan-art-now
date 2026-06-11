@@ -5,7 +5,6 @@ const OFFLINE_URL = '/';
 const PRECACHE_URLS = [
   '/',
   '/taishin',
-  '/map',
   '/artists',
   '/search',
 ];
