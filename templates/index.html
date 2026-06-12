@@ -85,6 +85,7 @@
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
       <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
+      <a href="#" id="favsBtn" class="refresh-btn" aria-label="Favorites" title="Favorites" onclick="showFavs(event)">☆</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
       <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn" aria-label="Refresh" title="Refresh">↻</a>
     </nav>
@@ -205,6 +206,7 @@
           <span class="open-dot"></span>{{ labels.open_today }}
         </button>
         <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {{ labels.upcoming }}</button>
+        <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★ {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</button>
       </div>
     </div>
   </div>
@@ -395,7 +397,7 @@
         {% if museum.exhibitions %}
         <div class="ex-list">
           {% for ex in museum.exhibitions %}
-          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}">
+          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ museum.name }}__{{ ex.title }}">
             <div class="ex-title">
               {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
             </div>
@@ -477,6 +479,17 @@
       <div id="nearMeContent" style="font-size:0.75rem; color:var(--text-sub);">
         Locating...
       </div>
+    </div>
+  </div>
+
+  <!-- FAVORITES MODAL -->
+  <div id="favsModal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.5);">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--bg); border-radius:12px; padding:20px; max-width:90vw; width:400px; max-height:80vh; overflow-y:auto; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="font-size:0.9rem; font-weight:700;">★ {% if current_lang == 'zh' %}收藏展覽{% elif current_lang == 'ja' %}お気に入り{% else %}Saved Exhibitions{% endif %}</h3>
+        <button onclick="document.getElementById('favsModal').style.display='none'" style="border:none; background:none; font-size:1.2rem; cursor:pointer; color:var(--text-light);">✕</button>
+      </div>
+      <div id="favsContent" style="font-size:0.8rem; color:var(--text-sub);"></div>
     </div>
   </div>
 
@@ -580,6 +593,57 @@
   document.getElementById('nearMeModal').addEventListener('click', function(e) {
     if (e.target === this) this.style.display = 'none';
   });
+  document.getElementById('favsModal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  function showFavs(e) {
+    e.preventDefault();
+    var modal = document.getElementById('favsModal');
+    var content = document.getElementById('favsContent');
+    modal.style.display = 'block';
+
+    var favs = {};
+    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
+
+    var keys = Object.keys(favs);
+    if (keys.length === 0) {
+      content.innerHTML = '<p style="text-align:center; color:var(--text-light); padding:2rem 0;">{% if current_lang == "zh" %}尚未收藏任何展覽{% elif current_lang == "ja" %}お気に入りはまだありません{% else %}No saved exhibitions yet{% endif %}</p>';
+      return;
+    }
+
+    var html = '';
+    keys.forEach(function(key) {
+      var f = favs[key];
+      html += '<div style="padding:10px 0; border-bottom:1px solid var(--border);">';
+      html += '<div style="font-weight:600; font-size:0.85rem;">' + (f.title || key) + '</div>';
+      if (f.museum) html += '<div style="font-size:0.72rem; color:var(--text-light); margin-top:2px;">' + f.museum + '</div>';
+      if (f.dates) html += '<div style="font-size:0.7rem; color:var(--text-light);">' + f.dates + '</div>';
+      html += '<div style="margin-top:4px; display:flex; gap:8px;">';
+      if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem; color:var(--blue); text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
+      html += '<a href="#" onclick="removeFav(\'' + key.replace(/'/g, "\\'") + '\'); return false;" style="font-size:0.7rem; color:var(--red); text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
+      html += '</div></div>';
+    });
+    content.innerHTML = html;
+  }
+
+  function removeFav(key) {
+    var favs = {};
+    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
+    delete favs[key];
+    localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+    showFavs({preventDefault: function(){}});
+  }
+
+  // Update header star if user has favorites
+  (function() {
+    var favs = {};
+    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
+    if (Object.keys(favs).length > 0) {
+      var btn = document.getElementById('favsBtn');
+      if (btn) btn.textContent = '★';
+    }
+  })();
   </script>
 
   <!-- FILTER JS -->
@@ -591,6 +655,11 @@
     let openOnly = params.get('open') === '1';
     let hasExOnly = params.get('hasex') !== '0';
     let upcomingOnly = params.get('upcoming') === '1';
+    let favsOnly = false;
+
+    function getFavKeys() {
+      try { var f = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); return new Set(Object.keys(f)); } catch(e) { return new Set(); }
+    }
 
     function syncURL() {
       var p = new URLSearchParams(window.location.search);
@@ -624,6 +693,7 @@
       const sections = document.querySelectorAll('.region-section');
       const cards = document.querySelectorAll('.museum-card');
       let visibleCount = 0;
+      const favKeys = favsOnly ? getFavKeys() : new Set();
 
       cards.forEach(function(card) {
         const r = card.getAttribute('data-region');
@@ -637,16 +707,30 @@
         const openOk = !openOnly || !closed;
         const hasExOk = !hasExOnly || hasEx;
         const upcomingOk = !upcomingOnly || hasUpcoming;
-        const cardVisible = regionOk && catOk && openOk && hasExOk && upcomingOk;
+
+        let favsOk = true;
+        if (favsOnly) {
+          const items = card.querySelectorAll('.ex-item');
+          let hasFav = false;
+          items.forEach(function(it) {
+            var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+            if (favKeys.has(fk)) hasFav = true;
+          });
+          favsOk = hasFav;
+        }
+
+        const cardVisible = regionOk && catOk && openOk && hasExOk && upcomingOk && favsOk;
         card.style.display = cardVisible ? '' : 'none';
         if (cardVisible) visibleCount++;
 
-        // 「Upcoming」フィルター中は近日開始の展示のみ強調表示
         const items = card.querySelectorAll('.ex-item');
         items.forEach(function(it) {
           const status = it.getAttribute('data-status');
           if (upcomingOnly) {
             it.style.display = (status === 'upcoming') ? '' : 'none';
+          } else if (favsOnly) {
+            var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+            it.style.display = favKeys.has(fk) ? '' : 'none';
           } else {
             it.style.display = '';
           }
@@ -697,6 +781,13 @@
           this.classList.toggle('active', upcomingOnly);
           applyFilters();
           syncURL();
+          return;
+        }
+
+        if (filterType === 'favs') {
+          favsOnly = !favsOnly;
+          this.classList.toggle('active', favsOnly);
+          applyFilters();
           return;
         }
 
