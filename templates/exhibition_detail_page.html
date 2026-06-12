@@ -229,6 +229,9 @@
           {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}保存{% else %}Save{% endif %}
         </span>
       </button>
+      <button class="action-btn" id="shareBtn" onclick="shareExhibition()">
+        📤 {% if current_lang == 'zh' %}分享{% elif current_lang == 'ja' %}シェア{% else %}Share{% endif %}
+      </button>
       {% if exhibition.link %}
       <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener">
         {% if current_lang == 'zh' %}查看官方頁面 →{% elif current_lang == 'ja' %}公式ページを見る →{% else %}View official page →{% endif %}
@@ -268,6 +271,26 @@
       }
     }
     updateBtn();
+
+    function shareExhibition() {
+      var shareData = {
+        title: '{{ exhibition.title }}',
+        text: '{{ exhibition.title }} @ {{ museum.name }}\n{{ exhibition.dates }}',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData).then(function() {
+          gtag('event', 'share', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
+        }).catch(function() {});
+      } else {
+        navigator.clipboard.writeText(shareData.text + '\n' + shareData.url).then(function() {
+          var btn = document.getElementById('shareBtn');
+          btn.textContent = '✓ {% if current_lang == "zh" %}已複製{% elif current_lang == "ja" %}コピー済{% else %}Copied{% endif %}';
+          setTimeout(function() { btn.textContent = '📤 {% if current_lang == "zh" %}分享{% elif current_lang == "ja" %}シェア{% else %}Share{% endif %}'; }, 2000);
+          gtag('event', 'share_copy', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}' });
+        });
+      }
+    }
     </script>
   </div>
 </body>
