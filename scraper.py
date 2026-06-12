@@ -1563,6 +1563,15 @@ ARTEMPEROR_NAME_MAP = {
     "國立臺灣歷史博物館": "nmth",
     "伊日藝術計劃": "yiriarts",
     "YIRI ARTS": "yiriarts",
+    "赤粒藝術": "redgold",
+    "Red Gold Fine Art": "redgold",
+    "安卓藝術": "mindset",
+    "Mind Set Art Center": "mindset",
+    "朝代畫廊": "dynasty",
+    "Dynasty Gallery": "dynasty",
+    "純Object": "simpleobject",
+    "Simple Object": "simpleobject",
+    "Neverland Gallery": "neverland",
 }
 
 

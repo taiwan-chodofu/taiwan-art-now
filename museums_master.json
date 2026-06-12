@@ -1885,6 +1885,131 @@
       "scraper": "generic",
       "lat": 25.037735,
       "lng": 121.552169
+    },
+    {
+      "id": "redgold",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Red Gold Fine Art",
+        "ja": "赤粒藝術",
+        "zh": "赤粒藝術"
+      },
+      "address": {
+        "en": "1F, No. 15, Ln. 116, Sec. 1, Da'an Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區大安路一段116巷15號1樓",
+        "zh": "台北市大安區大安路一段116巷15號1樓"
+      },
+      "url": "https://www.redgoldfineart.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.039821,
+      "lng": 121.544942
+    },
+    {
+      "id": "mindset",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Mind Set Art Center",
+        "ja": "安卓藝術",
+        "zh": "安卓藝術"
+      },
+      "address": {
+        "en": "5F, No. 15, Ln. 548, Ruiguang Rd., Neihu Dist., Taipei",
+        "ja": "台北市內湖區瑞光路548巷15號5F",
+        "zh": "台北市內湖區瑞光路548巷15號5F"
+      },
+      "url": "https://www.art-msac.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.07892,
+      "lng": 121.567033
+    },
+    {
+      "id": "dynasty",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Dynasty Gallery",
+        "ja": "朝代畫廊",
+        "zh": "朝代畫廊"
+      },
+      "address": {
+        "en": "No. 43, Leli Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區樂利路43號",
+        "zh": "台北市大安區樂利路43號"
+      },
+      "url": "https://www.dynastyart.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.027038,
+      "lng": 121.551594
+    },
+    {
+      "id": "simpleobject",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Simple Object",
+        "ja": "純Object",
+        "zh": "純Object"
+      },
+      "address": {
+        "en": "No. 27, Aly. 21, Ln. 63, Sec. 2, Dunhua S. Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區敦化南路二段63巷21弄27號",
+        "zh": "台北市大安區敦化南路二段63巷21弄27號"
+      },
+      "url": "https://www.simple-object.com",
+      "hours": {
+        "en": "Wed–Sun 13:00–19:00 | Closed Mon & Tue",
+        "ja": "水〜日 13:00–19:00｜月火休",
+        "zh": "週三至週日 13:00–19:00｜週一二休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 25.030949,
+      "lng": 121.550163
+    },
+    {
+      "id": "neverland",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Neverland Gallery",
+        "ja": "Neverland Gallery",
+        "zh": "Neverland Gallery"
+      },
+      "address": {
+        "en": "No. 56, Ln. 164, Hulin St., Xinyi Dist., Taipei",
+        "ja": "台北市信義區虎林街164巷56號",
+        "zh": "台北市信義區虎林街164巷56號"
+      },
+      "url": "https://www.neverland.tw",
+      "hours": {
+        "en": "Tue–Sat 13:00–18:00 (by appointment)",
+        "ja": "火〜土 13:00–18:00（予約制）",
+        "zh": "週二至週六 13:00–18:00（預約制）"
+      },
+      "closed_day": 6,
+      "scraper": "generic",
+      "lat": 25.038905,
+      "lng": 121.574984
     }
   ]
 }
