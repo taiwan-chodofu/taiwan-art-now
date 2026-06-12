@@ -89,7 +89,6 @@
       <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
       <a href="#" id="favsBtn" class="refresh-btn" aria-label="Favorites" title="Favorites" onclick="showFavs(event)">☆</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
-      <a href="?lang={{ current_lang }}&refresh=1" class="refresh-btn" aria-label="Refresh" title="Refresh">↻</a>
     </nav>
   </header>
 
@@ -211,6 +210,44 @@
         <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★ {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</button>
       </div>
     </div>
+  </div>
+
+  <!-- CLOSING SOON BANNER -->
+  <style>
+    .closing-banner {
+      display: none; max-width: 720px; margin: 0 auto;
+      padding: 10px 1rem;
+      background: #fef2f2; border-bottom: 1px solid #fecaca;
+    }
+    @media (prefers-color-scheme: dark) {
+      .closing-banner { background: #2d1f1f; border-color: #5c2828; }
+    }
+    .closing-banner-title {
+      font-size: 0.72rem; font-weight: 600; color: #b91c1c; margin-bottom: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .closing-banner-title { color: #f87171; }
+    }
+    .closing-item {
+      font-size: 0.78rem; padding: 4px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 8px;
+    }
+    .closing-item-title {
+      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      color: var(--text);
+    }
+    .closing-item-days {
+      font-size: 0.65rem; font-weight: 700; color: #b91c1c;
+      white-space: nowrap;
+    }
+    @media (prefers-color-scheme: dark) {
+      .closing-item-days { color: #f87171; }
+    }
+  </style>
+  <div class="closing-banner" id="closingBanner">
+    <div class="closing-banner-title">⚠️ {% if current_lang == 'zh' %}收藏的展覽即將結束{% elif current_lang == 'ja' %}お気に入りがまもなく終了{% else %}Saved exhibitions closing soon{% endif %}</div>
+    <div id="closingList"></div>
   </div>
 
   <!-- MAIN CONTENT -->
@@ -646,6 +683,41 @@
     if (Object.keys(favs).length > 0) {
       var btn = document.getElementById('favsBtn');
       if (btn) btn.textContent = '★';
+    }
+
+    // Closing soon banner: check saved exhibitions with days_left <= 7
+    var closingItems = [];
+    document.querySelectorAll('.ex-item').forEach(function(item) {
+      var favKey = (item.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+      if (!favs[favKey]) return;
+      var datesEl = item.querySelector('.ex-dates');
+      if (!datesEl) return;
+      var badge = datesEl.querySelector('.badge-ending');
+      if (!badge) return;
+      var daysText = badge.textContent.trim();
+      var daysMatch = daysText.match(/(\d+)/);
+      if (!daysMatch) return;
+      var days = parseInt(daysMatch[1]);
+      if (days <= 7) {
+        var title = item.querySelector('.ex-title').textContent.replace(/NEW|{{ labels.upcoming }}/g, '').trim();
+        closingItems.push({ title: title, days: days, url: item.getAttribute('href') });
+      }
+    });
+
+    if (closingItems.length > 0) {
+      closingItems.sort(function(a, b) { return a.days - b.days; });
+      var banner = document.getElementById('closingBanner');
+      var list = document.getElementById('closingList');
+      var html = '';
+      closingItems.slice(0, 3).forEach(function(c) {
+        html += '<div class="closing-item">';
+        html += '<a href="' + c.url + '" class="closing-item-title" style="color:inherit;text-decoration:none;">' + c.title + '</a>';
+        html += '<span class="closing-item-days">';
+        html += '{% if current_lang == "zh" %}剩' + c.days + '天{% elif current_lang == "ja" %}残り' + c.days + '日{% else %}' + c.days + 'd left{% endif %}';
+        html += '</span></div>';
+      });
+      list.innerHTML = html;
+      banner.style.display = 'block';
     }
   })();
   </script>
