@@ -349,8 +349,8 @@
       "closed_day": 0,
       "scraper": "tnam",
       "exhibition_url": "",
-      "lat": 23.308618,
-      "lng": 120.310349
+      "lat": 22.997364,
+      "lng": 120.20454
     },
     {
       "id": "kmfa",
@@ -479,8 +479,8 @@
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://www.hccc.gov.tw/Content/favicons/mstile-310x310.png",
-      "lat": 25.04377,
-      "lng": 121.512978
+      "lat": 23.989558,
+      "lng": 121.627704
     },
     {
       "id": "hcfam",
@@ -609,8 +609,8 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "lat": 24.11452,
-      "lng": 120.76567
+      "lat": 25.065735,
+      "lng": 121.528653
     },
     {
       "id": "absolute",
@@ -815,8 +815,8 @@
       },
       "closed_day": null,
       "scraper": null,
-      "lat": 25.007813,
-      "lng": 121.538618
+      "lat": 22.998338,
+      "lng": 120.201574
     },
     {
       "id": "tinakeng",
@@ -1055,8 +1055,8 @@
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://data.michaelkugallery.com/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png",
-      "lat": 24.304398,
-      "lng": 120.724309
+      "lat": 25.045472,
+      "lng": 121.548386
     },
     {
       "id": "aki",
@@ -1107,8 +1107,8 @@
       "closed_day": 0,
       "scraper": "soka",
       "exhibition_url": "",
-      "lat": 24.252723,
-      "lng": 120.72932
+      "lat": 22.996629,
+      "lng": 120.168558
     },
     {
       "id": "g333",
@@ -1185,8 +1185,8 @@
       },
       "closed_day": 0,
       "scraper": null,
-      "lat": 23.754469,
-      "lng": 120.681551
+      "lat": 25.032464,
+      "lng": 121.52973
     },
     {
       "id": "moon",
@@ -1368,8 +1368,8 @@
       },
       "closed_day": null,
       "scraper": null,
-      "lat": 24.806341,
-      "lng": 120.969867
+      "lat": 23.008762,
+      "lng": 120.207442
     },
     {
       "id": "huashan",
@@ -1553,8 +1553,8 @@
       "scraper": "generic",
       "exhibition_url": "https://yiriarts.com.tw/exhibitions/",
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1218/usr/images/exhibitions/home_page_image/items/db/dbd7443a356844c684b37eca4bea6189/adz_5801.jpg",
-      "lat": 24.155656,
-      "lng": 120.656585
+      "lat": 25.041748,
+      "lng": 121.54827
     },
     {
       "id": "pingtung",
