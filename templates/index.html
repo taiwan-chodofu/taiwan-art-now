@@ -505,6 +505,7 @@
 
   function showNearMe(e) {
     e.preventDefault();
+    gtag('event', 'near_me_open', { event_category: 'engagement' });
     var modal = document.getElementById('nearMeModal');
     var content = document.getElementById('nearMeContent');
     modal.style.display = 'block';
@@ -601,6 +602,7 @@
 
   function showFavs(e) {
     e.preventDefault();
+    gtag('event', 'favorites_open', { event_category: 'engagement' });
     var modal = document.getElementById('favsModal');
     var content = document.getElementById('favsContent');
     modal.style.display = 'block';

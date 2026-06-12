@@ -148,7 +148,7 @@
       {% endfor %}
       <div class="venue-actions">
         {% if venue.address %}
-        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.address|urlencode }}" target="_blank" rel="noopener">
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.address|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ venue.name }}',source:'nearby'})">
           📍 Google Maps
         </a>
         {% endif %}
@@ -183,6 +183,7 @@
       if (datesEl) dates = datesEl.textContent.trim().split('\n')[0].trim();
       favs[key] = { title: title, museum: venue, dates: dates, url: '' };
       btn.textContent = '★';
+      gtag('event', 'favorite_add', { event_category: 'engagement', exhibition_title: title, museum: venue, source: 'nearby' });
     }
     localStorage.setItem(favKey, JSON.stringify(favs));
   }
