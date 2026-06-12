@@ -1060,19 +1060,34 @@
       }, { enableHighAccuracy: true, timeout: 8000 });
     };
 
+    var uploading = false;
     photoInput.addEventListener('change', function(e) {
       var file = e.target.files[0];
       if (!file) return;
       preview.style.display = 'block';
       preview.src = URL.createObjectURL(file);
-      // Upload to Cloudinary
+      var btn = document.getElementById('postSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = '{% if current_lang == "zh" %}上傳中...{% elif current_lang == "ja" %}アップロード中...{% else %}Uploading...{% endif %}';
+      uploading = true;
       var fd = new FormData();
       fd.append('file', file);
       fd.append('upload_preset', 'taiwan_art_unsigned');
       fetch('https://api.cloudinary.com/v1_1/dfg8riltg/image/upload', { method: 'POST', body: fd })
         .then(function(r) { return r.json(); })
-        .then(function(d) { postImageUrl = d.secure_url; })
-        .catch(function() { postImageUrl = null; });
+        .then(function(d) {
+          postImageUrl = d.secure_url;
+          btn.disabled = false;
+          btn.textContent = '{% if current_lang == "zh" %}送出{% elif current_lang == "ja" %}送信{% else %}Post{% endif %}';
+          uploading = false;
+        })
+        .catch(function() {
+          postImageUrl = null;
+          btn.disabled = false;
+          btn.textContent = '{% if current_lang == "zh" %}送出{% elif current_lang == "ja" %}送信{% else %}Post{% endif %}';
+          uploading = false;
+          preview.style.display = 'none';
+        });
     });
 
     window.submitPost = function() {
@@ -1080,6 +1095,7 @@
       var statusEl = document.getElementById('postStatus');
       var btn = document.getElementById('postSubmitBtn');
 
+      if (uploading) return;
       if (!text && !postLat && !postImageUrl) return;
 
       btn.disabled = true;
