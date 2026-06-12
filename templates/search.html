@@ -74,7 +74,7 @@
   </header>
 
   <main>
-    <form class="search-form" method="get" action="/search">
+    <form class="search-form" method="get" action="/search" onsubmit="gtag('event','search',{event_category:'engagement',search_term:this.q.value})">
       <input type="hidden" name="lang" value="{{ current_lang }}">
       <input type="text" name="q" class="search-input" value="{{ query }}"
              placeholder="{{ labels.placeholder }}" autofocus>

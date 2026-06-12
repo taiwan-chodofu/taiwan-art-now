@@ -210,12 +210,12 @@
       </div>
       <div class="venue-links">
         {% if museum.address %}
-        <a class="venue-link" href="https://www.google.com/maps/search/?api=1&query={{ museum.address|urlencode }}" target="_blank" rel="noopener">
+        <a class="venue-link" href="https://www.google.com/maps/search/?api=1&query={{ museum.address|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ museum.name }}'})">
           📍 Google Maps
         </a>
         {% endif %}
         {% if museum.url %}
-        <a class="venue-link" href="{{ museum.url }}" target="_blank" rel="noopener">
+        <a class="venue-link" href="{{ museum.url }}" target="_blank" rel="noopener" onclick="gtag('event','click_official_site',{event_category:'outbound',museum:'{{ museum.name }}'})">
           🌐 {% if current_lang == 'zh' %}官方網站{% elif current_lang == 'ja' %}公式サイト{% else %}Official site{% endif %}
         </a>
         {% endif %}
@@ -242,8 +242,12 @@
     function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
     function toggleFav() {
       var favs = getFavs();
-      if (favs[exId]) { delete favs[exId]; } else {
+      if (favs[exId]) {
+        delete favs[exId];
+        gtag('event', 'favorite_remove', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
+      } else {
         favs[exId] = { title: '{{ exhibition.title }}', museum: '{{ museum.name }}', dates: '{{ exhibition.dates }}', url: window.location.href };
+        gtag('event', 'favorite_add', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
       }
       localStorage.setItem(favKey, JSON.stringify(favs));
       updateBtn();
