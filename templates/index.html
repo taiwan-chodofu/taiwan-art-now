@@ -847,6 +847,23 @@
       -webkit-tap-highlight-color: transparent;
     }
     .fab:active { transform: scale(0.92); }
+    .fab-tooltip {
+      display: none; position: fixed; bottom: 84px; right: 16px; z-index: 901;
+      background: var(--text); color: var(--bg);
+      font-size: 0.75rem; padding: 8px 14px; border-radius: 8px;
+      max-width: 200px; line-height: 1.4;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.3s ease;
+    }
+    .fab-tooltip::after {
+      content: ''; position: absolute; bottom: -6px; right: 24px;
+      border-left: 6px solid transparent; border-right: 6px solid transparent;
+      border-top: 6px solid var(--text);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .post-modal {
       display: none; position: fixed; inset: 0; z-index: 1000;
       background: rgba(0,0,0,0.5);
@@ -897,7 +914,12 @@
     }
   </style>
 
-  <button class="fab" id="fabBtn" aria-label="Post">＋</button>
+  <button class="fab" id="fabBtn" aria-label="Post">🎨</button>
+  <div class="fab-tooltip" id="fabTooltip">
+    {% if current_lang == 'zh' %}展覽を見つけたらここからシェア！
+    {% elif current_lang == 'ja' %}展示を見つけたらここからシェア！
+    {% else %}Found an exhibition? Share it here!{% endif %}
+  </div>
 
   <div class="post-modal" id="postModal">
     <div class="post-sheet">
@@ -927,7 +949,18 @@
     var preview = document.getElementById('postPhotoPreview');
     var postLat = null, postLng = null, postImageUrl = null;
 
+    // Show tooltip on first visit
+    var tooltip = document.getElementById('fabTooltip');
+    if (!localStorage.getItem('fab_tooltip_seen')) {
+      setTimeout(function() {
+        tooltip.style.display = 'block';
+        setTimeout(function() { tooltip.style.display = 'none'; }, 5000);
+      }, 2000);
+      localStorage.setItem('fab_tooltip_seen', '1');
+    }
+
     fab.addEventListener('click', function() {
+      tooltip.style.display = 'none';
       modal.style.display = 'block';
       document.getElementById('postText').focus();
       gtag('event', 'post_modal_open', { event_category: 'engagement' });
