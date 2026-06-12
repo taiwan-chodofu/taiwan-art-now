@@ -985,7 +985,9 @@ def submit_request():
         body_parts.append(f"**Location:** [{lat}, {lng}](https://www.google.com/maps?q={lat},{lng})")
     if image_url:
         body_parts.append(f"**Image:** ![photo]({image_url})")
-    body_parts.append(f"**Submitted:** {_now_tw().isoformat()}")
+    from datetime import datetime, timezone, timedelta
+    tw_now = datetime.now(timezone(timedelta(hours=8)))
+    body_parts.append(f"**Submitted:** {tw_now.isoformat()}")
 
     issue_body = "\n\n".join(body_parts)
     issue_data = json.dumps({
