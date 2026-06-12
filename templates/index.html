@@ -964,7 +964,7 @@
     .post-textarea::placeholder { color: var(--text-light); }
     .post-actions {
       display: flex; align-items: center; justify-content: space-between;
-      margin-top: 12px;
+      margin-bottom: 10px;
     }
     .post-options { display: flex; gap: 8px; }
     .post-opt-btn {
@@ -1000,9 +1000,6 @@
   <div class="post-modal" id="postModal">
     <div class="post-sheet">
       <div class="post-handle"></div>
-      <textarea class="post-textarea" id="postText" placeholder="{% if current_lang == 'zh' %}分享你發現的展覽、貼上 IG/FB 連結、或只是打個卡...{% elif current_lang == 'ja' %}展示の情報をシェア。IG/FBリンク、感想、何でもOK...{% else %}Share an exhibition, paste an IG/FB link, or just check in...{% endif %}"></textarea>
-      <img class="post-photo-preview" id="postPhotoPreview" alt="">
-      <input type="file" id="postPhotoInput" accept="image/*" style="display:none">
       <div class="post-actions">
         <div class="post-options">
           <button class="post-opt-btn" id="postLocBtn" onclick="togglePostLoc()">📍</button>
@@ -1013,6 +1010,9 @@
         </button>
       </div>
       <div class="post-status" id="postStatus"></div>
+      <img class="post-photo-preview" id="postPhotoPreview" alt="">
+      <input type="file" id="postPhotoInput" accept="image/*" style="display:none">
+      <textarea class="post-textarea" id="postText" placeholder="{% if current_lang == 'zh' %}分享你發現的展覽、貼上 IG/FB 連結、或只是打個卡...{% elif current_lang == 'ja' %}展示の情報をシェア。IG/FBリンク、感想、何でもOK...{% else %}Share an exhibition, paste an IG/FB link, or just check in...{% endif %}"></textarea>
     </div>
   </div>
 
