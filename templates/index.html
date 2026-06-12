@@ -202,7 +202,7 @@
     </div>
     <div class="filter-section">
       <div class="filter-row">
-        <button class="filter-chip active" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {{ labels.has_ex }}</button>
+        <button class="filter-chip" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {{ labels.has_ex }}</button>
         <button class="filter-chip filter-chip-open" id="openTodayBtn" data-filter="open" data-value="off">
           <span class="open-dot"></span>{{ labels.open_today }}
         </button>
@@ -729,7 +729,7 @@
     let activeRegion = params.get('region') || 'all';
     let activeCat = params.get('cat') || 'all';
     let openOnly = params.get('open') === '1';
-    let hasExOnly = params.get('hasex') !== '0';
+    let hasExOnly = params.get('hasex') === '1';
     let upcomingOnly = params.get('upcoming') === '1';
     let favsOnly = false;
 
@@ -743,7 +743,7 @@
       if (activeRegion === 'all') p.delete('region'); else p.set('region', activeRegion);
       if (activeCat === 'all') p.delete('cat'); else p.set('cat', activeCat);
       if (openOnly) p.set('open', '1'); else p.delete('open');
-      if (!hasExOnly) p.set('hasex', '0'); else p.delete('hasex');
+      if (hasExOnly) p.set('hasex', '1'); else p.delete('hasex');
       if (upcomingOnly) p.set('upcoming', '1'); else p.delete('upcoming');
       var qs = p.toString();
       var newURL = window.location.pathname + (qs ? '?' + qs : '');
