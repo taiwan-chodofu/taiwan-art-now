@@ -192,6 +192,7 @@
     {% if exhibition.description %}
     <div class="section-label">
       {% if current_lang == 'zh' %}關於{% elif current_lang == 'ja' %}概要{% else %}About{% endif %}
+      {% if current_lang != 'zh' %}<span style="font-weight:400; text-transform:none; letter-spacing:0;">（{% if current_lang == 'ja' %}原文：中国語{% else %}Original: Chinese{% endif %}）</span>{% endif %}
     </div>
     <div class="description">{{ exhibition.description[:500] }}</div>
     {% endif %}
