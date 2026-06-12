@@ -1731,7 +1731,8 @@
       "closed_day": 0,
       "scraper": "generic",
       "lat": 24.165303,
-      "lng": 120.633655
+      "lng": 120.633655,
+      "exhibition_url": "https://www.daxiang.com.tw/exhib/current"
     },
     {
       "id": "1839cg",
@@ -1756,7 +1757,8 @@
       "closed_day": 0,
       "scraper": "generic",
       "lat": 25.035507,
-      "lng": 121.555716
+      "lng": 121.555716,
+      "exhibition_url": "https://www.1839cg.com/exhibition/"
     },
     {
       "id": "chinigallery",
@@ -1781,7 +1783,8 @@
       "closed_day": 0,
       "scraper": "generic",
       "lat": 25.082843,
-      "lng": 121.552274
+      "lng": 121.552274,
+      "exhibition_url": "https://www.chinigallery.com/load_page/get_exhibition_current"
     },
     {
       "id": "maisonacme",
