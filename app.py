@@ -964,5 +964,55 @@ def _update_one_artist_activity():
         pass
 
 
+@app.route("/api/submit", methods=["POST"])
+def submit_request():
+    """ユーザー投稿を受け付け、GitHub Issues に作成する。"""
+    import urllib.request as urllib_req
+
+    data = request.get_json(silent=True) or {}
+    text = data.get("text", "").strip()
+    lat = data.get("lat")
+    lng = data.get("lng")
+    image_url = data.get("image_url", "")
+
+    if not text and not lat and not image_url:
+        return json.dumps({"error": "empty"}), 400
+
+    body_parts = []
+    if text:
+        body_parts.append(f"**Message:** {text}")
+    if lat and lng:
+        body_parts.append(f"**Location:** [{lat}, {lng}](https://www.google.com/maps?q={lat},{lng})")
+    if image_url:
+        body_parts.append(f"**Image:** ![photo]({image_url})")
+    body_parts.append(f"**Submitted:** {_now_tw().isoformat()}")
+
+    issue_body = "\n\n".join(body_parts)
+    issue_data = json.dumps({
+        "title": f"[User Request] {text[:50] or 'Location submission'}",
+        "body": issue_body,
+        "labels": ["user-request"],
+    }).encode()
+
+    gh_token = os.environ.get("GH_TOKEN", "")
+    if gh_token:
+        req = urllib_req.Request(
+            "https://api.github.com/repos/taiwan-chodofu/taiwan-art-now/issues",
+            data=issue_data,
+            headers={
+                "Authorization": f"token {gh_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/vnd.github.v3+json",
+            },
+            method="POST",
+        )
+        try:
+            urllib_req.urlopen(req, timeout=10)
+        except Exception:
+            pass
+
+    return json.dumps({"ok": True}), 200
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
