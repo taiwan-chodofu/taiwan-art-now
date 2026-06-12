@@ -754,7 +754,7 @@ def exhibition_detail(museum_id, idx):
             "days_until_start": _calc_days_until_start(start_dt),
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
-            "description": ex.get("description", ""),
+            "description": (ex.get("description_en", "") or ex.get("description", "")) if lang in ("en", "ja") else ex.get("description", ""),
             "link": ex.get("link", ""),
             "status": ex.get("status", "unknown"),
         },
