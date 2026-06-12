@@ -10,13 +10,13 @@
     :root {
       --bg: #fff; --text: #111; --text-sub: #555; --text-light: #888;
       --border: #e8e8e8; --tag-bg: #f5f5f3;
-      --blue: #2563eb;
+      --blue: #2563eb; --red: #dc2626;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #bbb; --text-light: #777;
         --border: #333; --tag-bg: #2a2a2a;
-        --blue: #60a5fa;
+        --blue: #60a5fa; --red: #f87171;
       }
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,16 +56,40 @@
       .nearby-dist { background: #1e3a5f; }
     }
     .nearby-ex {
-      padding: 6px 0 6px 12px;
+      padding: 8px 0 8px 12px;
       border-left: 2px solid var(--border);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-    .nearby-ex-title { font-size: 0.82rem; font-weight: 500; }
-    .nearby-ex-dates { font-size: 0.7rem; color: var(--text-light); margin-top: 1px; }
+    .nearby-ex-title {
+      font-size: 0.85rem; font-weight: 500;
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .nearby-ex-dates {
+      font-size: 0.72rem; color: var(--text-light); margin-top: 2px;
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .badge-ending {
+      display: inline-block; background: #fee2e2; color: #b91c1c;
+      font-size: 0.62rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 3px;
+    }
+    .badge-opening {
+      display: inline-block; background: #dbeafe; color: #1d4ed8;
+      font-size: 0.62rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 3px;
+    }
+    .fav-btn {
+      border: none; background: none; font-size: 0.9rem;
+      cursor: pointer; padding: 2px 4px; vertical-align: middle;
+    }
+    .venue-actions {
+      display: flex; gap: 10px; align-items: center;
+      margin-top: 8px; flex-wrap: wrap;
+    }
     .maps-link {
       display: inline-flex; align-items: center; gap: 4px;
       font-size: 0.72rem; color: var(--blue); text-decoration: none;
-      margin-top: 6px; padding: 4px 0;
+      padding: 4px 0;
     }
     .maps-link:active { opacity: 0.6; }
     .empty-msg {
@@ -96,15 +120,37 @@
       </div>
       {% for ex in venue.exhibitions %}
       <div class="nearby-ex">
-        <div class="nearby-ex-title">{{ ex.title }}</div>
-        {% if ex.dates %}<div class="nearby-ex-dates">{{ ex.dates }}</div>{% endif %}
+        <div class="nearby-ex-title">
+          {{ ex.title }}
+          <button class="fav-btn" data-fav-key="{{ ex.fav_key }}" onclick="toggleFav(this)" aria-label="Save">☆</button>
+        </div>
+        {% if ex.dates %}
+        <div class="nearby-ex-dates">
+          {{ ex.dates }}
+          {% if ex.days_until_start is not none %}
+          <span class="badge-opening">
+            {%- if current_lang == 'ja' -%}あと{{ ex.days_until_start }}日
+            {%- elif current_lang == 'zh' -%}{{ ex.days_until_start }}天後開展
+            {%- else -%}opens in {{ ex.days_until_start }}d{%- endif -%}
+          </span>
+          {% elif ex.days_left is not none and ex.days_left <= 14 %}
+          <span class="badge-ending">
+            {%- if current_lang == 'ja' -%}残り{{ ex.days_left }}日
+            {%- elif current_lang == 'zh' -%}剩{{ ex.days_left }}天
+            {%- else -%}{{ ex.days_left }}d left{%- endif -%}
+          </span>
+          {% endif %}
+        </div>
+        {% endif %}
       </div>
       {% endfor %}
-      {% if venue.address %}
-      <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.address|urlencode }}" target="_blank" rel="noopener">
-        📍 Google Maps
-      </a>
-      {% endif %}
+      <div class="venue-actions">
+        {% if venue.address %}
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.address|urlencode }}" target="_blank" rel="noopener">
+          📍 Google Maps
+        </a>
+        {% endif %}
+      </div>
     </div>
     {% endfor %}
     {% else %}
@@ -115,5 +161,38 @@
     </div>
     {% endif %}
   </div>
+
+  <script>
+  var favKey = 'taiwan_art_favs';
+  function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
+
+  function toggleFav(btn) {
+    var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+    var favs = getFavs();
+    if (favs[key]) {
+      delete favs[key];
+      btn.textContent = '☆';
+    } else {
+      var exEl = btn.closest('.nearby-ex');
+      var title = exEl.querySelector('.nearby-ex-title').textContent.replace('☆','').replace('★','').trim();
+      var venue = btn.closest('.nearby-card').querySelector('.nearby-name').textContent.trim();
+      var dates = '';
+      var datesEl = exEl.querySelector('.nearby-ex-dates');
+      if (datesEl) dates = datesEl.textContent.trim().split('\n')[0].trim();
+      favs[key] = { title: title, museum: venue, dates: dates, url: '' };
+      btn.textContent = '★';
+    }
+    localStorage.setItem(favKey, JSON.stringify(favs));
+  }
+
+  // Init: mark already-saved items
+  (function() {
+    var favs = getFavs();
+    document.querySelectorAll('.fav-btn').forEach(function(btn) {
+      var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+      if (favs[key]) btn.textContent = '★';
+    });
+  })();
+  </script>
 </body>
 </html>
