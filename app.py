@@ -813,18 +813,23 @@ def nearby(museum_id):
         if dist <= 5.0:
             exs = ex_by_museum.get(m["id"], [])
             if exs:
+                venue_name = _get_localized(m["name"], lang)
+                ex_items = []
+                for ex in exs[:3]:
+                    normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
+                    ex_items.append({
+                        "title": _get_display_title(ex, lang),
+                        "dates": normalized or ex.get("dates", ""),
+                        "days_left": _calc_days_left(end_dt),
+                        "days_until_start": _calc_days_until_start(start_dt),
+                        "fav_key": venue_name + "__" + _get_display_title(ex, lang),
+                    })
                 nearby_list.append({
                     "museum_id": m["id"],
-                    "name": _get_localized(m["name"], lang),
+                    "name": venue_name,
                     "address": _get_localized(m.get("address", {}), lang),
                     "distance_km": round(dist, 1),
-                    "exhibitions": [
-                        {
-                            "title": _get_display_title(ex, lang),
-                            "dates": ex.get("dates", ""),
-                        }
-                        for ex in exs[:3]
-                    ],
+                    "exhibitions": ex_items,
                 })
 
     nearby_list.sort(key=lambda x: x["distance_km"])
