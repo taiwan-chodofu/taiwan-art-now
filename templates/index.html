@@ -410,7 +410,7 @@
       </div>
 
       {% for museum in region.museums %}
-      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}" data-has-ex="{{ 'yes' if museum.exhibitions else 'no' }}" data-has-current="{{ 'yes' if museum.has_current else 'no' }}" data-has-upcoming="{{ 'yes' if museum.has_upcoming else 'no' }}">
+      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}" data-has-ex="{{ 'yes' if museum.has_current else 'no' }}" data-has-current="{{ 'yes' if museum.has_current else 'no' }}" data-has-upcoming="{{ 'yes' if museum.has_upcoming else 'no' }}">
         <div class="mc-top">
           <div class="mc-name">
             <a href="{{ museum.url }}" target="_blank" rel="noopener">{{ museum.name }}</a>
@@ -782,7 +782,7 @@
         const hasUpcoming = card.getAttribute('data-has-upcoming') === 'yes';
         const regionOk = activeRegion === 'all' || r === activeRegion;
         const catOk = activeCat === 'all' || c === activeCat;
-        const openOk = !openOnly || !closed;
+        const openOk = !openOnly || (!closed && hasCurrent);
         const hasExOk = !hasExOnly || hasEx;
         const upcomingOk = !upcomingOnly || hasUpcoming;
 
