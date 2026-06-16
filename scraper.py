@@ -384,6 +384,9 @@ def _scrape_tfam_api():
             ex_id = item.get("ExID", "")
             if not name:
                 continue
+            # 海外開催の展示を除外（ヴェネチア・ビエンナーレ等）
+            if any(kw in name for kw in ("威尼斯", "Venice", "Biennale")):
+                continue
             # 開催中 or 90日以内に開始するもののみ
             try:
                 if end:
