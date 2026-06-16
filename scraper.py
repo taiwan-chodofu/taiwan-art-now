@@ -2080,12 +2080,21 @@ def _do_scrape_all():
                 all_exhibitions.append(ex)
                 existing_ids.add(mid)
             else:
-                existing_titles = {
-                    (e.get("title_en", "") or e.get("title_zh", ""))
-                    for e in all_exhibitions if e["museum"] == mid
-                }
+                existing_norm_titles = set()
+                for e in all_exhibitions:
+                    if e["museum"] == mid:
+                        for t in (e.get("title_en", ""), e.get("title_zh", "")):
+                            if t:
+                                existing_norm_titles.add(_normalize_title_for_compare(t))
                 new_title = ex.get("title_en", "") or ex.get("title_zh", "")
-                if new_title and new_title not in existing_titles:
+                new_norm = _normalize_title_for_compare(new_title)
+                is_dup = False
+                if new_norm:
+                    for existing_norm in existing_norm_titles:
+                        if new_norm in existing_norm or existing_norm in new_norm:
+                            is_dup = True
+                            break
+                if not is_dup and new_title:
                     all_exhibitions.append(ex)
 
     except Exception as exc:
