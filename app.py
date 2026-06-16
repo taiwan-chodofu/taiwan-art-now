@@ -90,6 +90,15 @@ UI_LABELS = {
 }
 
 
+def _get_description(ex, lang):
+    """言語に応じた展覧会概要を返す。"""
+    if lang == "ja":
+        return ex.get("description_ja") or ex.get("description_en") or ex.get("description", "")
+    elif lang == "en":
+        return ex.get("description_en") or ex.get("description", "")
+    return ex.get("description", "")
+
+
 def _get_display_title(exhibition, lang):
     """言語に応じた展覧会タイトルを返す。
     日本語/英語ページでは固有名詞は英語優先、中国語ページは中国語優先。
@@ -754,7 +763,7 @@ def exhibition_detail(museum_id, idx):
             "days_until_start": _calc_days_until_start(start_dt),
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
-            "description": (ex.get("description_en", "") or ex.get("description", "")) if lang in ("en", "ja") else ex.get("description", ""),
+            "description": _get_description(ex, lang),
             "link": ex.get("link", ""),
             "status": ex.get("status", "unknown"),
         },
