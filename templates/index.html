@@ -212,43 +212,64 @@
     </div>
   </div>
 
-  <!-- CLOSING SOON BANNER -->
+  <!-- CLOSING SOON SECTION -->
+  {% if closing_soon %}
   <style>
-    .closing-banner {
-      display: none; max-width: 720px; margin: 0 auto;
-      padding: 10px 1rem;
+    .closing-section {
+      max-width: 720px; margin: 0 auto;
+      padding: 12px 1rem;
       background: #fef2f2; border-bottom: 1px solid #fecaca;
     }
     @media (prefers-color-scheme: dark) {
-      .closing-banner { background: #2d1f1f; border-color: #5c2828; }
+      .closing-section { background: #2d1f1f; border-color: #5c2828; }
     }
-    .closing-banner-title {
-      font-size: 0.72rem; font-weight: 600; color: #b91c1c; margin-bottom: 6px;
+    .closing-section-title {
+      font-size: 0.75rem; font-weight: 700; color: #b91c1c; margin-bottom: 8px;
     }
     @media (prefers-color-scheme: dark) {
-      .closing-banner-title { color: #f87171; }
+      .closing-section-title { color: #f87171; }
     }
     .closing-item {
-      font-size: 0.78rem; padding: 4px 0;
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 0; border-bottom: 1px solid #fecaca;
+      text-decoration: none; color: inherit;
     }
-    .closing-item-title {
-      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-      color: var(--text);
-    }
-    .closing-item-days {
-      font-size: 0.65rem; font-weight: 700; color: #b91c1c;
-      white-space: nowrap;
-    }
+    .closing-item:last-child { border-bottom: none; }
+    .closing-item:active { opacity: 0.7; }
     @media (prefers-color-scheme: dark) {
-      .closing-item-days { color: #f87171; }
+      .closing-item { border-color: #5c2828; }
+    }
+    .closing-days {
+      font-size: 0.7rem; font-weight: 700; color: #fff;
+      background: #dc2626; border-radius: 4px;
+      padding: 2px 6px; white-space: nowrap; min-width: 32px; text-align: center;
+    }
+    .closing-days.last-day { background: #991b1b; }
+    .closing-info { flex: 1; min-width: 0; }
+    .closing-title {
+      font-size: 0.82rem; font-weight: 500;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .closing-museum {
+      font-size: 0.68rem; color: var(--text-light); margin-top: 1px;
     }
   </style>
-  <div class="closing-banner" id="closingBanner">
-    <div class="closing-banner-title">⚠️ {% if current_lang == 'zh' %}收藏的展覽即將結束{% elif current_lang == 'ja' %}お気に入りがまもなく終了{% else %}Saved exhibitions closing soon{% endif %}</div>
-    <div id="closingList"></div>
+  <div class="closing-section">
+    <div class="closing-section-title">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}まもなく終了{% else %}Closing soon{% endif %}</div>
+    {% for item in closing_soon %}
+    <a class="closing-item" href="{{ item.detail_url }}">
+      <span class="closing-days {% if item.days_left <= 1 %}last-day{% endif %}">
+        {% if item.days_left == 0 %}{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}
+        {% else %}{{ item.days_left }}d{% endif %}
+      </span>
+      <div class="closing-info">
+        <div class="closing-title">{{ item.title }}</div>
+        <div class="closing-museum">{{ item.museum }}</div>
+      </div>
+    </a>
+    {% endfor %}
   </div>
+  {% endif %}
 
   <!-- MAIN CONTENT -->
   <style>
@@ -683,41 +704,6 @@
     if (Object.keys(favs).length > 0) {
       var btn = document.getElementById('favsBtn');
       if (btn) btn.textContent = '★';
-    }
-
-    // Closing soon banner: check saved exhibitions with days_left <= 7
-    var closingItems = [];
-    document.querySelectorAll('.ex-item').forEach(function(item) {
-      var favKey = (item.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-      if (!favs[favKey]) return;
-      var datesEl = item.querySelector('.ex-dates');
-      if (!datesEl) return;
-      var badge = datesEl.querySelector('.badge-ending');
-      if (!badge) return;
-      var daysText = badge.textContent.trim();
-      var daysMatch = daysText.match(/(\d+)/);
-      if (!daysMatch) return;
-      var days = parseInt(daysMatch[1]);
-      if (days <= 7) {
-        var title = item.querySelector('.ex-title').textContent.replace(/NEW|{{ labels.upcoming }}/g, '').trim();
-        closingItems.push({ title: title, days: days, url: item.getAttribute('href') });
-      }
-    });
-
-    if (closingItems.length > 0) {
-      closingItems.sort(function(a, b) { return a.days - b.days; });
-      var banner = document.getElementById('closingBanner');
-      var list = document.getElementById('closingList');
-      var html = '';
-      closingItems.slice(0, 3).forEach(function(c) {
-        html += '<div class="closing-item">';
-        html += '<a href="' + c.url + '" class="closing-item-title" style="color:inherit;text-decoration:none;">' + c.title + '</a>';
-        html += '<span class="closing-item-days">';
-        html += '{% if current_lang == "zh" %}剩' + c.days + '天{% elif current_lang == "ja" %}残り' + c.days + '日{% else %}' + c.days + 'd left{% endif %}';
-        html += '</span></div>';
-      });
-      list.innerHTML = html;
-      banner.style.display = 'block';
     }
   })();
   </script>

@@ -322,11 +322,26 @@ def index():
             "museums": museum_entries,
         })
 
+    closing_soon = []
+    for mid, exs in ex_by_museum.items():
+        museum_info = next((m for m in master["museums"] if m["id"] == mid), None)
+        for ex in exs:
+            dl = ex.get("days_left")
+            if dl is not None and 0 <= dl <= 7 and ex.get("status") != "upcoming":
+                closing_soon.append({
+                    "title": ex["title"],
+                    "days_left": dl,
+                    "museum": _get_localized(museum_info["name"], lang) if museum_info else mid,
+                    "detail_url": ex["detail_url"],
+                })
+    closing_soon.sort(key=lambda x: x["days_left"])
+
     labels = UI_LABELS[lang]
     return render_template(
         "index.html",
         labels=labels,
         regions=regions_data,
+        closing_soon=closing_soon[:6],
         current_lang=lang,
     )
 
