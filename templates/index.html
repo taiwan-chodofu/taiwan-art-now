@@ -208,6 +208,7 @@
         </button>
         <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {{ labels.upcoming }}</button>
         <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★ {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</button>
+        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}終了間近{% else %}Closing soon{% endif %} ({{ closing_soon|length }})</button>{% endif %}
       </div>
     </div>
   </div>
@@ -216,10 +217,12 @@
   {% if closing_soon %}
   <style>
     .closing-section {
+      display: none;
       max-width: 720px; margin: 0 auto;
       padding: 12px 1rem;
       background: #fef2f2; border-bottom: 1px solid #fecaca;
     }
+    .closing-section.visible { display: block; }
     @media (prefers-color-scheme: dark) {
       .closing-section { background: #2d1f1f; border-color: #5c2828; }
     }
@@ -254,7 +257,7 @@
       font-size: 0.68rem; color: var(--text-light); margin-top: 1px;
     }
   </style>
-  <div class="closing-section">
+  <div class="closing-section" id="closingSection">
     <div class="closing-section-title">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}まもなく終了{% else %}Closing soon{% endif %}</div>
     {% for item in closing_soon %}
     <a class="closing-item" href="{{ item.detail_url }}">
@@ -264,7 +267,7 @@
       </span>
       <div class="closing-info">
         <div class="closing-title">{{ item.title }}</div>
-        <div class="closing-museum">{{ item.museum }}</div>
+        <div class="closing-museum">{{ item.museum }}{% if item.region %} · {{ item.region }}{% endif %}</div>
       </div>
     </a>
     {% endfor %}
@@ -695,6 +698,15 @@
     delete favs[key];
     localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
     showFavs({preventDefault: function(){}});
+  }
+
+  function toggleClosingSection() {
+    var section = document.getElementById('closingSection');
+    var btn = document.getElementById('closingSoonBtn');
+    if (section) {
+      section.classList.toggle('visible');
+      btn.classList.toggle('active');
+    }
   }
 
   // Update header star if user has favorites
