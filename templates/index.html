@@ -208,7 +208,7 @@
         </button>
         <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {{ labels.upcoming }}</button>
         <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★ {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</button>
-        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}終了間近{% else %}Closing soon{% endif %} ({{ closing_soon|length }})</button>{% endif %}
+        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" data-filter="closing" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}終了間近{% else %}Closing soon{% endif %} ({{ closing_soon|length }})</button>{% endif %}
       </div>
     </div>
   </div>
@@ -864,6 +864,10 @@
           favsOnly = !favsOnly;
           this.classList.toggle('active', favsOnly);
           applyFilters();
+          return;
+        }
+
+        if (filterType === 'closing') {
           return;
         }
 
