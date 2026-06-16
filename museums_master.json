@@ -115,7 +115,7 @@
         "zh": "週二至週日 10:30–17:30｜週一休"
       },
       "closed_day": 0,
-      "scraper": "honggah",
+      "scraper": "honggah_manual",
       "og_image": "http://ddqe1b8m5jdmr.cloudfront.net/wp-content/uploads/2026/04/Qingming-Festival-819x1024.jpg",
       "lat": 25.125281,
       "lng": 121.499149

@@ -325,6 +325,10 @@ def index():
     closing_soon = []
     for mid, exs in ex_by_museum.items():
         museum_info = next((m for m in master["museums"] if m["id"] == mid), None)
+        region_name = ""
+        if museum_info:
+            region_id = museum_info.get("region", "")
+            region_name = _get_localized(master["regions"].get(region_id, {}), lang)
         for ex in exs:
             dl = ex.get("days_left")
             if dl is not None and 0 <= dl <= 7 and ex.get("status") != "upcoming":
@@ -332,6 +336,7 @@ def index():
                     "title": ex["title"],
                     "days_left": dl,
                     "museum": _get_localized(museum_info["name"], lang) if museum_info else mid,
+                    "region": region_name,
                     "detail_url": ex["detail_url"],
                 })
     closing_soon.sort(key=lambda x: x["days_left"])
