@@ -258,8 +258,9 @@ def index():
                 evt_date = datetime.strptime(evt["date"], "%Y/%m/%d").date()
                 today_date = _now_tw().date()
                 if evt_date >= today_date:
+                    days_until = (evt_date - today_date).days
                     evt_title = evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", "")
-                    next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title}
+                    next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "days_until": days_until}
                     break
             except (ValueError, KeyError):
                 pass
