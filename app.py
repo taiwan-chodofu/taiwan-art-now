@@ -256,7 +256,8 @@ def index():
             try:
                 from datetime import datetime
                 evt_date = datetime.strptime(evt["date"], "%Y/%m/%d").date()
-                today_date = _now_tw().date()
+                from datetime import timezone, timedelta
+                today_date = datetime.now(timezone(timedelta(hours=8))).date()
                 if evt_date >= today_date:
                     days_until = (evt_date - today_date).days
                     evt_title = evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", "")
