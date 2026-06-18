@@ -202,13 +202,13 @@
     </div>
     <div class="filter-section">
       <div class="filter-row">
-        <button class="filter-chip" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {{ labels.has_ex }}</button>
+        <button class="filter-chip" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {% if current_lang == 'zh' %}展中{% elif current_lang == 'ja' %}展中{% else %}Now{% endif %}</button>
         <button class="filter-chip filter-chip-open" id="openTodayBtn" data-filter="open" data-value="off">
-          <span class="open-dot"></span>{{ labels.open_today }}
+          <span class="open-dot"></span>{% if current_lang == 'zh' %}開館{% elif current_lang == 'ja' %}開館{% else %}Open{% endif %}
         </button>
-        <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {{ labels.upcoming }}</button>
-        <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★ {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</button>
-        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" data-filter="closing" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}即將結束{% elif current_lang == 'ja' %}終了間近{% else %}Closing soon{% endif %} ({{ closing_soon|length }})</button>{% endif %}
+        <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {% if current_lang == 'zh' %}開幕{% elif current_lang == 'ja' %}開幕{% else %}Soon{% endif %}</button>
+        <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★</button>
+        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" data-filter="closing" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}快結束{% elif current_lang == 'ja' %}終了間近{% else %}Ending{% endif %}({{ closing_soon|length }})</button>{% endif %}
       </div>
     </div>
   </div>
