@@ -327,6 +327,31 @@
       "lng": 120.440854
     },
     {
+      "id": "fotoaura",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Fotoaura Institute of Photography",
+        "ja": "海馬迴光畫館",
+        "zh": "海馬迴光畫館"
+      },
+      "address": {
+        "en": "2F, No.83, Chenggong Rd., West Central Dist., Tainan 700017",
+        "ja": "台南市中西區成功路83號2樓",
+        "zh": "台南市中西區成功路83號2樓"
+      },
+      "url": "https://www.facebook.com/fotoaura.tw",
+      "hours": {
+        "en": "Wed–Sun 14:00–20:00 | Closed Mon–Tue (during exhibitions)",
+        "ja": "水〜日 14:00–20:00｜月火休（展示開催中）",
+        "zh": "週三至週日 14:00–20:00｜週一二休（展覽期間）"
+      },
+      "closed_day": null,
+      "scraper": null,
+      "lat": 22.997745,
+      "lng": 120.208635
+    },
+    {
       "id": "tnam",
       "category": "public",
       "region": "tainan",
@@ -561,31 +586,6 @@
       "og_image": "https://www.tcam.museum/wp-content/uploads/2025/11/og_img.jpg",
       "lat": 24.193019,
       "lng": 120.654507
-    },
-    {
-      "id": "fotoaura",
-      "category": "alternative",
-      "region": "tainan",
-      "name": {
-        "en": "Fotoaura Institute of Photography",
-        "ja": "海馬迴光畫館",
-        "zh": "海馬迴光畫館"
-      },
-      "address": {
-        "en": "2F, No.83, Chenggong Rd., West Central Dist., Tainan 700017",
-        "ja": "台南市中西區成功路83號2樓",
-        "zh": "台南市中西區成功路83號2樓"
-      },
-      "url": "https://www.facebook.com/fotoaura.tw",
-      "hours": {
-        "en": "Wed–Sun 14:00–20:00 | Closed Mon–Tue (during exhibitions)",
-        "ja": "水〜日 14:00–20:00｜月火休（展示開催中）",
-        "zh": "週三至週日 14:00–20:00｜週一二休（展覽期間）"
-      },
-      "closed_day": null,
-      "scraper": null,
-      "lat": 22.997745,
-      "lng": 120.208635
     },
     {
       "id": "frees",
