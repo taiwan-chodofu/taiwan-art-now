@@ -251,6 +251,18 @@ def index():
         normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
         # 展覧会のインデックス（詳細ページ用）
         museum_ex_idx = len([e for e in ex_by_museum.get(key, [])])
+        next_event = None
+        for evt in ex.get("events", []):
+            try:
+                from datetime import datetime
+                evt_date = datetime.strptime(evt["date"], "%Y/%m/%d").date()
+                today_date = _now_tw().date()
+                if evt_date >= today_date:
+                    evt_title = evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", "")
+                    next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title}
+                    break
+            except (ValueError, KeyError):
+                pass
         ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
             "dates": normalized,
@@ -263,6 +275,7 @@ def index():
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
             "description": ex.get("description", ""),
+            "next_event": next_event,
         })
 
     # 地域ごとにグループ化

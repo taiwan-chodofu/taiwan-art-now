@@ -17,7 +17,17 @@
       "title_ja": "",
       "dates": "2026/06/20 - 2026/07/11",
       "location": "海馬迴光畫館",
-      "link": "https://www.facebook.com/fotoaura.tw"
+      "link": "https://www.facebook.com/fotoaura.tw",
+      "events": [
+        {
+          "date": "2026/07/11",
+          "time": "",
+          "title_zh": "閉幕座談 w/ 陳蕉",
+          "title_en": "Closing Talk w/ Chen Chiao",
+          "title_ja": "クロージングトーク w/ 陳蕉",
+          "note": ""
+        }
+      ]
     },
     {
       "museum": "art182",
