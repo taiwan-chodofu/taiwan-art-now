@@ -72,6 +72,20 @@
       color: var(--accent); background: var(--tag-bg);
     }
     .refresh-btn { font-size: 0.8rem !important; }
+    .lang-dropdown { position: relative; display: inline-block; }
+    .lang-menu {
+      display: none; position: absolute; top: 100%; right: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 4px 0; z-index: 200; min-width: 90px;
+    }
+    .lang-menu.show { display: block; }
+    .lang-menu a {
+      display: block; padding: 8px 14px; font-size: 0.75rem;
+      color: var(--text-sub); text-decoration: none;
+    }
+    .lang-menu a:active { background: var(--tag-bg); }
+    .lang-menu a.active { color: var(--accent); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -83,9 +97,14 @@
       <small>{{ labels.subtitle }}</small>
     </div>
     <nav class="header-nav">
-      <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
-      <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
-      <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
+      <div class="lang-dropdown">
+        <button class="refresh-btn" id="langBtn" onclick="document.getElementById('langMenu').classList.toggle('show')">🌐</button>
+        <div class="lang-menu" id="langMenu">
+          <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
+          <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
+          <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>English</a>
+        </div>
+      </div>
       <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
       <a href="#" id="favsBtn" class="refresh-btn" aria-label="Favorites" title="Favorites" onclick="showFavs(event)">☆</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
@@ -145,8 +164,8 @@
     .filter-row::-webkit-scrollbar { display: none; }
     .filter-chip {
       display: inline-flex; align-items: center;
-      padding: 4px 10px; border-radius: 20px;
-      font-size: 0.68rem; font-weight: 500;
+      padding: 8px 14px; border-radius: 20px;
+      font-size: 0.72rem; font-weight: 500;
       border: 1px solid var(--border-dark);
       background: var(--bg); color: var(--text-sub);
       cursor: pointer; white-space: nowrap;
@@ -279,15 +298,16 @@
     main { max-width: 720px; margin: 0 auto; padding: 0 1rem 4rem; }
 
     /* Region section */
-    .region-section { margin-top: 1.5rem; }
+    .region-section { margin-top: 1.2rem; }
     .region-header {
       display: flex; align-items: center; gap: 8px;
-      padding: 6px 0; margin-bottom: 4px;
-      border-bottom: 2px solid var(--accent);
+      padding: 8px 12px; margin-bottom: 0;
+      background: var(--tag-bg);
+      border-radius: 8px;
       cursor: pointer; user-select: none;
       -webkit-tap-highlight-color: transparent;
     }
-    .region-header:active .region-name { opacity: 0.7; }
+    .region-header:active { opacity: 0.7; }
     .region-toggle {
       margin-left: auto; font-size: 0.7rem; color: var(--text-light);
       transition: transform 0.2s;
@@ -295,18 +315,19 @@
     .region-section.collapsed .region-toggle { transform: rotate(-90deg); }
     .region-section.collapsed .ex-list,
     .region-section.collapsed .museum-card { display: none !important; }
-    .region-name { font-size: 0.9rem; font-weight: 700; }
+    .region-name { font-size: 0.85rem; font-weight: 700; }
     .region-count {
-      font-size: 0.6rem; color: var(--text-light);
-      background: var(--tag-bg); padding: 2px 6px; border-radius: 10px;
+      font-size: 0.7rem; color: var(--text-light);
+      background: var(--bg); padding: 2px 8px; border-radius: 10px;
     }
 
     /* Museum card — compact mobile-first */
     .museum-card {
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 12px 10px; margin-top: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
     }
-    .museum-card:last-child { border-bottom: none; }
 
     .mc-top {
       display: flex; align-items: flex-start; justify-content: space-between;
@@ -336,8 +357,8 @@
 
     .badge-closed {
       display: inline-block; background: var(--red); color: #fff;
-      font-size: 0.58rem; font-weight: 700;
-      padding: 1px 5px; border-radius: 3px; margin-left: 4px;
+      font-size: 0.68rem; font-weight: 700;
+      padding: 2px 6px; border-radius: 3px; margin-left: 4px;
       vertical-align: middle;
     }
 
@@ -375,7 +396,7 @@
     }
     .event-badge {
       display: inline-block; background: #7c3aed; color: #fff;
-      font-size: 0.6rem; font-weight: 700; padding: 1px 6px;
+      font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
       border-radius: 3px; margin-left: 4px;
     }
     @media (prefers-color-scheme: dark) {
@@ -384,18 +405,18 @@
     }
     .badge-ending {
       display: inline-block; background: #fee2e2; color: #b91c1c;
-      font-size: 0.62rem; font-weight: 700;
-      padding: 2px 6px; border-radius: 3px;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
     }
     .badge-opening {
       display: inline-block; background: #dbeafe; color: #1d4ed8;
-      font-size: 0.62rem; font-weight: 700;
-      padding: 2px 6px; border-radius: 3px;
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
     }
     .status-tag {
-      display: inline-block; font-size: 0.65rem; font-weight: 700;
-      padding: 2px 7px; border-radius: 3px;
-      vertical-align: middle; letter-spacing: 0.5px;
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+      vertical-align: middle;
     }
     .tag-thisweek { background: #fef3cd; color: #92400e; }
     .tag-upcoming { background: #ede9fe; color: #5b21b6; }
@@ -728,6 +749,15 @@
     localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
     showFavs({preventDefault: function(){}});
   }
+
+  // Close lang menu on outside tap
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('langMenu');
+    var btn = document.getElementById('langBtn');
+    if (menu && !menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove('show');
+    }
+  });
 
   function toggleClosingSection() {
     var section = document.getElementById('closingSection');
