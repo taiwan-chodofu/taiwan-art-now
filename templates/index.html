@@ -365,6 +365,13 @@
       font-size: 0.68rem; color: var(--text-light);
       margin-top: 2px;
     }
+    .ex-event {
+      font-size: 0.68rem; color: #7c3aed; margin-top: 4px;
+      font-weight: 500;
+    }
+    @media (prefers-color-scheme: dark) {
+      .ex-event { color: #a78bfa; }
+    }
     .badge-ending {
       display: inline-block; background: #fee2e2; color: #b91c1c;
       font-size: 0.62rem; font-weight: 700;
@@ -505,6 +512,9 @@
             {% endif %}
             {% if ex.curator %}
             <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
+            {% endif %}
+            {% if ex.next_event %}
+            <div class="ex-event">📅 {{ ex.next_event.date }}{% if ex.next_event.time %} {{ ex.next_event.time }}{% endif %} — {{ ex.next_event.title }}</div>
             {% endif %}
           </a>
           {% endfor %}
