@@ -148,7 +148,7 @@
       {% endfor %}
       <div class="venue-actions">
         {% if venue.address %}
-        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.name|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ venue.name }}',source:'nearby'})">
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.name|urlencode }}+{{ venue.address|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ venue.name }}',source:'nearby'})">
           📍 Google Maps
         </a>
         {% endif %}

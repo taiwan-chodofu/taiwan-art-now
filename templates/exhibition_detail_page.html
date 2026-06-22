@@ -209,7 +209,7 @@
       </div>
       <div class="venue-links">
         {% if museum.address %}
-        <a class="venue-link" href="https://www.google.com/maps/search/?api=1&query={{ museum.name|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ museum.name }}'})">
+        <a class="venue-link" href="https://www.google.com/maps/search/?api=1&query={{ museum.name|urlencode }}+{{ museum.address|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ museum.name }}'})">
           📍 Google Maps
         </a>
         {% endif %}
