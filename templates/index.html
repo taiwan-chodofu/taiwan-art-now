@@ -579,7 +579,7 @@
           {% endfor %}
           {% for evt in museum.venue_events %}
           <div class="venue-event {% if evt.days_until <= 2 %}venue-event-soon{% endif %}">
-            <span>{% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %} {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {{ evt.title }}
+            <span>{% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %} {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {% if evt.link %}<a href="{{ evt.link }}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">{{ evt.title }}</a>{% else %}{{ evt.title }}{% endif %}
             {% if evt.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif evt.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% elif evt.days_until == 2 %}<span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>{% endif %}
             {% if evt.note %}<div class="venue-event-note">{{ evt.note }}</div>{% endif %}</span>
             <a class="ical-btn" href="/event.ics?title={{ evt.title|urlencode }}&date={{ evt.date|urlencode }}&time={{ evt.time|urlencode }}&venue={{ museum.name|urlencode }}&note={{ evt.note|urlencode }}" title="Add to calendar">📅+</a>
