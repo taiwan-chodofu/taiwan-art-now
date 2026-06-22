@@ -1878,8 +1878,8 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
 
 
 def _load_fb_json(museum_id):
-    """家PCが生成したfb_exhibitions.jsonから該当施設のデータを読む。"""
-    fb_path = os.path.join(os.path.dirname(__file__), "fb_exhibitions.json")
+    """manual_exhibitions.jsonから該当施設のデータを読む。"""
+    fb_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
     if not os.path.exists(fb_path):
         return []
     try:
