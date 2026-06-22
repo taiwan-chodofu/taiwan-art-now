@@ -224,6 +224,27 @@
       "dates": "2026/06/13 - 2026/07/18",
       "location": "索卡藝術．台北",
       "link": "https://www.soka-art.com"
+    },
+    {
+      "museum": "ttam",
+      "title_zh": "2026泛太平洋國際駐村交流展",
+      "title_en": "Pan-Pacific Triennial: Archipelagic Encounters",
+      "title_ja": "",
+      "dates": "2026/06/27 - 2026/09/27",
+      "location": "臺東美術館",
+      "link": "https://www.facebook.com/events/840061702084450/",
+      "description": "展覽探索藝術如何回應並連結海洋世界觀、移民歷史、原住民知識體系、環境轉型與去殖民化實踐。以泛太平洋視角，審視島嶼如何因歷史與遷移而相連。邀請太平洋地區的藝術家和策展人，進行藝術創作和文化交流，探索太平洋地區的歷史、文化和當代議題。",
+      "description_en": "The exhibition explores how art responds to and connects with oceanic worldviews, migration histories, indigenous knowledge systems, environmental transformation, and decolonization practices. Framed within a Pan-Pacific perspective, it examines how islands are connected by history and movement, inviting artists and curators from across the Pacific region to engage in artistic creation and cultural exchange.",
+      "events": [
+        {
+          "date": "2026/06/27",
+          "time": "15:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Event",
+          "title_ja": "オープニング",
+          "note": ""
+        }
+      ]
     }
   ]
 }
