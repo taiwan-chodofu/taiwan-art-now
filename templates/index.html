@@ -416,6 +416,12 @@
       font-size: 0.68rem; font-weight: 700; padding: 2px 7px;
       border-radius: 3px; margin-left: 4px;
     }
+    .ical-btn {
+      display: inline-block; font-size: 0.72rem;
+      text-decoration: none; margin-left: 6px;
+      opacity: 0.7;
+    }
+    .ical-btn:active { opacity: 1; }
     @media (prefers-color-scheme: dark) {
       .ex-event { color: #a78bfa; }
       .ex-event-soon { background: #2e1065; border-color: #4c1d95; }
@@ -571,6 +577,7 @@
               {% elif ex.next_event.days_until == 2 %}
               <span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>
               {% endif %}
+              <a class="ical-btn" href="/event.ics?title={{ ex.next_event.title|urlencode }}&date={{ ex.next_event.date|urlencode }}&time={{ ex.next_event.time|urlencode }}&venue={{ museum.name|urlencode }}" title="Add to calendar">📅+</a>
             </div>
             {% endif %}
           </a>
@@ -580,6 +587,7 @@
             {% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %}
             {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {{ evt.title }}
             {% if evt.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif evt.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% elif evt.days_until == 2 %}<span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>{% endif %}
+            <a class="ical-btn" href="/event.ics?title={{ evt.title|urlencode }}&date={{ evt.date|urlencode }}&time={{ evt.time|urlencode }}&venue={{ museum.name|urlencode }}&note={{ evt.note|urlencode }}" title="Add to calendar">📅+</a>
             {% if evt.note %}<div class="venue-event-note">{{ evt.note }}</div>{% endif %}
           </div>
           {% endfor %}
