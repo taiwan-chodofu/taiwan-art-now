@@ -296,6 +296,17 @@
       "link": "https://www.facebook.com/goodunderground/",
       "description": "特邀選書人：全會華、姚瑞中、陳伯義、廖子寧、蔡胤勤、陳盈孜。攝影書專題展，邀請觀眾來看書、翻閱攝影書。",
       "description_en": ""
+    },
+    {
+      "museum": "lightbox",
+      "title_zh": "Lightbox 十週年小型回顧展",
+      "title_en": "Lightbox 10th Anniversary Retrospective",
+      "title_ja": "",
+      "dates": "",
+      "location": "Lightbox 攝影圖書室",
+      "link": "https://www.lightboxlib.org",
+      "description": "",
+      "description_en": ""
     }
   ]
 }
