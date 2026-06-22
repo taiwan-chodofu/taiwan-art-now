@@ -962,6 +962,53 @@ def calendar_ics():
     }
 
 
+@app.route("/event.ics")
+def event_ics():
+    """単一イベントのiCalファイルを生成する。"""
+    title = request.args.get("title", "Event")
+    date = request.args.get("date", "")
+    time_str = request.args.get("time", "")
+    venue = request.args.get("venue", "")
+    note = request.args.get("note", "")
+
+    if not date:
+        return "Missing date", 400
+
+    date_clean = date.replace("/", "")
+    if time_str:
+        h, m = time_str.split(":")[:2]
+        dtstart = f"{date_clean}T{h}{m}00"
+        dtend_h = str(int(h) + 2).zfill(2)
+        dtend = f"{date_clean}T{dtend_h}{m}00"
+    else:
+        dtstart = date_clean
+        dtend = date_clean
+
+    lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Taiwan Art Now//Event//EN",
+        "BEGIN:VEVENT",
+        f"DTSTART;TZID=Asia/Taipei:{dtstart}",
+        f"DTEND;TZID=Asia/Taipei:{dtend}",
+        f"SUMMARY:{title}",
+        f"LOCATION:{venue}",
+        f"DESCRIPTION:{note}",
+        "BEGIN:VALARM",
+        "TRIGGER:-P1D",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:Reminder",
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR",
+    ]
+    ical = "\r\n".join(lines)
+    return ical, 200, {
+        "Content-Type": "text/calendar; charset=utf-8",
+        "Content-Disposition": f"attachment; filename=event-{date_clean}.ics",
+    }
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。
