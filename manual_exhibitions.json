@@ -64,7 +64,9 @@
           "title_ja": "ガイドツアー＆お茶会",
           "note": ""
         }
-      ]
+      ],
+      "description": "《熱帶植物寫真集》是一套於二戰前在臺北植物園拍攝完成的植物攝影集，由工藤彌九郎自1929年至1943年陸續完成，共六卷，收錄180種熱帶植物，是臺灣最早且相對完整的「熱帶植物」影像紀錄之一。「第七卷」並非單純補完一套未完成的書，而是試圖探問各種關於「痕跡」的問題：古書流轉與版本差異所留下的痕跡、時間在紙張上沉積的色澤與斑痕，以及東亞殖民歷史在知識、影像與自然分類中遺留下來的痕跡。",
+      "description_en": "Iconography of Tropical Plants is a six-volume photographic collection produced between 1929 and 1943 at the Taipei Botanical Garden by Yakurō Kudō, recording 180 species of tropical plants—one of Taiwan's earliest visual archives of tropical flora. Rather than completing the original series, Vol. VII appears as its \"shadow,\" tracing the book's circulation, edition differences, and material life, while reflecting on the marks left by time, paper, images, and colonial systems of knowledge."
     },
     {
       "museum": "glitch",
@@ -73,7 +75,9 @@
       "title_ja": "",
       "dates": "2026/05/09 - 2026/07/19",
       "location": "毛刺 Glitch 4F",
-      "link": "https://www.facebook.com/profile.php?id=61556692779891"
+      "link": "https://www.facebook.com/profile.php?id=61556692779891",
+      "description": "散步與休息成為藝術家手捏造型的重要靈感來源，如同對日常生活的寫生與紀錄。那些細微而真實的感受，被轉化為豐潤飽滿的形體，以及鮮明而獨特的材質與色彩。品牌少見的大型陶作於毛刺限定展出，現場亦同步呈現專為本次展覽創作的「翻書系列盤」。",
+      "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series created especially for this exhibition."
     },
     {
       "museum": "hcfam",
