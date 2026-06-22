@@ -727,15 +727,15 @@
         "zh": "好地下藝術空間"
       },
       "address": {
-        "en": "No.37, Jieyue St., Hualien",
-        "ja": "花蓮縣花蓮市節約街37號",
-        "zh": "花蓮縣花蓮市節約街37號"
+        "en": "B1, No. 37, Jieyue St., Hualien City, Hualien County",
+        "ja": "花蓮市節約街37號B1",
+        "zh": "花蓮市節約街37號B1"
       },
       "url": "https://goodunderground.weebly.com",
       "hours": {
-        "en": "Fri–Mon 12:00–20:00",
-        "ja": "金〜月 12:00–20:00",
-        "zh": "週五至週一 12:00–20:00"
+        "en": "Fri–Mon 12:00–20:00 | Closed Tue–Thu",
+        "ja": "金〜月 12:00–20:00｜火水木休",
+        "zh": "每週五六日一 12:00–20:00｜週二三四休"
       },
       "closed_day": 1,
       "scraper": "goodug",
@@ -743,7 +743,9 @@
       "lat": 23.980106,
       "lng": 121.609577,
       "closed_days": [
-        1
+        1,
+        2,
+        3
       ]
     },
     {
