@@ -391,6 +391,7 @@
       padding: 8px 12px;
       border-top: 1px dashed var(--border);
       font-weight: 500;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
     }
     .venue-event-soon {
       background: #f0f9ff; border-top: 1px dashed #7dd3fc;
@@ -406,9 +407,10 @@
     .ex-event {
       font-size: 0.68rem; color: #7c3aed; margin-top: 4px;
       font-weight: 500;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
     }
     .ex-event-soon {
-      background: #f5f3ff; padding: 4px 8px; border-radius: 6px;
+      background: #f5f3ff; padding: 6px 8px; border-radius: 6px;
       margin-top: 6px; border: 1px solid #ddd6fe;
     }
     .event-badge {
@@ -417,9 +419,8 @@
       border-radius: 3px; margin-left: 4px;
     }
     .ical-btn {
-      display: inline-block; font-size: 0.72rem;
-      text-decoration: none; margin-left: 6px;
-      opacity: 0.7;
+      font-size: 0.75rem; text-decoration: none;
+      opacity: 0.6; flex-shrink: 0;
     }
     .ical-btn:active { opacity: 1; }
     @media (prefers-color-scheme: dark) {
@@ -569,14 +570,8 @@
             {% endif %}
             {% if ex.next_event %}
             <div class="ex-event {% if ex.next_event.days_until <= 2 %}ex-event-soon{% endif %}">
-              📅 {{ ex.next_event.date }}{% if ex.next_event.time %} {{ ex.next_event.time }}{% endif %} — {{ ex.next_event.title }}
-              {% if ex.next_event.days_until == 0 %}
-              <span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>
-              {% elif ex.next_event.days_until == 1 %}
-              <span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>
-              {% elif ex.next_event.days_until == 2 %}
-              <span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>
-              {% endif %}
+              <span>📅 {{ ex.next_event.date }}{% if ex.next_event.time %} {{ ex.next_event.time }}{% endif %} — {{ ex.next_event.title }}
+              {% if ex.next_event.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif ex.next_event.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% elif ex.next_event.days_until == 2 %}<span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>{% endif %}</span>
               <a class="ical-btn" href="/event.ics?title={{ ex.next_event.title|urlencode }}&date={{ ex.next_event.date|urlencode }}&time={{ ex.next_event.time|urlencode }}&venue={{ museum.name|urlencode }}" title="Add to calendar">📅+</a>
             </div>
             {% endif %}
@@ -584,11 +579,10 @@
           {% endfor %}
           {% for evt in museum.venue_events %}
           <div class="venue-event {% if evt.days_until <= 2 %}venue-event-soon{% endif %}">
-            {% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %}
-            {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {{ evt.title }}
+            <span>{% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %} {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {{ evt.title }}
             {% if evt.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif evt.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% elif evt.days_until == 2 %}<span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>{% endif %}
+            {% if evt.note %}<div class="venue-event-note">{{ evt.note }}</div>{% endif %}</span>
             <a class="ical-btn" href="/event.ics?title={{ evt.title|urlencode }}&date={{ evt.date|urlencode }}&time={{ evt.time|urlencode }}&venue={{ museum.name|urlencode }}&note={{ evt.note|urlencode }}" title="Add to calendar">📅+</a>
-            {% if evt.note %}<div class="venue-event-note">{{ evt.note }}</div>{% endif %}
           </div>
           {% endfor %}
           <a href="/nearby/{{ museum.id }}?lang={{ current_lang }}" class="nearby-link">
