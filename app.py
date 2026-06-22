@@ -300,7 +300,7 @@ def index():
                 (1 if e.get("status") == "upcoming" else 2),
                 e.get("days_until_start") or 0,
             ))
-            is_closed_today = _is_closed_today(m.get("closed_day"))
+            is_closed_today = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
             has_current = any(e.get("status") == "current" or (
                 e.get("status") == "unknown" and e.get("days_until_start") is None
             ) for e in exs)
@@ -389,13 +389,16 @@ def index():
     )
 
 
-def _is_closed_today(closed_day):
+def _is_closed_today(closed_day, closed_days=None):
     """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。"""
-    if closed_day is None:
-        return False
     from datetime import datetime, timezone, timedelta
     tw_tz = timezone(timedelta(hours=8))
-    return datetime.now(tw_tz).weekday() == closed_day
+    today_weekday = datetime.now(tw_tz).weekday()
+    if closed_days:
+        return today_weekday in closed_days
+    if closed_day is not None:
+        return today_weekday == closed_day
+    return False
 
 
 @app.route("/taishin")
