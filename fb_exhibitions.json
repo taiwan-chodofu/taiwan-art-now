@@ -64,6 +64,25 @@
       "dates": "2026/05/01 - 2026/07/19",
       "location": "大新美術館",
       "link": "https://www.facebook.com/DaXinArtMuseum/"
+    },
+    {
+      "museum": "glitch",
+      "title_zh": "熱帶植物寫真集 第七卷 — 林庭宇個展",
+      "title_en": "Iconography of Tropical Plants Vol. VII — Kenneth Ting-Yu Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026/06/13 - 2026/07/19",
+      "location": "毛刺 Glitch",
+      "link": "https://www.facebook.com/profile.php?id=61556692779891",
+      "events": [
+        {
+          "date": "2026/06/20",
+          "time": "15:00",
+          "title_zh": "導覽＆茶會",
+          "title_en": "Guided Tour & Tea",
+          "title_ja": "ガイドツアー＆お茶会",
+          "note": ""
+        }
+      ]
     }
   ]
 }
