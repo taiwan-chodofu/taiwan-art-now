@@ -209,6 +209,15 @@
       "dates": "2026/06/13 - 2026/07/11",
       "location": "索卡藝術 台南",
       "link": "https://www.soka-art.com/cn/exhibition/details/12082"
+    },
+    {
+      "museum": "soka_taipei",
+      "title_zh": "定格・之後 — 藝術家聯展",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026/06/13 - 2026/07/18",
+      "location": "索卡藝術．台北",
+      "link": "https://www.soka-art.com"
     }
   ]
 }

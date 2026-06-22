@@ -1217,9 +1217,9 @@
       "category": "commercial",
       "region": "tainan",
       "name": {
-        "en": "Soka Art",
-        "ja": "索卡藝術",
-        "zh": "索卡藝術"
+        "en": "Soka Art Tainan",
+        "ja": "索卡藝術 台南",
+        "zh": "索卡藝術．台南"
       },
       "address": {
         "en": "No.446, Qingping Rd., Tainan",
@@ -2263,6 +2263,35 @@
         0,
         1
       ]
+    },
+    {
+      "id": "soka_taipei",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Soka Art Taipei",
+        "ja": "索卡藝術 台北",
+        "zh": "索卡藝術．台北"
+      },
+      "address": {
+        "en": "No. 350, Sec. 2, Tiding Blvd., Zhongshan Dist., Taipei",
+        "ja": "台北市中山區堤頂大道二段350號",
+        "zh": "台北市中山區堤頂大道二段350號"
+      },
+      "url": "https://www.facebook.com/SokaTaipei/",
+      "hours": {
+        "en": "Tue–Sat 10:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–19:00｜日月休",
+        "zh": "週二至週六 10:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "closed_days": [
+        0,
+        6
+      ],
+      "scraper": "generic",
+      "lat": 25.0789,
+      "lng": 121.567
     }
   ]
 }
