@@ -305,6 +305,28 @@ def index():
                 e.get("status") == "unknown" and e.get("days_until_start") is None
             ) for e in exs)
             has_upcoming = any(e.get("status") == "upcoming" for e in exs)
+            venue_events = []
+            from datetime import datetime, timezone, timedelta
+            today_date = datetime.now(timezone(timedelta(hours=8))).date()
+            for evt in m.get("events", []):
+                try:
+                    evt_date = datetime.strptime(evt["date"], "%Y/%m/%d").date()
+                    if evt_date >= today_date:
+                        days_until = (evt_date - today_date).days
+                        evt_title = evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", "")
+                        evt_note = evt.get(f"note_{lang}", "") or evt.get("note_en", "") or evt.get("note_zh", "")
+                        venue_events.append({
+                            "date": evt["date"],
+                            "time": evt.get("time", ""),
+                            "title": evt_title,
+                            "note": evt_note,
+                            "type": evt.get("type", "event"),
+                            "link": evt.get("link", ""),
+                            "days_until": days_until,
+                        })
+                except (ValueError, KeyError):
+                    pass
+
             museum_entries.append({
                 "id": mid,
                 "name": _get_localized(m["name"], lang),
@@ -322,6 +344,7 @@ def index():
                 "lat": m.get("lat", 0),
                 "lng": m.get("lng", 0),
                 "exhibitions": exs,
+                "venue_events": venue_events,
             })
 
         active_count = sum(1 for me in museum_entries if me["has_current"])
