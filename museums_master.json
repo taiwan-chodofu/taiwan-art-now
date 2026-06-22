@@ -1887,7 +1887,6 @@
         "zh": "週二至週六 10:00–19:00｜週日一休"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.023314,
       "lng": 121.55142,
       "closed_days": [
@@ -2002,7 +2001,6 @@
         "zh": "週二至週日 11:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
       "lat": 25.07203,
       "lng": 121.524661,
       "closed_days": [
@@ -2059,7 +2057,6 @@
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
       "lat": 25.027767,
       "lng": 121.530059,
       "closed_days": [
@@ -2087,7 +2084,6 @@
         "zh": "週二至週六 10:00–18:00｜週日一休"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.037735,
       "lng": 121.552169,
       "closed_days": [
@@ -2115,7 +2111,6 @@
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.039821,
       "lng": 121.544942,
       "closed_days": [
@@ -2143,7 +2138,6 @@
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.07892,
       "lng": 121.567033,
       "closed_days": [
@@ -2171,7 +2165,6 @@
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.027038,
       "lng": 121.551594,
       "closed_days": [
@@ -2199,7 +2192,6 @@
         "zh": "週三至週日 13:00–19:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "generic",
       "lat": 25.030949,
       "lng": 121.550163,
       "closed_days": [
@@ -2228,7 +2220,6 @@
         "zh": "週二至週六 13:00–18:00（預約制）"
       },
       "closed_day": 6,
-      "scraper": "generic",
       "lat": 25.038905,
       "lng": 121.574984,
       "closed_days": [
@@ -2256,7 +2247,6 @@
         "zh": "週三至週日 15:00–00:00｜週一二休"
       },
       "closed_day": 0,
-      "scraper": "generic",
       "lat": 24.133668,
       "lng": 120.664874,
       "closed_days": [
@@ -2289,7 +2279,6 @@
         0,
         6
       ],
-      "scraper": "generic",
       "lat": 25.0789,
       "lng": 121.567
     }

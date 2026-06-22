@@ -2068,11 +2068,9 @@ def _do_scrape_all():
                 except Exception:
                     pass
             elif not scraper_type:
-                museum_url = m.get("url", "")
-                if "facebook.com" in museum_url:
-                    fb_data = _load_fb_json(mid)
-                    if fb_data:
-                        all_exhibitions.extend(fb_data)
+                fb_data = _load_fb_json(mid)
+                if fb_data:
+                    all_exhibitions.extend(fb_data)
 
         # artemperor.tw アグリゲーターで未取得館を補完
         existing_ids = {e["museum"] for e in all_exhibitions}
