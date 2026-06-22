@@ -349,7 +349,20 @@
       "closed_day": null,
       "scraper": null,
       "lat": 22.997745,
-      "lng": 120.208635
+      "lng": 120.208635,
+      "events": [
+        {
+          "date": "2026/06/26",
+          "time": "19:00",
+          "title_zh": "上面電影院：找不到路的歌",
+          "title_en": "Upstairs Cinema: The Way He Sings",
+          "title_ja": "上面電影院：找不到路的歌",
+          "type": "screening",
+          "note_zh": "4F｜與談：吳文睿、黃柏喬、童詠瑋",
+          "note_en": "4F｜Speakers: Wu Wen-Jui, Huang Bo-Chiao, Tung Yung-Wei",
+          "link": "https://forms.gle/HQ8cGT4KPQPnrVx89"
+        }
+      ]
     },
     {
       "id": "tnam",

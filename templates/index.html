@@ -386,6 +386,23 @@
       font-size: 0.68rem; color: var(--text-light);
       margin-top: 2px;
     }
+    .venue-event {
+      font-size: 0.72rem; color: #0369a1; margin-top: 0;
+      padding: 8px 12px;
+      border-top: 1px dashed var(--border);
+      font-weight: 500;
+    }
+    .venue-event-soon {
+      background: #f0f9ff; border-top: 1px dashed #7dd3fc;
+    }
+    .venue-event-note {
+      font-size: 0.65rem; color: var(--text-light); margin-top: 2px;
+      font-weight: 400;
+    }
+    @media (prefers-color-scheme: dark) {
+      .venue-event { color: #7dd3fc; }
+      .venue-event-soon { background: #0c2a3e; border-color: #0369a1; }
+    }
     .ex-event {
       font-size: 0.68rem; color: #7c3aed; margin-top: 4px;
       font-weight: 500;
@@ -557,6 +574,14 @@
             </div>
             {% endif %}
           </a>
+          {% endfor %}
+          {% for evt in museum.venue_events %}
+          <div class="venue-event {% if evt.days_until <= 2 %}venue-event-soon{% endif %}">
+            {% if evt.type == 'screening' %}🎬{% else %}🎤{% endif %}
+            {{ evt.date }}{% if evt.time %} {{ evt.time }}{% endif %} — {{ evt.title }}
+            {% if evt.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif evt.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% elif evt.days_until == 2 %}<span class="event-badge">{% if current_lang == 'zh' %}後天{% elif current_lang == 'ja' %}明後日{% else %}In 2 days{% endif %}</span>{% endif %}
+            {% if evt.note %}<div class="venue-event-note">{{ evt.note }}</div>{% endif %}
+          </div>
           {% endfor %}
           <a href="/nearby/{{ museum.id }}?lang={{ current_lang }}" class="nearby-link">
             📍 {% if current_lang == 'zh' %}附近展覽{% elif current_lang == 'ja' %}近くの展示{% else %}Nearby{% endif %}
