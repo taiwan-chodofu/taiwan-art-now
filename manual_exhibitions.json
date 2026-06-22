@@ -328,6 +328,25 @@
           "note": ""
         }
       ]
+    },
+    {
+      "museum": "linlin",
+      "title_zh": "若遠若近",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026/07/18 - 2026/09/12",
+      "location": "大未來林舍畫廊",
+      "link": "https://www.linlingallery.com",
+      "description": "",
+      "description_en": "",
+      "artists": [
+        "徐華翎",
+        "陳可",
+        "蔡依庭",
+        "卡羅琳·沃克",
+        "楊伯都",
+        "維羅妮卡·保索娃"
+      ]
     }
   ]
 }
