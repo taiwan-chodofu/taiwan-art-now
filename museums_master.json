@@ -2010,6 +2010,31 @@
       "scraper": "generic",
       "lat": 25.038905,
       "lng": 121.574984
+    },
+    {
+      "id": "glitch",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "Glitch",
+        "ja": "毛刺 Glitch",
+        "zh": "毛刺 Glitch"
+      },
+      "address": {
+        "en": "No. 58, Sec. 2, Liuchuan E. Rd., West Dist., Taichung",
+        "ja": "台中市西區柳川東路二段58號",
+        "zh": "台中市西區柳川東路二段58號"
+      },
+      "url": "https://www.facebook.com/profile.php?id=61556692779891",
+      "hours": {
+        "en": "Wed–Sun 15:00–00:00 | Closed Mon & Tue",
+        "ja": "水〜日 15:00–00:00｜月火休",
+        "zh": "週三至週日 15:00–00:00｜週一二休"
+      },
+      "closed_day": 0,
+      "scraper": "generic",
+      "lat": 24.133668,
+      "lng": 120.664874
     }
   ]
 }
