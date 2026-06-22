@@ -245,6 +245,35 @@
           "note": ""
         }
       ]
+    },
+    {
+      "museum": "frees",
+      "title_zh": "吹來一陣通透 — 李沛倫個展",
+      "title_en": "A Breath Passing Through — LI Pei-Lun Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026/06/13 - 2026/07/15",
+      "location": "福利社 FreeS Art Space",
+      "link": "https://www.frees-art.org",
+      "description": "一片白淨鬆軟的雪白地，閃爍著細碎的微光，其中一個個時而微微向下凹陷、時而隆起的痕跡，那是風在時間中遺留下記憶的足跡。鹽巴一層一層地盪在風中，沿著空氣路徑而後墜落，柔和地堆疊出綿密的厚度，灑下寫實繪畫般的明暗過度。通過對留痕的凝視，感受它們的質地、重量、形狀，甚至是它們在時間和空間中自然變化的痕跡，自然物質帶來的感官經歷，喚起身體對空間與時間的感知。",
+      "description_en": "",
+      "events": [
+        {
+          "date": "2026/06/27",
+          "time": "14:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note": ""
+        },
+        {
+          "date": "2026/06/27",
+          "time": "15:00",
+          "title_zh": "座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note": ""
+        }
+      ]
     }
   ]
 }
