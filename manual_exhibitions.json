@@ -457,6 +457,28 @@
       "link": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791",
       "description": "以「移動」為關鍵字，回顧百年來臺灣女性如何在制度、身體與社會框架的限制中，走出自己的路。",
       "description_en": ""
+    },
+    {
+      "museum": "ntnuart",
+      "title_zh": "2026 共生之華 — 日本美術璀璨時代與臺灣之交會",
+      "title_en": "2026 Symbiotic Splendor — The Brilliant Era of Japanese Art and Its Encounter with Taiwan",
+      "title_ja": "",
+      "dates": "2026/06/09 - 2026/09/20",
+      "location": "師大美術館",
+      "link": "https://www.artmuse.ntnu.edu.tw/index.php/2026symbioticsplendor/",
+      "description": "",
+      "description_en": ""
+    },
+    {
+      "museum": "ntnuart",
+      "title_zh": "時光逆旅：文物修護的美學與實踐",
+      "title_en": "Journey Through Time: The Aesthetics and Practice of Art Conservation",
+      "title_ja": "",
+      "dates": "2024/07/01 - 2026/12/31",
+      "location": "師大美術館 展廳4",
+      "link": "https://www.artmuse.ntnu.edu.tw/index.php/elementor-10351/",
+      "description": "文物修護是對歷史的尊重，使文物得以重視其藝術價值和生命意涵。展覽精選修復後之典藏作品展出，並介紹修復程序與器具，展現臺師大在藝術品修復領域的豐碩成果。",
+      "description_en": ""
     }
   ]
 }
