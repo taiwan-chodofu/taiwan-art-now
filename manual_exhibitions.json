@@ -537,6 +537,17 @@
       "link": "https://www.nhrm.gov.tw/w/nhrm/Exhibitions",
       "description": "國家人權博物館以白色恐怖景美紀念園區與綠島紀念園區為基地，保存台灣威權統治時期的歷史記憶，透過常設展覽、人權教育與藝術活動，促進轉型正義與人權意識。",
       "description_en": ""
+    },
+    {
+      "museum": "jut",
+      "title_zh": "燼光之城 — 文明之後的迴響",
+      "title_en": "City of Embers — Echoes After Civilization",
+      "title_ja": "",
+      "dates": "2026/03/21 - 2026/07/05",
+      "location": "忠泰美術館",
+      "link": "https://jam.jutfoundation.org.tw/",
+      "description": "",
+      "description_en": ""
     }
   ]
 }
