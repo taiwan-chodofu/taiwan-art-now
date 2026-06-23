@@ -1846,12 +1846,13 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmtl_manual",
+      "scraper": "generic",
       "lat": 22.991801,
       "lng": 120.204374,
       "closed_days": [
         0
-      ]
+      ],
+      "exhibition_url": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367"
     },
     {
       "id": "nmth",

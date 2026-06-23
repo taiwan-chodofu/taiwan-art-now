@@ -369,6 +369,61 @@
       "link": "https://www.facebook.com/spacemoor",
       "description": "《流動與沉積》受到北海岸砂岩地貌所啟發。遍地繁複精美又銳利堅硬的風化紋理，呼應個人生命中，事物的無常流動。透過創作，進一步的觀察、模仿、提煉，將內心竄動卻無法轉化為言語或文字的時刻，一次次的，沉積在作品當中，成為靜定的節理。",
       "description_en": ""
+    },
+    {
+      "museum": "nmtl",
+      "title_zh": "文學力─書寫LÁN臺灣 常設展",
+      "title_en": "The Power of Literature — Writing Our Taiwan",
+      "title_ja": "",
+      "dates": "2024/01/01 - 2026/12/31",
+      "location": "國立臺灣文學館",
+      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "description": "",
+      "description_en": ""
+    },
+    {
+      "museum": "nmtl",
+      "title_zh": "此時此地：當代捷克漫畫",
+      "title_en": "Here and Now: Contemporary Czech Comics",
+      "title_ja": "",
+      "dates": "2026/05/27 - 2026/07/31",
+      "location": "國立臺灣文學館",
+      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "description": "捷克漫畫在經歷了20世紀的動盪與中斷後，正以史無前來的活力蓬勃發展。",
+      "description_en": ""
+    },
+    {
+      "museum": "nmtl",
+      "title_zh": "童心故事萬花筒主題書展",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026/03/31 - 2026/07/12",
+      "location": "國立臺灣文學館",
+      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "description": "",
+      "description_en": ""
+    },
+    {
+      "museum": "nmtl",
+      "title_zh": "臺灣兒童文學百年特展",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026/04/01 - 2026/11/15",
+      "location": "國立臺灣文學館",
+      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "description": "臺灣兒童文學萌芽於百年前的日治時期，想像力的種子在當時便已悄悄埋入這片土地。",
+      "description_en": ""
+    },
+    {
+      "museum": "nmtl",
+      "title_zh": "舊式教育文人展",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2025/11/28 - 2026/08/30",
+      "location": "國立臺灣文學館",
+      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "description": "本展以接受舊式教育的文人為主角，透過書畫、手稿、課卷、書信、期刊、攝影與器物等多樣文物，再現他們的成長歷程。",
+      "description_en": ""
     }
   ]
 }
