@@ -384,12 +384,36 @@ def index():
                 })
     closing_soon.sort(key=lambda x: x["days_left"])
 
+    from datetime import datetime, timezone, timedelta
+    today_str = datetime.now(timezone(timedelta(hours=8))).strftime("%Y/%m/%d")
+    todays_events = []
+    for region in regions_data:
+        for museum in region["museums"]:
+            for evt in museum.get("venue_events", []):
+                if evt["date"] == today_str:
+                    todays_events.append({
+                        "time": evt["time"],
+                        "title": evt["title"],
+                        "museum": museum["name"],
+                        "region": region["name"],
+                    })
+            for ex in museum.get("exhibitions", []):
+                ne = ex.get("next_event")
+                if ne and ne.get("days_until") == 0:
+                    todays_events.append({
+                        "time": ne["time"],
+                        "title": ne["title"],
+                        "museum": museum["name"],
+                        "region": region["name"],
+                    })
+
     labels = UI_LABELS[lang]
     return render_template(
         "index.html",
         labels=labels,
         regions=regions_data,
         closing_soon=closing_soon[:6],
+        todays_events=todays_events,
         current_lang=lang,
     )
 

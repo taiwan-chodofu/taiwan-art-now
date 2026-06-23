@@ -111,6 +111,50 @@
     </nav>
   </header>
 
+  <!-- TODAY'S EVENTS BANNER -->
+  {% if todays_events %}
+  <style>
+    .today-banner {
+      max-width: 720px; margin: 0 auto;
+      padding: 10px 1rem;
+      background: linear-gradient(135deg, #ede9fe, #dbeafe);
+      border-bottom: 1px solid #c4b5fd;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .today-banner { background: linear-gradient(135deg, #2e1065, #1e3a5f); border-color: #4c1d95; }
+    }
+    .today-banner-content {
+      font-size: 0.78rem; font-weight: 500; color: var(--text);
+      flex: 1;
+    }
+    .today-banner-close {
+      border: none; background: none; font-size: 1rem;
+      color: var(--text-light); cursor: pointer; padding: 4px;
+    }
+  </style>
+  <div class="today-banner" id="todayBanner">
+    <div class="today-banner-content">
+      🎤 {% for evt in todays_events %}{% if not loop.first %} · {% endif %}{{ evt.time }} {{ evt.title }}（{{ evt.region }}）{% endfor %}
+    </div>
+    <button class="today-banner-close" onclick="dismissTodayBanner()">✕</button>
+  </div>
+  <script>
+  (function() {
+    var key = 'today_banner_' + new Date().toISOString().slice(0,10);
+    if (localStorage.getItem(key)) {
+      document.getElementById('todayBanner').style.display = 'none';
+    }
+  })();
+  function dismissTodayBanner() {
+    var key = 'today_banner_' + new Date().toISOString().slice(0,10);
+    localStorage.setItem(key, '1');
+    document.getElementById('todayBanner').style.display = 'none';
+  }
+  </script>
+  {% endif %}
+
   <!-- SUBNAV -->
   <style>
     .subnav {
