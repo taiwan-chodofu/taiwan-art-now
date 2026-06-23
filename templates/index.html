@@ -126,8 +126,18 @@
       .today-banner { background: linear-gradient(135deg, #2e1065, #1e3a5f); border-color: #4c1d95; }
     }
     .today-banner-content {
-      font-size: 0.78rem; font-weight: 500; color: var(--text);
       flex: 1;
+    }
+    .today-event-line {
+      display: block; text-decoration: none; color: inherit;
+      padding: 3px 0;
+    }
+    .today-event-line:active { opacity: 0.6; }
+    .today-event-title {
+      display: block; font-size: 0.78rem; font-weight: 600; color: var(--text);
+    }
+    .today-event-venue {
+      display: block; font-size: 0.68rem; color: var(--text-sub); margin-top: 1px;
     }
     .today-banner-close {
       border: none; background: none; font-size: 1rem;
@@ -136,7 +146,13 @@
   </style>
   <div class="today-banner" id="todayBanner">
     <div class="today-banner-content">
-      🎤 {% for evt in todays_events %}{% if not loop.first %} · {% endif %}{{ evt.time }} {{ evt.title }}（{{ evt.region }}）{% endfor %}
+      <div style="font-size:0.7rem; font-weight:700; color:var(--text-light); margin-bottom:4px;">{% if current_lang == 'zh' %}📣 本日活動{% elif current_lang == 'ja' %}📣 本日のイベント{% else %}📣 Today's Events{% endif %}</div>
+      {% for evt in todays_events %}
+      <a href="#museum-{{ evt.museum_id }}" class="today-event-line" onclick="dismissTodayBanner()">
+        <span class="today-event-title">🎤 {% if evt.time %}{{ evt.time }} {% endif %}{{ evt.title }}</span>
+        <span class="today-event-venue">{{ evt.museum }}（{{ evt.region }}）</span>
+      </a>
+      {% endfor %}
     </div>
     <button class="today-banner-close" onclick="dismissTodayBanner()">✕</button>
   </div>
@@ -557,7 +573,7 @@
       </div>
 
       {% for museum in region.museums %}
-      <div class="museum-card" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}" data-has-ex="{{ 'yes' if museum.has_current else 'no' }}" data-has-current="{{ 'yes' if museum.has_current else 'no' }}" data-has-upcoming="{{ 'yes' if museum.has_upcoming else 'no' }}">
+      <div class="museum-card" id="museum-{{ museum.id }}" data-region="{{ region.id }}" data-cat="{{ museum.category }}" data-closed="{{ 'yes' if museum.closed_today else 'no' }}" data-has-ex="{{ 'yes' if museum.has_current else 'no' }}" data-has-current="{{ 'yes' if museum.has_current else 'no' }}" data-has-upcoming="{{ 'yes' if museum.has_upcoming else 'no' }}">
         <div class="mc-top">
           <div class="mc-name">
             <a href="{{ museum.url }}" target="_blank" rel="noopener">{{ museum.name }}</a>

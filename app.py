@@ -395,6 +395,7 @@ def index():
                         "time": evt["time"],
                         "title": evt["title"],
                         "museum": museum["name"],
+                        "museum_id": museum["id"],
                         "region": region["name"],
                     })
             for ex in museum.get("exhibitions", []):
@@ -404,6 +405,7 @@ def index():
                         "time": ne["time"],
                         "title": ne["title"],
                         "museum": museum["name"],
+                        "museum_id": museum["id"],
                         "region": region["name"],
                     })
 
