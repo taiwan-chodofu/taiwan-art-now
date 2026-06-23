@@ -424,6 +424,39 @@
       "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
       "description": "本展以接受舊式教育的文人為主角，透過書畫、手稿、課卷、書信、期刊、攝影與器物等多樣文物，再現他們的成長歷程。",
       "description_en": ""
+    },
+    {
+      "museum": "nmth",
+      "title_zh": "信風續航：明信片中的城市記憶",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026/05/15 - 2026/08/16",
+      "location": "國立臺灣歷史博物館",
+      "link": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791",
+      "description": "從基隆出發，續航臺南。以「信風基隆」為起點，本展透過一張張被寄出的明信片，書寫祝福、記錄記憶，開啟城市之間的對話。",
+      "description_en": ""
+    },
+    {
+      "museum": "nmth",
+      "title_zh": "亞洲在場：臺灣與亞洲運動會特展",
+      "title_en": "Asia in Play: Taiwan and the Asian Games",
+      "title_ja": "",
+      "dates": "2026/04/21 - 2026/10/18",
+      "location": "國立臺灣歷史博物館",
+      "link": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791",
+      "description": "",
+      "description_en": ""
+    },
+    {
+      "museum": "nmth",
+      "title_zh": "轉機：臺灣女子移動紀事特展",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2025/12/23 - 2026/08/30",
+      "location": "國立臺灣歷史博物館",
+      "link": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791",
+      "description": "以「移動」為關鍵字，回顧百年來臺灣女性如何在制度、身體與社會框架的限制中，走出自己的路。",
+      "description_en": ""
     }
   ]
 }

@@ -1875,12 +1875,13 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "nmth_manual",
+      "scraper": "generic",
       "lat": 23.058351,
       "lng": 120.235154,
       "closed_days": [
         0
-      ]
+      ],
+      "exhibition_url": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791"
     },
     {
       "id": "donnaart",
