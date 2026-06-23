@@ -2300,6 +2300,42 @@
       ],
       "lat": 25.020973,
       "lng": 121.525468
+    },
+    {
+      "id": "taiwanbooks",
+      "category": "alternative",
+      "region": "chiayi",
+      "name": {
+        "en": "Taiwan Reading Room",
+        "ja": "台灣圖書室",
+        "zh": "台灣圖書室"
+      },
+      "address": {
+        "en": "No. 255, Zhongshan Rd., East Dist., Chiayi City",
+        "ja": "嘉義市東區中山路255號",
+        "zh": "嘉義市東區中山路255號"
+      },
+      "url": "https://www.facebook.com/TaiwanReadingRoom",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "events": [
+        {
+          "date": "2026/07/25",
+          "time": "19:00",
+          "title_zh": "如何重寫「邊緣」：為什麼此刻要讀《逃亡者手記》",
+          "title_en": "Rewriting the Margins: Why Read \"Fugitive Notes\" Now",
+          "title_ja": "",
+          "type": "event",
+          "note_zh": "主講：陳冠彰｜免費入場",
+          "note_en": "Speaker: Chen Kuan-Chang | Free entry",
+          "link": "https://p.accu.ps/98dqbg"
+        }
+      ],
+      "lat": 23.4801,
+      "lng": 120.4491
     }
   ]
 }
