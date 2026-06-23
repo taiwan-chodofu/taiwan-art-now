@@ -2219,33 +2219,6 @@
       ]
     },
     {
-      "id": "neverland",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Neverland Gallery",
-        "ja": "Neverland Gallery",
-        "zh": "Neverland Gallery"
-      },
-      "address": {
-        "en": "No. 56, Ln. 164, Hulin St., Xinyi Dist., Taipei",
-        "ja": "台北市信義區虎林街164巷56號",
-        "zh": "台北市信義區虎林街164巷56號"
-      },
-      "url": "https://www.neverland.tw",
-      "hours": {
-        "en": "Tue–Sat 13:00–18:00 (by appointment)",
-        "ja": "火〜土 13:00–18:00（予約制）",
-        "zh": "週二至週六 13:00–18:00（預約制）"
-      },
-      "closed_day": 6,
-      "lat": 25.038905,
-      "lng": 121.574984,
-      "closed_days": [
-        6
-      ]
-    },
-    {
       "id": "glitch",
       "category": "alternative",
       "region": "taichung",
