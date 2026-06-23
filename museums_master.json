@@ -2273,6 +2273,33 @@
       ],
       "lat": 25.0789,
       "lng": 121.567
+    },
+    {
+      "id": "hakkapark",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Hakka Cultural Park",
+        "ja": "台北市客家文化公園",
+        "zh": "臺北市客家文化公園"
+      },
+      "address": {
+        "en": "No. 2, Sec. 3, Tingzhou Rd., Zhongzheng Dist., Taipei",
+        "ja": "台北市中正區汀州路三段2號",
+        "zh": "臺北市中正區汀州路三段2號"
+      },
+      "url": "https://www.facebook.com/TaipeiHakkaPark/",
+      "hours": {
+        "en": "Tue–Sun 09:00–18:00 | Closed Mon",
+        "ja": "火〜日 9:00–18:00｜月休",
+        "zh": "週二至週日 9:00–18:00｜週一休"
+      },
+      "closed_day": 0,
+      "closed_days": [
+        0
+      ],
+      "lat": 25.020973,
+      "lng": 121.525468
     }
   ]
 }
