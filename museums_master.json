@@ -1797,7 +1797,7 @@
         "ja": "新北市八里區中華路二段199號",
         "zh": "新北市八里區中華路二段199號"
       },
-      "url": "https://www.ssspacespace.work",
+      "url": "https://www.facebook.com/ssspacespace",
       "hours": {
         "en": "Thu–Sun 11:00–17:30",
         "ja": "木〜日 11:00–17:30",
@@ -1810,6 +1810,19 @@
       "lng": 121.400942,
       "closed_days": [
         0
+      ],
+      "events": [
+        {
+          "date": "2026/06/27",
+          "time": "14:00",
+          "title_zh": "深坑與密謀：舊書挖掘與拼貼工作坊",
+          "title_en": "Pits and Plots: Excavation & Collage Workshop",
+          "title_ja": "深坑與密謀：古本発掘＆コラージュWS",
+          "type": "event",
+          "note_zh": "藝術家許芝瑜主持｜限額12人｜400元",
+          "note_en": "Led by artist Hsu Chih-Yu | 12 spots | 400 NTD",
+          "link": "https://www.facebook.com/ssspacespace"
+        }
       ]
     },
     {
