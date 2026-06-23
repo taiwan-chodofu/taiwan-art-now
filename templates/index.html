@@ -482,6 +482,28 @@
       .mc-name { font-size: 0.78rem; }
       .ex-title { font-size: 0.75rem; }
     }
+
+    /* Desktop: hover feedback */
+    @media (hover: hover) {
+      .ex-item:hover { background: var(--hover-bg); }
+      .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+      .museum-card:hover { border-color: var(--border-dark); }
+      .region-header:hover .region-name { opacity: 0.7; }
+      .mc-name a:hover { opacity: 0.6; }
+      .nearby-link:hover { color: var(--text-sub); }
+      .closing-item:hover { opacity: 0.8; }
+      .venue-event:hover { opacity: 0.8; }
+    }
+
+    /* Desktop: larger font + 2-column layout */
+    @media (min-width: 768px) {
+      body { font-size: 16px; }
+    }
+    @media (min-width: 900px) {
+      .region-section .museum-card { display: inline-block; vertical-align: top; width: calc(50% - 8px); margin-right: 12px; }
+      .region-section .museum-card:nth-child(2n+1) { margin-right: 12px; }
+      .region-section .museum-card:nth-child(2n) { margin-right: 0; }
+    }
   </style>
 
   <main>
