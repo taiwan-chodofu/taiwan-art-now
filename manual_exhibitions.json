@@ -632,6 +632,20 @@
           "link": ""
         }
       ]
+    },
+    {
+      "museum": "nwac",
+      "title_zh": "古內惟傳奇船旗 — 重現100幅古內惟水族生態圖鑑",
+      "title_en": "Legendary Boat Flags of Ancient Neiwei — 100 Aquatic Ecological Illustrations",
+      "title_ja": "",
+      "dates": "2026/05/29 - 2026/10/04",
+      "location": "內惟藝術中心 南門區域走道",
+      "link": "https://www.nwac.org.tw/tw/art-content/2FfEDC14bE01",
+      "description": "以300年前的船旗串連港口、河流到內惟埤塘，召喚消失的水文與生態。藝術家李怡志將傳統「祈漁」意涵轉譯為對土地的「祈生」，透過社群參與工作坊，建構127件古內惟水族生態圖鑑，重現消失的鱗光、貝類與水草。",
+      "description_en": "Using 300-year-old boat flags to connect the harbor, rivers, and Neiwei ponds, this project summons disappeared hydrology and ecology. Artist Lee Yi-Chih translates traditional maritime prayer into a prayer for the land, constructing 127 aquatic ecological illustrations through community workshops.",
+      "artists": [
+        "李怡志"
+      ]
     }
   ]
 }
