@@ -2435,6 +2435,29 @@
       ],
       "lat": 23.016893,
       "lng": 120.212805
+    },
+    {
+      "id": "ffffff",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "#FFFFFF",
+        "ja": "正白 #FFFFFF",
+        "zh": "正白 #FFFFFF"
+      },
+      "address": {
+        "en": "No. 215, Xinle St., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區新樂街215號",
+        "zh": "高雄市鹽埕區新樂街215號"
+      },
+      "url": "https://www.facebook.com/ffffffblank/",
+      "hours": {
+        "en": "24h window gallery",
+        "ja": "24時間無人櫥窗ギャラリー",
+        "zh": "24小時無人櫥窗畫廊"
+      },
+      "lat": 22.623511,
+      "lng": 120.288421
     }
   ]
 }
