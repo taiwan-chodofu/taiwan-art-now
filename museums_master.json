@@ -236,6 +236,52 @@
       "lng": 121.536396,
       "closed_days": [
         0
+      ],
+      "events": [
+        {
+          "date": "2026/06/27",
+          "time": "14:00",
+          "title_zh": "文化前線 II：在廢土之濱練習存活",
+          "title_en": "FEAR OF CRASHING OUT: Survival at the Wasteland Shore",
+          "title_ja": "",
+          "type": "event",
+          "note_zh": "講者：劉以正、Lulu Keng、陳德叡｜免費",
+          "note_en": "Speakers: Liu Yi-Zheng, Lulu Keng, Chen De-Rui | Free",
+          "link": ""
+        },
+        {
+          "date": "2026/06/28",
+          "time": "14:00",
+          "title_zh": "文化前線 II：在被AI離職與不工作之間選擇躺平",
+          "title_en": "FEAR OF CRASHING OUT: Between AI Layoffs and Not Working",
+          "title_ja": "",
+          "type": "event",
+          "note_zh": "導讀：王琍瑩、崔家瑋｜免費",
+          "note_en": "Led by: Wang Li-Ying, Cui Jia-Wei | Free",
+          "link": ""
+        },
+        {
+          "date": "2026/07/04",
+          "time": "14:00",
+          "title_zh": "文化前線 II：在AI代理人戰爭前線撐媒體",
+          "title_en": "FEAR OF CRASHING OUT: Sustaining Media on the AI Agent Frontline",
+          "title_ja": "",
+          "type": "event",
+          "note_zh": "講者：簡信昌、張潔平、劉嘉偉｜免費",
+          "note_en": "Speakers: Jian Xin-Chang, Chang Jie-Ping, Liu Jia-Wei | Free",
+          "link": ""
+        },
+        {
+          "date": "2026/07/05",
+          "time": "14:00",
+          "title_zh": "文化前線 II：在巨靈面前拒絕臣服",
+          "title_en": "FEAR OF CRASHING OUT: Refusing to Submit Before the Leviathan",
+          "title_ja": "",
+          "type": "event",
+          "note_zh": "講者：Oskar Thorén、Toomore、曾可維｜免費",
+          "note_en": "Speakers: Oskar Thorén, Toomore, Tseng Ke-Wei | Free",
+          "link": ""
+        }
       ]
     },
     {
