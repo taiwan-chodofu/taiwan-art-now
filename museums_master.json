@@ -2382,6 +2382,31 @@
       ],
       "lat": 23.4801,
       "lng": 120.4491
+    },
+    {
+      "id": "nhrm",
+      "category": "public",
+      "region": "new_taipei",
+      "name": {
+        "en": "National Human Rights Museum",
+        "ja": "國家人權博物館",
+        "zh": "國家人權博物館"
+      },
+      "address": {
+        "en": "No. 12, Shuangcheng Rd., Xindian Dist., New Taipei City",
+        "ja": "新北市新店區雙城路12號",
+        "zh": "新北市新店區雙城路12號"
+      },
+      "url": "https://www.nhrm.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 9:00–17:00｜週一休"
+      },
+      "closed_day": 0,
+      "closed_days": [
+        0
+      ]
     }
   ]
 }
