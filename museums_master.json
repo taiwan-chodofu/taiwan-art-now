@@ -2513,6 +2513,34 @@
       ],
       "lat": 22.624,
       "lng": 120.285
+    },
+    {
+      "id": "doublesquare",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Double Square Gallery",
+        "ja": "双方藝廊",
+        "zh": "双方藝廊"
+      },
+      "address": {
+        "en": "No. 30, Lane 770, Beian Rd., Zhongshan Dist., Taipei",
+        "ja": "台北市中山區北安路770巷30號",
+        "zh": "台北市中山區北安路770巷30號"
+      },
+      "url": "https://www.doublesquare.com.tw/",
+      "hours": {
+        "en": "Tue–Sat 10:00–18:00 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–18:00｜日月休",
+        "zh": "週二至週六 10:00–18:00｜週日一休"
+      },
+      "closed_day": 6,
+      "closed_days": [
+        0,
+        6
+      ],
+      "lat": 25.084797,
+      "lng": 121.553279
     }
   ]
 }

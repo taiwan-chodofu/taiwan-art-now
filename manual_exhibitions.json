@@ -679,6 +679,34 @@
       "artists": [
         "黃萱"
       ]
+    },
+    {
+      "museum": "doublesquare",
+      "title_zh": "存在的低語：感知的重新校準 — 王公澤個展",
+      "title_en": "Whispers of Being: Recalibrating Perception — Wang Gon-Jer",
+      "title_ja": "",
+      "dates": "2026/07/04 - 2026/08/08",
+      "location": "双方藝廊",
+      "link": "https://www.doublesquare.com.tw/",
+      "description": "",
+      "description_en": "",
+      "artists": [
+        "王公澤"
+      ]
+    },
+    {
+      "museum": "doublesquare",
+      "title_zh": "地景-行履無跡 — 橫溝美由紀個展",
+      "title_en": "Landscape — Tracing the Invisible Route — Yokomizo Miyuki",
+      "title_ja": "",
+      "dates": "2026/07/04 - 2026/08/08",
+      "location": "双方藝廊",
+      "link": "https://www.doublesquare.com.tw/",
+      "description": "",
+      "description_en": "",
+      "artists": [
+        "橫溝美由紀"
+      ]
     }
   ]
 }
