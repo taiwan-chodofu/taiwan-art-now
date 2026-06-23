@@ -565,6 +565,27 @@
         "塞巴斯蒂安·摩爾多萬",
         "蔡坤霖"
       ]
+    },
+    {
+      "museum": "ntcart",
+      "title_zh": "民間／攝影：紀實影像的敘事生成",
+      "title_en": "Minjian / Photography: Documentary Vision and Its Realist Inflection",
+      "title_ja": "",
+      "dates": "2026/07/18 - 2026/11/15",
+      "location": "新北市美術館 3A、3B、4B展覽室",
+      "link": "",
+      "description": "本展立足於臺灣攝影史的研究視角，重新探討「民間」如何成為不同世代攝影家持續凝視、對話與辯證的重要場域。在臺灣與東亞的歷史脈絡中，「民間」不只是單純的民俗風情，更是一個介於官方與非官方之間的動態社會空間。展覽核心聚焦於松山虔三、張才、黃則修、張照堂、黃永松、姚孟嘉、梁正居與林柏樑等攝影家。",
+      "description_en": "This exhibition reexamines how \"minjian\" (the folk/civil sphere) has served as a crucial site of engagement for photographers across generations in Taiwan. In the historical context of Taiwan and East Asia, minjian is not merely folklore but a dynamic social space between official and unofficial realms, where local networks, everyday practices, religious beliefs and photographic media intertwine.",
+      "artists": [
+        "松山虔三",
+        "張才",
+        "黃則修",
+        "黃永松",
+        "姚孟嘉",
+        "張照堂",
+        "梁正居",
+        "林柏樑"
+      ]
     }
   ]
 }
