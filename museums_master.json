@@ -2485,6 +2485,34 @@
       ],
       "lat": 22.652806,
       "lng": 120.28179
+    },
+    {
+      "id": "ajian",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "A Jian Space",
+        "ja": "一菅空間",
+        "zh": "一菅空間"
+      },
+      "address": {
+        "en": "1-2F, No. 184, Wufu 4th Rd., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區五福四路184號1、2樓",
+        "zh": "高雄市鹽埕區五福四路184號1、2樓"
+      },
+      "url": "https://www.facebook.com/p/A-jian-space-%E4%B8%80%E8%8F%85%E7%A9%BA%E9%96%93-61572469571593/",
+      "hours": {
+        "en": "Fri–Mon 13:00–19:00",
+        "ja": "金〜月 13:00–19:00",
+        "zh": "週五至週一 13:00–19:00"
+      },
+      "closed_days": [
+        1,
+        2,
+        3
+      ],
+      "lat": 22.624,
+      "lng": 120.285
     }
   ]
 }
