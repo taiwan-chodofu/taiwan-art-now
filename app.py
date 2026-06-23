@@ -349,8 +349,13 @@ def index():
 
         active_count = sum(1 for me in museum_entries if me["has_current"])
         upcoming_count = sum(1 for me in museum_entries if me["has_upcoming"])
-        if active_count == 0 and upcoming_count == 0:
+        if not museum_entries:
             continue
+        pinned_ids = {"honggah", "fotoaura"}
+        museum_entries.sort(key=lambda me: (
+            0 if me["id"] in pinned_ids else 1,
+            0 if me["exhibitions"] else 1,
+        ))
         regions_data.append({
             "id": region_id,
             "name": _get_localized(
