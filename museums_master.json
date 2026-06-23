@@ -2541,6 +2541,34 @@
       ],
       "lat": 25.084797,
       "lng": 121.553279
+    },
+    {
+      "id": "nunufineart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Nunu Fine Art",
+        "ja": "路由藝術",
+        "zh": "路由藝術"
+      },
+      "address": {
+        "en": "No. 5, Lane 67, Sec. 1, Jinshan S. Rd., Zhongzheng Dist., Taipei",
+        "ja": "台北市中正區金山南路一段67巷5號",
+        "zh": "台北市中正區金山南路一段67巷5號"
+      },
+      "url": "https://www.nunufineart.com/",
+      "hours": {
+        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_day": 6,
+      "closed_days": [
+        0,
+        6
+      ],
+      "lat": 25.037747,
+      "lng": 121.528728
     }
   ]
 }
