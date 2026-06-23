@@ -2458,6 +2458,33 @@
       },
       "lat": 22.623511,
       "lng": 120.288421
+    },
+    {
+      "id": "nwac",
+      "category": "public",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Neiwei Arts Center",
+        "ja": "內惟藝術中心",
+        "zh": "內惟藝術中心"
+      },
+      "address": {
+        "en": "No. 329, Makadao Rd., Gushan Dist., Kaohsiung",
+        "ja": "高雄市鼓山區馬卡道路329號",
+        "zh": "高雄市鼓山區馬卡道路329號"
+      },
+      "url": "https://www.nwac.org.tw",
+      "hours": {
+        "en": "Tue–Sun 11:00–21:00 | Closed Mon",
+        "ja": "火〜日 11:00–21:00｜月休",
+        "zh": "週二至週日 11:00–21:00｜週一休"
+      },
+      "closed_day": 0,
+      "closed_days": [
+        0
+      ],
+      "lat": 22.652806,
+      "lng": 120.28179
     }
   ]
 }

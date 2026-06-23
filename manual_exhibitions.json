@@ -605,6 +605,33 @@
         "蘇睿豪",
         "黃俊凱"
       ]
+    },
+    {
+      "museum": "nwac",
+      "title_zh": "Re：戰鬥之城",
+      "title_en": "Re: Battle City",
+      "title_ja": "",
+      "dates": "2026/06/06 - 2026/10/26",
+      "location": "內惟藝術中心",
+      "link": "https://www.nwac.org.tw/tw/art-content/311902c82362",
+      "description": "「Re」有重啟、再次回返之意。本展聚焦藝術家張立人歷時十四年完成的《戰鬥之城》系列，透過動畫影像、漫畫、分鏡手稿、場景模型、人物角色及拍攝道具，呈現藝術家於《戰鬥之城》建構的「世界觀」，在回溯與翻新之間，形構與現實世界的多重對照。",
+      "description_en": "\"Re\" speaks to the act of restarting and returning. This exhibition centers on Chang Li-Ren's fourteen-year Battle City series. Through animation, comics, storyboards, scene models, characters and filming props, it presents the worldview constructed within Battle City, tracing the interplay between retrospection and renewal.",
+      "artists": [
+        "張立人"
+      ],
+      "events": [
+        {
+          "date": "2026/06/21",
+          "time": "14:00",
+          "title_zh": "「一起來刷看看」絹印工作坊",
+          "title_en": "Screen Printing Workshop",
+          "title_ja": "シルクスクリーンWS",
+          "type": "event",
+          "note_zh": "需自備T-shirt或帆布包｜300元",
+          "note_en": "Bring your own T-shirt/tote | NTD 300",
+          "link": ""
+        }
+      ]
     }
   ]
 }
