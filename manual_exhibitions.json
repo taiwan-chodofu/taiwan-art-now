@@ -501,6 +501,31 @@
       "link": "https://www.facebook.com/simpleobjectofficial/",
       "description": "從每日擠牙膏聯想到的日常異想，到折射出迷人魅力的外太空草莓，藝術家侯連秦在最新個展中具象日常萬物所給予的溫柔正能量。感受厚重與輕盈、實體與空間融為一體的視覺震撼，在陽光明媚的氛圍中，尋找屬於自己的生命覺知。",
       "description_en": ""
+    },
+    {
+      "museum": "hakkapark",
+      "title_zh": "2026物件交換所",
+      "title_en": "2026 Object Exchange",
+      "title_ja": "",
+      "dates": "2026/06/05 - 2026/08/09",
+      "location": "臺北市客家文化公園",
+      "link": "https://www.ncafroc.org.tw/event_detail.html?sid=6544",
+      "description": "本次展覽以「交換」為核心概念，邀請來自不同背景領域的10組藝術家走進客家公園，利用閒置物件進行創作，並交換彼此的創意與想像。藝術家透過解析物件背後的脈絡，進一步拆解、重組與轉化，賦予其全新的樣貌與意義，讓舊物展開新的生命。",
+      "description_en": "This exhibition centers on the concept of \"exchange,\" inviting 10 groups of artists from diverse backgrounds to enter Hakka Park and create works using idle objects, exchanging creativity and imagination. Through analyzing the context behind objects, artists deconstruct, reassemble and transform them, giving old things new life.",
+      "artists": [
+        "吳紫莖",
+        "葉澈",
+        "李莊民",
+        "黃海恩",
+        "黃馨",
+        "賈茜茹",
+        "楊芳宜",
+        "林俊作",
+        "複耳工作室（馮志銘、邱子晏）",
+        "顏亦均",
+        "魏子淵",
+        "羅懿君"
+      ]
     }
   ]
 }
