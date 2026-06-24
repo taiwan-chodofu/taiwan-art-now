@@ -1043,6 +1043,76 @@ def event_ics():
     }
 
 
+MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
+MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
+
+
+@app.route("/webhook", methods=["GET"])
+def webhook_verify():
+    """Meta Webhook verification (GET request)."""
+    mode = request.args.get("hub.mode")
+    token = request.args.get("hub.verify_token")
+    challenge = request.args.get("hub.challenge")
+    if mode == "subscribe" and token == MESSENGER_VERIFY_TOKEN:
+        return challenge, 200
+    return "Forbidden", 403
+
+
+@app.route("/webhook", methods=["POST"])
+def webhook_receive():
+    """Receive messages from Messenger and create GitHub issues."""
+    import urllib.request as urllib_req
+    from datetime import datetime, timezone, timedelta
+
+    body = request.get_json(silent=True) or {}
+    entries = body.get("entry", [])
+    for entry in entries:
+        for event in entry.get("messaging", []):
+            sender_id = event.get("sender", {}).get("id", "")
+            message = event.get("message", {})
+            text = message.get("text", "")
+            attachments = message.get("attachments", [])
+
+            image_urls = [a["payload"]["url"] for a in attachments if a.get("type") == "image" and a.get("payload", {}).get("url")]
+
+            if not text and not image_urls:
+                continue
+
+            body_parts = [f"**From Messenger:** sender_id={sender_id}"]
+            if text:
+                body_parts.append(f"**Message:** {text}")
+            for img in image_urls:
+                body_parts.append(f"**Image:** ![photo]({img})")
+            tw_now = datetime.now(timezone(timedelta(hours=8)))
+            body_parts.append(f"**Received:** {tw_now.isoformat()}")
+
+            issue_body = "\n\n".join(body_parts)
+            issue_data = json.dumps({
+                "title": f"[Messenger] {text[:50] or 'Image submission'}",
+                "body": issue_body,
+                "labels": ["user-request"],
+            }).encode()
+
+            gh_token = os.environ.get("GH_TOKEN", "")
+            if gh_token:
+                req = urllib_req.Request(
+                    "https://api.github.com/repos/taiwan-chodofu/taiwan-art-now/issues",
+                    data=issue_data,
+                    headers={
+                        "Authorization": f"token {gh_token}",
+                        "Content-Type": "application/json",
+                        "Accept": "application/vnd.github.v3+json",
+                    },
+                    method="POST",
+                )
+                try:
+                    urllib_req.urlopen(req, timeout=10)
+                except Exception:
+                    pass
+
+    return "OK", 200
+
+
 @app.route("/health")
 def health():
     """ヘルスチェック用（cron ping向け軽量エンドポイント）。
