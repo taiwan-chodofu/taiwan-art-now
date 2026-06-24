@@ -1618,6 +1618,9 @@ def _scrape_artemperor(pages=3):
                 # 展覧会タイトル: <h2>
                 h2 = card.find("h2")
                 title = h2.get_text(strip=True) if h2 else ""
+                # 【】括弧を除去
+                if title.startswith("【") and "】" in title:
+                    title = title[1:].replace("】", " ", 1).strip()
 
                 # 日付: <p> に「日期：YYYY-MM-DD ~ YYYY-MM-DD」
                 p_tag = card.find("p")
@@ -2312,7 +2315,7 @@ def _parse_date_range(dates_str):
     return start_dt, end_dt
 
 
-NOISE_TITLE_KEYWORDS = ["票券", "互惠", "志工", "招募", "徵才", "休館", "停車"]
+NOISE_TITLE_KEYWORDS = ["票券", "互惠", "志工", "招募", "徵才", "休館", "停車", "專家導覽", "藝術家面對面"]
 
 
 def _filter_noise(exhibitions):
