@@ -2102,6 +2102,7 @@ def _do_scrape_all():
         logger.warning("Master data load failed: %s", exc)
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
+    all_exhibitions = _filter_noise(all_exhibitions)
     all_exhibitions = _remove_expired(all_exhibitions)
     all_exhibitions = _filter_known_museums(all_exhibitions)
     _enrich_exhibitions(all_exhibitions, max_to_fetch=8)
@@ -2309,6 +2310,17 @@ def _parse_date_range(dates_str):
             except ValueError:
                 pass
     return start_dt, end_dt
+
+
+NOISE_TITLE_KEYWORDS = ["票券", "互惠", "志工", "招募", "徵才", "休館", "停車"]
+
+
+def _filter_noise(exhibitions):
+    """展示ではないノイズタイトルを除去する。"""
+    return [
+        ex for ex in exhibitions
+        if not any(kw in (ex.get("title_zh", "") or ex.get("title_en", "") or "") for kw in NOISE_TITLE_KEYWORDS)
+    ]
 
 
 def _remove_expired(exhibitions):
