@@ -140,7 +140,7 @@ def _normalize_dates(raw_dates):
     if not raw_dates:
         return "", None, None
     s = raw_dates.replace("／", "/")
-    dates = re.findall(r"(\d{4})[./](\d{1,2})[./](\d{1,2})", s)
+    dates = re.findall(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})", s)
     if len(dates) >= 2:
         start = f"{dates[0][0]}.{int(dates[0][1]):02d}.{int(dates[0][2]):02d}"
         end = f"{dates[1][0]}.{int(dates[1][1]):02d}.{int(dates[1][2]):02d}"
