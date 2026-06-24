@@ -2218,51 +2218,87 @@ def _normalize_title_for_compare(title):
     return t
 
 
+def _dates_overlap(dates_a, dates_b):
+    """2つの日付正規化文字列が重なっているか判定（数字のみ）。"""
+    if not dates_a or not dates_b:
+        return True
+    nums_a = re.findall(r"\d{8}", dates_a)
+    nums_b = re.findall(r"\d{8}", dates_b)
+    if len(nums_a) >= 2 and len(nums_b) >= 2:
+        return not (nums_a[1] < nums_b[0] or nums_b[1] < nums_a[0])
+    return dates_a == dates_b
+
+
+def _titles_similar(norm_a, norm_b, min_common=5):
+    """2つの正規化タイトルが類似しているか（包含関係 or 共通部分5文字以上）。"""
+    if not norm_a or not norm_b:
+        return False
+    if norm_a in norm_b or norm_b in norm_a:
+        return True
+    shorter = norm_a if len(norm_a) <= len(norm_b) else norm_b
+    longer = norm_b if len(norm_a) <= len(norm_b) else norm_a
+    for i in range(len(shorter) - min_common + 1):
+        if shorter[i:i+min_common] in longer:
+            return True
+    return False
+
+
 def _dedup_exhibitions(exhibitions):
-    """同一museum内のタイトル重複（完全一致・包含関係）を除去する。
-    artemperor.tw 由来は優先的に除外する（公式ソース優先）。"""
+    """同一museum内のタイトル重複を除去する。
+    artemperor.tw 由来は優先的に除外する（公式ソース優先）。
+    除外したものはログに記録する。"""
     from collections import defaultdict
     by_museum = defaultdict(list)
     for ex in exhibitions:
         by_museum[ex.get("museum", "")].append(ex)
 
     result = []
+    dedup_log = []
     for mid, items in by_museum.items():
         if len(items) < 2:
             result.extend(items)
             continue
-        # artemperor由来を末尾にソート（除外されやすくする）
         items_sorted = sorted(items, key=lambda x: 1 if "artemperor" in x.get("link", "") else 0)
         keep = []
-        seen_keys = set()
-        seen_norm_titles = []
+        seen_entries = []
         for item in items_sorted:
-            title = item.get("title_en", "") or item.get("title_zh", "") or ""
+            title_zh = item.get("title_zh", "")
+            title_en = item.get("title_en", "")
+            title = title_en or title_zh or ""
             dates_norm = _normalize_date_str(item.get("dates", ""))
             norm_title = _normalize_title_for_compare(title)
-            # 完全一致（正規化タイトル+日付）
+            norm_title_zh = _normalize_title_for_compare(title_zh)
             exact_key = (norm_title, dates_norm)
-            if exact_key in seen_keys:
-                continue
-            # 既存タイトルと包含関係（正規化後）
-            is_subset_or_dup = False
-            for kept_norm, kept_dates in seen_norm_titles:
-                if not norm_title or not kept_norm:
-                    continue
-                # 同日程かつ片方が他方を含む
-                if dates_norm and dates_norm == kept_dates:
-                    if norm_title in kept_norm or kept_norm in norm_title:
-                        is_subset_or_dup = True
-                        break
-                # 日付不明同士で完全一致
-                elif not dates_norm and not kept_dates and norm_title == kept_norm:
-                    is_subset_or_dup = True
+            is_dup = False
+            for kept_norm, kept_norm_zh, kept_dates, kept_title in seen_entries:
+                if exact_key == (kept_norm, kept_dates):
+                    is_dup = True
                     break
-            if not is_subset_or_dup:
-                seen_keys.add(exact_key)
-                seen_norm_titles.append((norm_title, dates_norm))
+                if _dates_overlap(dates_norm, kept_dates):
+                    if _titles_similar(norm_title, kept_norm) or _titles_similar(norm_title_zh, kept_norm_zh):
+                        is_dup = True
+                        break
+            if is_dup:
+                dedup_log.append(f"[DEDUP] {mid}: removed '{title[:40]}' (dup of '{kept_title[:40]}')")
+            else:
+                seen_entries.append((norm_title, norm_title_zh, dates_norm, title))
                 keep.append(item)
         result.extend(keep)
+
+    if dedup_log:
+        log_path = os.path.join(os.path.dirname(__file__), "dedup_log.txt")
+        try:
+            with open(log_path, "a", encoding="utf-8") as f:
+                from datetime import datetime, timezone, timedelta
+                ts = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M")
+                f.write(f"\n--- {ts} ---\n")
+                for line in dedup_log:
+                    f.write(line + "\n")
+        except Exception:
+            pass
+        for line in dedup_log:
+            logger.info(line)
+
     return result
 
 
