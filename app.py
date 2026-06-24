@@ -1043,6 +1043,11 @@ def event_ics():
     }
 
 
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+
 MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
 
