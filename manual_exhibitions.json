@@ -727,6 +727,52 @@
       "artists": [
         "Peter Zimmermann"
       ]
+    },
+    {
+      "museum": "juming",
+      "title_zh": "恆形—雕塑作為方法",
+      "title_en": "Topology — Sculpture as Method",
+      "title_ja": "",
+      "dates": "2026/05/09 - 2026/12/20",
+      "location": "朱銘美術館 第一展覽室、本館、戶外展區",
+      "link": "https://www.juming.org.tw/mainssl/modules/MySpace/BlogInfo.php?xmlid=392921",
+      "description": "本展以「恆形」為核心概念，命名來自數學中的拓樸學。展覽呈現當代臺灣雕塑的多樣面貌，以拓樸思維重新探問：何為雕塑的邊界？何為藝術認識的方法？在形態持續變動的當下，那些「恆久不變」的結構，也許正是我們理解藝術的新起點。",
+      "description_en": "Centered on the concept of \"topology,\" this exhibition presents the diverse faces of contemporary Taiwanese sculpture, using topological thinking to re-examine the boundaries of sculpture and artistic methodology.",
+      "artists": [
+        "何偲菁",
+        "吳建興",
+        "姚仲涵",
+        "徐均育",
+        "張永達",
+        "章芙菱",
+        "陳松志",
+        "陳欣孟",
+        "陳俊宇",
+        "陳冠豪",
+        "陳肇驊",
+        "曾偉豪",
+        "陽春麵研究舍",
+        "劉千瑋",
+        "劉柏村",
+        "劉東昱",
+        "蔡瑜",
+        "蔡影澂",
+        "賴彥勳",
+        "賴科維",
+        "雜波"
+      ]
+    },
+    {
+      "museum": "juming",
+      "title_zh": "我喜歡在這裡",
+      "title_en": "I Like It Here",
+      "title_ja": "",
+      "dates": "2026/02/10 - 2027/01/17",
+      "location": "朱銘美術館 兒童藝術中心",
+      "link": "https://www.juming.org.tw/mainssl/modules/MySpace/BlogInfo.php?xmlid=386629",
+      "description": "「我喜歡在這裡」是一個為小朋友準備的生態體驗區。這裡有一座生態池，裡面住著很多植物和小動物。小朋友可以動手做、玩遊戲，一邊玩，一邊認識大自然。",
+      "description_en": "",
+      "artists": []
     }
   ]
 }

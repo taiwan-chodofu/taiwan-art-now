@@ -1479,8 +1479,6 @@
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.juming.org.tw",
       "og_image": "https://comet.noonspace.com/w62/ec/MsgInfo/恆形_banner_官網最新消息.jpg",
       "lat": 25.244219,
       "lng": 121.611225,
