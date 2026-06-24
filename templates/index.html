@@ -433,7 +433,13 @@
     .ex-item:active { background: var(--hover-bg); }
     .ex-title {
       font-size: 0.88rem; font-weight: 600; line-height: 1.45;
+      display: flex; align-items: flex-start; gap: 4px;
     }
+    .ex-fav-btn {
+      flex-shrink: 0; font-size: 0.9rem; cursor: pointer;
+      opacity: 0.4; margin-left: auto; padding: 0 4px;
+    }
+    .ex-fav-btn.saved { opacity: 1; }
     .ex-dates {
       font-size: 0.72rem; color: var(--text-sub); margin-top: 3px;
       display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
@@ -602,6 +608,7 @@
           <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ museum.name }}__{{ ex.title }}">
             <div class="ex-title">
               {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
+              <span class="ex-fav-btn" data-fav-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleExFav(event, this)">☆</span>
             </div>
             {% if ex.dates %}
             <div class="ex-dates">
@@ -871,6 +878,46 @@
       btn.classList.toggle('active');
     }
   }
+
+  function toggleExFav(event, btn) {
+    event.preventDefault();
+    event.stopPropagation();
+    var rawKey = btn.getAttribute('data-fav-key') || '';
+    var key = rawKey.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+    var favs = {};
+    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) {}
+    if (favs[key]) {
+      delete favs[key];
+      btn.textContent = '☆';
+      btn.classList.remove('saved');
+    } else {
+      var exItem = btn.closest('.ex-item');
+      var title = rawKey.split('__')[1] || '';
+      var museum = rawKey.split('__')[0] || '';
+      var datesEl = exItem ? exItem.querySelector('.ex-dates') : null;
+      var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
+      favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '' };
+      btn.textContent = '★';
+      btn.classList.add('saved');
+    }
+    localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+    // Update header star
+    var headerBtn = document.getElementById('favsBtn');
+    if (headerBtn) headerBtn.textContent = Object.keys(favs).length > 0 ? '★' : '☆';
+  }
+
+  // Init: mark already-saved exhibitions
+  (function() {
+    var favs = {};
+    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) {}
+    document.querySelectorAll('.ex-fav-btn').forEach(function(btn) {
+      var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+      if (favs[key]) {
+        btn.textContent = '★';
+        btn.classList.add('saved');
+      }
+    });
+  })();
 
   // Update header star if user has favorites
   (function() {
