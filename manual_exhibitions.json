@@ -137,12 +137,18 @@
     },
     {
       "museum": "daxiangart",
-      "title_zh": "在透鏡與日常之間——林正哲與黃嘉寧的物誌學",
-      "title_en": "",
+      "title_zh": "在透鏡與日常之間：林正哲與黃嘉寧的物誌學",
+      "title_en": "Between Lens and the Everyday: The Materialography of Lin Cheng-Che and Huang Chia-Ning",
       "title_ja": "",
       "dates": "2026/06/06 - 2026/08/15",
       "location": "大象藝術空間館",
-      "link": "https://www.daxiang.com.tw"
+      "link": "https://daxiang.com.tw/exhib/detail/290",
+      "description": "在當代影像氾濫的語境下，寫實繪畫的存在意義已從「再現客體」轉向藝術家如何透過肉身的長期凝視，重新定義「真實」的內核。本展呈現林正哲與黃嘉寧的作品，透過兩位藝術家對「物」與「象」截然不同的處理邏輯，展開一場關於觀看本質的深度對話。",
+      "description_en": "",
+      "artists": [
+        "林正哲",
+        "黃嘉寧"
+      ]
     },
     {
       "museum": "yiyun",
