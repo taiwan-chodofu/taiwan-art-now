@@ -414,7 +414,7 @@ def index():
         "index.html",
         labels=labels,
         regions=regions_data,
-        closing_soon=closing_soon[:6],
+        closing_soon=closing_soon,
         todays_events=todays_events,
         current_lang=lang,
     )
