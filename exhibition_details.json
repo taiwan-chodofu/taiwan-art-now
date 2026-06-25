@@ -337,5 +337,76 @@
       "鄭亭亭"
     ],
     "fetched_at": "2026-06-25"
+  },
+  "thecube_cd": {
+    "artists": [
+      "李漢強"
+    ],
+    "curator": "游崴",
+    "fetched_at": "2026-06-25"
+  },
+  "ntcart_minjian": {
+    "artists": [
+      "松山虔三",
+      "張才",
+      "黃則修",
+      "黃永松",
+      "姚孟嘉",
+      "張照堂",
+      "梁正居",
+      "林柏樑"
+    ],
+    "curator": "張世倫",
+    "fetched_at": "2026-06-25"
+  },
+  "sinpin_flow": {
+    "artists": [
+      "郭家秀",
+      "趙書巧"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "absolute_zeng": {
+    "artists": [
+      "鄭安利"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "tinakeng_su": {
+    "artists": [
+      "蘇孟鴻"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "tkgplus_cycles": {
+    "artists": [
+      "彌載映"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "eachmodern_konst": {
+    "artists": [
+      "Antone Könst"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "taoart_afterglow": {
+    "artists": [
+      "謝帆",
+      "丹尼斯．米蘭達．薩莫拉諾"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "bluerider_riera": {
+    "artists": [
+      "喬瑟普．里埃拉．伊．阿拉貢"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "aki_yamaguchi": {
+    "artists": [
+      "山口藍"
+    ],
+    "fetched_at": "2026-06-25"
   }
 }
