@@ -20,7 +20,10 @@
         }
       ],
       "description": "被稱為雜草的，或許並不是植物，而是邊緣的產物；它們沒有被允許，也無意表達，卻以根、土與緩慢的蔓延，佔據著時間的遺忘。當雜草被遷移出原本生長之處，卻並非全然失根；它們仍攜帶著土、根系與未被整理的時間，在另一個場域中繼續生長、搖動、枯萎。這狀態是一種帶根的流離，指向一片在語言、秩序與歷史之前的場域——在那裡，存在可以是離散的、受傷的、暫時的，卻從未真正被清空。",
-      "description_en": "That which is called a weed may not be a plant at all, but a product of the margins. Unpermitted, and without the intention to speak, it takes hold within the oblivion of time through roots, soil, and a slow, persistent spreading. When weeds are displaced from the place where they first grew, they are not entirely uprooted. This condition is a form of rooted displacement—pointing toward a field before language, order, and history, where existence may be dispersed, wounded, and provisional, yet never truly emptied."
+      "description_en": "That which is called a weed may not be a plant at all, but a product of the margins. Unpermitted, and without the intention to speak, it takes hold within the oblivion of time through roots, soil, and a slow, persistent spreading. When weeds are displaced from the place where they first grew, they are not entirely uprooted. This condition is a form of rooted displacement—pointing toward a field before language, order, and history, where existence may be dispersed, wounded, and provisional, yet never truly emptied.",
+      "artists": [
+        "葉先傑"
+      ]
     },
     {
       "museum": "art182",
@@ -29,7 +32,10 @@
       "title_ja": "",
       "dates": "2026/06/25 - 2026/08/09",
       "location": "182 Art Space",
-      "link": "https://www.facebook.com/182artspace"
+      "link": "https://www.facebook.com/182artspace",
+      "artists": [
+        "鄭亭亭"
+      ]
     },
     {
       "museum": "sinpin",
@@ -68,7 +74,10 @@
         }
       ],
       "description": "《熱帶植物寫真集》是一套於二戰前在臺北植物園拍攝完成的植物攝影集，由工藤彌九郎自1929年至1943年陸續完成，共六卷，收錄180種熱帶植物，是臺灣最早且相對完整的「熱帶植物」影像紀錄之一。「第七卷」並非單純補完一套未完成的書，而是試圖探問各種關於「痕跡」的問題：古書流轉與版本差異所留下的痕跡、時間在紙張上沉積的色澤與斑痕，以及東亞殖民歷史在知識、影像與自然分類中遺留下來的痕跡。",
-      "description_en": "Iconography of Tropical Plants is a six-volume photographic collection produced between 1929 and 1943 at the Taipei Botanical Garden by Yakurō Kudō, recording 180 species of tropical plants—one of Taiwan's earliest visual archives of tropical flora. Rather than completing the original series, Vol. VII appears as its \"shadow,\" tracing the book's circulation, edition differences, and material life, while reflecting on the marks left by time, paper, images, and colonial systems of knowledge."
+      "description_en": "Iconography of Tropical Plants is a six-volume photographic collection produced between 1929 and 1943 at the Taipei Botanical Garden by Yakurō Kudō, recording 180 species of tropical plants—one of Taiwan's earliest visual archives of tropical flora. Rather than completing the original series, Vol. VII appears as its \"shadow,\" tracing the book's circulation, edition differences, and material life, while reflecting on the marks left by time, paper, images, and colonial systems of knowledge.",
+      "artists": [
+        "林庭宇"
+      ]
     },
     {
       "museum": "glitch",
@@ -79,7 +88,10 @@
       "location": "毛刺 Glitch 4F",
       "link": "https://www.facebook.com/profile.php?id=61556692779891",
       "description": "散步與休息成為藝術家手捏造型的重要靈感來源，如同對日常生活的寫生與紀錄。那些細微而真實的感受，被轉化為豐潤飽滿的形體，以及鮮明而獨特的材質與色彩。品牌少見的大型陶作於毛刺限定展出，現場亦同步呈現專為本次展覽創作的「翻書系列盤」。",
-      "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series created especially for this exhibition."
+      "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series created especially for this exhibition.",
+      "artists": [
+        "陳曦"
+      ]
     },
     {
       "museum": "hcfam",
@@ -106,7 +118,10 @@
       "title_ja": "",
       "dates": "2026/06/28 - 2026/08/09",
       "location": "采泥藝術",
-      "link": "https://www.chinigallery.com"
+      "link": "https://www.chinigallery.com",
+      "artists": [
+        "陳承衛"
+      ]
     },
     {
       "museum": "donnaart",
@@ -115,7 +130,10 @@
       "title_ja": "",
       "dates": "2026/06/24 - 2026/08/09",
       "location": "多納藝術",
-      "link": "https://www.donnaart.com.tw"
+      "link": "https://www.donnaart.com.tw",
+      "artists": [
+        "Indra Dodi"
+      ]
     },
     {
       "museum": "maisonacme",
@@ -148,7 +166,10 @@
       "title_ja": "",
       "dates": "2026/06/13 - 2026/07/04",
       "location": "異雲書屋",
-      "link": "https://www.facebook.com/yiyunartspace"
+      "link": "https://www.facebook.com/yiyunartspace",
+      "artists": [
+        "顏妤庭"
+      ]
     },
     {
       "museum": "mindset",
@@ -157,7 +178,11 @@
       "title_ja": "",
       "dates": "2026/05/30 - 2026/06/27",
       "location": "安卓藝術",
-      "link": "https://www.art-msac.com"
+      "link": "https://www.art-msac.com",
+      "artists": [
+        "楊寓寧",
+        "甫月"
+      ]
     },
     {
       "museum": "mindset",
@@ -166,7 +191,10 @@
       "title_ja": "",
       "dates": "2026/05/30 - 2026/07/03",
       "location": "安卓藝術",
-      "link": "https://www.art-msac.com"
+      "link": "https://www.art-msac.com",
+      "artists": [
+        "周楷倫"
+      ]
     },
     {
       "museum": "1839cg",
@@ -184,7 +212,10 @@
       "title_ja": "",
       "dates": "2026/05/16 - 2026/06/27",
       "location": "朝代畫廊",
-      "link": "https://www.dynastyart.com"
+      "link": "https://www.dynastyart.com",
+      "artists": [
+        "李岳凌"
+      ]
     },
     {
       "museum": "projectfulfill",
@@ -193,7 +224,10 @@
       "title_ja": "",
       "dates": "2026/05/30 - 2026/07/18",
       "location": "就在藝術空間",
-      "link": "https://www.facebook.com/projectfulfill"
+      "link": "https://www.facebook.com/projectfulfill",
+      "artists": [
+        "高德亮"
+      ]
     },
     {
       "museum": "redgold",
@@ -202,7 +236,10 @@
       "title_ja": "",
       "dates": "2026/06/13 - 2026/07/19",
       "location": "赤粒藝術",
-      "link": "https://www.redgoldfineart.com"
+      "link": "https://www.redgoldfineart.com",
+      "artists": [
+        "李義弘"
+      ]
     },
     {
       "museum": "soka",
@@ -270,6 +307,9 @@
           "title_ja": "アーティストトーク",
           "note": ""
         }
+      ],
+      "artists": [
+        "李沛倫"
       ]
     },
     {
@@ -497,7 +537,10 @@
       "location": "純Object",
       "link": "https://www.facebook.com/simpleobjectofficial/",
       "description": "從每日擠牙膏聯想到的日常異想，到折射出迷人魅力的外太空草莓，藝術家侯連秦在最新個展中具象日常萬物所給予的溫柔正能量。感受厚重與輕盈、實體與空間融為一體的視覺震撼，在陽光明媚的氛圍中，尋找屬於自己的生命覺知。",
-      "description_en": ""
+      "description_en": "",
+      "artists": [
+        "侯連秦"
+      ]
     },
     {
       "museum": "hakkapark",
