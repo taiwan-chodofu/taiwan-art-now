@@ -881,6 +881,28 @@
         "蘭昭形",
         "謝福源"
       ]
+    },
+    {
+      "museum": "fubon",
+      "title_zh": "古典光影大師: 林布蘭到哥雅─托雷多美術館珍藏展",
+      "title_en": "Old Masters from Rembrandt to Goya: Treasures from the Toledo Museum of Art",
+      "title_ja": "",
+      "dates": "2026/07/18 - 2026/10/19",
+      "location": "富邦美術館 1樓水景展廳",
+      "link": "https://www.fubonartmuseum.org/exhibitions",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "大圖書館員—龍顏藝術創作獎二十年",
+      "title_en": "The Great Librarian: 20 Years of the Dragon Face Art Award",
+      "title_ja": "",
+      "dates": "2026/07/03 - 2026/09/27",
+      "location": "關渡美術館 1F展覽廳",
+      "link": "https://kdmofa.tnua.edu.tw/",
+      "description": "",
+      "artists": []
     }
   ]
 }
