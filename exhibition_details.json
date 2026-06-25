@@ -180,5 +180,70 @@
     ],
     "curator": "陳斯吟",
     "fetched_at": "2026-06-25"
+  },
+  "tnam_twin_cities": {
+    "artists": [
+      "楊茂林",
+      "林鴻文",
+      "常陵"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "alien_yinyou": {
+    "artists": [
+      "霍剛",
+      "權純益"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "alien_dust_gold": {
+    "artists": [
+      "藤村真",
+      "道川省三"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "alien_sky_eye": {
+    "artists": [
+      "鎌田治朗"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "alien_crossing": {
+    "artists": [
+      "伍韶勁",
+      "張慧婷"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "alien_corinth": {
+    "artists": [
+      "詹姆斯．特瑞爾"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "yiri_chen_yun": {
+    "artists": [
+      "陳雲"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "yiri_huang": {
+    "artists": [
+      "黃姿瑜"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "yiri_yuan": {
+    "artists": [
+      "袁心元"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "yiri_yokoyama": {
+    "artists": [
+      "橫山麻衣"
+    ],
+    "fetched_at": "2026-06-25"
   }
 }
