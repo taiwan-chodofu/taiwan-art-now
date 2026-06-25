@@ -807,6 +807,66 @@
       "description": "「我喜歡在這裡」是一個為小朋友準備的生態體驗區。這裡有一座生態池，裡面住著很多植物和小動物。小朋友可以動手做、玩遊戲，一邊玩，一邊認識大自然。",
       "description_en": "",
       "artists": []
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "調：心境與聲景之間",
+      "title_en": "Attunement: Between Mindscapes and Soundscapes",
+      "title_ja": "",
+      "dates": "2026/07/04 - 2026/09/27",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=810",
+      "description": "",
+      "artists": [
+        "勞倫斯．阿布．哈姆登",
+        "塔瑞克．阿圖伊",
+        "陳庭榕",
+        "芮娜．賽尼．卡拉特",
+        "今津景",
+        "巴古斯．潘德加",
+        "蘇珊．舒普利",
+        "阮純詩",
+        "哈吉拉．瓦希德",
+        "林其蔚",
+        "楊嘉輝",
+        "袁旃",
+        "余承堯"
+      ]
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "agnès b. on aime le graff !! 我們愛塗鴉藝術特展",
+      "title_en": "agnès b. on aime le graff !! We Love Graffiti Art",
+      "title_ja": "",
+      "dates": "2026/06/25 - 2026/09/20",
+      "location": "臺南市美術館",
+      "link": "",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "搜查記：警察異能館",
+      "title_en": "Investigation Chronicles: The Police Expo",
+      "title_ja": "",
+      "dates": "2026/06/30 - 2027/01/10",
+      "location": "臺南市美術館 1館1樓展覽室A",
+      "link": "",
+      "description": "當昔日警察署轉化為今日的美術館，透過「TAM+偵探事務所 怪奇事件調查委員會」邀請不同領域的調查委員展開跨領域學科的歷史考究。",
+      "artists": []
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "《魔法藍圖生成中》一場公園小屋的共創練習 Feat. Laure Catugier",
+      "title_en": "A Magical Blueprint in the Making",
+      "title_ja": "",
+      "dates": "2026/07/03 - 2026/08/30",
+      "location": "原臺南公園管理所",
+      "link": "",
+      "description": "",
+      "artists": [
+        "Laure Catugier"
+      ]
     }
   ]
 }
