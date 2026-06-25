@@ -16,16 +16,16 @@
   },
   "https://www.moca.taipei/en/ExhibitionAndEvent/Info/The*Prisoner’s*Dilemma*of*Memory": {
     "artists": [
-      "Ting Chang-En",
-      "David Claerbout",
-      "Wang Fang-Ning",
-      "Tian Zi-Ping",
-      "Lee Kuo-Han",
-      "Chang Ting-Chen",
-      "Tsai Yu-Ting",
-      "Cheng Chao-En"
+      "丁常恩",
+      "大衛．克拉耶伯",
+      "王芳寧",
+      "田子平",
+      "李國漢",
+      "張庭甄",
+      "蔡昱廷",
+      "鄭兆恩"
     ],
-    "curator": "Wang Rui-Xu",
+    "curator": "王叡栩",
     "description": "Ting Chang-EnDavid ClaerboutWang Fang-NingTian Zi-PingLee Kuo-HanChang Ting-ChenTsai Yu-TingCheng Chao-En",
     "fetched_at": "2026-06-09T13:54:51.947920",
     "description_en": "Ting Chang-En, David Claerbout, Wang Fang-Ning, Tian Zi-Ping, Lee Kuo-Han, Chang Ting-Chen, Tsai Yu-Ting, Cheng Chao-En",
@@ -33,7 +33,7 @@
   },
   "https://www.moca.taipei/en/ExhibitionAndEvent/Info/She*Flickered*In*and*Out*of*History—Elisa*Giardina*Papa*Solo*Exhibition": {
     "artists": [
-      "Elisa Giardina Papa"
+      "艾莉莎．賈爾迪納．帕帕"
     ],
     "curator": "",
     "description": "The project is supported by the Italian Council program (2024) promoted by the Directorate-General for Contemporary Creativity of the Italian Ministry of Culture.",
@@ -163,5 +163,22 @@
     "curator": "陳湘汶",
     "description": "本展以臺灣地緣政治為立足點，從電子遊戲式的世界觀出發，探索「資訊權力戰」、「地緣政治」以及「戰爭倫理」等議題。試圖透過不同藝術家的創作路徑與異質觀點，深入反思「圖像機制」。",
     "fetched_at": "2026-06-25T13:00:00"
+  },
+  "moca_qiritam": {
+    "artists": [
+      "蔡咅璟"
+    ],
+    "fetched_at": "2026-06-25"
+  },
+  "moca_yecao": {
+    "artists": [
+      "石孟鑫",
+      "吳瑋庭",
+      "陳郁文",
+      "梁祐寧",
+      "蘇詠寶"
+    ],
+    "curator": "陳斯吟",
+    "fetched_at": "2026-06-25"
   }
 }
