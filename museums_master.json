@@ -2565,6 +2565,57 @@
       ],
       "lat": 25.037747,
       "lng": 121.528728
+    },
+    {
+      "id": "eslite",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Eslite Gallery",
+        "ja": "誠品畫廊",
+        "zh": "誠品畫廊"
+      },
+      "address": {
+        "en": "5F, No. 11, Songgao Rd., Xinyi Dist., Taipei",
+        "ja": "台北市信義區松高路11號5樓",
+        "zh": "台北市信義區松高路11號5樓"
+      },
+      "url": "https://www.eslitegallery.com/",
+      "hours": {
+        "en": "Tue-Sun 11:00-19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休"
+      },
+      "closed_day": 0,
+      "closed_days": [
+        0
+      ]
+    },
+    {
+      "id": "itpark",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "IT Park",
+        "ja": "伊通公園",
+        "zh": "伊通公園"
+      },
+      "address": {
+        "en": "2F, No. 41, Yitong St., Taipei",
+        "ja": "台北市伊通街41號2樓",
+        "zh": "台北市中山區伊通街41號2樓"
+      },
+      "url": "https://www.itpark.com.tw/",
+      "hours": {
+        "en": "Wed-Sun 13:00-21:00 | Closed Mon-Tue",
+        "ja": "水〜日 13:00–21:00｜月火休",
+        "zh": "週三至週日 13:00–21:00｜週一二休"
+      },
+      "closed_day": 0,
+      "closed_days": [
+        0,
+        1
+      ]
     }
   ]
 }
