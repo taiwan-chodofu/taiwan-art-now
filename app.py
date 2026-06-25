@@ -1048,6 +1048,38 @@ def privacy():
     return render_template("privacy.html")
 
 
+@app.route("/api/weather")
+def weather_api():
+    """CWA 36hr forecast proxy."""
+    import urllib.request as urllib_req
+    import ssl
+    cwa_key = os.environ.get("CWA_API_KEY", "")
+    if not cwa_key:
+        return json.dumps({"error": "no key"}), 500
+    url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization={cwa_key}&format=JSON"
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    try:
+        req = urllib_req.Request(url)
+        with urllib_req.urlopen(req, timeout=10, context=ctx) as resp:
+            data = json.loads(resp.read())
+        locations = data.get("records", {}).get("location", [])
+        result = {}
+        for loc in locations:
+            name = loc["locationName"]
+            we = loc["weatherElement"]
+            wx = we[0]["time"][0]["parameter"]["parameterName"]
+            wx_code = we[0]["time"][0]["parameter"]["parameterValue"]
+            rain = we[1]["time"][0]["parameter"]["parameterName"]
+            temp_min = we[2]["time"][0]["parameter"]["parameterName"]
+            temp_max = we[4]["time"][0]["parameter"]["parameterName"]
+            result[name] = {"wx": wx, "code": wx_code, "rain": rain, "min": temp_min, "max": temp_max}
+        return json.dumps(result, ensure_ascii=False), 200, {"Content-Type": "application/json", "Cache-Control": "public, max-age=1800"}
+    except Exception as e:
+        return json.dumps({"error": str(e)}), 500
+
+
 MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
 

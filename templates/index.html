@@ -376,6 +376,13 @@
     .region-section.collapsed .ex-list,
     .region-section.collapsed .museum-card { display: none !important; }
     .region-name { font-size: 0.85rem; font-weight: 700; }
+    .region-weather {
+      font-size: 0.68rem; font-weight: 400; color: var(--text-sub);
+      display: none;
+    }
+    @media (min-width: 768px) {
+      .region-weather { display: inline; }
+    }
     .region-count {
       font-size: 0.7rem; color: var(--text-light);
       background: var(--bg); padding: 2px 8px; border-radius: 10px;
@@ -599,6 +606,7 @@
     <section class="region-section" id="region-{{ region.id }}" data-region="{{ region.id }}">
       <div class="region-header" role="button" tabindex="0" aria-expanded="true">
         <span class="region-name">{{ region.name }}</span>
+        <span class="region-weather" id="weather-{{ region.id }}"></span>
         <span class="region-count">{{ region.active_count }}</span>
         <span class="region-toggle" aria-hidden="true">▾</span>
       </div>
@@ -1368,6 +1376,33 @@
   })();
   </script>
 
+  <script>
+  // Weather display (desktop only)
+  if (window.innerWidth >= 768) {
+    var regionToCity = {
+      'taipei': '臺北市', 'new_taipei': '新北市', 'taoyuan': '桃園市',
+      'hsinchu': '新竹縣', 'taichung': '臺中市', 'nantou': '南投縣',
+      'chiayi': '嘉義市', 'tainan': '臺南市', 'kaohsiung': '高雄市',
+      'yilan': '宜蘭縣', 'hualien': '花蓮縣', 'taitung': '臺東縣',
+      'keelung': '基隆市', 'pingtung': '屏東縣'
+    };
+    var wxEmoji = {'1':'☀️','2':'🌤️','3':'🌤️','4':'⛅','5':'⛅','6':'⛅','7':'🌥️','8':'☁️','9':'🌧️','10':'🌧️','11':'⛈️','12':'⛈️','13':'⛈️','14':'🌧️','15':'⛈️','16':'⛈️','17':'⛈️','18':'🌧️','19':'🌧️','20':'🌧️','21':'⛈️','22':'⛈️','23':'⛈️','24':'🌫️','25':'🌫️','26':'🌫️','27':'🌫️','28':'🌫️','29':'🌧️','30':'🌫️','31':'🌫️','32':'🌧️','33':'⛈️','34':'⛈️','35':'⛈️','36':'⛈️','41':'⛈️','42':'❄️'};
+    fetch('/api/weather').then(function(r){return r.json()}).then(function(data){
+      if(data.error) return;
+      for(var regionId in regionToCity){
+        var city = regionToCity[regionId];
+        var w = data[city];
+        if(!w) continue;
+        var el = document.getElementById('weather-'+regionId);
+        if(!el) continue;
+        var emoji = wxEmoji[w.code] || '🌤️';
+        var rain = parseInt(w.rain);
+        var rainText = rain > 30 ? ' 🌂'+rain+'%' : '';
+        el.textContent = emoji + ' ' + w.min + '-' + w.max + '°' + rainText;
+      }
+    }).catch(function(){});
+  }
+  </script>
   <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/static/sw.js');
