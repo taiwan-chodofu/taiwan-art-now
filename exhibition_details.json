@@ -589,5 +589,24 @@
     ],
     "note": "Names from official EN page. TW artists: Lee Chu-Hsin=李足新, Lin Wei-Hsiang=林威翔, Hsu Chun-Yu=許淳俞, Hsu Jui-Fu=許瑞福, Liang Zhaoxi=梁兆熙",
     "fetched_at": "2026-06-25"
+  },
+  "tfam_tune": {
+    "artists": [
+      "勞倫斯．阿布．哈姆登",
+      "塔瑞克．阿圖伊",
+      "陳庭榕",
+      "芮娜．賽尼．卡拉特",
+      "今津景",
+      "巴古斯．潘德加",
+      "蘇珊．舒普利",
+      "阮純詩",
+      "哈吉拉．瓦希德",
+      "林其蔚",
+      "楊嘉輝",
+      "袁旃",
+      "余承堯"
+    ],
+    "curator": "許芳慈",
+    "fetched_at": "2026-06-25"
   }
 }
