@@ -117,8 +117,6 @@ def _get_display_title(exhibition, lang):
         return True
 
     if lang == "zh":
-        if _should_combine(title_zh, title_en):
-            return f"{title_zh} — {title_en}"
         return title_zh or title_en or "(Untitled)"
 
     # en / ja: 英語を先頭に、中文を添える
