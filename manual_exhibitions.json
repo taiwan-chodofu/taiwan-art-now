@@ -1326,6 +1326,18 @@
       "location": "華山1914文化創意產業園區",
       "link": "https://www.huashan1914.com/w/huashan1914/exhibition3",
       "artists": []
+    },
+    {
+      "museum": "artemin",
+      "title_zh": "One and One 淡淡",
+      "title_en": "One and One",
+      "date_start": "2026-05-30",
+      "date_end": "2026-07-04",
+      "artists": [
+        "Nicolas Mehdi Pour Vahid"
+      ],
+      "link": "https://www.artemingallery.com/portfolio-item/one-and-one/",
+      "status": "current"
     }
   ]
 }

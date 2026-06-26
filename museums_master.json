@@ -2598,6 +2598,32 @@
         0,
         1
       ]
+    },
+    {
+      "id": "artemin",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Artemin Gallery",
+        "ja": "Artemin Gallery",
+        "zh": "Artemin Gallery"
+      },
+      "address": {
+        "en": "1F, No. 32, Ln. 251, Jihe Rd., Shilin Dist., Taipei City 111012",
+        "ja": "台北市士林區基河路251巷32號1樓",
+        "zh": "台北市士林區基河路251巷32號1樓"
+      },
+      "url": "https://www.artemingallery.com",
+      "hours": {
+        "en": "Tue–Sat 11:00–18:00 | Closed Sun & Mon",
+        "ja": "火〜土 11:00–18:00｜日月休",
+        "zh": "週二至週六 11:00–18:00｜週日一休"
+      },
+      "closed_day": 0,
+      "coordinates": {
+        "lat": 25.0925825,
+        "lng": 121.5226164
+      }
     }
   ]
 }
