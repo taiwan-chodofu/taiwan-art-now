@@ -588,5 +588,46 @@
     "description_en": "The exhibition uses routine digital system updates as a metaphor for the challenges of engaging with historical art practices across temporal distance. Re-enactment serves as the core methodology—a process of reconfiguration through which preliminary propositions are recompiled under altered conditions. Developed collaboratively between TNUA's School of Fine Arts and Asia Art Archive.",
     "description_ja": "デジタル時代の「システム更新」を隠喩に、過去の芸術作品と向き合う際の文脈のずれを探る。「再演」を核心的方法論とし、初期の命題を変容した条件下で再コンパイルする過程として提示。国立台北芸術大学美術学院とアジア・アート・アーカイブの共同制作。",
     "fetched_at": "2026-06-26T15:50:04.343971+08:00"
+  },
+  "https://www.tcam.museum/en/exhibition/%e8%a7%92%e8%90%bd%e4%bb%bb%e5%8b%99-play-space-plug-in/": {
+    "artists": [],
+    "curator": "HIDE & SEEK AUDIOVISUAL ART",
+    "description": "綠美圖是臺灣首座結合美術館與公共圖書館的文化場域，建築以「流動、相遇、融合」為概念。「角落任務 Play Space Plug-in」計畫將兒童教育延伸至綠美圖各角落，成為全齡共融平台。採設計思考與兒童為中心方法論，推出5組教具——框框、角角、亮亮、跟跟與變變，以動手操作及互動體驗引導觀眾感知藝術。",
+    "description_en": "Taichung Green Museumbrary is Taiwan's first cultural institution combining an art museum and public library, designed around concepts of flow, encounter, and integration. The Play Space Plug-in initiative extends children's education throughout the entire institution as an inclusive platform for all ages. Developed through Design Thinking, it features five learning kits nicknamed Forma, Coco, Luma, Ditto, and Ziggy.",
+    "description_ja": "緑美図は台湾初の美術館と公共図書館を融合した文化施設で、「流動・出会い・融合」をコンセプトに設計された。「角落任務 Play Space Plug-in」は児童教育を施設全体に拡張し、全年齢包括型プラットフォームとして機能する。デザイン思考と子ども中心の方法論に基づき、5組の学習キットで来館者がアートを体感する。",
+    "fetched_at": "2026-06-26T15:57:29.672852+08:00"
+  },
+  "https://www.tcam.museum/en/exhibition/illuminating-the-storehouse/": {
+    "artists": [],
+    "curator": "",
+    "description": "典藏庫房是美術館存放典藏作品的空間，近年開放式庫房成為全球博物館重要策略。臺中市立美術館採可視性庫房設計，透過三面大片開窗揭開庫房神祕面紗。本展為開館首檔典藏教育展，以光為線索讓典藏知識走向公眾視野。展覽從光的字義、作用、特性與象徵出發，串起六個子題，邀請觀眾探索藝術作品從創作到保存的生命歷程。",
+    "description_en": "The collection storage is the space where artworks are preserved. Visible storage has emerged as an important strategy in museums worldwide. At Taichung Art Museum, three expansive observation windows reveal the storage area. As the museum's inaugural collection education exhibition, Illuminating the Storeroom uses light as its guiding thread, weaving six themes inviting visitors to explore the making and ongoing journey of artworks.",
+    "description_ja": "典蔵庫房は美術館が作品を保管する空間であり、近年オープン・ストレージは世界の美術館の重要な戦略となっている。台中市立美術館は可視性庫房設計を採用し、3面の大きな窓から庫房の神秘のベールを剥ぐ。開館初の典蔵教育展として光を手がかりに、創作から保存に至る作品の生命の旅路を6つのサブテーマで紐解く。",
+    "fetched_at": "2026-06-26T15:57:29.672852+08:00"
+  },
+  "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx": {
+    "artists": [
+      "王映",
+      "鹽池工作室（吳有容、顏鈺恬）",
+      "趙永惠",
+      "張曜昌",
+      "楊登麟",
+      "伍立瑋",
+      "黃曉茹",
+      "林善春",
+      "龍凱特 Katie Strachan",
+      "田欣以",
+      "陳昱行",
+      "童品元",
+      "詹宗哲",
+      "李俊熠",
+      "宋相邦",
+      "黃紫瑜"
+    ],
+    "curator": "沈裕昌",
+    "description": "當我們環顧四周以滿足需求，「材質」的概念已隱約浮現於意識中。本展借哲學家與智辯者的概念對組，命名當前創作者的材質思維為「辯者之石」，邀請觀眾探討當代工藝與藝術如何以材質為創作核心、運用自身材質特性言說其它材質動能，避免材質主義的封閉困境。",
+    "description_en": "When we look around to fulfill needs, the concept of material emerges in consciousness. This exhibition borrows the philosopher/sophist pair to name current material thinking \"Sophist's Stone,\" inviting viewers to discuss how contemporary craft and art center on material while using their own material properties to articulate other materials' potential—avoiding the closure of materialism.",
+    "description_ja": "私たちが周囲を見渡し必要を満たそうとするとき、「素材」の概念が意識に浮上する。本展は哲学者と詭弁家の概念対を借り、現代の創作者の素材思考を「辯者之石」と名付け、現代工芸とアートがいかに素材を創作の核とし、自らの素材特性で他の素材のダイナミズムを語りうるかを観客と共に探る。",
+    "fetched_at": "2026-06-26T15:57:29.672852+08:00"
   }
 }
