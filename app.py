@@ -101,22 +101,33 @@ def _get_description(ex, lang):
 
 def _get_display_title(exhibition, lang):
     """言語に応じた展覧会タイトルを返す。
-    日本語/英語ページでは固有名詞は英語優先、中国語ページは中国語優先。
+    en/jaページ: title_enがあれば「EN — 中文」形式で両方表示（現地で展示を探しやすくする）。
+    zhページ: 中文優先、英語があれば後ろに添える。
+    一方が他方を含む場合は長い方だけ表示（重複回避）。
     """
+    title_en = exhibition.get("title_en", "").strip()
+    title_zh = exhibition.get("title_zh", "").strip()
+
+    def _should_combine(a, b):
+        """2つのタイトルが十分に異なり、結合表示すべきか判定。"""
+        if not a or not b or a == b:
+            return False
+        if a in b or b in a:
+            return False
+        return True
+
     if lang == "zh":
-        for key in ["title_zh", "title_en", "title_ja"]:
-            if exhibition.get(key):
-                return exhibition[key]
-        return "(Untitled)"
-    # ja or en: 英語優先
-    for key in ["title_en", "title_ja", "title_zh"]:
-        if exhibition.get(key):
-            return exhibition[key]
-    # 旧フォールバック（互換のため残す）
-    for fallback in ["title_en", "title_zh", "title_ja"]:
-        if exhibition.get(fallback):
-            return exhibition[fallback]
-    return "(Untitled)"
+        if _should_combine(title_zh, title_en):
+            return f"{title_zh} — {title_en}"
+        return title_zh or title_en or "(Untitled)"
+
+    # en / ja: 英語を先頭に、中文を添える
+    if _should_combine(title_en, title_zh):
+        return f"{title_en} — {title_zh}"
+    # title_enがtitle_zhの一部なら、title_zh（より完全な方）を表示
+    if title_en and title_zh:
+        return title_zh if title_en in title_zh else (title_en if title_zh in title_en else title_en)
+    return title_en or title_zh or "(Untitled)"
 
 
 def _get_museum_info(museum_key, lang):
