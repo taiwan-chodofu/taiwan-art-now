@@ -1843,10 +1843,17 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
     """既存キャッシュを参照しつつ、未取得展覧会の詳細を最大max_to_fetch件取得。"""
     details_cache = _load_details_cache()
     today = _now_tw()
+
+    from collections import Counter
+    link_counts = Counter(ex.get("link", "") for ex in exhibitions if ex.get("link"))
+    shared_links = {link for link, count in link_counts.items() if count > 1}
+
     targets = []
     for ex in exhibitions:
         link = ex.get("link", "")
         if not link or "facebook.com" in link:
+            continue
+        if link in shared_links:
             continue
         # トップページのみのリンクは除外（クエリパラメータ付きやパス深いURLは詳細とみなす）
         is_trunk = (
