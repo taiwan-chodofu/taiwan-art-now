@@ -1,4 +1,4 @@
-﻿"""台湾現代アート美術館の展覧会情報スクレイパー"""
+"""台湾現代アート美術館の展覧会情報スクレイパー"""
 
 import requests
 from bs4 import BeautifulSoup
@@ -1839,6 +1839,62 @@ def _extract_exhibition_details(url):
         return None
 
 
+def _run_validation(exhibitions):
+    """エンリッチ後のデータ品質チェック。問題検出時にログ出力。"""
+    from collections import Counter, defaultdict
+
+    issues = []
+
+    # Check 1: 同一美術館で複数展示が完全に同じアーティストセットを持つ
+    by_museum = defaultdict(list)
+    for ex in exhibitions:
+        artists = ex.get('artists', [])
+        if artists and len(artists) > 2:
+            by_museum[ex.get('museum', '')].append({
+                'title': ex.get('title_zh', '') or ex.get('title_en', ''),
+                'artists': tuple(sorted(artists)),
+            })
+    for mid, exs in by_museum.items():
+        if len(exs) < 2:
+            continue
+        for i in range(len(exs)):
+            for j in range(i + 1, len(exs)):
+                if exs[i]['artists'] == exs[j]['artists']:
+                    issues.append(
+                        f"[DUPLICATE ARTISTS] {mid}: '{exs[i]['title'][:30]}' and "
+                        f"'{exs[j]['title'][:30]}' share identical {len(exs[i]['artists'])} artists"
+                    )
+
+    # Check 2: UI/ナビゲーション文字列がアーティスト名に混入
+    junk_indicators = ['線上藝廊', '登入', '購物', '服務條款', '展覽回顧', '當期展覽',
+                       '購物須知', '展覽資訊', '參觀資訊']
+    for ex in exhibitions:
+        for artist in ex.get('artists', []):
+            if any(junk in artist for junk in junk_indicators):
+                issues.append(
+                    f"[JUNK ARTIST] {ex.get('museum','')}: "
+                    f"'{ex.get('title_zh','')[:20]}' has junk: '{artist}'"
+                )
+
+    # Check 3: 共有リンク（同じURLが複数展示で使われている）
+    links = [ex.get('link', '') for ex in exhibitions if ex.get('link')]
+    shared = {link: count for link, count in Counter(links).items() if count > 1}
+    for link, count in shared.items():
+        issues.append(f"[SHARED LINK] {count} exhibitions share: {link[:80]}")
+
+    if issues:
+        from datetime import datetime, timezone, timedelta
+        tw_now = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M')
+        log_path = os.path.join(os.path.dirname(__file__), 'validation_log.txt')
+        with open(log_path, 'a', encoding='utf-8') as f:
+            f.write(f"\n--- Validation {tw_now} ---\n")
+            for issue in issues:
+                f.write(issue + '\n')
+        logger.warning("Validation found %d issues. See validation_log.txt", len(issues))
+    else:
+        logger.info("Validation passed: no issues found.")
+
+
 def _enrich_exhibitions(exhibitions, max_to_fetch=5):
     """既存キャッシュを参照しつつ、未取得展覧会の詳細を最大max_to_fetch件取得。"""
     details_cache = _load_details_cache()
@@ -2121,6 +2177,7 @@ def _do_scrape_all():
     all_exhibitions = _remove_expired(all_exhibitions)
     all_exhibitions = _filter_known_museums(all_exhibitions)
     _enrich_exhibitions(all_exhibitions, max_to_fetch=8)
+    _run_validation(all_exhibitions)
     _save_cache(all_exhibitions)
     return all_exhibitions
 
