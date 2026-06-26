@@ -722,7 +722,7 @@
   </main>
 
   <footer class="site-footer">
-    <span>Taiwan Art Now · <a href="/calendar.ics" style="color:inherit;text-decoration:none;">📅 Subscribe to Calendar</a></span>
+    <span>Taiwan Art Now · <a href="/calendar.ics" style="color:inherit;text-decoration:none;">📅 Calendar</a> · <a href="https://www.facebook.com/profile.php?id=61591281572640" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Facebook</a></span>
     <span>Data: museum sites · artemperor.tw · taishinart.org.tw</span>
   </footer>
 
@@ -1159,11 +1159,12 @@
     .fab {
       position: fixed; bottom: 24px; right: 20px; z-index: 900;
       width: 52px; height: 52px; border-radius: 50%;
-      background: var(--accent); color: var(--bg);
+      background: #0084FF; color: #fff;
       border: none; font-size: 1.5rem; font-weight: 300;
       box-shadow: 0 4px 14px rgba(0,0,0,0.25);
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
     }
     .fab:active { transform: scale(0.92); }
     .fab-tooltip {
@@ -1183,196 +1184,35 @@
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .post-modal {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,0.5);
-    }
-    .post-sheet {
-      position: absolute; top: 40%; bottom: 0; left: 0; right: 0;
-      background: var(--bg); border-radius: 16px 16px 0 0;
-      padding: 16px 20px; padding-bottom: calc(16px + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-      overflow-y: auto;
-    }
-    .post-handle {
-      width: 36px; height: 4px; background: var(--border);
-      border-radius: 2px; margin: 0 auto 16px;
-    }
-    .post-textarea {
-      width: 100%; min-height: 50px; max-height: 100px;
-      border: 1px solid var(--border);
-      border-radius: 10px; padding: 10px 12px; font-size: 0.9rem;
-      font-family: inherit; resize: none; background: var(--bg);
-      color: var(--text); outline: none;
-    }
-    .post-textarea:focus { border-color: var(--accent); }
-    .post-textarea::placeholder { color: var(--text-light); }
-    .post-actions {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .post-options { display: flex; gap: 8px; }
-    .post-opt-btn {
-      border: none; background: var(--tag-bg); color: var(--text-sub);
-      font-size: 0.8rem; padding: 6px 10px; border-radius: 8px;
-      cursor: pointer; display: flex; align-items: center; gap: 4px;
-    }
-    .post-opt-btn.active { background: #dbeafe; color: #1d4ed8; }
-    .post-submit {
-      background: var(--accent); color: var(--bg); border: none;
-      font-size: 0.82rem; font-weight: 600; padding: 8px 20px;
-      border-radius: 20px; cursor: pointer;
-    }
-    .post-submit:disabled { opacity: 0.4; }
-    .post-submit:active { transform: scale(0.95); }
-    .post-status {
-      font-size: 0.75rem; color: var(--text-light); margin-top: 8px;
-      text-align: center; display: none;
-    }
-    .post-photo-preview {
-      margin-top: 8px; max-height: 120px; border-radius: 8px;
-      display: none;
-    }
   </style>
 
-  <button class="fab" id="fabBtn" aria-label="Post">🎨</button>
+  <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Send exhibition info via Messenger">💬</a>
   <div class="fab-tooltip" id="fabTooltip">
-    {% if current_lang == 'zh' %}展覽を見つけたらここからシェア！
-    {% elif current_lang == 'ja' %}展示を見つけたらここからシェア！
-    {% else %}Found an exhibition? Share it here!{% endif %}
+    {% if current_lang == 'zh' %}知道展覽資訊？點此傳送給我們！
+    {% elif current_lang == 'ja' %}展示情報をご存知ですか？こちらからお送りください！
+    {% else %}Know an exhibition? Tap to send us info!{% endif %}
   </div>
 
-  <div class="post-modal" id="postModal">
-    <div class="post-sheet">
-      <div class="post-handle"></div>
-      <div class="post-actions">
-        <div class="post-options">
-          <button class="post-opt-btn" id="postLocBtn" onclick="togglePostLoc()">📍</button>
-          <button class="post-opt-btn" id="postPhotoBtn" onclick="document.getElementById('postPhotoInput').click()">📷</button>
-        </div>
-        <button class="post-submit" id="postSubmitBtn" onclick="submitPost()">
-          {% if current_lang == 'zh' %}送出{% elif current_lang == 'ja' %}送信{% else %}Post{% endif %}
-        </button>
-      </div>
-      <div class="post-status" id="postStatus"></div>
-      <img class="post-photo-preview" id="postPhotoPreview" alt="">
-      <input type="file" id="postPhotoInput" accept="image/*" style="display:none">
-      <textarea class="post-textarea" id="postText" placeholder="{% if current_lang == 'zh' %}分享你發現的展覽、貼上 IG/FB 連結、或只是打個卡...{% elif current_lang == 'ja' %}展示の情報をシェア。IG/FBリンク、感想、何でもOK...{% else %}Share an exhibition, paste an IG/FB link, or just check in...{% endif %}"></textarea>
-    </div>
-  </div>
 
   <script>
   (function() {
-    var modal = document.getElementById('postModal');
     var fab = document.getElementById('fabBtn');
-    var locBtn = document.getElementById('postLocBtn');
-    var photoInput = document.getElementById('postPhotoInput');
-    var preview = document.getElementById('postPhotoPreview');
-    var postLat = null, postLng = null, postImageUrl = null;
-
-    // Show tooltip on first visit
     var tooltip = document.getElementById('fabTooltip');
-    if (!localStorage.getItem('fab_tooltip_seen')) {
+    var todayKey = 'fab_tooltip_' + new Date().toISOString().slice(0,10);
+
+    // 1日1回だけツールチップを表示（3秒後に出て、5秒間表示）
+    if (!sessionStorage.getItem(todayKey)) {
       setTimeout(function() {
         tooltip.style.display = 'block';
         setTimeout(function() { tooltip.style.display = 'none'; }, 5000);
-      }, 2000);
-      localStorage.setItem('fab_tooltip_seen', '1');
+      }, 3000);
+      sessionStorage.setItem(todayKey, '1');
     }
 
     fab.addEventListener('click', function() {
       tooltip.style.display = 'none';
-      modal.style.display = 'block';
-      document.getElementById('postText').focus();
-      gtag('event', 'post_modal_open', { event_category: 'engagement' });
+      gtag('event', 'messenger_open', { event_category: 'engagement' });
     });
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) modal.style.display = 'none';
-    });
-
-    window.togglePostLoc = function() {
-      if (postLat) {
-        postLat = null; postLng = null;
-        locBtn.classList.remove('active');
-        locBtn.textContent = '📍';
-        return;
-      }
-      locBtn.textContent = '⏳';
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        postLat = pos.coords.latitude;
-        postLng = pos.coords.longitude;
-        locBtn.classList.add('active');
-        locBtn.textContent = '📍✓';
-      }, function() {
-        locBtn.textContent = '📍✗';
-        setTimeout(function() { locBtn.textContent = '📍'; }, 2000);
-      }, { enableHighAccuracy: true, timeout: 8000 });
-    };
-
-    var uploading = false;
-    photoInput.addEventListener('change', function(e) {
-      var file = e.target.files[0];
-      if (!file) return;
-      preview.style.display = 'block';
-      preview.src = URL.createObjectURL(file);
-      var btn = document.getElementById('postSubmitBtn');
-      btn.disabled = true;
-      btn.textContent = '{% if current_lang == "zh" %}上傳中...{% elif current_lang == "ja" %}アップロード中...{% else %}Uploading...{% endif %}';
-      uploading = true;
-      var fd = new FormData();
-      fd.append('file', file);
-      fd.append('upload_preset', 'taiwan_art_unsigned');
-      fetch('https://api.cloudinary.com/v1_1/dfg8riltg/image/upload', { method: 'POST', body: fd })
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
-          postImageUrl = d.secure_url;
-          btn.disabled = false;
-          btn.textContent = '{% if current_lang == "zh" %}送出{% elif current_lang == "ja" %}送信{% else %}Post{% endif %}';
-          uploading = false;
-        })
-        .catch(function() {
-          postImageUrl = null;
-          btn.disabled = false;
-          btn.textContent = '{% if current_lang == "zh" %}送出{% elif current_lang == "ja" %}送信{% else %}Post{% endif %}';
-          uploading = false;
-          preview.style.display = 'none';
-        });
-    });
-
-    window.submitPost = function() {
-      var text = document.getElementById('postText').value.trim();
-      var statusEl = document.getElementById('postStatus');
-      var btn = document.getElementById('postSubmitBtn');
-
-      if (uploading) return;
-      if (!text && !postLat && !postImageUrl) return;
-
-      btn.disabled = true;
-      statusEl.style.display = 'block';
-      statusEl.textContent = '{% if current_lang == "zh" %}送出中...{% elif current_lang == "ja" %}送信中...{% else %}Sending...{% endif %}';
-
-      fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: text, lat: postLat, lng: postLng, image_url: postImageUrl || '' })
-      }).then(function(r) {
-        if (r.ok) {
-          statusEl.textContent = '{% if current_lang == "zh" %}感謝你的分享！🎉{% elif current_lang == "ja" %}ありがとう！🎉{% else %}Thanks for sharing! 🎉{% endif %}';
-          document.getElementById('postText').value = '';
-          preview.style.display = 'none';
-          postLat = null; postLng = null; postImageUrl = null;
-          locBtn.classList.remove('active'); locBtn.textContent = '📍';
-          gtag('event', 'post_submitted', { event_category: 'engagement', has_location: !!postLat, has_image: !!postImageUrl });
-          setTimeout(function() { modal.style.display = 'none'; statusEl.style.display = 'none'; btn.disabled = false; }, 1500);
-        } else {
-          statusEl.textContent = '{% if current_lang == "zh" %}送出失敗，請稍後再試{% elif current_lang == "ja" %}送信失敗。後でもう一度{% else %}Failed. Try again later{% endif %}';
-          btn.disabled = false;
-        }
-      }).catch(function() {
-        statusEl.textContent = '{% if current_lang == "zh" %}網路錯誤{% elif current_lang == "ja" %}ネットワークエラー{% else %}Network error{% endif %}';
-        btn.disabled = false;
-      });
-    };
   })();
   </script>
 
