@@ -403,5 +403,48 @@
     "fetched_at": "2026-06-26T13:37:19.837575+08:00",
     "description_en": "Artemin Gallery is pleased to present One and One, the first solo exhibition in Taiwan by French-Persian painter Nicolas Mehdi Pour Vahid, on view from May 30 to July 4, 2026. Bringing together 13 paintings, the exhibition traces the artist’s personal history and inner journey. The artist is a passionate cinephile who holds a deep affinity for the Taiwanese New Wave, and cinema plays an important role in his artistic practice. This exhibition underscores a resonance with Edward Yang’s 2000 film Yi Yi (A One and a Two), illuminating the significant personal connection the film holds for the artist.\n\nThe poem Silence, written by the artist for this exhibition, serves as its core concept through all the works. In the poem, the artist captures fleeting moments between memory and reality, using natural phenomena, plants, birds, and objects as metaphors. With a gentle sense of emotional detachment, it expresses a quiet lament for the passing of childhood.\n\nA devoted admirer of Edward Yang, Nicolas Mehdi Pour Vahid deeply identifies with Yang-Yang, the introverted young boy in Yi Yi. His paintings can be read as an artistic extension of Yang-Yang’s perspective, yet they feel even more personal: intimate first-person landscapes of his own childhood memories. The artist renders vast distances with broad, layered fields of color—endless grasslands and distant mountains—while rendering the figures with relatively finer and more detailed brushwork.\n\nOf the 13 works in this exhibition, nine were inspired by the artist’s 2025 artist residency in Kyushu, Japan. Though loneliness is a recurring theme, his works carry a quiet warmth and human tenderness. In his paintings, solitary souls dance gently with heaven and earth—neither fervent nor desolate, but quietly radiant in their own way.",
     "description_ja": "パリ在住のイラン系フランス人画家 Nicolas Mehdi Pour Vahid の台湾初個展。13点の絵画で自身の個人史と内面の旅路を辿る。台湾ニューウェーブ映画に深い親和性を持つシネフィルである彼の実践において映画は重要な役割を果たしており、本展はとりわけエドワード・ヤン（楊德昌）の2000年の映画『ヤンヤン 夏の想い出』（一一）との共鳴を照らし出す。\n\nアーティストが本展のために書いた詩「寂靜」（Silence）は全作品を貫く核心的理念であり、記憶と現実の狭間にある束の間の瞬間を捉え、自然現象や植物、鳥、物質を隠喩として用い、過ぎゆく幼年期への静かな嘆息を表現する。\n\n楊德昌の熱烈なファンである彼は、『一一』の内向的な少年・洋洋に自身を深く重ねている。洋洋のように一人カメラを持ち、周囲の大人たちの後ろ姿を黙々と撮り続ける——その絵画は洋洋の視点の芸術的延長であると同時に、より親密な一人称の幼少期の心象風景でもある。広大な草原や遠方の山稜を層のある大きな色面で描き出す一方、人物を描く筆致は比較的繊細で精緻である。\n\n13点のうち9点は2025年の日本・九州でのアーティスト・レジデンスに着想を得ている。温泉、原生林、穏やかな海風で知られる九州の静謐な自然と緩やかな暮らしを、彼は丁寧に絵画に収めた。孤独が繰り返し現れるテーマでありながら、作品には静かな温もりと人間的な優しさが漂う。天地に伴われながら穏やかに独り舞う魂——熾烈でもなく寂寥でもなく、ただ静かに、淡く輝いている。"
+  },
+  "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60054": {
+    "artists": [
+      "Alice BUCKNELL",
+      "Kévin BRAY",
+      "陳庭榕 CHEN Ting-Jung",
+      "鄭亭亭 Ting-Ting CHENG",
+      "César ESCUDERO ANDALUZ",
+      "許哲瑜＆陳琬尹",
+      "阮柏遠 JUAN Po-Yuan",
+      "Olivia KOH",
+      "李亦凡 LI Yi-Fan",
+      "林瑜亮 LIN Yu-Liang",
+      "劉廣隸 LIU Guang-Li",
+      "Ryotaro SATO",
+      "Total Refusal",
+      "王連晟 WANG Lien-Cheng",
+      "Éléonore WEBER"
+    ],
+    "curator": "陳湘汶",
+    "description": "臺灣位處第一島鏈，長期存在於地緣政治監控的「灰色地帶」。本展以電玩世界觀出發，探討資訊權力戰、地緣政治與戰爭倫理。展覽分為三個子題：「角色選單與視覺校準」檢視虛實之間的鏡像關係；「前方戰區迷霧」揭示意識型態與邊界的脆弱性；「開發者模式已載入」探索人類與圖像工具的競爭、猜疑與合作。全球地景已成為巨型戰爭劇場，操控圖像與網路的人決定了戰爭的劇本。",
+    "description_en": "Taiwan sits on the first island chain, existing within a geopolitical \"grey zone\" of surveillance. This exhibition departs from a video-game worldview to explore information warfare, geopolitics, and war ethics. Divided into three sub-themes: \"Character Menu and Visual Calibration\" examines the mirroring between virtual and real; \"Fog of the Front Lines\" reveals the fragility of ideology and borders; \"Developer Mode Loaded\" probes the competition, suspicion, and cooperation between humans and image tools. The global landscape has become a giant theater of war—those who control images and networks determine the script of warfare.",
+    "description_ja": "台湾は第一列島線に位置し、地政学的監視の「グレーゾーン」に長く存在してきた。本展はビデオゲームの世界観から出発し、情報権力戦争・地政学・戦争倫理を探求する。3つのサブテーマで構成：「キャラクター選択と視覚校正」は仮想と現実の鏡像関係を検証し、「前方戦区の霧」はイデオロギーと境界の脆弱性を暴き、「開発者モード起動」は人間と画像ツールの競争・猜疑・協力を探る。グローバルな景観は巨大な戦争劇場と化し、画像とネットワークを操る者が戦争の脚本を決定する。",
+    "fetched_at": "2026-06-26T15:48:29.845559+08:00"
+  },
+  "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60089": {
+    "artists": [
+      "胡家瑜 Ali Istanda",
+      "武玉玲 Aluaiy Kaumakan",
+      "張恩滿 Chang En-Man",
+      "林安琪 Ciwas Tahos",
+      "宜德思．盧信 Idas Losin",
+      "伊祐．噶照 Iyo Kacaw",
+      "林介文 Labay Eyong",
+      "Makotaay 生態藝術村",
+      "馬躍．比吼 Mayaw Biho",
+      "余欣蘭 Rngrang Hungul"
+    ],
+    "curator": "Manuela Well-Off-Man、那高．卜沌（Nakaw Putun）、賴駿杰",
+    "description": "國立臺灣美術館與IAIA當代原住民藝術博物館（MoCNA）合作策展，聚焦10位藝術家／團體，呈現臺灣當代原住民藝術中的藝術行動主義。展覽探討多元認同、生存困境與自然意識，以及殖民性與原民性、性別認同與信仰、向自然學習等主題，展現原住民與祖靈及自然環境的關係。",
+    "description_en": "A collaborative project between the National Taiwan Museum of Fine Arts and the IAIA Museum of Contemporary Native Arts (MoCNA), featuring 10 artists/groups focused on artistic activism within contemporary Taiwanese Indigenous art. The exhibition explores diverse identities, survival challenges, and nature consciousness, examining themes of colonialism and Indigeneity, gender identity and belief, and learning from nature.",
+    "description_ja": "国立台湾美術館とIAIA現代先住民芸術博物館（MoCNA）の共同企画。台湾の現代原住民アートにおけるアーティスティック・アクティヴィズムに焦点を当て、10組のアーティスト/グループを紹介。多元的アイデンティティ、生存の困難、自然意識を探求し、植民地性と先住民性、ジェンダー・アイデンティティと信仰、自然に学ぶことをテーマに展開する。",
+    "fetched_at": "2026-06-26T15:48:29.845559+08:00"
   }
 }
