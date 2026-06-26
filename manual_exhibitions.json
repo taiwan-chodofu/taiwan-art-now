@@ -1266,6 +1266,66 @@
       "location": "桃園市立美術館",
       "link": "https://tmofa.tycg.gov.tw/exhibition2",
       "artists": []
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "隨波逐潮：流動的跨文化海洋敘事",
+      "title_en": "Flowing with the Waves: Intercultural Sea Stories in Motion",
+      "dates": "2026/06/09 - 2026/10/18",
+      "location": "臺南市美術館",
+      "link": "https://www.tnam.museum/exhibition/detail/711",
+      "artists": []
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "雙城計：臺南 × 熊本臺灣當代藝術接力展",
+      "title_en": "Twin Cities Project",
+      "dates": "2026/05/21 - 2026/09/27",
+      "location": "臺南市美術館 1館2樓展覽室G",
+      "link": "https://www.tnam.museum/exhibition/detail/704",
+      "artists": [
+        "楊茂林",
+        "林鴻文",
+        "常陵"
+      ]
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "梅澤捨次郎—檔案中的生命軌跡",
+      "title_en": "Umezawa Sutejirou - Echoes in the Archive",
+      "dates": "2026/06/11 - 2026/10/18",
+      "location": "臺南市美術館",
+      "link": "https://www.tnam.museum/exhibition/detail/708",
+      "artists": []
+    },
+    {
+      "museum": "huashan",
+      "title_zh": "神境2.0｜張智銘攝影展",
+      "title_en": "",
+      "dates": "2026/06/01 - 2026/07/31",
+      "location": "華山1914文化創意產業園區",
+      "link": "https://www.huashan1914.com/w/huashan1914/exhibition1",
+      "artists": [
+        "張智銘"
+      ]
+    },
+    {
+      "museum": "huashan",
+      "title_zh": "內心風景：東南亞當代藝術展",
+      "title_en": "",
+      "dates": "2026/06/01 - 2026/08/31",
+      "location": "華山1914文化創意產業園區",
+      "link": "https://www.huashan1914.com/w/huashan1914/exhibition2",
+      "artists": []
+    },
+    {
+      "museum": "huashan",
+      "title_zh": "你的城市我的家--城市鳥巢展",
+      "title_en": "",
+      "dates": "2026/06/01 - 2026/08/31",
+      "location": "華山1914文化創意產業園區",
+      "link": "https://www.huashan1914.com/w/huashan1914/exhibition3",
+      "artists": []
     }
   ]
 }
