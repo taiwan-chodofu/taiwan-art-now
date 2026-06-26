@@ -548,8 +548,6 @@
         "zh": "週二至週日 10:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions",
       "lat": 24.971301,
       "lng": 121.288594,
       "closed_days": [
@@ -841,7 +839,6 @@
         "zh": "週二至週日 11:00–21:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tav",
       "og_image": "https://www.artistvillage.org/upload/201511301911345797_crop.jpg",
       "lat": 25.01062,
       "lng": 121.532236,
@@ -1451,8 +1448,6 @@
         "zh": "每日 11:00–19:00"
       },
       "closed_day": null,
-      "scraper": "fubon",
-      "exhibition_url": "",
       "lat": 25.039284,
       "lng": 121.571232
     },
@@ -1505,8 +1500,6 @@
         "zh": "週二至週日 09:30–17:30｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://www.yu-hsiu.org/en/exhibition",
       "og_image": "https://www.yu-hsiu.org/images/logo.png",
       "lat": 23.992882,
       "lng": 120.767085,
@@ -1535,8 +1528,6 @@
         "zh": "週四至週二 11:00–21:00｜週三休"
       },
       "closed_day": 2,
-      "scraper": "generic",
-      "exhibition_url": "https://www.alien.com.tw",
       "lat": 22.627794,
       "lng": 120.278776,
       "closed_days": [
@@ -1589,8 +1580,6 @@
         "zh": "每日 09:30–21:00"
       },
       "closed_day": null,
-      "scraper": "huashan_manual",
-      "exhibition_url": "",
       "lat": 25.044609,
       "lng": 121.529183
     },
@@ -1757,8 +1746,6 @@
         "zh": "週二至週六 13:00–19:00｜週日一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
-      "exhibition_url": "https://yiriarts.com.tw/exhibitions/",
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1218/usr/images/exhibitions/home_page_image/items/db/dbd7443a356844c684b37eca4bea6189/adz_5801.jpg",
       "lat": 25.041748,
       "lng": 121.54827,
@@ -1787,7 +1774,6 @@
         "zh": "週二至週日 09:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "pingtung",
       "og_image": "https://www-ws.pthg.gov.tw/Upload/2015pthg/194/sites/pagebackimage/a45addfb-fc49-4039-aa40-b59ca0d415d8.png",
       "lat": 22.674869,
       "lng": 120.489973,
