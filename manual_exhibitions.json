@@ -883,17 +883,6 @@
       ]
     },
     {
-      "museum": "fubon",
-      "title_zh": "古典光影大師: 林布蘭到哥雅─托雷多美術館珍藏展",
-      "title_en": "Old Masters from Rembrandt to Goya: Treasures from the Toledo Museum of Art",
-      "title_ja": "",
-      "dates": "2026/07/18 - 2026/10/19",
-      "location": "富邦美術館 1樓水景展廳",
-      "link": "https://www.fubonartmuseum.org/exhibitions",
-      "description": "",
-      "artists": []
-    },
-    {
       "museum": "kdmofa",
       "title_zh": "大圖書館員—龍顏藝術創作獎二十年",
       "title_en": "The Great Librarian: 20 Years of the Dragon Face Art Award",
@@ -998,6 +987,285 @@
         "廖修平",
         "廖繼春"
       ]
+    },
+    {
+      "museum": "fubon",
+      "title_zh": "富邦典藏展-共鳴：光、愛與色彩的交響",
+      "title_en": "Fubon Collection - Resonance: Symphony of Light, Love & Color",
+      "dates": "2025/12/24 - 2026/12/31",
+      "location": "富邦美術館 3樓日光展廳",
+      "link": "https://www.fubonartmuseum.org/exhibitions#resonance",
+      "artists": []
+    },
+    {
+      "museum": "fubon",
+      "title_zh": "富邦典藏展-常玉",
+      "title_en": "Fubon Collection - SANYU",
+      "dates": "2025/12/24 - 2026/12/31",
+      "location": "富邦美術館 3樓星光展廳",
+      "link": "https://www.fubonartmuseum.org/exhibitions#sanyu",
+      "artists": [
+        "常玉"
+      ]
+    },
+    {
+      "museum": "fubon",
+      "title_zh": "古典光影大師: 林布蘭到哥雅─托雷多美術館珍藏展",
+      "title_en": "Old Masters from Rembrandt to Goya: Treasures from the Toledo Museum of Art",
+      "dates": "2026/07/18 - 2026/10/19",
+      "location": "富邦美術館 1樓水景展廳",
+      "link": "https://www.fubonartmuseum.org/exhibitions#old-masters",
+      "artists": []
+    },
+    {
+      "museum": "alien",
+      "title_zh": "吟遊時空",
+      "title_en": "",
+      "dates": "2025/11/23 - 2026/11/01",
+      "location": "金馬賓館當代美術館",
+      "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#yinyou",
+      "artists": [
+        "霍剛",
+        "權純益"
+      ]
+    },
+    {
+      "museum": "alien",
+      "title_zh": "塵與金：力之篇章",
+      "title_en": "",
+      "dates": "2026/04/18 - 2026/08/30",
+      "location": "金馬賓館當代美術館",
+      "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#dustgold",
+      "artists": [
+        "藤村真",
+        "道川省三"
+      ]
+    },
+    {
+      "museum": "alien",
+      "title_zh": "天穹之眼",
+      "title_en": "",
+      "dates": "2025/01/10 - 2027/04/30",
+      "location": "金馬賓館當代美術館",
+      "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#sky",
+      "artists": [
+        "鎌田治朗"
+      ]
+    },
+    {
+      "museum": "alien",
+      "title_zh": "過渡 Crossing",
+      "title_en": "Crossing",
+      "dates": "",
+      "location": "金馬賓館當代美術館",
+      "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#crossing",
+      "artists": [
+        "伍韶勁",
+        "張慧婷"
+      ]
+    },
+    {
+      "museum": "yuhsiu",
+      "title_zh": "Walking Through a Decade",
+      "title_en": "Walking Through a Decade",
+      "dates": "2026/02/24 - 2026/08/23",
+      "location": "毓繡美術館 1-4F",
+      "link": "https://www.yu-hsiu.org/en/exhibition/1/data/40",
+      "artists": [
+        "Sam Jinks",
+        "Miwa Ogasawara",
+        "Jeff Robb",
+        "Lee Chu-Hsin",
+        "Izumi Akiyama",
+        "Zdenek Janda",
+        "Riusuke Fukahori",
+        "Lin Wei-Hsiang",
+        "Liang Zhaoxi",
+        "Keisei Kobayashi",
+        "Uttaporn Nimmalaikae",
+        "Hsu Chun-Yu",
+        "Hsu Jui-Fu",
+        "Odd Nerdrum",
+        "Nicola Samori",
+        "Patricia Piccinini",
+        "Takahiko Suzuki",
+        "Kusofiyah Nibuesa"
+      ]
+    },
+    {
+      "museum": "yuhsiu",
+      "title_zh": "FLIP",
+      "title_en": "FLIP",
+      "dates": "2026/02/24 - 2026/08/23",
+      "location": "毓繡美術館",
+      "link": "https://www.yu-hsiu.org/en/exhibition/1/data/41",
+      "artists": []
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "陳雲：時雨隙光",
+      "title_en": "Chen Yun: Showers of Glinting Light",
+      "dates": "2026/05/21 - 2026/07/04",
+      "location": "YIRI ARTS",
+      "link": "https://yiriarts.com.tw/exhibitions/current/#chen-yun",
+      "artists": [
+        "陳雲"
+      ]
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "黃姿瑜：馬鈴薯種在地下一樓",
+      "title_en": "",
+      "dates": "2026/05/21 - 2026/07/04",
+      "location": "YIRI ARTS",
+      "link": "https://yiriarts.com.tw/exhibitions/current/#huang",
+      "artists": [
+        "黃姿瑜"
+      ]
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "袁心元：兩棵樹與群鳥",
+      "title_en": "",
+      "dates": "2026/05/21 - 2026/07/04",
+      "location": "BACK_Y",
+      "link": "https://yiriarts.com.tw/exhibitions/current/#yuan",
+      "artists": [
+        "袁心元"
+      ]
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "橫山麻衣：Solar Phantasm",
+      "title_en": "Solar Phantasm",
+      "dates": "2026/05/21 - 2026/07/04",
+      "location": "BACK_Y",
+      "link": "https://yiriarts.com.tw/exhibitions/current/#yokoyama",
+      "artists": [
+        "橫山麻衣"
+      ]
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "當繁花盛開 日本當代藝術展",
+      "title_en": "",
+      "dates": "2026/03/28 - 2026/08/30",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition1",
+      "artists": [
+        "井上有一",
+        "白髮一雄",
+        "草間彌生",
+        "荒木經惟",
+        "空山基",
+        "天野喜孝",
+        "奈良美智",
+        "村上隆",
+        "鹽田千春",
+        "蜷川實花",
+        "名和晃平",
+        "高野綾",
+        "六角彩子",
+        "小松美羽",
+        "中村萌",
+        "江上越"
+      ]
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "大湧崁岸（Tuā-íng Khàm Huān）",
+      "title_en": "",
+      "dates": "2026/03/28 - 2027/11/28",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition2",
+      "artists": [
+        "劉秋兒",
+        "吳政璋",
+        "安聖惠"
+      ]
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "屏藏心特展",
+      "title_en": "",
+      "dates": "2026/03/28 - 2027/03/28",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition3",
+      "artists": []
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "就在前方．我那依山依水的客家",
+      "title_en": "",
+      "dates": "2026/03/28 - 2027/03/28",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition4",
+      "artists": []
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "花花caucau",
+      "title_en": "",
+      "dates": "2026/03/28 - 2027/03/28",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition5",
+      "artists": []
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "Calrisi－承為自然",
+      "title_en": "",
+      "dates": "2026/03/28 - 2027/03/28",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition6",
+      "artists": []
+    },
+    {
+      "museum": "tav",
+      "title_zh": "開箱‧連線：文化中的移動與駐地",
+      "title_en": "",
+      "dates": "2026/05/01 - 2026/08/31",
+      "location": "台北寶藏巖國際藝術村",
+      "link": "https://www.artistvillage.org/event1",
+      "artists": []
+    },
+    {
+      "museum": "tav",
+      "title_zh": "跨‧觀音合作社",
+      "title_en": "",
+      "dates": "2026/05/01 - 2026/08/31",
+      "location": "台北寶藏巖國際藝術村",
+      "link": "https://www.artistvillage.org/event2",
+      "artists": []
+    },
+    {
+      "museum": "tav",
+      "title_zh": "野沈浸",
+      "title_en": "",
+      "dates": "2026/05/01 - 2026/08/31",
+      "location": "台北寶藏巖國際藝術村",
+      "link": "https://www.artistvillage.org/event3",
+      "artists": []
+    },
+    {
+      "museum": "tmofa",
+      "title_zh": "躲貓貓：王意淳書法創作展",
+      "title_en": "",
+      "dates": "2026/05/01 - 2026/07/31",
+      "location": "桃園市立美術館",
+      "link": "https://tmofa.tycg.gov.tw/exhibition1",
+      "artists": [
+        "王意淳"
+      ]
+    },
+    {
+      "museum": "tmofa",
+      "title_zh": "小旅人·大旅程",
+      "title_en": "",
+      "dates": "2026/05/01 - 2026/07/31",
+      "location": "桃園市立美術館",
+      "link": "https://tmofa.tycg.gov.tw/exhibition2",
+      "artists": []
     }
   ]
 }
