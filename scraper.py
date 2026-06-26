@@ -1823,6 +1823,11 @@ def _extract_exhibition_details(url):
         long_ps = [p.get_text(strip=True) for p in ps if len(p.get_text(strip=True)) > 80]
         description = long_ps[0][:800] if long_ps else ""
 
+        if artists and len(artists) > 2:
+            unique_chars = set("".join(artists))
+            if len(unique_chars) < 10:
+                artists = []
+
         return {
             "artists": artists[:15],
             "curator": curator,
@@ -2191,6 +2196,18 @@ def _is_valid_artist_name(name):
         r"^Director", r"^Producer", r"^Organizer", r"^Sponsor",
         r"基金會藝術總監", r"基金會董事", r"執行長",
     ]
+    # UI/navigation items that get mistaken for artist names
+    ui_junk = [
+        "線上藝廊", "登入", "購物須知", "服務條款", "廣告方案", "電子報",
+        "藝術新聞", "展覽活動", "專題報導", "藝文影音", "藝術聚點",
+        "免費展訊", "隱私權", "常見問題", "會員中心", "藝術品",
+        "More", "VIEW", "CLOSE", "Search", "GO", "TOP",
+        "展覽回顧", "展覽預告", "當期展覽", "歷年展覽",
+        "參觀資訊", "交通資訊", "導覽服務", "時間票價",
+        "Participating Artists", "Year",
+    ]
+    if name in ui_junk or any(junk in name for junk in ui_junk):
+        return False
     for pat in junk_patterns:
         if re.search(pat, name):
             return False
