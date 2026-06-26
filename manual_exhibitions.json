@@ -220,7 +220,7 @@
     {
       "museum": "projectfulfill",
       "title_zh": "偏移之際——高德亮個展",
-      "title_en": "",
+      "title_en": "At the Threshold of Shift",
       "title_ja": "",
       "dates": "2026/05/30 - 2026/07/18",
       "location": "就在藝術空間",
@@ -253,7 +253,7 @@
     {
       "museum": "soka_taipei",
       "title_zh": "定格・之後 — 藝術家聯展",
-      "title_en": "",
+      "title_en": "After the Moment",
       "title_ja": "",
       "dates": "2026/06/13 - 2026/07/18",
       "location": "索卡藝術．台北",
@@ -487,7 +487,7 @@
     {
       "museum": "nmth",
       "title_zh": "轉機：臺灣女子移動紀事特展",
-      "title_en": "",
+      "title_en": "Transition: Taiwanese Women on the Move",
       "title_ja": "",
       "dates": "2025/12/23 - 2026/08/30",
       "location": "國立臺灣歷史博物館",
@@ -923,7 +923,7 @@
     {
       "museum": "ntmofa",
       "title_zh": "時代印記：國美典藏常設展",
-      "title_en": "",
+      "title_en": "Arts as Imprints of the Times: Permanent Collection of the NTMoFA",
       "dates": "2024/01/01 - 2026/12/31",
       "location": "國立臺灣美術館 301展覽室",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60040",
@@ -933,7 +933,7 @@
     {
       "museum": "ntmofa",
       "title_zh": "破土：臺灣當代原住民藝術與行動主義",
-      "title_en": "",
+      "title_en": "Breaking Ground: Art and Activism in Indigenous Taiwan",
       "dates": "2026/04/23 - 2026/08/21",
       "location": "文化部藝廊（新北市新莊區中平路439號）",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60089",
@@ -964,7 +964,7 @@
     {
       "museum": "ntmofa",
       "title_zh": "中華民國第二十二屆國際版畫雙年展",
-      "title_en": "",
+      "title_en": "2026 Taiwan International Print Biennial",
       "dates": "2026/05/21 - 2026/10/11",
       "location": "國立臺灣美術館",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60101",
@@ -974,7 +974,7 @@
     {
       "museum": "ntmofa",
       "title_zh": "24/7：：：創作中的反覆與堆疊 兒童藝術教育展",
-      "title_en": "",
+      "title_en": "24/7: : : Repetition and Accumulation in Creation",
       "dates": "2025/09/06 - 2026/08/30",
       "location": "國立臺灣美術館",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=55022",
@@ -1020,7 +1020,7 @@
     {
       "museum": "alien",
       "title_zh": "吟遊時空",
-      "title_en": "",
+      "title_en": "The Bards of Time and Space",
       "dates": "2025/11/23 - 2026/11/01",
       "location": "金馬賓館當代美術館",
       "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#yinyou",
@@ -1032,7 +1032,7 @@
     {
       "museum": "alien",
       "title_zh": "塵與金：力之篇章",
-      "title_en": "",
+      "title_en": "Dust and Gold: The Formative Chapter",
       "dates": "2026/04/18 - 2026/08/30",
       "location": "金馬賓館當代美術館",
       "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#dustgold",
@@ -1044,7 +1044,7 @@
     {
       "museum": "alien",
       "title_zh": "天穹之眼",
-      "title_en": "",
+      "title_en": "Celestial Eyes",
       "dates": "2025/01/10 - 2027/04/30",
       "location": "金馬賓館當代美術館",
       "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#sky",
@@ -1115,7 +1115,7 @@
     {
       "museum": "yiriarts",
       "title_zh": "黃姿瑜：馬鈴薯種在地下一樓",
-      "title_en": "",
+      "title_en": "HUANG Tzu-Yu: Ms. Potato in B1",
       "dates": "2026/05/21 - 2026/07/04",
       "location": "YIRI ARTS",
       "link": "https://yiriarts.com.tw/exhibitions/current/#huang",
@@ -1126,7 +1126,7 @@
     {
       "museum": "yiriarts",
       "title_zh": "袁心元：兩棵樹與群鳥",
-      "title_en": "",
+      "title_en": "Yuan Hsin-Yuan: Two Trees and a Flock of Birds",
       "dates": "2026/05/21 - 2026/07/04",
       "location": "BACK_Y",
       "link": "https://yiriarts.com.tw/exhibitions/current/#yuan",
@@ -1232,7 +1232,7 @@
     {
       "museum": "tav",
       "title_zh": "跨‧觀音合作社",
-      "title_en": "",
+      "title_en": "Trans-Guanyin Collective",
       "dates": "2026/05/01 - 2026/08/31",
       "location": "台北寶藏巖國際藝術村",
       "link": "https://www.artistvillage.org/event2",
