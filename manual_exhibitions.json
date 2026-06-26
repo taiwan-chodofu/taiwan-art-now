@@ -908,7 +908,6 @@
       "museum": "ntmofa",
       "title_zh": "無限副本與瞄準器",
       "title_en": "Infinite Copies and Crosshairs",
-      "title_ja": "",
       "dates": "2026/03/28 - 2026/06/28",
       "location": "國立臺灣美術館 103-107展覽室",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60054",
@@ -931,6 +930,56 @@
         "王連晟",
         "艾蓮諾．韋伯"
       ]
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "時代印記：國美典藏常設展",
+      "title_en": "",
+      "dates": "2024/01/01 - 2026/12/31",
+      "location": "國立臺灣美術館 301展覽室",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60040",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "破土：臺灣當代原住民藝術與行動主義",
+      "title_en": "",
+      "dates": "2026/04/23 - 2026/08/21",
+      "location": "國立臺灣美術館",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60089",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "115年全國美術展",
+      "title_en": "",
+      "dates": "2026/05/21 - 2026/10/11",
+      "location": "國立臺灣美術館",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60098",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "中華民國第二十二屆國際版畫雙年展",
+      "title_en": "",
+      "dates": "2026/05/21 - 2026/10/11",
+      "location": "國立臺灣美術館",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60101",
+      "description": "",
+      "artists": []
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "24/7：：：創作中的反覆與堆疊 兒童藝術教育展",
+      "title_en": "",
+      "dates": "2025/09/06 - 2026/08/30",
+      "location": "國立臺灣美術館",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=55022",
+      "description": "",
+      "artists": []
     }
   ]
 }
