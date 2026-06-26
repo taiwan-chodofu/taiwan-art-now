@@ -989,8 +989,15 @@
       "dates": "2025/09/06 - 2026/08/30",
       "location": "國立臺灣美術館",
       "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=55022",
-      "description": "",
-      "artists": []
+      "description": "「24/7」意指一天24小時、一星期7天，透過當代藝術家的全新作品，重新觀看並討論前輩藝術家的經典創作。展覽探索藝術創作中的「反覆」與「堆疊」。",
+      "artists": [
+        "石孟鑫",
+        "何彥諺",
+        "莊惠琳",
+        "張永村",
+        "廖修平",
+        "廖繼春"
+      ]
     }
   ]
 }
