@@ -461,8 +461,6 @@
         "zh": "週二至週日 10:00–18:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "tnam",
-      "exhibition_url": "",
       "lat": 22.997364,
       "lng": 120.20454,
       "closed_days": [
