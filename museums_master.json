@@ -363,8 +363,6 @@
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "ntmofa_manual",
-      "exhibition_url": "",
       "lat": 24.14149,
       "lng": 120.663268,
       "closed_days": [
