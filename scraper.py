@@ -1924,6 +1924,10 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
             ex["artists"] = cached.get("artists", [])
             ex["curator"] = cached.get("curator", "")
             ex["description"] = cached.get("description", "")
+            if cached.get("description_en"):
+                ex["description_en"] = cached["description_en"]
+            if cached.get("description_ja"):
+                ex["description_ja"] = cached["description_ja"]
             try:
                 fetched_at = datetime.fromisoformat(cached.get("fetched_at", "2000-01-01"))
                 age_days = (today - fetched_at).total_seconds() / 86400
@@ -1943,6 +1947,10 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
             ex["artists"] = details.get("artists", [])
             ex["curator"] = details.get("curator", "")
             ex["description"] = details.get("description", "")
+            if details.get("description_en"):
+                ex["description_en"] = details["description_en"]
+            if details.get("description_ja"):
+                ex["description_ja"] = details["description_ja"]
 
     if targets:
         _save_details_cache(details_cache)

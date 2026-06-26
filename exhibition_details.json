@@ -86,24 +86,7 @@
     "description_en": "As countries around the world implemented isolation policies and social distancing due to the pandemic, cultural institutions such as art galleries and museums were among the first to be forced to close or limit visitor numbers, entering a state of low social interaction. In response, the Contemporary Art Museum, Taipei (CAT) launched the podcast project \"MoCA on Air,\" aiming to create a new online connection for interaction with the audience! The first season of the program starts on February 3, 2021, with new episodes released every Wednesday, each lasting about thirty minutes. The topics will revolve around various issues initiated by contemporary art, including political struggles, human rights, gender, and more. The program will discuss common cultural issues in Taiwan society, such as gender, morality, and migrant workers, inviting professionals from different fields with unique insights from both inside and outside Taiwan to engage in cross-disciplinary dialogue and share unique perspectives on the contemporary world.\n\nApple Podcast: https://apple.co/3cOgZm9\nSoundOn: https://mocatpe.tw/art06ifU7u\nGoogle Podcast: https://mocatpe.tw/art06Bzzae\nSpotify: https://spoti.fi/2YLJJU7\nKKBOX Podcast: https://mocatpe.tw/art06ffaue\nListen Notes: https://mocatpe.tw/art06Fjvqf",
     "description_ja": "世界中で新型コロナウイルス対策として隔離政策や社会的距離が実施され、美術館や博物館などの文化施設が閉鎖や観客数制限を強いられ、低い社会活動状態に入った中、当代館はポッドキャスト企画「台北当代藝術館MoCA on Air」を企画し、観客との新しいオンラインでのつながりを創造することを目指しています！第一シーズンの番組は2021年2月3日（水）から毎週水曜日に配信され、各回約30分で、現代アートを起点とした多様なテーマ、例えば政治的葛藤、人権、ジェンダーなどの側面を取り上げ、台湾社会で見られるジェンダー、道徳、移民労働者などの文化的問題について議論します。国内外から独特の洞察力を持つ様々な専門分野の専門家を招き、現代世界の独特な側面について対話し、共有します。Apple Podcast：https://apple.co/3cOgZm9SoundOn：https://mocatpe.tw/art06ifU7u​Google Podcast：https://mocatpe.tw/art06Bzzae​Spotify：https://spoti.fi/2YLJJU7KKBOX Podcast：https://mocatpe.tw/art06ffaue​Listen Notes：https://mocatpe.tw/art06Fjvqf​"
   },
-  "moca_qiritam": {
-    "artists": [
-      "蔡咅璟"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "moca_yecao": {
-    "artists": [
-      "石孟鑫",
-      "吳瑋庭",
-      "陳郁文",
-      "梁祐寧",
-      "蘇詠寶"
-    ],
-    "curator": "陳斯吟",
-    "fetched_at": "2026-06-25"
-  },
-  "tnam_twin_cities": {
+  "https://www.tnam.museum/exhibition/detail/704": {
     "artists": [
       "楊茂林",
       "林鴻文",
@@ -111,193 +94,90 @@
     ],
     "fetched_at": "2026-06-25"
   },
-  "alien_yinyou": {
+  "https://www.alien.com.tw/u/zh-tw/list/exhibitions#yinyou": {
     "artists": [
       "霍剛",
       "權純益"
     ],
     "fetched_at": "2026-06-25"
   },
-  "alien_dust_gold": {
+  "https://www.alien.com.tw/u/zh-tw/list/exhibitions#dustgold": {
     "artists": [
       "藤村真",
       "道川省三"
     ],
     "fetched_at": "2026-06-25"
   },
-  "alien_sky_eye": {
+  "https://www.alien.com.tw/u/zh-tw/list/exhibitions#sky": {
     "artists": [
       "鎌田治朗"
     ],
     "fetched_at": "2026-06-25"
   },
-  "alien_crossing": {
+  "https://www.alien.com.tw/u/zh-tw/list/exhibitions#crossing": {
     "artists": [
       "伍韶勁",
       "張慧婷"
     ],
     "fetched_at": "2026-06-25"
   },
-  "alien_corinth": {
-    "artists": [
-      "詹姆斯．特瑞爾"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "yiri_chen_yun": {
+  "https://yiriarts.com.tw/exhibitions/current/#chen-yun": {
     "artists": [
       "陳雲"
     ],
     "fetched_at": "2026-06-25"
   },
-  "yiri_huang": {
+  "https://yiriarts.com.tw/exhibitions/current/#huang": {
     "artists": [
       "黃姿瑜"
     ],
     "fetched_at": "2026-06-25"
   },
-  "yiri_yuan": {
+  "https://yiriarts.com.tw/exhibitions/current/#yuan": {
     "artists": [
       "袁心元"
     ],
     "fetched_at": "2026-06-25"
   },
-  "yiri_yokoyama": {
+  "https://yiriarts.com.tw/exhibitions/current/#yokoyama": {
     "artists": [
       "橫山麻衣"
     ],
     "fetched_at": "2026-06-25"
   },
-  "ncpi_anixiang": {
-    "artists": [
-      "張照堂",
-      "張乾琦",
-      "周慶輝",
-      "鄧南光",
-      "侯淑姿",
-      "江昱呈",
-      "柯錫杰",
-      "林柏樑",
-      "劉振祥",
-      "牛俊強",
-      "湯思泮",
-      "王永安",
-      "余如季"
-    ],
-    "curator": "趙欣怡",
-    "fetched_at": "2026-06-25"
-  },
-  "ncpi_gaze": {
-    "artists": [
-      "葉烏根．巴烏查爾",
-      "廣瀨浩二郎",
-      "鄭然斗",
-      "赫拉多．尼亨達",
-      "汪正翔",
-      "鄭桑溪",
-      "許淵富",
-      "李鳴鵰",
-      "翁庭華",
-      "張允鐘",
-      "聶莉欣",
-      "王靖勳",
-      "吳晶晶",
-      "朱浚溢"
-    ],
-    "curator": "趙欣怡",
-    "fetched_at": "2026-06-25"
-  },
-  "ntcart_saraceno": {
+  "https://ntcart.museum/exhibition_content.aspx?id=H2601002": {
     "artists": [
       "托馬斯．薩拉切諾"
     ],
     "fetched_at": "2026-06-25"
   },
-  "kdmofa_unrest": {
-    "artists": [
-      "傅達仁",
-      "洪瑋翎",
-      "艾立森",
-      "紀凱淵",
-      "葛瑞芬",
-      "菲律賓在台社群",
-      "劉芸怡",
-      "鄭亭亭"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "thecube_cd": {
+  "https://thecubespace.com/project/the-last-cd-en/": {
     "artists": [
       "李漢強"
     ],
     "curator": "游崴",
     "fetched_at": "2026-06-25"
   },
-  "ntcart_minjian": {
-    "artists": [
-      "松山虔三",
-      "張才",
-      "黃則修",
-      "黃永松",
-      "姚孟嘉",
-      "張照堂",
-      "梁正居",
-      "林柏樑"
-    ],
-    "curator": "張世倫",
-    "fetched_at": "2026-06-25"
-  },
-  "sinpin_flow": {
+  "https://www.facebook.com/sinpinpier": {
     "artists": [
       "郭家秀",
       "趙書巧"
     ],
     "fetched_at": "2026-06-25"
   },
-  "absolute_zeng": {
-    "artists": [
-      "鄭安利"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "tinakeng_su": {
+  "https://www.tinakenggallery.com/en/exhibitions": {
     "artists": [
       "蘇孟鴻"
     ],
     "fetched_at": "2026-06-25"
   },
-  "tkgplus_cycles": {
+  "https://artemperor.tw/tidbits/19963": {
     "artists": [
       "彌載映"
     ],
     "fetched_at": "2026-06-25"
   },
-  "eachmodern_konst": {
-    "artists": [
-      "Antone Könst"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "taoart_afterglow": {
-    "artists": [
-      "謝帆",
-      "丹尼斯．米蘭達．薩莫拉諾"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "bluerider_riera": {
-    "artists": [
-      "喬瑟普．里埃拉．伊．阿拉貢"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "aki_yamaguchi": {
-    "artists": [
-      "山口藍"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "montue_remote": {
+  "https://montue.ntue.edu.tw/%e9%81%99%e8%a6%96/": {
     "artists": [
       "安妮．貝森特",
       "C.W.李德彼特",
@@ -332,7 +212,7 @@
     "curator": "柯念璞",
     "fetched_at": "2026-06-25"
   },
-  "tcma_heat": {
+  "https://artemperor.tw/tidbits/19805": {
     "artists": [
       "盧切札．博亞杰夫",
       "艾德加．卡萊爾",
@@ -347,7 +227,7 @@
     ],
     "fetched_at": "2026-06-25"
   },
-  "pingtung_japan": {
+  "https://www.cultural.pthg.gov.tw/pt1936/Exhibition1": {
     "artists": [
       "井上有一",
       "白髮一雄",
@@ -368,13 +248,7 @@
     ],
     "fetched_at": "2026-06-25"
   },
-  "chiayi_hsu": {
-    "artists": [
-      "許震唐"
-    ],
-    "fetched_at": "2026-06-25"
-  },
-  "chiayi_signal": {
+  "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=4eab33a9-fcf3-4e2d-b8a5-5478f8ee2592&appname=Exhibition3110": {
     "artists": [
       "2ENTER 貳進",
       "王德合",
@@ -383,7 +257,7 @@
     ],
     "fetched_at": "2026-06-25"
   },
-  "pingtung_wave": {
+  "https://www.cultural.pthg.gov.tw/pt1936/Exhibition2": {
     "artists": [
       "劉秋兒",
       "吳政璋",
@@ -393,7 +267,7 @@
     "note": "屏東縣政府典藏品100餘件+福岡亞洲美術館、國美館、北美館、高美館等借展",
     "fetched_at": "2026-06-25"
   },
-  "yuhsiu_decade": {
+  "https://www.yu-hsiu.org/en/exhibition/1/data/40": {
     "artists": [
       "Sam Jinks",
       "Miwa Ogasawara",
@@ -518,25 +392,6 @@
       "做白工作室"
     ],
     "note": "團隊成員：溫子慶、蔡君陽、梁立白、鄭詠心、陳冠文",
-    "fetched_at": "2026-06-25"
-  },
-  "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=810": {
-    "artists": [
-      "勞倫斯．阿布．哈姆登",
-      "塔瑞克．阿圖伊",
-      "陳庭榕",
-      "芮娜．賽尼．卡拉特",
-      "今津景",
-      "巴古斯．潘德加",
-      "蘇珊．舒普利",
-      "阮純詩",
-      "哈吉拉．瓦希德",
-      "林其蔚",
-      "楊嘉輝",
-      "袁旃",
-      "余承堯"
-    ],
-    "curator": "許芳慈",
     "fetched_at": "2026-06-25"
   },
   "https://www.artemingallery.com/portfolio-item/one-and-one/": {
