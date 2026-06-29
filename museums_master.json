@@ -946,14 +946,17 @@
       },
       "url": "https://www.facebook.com/182artspace",
       "hours": {
-        "en": "By appointment",
-        "ja": "予約制",
-        "zh": "預約制"
+        "en": "Mon, Wed–Sun 14:00–00:00 | Closed Tue",
+        "ja": "月・水〜日 14:00–0:00｜火曜休",
+        "zh": "週一、週三至週日 14:00–00:00｜週二休"
       },
-      "closed_day": null,
+      "closed_day": 1,
       "scraper": null,
       "lat": 22.998338,
-      "lng": 120.201574
+      "lng": 120.201574,
+      "closed_days": [
+        1
+      ]
     },
     {
       "id": "tinakeng",
