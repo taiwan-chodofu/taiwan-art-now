@@ -1958,10 +1958,8 @@
         "zh": "週二至週日 11:00–19:00｜週一休"
       },
       "closed_day": 0,
-      "scraper": "generic",
       "lat": 24.165303,
       "lng": 120.633655,
-      "exhibition_url": "https://daxiang.com.tw/exhib/current",
       "closed_days": [
         0
       ]
