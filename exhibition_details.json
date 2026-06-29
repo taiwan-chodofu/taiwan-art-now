@@ -690,17 +690,6 @@
     "description_ja": "都市は絶えず発展・建造・拡張する有機体であり、暗闇の中の火のように人間を引きつけ、文化と文明の器となる。都市の生成は直線的ではなく、累積する圧力の中で興隆と衰退、修復と断裂を反復する。本展は歴史・文化・未来の想像を結合し、人類文明の循環的発展を考察する。戦争・気候災害・産業転換・権力構造の不均衡が多くの都市を臨界状態に置き続けている。主流の言説から漏れがちな非欧米の都市経験に焦点を当て、フィリピン・スリランカ・シリア・ルーマニア・韓国・台湾から11組のアーティストが、異なる歴史的・政治的・経済的条件下の都市の現実を再考する。",
     "fetched_at": "2026-06-29T13:42:30.482380+08:00"
   },
-  "https://www.artmuse.ntnu.edu.tw/index.php/2026symbioticsplen": {
-    "artists": [
-      "荒川嶺雲",
-      "石井素堂"
-    ],
-    "curator": "",
-    "description": "展覽探索19世紀末至20世紀前半期，日本近代美術在社會變革與文化開放中迅速崛起的歷程。隨著文展、帝展等官方展覽制度的建立，日本逐漸成為東亞近代美術的重要中心。臺灣前輩藝術家進入日本藝術核心，留學、參展，與日本畫壇互動，發展出獨特的藝術語言。策展概念以共生為隱喻：若將臺灣第一代留日藝術家視為迎風綻放的花朵，那麼日本前輩藝術家便是支撐其生長的枝幹，而江戶至昭和的文化積澱則是養育的土壤。",
-    "description_en": "The exhibition explores how Japanese modern art rapidly rose through social reform and cultural openness from the late 19th to mid-20th century. As official exhibition systems were established, Japan became a major center for East Asian modern art. Taiwanese pioneering artists entered Japan's artistic core—studying abroad, exhibiting, and interacting with the Japanese art world—developing unique artistic languages. The curatorial concept uses symbiosis as metaphor: if first-generation Taiwanese artists studying in Japan are blossoming flowers, Japanese senior artists are the supporting branches, and Edo-to-Showa cultural accumulation is the nurturing soil.",
-    "description_ja": "19世紀末から20世紀前半にかけて、社会変革と文化開放の中で日本近代美術が急速に台頭した歴程を探る。文展・帝展等の公式展覧会制度の確立とともに、日本は東アジア近代美術の重要な中心地となった。台湾の先駆的アーティストは日本の芸術の核心に入り、留学・出展・画壇との交流を通じて独自の芸術言語を発展させた。策展の隠喩は「共生」——台湾第一世代の留日芸術家を風に咲く花とすれば、日本の先輩芸術家はその成長を支える枝幹であり、江戸から昭和の文化蓄積が育む土壌である。",
-    "fetched_at": "2026-06-29T12:25:20.006285+08:00"
-  },
   "https://www.artmuse.ntnu.edu.tw/index.php/elementor-10351/": {
     "artists": [
       "何懷碩",
@@ -1578,5 +1567,16 @@
     "description_en": "Ting-Ting Cheng's second solo exhibition at 182artspace, presenting works from residencies in Yilan, Sweden, and Buenos Aires. A dual-channel video discusses food and local identity through interviews with Luodong food workers; Before I Left uses political fugitive Peng Ming-min's story to discuss migration through games and walks with Swedish immigrants; La Boca Republic revisits the briefly independent 1882 republic through multiple perspectives on coexistence. \"You Are Here\" refers to the relative position between the viewer and surrounding geography.",
     "description_ja": "鄭亭亭の182artspaceでの2度目の個展。宜蘭・スウェーデン・ブエノスアイレスでのレジデンス作品を初公開。2チャンネル映像は羅東の飲食従業者への取材を通じ食と地方アイデンティティの関連を議論。《Before I Left》は政治家・彭明敏の逃亡物語から出発し、スウェーデンの移民とゲームや街歩きで移住を議論。《拉博卡共和國》は1882年に短期独立したラ・ボカ共和国を再訪し共存の可能性を多角的に議論。「你在這裡」は観者と周囲の地理環境の相対的位置を指す。",
     "fetched_at": "2026-06-29T19:55:50.525823+08:00"
+  },
+  "https://www.artmuse.ntnu.edu.tw/index.php/2026symbioticsplendor/": {
+    "artists": [
+      "荒川嶺雲",
+      "石井素堂"
+    ],
+    "curator": "",
+    "description": "在19世紀末至20世紀前半的激盪年代，日本近代美術在社會轉型與文化開放的推動下迅速崛起。隨著文展、帝展等官方展覽制度的建立，以及東京、京都等藝術教育體系的成熟，日本逐漸成為東亞近代美術的重要中心。臺灣前輩藝術家踏入日本的藝術核心，遠赴異地求學、參與展覽，在競逐與交流中淬鍊技法，並逐步建構出屬於自身的藝術語言。本展以日本近代藝術作品為主體，透過繪畫、雕刻、工藝等經典之作，凝視何種美學思想、工藝精神與視覺洗練構築了這個時代的藝術基底。藝術的傳承從來不是單線的延續，而更接近一種生態式的共生關係。",
+    "description_en": "In the turbulent era from the late 19th to mid-20th century, Japanese modern art rose rapidly through social transformation and cultural openness. As official exhibition systems like Bunten and Teiten were established, Japan became a major center for East Asian modern art. Taiwanese pioneering artists entered Japan's artistic core—studying abroad, exhibiting, refining techniques through competition and exchange, gradually constructing their own artistic language. This exhibition centers on Japanese modern art, examining through painting, sculpture, and craft what aesthetic thought, craftsmanship spirit, and visual refinement built this era's artistic foundation. Artistic transmission is never linear but resembles an ecological symbiosis.",
+    "description_ja": "19世紀末から20世紀前半の激動期、社会転換と文化開放に推進され日本近代美術は急速に台頭した。文展・帝展等の官展制度の確立、東京・京都の芸術教育体系の成熟とともに、日本は東アジア近代美術の重要な中心地に。台湾の先駆的アーティストは日本芸術の核心に入り、留学・出展を通じ技法を磨き、独自の芸術言語を構築していった。本展は日本近代芸術作品を主体に、絵画・彫刻・工芸の名作を通じ、どのような美学思想・工芸精神・視覚的洗練がこの時代の芸術基盤を築いたかを凝視する。芸術の伝承は単線的延続ではなく、生態系的共生関係に近い。",
+    "fetched_at": "2026-06-29T20:06:24.395521+08:00"
   }
 }
