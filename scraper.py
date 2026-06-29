@@ -1543,8 +1543,8 @@ ARTEMPEROR_NAME_MAP = {
     "府中15": "fuzhong15",
     "多納藝術": "donnaart",
     "Donna Art": "donnaart",
-    "大象藝術空間館": "daxiangart",
-    "Da Xiang Art Space": "daxiangart",
+    # "大象藝術空間館": "daxiangart",  # manual-only (artemperor picks up junk)
+    # "Da Xiang Art Space": "daxiangart",
     "1839當代藝廊": "1839cg",
     "1839 Contemporary Gallery": "1839cg",
     "采泥藝術": "chinigallery",
@@ -2020,6 +2020,26 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
         _save_details_cache(details_cache)
 
 
+def _load_all_manual():
+    """manual_exhibitions.json の全エントリを返す。"""
+    fb_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
+    if not os.path.exists(fb_path):
+        return []
+    try:
+        with open(fb_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        results = []
+        for ex in data.get("exhibitions", []):
+            if not ex.get("dates") and ex.get("date_start"):
+                start = ex["date_start"].replace("-", ".")
+                end = ex.get("date_end", "").replace("-", ".")
+                ex["dates"] = f"{start} – {end}" if end else start
+            results.append(ex)
+        return results
+    except Exception:
+        return []
+
+
 def _load_fb_json(museum_id):
     """manual_exhibitions.jsonから該当施設のデータを読む。date_start/date_endをdates文字列に変換。"""
     fb_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
@@ -2156,7 +2176,7 @@ def _do_scrape_all():
         "tfam": _scrape_tfam_api,
         # honggah: manual-only (site returns 403, scraper produces junk data)
         "ntcart": lambda: _with_fallback("ntcart", _scrape_ntcart),
-        "tcma": lambda: _with_fallback("tcma", _scrape_tcma),
+        # tcma: manual-only (scraper picks up junk like 角落任務, 開箱典藏庫)
         "clab": lambda: _with_fallback("clab", _scrape_clab),
         "thecube": _scrape_thecube,
         "chiayi": _scrape_chiayi,
@@ -2194,7 +2214,7 @@ def _do_scrape_all():
         if "/en/" in link:
             ex["link"] = link.replace("/en/", "/tw/")
     all_exhibitions.extend(moca_merged)
-    for key in ["tfam", "ntcart", "tcma", "clab",
+    for key in ["tfam", "ntcart", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
                 "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
         all_exhibitions.extend(results.get(key, []))
@@ -2258,6 +2278,19 @@ def _do_scrape_all():
 
     except Exception as exc:
         logger.warning("Master data load failed: %s", exc)
+
+    # manual_exhibitions.json から全エントリを補完（専用スクレイパーがある施設も含む）
+    manual_all = _load_all_manual()
+    existing_titles = set()
+    for e in all_exhibitions:
+        for t in (e.get("title_zh", ""), e.get("title_en", "")):
+            if t:
+                existing_titles.add(t.strip().lower())
+    for mex in manual_all:
+        title = (mex.get("title_zh", "") or mex.get("title_en", "")).strip().lower()
+        if title and title not in existing_titles:
+            all_exhibitions.append(mex)
+            existing_titles.add(title)
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
     all_exhibitions = _filter_noise(all_exhibitions)

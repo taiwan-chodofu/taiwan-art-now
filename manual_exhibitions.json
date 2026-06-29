@@ -1433,6 +1433,15 @@
       ],
       "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E4%B8%83%E6%97%A5%E8%AB%87%E2%80%94%E8%94%A1%E5%92%85%E7%92%9F%E5%80%8B%E5%B1%95",
       "status": "current"
+    },
+    {
+      "museum": "tcma",
+      "title_zh": "熱暑人－熱／暑的文化與當代藝術",
+      "title_en": "Horizon Ablaze",
+      "dates": "2026.05.15 – 2026.08.30",
+      "artists": [],
+      "link": "https://www.tcam.museum/zh/exhibition/horizon-ablaze",
+      "status": "current"
     }
   ]
 }
