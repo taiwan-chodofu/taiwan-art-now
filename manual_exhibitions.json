@@ -1242,10 +1242,21 @@
       "museum": "tav",
       "title_zh": "跨‧觀音合作社",
       "title_en": "Trans-Guanyin Collective",
-      "dates": "2026/05/01 - 2026/08/31",
+      "dates": "2026.05.23 – 2026.07.05",
       "location": "台北寶藏巖國際藝術村",
-      "link": "https://www.artistvillage.org/event2",
-      "artists": []
+      "link": "https://www.artistvillage.org/event-detail.php?p=5092",
+      "artists": [
+        "Sally Chen",
+        "Moly Prouff",
+        "Roxane / Xonron Denel",
+        "Yeyint Naing",
+        "Johan Amatsakio",
+        "Adrian Pacres",
+        "Jimena Riso",
+        "Jett Ilagan",
+        "Mauk Evertse"
+      ],
+      "status": "current"
     },
     {
       "museum": "tav",
