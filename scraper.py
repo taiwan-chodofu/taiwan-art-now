@@ -2102,7 +2102,7 @@ def _do_scrape_all():
         "moca_en": lambda: _scrape_moca(lang="en"),
         "moca_zh": lambda: _scrape_moca(lang="zh"),
         "tfam": _scrape_tfam_api,
-        "honggah": lambda: _with_fallback("honggah", _scrape_honggah),
+        # honggah: manual-only (site returns 403, scraper produces junk data)
         "ntcart": lambda: _with_fallback("ntcart", _scrape_ntcart),
         "tcma": lambda: _with_fallback("tcma", _scrape_tcma),
         "clab": lambda: _with_fallback("clab", _scrape_clab),
@@ -2136,7 +2136,7 @@ def _do_scrape_all():
     all_exhibitions.extend(_merge_exhibitions(
         results.get("moca_en", []), results.get("moca_zh", [])
     ))
-    for key in ["tfam", "honggah", "ntcart", "tcma", "clab",
+    for key in ["tfam", "ntcart", "tcma", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
                 "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
         all_exhibitions.extend(results.get(key, []))

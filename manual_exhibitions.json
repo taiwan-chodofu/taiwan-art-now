@@ -1339,6 +1339,35 @@
       "link": "https://www.artemingallery.com/portfolio-item/one-and-one/",
       "status": "current",
       "description": "旅法伊朗裔藝術家 Nicolas Mehdi Pour Vahid 在台灣的首次個展，以13件繪畫回溯個人小史，隱含對台灣新浪潮電影的致敬，特別呈現他對楊德昌2000年作品〈一一〉所產生的共鳴。其中9件作品靈感得自於藝術家2025年在日本九州駐村期間的經驗。"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Yangmingshan Art Festival | Echoes in the Interval",
+      "title_zh": "陽明山藝術季｜間響",
+      "dates": "2026.06.13 – 2026.08.31",
+      "artists": [],
+      "link": "https://hong-gah.org.tw/en/exhibitions",
+      "status": "current"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Upon the Gathering Waters — Hong-gah Museum Summer Group Exhibition",
+      "title_zh": "聚水之上——鳳甲美術館夏季聯展",
+      "dates": "2026.06.13 – 2026.08.31",
+      "artists": [],
+      "link": "https://hong-gah.org.tw/en/exhibitions",
+      "status": "current"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Fingertip Ritual — Liao Xuan Zhen Solo Exhibition",
+      "title_zh": "指尖儀式——廖宣蓁個展",
+      "dates": "2026.06.13 – 2026.08.31",
+      "artists": [
+        "廖宣蓁"
+      ],
+      "link": "https://hong-gah.org.tw/en/exhibitions",
+      "status": "current"
     }
   ]
 }
