@@ -540,15 +540,15 @@
       },
       "url": "https://tmofa.tycg.gov.tw",
       "hours": {
-        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
-        "ja": "火〜日 10:00–17:00｜月休",
-        "zh": "週二至週日 10:00–17:00｜週一休"
+        "en": "Wed–Mon 09:30–17:00 | Closed Tue",
+        "ja": "水〜月 9:30–17:00｜火曜休館",
+        "zh": "週三至週一 09:30–17:00｜週二休館"
       },
-      "closed_day": 0,
+      "closed_day": 2,
       "lat": 24.971301,
       "lng": 121.288594,
       "closed_days": [
-        0
+        2
       ]
     },
     {
