@@ -930,5 +930,16 @@
     "description_en": "The exhibition uses \"flip\" as its central theme, employing books from past exhibitions and related design objects as media to redefine these artifacts. Visitors interact through flipping, reading, examining, and tactile exploration, giving these items new meanings. The concept of \"flip\" extends beyond books to artworks, object designs, culinary experiences, and various corners of the museum. A decade has passed—traces of the past never truly disappear but randomly seep into each present moment.",
     "description_ja": "「めくる」を核心テーマに、過去の展覧会書籍と関連デザイン物を媒介として用い、それらの意味を再定義する。観者はめくる・読む・検する・触覚的探索を通じて物に新たな意味を付与する。メキシコの概念芸術家Ulises Carrionの言葉を引用：「本とは空間の連続体である。」「めくる」の概念は書物を超え、芸術作品・物のデザイン・料理体験・美術館の各所に延伸する。10年が過ぎ、過去の痕跡は消えることなく、各瞬間に滲み込み続ける。",
     "fetched_at": "2026-06-29T13:21:04.943721+08:00"
+  },
+  "https://www.asiaartcenter.org/en/exhibitions": {
+    "artists": [
+      "簡喬倩 Tobe Kiu Sin Kan",
+      "Charlotte Keates"
+    ],
+    "curator": "",
+    "description": "亞洲藝術中心呈獻 Unseen Topographies，推出香港藝術家簡喬倩與英國藝術家Charlotte Keates的雙人展。展覽匯聚兩人風格化的繪畫實踐，探問記憶、感知、身分與情感如何轉譯為既熟悉又難以捉摸的空間經驗。Unseen Topographies所指向的並非現實中的地理景觀，而是構成生命經驗的隱性輪廓：記憶、渴望、心理聯想，以及內在世界與外部現實之間流動不羈的關係。兩位藝術家皆居住於島嶼之上，卻身處截然不同的環境——簡喬倩成長於高密度的香港，Keates居住於英吉利海峽中僅六萬人口的根西島。",
+    "description_en": "Asia Art Center presents Unseen Topographies, a two-person exhibition featuring Hong Kong artist Tobe Kiu Sin Kan and British artist Charlotte Keates. The exhibition explores how memory, perception, identity, and emotion may be translated into spaces that feel at once familiar and elusive. The title refers not to geography in a literal sense, but to the invisible contours that shape lived experience. Both artists live on small islands yet inhabit markedly different worlds—Kan in dense, fast-moving Hong Kong, Keates in quiet Guernsey.",
+    "description_ja": "アジアアートセンターが贈るUnseen Topographies。香港のアーティスト簡喬倩と英国のCharlotte Keatesによる二人展。記憶・知覚・アイデンティティ・感情がいかに親しみと捉えどころのなさを併せ持つ空間体験に翻訳されうるかを探る。タイトルが指すのは現実の地理的景観ではなく、生の経験を形作る不可視の輪郭——記憶、渇望、心理的連想、内的世界と外的現実の間の流動的な関係である。二人のアーティストはともに島に暮らすが、環境は対照的——簡喬倩は高密度の香港、Keatesはイギリス海峡の静かなガーンジー島。",
+    "fetched_at": "2026-06-29T13:40:58.032613+08:00"
   }
 }
