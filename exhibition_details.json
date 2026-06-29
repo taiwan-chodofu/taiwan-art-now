@@ -1299,5 +1299,20 @@
     "description_en": "The experience of leaving home draws attention to lives that cross borders and grow in unfamiliar lands. In today's world of increasingly defined boundaries, plant movement remains unconstrained by human divisions. \"Weeds Won't Be Tamed\" responds to this contemporary condition: in an era of tightening borders, life's response need not be grand but permeates through subtle, dispersed, and persistent means. Plants never obey—they cross borders at their own rhythm, writing a history of margins and freedom.",
     "description_ja": "故郷を離れた経験は、境界を越え見知らぬ土地に生きる生命への眼差しを開く。国境が明確化し移動が制限される今日、植物の流動は人為的区分に完全には従わない。「野草不服管」はこの現代的状況に応答する——境界が締まりゆく時代に、生命の応答は壮大である必要はなく、微細で分散的かつ持続的な方法で浸透する。植物は決して従わない。自らのリズムで境界を越え、地景に潜行し、秩序を攪乱し、野草と周縁と自由に属する歴史を書き記す。",
     "fetched_at": "2026-06-29T17:18:15.430597+08:00"
+  },
+  "https://www.artistvillage.org/event-detail.php?p=5091": {
+    "artists": [
+      "陳鈺琇",
+      "林沛涵",
+      "林亭羽",
+      "王楚雯",
+      "黃姿婷",
+      "潘保源"
+    ],
+    "curator": "",
+    "description": "《野沉浸》所追求的，是阿爾托「殘酷劇場」所描繪的另一種理想：不以溫柔的幻象麻痺觀者，而以真實的感知衝擊喚醒身體，使在場成為一種無從閃躲的震顫。本展中的每一件作品皆內建了某種程度的失控：感測器的誤讀、演算法的漂移、材料本身的物理噪音——這些「缺陷」並非技術的遺漏，而是策略性的倫理宣言。「野」在此是核心的美學方法論——野生之物不依循設計意圖生長，展覽以野對抗馴，以失控對抗優化，以摩擦對抗無縫，最終以一種更粗糲、更具身體重量的方式，兌現沉浸的真正承諾。",
+    "description_en": "Wild Immersion pursues Artaud's \"Theatre of Cruelty\" ideal: not numbing viewers with gentle illusions, but awakening the body through genuine perceptual impact. Each work contains built-in loss of control—sensor misreadings, algorithmic drift, physical noise of materials. These \"defects\" are not technical oversights but strategic ethical declarations. \"Wild\" is the core aesthetic methodology—wild things don't grow according to design intent. The exhibition opposes tameness with wildness, optimization with loss of control, seamlessness with friction.",
+    "description_ja": "《野沈浸》が追求するのは、アルトーの「残酷演劇」が描く別種の理想——柔らかな幻影で観者を麻痺させるのではなく、真実の知覚的衝撃で身体を覚醒させ、在場を逃れられない震えとすること。各作品にはある程度の制御喪失が内蔵されている——センサーの誤読、アルゴリズムのドリフト、素材自体の物理的ノイズ。これらの「欠陥」は技術的遺漏ではなく戦略的な倫理宣言。「野」は核心的美学方法論——野生のものは設計意図に従わず成長する。展覧会は野で馴に対抗し、失控で最適化に対抗し、摩擦で無縫に対抗する。",
+    "fetched_at": "2026-06-29T17:33:45.107391+08:00"
   }
 }

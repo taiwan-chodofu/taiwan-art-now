@@ -1596,6 +1596,22 @@
       ],
       "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E9%87%8E%E8%8D%89%E4%B8%8D%E6%9C%8D%E7%AE%A1",
       "status": "upcoming"
+    },
+    {
+      "museum": "tav",
+      "title_zh": "野沈浸",
+      "title_en": "",
+      "dates": "2026.05.21 – 2026.07.12",
+      "artists": [
+        "陳鈺琇",
+        "林沛涵",
+        "林亭羽",
+        "王楚雯",
+        "黃姿婷",
+        "潘保源"
+      ],
+      "link": "https://www.artistvillage.org/event-detail.php?p=5091",
+      "status": "current"
     }
   ]
 }
