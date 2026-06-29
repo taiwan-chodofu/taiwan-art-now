@@ -294,8 +294,9 @@ def _scrape_moca(lang="en"):
     today = _now_tw()
     skip_keywords = ["Artist Talk", "Screening", "Lecture", "Workshop",
                      "Guided Tour", "Curator Talk", "Artist Meet",
+                     "VR線上", "MoCA on Air", "Online Exhibition",
                      "座談", "講座", "放映", "工作坊", "導覽",
-                     "面對面", "小光點", "上誼"]
+                     "面對面", "小光點", "上誼", "專家導覽"]
     try:
         soup = _fetch(url)
         seen = set()
