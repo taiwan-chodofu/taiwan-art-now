@@ -1632,5 +1632,17 @@
     "description_en": "Collecting is a way for humans to connect with the world. This exhibition centers on the public's \"collecting emotions\" toward characters, inviting 6 distinctive Taiwanese original IP character groups to create immersive interactive scenes and co-create new collecting memories. From personal figurines and models to museum art and artifacts, \"collecting\" is not just about objects but about how people give meaning to things.",
     "description_ja": "コレクションは人類が世界と繋がる方法。「屏藏心」特展は大衆のキャラクターに対する「収蔵感情」を核心に、台湾の個性的な6組のオリジナルIPキャラクターを招聘し、没入型インタラクティブシーンを構築して新たな収蔵の思い出を共創する。個人のフィギュアや模型から博物館の芸術品まで、「収蔵」は物そのものだけでなく、人がいかに物に意味を与えるかに関わる。",
     "fetched_at": "2026-06-29T20:11:45.575140+08:00"
+  },
+  "pingtung_caucau": {
+    "artists": [
+      "跩姬寶貝（高偉恩）",
+      "馬辰政",
+      "楊奕"
+    ],
+    "curator": "",
+    "description": "由屏東縣政府原住民處主辦的特展《花花caucau》，邀請三位跨領域藝術家——跩姬寶貝（高偉恩）、馬辰政與楊奕，透過各自的生命軌跡，在「肉身之宇」中綻放出絕美而真實的生命之花，詮釋何謂「nguanguaq a caucau」（美好的人）。歡迎走進這片不設限的花徑，在繁花之中發覺屬於自己的生命花語。",
+    "description_en": "Organized by Pingtung County's Indigenous Peoples Division, \"Flower Caucau\" invites three cross-disciplinary artists—Chuai Ji Bao Bei (Gao Wei-En), Ma Chen-Zheng, and Yang Yi—to bloom through their life trajectories, interpreting what it means to be \"nguanguaq a caucau\" (a beautiful person). Welcome to this boundless flower path where everyone discovers their own life's flower language.",
+    "description_ja": "屏東県政府原住民処が主催する特展《花花caucau》は、3人の越境的アーティスト——跩姫宝貝（高偉恩）、馬辰政、楊奕を招き、それぞれの生命の軌跡を通じて「nguanguaq a caucau」（美好な人）とは何かを表現する。制限のないこの花径に足を踏み入れ、繁花の中で自身の生命の花言葉を発見してほしい。",
+    "fetched_at": "2026-06-29T20:12:15.902638+08:00"
   }
 }
