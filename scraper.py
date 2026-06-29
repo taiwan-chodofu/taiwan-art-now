@@ -593,10 +593,7 @@ def _scrape_tcma():
                 href = "https://www.tcam.museum" + href
             # 詳細ページから日付を取得
             dates = _fetch_tcma_dates(href)
-            # 日付なし（常設展）はスキップ
-            if not dates:
-                continue
-            if not _is_current_exhibition(dates, today):
+            if dates and not _is_current_exhibition(dates, today):
                 continue
             has_cjk = bool(re.search(r"[一-鿿]", title))
             exhibitions.append({
