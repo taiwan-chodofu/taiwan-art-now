@@ -1480,7 +1480,7 @@ ARTEMPEROR_NAME_MAP = {
     "國立臺灣美術館": "ntmofa",
     "臺南市美術館": "tnam",
     "高雄市立美術館": "kmfa",
-    "桃園市立美術館": "tmofa",
+    "桃園市立美術館": "hengshan",
     "蘭陽博物館": "lym",
     "伊通公園": "itpark",
     "IT Park": "itpark",
