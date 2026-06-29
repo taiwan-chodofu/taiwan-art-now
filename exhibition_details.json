@@ -1325,5 +1325,19 @@
     "description_en": "Echoing the 2026 Taiwan Design Expo in Taoyuan, \"Same but Different\" is a children's art exhibition centered on \"inclusion,\" featuring 9 artist groups from France, the USA, and Taiwan. We share the \"same\" desire to play and be understood, yet have \"different\" bodies, senses, and ways of seeing the world. Through three themes—\"Spatial Play,\" \"Difference and Inclusion,\" and \"Imagination in Daily Life\"—children and adults are invited to recognize differences, understand diversity, and imagine a more inclusive city.",
     "description_ja": "2026年台湾デザイン展（桃園）に呼応する児童芸術特展。「共融」を核心概念に、フランス・アメリカ・台湾から9組のアーティスト/デザインチームを招聘。私たちは「同じ」遊びたい・理解されたい心を持つが、「違う」身体・感覚・世界の見方を持っている。「空間遊戯」「差異と共融」「日常の想像」の3軸を通じ、子どもと大人が人間関係の差異を認識し、世界を構成する多元的な姿を理解し、より包摂的な共融都市を共に想像する。",
     "fetched_at": "2026-06-29T15:40:12.366976+08:00"
+  },
+  "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E9%87%8E%E8%8D%89%E4%B8%8D%E6%9C%8D%E7%AE%A1": {
+    "artists": [
+      "石孟鑫",
+      "吳瑋庭",
+      "陳郁文",
+      "梁祐寧",
+      "蘇詠寶"
+    ],
+    "curator": "陳斯吟",
+    "description": "離家前往異鄉的經驗，讓人開始留意那些跨越邊界、在陌生土地上生長的生命。當今世界國界愈加明確，移動受到限制，然而植物的流動始終不完全受制於這些人為劃分。植物的遷徙與人類歷史緊密相連，像茶這樣熟悉的存在，曾隨著貿易與殖民擴散。「野草不服管」試圖回應這樣的當代處境：在邊界日益收緊的時代，生命的回應未必宏大，而是以細微、分散而持續的方式滲透其中。植物從來不服從，它們以自己的節奏穿越邊界、潛行地景、擾動秩序，書寫出一種屬於野草、屬於邊緣，也屬於自由的歷史。",
+    "description_en": "The experience of leaving home draws attention to lives that cross borders and grow in unfamiliar lands. In today's world of increasingly defined boundaries, plant movement remains unconstrained by human divisions. \"Weeds Won't Be Tamed\" responds to this contemporary condition: in an era of tightening borders, life's response need not be grand but permeates through subtle, dispersed, and persistent means. Plants never obey—they cross borders at their own rhythm, writing a history of margins and freedom.",
+    "description_ja": "故郷を離れた経験は、境界を越え見知らぬ土地に生きる生命への眼差しを開く。国境が明確化し移動が制限される今日、植物の流動は人為的区分に完全には従わない。「野草不服管」はこの現代的状況に応答する——境界が締まりゆく時代に、生命の応答は壮大である必要はなく、微細で分散的かつ持続的な方法で浸透する。植物は決して従わない。自らのリズムで境界を越え、地景に潜行し、秩序を攪乱し、野草と周縁と自由に属する歴史を書き記す。",
+    "fetched_at": "2026-06-29T17:18:15.430597+08:00"
   }
 }
