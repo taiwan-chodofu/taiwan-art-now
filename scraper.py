@@ -2189,7 +2189,7 @@ def _do_scrape_all():
         "asiaart": lambda: _with_fallback("asiaart", lambda: _scrape_artlogic_gallery(
             "asiaart", "https://www.asiaartcenter.org/en/exhibitions", "Taipei")),
         "tnam": lambda: _with_fallback("tnam", _scrape_tnam),
-        "soka": lambda: _with_fallback("soka", _scrape_soka),
+        # soka: manual-only (scraper picks up nav menu as artists)
         "jut": lambda: _with_fallback("jut", _scrape_jut),
         "fubon": lambda: _with_fallback("fubon", _scrape_fubon),
     }
@@ -2207,7 +2207,7 @@ def _do_scrape_all():
     # moca: manual-only (loaded via _load_all_manual)
     for key in ["tfam", "ntcart", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
-                "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
+                "montue", "pingtung", "tinakeng", "asiaart", "tnam", "jut", "fubon"]:
         all_exhibitions.extend(results.get(key, []))
 
     # マスターデータから汎用スクレイパー対象を取得
