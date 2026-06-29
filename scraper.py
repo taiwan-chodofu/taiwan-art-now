@@ -1891,6 +1891,52 @@ def _run_validation(exhibitions):
         if not (ex.get('title_zh') or ex.get('title_en')):
             issues.append(f"[MISSING TITLE] {museum}: '{title[:30]}'")
 
+    # Check 5: スクレイプ結果と手動データの差異検出
+    manual_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
+    if os.path.exists(manual_path):
+        try:
+            with open(manual_path, "r", encoding="utf-8") as f:
+                manual_data = json.load(f)
+            manual_exs = manual_data.get("exhibitions", [])
+            manual_by_key = {}
+            for mex in manual_exs:
+                key = (mex.get("museum", ""), mex.get("title_en", "") or mex.get("title_zh", ""))
+                manual_by_key[key] = mex
+
+            for ex in exhibitions:
+                museum = ex.get("museum", "")
+                title = ex.get("title_en", "") or ex.get("title_zh", "")
+                key = (museum, title)
+                if key not in manual_by_key:
+                    continue
+                mex = manual_by_key[key]
+                # Compare dates
+                scraped_dates = ex.get("dates", "")
+                manual_dates = mex.get("dates", "")
+                if scraped_dates and manual_dates and scraped_dates != manual_dates:
+                    issues.append(
+                        f"[DATA MISMATCH] {museum} '{title[:25]}': "
+                        f"dates differ — scraped='{scraped_dates}' vs manual='{manual_dates}'"
+                    )
+                # Compare title_en
+                s_title = ex.get("title_en", "")
+                m_title = mex.get("title_en", "")
+                if s_title and m_title and s_title != m_title:
+                    issues.append(
+                        f"[DATA MISMATCH] {museum}: "
+                        f"title_en differs — scraped='{s_title[:40]}' vs manual='{m_title[:40]}'"
+                    )
+                # Compare link
+                s_link = ex.get("link", "")
+                m_link = mex.get("link", "")
+                if s_link and m_link and s_link != m_link:
+                    issues.append(
+                        f"[DATA MISMATCH] {museum} '{title[:25]}': "
+                        f"link differs — scraped='{s_link[:50]}' vs manual='{m_link[:50]}'"
+                    )
+        except Exception:
+            pass
+
     if issues:
         from datetime import datetime, timezone, timedelta
         tw_now = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M')
