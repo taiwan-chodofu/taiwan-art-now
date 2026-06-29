@@ -1351,10 +1351,12 @@
     {
       "museum": "honggah",
       "title_en": "Yangmingshan Art Festival｜Echoes in the Interstices",
-      "title_zh": "陽明山藝術季｜間響",
+      "title_zh": "陽明山藝術季：石間迴響",
       "dates": "2026.06.13 – 2026.08.23",
-      "artists": [],
-      "link": "https://hong-gah.org.tw/en/hong-gah/yangmingshan-art-festivalechoes-in-the-interstices-en",
+      "artists": [
+        "黃楷迪助理教授團隊"
+      ],
+      "link": "https://hong-gah.org.tw/hong-gah/yangmingshan-art-festivalechoes-in-the-interstices-cn",
       "status": "current"
     },
     {
