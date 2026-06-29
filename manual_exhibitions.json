@@ -1360,10 +1360,16 @@
     {
       "museum": "honggah",
       "title_en": "Upon the Gathering Waters — Hong-gah Museum Summer Collection",
-      "title_zh": "聚水之上——鳳甲美術館夏季聯展",
+      "title_zh": "于彼行潦－鳳甲美術館丙午夏季典藏精選",
       "dates": "2026.06.13 – 2026.08.23",
-      "artists": [],
-      "link": "https://hong-gah.org.tw/en/hong-gah/upon-the-gathering-waters-en",
+      "artists": [
+        "王萬春",
+        "鄭政煌",
+        "盧天炎（盧怡仲）",
+        "鄭在東",
+        "施並錫"
+      ],
+      "link": "https://hong-gah.org.tw/hong-gah/upon-the-gathering-waters_ch",
       "status": "current"
     },
     {
