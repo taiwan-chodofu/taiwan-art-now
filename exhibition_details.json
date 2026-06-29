@@ -101,23 +101,35 @@
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#yinyou": {
     "artists": [
-      "霍剛",
-      "權純益"
+      "霍剛 Ho Kan",
+      "權純益 Soonik Kwon"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "邵雅曼、郭東杰",
+    "description": "空間之形，時間之韻，點陣鳴響，化入永恆。《吟遊時空》重新召喚「抽象」在東亞語境中的精神核心。策展軸心為「形與氣」：霍剛以明亮色面與幾何構圖創造「秩序」；權純益以筆觸與肌理彰顯「氣」的「流動」。作品橫跨1955至2024年，分五個章節展開。抽象不是逃離現實，而是進入更深的現實。",
+    "description_en": "The form of space, the rhythm of time, dots resounding, dissolving into eternity. The Bards of Time and Space re-invokes the spiritual core of \"abstraction\" in the East Asian context. The curatorial axis is \"Form and Qi\": Ho Kan creates \"order\" through bright color planes and geometric composition; Kwon manifests \"flow\" through brushstrokes and texture. Works span 1955-2024 across five chapters.",
+    "description_ja": "空間の形、時間の韻、点陣が鳴り響き、永遠に化する。《吟遊時空》は「抽象」の東アジア的文脈における精神的核心を再び呼び起こす。策展の軸は「形と気」：霍剛は明るい色面と幾何学構図で「秩序」を創り、権純益は筆触と肌理で「気」の「流動」を顕す。1955〜2024年の作品を5章で展開。抽象は現実からの逃避ではなく、より深い現実への参入である。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#dustgold": {
     "artists": [
-      "藤村真",
-      "道川省三"
+      "藤村真 Makoto Fujimura",
+      "道川省三 Shozo Michikawa"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "邵雅曼、李晏禎",
+    "description": "塵，是無常，是日常，是物質風化後的殘餘與延續；金，是光之閃現，是信念的沉澱，是靈性不可銷蝕的回聲。《力之篇章》從「力如何成形」引領觀者探索作品背後的手勢與時間的姿態。藤村真以礦物與金箔的緩慢層疊回應修復與希望；道川省三以扭轉、切割陶土與火痕呈現大地之力與無常之美。",
+    "description_en": "Dust is impermanence, the everyday, the residue and continuation of weathered matter; Gold is the flash of light, the sediment of faith, the indestructible echo of spirit. The Formative Chapter leads viewers from \"how force takes form\" to explore the gestures and temporal postures behind works. Fujimura responds to repair and hope through slow layering of minerals and gold leaf; Michikawa presents earth's force and beauty of impermanence through twisted, cut clay and fire marks.",
+    "description_ja": "塵は無常であり日常であり、物質が風化した後の残余と延続である。金は光の閃き、信念の沈殿、霊性の消し去れない回響。《力之篇章》は「力がいかに形を成すか」から観者を導き、作品の背後にある手勢と時間の姿勢を探る。藤村真は鉱物と金箔の緩慢な積層で修復と希望に応答し、道川省三は陶土の捻転・切断と火痕で大地の力と無常の美を呈示する。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#sky": {
     "artists": [
-      "鎌田治朗"
+      "鎌田治朗 Jiro Kamata"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "邵雅曼",
+    "description": "當代首飾超越裝飾，成為個人探索微型空間、情感與文化連結的載體。鎌田治朗的靈感來自歐洲南方天文台（ESO），在智利阿塔卡瑪沙漠仰望星空，在澳洲見證「彎曲的地平線」。他意識到球體是天文學的核心形狀，兩個重疊的球體形成圓如同一隻「眼」。近30年來他拆解數千顆不同時代的相機鏡頭，透過光的科學探索文明，並創造了名為「ALIEN」的原創水晶——關於光、宇宙與哲學的詩意旅程。",
+    "description_en": "Contemporary jewelry transcends decoration, becoming a vehicle for personal exploration of micro-space, emotional and cultural connections. Jiro Kamata drew inspiration from the European Southern Observatory. In Chile's Atacama Desert he saw the starry sky; in Australia he witnessed the curved horizon. He realized the sphere is astronomy's core shape, and two overlapping spheres form a circle like an \"eye.\" Over nearly 30 years, he disassembled thousands of camera lenses, exploring civilization through the science of light, and created an original crystal named \"ALIEN.\"",
+    "description_ja": "現代ジュエリーは装飾を超え、個人がミクロ空間・感情・文化的繋がりを探求する器となる。鎌田治朗はESO（欧州南天天文台）に着想を得た。チリ・アタカマ砂漠で星空を仰ぎ、オーストラリアで「湾曲した地平線」を目撃。球体が天文学の核心形状であり、2つの重なる球体が円＝「眼」を形成することに気づく。約30年にわたり数千のカメラレンズを分解し、光の科学を通じて文明を探求、「ALIEN」と名づけたオリジナル水晶を創造した。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#crossing": {
     "artists": [
@@ -297,8 +309,11 @@
       "Takahiko Suzuki",
       "Kusofiyah Nibuesa"
     ],
-    "note": "Names from official EN page. TW artists: Lee Chu-Hsin=李足新, Lin Wei-Hsiang=林威翔, Hsu Chun-Yu=許淳俞, Hsu Jui-Fu=許瑞福, Liang Zhaoxi=梁兆熙",
-    "fetched_at": "2026-06-25"
+    "curator": "",
+    "description": "毓繡美術館開館十週年紀念展。展覽橫跨四個樓層，以當代寫實為中心主題。一樓以Sam Jinks的《跪著的女人》確立美術館當代寫實的核心命題；二樓展現美術館座落於烏溪與九九峰之間的環境美學；三樓回到典藏探索自然環境、時空連結、存在與死亡等抽象主題；四樓閣樓創造台灣街景與他國街景的對話。",
+    "description_en": "The exhibition celebrates Yu-Hsiu Museum's 10th anniversary (opened 2016), spanning four floors centered on contemporary realism. 1F: Sam Jinks' Kneeling Woman establishes the museum's central theme. 2F: Environmental imagery showcasing aesthetic ideas between the Wu River and Jiu Jiu Peaks. 3F: Collection exploring nature, spatiotemporal connections, existence, and death. 4F: Conversations between Taiwan's streetscapes and those of other countries.",
+    "description_ja": "毓繡美術館開館10周年記念展。4フロアにわたり現代写実を中心テーマに展開。1階はSam Jinksの《跪く女》で美術館の現代写実の核心命題を確立。2階は烏渓と九九峰の間に位置する環境美学を提示。3階は典蔵に立ち返り自然環境・時空の接続・存在と死を探求。4階は台湾の街並みと他国の街並みの対話を創出する。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://artemperor.tw/tidbits/19798": {
     "artists": [
@@ -897,5 +912,23 @@
     "description_en": "The exhibition uses \"library classification\" as its core concept, treating 200+ award-winning works accumulated over 20 years of the Longyen Art Award as a continuously expanding \"library.\" Through classification, cataloging, and indexing, works can be searched, compared, and cross-read. Generative AI is introduced as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple fluid classification results reflecting contemporary art's interdisciplinarity.",
     "description_ja": "本展は「図書分類法」を核心概念に、龍顔芸術創作賞20年間で蓄積した200余件の受賞典蔵作品を絶えず拡充する「図書館」と見なす。分類・編目・索引を通じて作品は検索・対照・横断的読解が可能になる。生成AIを「図書館員」として導入し、単一の策展視点を突破し、現代芸術の分野横断性と多義性を反映する多重かつ流動的な分類結果を生成する。",
     "fetched_at": "2026-06-29T13:18:38.261118+08:00"
+  },
+  "https://yiriarts.com.tw/exhibitions/": {
+    "artists": [
+      "陳雲"
+    ],
+    "curator": "",
+    "description": "在當代藝術強調流動與不穩定的語境中，此次展覽試圖在變動的記憶與感知之間，為觀者保留一個覺察自身位置的座標——回應繪畫歷經時間沖刷後，如何持續生成其存在的密度。作品的視覺語言游移於人物光影、日常物件與抽象肌理之間。平塗的層次在畫布上堆疊的質感、組畫之間刻意留下的縫隙，在併組結構裡彼此對照共鳴，召喚出遠大於畫面本身的時間感與重量。",
+    "description_en": "In a contemporary art context emphasizing fluidity and instability, this exhibition attempts to preserve a coordinate of self-awareness between shifting memories and perceptions—responding to how painting continues to generate its existential density after being washed by time. The visual language drifts between figure and light, everyday objects, and abstract textures.",
+    "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
+  },
+  "https://www.yu-hsiu.org/en/exhibition/1/data/41": {
+    "artists": [],
+    "curator": "",
+    "description": "展覽以「翻」為核心主題，運用過往展覽書籍及相關設計物件作為媒介，重新定義這些物件的意義。觀者透過翻閱、閱讀、檢視與觸覺探索互動，賦予物件新的意涵。引用墨西哥概念藝術家Ulises Carrion之言：「一本書是一系列空間的序列。」「翻」的概念延伸至藝術作品、物件設計、料理體驗與美術館的各個角落。十年過去，過去的痕跡從未真正消失，而是隨機滲入每一個當下的瞬間。",
+    "description_en": "The exhibition uses \"flip\" as its central theme, employing books from past exhibitions and related design objects as media to redefine these artifacts. Visitors interact through flipping, reading, examining, and tactile exploration, giving these items new meanings. The concept of \"flip\" extends beyond books to artworks, object designs, culinary experiences, and various corners of the museum. A decade has passed—traces of the past never truly disappear but randomly seep into each present moment.",
+    "description_ja": "「めくる」を核心テーマに、過去の展覧会書籍と関連デザイン物を媒介として用い、それらの意味を再定義する。観者はめくる・読む・検する・触覚的探索を通じて物に新たな意味を付与する。メキシコの概念芸術家Ulises Carrionの言葉を引用：「本とは空間の連続体である。」「めくる」の概念は書物を超え、芸術作品・物のデザイン・料理体験・美術館の各所に延伸する。10年が過ぎ、過去の痕跡は消えることなく、各瞬間に滲み込み続ける。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   }
 }
