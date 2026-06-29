@@ -1059,13 +1059,14 @@
       "museum": "alien",
       "title_zh": "過渡 Crossing",
       "title_en": "Crossing",
-      "dates": "",
+      "dates": "常設展覽",
       "location": "金馬賓館當代美術館",
       "link": "https://www.alien.com.tw/u/zh-tw/list/exhibitions#crossing",
       "artists": [
         "伍韶勁",
         "張慧婷"
-      ]
+      ],
+      "status": "permanent"
     },
     {
       "museum": "yuhsiu",
