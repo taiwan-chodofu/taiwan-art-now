@@ -1521,6 +1521,75 @@
       ],
       "link": "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=25ae76d1-a93f-4ec7-9368-14b5812586db&appname=Exhibition3110",
       "status": "current"
+    },
+    {
+      "museum": "clab",
+      "title_zh": "我們正成為",
+      "title_en": "WE Are Becoming",
+      "dates": "2026.05.08 – 2026.08.16",
+      "artists": [],
+      "link": "https://clab.org.tw/en/events/we-are-becoming/",
+      "status": "current"
+    },
+    {
+      "museum": "thecube",
+      "title_zh": "李漢強：最後のCD",
+      "dates": "2026.05.23 – 2026.08.03",
+      "artists": [
+        "李漢強"
+      ],
+      "link": "https://thecubespace.com",
+      "status": "current"
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "未安之地",
+      "dates": "2026.07.03 – 2026.09.27",
+      "artists": [
+        "艾立森",
+        "紀凱淵",
+        "葛瑞芬",
+        "劉芸怡",
+        "鄭亭亭"
+      ],
+      "link": "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9df9118b3a3b3b48451923c1a6808f7f40e",
+      "status": "current"
+    },
+    {
+      "museum": "ncpi",
+      "title_zh": "黯像：看見不見-無視之覺",
+      "title_en": "Obscured Portraits: Seen and Unseen",
+      "dates": "2026.04.18 – 2026.09.14",
+      "artists": [
+        "張照堂",
+        "張乾琦",
+        "周慶輝",
+        "鄧南光",
+        "侯淑姿"
+      ],
+      "link": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=6535&sms=11476&s=44287",
+      "status": "current"
+    },
+    {
+      "museum": "ntnuart",
+      "title_zh": "2026 共生之華──日本美術璀璨時代與臺灣之交會",
+      "dates": "2026.06.09 – 2026.09.20",
+      "artists": [
+        "荒川嶺雲",
+        "石井素堂"
+      ],
+      "link": "https://www.artmuse.ntnu.edu.tw/index.php/2026symbioticsplen",
+      "status": "current"
+    },
+    {
+      "museum": "absolute",
+      "title_zh": "曾經在場－鄭安利個展",
+      "dates": "2026.05.24 – 2026.07.13",
+      "artists": [
+        "鄭安利"
+      ],
+      "link": "https://www.absoluteart.space/14641687",
+      "status": "current"
     }
   ]
 }
