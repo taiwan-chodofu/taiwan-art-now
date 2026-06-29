@@ -941,5 +941,26 @@
     "description_en": "Asia Art Center presents Unseen Topographies, a two-person exhibition featuring Hong Kong artist Tobe Kiu Sin Kan and British artist Charlotte Keates. The exhibition explores how memory, perception, identity, and emotion may be translated into spaces that feel at once familiar and elusive. The title refers not to geography in a literal sense, but to the invisible contours that shape lived experience. Both artists live on small islands yet inhabit markedly different worlds—Kan in dense, fast-moving Hong Kong, Keates in quiet Guernsey.",
     "description_ja": "アジアアートセンターが贈るUnseen Topographies。香港のアーティスト簡喬倩と英国のCharlotte Keatesによる二人展。記憶・知覚・アイデンティティ・感情がいかに親しみと捉えどころのなさを併せ持つ空間体験に翻訳されうるかを探る。タイトルが指すのは現実の地理的景観ではなく、生の経験を形作る不可視の輪郭——記憶、渇望、心理的連想、内的世界と外的現実の間の流動的な関係である。二人のアーティストはともに島に暮らすが、環境は対照的——簡喬倩は高密度の香港、Keatesはイギリス海峡の静かなガーンジー島。",
     "fetched_at": "2026-06-29T13:40:58.032613+08:00"
+  },
+  "https://ntcart.museum/exhibition_content.aspx?id=H2601001": {
+    "artists": [
+      "吳耿禎",
+      "奇倫．卡里普爾",
+      "法醫建築",
+      "邱承宏",
+      "高雅婷",
+      "張思敏",
+      "陳豪毅",
+      "斯拉夫人與韃靼人",
+      "黃博志",
+      "雷揚．塔貝特",
+      "jiandyin",
+      "Nii Nami（泥椅）"
+    ],
+    "curator": "鄒婷、王韓芳",
+    "description": "本展從新北市的紡織與礦業歷史出發，以「進行中的博物館」為想像，探問來自不同地緣政治與時空背景的族群與物件，如何循環出相似又相異的文化敘事。當棉線遇到石頭，走過歷時百年的礦業開採與近代紡織工業的蓬勃發展——兩條看似平行卻不時交錯的產業敘事，在礦坑與工廠、地下與地面、男性與女性的勞動經驗之間，交織出獨特的城市紋理與文化記憶。結合傳統技藝與當代藝術，透過文學、物件、影像、檔案、工藝與藝術創作等多元形式展開。",
+    "description_en": "Departing from New Taipei City's textile and mining history, the exhibition imagines a \"museum in progress,\" asking how peoples and objects from different geopolitical and temporal backgrounds circulate similar yet different cultural narratives. When thread meets stone—across a century of mining and the boom of modern textile industry—two seemingly parallel yet intersecting industrial narratives weave unique urban textures and cultural memories between mines and factories, underground and surface, male and female labor. Combining traditional craft and contemporary art, the exhibition unfolds through literature, objects, film, archives, craft, and artistic creation.",
+    "description_ja": "新北市の紡績と鉱業の歴史から出発し、「進行中の博物館」を想像力として、異なる地政学的・時空的背景を持つ民族と物がいかに類似しつつ異なる文化的叙事を循環させるかを問う。綿糸が石に出会うとき——百年にわたる鉱業採掘と近代紡績工業の発展を辿り、坑道と工場、地下と地上、男性と女性の労働経験の間に独自の都市テクスチャと文化的記憶を織り上げる。伝統技芸と現代芸術を結合し、文学・物件・映像・アーカイブ・工芸・芸術創作の多様な形式で展開する。",
+    "fetched_at": "2026-06-29T13:43:04.711548+08:00"
   }
 }
