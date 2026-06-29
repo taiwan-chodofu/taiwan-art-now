@@ -1307,5 +1307,23 @@
     "description_en": "The 2026 Yangmingshan Art Festival takes \"terroir and people\" as its core perspective, focusing on the long-intertwined landscape, climate, and life of Yangmingshan through 18 artistic actions. Hong-Gah Museum is the first stop from city to mountain. \"Echoes in the Interstices\" centers on Beitou's Qilianshan Stone, using 3D scanning, sound, and interactive imagery to re-examine the relationship between stone, local memory, and bodily experience. These responses form a kind of \"echo\"—not simple reverberations, but long-accumulated dialogue between human and stone.",
     "description_ja": "2026陽明山芸術祭は「風土人」を核心的視点に、陽明山の地景・気候・人が長期にわたり織り交ぜてきた生活の姿に注目し、18の芸術アクションで山中の人・地・生活を繋ぐ。鳳甲美術館は都市から山林への最初の拠点。《石間迴響》は北投の唭哩岸石を核に、3Dスキャン・音・インタラクティブ映像で石・地方の記憶・身体経験の関係を再観察する。採石遺跡・石材の肌理・職人の打撃音から出発し、石を破砕され流動するデジタルイメージに変換。これらの応答は「回響」を形成する——単なる反響ではなく、人と石の間の長い対話・記憶・身体経験の蓄積である。",
     "fetched_at": "2026-06-29T15:09:49.549916+08:00"
+  },
+  "https://tmofa.tycg.gov.tw/ch/exhibitions/upcoming-exhibitions/156": {
+    "artists": [
+      "芬尼根．香儂 Finnegan Shannon",
+      "宮保睿",
+      "孫培懋",
+      "涂維政",
+      "陳以軒",
+      "黃韶瑩",
+      "西里爾．蘭斯林 Cyril Lancelin",
+      "justfont",
+      "陪你長大工作室 × 瑞豐國小五年級美術班"
+    ],
+    "curator": "熊芃",
+    "description": "呼應2026年臺灣設計展在桃園，「一樣不一樣」兒童藝術特展以「共融」為核心概念，邀請來自法國、美國及臺灣共9組藝術家與設計團隊展出。在這個世界上，我們有著「一樣」想玩、想被理解的心，卻有著「不一樣」的身體、感官與看世界的方式。透過「空間遊戲」、「差異與共融」、「日常中的想像」三大主軸，邀請孩子與大人們認識人際之間的差異，理解構成世界的多元樣貌，一起想像更具包容性的共融城市。",
+    "description_en": "Echoing the 2026 Taiwan Design Expo in Taoyuan, \"Same but Different\" is a children's art exhibition centered on \"inclusion,\" featuring 9 artist groups from France, the USA, and Taiwan. We share the \"same\" desire to play and be understood, yet have \"different\" bodies, senses, and ways of seeing the world. Through three themes—\"Spatial Play,\" \"Difference and Inclusion,\" and \"Imagination in Daily Life\"—children and adults are invited to recognize differences, understand diversity, and imagine a more inclusive city.",
+    "description_ja": "2026年台湾デザイン展（桃園）に呼応する児童芸術特展。「共融」を核心概念に、フランス・アメリカ・台湾から9組のアーティスト/デザインチームを招聘。私たちは「同じ」遊びたい・理解されたい心を持つが、「違う」身体・感覚・世界の見方を持っている。「空間遊戯」「差異と共融」「日常の想像」の3軸を通じ、子どもと大人が人間関係の差異を認識し、世界を構成する多元的な姿を理解し、より包摂的な共融都市を共に想像する。",
+    "fetched_at": "2026-06-29T15:40:12.366976+08:00"
   }
 }
