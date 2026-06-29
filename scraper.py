@@ -1960,14 +1960,23 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
 
 
 def _load_fb_json(museum_id):
-    """manual_exhibitions.jsonから該当施設のデータを読む。"""
+    """manual_exhibitions.jsonから該当施設のデータを読む。date_start/date_endをdates文字列に変換。"""
     fb_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
     if not os.path.exists(fb_path):
         return []
     try:
         with open(fb_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        return [ex for ex in data.get("exhibitions", []) if ex.get("museum") == museum_id]
+        results = []
+        for ex in data.get("exhibitions", []):
+            if ex.get("museum") != museum_id:
+                continue
+            if not ex.get("dates") and ex.get("date_start"):
+                start = ex["date_start"].replace("-", ".")
+                end = ex.get("date_end", "").replace("-", ".")
+                ex["dates"] = f"{start} – {end}" if end else start
+            results.append(ex)
+        return results
     except Exception:
         return []
 
