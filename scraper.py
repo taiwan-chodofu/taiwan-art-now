@@ -2280,24 +2280,25 @@ def _do_scrape_all():
         logger.warning("Master data load failed: %s", exc)
 
     # manual_exhibitions.json から全エントリを補完（専用スクレイパーがある施設も含む）
+    # manual_exhibitions.json はソースオブトゥルース: 重複があればmanualで上書き
     manual_all = _load_all_manual()
-    existing_keys = set()
-    for e in all_exhibitions:
-        mid = e.get("museum", "")
-        for t in (e.get("title_zh", ""), e.get("title_en", "")):
-            if t:
-                existing_keys.add((mid, t.strip().lower()))
     for mex in manual_all:
         mid = mex.get("museum", "")
         title_zh = mex.get("title_zh", "").strip().lower()
         title_en = mex.get("title_en", "").strip().lower()
-        is_dup = (mid, title_zh) in existing_keys if title_zh else False
-        if not is_dup and title_en:
-            is_dup = (mid, title_en) in existing_keys
-        if not is_dup and (title_zh or title_en):
+        # スクレイパー結果に同じ展示があれば削除してmanualで置換
+        replaced = False
+        for i, e in enumerate(all_exhibitions):
+            if e.get("museum") != mid:
+                continue
+            e_zh = e.get("title_zh", "").strip().lower()
+            e_en = e.get("title_en", "").strip().lower()
+            if (title_zh and title_zh == e_zh) or (title_en and title_en == e_en):
+                all_exhibitions[i] = mex
+                replaced = True
+                break
+        if not replaced:
             all_exhibitions.append(mex)
-            if title_zh:
-                existing_keys.add((mid, title_zh))
 
     all_exhibitions = _dedup_exhibitions(all_exhibitions)
     all_exhibitions = _filter_noise(all_exhibitions)
