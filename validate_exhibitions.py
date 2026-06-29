@@ -60,6 +60,24 @@ def validate_exhibitions():
         issues.append(
             f"[SHARED LINK] {count} exhibitions share link: {link[:60]}"
         )
+
+    # Check 4: 必須フィールド欠落（生命線チェック）
+    required_fields = {
+        'title': lambda ex: ex.get('title_zh') or ex.get('title_en'),
+        'dates': lambda ex: ex.get('dates'),
+        'museum': lambda ex: ex.get('museum'),
+        'link': lambda ex: ex.get('link'),
+    }
+    for ex in exhibitions:
+        if not isinstance(ex, dict):
+            continue
+        title = ex.get('title_zh', '') or ex.get('title_en', '') or '(no title)'
+        museum = ex.get('museum', '?')
+        for field, check in required_fields.items():
+            if not check(ex):
+                issues.append(
+                    f"[MISSING FIELD] {museum}: '{title[:30]}' is missing '{field}'"
+                )
     
     # Write log
     if issues:

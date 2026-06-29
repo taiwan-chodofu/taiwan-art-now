@@ -1882,6 +1882,15 @@ def _run_validation(exhibitions):
     for link, count in shared.items():
         issues.append(f"[SHARED LINK] {count} exhibitions share: {link[:80]}")
 
+    # Check 4: 必須フィールド欠落（展示名・日付・施設・リンク）
+    for ex in exhibitions:
+        title = ex.get('title_zh', '') or ex.get('title_en', '') or '(no title)'
+        museum = ex.get('museum', '?')
+        if not ex.get('dates'):
+            issues.append(f"[MISSING DATES] {museum}: '{title[:30]}'")
+        if not (ex.get('title_zh') or ex.get('title_en')):
+            issues.append(f"[MISSING TITLE] {museum}: '{title[:30]}'")
+
     if issues:
         from datetime import datetime, timezone, timedelta
         tw_now = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M')
