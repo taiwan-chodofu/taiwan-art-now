@@ -1222,12 +1222,17 @@
     },
     {
       "museum": "tav",
-      "title_zh": "開箱‧連線：文化中的移動與駐地",
-      "title_en": "",
-      "dates": "2026/05/01 - 2026/08/31",
+      "title_zh": "2026夏季開放工作室——出訪海外藝術家聯合展覽",
+      "title_en": "2026 Summer Open Studios",
+      "dates": "2026.06.20 – 2026.08.16",
       "location": "台北寶藏巖國際藝術村",
-      "link": "https://www.artistvillage.org/event1",
-      "artists": []
+      "link": "https://www.artistvillage.org/event-detail.php?p=5098",
+      "artists": [
+        "林彥翔",
+        "何彥諺",
+        "黃孟雯",
+        "趙若彤"
+      ]
     },
     {
       "museum": "tav",
