@@ -260,7 +260,11 @@
       "鄭建昌",
       "戴明德"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "",
+    "description": "「Signal Verse 嘉義宇宙」是一檔以嘉義市為起點的沉浸式數位藝術展覽，討論世界可以如何被觀看、記錄與重新想像。展覽延伸藝術團隊貳進長期發展的Data-Verse計畫，透過遊戲引擎、資料運算與即時互動技術，將城市中的氣象資料、網路訊息與群體行為等訊號轉譯為持續變動的數位景觀。本展由《Data-Verse Chiayi 02》與《獸》兩件作品構成，分別從觀眾參與與城市意象的角度出發。透過觀眾行動、環境變化與數位訊號的交會，描繪出一座持續生成的城市宇宙，使城市成為一個不斷被參與與重新想像的動態系統。",
+    "description_en": "Signal Verse is an immersive digital art exhibition starting from Chiayi City, exploring how the world can be observed, recorded, and reimagined. Extending art team 2ENTER's long-term Data-Verse project, it uses game engines, data computation, and real-time interactive technology to translate urban meteorological data, network signals, and collective behaviors into a continuously evolving digital landscape. The exhibition comprises two works: Data-Verse Chiayi 02 invites audiences to participate in city generation through drawing, while Beast uses XR technology to interweave real streetscapes, exhibition space, and virtual worlds, generating creatures based on real-time weather and city data.",
+    "description_ja": "「Signal Verse 嘉義宇宙」は嘉義市を起点とした没入型デジタルアート展覧会。世界がいかに観察・記録・再想像されうるかを探る。アートチーム貳進の長期プロジェクトData-Verseを延伸し、ゲームエンジン・データ演算・リアルタイムインタラクティブ技術で都市の気象データ・ネット情報・集団行動を絶えず変動するデジタル景観に変換する。《Data-Verse Chiayi 02》は観客が描画を通じて都市生成に参加し、《獣》はXR技術で実景・展示空間・仮想世界を交錯させ、リアルタイムの天候と都市データに基づき変化する奇獣を生成する。",
+    "fetched_at": "2026-06-29T12:14:42.657442+08:00"
   },
   "https://www.cultural.pthg.gov.tw/pt1936/Exhibition2": {
     "artists": [
@@ -629,5 +633,27 @@
     "description_en": "When we look around to fulfill needs, the concept of material emerges in consciousness. This exhibition borrows the philosopher/sophist pair to name current material thinking \"Sophist's Stone,\" inviting viewers to discuss how contemporary craft and art center on material while using their own material properties to articulate other materials' potential—avoiding the closure of materialism.",
     "description_ja": "私たちが周囲を見渡し必要を満たそうとするとき、「素材」の概念が意識に浮上する。本展は哲学者と詭弁家の概念対を借り、現代の創作者の素材思考を「辯者之石」と名付け、現代工芸とアートがいかに素材を創作の核とし、自らの素材特性で他の素材のダイナミズムを語りうるかを観客と共に探る。",
     "fetched_at": "2026-06-26T15:57:29.672852+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=810": {
+    "artists": [
+      "Lawrence Abu Hamdan",
+      "Tarek Atoui",
+      "陳庭榕 Chen Ting-Jung",
+      "Reena Saini Kallat",
+      "今津景 Kei Imazu",
+      "Bagus Pandega",
+      "Susan Schuppli",
+      "Nguyen Trinh Thi",
+      "Hajra Waheed",
+      "林其蔚 Lin Chi-Wei",
+      "Samson Young",
+      "袁旃 Yuan Jai",
+      "余政達 Yu Cheng-Yao"
+    ],
+    "curator": "",
+    "description": "展覽以海德格與莊子《天籟》篇為引，探索「感通」（attunement）的概念。我們透過聲音，在調節與感通的過程中，消弭了我們與周遭環境乃至於我們與彼此之間的距離。十三位藝術家以聲音為媒介，探索其與環境正義、邊界政治，以及情感的社會性經濟之間的互涉關係。",
+    "description_en": "The exhibition explores sound's connection to surroundings through attunement. Drawing on Heidegger and Zhuangzi, it positions sound as more than listening—entering the realms of vibration, reverberation, and resonance. Thirteen artists use sound to explore its intersectionality with environmental justice, border politics, and the socio-economy of feeling.",
+    "description_ja": "展覧会はハイデガーと荘子の「天籟」を手がかりに「感通」（attunement）の概念を探求する。音を通じて調節と感通の過程で、私たちと周囲の環境、そして私たちと互いとの距離を消し去る。13人のアーティストが音を媒介に、環境正義・境界政治・感情の社会経済との交差性を探る。",
+    "fetched_at": "2026-06-29T12:11:35.654885+08:00"
   }
 }
