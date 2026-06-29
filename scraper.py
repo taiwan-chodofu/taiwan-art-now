@@ -2179,9 +2179,15 @@ def _do_scrape_all():
                 logger.warning("Parallel scrape failed for %s: %s", name, exc)
                 results[name] = []
 
-    all_exhibitions.extend(_merge_exhibitions(
+    moca_merged = _merge_exhibitions(
         results.get("moca_en", []), results.get("moca_zh", [])
-    ))
+    )
+    # MOCAのlinkを中文ページURLに変換（enrichment時に中文アーティスト名を取得するため）
+    for ex in moca_merged:
+        link = ex.get("link", "")
+        if "/en/" in link:
+            ex["link"] = link.replace("/en/", "/tw/")
+    all_exhibitions.extend(moca_merged)
     for key in ["tfam", "ntcart", "tcma", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
                 "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
