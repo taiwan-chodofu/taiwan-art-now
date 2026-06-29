@@ -889,14 +889,6 @@
     "description_ja": "「黯像：看見不見」は「視覚」と「非視覚」の交錯を通じて、写真史における「観ること」と「観られること」「見えること」と「見えないこと」の本質的問いに応答する。「凝視の境界」と「無視の覚」の2つのテーマで構成し、盲人肖像における権力関係、非視覚写真の可能性、障害と階級間の文化的再現を段階的に明かす。台湾・スロベニア・メキシコ・日本・韓国から27人のアーティストを集結。",
     "fetched_at": "2026-06-29T13:18:38.261118+08:00"
   },
-  "https://kdmofa.tnua.edu.tw/": {
-    "artists": [],
-    "curator": "",
-    "description": "本展以「圖書分類法」為核心概念，將龍顏藝術創作獎二十年來累積的200餘件獲獎典藏作品視為一座不斷擴充的「圖書館」。透過分類、編目與索引，作品得以被搜尋、對照與交叉閱讀。展覽引入生成式AI作為「圖書館員」，突破單一策展視角，生成多重流動的分類結果，反映當代藝術的跨領域與多義性。二十年的成果轉化為可閱讀、可搜尋、可持續擴充意義的知識系統。",
-    "description_en": "The exhibition uses \"library classification\" as its core concept, treating 200+ award-winning works accumulated over 20 years of the Longyen Art Award as a continuously expanding \"library.\" Through classification, cataloging, and indexing, works can be searched, compared, and cross-read. Generative AI is introduced as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple fluid classification results reflecting contemporary art's interdisciplinarity.",
-    "description_ja": "本展は「図書分類法」を核心概念に、龍顔芸術創作賞20年間で蓄積した200余件の受賞典蔵作品を絶えず拡充する「図書館」と見なす。分類・編目・索引を通じて作品は検索・対照・横断的読解が可能になる。生成AIを「図書館員」として導入し、単一の策展視点を突破し、現代芸術の分野横断性と多義性を反映する多重かつ流動的な分類結果を生成する。",
-    "fetched_at": "2026-06-29T13:18:38.261118+08:00"
-  },
   "https://yiriarts.com.tw/exhibitions/": {
     "artists": [
       "陳雲"
@@ -1125,5 +1117,13 @@
     "description_en": "Unsettled Land inverts the island-centered habitual gaze, projecting vision outward to geopolitical networks beyond the shore, inviting viewers on an \"offshore retrospection.\" This is a boundary measurement that discusses the interior through the exterior. The exhibition unfolds along three axes: \"Island Migration and Memory Rifts\" departs from Taiwan's outlying islands; \"Establishing and Returning to Emotional Bonds in Foreign Lands\" focuses on those repositioning themselves abroad; \"Layered Identities\" brings border inquiry down to the most microscopic level—the body.",
     "description_ja": "《未安之地》は島嶼中心の慣性を反転させ、視線を島外の地縁ネットワークに投じ、観者に「離岸回眸」を誘う。外部を通じて内部を語る境界の計測。「国家」「主権」という政治的記号を宙吊りにした時、この土地は感情の流動の中で再び姿を現す。3つの軸で展開：「島嶼の遷移と記憶の裂け目」は台湾の離島から移民史と建築の痕跡を探り、「異地での感情の構築と回帰」は異国で座標を再設定する移動者に注目し、「多重アイデンティティの重なり」は境界の探求を最もミクロな肉体に収斂させる。",
     "fetched_at": "2026-06-29T14:42:07.705770+08:00"
+  },
+  "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9dfba4fbfa094efe4fe640b9db20b991a95": {
+    "artists": [],
+    "curator": "",
+    "description": "本展以「圖書分類法」為核心概念，將龍顏藝術創作獎二十年來累積的200餘件獲獎典藏作品視為一座不斷擴充的「圖書館」。透過分類、編目與索引，作品得以被搜尋、對照與交叉閱讀。展覽引入生成式AI作為「圖書館員」，突破單一策展視角，生成多重流動的分類結果，反映當代藝術的跨領域與多義性。二十年的成果轉化為可閱讀、可搜尋、可持續擴充意義的知識系統。",
+    "description_en": "The exhibition uses \"library classification\" as its core concept, treating 200+ award-winning works accumulated over 20 years of the Longyen Art Award as a continuously expanding \"library.\" Through classification, cataloging, and indexing, works can be searched, compared, and cross-read. Generative AI is introduced as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple fluid classification results reflecting contemporary art's interdisciplinarity.",
+    "description_ja": "本展は「図書分類法」を核心概念に、龍顔芸術創作賞20年間で蓄積した200余件の受賞典蔵作品を絶えず拡充する「図書館」と見なす。分類・編目・索引を通じて作品は検索・対照・横断的読解が可能になる。生成AIを「図書館員」として導入し、単一の策展視点を突破し、現代芸術の分野横断性と多義性を反映する多重かつ流動的な分類結果を生成する。",
+    "fetched_at": "2026-06-29T14:42:32.977600+08:00"
   }
 }
