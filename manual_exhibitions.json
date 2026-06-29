@@ -1228,10 +1228,14 @@
       "museum": "pingtung",
       "title_zh": "花花caucau",
       "title_en": "",
-      "dates": "2026/03/28 - 2027/03/28",
+      "dates": "2026.03.28 – 2026.08.30",
       "location": "屏東縣立美術館",
       "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition5",
-      "artists": []
+      "artists": [
+        "跩姬寶貝（高偉恩）",
+        "馬辰政",
+        "楊奕"
+      ]
     },
     {
       "museum": "pingtung",
