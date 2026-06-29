@@ -1928,6 +1928,9 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
                 ex["description_en"] = cached["description_en"]
             if cached.get("description_ja"):
                 ex["description_ja"] = cached["description_ja"]
+            # 手動で3言語入力済みのエントリは再スクレイプしない
+            if cached.get("description_ja") or cached.get("description_en"):
+                continue
             try:
                 fetched_at = datetime.fromisoformat(cached.get("fetched_at", "2000-01-01"))
                 age_days = (today - fetched_at).total_seconds() / 86400
