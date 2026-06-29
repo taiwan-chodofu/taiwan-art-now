@@ -1110,5 +1110,20 @@
     "description_en": "Hengshan Calligraphy Art Center presents a full-building solo exhibition by Wang Yi-Chun, winner of the 2023 Hengshan Calligraphy Award. The theme extends from the artist's daily life with her cat, exploring the relationship between \"hiding\" and \"finding,\" opening a game of mutual searching with viewers through calligraphy. The exhibition comprises four sections: \"Hiding in Slow Motion,\" \"Day After Day,\" \"Find Me,\" and \"Backlit Corner.\" Featuring 65 recent works, Wang continuously challenges physical limits while pursuing line refinement.",
     "description_ja": "桃園市立美術館横山書法芸術館の全館を使い、「2023横山書芸賞」受賞者・王意淳の新作個展を開催。テーマは芸術家と飼い猫の日常から「隠れること」と「見つけること」の関係を考察し、書法を通じて観者と互いに探し合う遊びを開く。展覧会は4つのエリア：「慢行のなかに隠れる」「一日また一日」「わたしを見つけて」「逆光の場所」で構成。近年の創作65組の作品を展示、王意淳は体力と制御力の限界に挑み続け、線の精緻さを追求する。",
     "fetched_at": "2026-06-29T14:40:05.005879+08:00"
+  },
+  "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9df9118b3a3b3b48451923c1a6808f7f40e": {
+    "artists": [
+      "艾立森",
+      "紀凱淵",
+      "葛瑞芬",
+      "菲律賓在台社群",
+      "劉芸怡",
+      "鄭亭亭"
+    ],
+    "curator": "傅達仁、洪瑋翎",
+    "description": "《未安之地》選擇翻轉以島嶼為中心的慣性，將視線投射至島外的地緣網絡，邀請觀者進行一場「離岸回眸」。這是一種透過外部去談論內部的邊界測量。當我們懸置「國家」、「主權」等政治符號，這塊土地開始在情感流動中重新顯影。展覽透過三條軸線展開：「島嶼的遷徙與記憶的裂隙」從台灣離島出發探看移民史與建築印記；「異地情感的建立與回返」關注異地重新定位座標的移動者；「多重身份疊影」將邊界探討收攏至最微觀的肉身。",
+    "description_en": "Unsettled Land inverts the island-centered habitual gaze, projecting vision outward to geopolitical networks beyond the shore, inviting viewers on an \"offshore retrospection.\" This is a boundary measurement that discusses the interior through the exterior. The exhibition unfolds along three axes: \"Island Migration and Memory Rifts\" departs from Taiwan's outlying islands; \"Establishing and Returning to Emotional Bonds in Foreign Lands\" focuses on those repositioning themselves abroad; \"Layered Identities\" brings border inquiry down to the most microscopic level—the body.",
+    "description_ja": "《未安之地》は島嶼中心の慣性を反転させ、視線を島外の地縁ネットワークに投じ、観者に「離岸回眸」を誘う。外部を通じて内部を語る境界の計測。「国家」「主権」という政治的記号を宙吊りにした時、この土地は感情の流動の中で再び姿を現す。3つの軸で展開：「島嶼の遷移と記憶の裂け目」は台湾の離島から移民史と建築の痕跡を探り、「異地での感情の構築と回帰」は異国で座標を再設定する移動者に注目し、「多重アイデンティティの重なり」は境界の探求を最もミクロな肉体に収斂させる。",
+    "fetched_at": "2026-06-29T14:42:07.705770+08:00"
   }
 }
