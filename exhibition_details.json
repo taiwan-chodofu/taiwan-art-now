@@ -97,7 +97,11 @@
       "林鴻文",
       "常陵"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "黃德馨",
+    "description": "「雙城計」是一項以城市為節點、以時間為軸線展開的跨國藝術計畫。透過作品在不同城市之間的移動與回應，展覽形成一條持續延伸的敘事路徑。計畫自臺南啟動，於臺南市美術館以三位藝術家的聯展揭開序幕，並將於2027年移至熊本。臺南在古蹟與日常之間緩慢流動，熊本則在震後重建與城市結構中展現斷裂與修復的節奏。本展邀集楊茂林、林鴻文與常陵三位藝術家，分別從文化混種、存在感知與虛實結構等面向回應當代處境。",
+    "description_en": "Twin Cities Project is a transnational art plan using cities as nodes and time as axis. Through works moving between cities, the exhibition forms a continuously extending narrative path. Launching from Tainan with a three-artist group show, it will move to Kumamoto in 2027. The three artists respond to contemporary conditions through cultural hybridity, existential perception, and virtual-real structures.",
+    "description_ja": "「双城計」は都市をノード、時間を軸に展開する国際アートプロジェクト。作品が異なる都市間を移動し応答することで、持続的に延伸する叙事の経路を形成する。台南で始動し南美館での3人展で幕を開け、2027年に熊本へ移動。楊茂林・林鴻文・常陵の3人が文化混種・存在知覚・虚実構造からそれぞれ現代の状況に応答する。",
+    "fetched_at": "2026-06-29T14:57:25.220644+08:00"
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#yinyou": {
     "artists": [
@@ -352,21 +356,22 @@
   "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=807": {
     "artists": [
       "山城知佳子",
-      "吳其育",
-      "陳普",
-      "希朵．史戴爾",
-      "周東彥",
-      "狠劇場",
+      "吳其育+陳普",
+      "希朵・史戴爾",
+      "周東彥/狠劇場",
       "桑佳．鮑梅爾",
       "彭弘智",
       "陽春麵研究舍",
-      "瑟琳．克拉內",
+      "瑟琳・克拉內",
       "蔡咅璟",
       "盧明德",
       "NOIZ Architects"
     ],
     "curator": "余思穎",
-    "fetched_at": "2026-06-25"
+    "description": "「共感：存在的節奏」展在概念上呼應現代物理學所揭示的現象：在量子層次中，某些粒子之間存在不可分割的關聯。展覽從當代博物學的概念出發，邀請11位當代藝術家及團隊，從「人與非人共同演繹世界」（自然）、「擴增人類五感與時空觀」（技術）、與成為「互利共生的行動者」（行動實踐）三方面，讓我們感知原本無法觸及其它物種的環境界。",
+    "description_en": "The exhibition echoes phenomena revealed by modern physics: at the quantum level, certain particles share inseparable connections. Starting from concepts of contemporary natural history, it invites 11 artists and teams to explore three dimensions: \"humans and non-humans co-performing the world\" (nature), \"augmenting human senses and spacetime\" (technology), and becoming \"mutualistic actors\" (practice).",
+    "description_ja": "「共感：存在のリズム」展は現代物理学が明かす現象に呼応する——量子レベルで粒子間に不可分な関連が存在する。現代博物学の概念から出発し、11組のアーティストを招き、「人と非人が共に世界を演じる」（自然）、「人間の五感と時空観を拡張する」（技術）、「互恵共生の行為者になる」（行動実践）の三面から、本来触れ得ない他種の環境界を知覚させる。",
+    "fetched_at": "2026-06-29T14:56:54.073590+08:00"
   },
   "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=808": {
     "artists": [
@@ -401,7 +406,10 @@
       "顧何忠"
     ],
     "curator": "馮馨",
-    "fetched_at": "2026-06-25"
+    "description": "物質塑造著人類的生活方式。我們每日一張開眼，所有的一切被物質所圍繞著。因應生活所需，物被不斷創造、發明、改良、演進，物被人所用，又因為使用而延伸出系統，系統回過頭化為生活中的直覺動作，甚至人們也因為使用被影響了原本的姿態、習慣甚至是思維模式。物質不單單只是被消費或指涉意義，它也在日常的操作、使用與感知中，形成由物而衍伸的技術，進而影響人們的行動模式與社會的樣態。",
+    "description_en": "Materials shape human ways of life. Everything around us is material. Objects are constantly created, invented, improved—used by people, generating systems that become intuitive actions. Materials are not merely consumed or symbolic; through daily operation, use, and perception, they form object-derived technologies that influence behavioral patterns and social forms.",
+    "description_ja": "物質は人間の生活様式を形作る。目を開けた瞬間から全てが物質に囲まれている。生活に応じて物は絶えず創造・発明・改良・進化し、人に使われ、使用から系統が延伸し、系統は生活の直感的動作と化す。物質は消費や意味の指示に留まらず、日常の操作・使用・知覚の中で物から派生する技術を形成し、人々の行動様式と社会の態様に影響を及ぼす。",
+    "fetched_at": "2026-06-29T14:56:54.073590+08:00"
   },
   "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=806": {
     "artists": [],
@@ -413,10 +421,13 @@
   },
   "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=809": {
     "artists": [
-      "做白工作室"
+      "做白工作室 Shape Blank Atelier（溫子慶、蔡君陽、梁立白、鄭詠心、陳冠文）"
     ],
-    "note": "團隊成員：溫子慶、蔡君陽、梁立白、鄭詠心、陳冠文",
-    "fetched_at": "2026-06-25"
+    "curator": "",
+    "description": "「X-site計畫」以美術館戶外廣場為基地，每年公開徵選一件實驗性的臨時裝置提案。今年由跨領域團隊「做白工作室」以《鏡‧亭‧山：相看兩不厭》獲得2026第13屆首獎。作品回應北美館室外廣場的環境條件，將地面輕輕掀起，創造具遮蔭且通透的空間，讓人們願意停留，使「空白的、缺席的」廣場重獲公共性。",
+    "description_en": "The X-site project uses the museum's outdoor plaza as a base, annually selecting an experimental temporary installation proposal. This year, interdisciplinary team Shape Blank Atelier won the 13th edition with \"Mirror, Pavilion, Mountain.\" The work responds to the plaza's environmental conditions, gently lifting the ground to create shaded yet transparent space where people wish to linger, restoring publicness to the \"blank, absent\" plaza.",
+    "description_ja": "「X-site計画」は美術館の屋外広場を拠点に毎年実験的な仮設インスタレーション提案を公募する。今年は分野横断チーム「做白工作室」が《鏡・亭・山：相看兩不厭》で2026年第13回首賞を獲得。北美館屋外広場の環境条件に応答し、地面をそっと持ち上げ日陰かつ通透する空間を創出、人々が留まりたいと思う場を生み、「空白の、不在の」広場に公共性を取り戻す。",
+    "fetched_at": "2026-06-29T14:56:54.073590+08:00"
   },
   "https://www.artemingallery.com/portfolio-item/one-and-one/": {
     "artists": [
@@ -1125,5 +1136,142 @@
     "description_en": "The exhibition uses \"library classification\" as its core concept, treating 200+ award-winning works accumulated over 20 years of the Longyen Art Award as a continuously expanding \"library.\" Through classification, cataloging, and indexing, works can be searched, compared, and cross-read. Generative AI is introduced as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple fluid classification results reflecting contemporary art's interdisciplinarity.",
     "description_ja": "本展は「図書分類法」を核心概念に、龍顔芸術創作賞20年間で蓄積した200余件の受賞典蔵作品を絶えず拡充する「図書館」と見なす。分類・編目・索引を通じて作品は検索・対照・横断的読解が可能になる。生成AIを「図書館員」として導入し、単一の策展視点を突破し、現代芸術の分野横断性と多義性を反映する多重かつ流動的な分類結果を生成する。",
     "fetched_at": "2026-06-29T14:42:32.977600+08:00"
+  },
+  "https://clab.org.tw/en/events/we-are-becoming/": {
+    "artists": [
+      "李石樵",
+      "彭瑞麟",
+      "藤井光 Hikaru FUJII",
+      "劉秋兒",
+      "劉致宏",
+      "徐容",
+      "洪辰煊 HONG Jin-Hwon",
+      "Posak Jodian",
+      "阮柏遠",
+      "區秀詒✕陳侑汝",
+      "謝德慶",
+      "陳來興",
+      "許哲瑜✕陳琬尹",
+      "Jimmy Shy✕張鈺",
+      "何銳安 HO Rui An",
+      "金令恩 YoungEun KIM",
+      "江康泉 Kongkee",
+      "崔廣宇",
+      "阮英俊 TUAN Mami",
+      "陳曉朋",
+      "楊祐丞✕彭思錡",
+      "廉仁和 Inhwa YEOM",
+      "Emilija ŠKARNULYTE",
+      "Ana Teresa BARBOZA"
+    ],
+    "curator": "吳達坤、郭昭蘭",
+    "description": "C-LAB 2026年度展覽以「成為（Becoming）」為核心概念，探索持續流動與交錯的文化狀態。當我們一起把故事重新講一遍的同時，我們已經不是昨天的我們，因為每一個回返都在重新界定何謂「我們」。集結9國藝術家，以29件跨媒介作品，邀請觀眾走入一座持續生成的文化場域，重新思考藝術在當代社會中的角色與可能。",
+    "description_en": "C-LAB's 2026 annual exhibition centers on \"Becoming,\" exploring a fluid, intertwined cultural state continuously reconstructed through art. As we retell stories together, we are no longer who we were yesterday; each return reshapes what \"we\" means. Bringing together artists from nine countries with 29 cross-media works, the exhibition invites audiences into an evolving cultural field to rethink art's role in contemporary society.",
+    "description_ja": "C-LABの2026年度展覧会は「成為（Becoming）」を核心概念に、持続的に流動し交錯する文化状態を探る。物語を共に語り直すとき、私たちは昨日の私たちではなくなっている——回帰のたびに「私たち」とは何かが再定義される。9カ国のアーティストを集結し29点の越境的メディア作品で、観客を絶えず生成する文化場域に招き入れ、現代社会における芸術の役割と可能性を再考する。",
+    "fetched_at": "2026-06-29T14:56:54.073590+08:00"
+  },
+  "https://thecubespace.com": {
+    "artists": [
+      "李漢強 Lee Kan Kyo"
+    ],
+    "curator": "游崴",
+    "description": "旅日藝術家李漢強個展「李漢強：最後のCD」。延續藝術家近年對舊媒體的興趣，親手重製數百張CD封面，帶領觀眾重新審視東亞流行文化如何在實體物件與技術記憶中流動。展場所在的台北公館在1990年代曾是唱片行密集的區域，本次展覽以此為地緣背景，透過重製CD、聲音裝置與空間安排，將展場打造成一座介於「唱片行」與「媒體資料庫」之間的感官場域。",
+    "description_en": "Japan-based artist Lee Kan Kyo presents a solo exhibition recreating hundreds of CD covers by hand, inviting audiences to reconsider how East Asian pop culture flows through physical objects and technological memory. Set in Taipei's Gongguan area—once dense with record stores in the 1990s—the exhibition transforms the space into a sensory field between \"record shop\" and \"media archive\" through recreated CDs, sound installations, and spatial arrangement.",
+    "description_ja": "旅日アーティスト李漢強の個展。近年の旧メディアへの関心を継続し、数百枚のCDジャケットを手作業で再制作、東アジアのポップカルチャーが実体としての物と技術的記憶の中でいかに流通するかを再検証する。会場のある台北公館は1990年代にレコード店が密集した地域であり、再制作CD・音響装置・空間構成により「レコード店」と「メディアアーカイブ」の間に位置する感覚的場域を構築する。",
+    "fetched_at": "2026-06-29T14:56:54.073590+08:00"
+  },
+  "https://www.tnam.museum/exhibition/detail/708": {
+    "artists": [
+      "王冠蓁",
+      "張競芝",
+      "童品元",
+      "黃韶瑩",
+      "黃曉茹",
+      "詹詠幀",
+      "蔡定邦",
+      "顏妤庭"
+    ],
+    "curator": "陳家欣、林怡柔",
+    "description": "當代個體身處於家庭、群體、媒體與城市交織的夾層之間，壓力不再僅僅來自外部，更多的是內化為自我要求的無形施壓。在這種「黏膩關係」中，個體既是承受的主體，亦是自身壓力的來源。本展透過八位藝術家的個人視角，試圖在密不可分的結構裡撐開一道「縫隙」，藉此觀測個體被擠壓出的各式狀態。展出作品如同藝術家無聲的獨白，將真實的經驗轉化為深刻且具共鳴的藝術語彙。",
+    "description_en": "Contemporary individuals exist in the interstices woven by family, community, media, and city. Pressure is no longer merely external but internalized as invisible self-demand. In these \"sticky relationships,\" the individual is both subject and source of pressure. Eight artists attempt to pry open a \"fissure\" within inseparable structures, observing various states produced by compression. The works serve as silent monologues, transforming real experience into resonant artistic language.",
+    "description_ja": "現代の個人は家庭・集団・メディア・都市が交錯する夾層に身を置く。圧力はもはや外部のみならず、自己要求として内面化された無形の圧力でもある。この「粘膩な関係」の中で、個は圧を受ける主体であり自らの圧力源でもある。8人のアーティストの個人的視点から、密不可分な構造に「隙間」をこじ開け、擠壓された個の諸状態を観測する。作品は無言の独白として、真実の経験を深く共鳴する芸術的語彙に変換する。",
+    "fetched_at": "2026-06-29T14:57:25.220644+08:00"
+  },
+  "https://www.juming.org.tw/mainssl/modules/MySpace/BlogInfo.php?fd=23&bid=1272": {
+    "artists": [
+      "何偲菁",
+      "吳建興",
+      "姚仲涵",
+      "徐均育",
+      "張永達",
+      "章芙菱",
+      "陳松志",
+      "陳欣孟",
+      "陳俊宇",
+      "陳冠豪",
+      "陳肇驊",
+      "曾偉豪",
+      "陽春麵研究舍",
+      "劉千瑋",
+      "劉柏村",
+      "劉東昱",
+      "蔡瑜",
+      "蔡影澂",
+      "賴彥勳",
+      "賴科維",
+      "雜波"
+    ],
+    "curator": "沈伯丞",
+    "description": "雕塑是人類最古老的造型方式之一。然而，雕塑真正的革命並非來自形式的創新，而是來自一次根本的觀念翻轉。「恆形」並非一種視覺風格，而是一種思考方式：在形態不斷演變、媒介不斷轉換的過程中，辨識那些始終成立的關係結構。展覽以拓樸學為透鏡，探索當代台灣雕塑，在形態持續變動的當下，那些「恆久不變」的結構，也許正是我們理解藝術的新起點。",
+    "description_en": "Sculpture is one of humanity's oldest modes of form-making. Yet sculpture's true revolution came not from formal innovation but from a fundamental conceptual inversion. \"Permanent Form\" is not a visual style but a way of thinking: identifying relational structures that remain valid as forms evolve and media shift. Using topology as a lens, the exhibition explores contemporary Taiwanese sculpture—those \"permanently invariant\" structures may be our new starting point for understanding art.",
+    "description_ja": "彫刻は人類最古の造形方法の一つである。しかし彫刻の真の革命は形式の革新からではなく、根本的な観念の転換から来た。「恒形」は視覚的スタイルではなく思考方法——形態が絶えず変容しメディアが転換する過程で、常に成立する関係構造を識別すること。トポロジーをレンズに現代台湾彫刻を探求し、形態が変動し続ける現在、「恒久不変」の構造こそが芸術理解の新たな出発点となりうる。",
+    "fetched_at": "2026-06-29T14:57:25.220644+08:00"
+  },
+  "https://www.yiyun-art.com/exhibition/2026-06": {
+    "artists": [
+      "常陵"
+    ],
+    "curator": "",
+    "description": "常陵並未將「故鄉」理解為一個固定的地點，而是將其視為一種持續受到記憶、影像、技術、集體意識等資訊反覆生成的過程中被不斷改寫的感知經驗。他以「既視感」與「預言」兩個概念，對應當代技術如何同時介入我們對過去的回憶與對未來的想像。「假如故鄉」所欲呈現的，並不只是鄉愁的轉變，而是當代人如何在演算法與影像生成機制日益深刻的影響中，重新辨認自身經驗的真實性。",
+    "description_en": "Chang Ling does not understand \"homeland\" as a fixed place, but as a perceptual experience continuously rewritten through memory, images, technology, and collective consciousness. Using \"déjà vu\" and \"prophecy\" as concepts, he addresses how contemporary technology simultaneously intervenes in our memories of the past and imagination of the future.",
+    "description_ja": "常陵は「故郷」を固定的な場所ではなく、記憶・映像・技術・集団意識などの情報が反復的に生成される過程で絶えず書き換えられる知覚経験と捉える。「既視感」と「予言」の二概念で、現代技術がいかに同時に過去の記憶と未来の想像に介入するかを対応させる。「假如故鄉」が呈示するのは単なる郷愁の変容ではなく、アルゴリズムと画像生成メカニズムの影響下で自身の経験の真実性をいかに再認識するかである。",
+    "fetched_at": "2026-06-29T14:57:55.810319+08:00"
+  },
+  "https://www.lym.gov.tw": {
+    "artists": [],
+    "curator": "",
+    "description": "本次主題展以回顧方式呈現，讓觀眾再次看見國定Blihun漢本考古遺址出土文物的多元風貌與文化價值。",
+    "description_en": "This thematic exhibition presents a retrospective view, allowing audiences to rediscover the diverse aspects and cultural value of artifacts excavated from the nationally designated Blihun Hanben archaeological site.",
+    "description_ja": "国定Blihun漢本考古遺跡から出土した文物の多元的な様相と文化的価値を、回顧的な方法で観客に再び提示する主題展。",
+    "fetched_at": "2026-06-29T14:57:55.810319+08:00"
+  },
+  "https://www.nhrm.gov.tw/w/nhrm/Exhibitions": {
+    "artists": [],
+    "curator": "",
+    "description": "國家人權博物館作為亞洲第一個座落於昔日不義遺址的人權博物館，自2018年成立以來，以「人權」為核心價值，進行空間復原與再現，並打造為持續對話與反思的場域。景美園區主題展依循「人權」與「空間」，提供參觀者一個結構性、脈絡性的介紹，以人權觀點為基礎，試圖引導觀眾在認識威權統治的人權侵害後，能與當代產生連結的反思。",
+    "description_en": "As Asia's first human rights museum situated on a former site of injustice, the National Human Rights Museum uses \"human rights\" as its core value since 2018, conducting spatial restoration and creating a field for ongoing dialogue. The Jingmei Park thematic exhibition follows \"human rights\" and \"space\" to provide structural and contextual introduction, guiding audiences to connect authoritarian-era human rights violations with contemporary reflection.",
+    "description_ja": "アジア初の旧不義遺跡に位置する人権博物館として、2018年設立以来「人権」を核心価値に空間の復元と再現を行い、持続的な対話と省察の場を構築する。景美園区主題展は「人権」と「空間」に沿い、構造的・脈絡的な紹介を提供し、権威統治の人権侵害を知った後に現代との連結を生む省察へと観客を導く。",
+    "fetched_at": "2026-06-29T14:57:55.810319+08:00"
+  },
+  "https://ssl.thcp.org.tw/exhibitions/27": {
+    "artists": [
+      "吳紫莖",
+      "葉澈",
+      "李莊民",
+      "黃海恩",
+      "黃馨",
+      "賈茜茹",
+      "楊芳宜",
+      "林俊作",
+      "複耳工作室（馮志銘、邱子晏）",
+      "顏亦均",
+      "魏子淵",
+      "羅懿君"
+    ],
+    "curator": "",
+    "description": "展覽以「交換」為核心概念，邀請10組不同背景的藝術家進入客家公園，運用園區閒置物件進行創作，彼此交換創意與想像。藝術家解析物件背後脈絡，透過拆解、重組與轉化賦予舊物新樣貌與意義，回應客家文化中的惜物精神。展覽涵蓋文化記憶與身分追尋、環境反思與生命叩問等主題，展現藝術介入現實的力量。",
+    "description_en": "Centered on \"exchange,\" the exhibition invites 10 artist groups to create with idle objects from Hakka Park, exchanging creativity and imagination. Artists deconstruct, reassemble, and transform old objects, responding to the Hakka spirit of cherishing things. Themes span cultural memory and identity, environmental reflection, and existential inquiry.",
+    "description_ja": "「交換」を核心概念に、10組のアーティストが客家公園の遊休物件を用いて創作し、互いに創意と想像を交換する。物件の背後の脈絡を解析し、解体・再組・変換で旧物に新たな姿と意味を与え、客家文化の惜物精神に応答。文化的記憶とアイデンティティの追求、環境省察と生命への問いを包含し、芸術が現実に介入する力を示す。",
+    "fetched_at": "2026-06-29T14:57:55.810319+08:00"
   }
 }
