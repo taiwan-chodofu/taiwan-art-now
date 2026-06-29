@@ -1422,6 +1422,17 @@
       ],
       "link": "https://tmofa.tycg.gov.tw/ch/exhibitions/upcoming-exhibitions/156",
       "status": "upcoming"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "七日談—蔡咅璟個展",
+      "title_en": "In the Course of Seven Days — Tsai Pou-Ching Solo Exhibition",
+      "dates": "2026.04.25 – 2026.07.05",
+      "artists": [
+        "蔡咅璟"
+      ],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E4%B8%83%E6%97%A5%E8%AB%87%E2%80%94%E8%94%A1%E5%92%85%E7%92%9F%E5%80%8B%E5%B1%95",
+      "status": "current"
     }
   ]
 }
