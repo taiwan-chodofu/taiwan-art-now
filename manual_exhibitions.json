@@ -1442,6 +1442,85 @@
       "artists": [],
       "link": "https://www.tcam.museum/zh/exhibition/horizon-ablaze",
       "status": "current"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "野草不服管",
+      "title_en": "",
+      "dates": "2026.05.23 – 2026.08.30",
+      "artists": [],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/野草不服管",
+      "status": "current"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "Young Folks：世界是一片感知的膜",
+      "title_en": "",
+      "dates": "2026.05.23 – 2026.08.30",
+      "artists": [
+        "洪瑞謙",
+        "黃育晨",
+        "黃珮琪",
+        "黃紫瑜",
+        "黎家寶",
+        "練柏宏"
+      ],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/Young*Folks%EF%BC%9A%E4%B8%96%E7%95%8C%E6%98%AF%E4%B8%80%E7%89%87%E6%84%9F%E7%9F%A5%E7%9A%84%E8%86%9C",
+      "status": "current"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "記憶的囚徒困境",
+      "title_en": "",
+      "dates": "2026.05.23 – 2026.08.30",
+      "artists": [
+        "丁常恩",
+        "大衛．克拉耶伯",
+        "王芳寧",
+        "田子平",
+        "李國漢",
+        "張庭甄",
+        "蔡昱廷",
+        "鄭兆恩"
+      ],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E8%A8%98%E6%86%B6%E7%9A%84%E5%9B%9A%E5%BE%92%E5%9B%B0%E5%A2%83",
+      "status": "current"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "她於歷史之中忽隱忽現—艾莉莎・賈爾迪納・帕帕個展",
+      "title_en": "",
+      "dates": "2026.05.09 – 2026.07.05",
+      "artists": [
+        "艾莉莎・賈爾迪納・帕帕"
+      ],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E5%A5%B9%E6%96%BC%E6%AD%B7%E5%8F%B2%E4%B9%8B%E4%B8%AD%E5%BF%BD%E9%9A%B1%E5%BF%BD%E7%8F%BE",
+      "status": "current"
+    },
+    {
+      "museum": "chiayi",
+      "title_zh": "「Signal Verse 嘉義宇宙」",
+      "title_en": "Signal Verse",
+      "dates": "2026.05.01 – 2026.11.29",
+      "artists": [
+        "2ENTER 貳進",
+        "王德合",
+        "鄭建昌",
+        "戴明德"
+      ],
+      "link": "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=4eab33a9-fcf3-4e2d-b8a5-5478f8ee2592&appname=Exhibition3110",
+      "status": "current"
+    },
+    {
+      "museum": "chiayi",
+      "title_zh": "北緯23度58分－許震唐個展",
+      "title_en": "",
+      "dates": "2026.06.02 – 2026.08.02",
+      "artists": [
+        "許震唐"
+      ],
+      "link": "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=25ae76d1-a93f-4ec7-9368-14b5812586db&appname=Exhibition3110",
+      "status": "current"
     }
   ]
 }

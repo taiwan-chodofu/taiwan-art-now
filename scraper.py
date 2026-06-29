@@ -2171,8 +2171,7 @@ def _do_scrape_all():
     # 既存の専用スクレイパー（並列実行）
     from concurrent.futures import ThreadPoolExecutor, as_completed
     tasks = {
-        "moca_en": lambda: _scrape_moca(lang="en"),
-        "moca_zh": lambda: _scrape_moca(lang="zh"),
+        # moca: manual-only (scraper produces EN-only data, conflicts with manual ZH data)
         "tfam": _scrape_tfam_api,
         # honggah: manual-only (site returns 403, scraper produces junk data)
         "ntcart": lambda: _with_fallback("ntcart", _scrape_ntcart),
@@ -2205,15 +2204,7 @@ def _do_scrape_all():
                 logger.warning("Parallel scrape failed for %s: %s", name, exc)
                 results[name] = []
 
-    moca_merged = _merge_exhibitions(
-        results.get("moca_en", []), results.get("moca_zh", [])
-    )
-    # MOCAのlinkを中文ページURLに変換（enrichment時に中文アーティスト名を取得するため）
-    for ex in moca_merged:
-        link = ex.get("link", "")
-        if "/en/" in link:
-            ex["link"] = link.replace("/en/", "/tw/")
-    all_exhibitions.extend(moca_merged)
+    # moca: manual-only (loaded via _load_all_manual)
     for key in ["tfam", "ntcart", "clab",
                 "thecube", "chiayi", "kdmofa", "goodug", "tav",
                 "montue", "pingtung", "tinakeng", "asiaart", "tnam", "soka", "jut", "fubon"]:
