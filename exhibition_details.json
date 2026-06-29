@@ -870,14 +870,6 @@
     "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
     "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
-  "https://www.yu-hsiu.org/en/exhibition/1/data/41": {
-    "artists": [],
-    "curator": "",
-    "description": "展覽以「翻」為核心主題，運用過往展覽書籍及相關設計物件作為媒介，重新定義這些物件的意義。觀者透過翻閱、閱讀、檢視與觸覺探索互動，賦予物件新的意涵。引用墨西哥概念藝術家Ulises Carrion之言：「一本書是一系列空間的序列。」「翻」的概念延伸至藝術作品、物件設計、料理體驗與美術館的各個角落。十年過去，過去的痕跡從未真正消失，而是隨機滲入每一個當下的瞬間。",
-    "description_en": "The exhibition uses \"flip\" as its central theme, employing books from past exhibitions and related design objects as media to redefine these artifacts. Visitors interact through flipping, reading, examining, and tactile exploration, giving these items new meanings. The concept of \"flip\" extends beyond books to artworks, object designs, culinary experiences, and various corners of the museum. A decade has passed—traces of the past never truly disappear but randomly seep into each present moment.",
-    "description_ja": "「めくる」を核心テーマに、過去の展覧会書籍と関連デザイン物を媒介として用い、それらの意味を再定義する。観者はめくる・読む・検する・触覚的探索を通じて物に新たな意味を付与する。メキシコの概念芸術家Ulises Carrionの言葉を引用：「本とは空間の連続体である。」「めくる」の概念は書物を超え、芸術作品・物のデザイン・料理体験・美術館の各所に延伸する。10年が過ぎ、過去の痕跡は消えることなく、各瞬間に滲み込み続ける。",
-    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
-  },
   "https://www.asiaartcenter.org/en/exhibitions": {
     "artists": [
       "簡喬倩 Tobe Kiu Sin Kan",
@@ -1372,5 +1364,13 @@
     "description_en": "\"When Flowers Bloom\" presents the spiritual landscape of Japanese art from postwar to contemporary—between destruction and rebirth, art sprouts stubbornly like wildflowers from ashes, blooming in diverse human forms. Featuring 16 Japanese masters spanning calligraphy, painting, photography, sculpture, installation, and pop visual culture. Their works are like flowers of different seasons: some intensely passionate, some quietly reserved; some brilliantly splendid, some deep as dreams.",
     "description_ja": "「當繁花盛開」は花の隠喩を導きに、日本の戦後から現代までの芸術の精神風貌を呈示する——破壊と再生の間で、芸術は野花のように灰燼から頑強に萌芽し、人間性の多様な姿態を咲かせる。16人の日本の芸術大師を集結、書道・絵画・写真・彫刻・インスタレーション・ポップビジュアルを横断する作品群は、異なる季節の花のよう——濃烈で熾熱なもの、静謐で内斂なもの、綺麗絢爛なもの、深邃で夢のようなもの。",
     "fetched_at": "2026-06-29T19:08:33.595569+08:00"
+  },
+  "https://www.yu-hsiu.org/exhibition/1/data/44": {
+    "artists": [],
+    "curator": "",
+    "description": "十年過去，在持續被時間推進前行的過程中，痕跡從未真正消逝，而是隨機的滲入每一個當下，促成每一次的巧合與相遇。本展以「翻頁FLIP」作為概念，過去的展覽書籍與延伸設計物作為媒介，試圖將這些承載內容的物件重新定義，它們透過觀者的介入如翻動、閱讀、端詳摸索，再次被經驗與創造意義。正如墨西哥概念藝術家烏利西斯‧卡列昂所說：「書是一連串的空間。」「翻頁」意念不僅對應著書籍，亦可以是展覽作品、物件設計、飲食體驗，甚至是美術館的園區角落。",
+    "description_en": "A decade has passed. Traces of the past never truly disappear but rather randomly seep into each present moment, shaping every coincidence and encounter. This exhibition uses \"flip\" as its central theme, employing books from past exhibitions and related design objects as media to redefine these artifacts. Through visitors' interventions—flipping, reading, examining, and tactile exploration—they are re-experienced and given new meanings. As Ulises Carrión states, \"A book is a sequence of spaces.\" The concept of \"flip\" applies not only to books but also to artworks, object designs, culinary experiences, and different corners of the museum.",
+    "description_ja": "10年が過ぎた。時間に押されて前進する過程で、痕跡は消えることなく各瞬間に滲み込み、巧合と出会いを促す。本展は「翻頁FLIP」を概念に、過去の展覧会書籍と延伸デザイン物を媒介として、これらの物件を再定義する。観者の介入——めくる・読む・検する・触る——を通じて再び経験され意味が創造される。メキシコの概念芸術家ウリセス・カリオンの言葉：「本とは一連の空間である。」「翻頁」は書籍のみならず、作品・物件デザイン・飲食体験・美術館の片隅にまで及ぶ。",
+    "fetched_at": "2026-06-29T19:12:37.117141+08:00"
   }
 }
