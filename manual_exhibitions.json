@@ -1581,6 +1581,21 @@
       ],
       "link": "https://www.absoluteart.space/14641687",
       "status": "current"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "野草不服管",
+      "title_en": "",
+      "dates": "2026.07.11 – 2026.09.20",
+      "artists": [
+        "石孟鑫",
+        "吳瑋庭",
+        "陳郁文",
+        "梁祐寧",
+        "蘇詠寶"
+      ],
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E9%87%8E%E8%8D%89%E4%B8%8D%E6%9C%8D%E7%AE%A1",
+      "status": "upcoming"
     }
   ]
 }
