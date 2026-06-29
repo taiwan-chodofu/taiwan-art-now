@@ -976,14 +976,14 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": "tinakeng",
       "exhibition_url": "",
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tinakenggallery/usr/library/images/main/pages/1/portrait-of-the-artist-su-xiaobai.-courtesy-the-artist-and-su-xiaobai-foundation.jpg",
       "lat": 25.079207,
       "lng": 121.567051,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1006,14 +1006,14 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.tkgplus.com/en/exhibitions",
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-tkg/usr/images/pages/slideshow_data/1/oyama_web_3200x2000_c.jpg",
       "lat": 25.07892,
       "lng": 121.567033,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1036,14 +1036,14 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://www.linlingallery.com/archive/image/header_info/1720754842719.png",
       "lat": 25.035934,
       "lng": 121.544402,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1096,13 +1096,13 @@
         "ja": "火〜土 11:00–19:00",
         "zh": "週二至週六 11:00–19:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "og_image": "https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvaTAud3AuY29tXC9jaGl3ZW5nYWxsZXJ5LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyMlwvMDRcL2Nyb3BwZWQtMTgxOTQ4NzVfODI5NDkxNzMzODY2NzI0XzQyOTA4NTQ5MzU5NzMxNDA4NzJfbi5qcGc_Zml0PTUxMiUyQzUxMiZzc2w9MSIsInR4dCI6IkNoaS1XZW4iLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM2MDU1MTI3fQ.TX8wb83RUmgtQsE5ks73RpAMOmYwMY0Z3SB9rCfLKpwMQ",
       "lat": 25.10327,
       "lng": 121.525088,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1125,13 +1125,13 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "exhibition_url": "https://www.lianggallery.com/en/?cat=112",
       "lat": 25.07709,
       "lng": 121.573403,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1154,14 +1154,14 @@
         "ja": "火〜土 11:00–19:00",
         "zh": "週二至週六 11:00–19:00"
       },
-      "closed_day": 0,
       "scraper": "generic",
       "exhibition_url": "https://www.eachmodern.com/exhibitions",
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1566/usr/images/pages/slideshow_data/1/antone-ko-nst-heavy-hibiscus-2026-oil-pigment-stick-and-charcoal-on-linen-208.5-x-172.2-cm.jpg",
       "lat": 25.01091,
       "lng": 121.563963,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1184,13 +1184,13 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "og_image": "https://c-p.rmcdn.net/5dd35a9843517554a578f499/1638575/Screenshot-4d7f79a0-9556-4c56-9cce-7d0b5b3ce6c9_readyscr_1024.jpg",
       "lat": 24.964869,
       "lng": 121.29954,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1213,14 +1213,14 @@
         "ja": "火〜土 11:00–19:00",
         "zh": "週二至週六 11:00–19:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://data.michaelkugallery.com/assets/bf2b9750-0930-48db-aba8-3a35b610b54c.png",
       "lat": 25.045472,
       "lng": 121.548386,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1243,13 +1243,13 @@
         "ja": "火〜土 11:00–19:00",
         "zh": "週二至週六 11:00–19:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "og_image": "https://galleryaki.com/assets/images/logo-line.jpg",
       "lat": 25.014549,
       "lng": 121.520746,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1331,13 +1331,13 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": "artemperor",
       "exhibition_url": "https://www.blueriderart.com/en/exhibitions",
       "lat": 25.037691,
       "lng": 121.554198,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1360,12 +1360,12 @@
         "ja": "火〜土 11:00–19:00",
         "zh": "週二至週六 11:00–19:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "lat": 25.032464,
       "lng": 121.52973,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1388,12 +1388,12 @@
         "ja": "火〜土 10:00–18:00",
         "zh": "週二至週六 10:00–18:00"
       },
-      "closed_day": 0,
       "scraper": null,
       "lat": 24.151591,
       "lng": 120.665323,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1440,13 +1440,16 @@
       },
       "url": "https://www.fubonartmuseum.org/",
       "hours": {
-        "en": "Daily 11:00–19:00",
-        "ja": "毎日 11:00–19:00",
-        "zh": "每日 11:00–19:00"
+        "en": "Wed–Mon 11:00–18:00 | Closed Tue (last entry 17:30)",
+        "ja": "水〜月 11:00–18:00｜火曜休館（最終入場17:30）",
+        "zh": "週三至週一 11:00–18:00｜週二休館（最後入場17:30）"
       },
-      "closed_day": 2,
+      "closed_day": 1,
       "lat": 25.039284,
-      "lng": 121.571232
+      "lng": 121.571232,
+      "closed_days": [
+        1
+      ]
     },
     {
       "id": "juming",
@@ -1827,13 +1830,14 @@
         "ja": "木〜日 11:00–17:30",
         "zh": "週四至週日 11:00–17:30"
       },
-      "closed_day": 0,
       "scraper": "sssart_manual",
       "og_image": "http://static1.squarespace.com/static/5f88002b4a0e7453ada4a150/t/6a243c7feacc412d23255a8b/1780759679315/ss+space+space+logo-01.png?format=1500w",
       "lat": 25.14628,
       "lng": 121.400942,
       "closed_days": [
-        0
+        0,
+        1,
+        2
       ],
       "events": [
         {
