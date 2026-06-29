@@ -573,22 +573,30 @@ def _scrape_ntcart():
 
 
 def _scrape_tcma():
-    """臺中市立美術館の公式サイトから展覧会情報を取得する。"""
+    """臺中市立美術館の公式サイトから展覧会情報を取得する。
+    常設展（終了日なし）と終了済み展示を除外。"""
     exhibitions = []
     today = _now_tw()
     url = "https://www.tcam.museum/en/exhibition"
+    # 常設展・教育プログラムを除外するキーワード
+    skip_keywords = ["play space", "plug-in", "illuminating", "storehouse", "storeroom"]
     try:
         soup = _fetch(url)
         for link in soup.find_all("a", href=re.compile(r"/exhibition/")):
             title = link.get_text(strip=True)
             if not title or len(title) < 3 or title.lower() in ("more", "exhibition"):
                 continue
+            if any(kw in title.lower() for kw in skip_keywords):
+                continue
             href = link.get("href", "")
             if not href.startswith("http"):
                 href = "https://www.tcam.museum" + href
             # 詳細ページから日付を取得
             dates = _fetch_tcma_dates(href)
-            if dates and not _is_current_exhibition(dates, today):
+            # 日付なし（常設展）はスキップ
+            if not dates:
+                continue
+            if not _is_current_exhibition(dates, today):
                 continue
             has_cjk = bool(re.search(r"[一-鿿]", title))
             exhibitions.append({
