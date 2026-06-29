@@ -1373,6 +1373,26 @@
       ],
       "link": "https://hong-gah.org.tw/en/hong-gah/fingertip-ritual-en",
       "status": "current"
+    },
+    {
+      "museum": "tcma",
+      "title_zh": "大肚之盟：山海間的物際外交",
+      "title_en": "The Covenant of Dadu: A Diplomacy of Things between Mountains and Seas",
+      "dates": "2026.05.08 – 2026.08.02",
+      "artists": [],
+      "link": "https://www.tcam.museum/zh/exhibition/the-covenant-of-dadu",
+      "status": "current"
+    },
+    {
+      "museum": "tcma",
+      "title_zh": "越南移民花園計畫－無界花園",
+      "title_en": "Vietnamese Immigrating Garden Project — Borderless Garden",
+      "dates": "2026.05.16 – 2027.12.31",
+      "artists": [
+        "阮英俊 Tuan Mami"
+      ],
+      "link": "https://www.tcam.museum/zh/exhibition/borderless-garden",
+      "status": "current"
     }
   ]
 }
