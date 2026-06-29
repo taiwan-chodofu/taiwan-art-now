@@ -608,14 +608,6 @@
     "description_ja": "デジタル時代の「システム更新」を隠喩に、過去の芸術作品と向き合う際の文脈のずれを探る。「再演」を核心的方法論とし、初期の命題を変容した条件下で再コンパイルする過程として提示。国立台北芸術大学美術学院とアジア・アート・アーカイブの共同制作。",
     "fetched_at": "2026-06-26T15:50:04.343971+08:00"
   },
-  "https://www.tcam.museum/en/exhibition/%e8%a7%92%e8%90%bd%e4%bb%bb%e5%8b%99-play-space-plug-in/": {
-    "artists": [],
-    "curator": "HIDE & SEEK AUDIOVISUAL ART",
-    "description": "綠美圖是臺灣首座結合美術館與公共圖書館的文化場域，建築以「流動、相遇、融合」為概念。「角落任務 Play Space Plug-in」計畫將兒童教育延伸至綠美圖各角落，成為全齡共融平台。採設計思考與兒童為中心方法論，推出5組教具——框框、角角、亮亮、跟跟與變變，以動手操作及互動體驗引導觀眾感知藝術。",
-    "description_en": "Taichung Green Museumbrary is Taiwan's first cultural institution combining an art museum and public library, designed around concepts of flow, encounter, and integration. The Play Space Plug-in initiative extends children's education throughout the entire institution as an inclusive platform for all ages. Developed through Design Thinking, it features five learning kits nicknamed Forma, Coco, Luma, Ditto, and Ziggy.",
-    "description_ja": "緑美図は台湾初の美術館と公共図書館を融合した文化施設で、「流動・出会い・融合」をコンセプトに設計された。「角落任務 Play Space Plug-in」は児童教育を施設全体に拡張し、全年齢包括型プラットフォームとして機能する。デザイン思考と子ども中心の方法論に基づき、5組の学習キットで来館者がアートを体感する。",
-    "fetched_at": "2026-06-26T15:57:29.672852+08:00"
-  },
   "https://www.tcam.museum/en/exhibition/illuminating-the-storehouse/": {
     "artists": [],
     "curator": "",
@@ -1098,5 +1090,23 @@
     "description_en": "Taiwan's High Speed Rail dramatically shortened north-south travel time, yet may also gradually dissolve cultural differences. Central Taiwan has long occupied a transitional position. The exhibition proposes the concept of \"material diplomacy,\" exploring the continuous co-generation between humans and things, nature and society. Curated by Shen Yu Chang, this is TcAM's first systematic review of art development in the Taichung region. Centered on the Dadu Plateau, it brings together 70 works across generations, proposing twelve \"Central Taiwan Art Images\" unfolding into four sub-themes.",
     "description_ja": "21世紀初頭の台湾高速鉄道は南北移動時間を大幅に短縮したが、南北の文化的差異をも消し去りかねない。地理的中心に位置する中部は南北の過渡的位置に長く置かれてきた。本展は「物際外交」の概念を提起し、人と物、自然と社会の持続的な相互生成関係に注目する。沈裕昌が企画し、中美館初の台中地区美術発展の体系的回顧となる研究型展覧会。大肚台地を核に風土と都市の二面から切り込み、異なる世代のアーティスト70作品を集結、12の「中部美術イメージ」を4つのサブテーマで展開する。",
     "fetched_at": "2026-06-29T14:15:14.535354+08:00"
+  },
+  "https://www.tcam.museum/en/exhibition/%e8%a7%92%e8%90%bd%e4%bb%bb%e5%8b%99-play-space-plug-in": {
+    "artists": [],
+    "curator": "",
+    "description": "綠美圖做為全臺首座結合美術館與圖書館的文化場館，以流動、相遇、融合為建築設計理念。將「Play Space」調整為「典藏教育空間」，並發展出「角落任務 Play Space Plug-in」計畫，將美術館的兒童教育空間延伸到綠美圖全區並拓展為全齡共融的平台。以「設計思考」及「以兒童為中心」為工作思維與方法，包含3組常設型教具及2組特展型教具，賦予如綽號般的副標題：框框、角角、亮亮、跟跟與變變。視覺回應聖修伯里《小王子》的經典畫面——是蛇吞象還是一頂帽子？",
+    "description_en": "Taichung Green Museumbrary is Taiwan's first cultural institution combining an art museum and public library, designed around concepts of flow, encounter, and integration. Play Space Plug-in extends children's education throughout the entire building as an inclusive platform for all ages. Developed through Design Thinking and children-centered methodology, it includes 3 permanent and 2 exhibition-based learning kits nicknamed Forma, Coco, Luma, Ditto, and Ziggy. The visual identity responds to Saint-Exupery's The Little Prince—is it a boa constrictor digesting an elephant, or a hat?",
+    "description_ja": "緑美図は台湾初の美術館と公共図書館を融合した文化施設で、流動・出会い・融合を建築設計理念とする。「角落任務 Play Space Plug-in」は児童教育空間を施設全体に拡張し全年齢包括型プラットフォームとする計画。デザイン思考と子ども中心の方法論で、常設型3組+特展型2組の学習キットを開発。愛称は框框・角角・亮亮・跟跟・変変。ビジュアルはサン=テグジュペリ『星の王子さま』の名場面に呼応——ゾウを飲み込んだウワバミか、それとも帽子か？",
+    "fetched_at": "2026-06-29T14:18:53.448506+08:00"
+  },
+  "https://www.tcam.museum/zh/exhibition/borderless-garden": {
+    "artists": [
+      "阮英俊 Tuan Mami"
+    ],
+    "curator": "",
+    "description": "越南藝術家阮英俊長期關注移民議題，透過田野調查發現在臺越南人常在陽臺、屋頂、工廠角落悄悄種植家鄉植物，以熟悉的味道抵抗鄉愁。《越南移民花園計畫──無界花園》於臺中綠美圖五樓「文化之森」打造一座跨越邊界的花園，並作為一座社會性平臺，邀請越南社群聚會、分享種子與故事。回應臺中作為東南亞移民重要聚居地的在地脈絡，創造當代藝術關照多元文化共生的可能。",
+    "description_en": "Vietnamese artist Tuan Mami has long engaged with migration issues. Through fieldwork, he discovered that Vietnamese people in Taiwan—new residents, migrant workers—often secretly grow hometown plants on balconies, rooftops, and factory corners, using familiar flavors to resist homesickness. Borderless Garden creates a cross-border garden on the 5th floor \"Forest of Culture\" at TcAM as a social platform inviting Vietnamese communities to gather, share seeds and stories. It responds to Taichung's context as an important settlement for Southeast Asian immigrants.",
+    "description_ja": "ベトナム人アーティスト阮英俊は移民問題に長期的に取り組む。フィールドワークを通じ、在台ベトナム人が台所・屋上・工場の片隅にひそかに故郷の植物を育て、馴染みの味で郷愁に抗うことを発見した。《無界花園》は台中緑美図5階「文化の森」に国境を超える庭園を造り、ベトナムのコミュニティが集い種と物語を分かち合う社会的プラットフォームとする。台中が東南アジア移民の重要な集住地であるという地域文脈に応答する。",
+    "fetched_at": "2026-06-29T14:19:08.847748+08:00"
   }
 }
