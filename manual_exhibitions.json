@@ -1404,6 +1404,24 @@
       ],
       "link": "https://www.tcam.museum/zh/exhibition/borderless-garden",
       "status": "current"
+    },
+    {
+      "museum": "tmofa_kids",
+      "title_zh": "一樣不一樣",
+      "title_en": "Same but Different",
+      "dates": "2026.07.04 – 2026.11.30",
+      "artists": [
+        "芬尼根．香儂 Finnegan Shannon",
+        "宮保睿",
+        "孫培懋",
+        "涂維政",
+        "陳以軒",
+        "黃韶瑩",
+        "西里爾．蘭斯林 Cyril Lancelin",
+        "justfont"
+      ],
+      "link": "https://tmofa.tycg.gov.tw/ch/exhibitions/upcoming-exhibitions/156",
+      "status": "upcoming"
     }
   ]
 }
