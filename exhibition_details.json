@@ -1283,5 +1283,19 @@
     "description_en": "Hong-Gah Museum presents artist Liao Xuan Zhen's research-based project \"Fingertip Ritual,\" departing from Beitou's environmental characteristics. The work originated from an olfactory experience: the industrial sulfide smell familiar from childhood bore a striking resemblance to Beitou's hot spring area. For Liao, this smell becomes a temporal metaphor symbolizing the coexistence of healing and extinction, prompting reflection on the blurred boundaries between nature and culture, medicine and poison. The project develops along two axes: constructing a movable aquascape ark through field collection, and creating an organic scent installation using sulfur-infused paraffin.",
     "description_ja": "鳳甲美術館がアーティスト廖烜榛の北投の環境特質を起点とした研究型制作プロジェクト「指尖儀式」を開催。創作の契機は偶然の嗅覚体験——幼少期から慣れ親しんだ工業硫化物の匂いが北投温泉地区の匂いと驚くほど類似していたこと。廖烜榛にとってこの匂いは時代の隠喩となり、癒しと絶滅の共存を象徴し、自然と人文、薬と毒の曖昧な境界線の再考を促す。制作は2つの軸で展開：野外採集による移動可能な水族景観の方舟の構築、および硫黄の匂いを帯びたパラフィンによる流動的・有機的な気味装置の創作。",
     "fetched_at": "2026-06-29T15:08:44.781705+08:00"
+  },
+  "https://hong-gah.org.tw/hong-gah/upon-the-gathering-waters_ch": {
+    "artists": [
+      "王萬春",
+      "鄭政煌",
+      "盧天炎（盧怡仲）",
+      "鄭在東",
+      "施並錫"
+    ],
+    "curator": "",
+    "description": "鳳甲美術館創辦人邱再興先生自1980年代開啟收藏之路，所收藏的媒材橫跨繪畫、雕塑、攝影、錄像，以及傳統工藝等範疇，數量高達兩千多件。本次典藏作品選介配合「指尖儀式：廖烜榛個展」，挑選了五位藝術家共七件作品，回應對於日常生活與地方環境的不同取景及對內在經驗的探索。展題「于彼行潦」取自《詩經》〈召南‧采蘋〉篇，形容流水匯集之處的水窪。透過繪畫與物件，呈現各種對自然風景產生的內在心靈多樣感受，以及日常生活點滴匯流聚集的情感，並呼應人與非人的依存關係。",
+    "description_en": "Hong-Gah Museum founder Chiu Tsai-Hsing began collecting in the 1980s, amassing over 2,000 works spanning painting, sculpture, photography, video, and traditional crafts. This collection selection accompanies \"Fingertip Ritual\" and presents seven works by five artists responding to different perspectives on daily life, local environment, and inner experience. The title \"Upon the Gathering Waters\" comes from the Book of Songs, describing pools where flowing water converges.",
+    "description_ja": "鳳甲美術館創設者・邱再興は1980年代に収集を開始し、絵画・彫刻・写真・映像・伝統工芸を網羅する2千点以上を収蔵。本選は「指尖儀式：廖烜榛個展」に合わせ5人7作品を選出、日常生活と地方環境への異なる視角と内的経験の探索に応答する。展題「于彼行潦」は『詩経』召南・采蘋篇から、流水が集まる水溜まりを形容。絵画と物件を通じ自然風景に対する内的心霊の多様な感受と、日常の滴りが匯流する情感を呈示し、人と非人の依存関係に呼応する。",
+    "fetched_at": "2026-06-29T15:09:15.824688+08:00"
   }
 }
