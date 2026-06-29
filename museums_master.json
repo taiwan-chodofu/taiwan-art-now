@@ -525,18 +525,18 @@
       ]
     },
     {
-      "id": "tmofa",
+      "id": "hengshan",
       "category": "public",
       "region": "taoyuan",
       "name": {
-        "en": "Taoyuan Museum of Fine Arts",
-        "ja": "桃園市立美術館",
-        "zh": "桃園市立美術館"
+        "en": "Hengshan Calligraphy Art Center",
+        "ja": "橫山書法藝術館",
+        "zh": "橫山書法藝術館"
       },
       "address": {
-        "en": "No.100, Daren Rd., Dayuan, Taoyuan",
-        "ja": "桃園市大園區大仁路100號",
-        "zh": "桃園市大園區大仁路100號"
+        "en": "No.6, Sec. 2, Gaotie S. Rd., Dayuan Dist., Taoyuan City",
+        "ja": "桃園市大園區高鐵南路二段6號",
+        "zh": "桃園市大園區高鐵南路二段6號"
       },
       "url": "https://tmofa.tycg.gov.tw",
       "hours": {
@@ -2627,6 +2627,35 @@
       "coordinates": {
         "lat": 25.0925825,
         "lng": 121.5226164
+      }
+    },
+    {
+      "id": "tmofa_kids",
+      "category": "public",
+      "region": "taoyuan",
+      "name": {
+        "en": "Taoyuan Museum of Fine Arts — Children's Museum",
+        "ja": "桃園市兒童美術館",
+        "zh": "桃園市兒童美術館"
+      },
+      "address": {
+        "en": "No.100, Daren Rd., Dayuan Dist., Taoyuan City",
+        "ja": "桃園市大園區大仁路100號",
+        "zh": "桃園市大園區大仁路100號"
+      },
+      "url": "https://tmofa.tycg.gov.tw",
+      "hours": {
+        "en": "Wed–Mon 09:30–17:00 | Closed Tue",
+        "ja": "水〜月 9:30–17:00｜火曜休館",
+        "zh": "週三至週一 09:30–17:00｜週二休館"
+      },
+      "closed_day": 1,
+      "closed_days": [
+        1
+      ],
+      "coordinates": {
+        "lat": 25.016,
+        "lng": 121.218
       }
     }
   ]
