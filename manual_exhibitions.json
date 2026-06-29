@@ -1445,15 +1445,6 @@
     },
     {
       "museum": "moca",
-      "title_zh": "野草不服管",
-      "title_en": "",
-      "dates": "2026.05.23 – 2026.08.30",
-      "artists": [],
-      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/野草不服管",
-      "status": "current"
-    },
-    {
-      "museum": "moca",
       "title_zh": "Young Folks：世界是一片感知的膜",
       "title_en": "",
       "dates": "2026.05.23 – 2026.08.30",
@@ -1494,7 +1485,7 @@
       "artists": [
         "艾莉莎・賈爾迪納・帕帕"
       ],
-      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E5%A5%B9%E6%96%BC%E6%AD%B7%E5%8F%B2%E4%B9%8B%E4%B8%AD%E5%BF%BD%E9%9A%B1%E5%BF%BD%E7%8F%BE",
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E5%A5%B9%E6%96%BC%E6%AD%B7%E5%8F%B2%E4%B9%8B%E4%B8%AD%E5%BF%BD%E9%9A%B1%E5%BF%BD%E7%8F%BE%E2%80%94%E8%89%BE%E8%8E%89%E8%8E%8E%E3%83%BB%E8%B3%88%E7%88%BE%E8%BF%AA%E7%B4%8D%E3%83%BB%E5%B8%95%E5%B8%95%E5%80%8B%E5%B1%95",
       "status": "current"
     },
     {
