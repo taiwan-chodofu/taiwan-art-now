@@ -1273,5 +1273,15 @@
     "description_en": "Centered on \"exchange,\" the exhibition invites 10 artist groups to create with idle objects from Hakka Park, exchanging creativity and imagination. Artists deconstruct, reassemble, and transform old objects, responding to the Hakka spirit of cherishing things. Themes span cultural memory and identity, environmental reflection, and existential inquiry.",
     "description_ja": "「交換」を核心概念に、10組のアーティストが客家公園の遊休物件を用いて創作し、互いに創意と想像を交換する。物件の背後の脈絡を解析し、解体・再組・変換で旧物に新たな姿と意味を与え、客家文化の惜物精神に応答。文化的記憶とアイデンティティの追求、環境省察と生命への問いを包含し、芸術が現実に介入する力を示す。",
     "fetched_at": "2026-06-29T14:57:55.810319+08:00"
+  },
+  "https://hong-gah.org.tw/hong-gah/fingertip-ritual-ch": {
+    "artists": [
+      "廖烜榛"
+    ],
+    "curator": "",
+    "description": "鳳甲美術館推出藝術家廖烜榛以北投環境特質為起點所展開的研究型創作計畫「指尖儀式」。創作契機源於一次偶然的嗅覺經驗：成長過程中習以為常的工業硫化物氣味，竟與北投溫泉區的氣味產生驚人的相似性。北投以天然硫磺溫泉聞名，那股氣味喚起她對後勁溪的記憶。對廖烜榛而言，這股氣味成為一種時代的隱喻，象徵療癒與滅絕並存的狀態，促使她重新思考自然與人文、藥與毒之間的模糊界線。創作發展為兩個軸線：透過野地採集建構可移動的水族造景方舟，以及以帶有硫磺氣味的石蠟製作流動有機的氣味裝置。",
+    "description_en": "Hong-Gah Museum presents artist Liao Xuan Zhen's research-based project \"Fingertip Ritual,\" departing from Beitou's environmental characteristics. The work originated from an olfactory experience: the industrial sulfide smell familiar from childhood bore a striking resemblance to Beitou's hot spring area. For Liao, this smell becomes a temporal metaphor symbolizing the coexistence of healing and extinction, prompting reflection on the blurred boundaries between nature and culture, medicine and poison. The project develops along two axes: constructing a movable aquascape ark through field collection, and creating an organic scent installation using sulfur-infused paraffin.",
+    "description_ja": "鳳甲美術館がアーティスト廖烜榛の北投の環境特質を起点とした研究型制作プロジェクト「指尖儀式」を開催。創作の契機は偶然の嗅覚体験——幼少期から慣れ親しんだ工業硫化物の匂いが北投温泉地区の匂いと驚くほど類似していたこと。廖烜榛にとってこの匂いは時代の隠喩となり、癒しと絶滅の共存を象徴し、自然と人文、薬と毒の曖昧な境界線の再考を促す。制作は2つの軸で展開：野外採集による移動可能な水族景観の方舟の構築、および硫黄の匂いを帯びたパラフィンによる流動的・有機的な気味装置の創作。",
+    "fetched_at": "2026-06-29T15:08:44.781705+08:00"
   }
 }
