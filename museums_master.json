@@ -2506,15 +2506,15 @@
         "zh": "双方藝廊"
       },
       "address": {
-        "en": "No. 30, Lane 770, Beian Rd., Zhongshan Dist., Taipei",
+        "en": "No.30, Lane 770, Beian Road, Zhongshan Dist., Taipei",
         "ja": "台北市中山區北安路770巷30號",
         "zh": "台北市中山區北安路770巷30號"
       },
       "url": "https://www.doublesquare.com.tw/",
       "hours": {
-        "en": "Tue–Sat 10:00–18:00 | Closed Sun & Mon",
-        "ja": "火〜土 10:00–18:00｜日月休",
-        "zh": "週二至週六 10:00–18:00｜週日一休"
+        "en": "Tue–Sat 12:00–18:00",
+        "ja": "火〜土 12:00–18:00",
+        "zh": "週二至週六 12:00–18:00"
       },
       "closed_day": 6,
       "closed_days": [
