@@ -102,16 +102,6 @@
     ],
     "fetched_at": "2026-06-25"
   },
-  "https://yiriarts.com.tw/exhibitions/current/#chen-yun": {
-    "artists": [
-      "陳雲"
-    ],
-    "curator": "",
-    "description": "在當代藝術強調流動與不穩定的語境中，此次展覽試圖在變動的記憶與感知之間，為觀者保留一個覺察自身位置的座標——回應繪畫歷經時間沖刷後，如何持續生成其存在的密度。作品的視覺語言游移於人物光影、日常物件與抽象肌理之間。平塗的層次在畫布上堆疊的質感、組畫之間刻意留下的縫隙，在併組結構裡彼此對照共鳴，召喚出遠大於畫面本身的時間感與重量。",
-    "description_en": "In a contemporary art context emphasizing fluidity and instability, this exhibition attempts to preserve a coordinate of self-awareness between shifting memories and perceptions—responding to how painting continues to generate its existential density after being washed by time. The visual language drifts between figure and light, everyday objects, and abstract textures.",
-    "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
-    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
-  },
   "https://yiriarts.com.tw/exhibitions/current/#huang": {
     "artists": [
       "黃姿瑜"
@@ -852,16 +842,6 @@
     "description_en": "Obscured Portraits: Seen and Unseen interweaves the \"visual\" and \"non-visual\" to address photography's essential questions of \"seeing\" and \"being seen.\" Divided into two themes—\"Boundaries of the Gaze\" and \"Perception Beyond Sight\"—the exhibition reveals power relations in blind portraiture, possibilities of non-visual photography, and cultural representation between disability and class. Featuring 27 artists from Taiwan, Slovenia, Mexico, Japan, and Korea.",
     "description_ja": "「黯像：看見不見」は「視覚」と「非視覚」の交錯を通じて、写真史における「観ること」と「観られること」「見えること」と「見えないこと」の本質的問いに応答する。「凝視の境界」と「無視の覚」の2つのテーマで構成し、盲人肖像における権力関係、非視覚写真の可能性、障害と階級間の文化的再現を段階的に明かす。台湾・スロベニア・メキシコ・日本・韓国から27人のアーティストを集結。",
     "fetched_at": "2026-06-29T13:18:38.261118+08:00"
-  },
-  "https://yiriarts.com.tw/exhibitions/": {
-    "artists": [
-      "陳雲"
-    ],
-    "curator": "",
-    "description": "在當代藝術強調流動與不穩定的語境中，此次展覽試圖在變動的記憶與感知之間，為觀者保留一個覺察自身位置的座標——回應繪畫歷經時間沖刷後，如何持續生成其存在的密度。作品的視覺語言游移於人物光影、日常物件與抽象肌理之間。平塗的層次在畫布上堆疊的質感、組畫之間刻意留下的縫隙，在併組結構裡彼此對照共鳴，召喚出遠大於畫面本身的時間感與重量。",
-    "description_en": "In a contemporary art context emphasizing fluidity and instability, this exhibition attempts to preserve a coordinate of self-awareness between shifting memories and perceptions—responding to how painting continues to generate its existential density after being washed by time. The visual language drifts between figure and light, everyday objects, and abstract textures.",
-    "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
-    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://www.asiaartcenter.org/en/exhibitions": {
     "artists": [
@@ -1742,5 +1722,15 @@
     "description_en": "Calrisi is a cross-museum, cross-national exhibition led by Pingtung Indigenous Peoples Hall in collaboration with Taiwu, Laiyi, and Wutai Cultural Halls, along with Palau's Belau National Museum. Gathering Paiwan, Rukai, and Palauan craftspeople and traditional singers, the exhibition uses carving, weaving, and ancient songs as threads witnessing a cultural blueprint woven from different colors and materials. \"Calisi/Calrisi\" means \"thread\" in Paiwan and Rukai—inscribed not only on textiles but on navigation paths and linguistic resonance.",
     "description_ja": "屏東県政府原住民処が企画する年度大型特展《Calrisi》は跨館・跨国聯展。屏東原民館が率い、泰武・来義・霧台文物館と連携し、海を越えてパラオ国立博物館とも共同開催。パイワン族・ルカイ族・パラオの工芸師と伝承歌い手を集結し、彫刻・織紋・古謡を糸に、異なる色彩・素材が共に織り上げる文化の青写真を目撃する。「Calisi/Calrisi」はパイワン語・ルカイ語で「糸」を意味し、織物だけでなく航路の軌跡と言語の共鳴に刻まれている。",
     "fetched_at": "2026-06-29T20:12:55.165155+08:00"
+  },
+  "https://yiriarts.com.tw/exhibitions/217-solo-exhibition/": {
+    "artists": [
+      "陳雲"
+    ],
+    "curator": "",
+    "description": "在當代藝術強調流動與不穩定的語境中，此次展覽試圖在變動的記憶與感知之間，為觀者保留一個覺察自身位置的座標——回應繪畫歷經時間沖刷後，如何持續生成其存在的密度。展出的併組作品如同記憶的切片，在牆面上構建出微型劇場。作品的視覺語言游移於人物光影、日常物件與抽象肌理之間。平塗的層次在畫布上堆疊的質感、組畫之間刻意留下的縫隙，在併組結構裡彼此對照共鳴，召喚出遠大於畫面本身的時間感與重量。",
+    "description_en": "In a contemporary art context emphasizing fluidity and instability, this exhibition attempts to preserve a coordinate of self-awareness between shifting memories and perceptions—responding to how painting continues to generate its existential density after being washed by time. The visual language drifts between figure and light, everyday objects, and abstract textures.",
+    "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
+    "fetched_at": "2026-06-30T13:39:09.720601+08:00"
   }
 }
