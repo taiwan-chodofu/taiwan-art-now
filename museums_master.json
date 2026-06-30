@@ -2674,15 +2674,18 @@
       },
       "url": "https://www.winsingartplace.com",
       "hours": {
-        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
-        "ja": "火〜日 10:00–18:00｜月休",
-        "zh": "週二至週日 10:00–18:00｜週一休"
+        "en": "Wed–Mon 10:30–17:30 | Closed Tue",
+        "ja": "水〜月 10:30–17:30｜火曜休",
+        "zh": "週三至週一 10:30–17:30｜週二休"
       },
-      "closed_day": 0,
+      "closed_day": 1,
       "coordinates": {
         "lat": 25.0708,
         "lng": 121.6088
-      }
+      },
+      "closed_days": [
+        1
+      ]
     },
     {
       "id": "nmh",
