@@ -53,7 +53,15 @@
       "title_ja": "",
       "dates": "2026/05/01 - 2026/07/19",
       "location": "大新美術館",
-      "link": "https://www.facebook.com/DaXinArtMuseum/"
+      "link": "https://www.facebook.com/DaXinArtMuseum/",
+      "artists": [
+        "劉自明",
+        "吳東龍",
+        "黃文力",
+        "黃昱昊",
+        "徐娜",
+        "汪祥鳳"
+      ]
     },
     {
       "museum": "glitch",

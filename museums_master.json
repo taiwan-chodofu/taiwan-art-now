@@ -1552,14 +1552,17 @@
       },
       "url": "https://www.facebook.com/DaXinArtMuseum/",
       "hours": {
-        "en": "By appointment",
-        "ja": "予約制",
-        "zh": "預約制"
+        "en": "Tue–Sun 08:00–12:00, 13:00–17:00 | Closed Mon",
+        "ja": "火〜日 8:00–12:00, 13:00–17:00｜月休",
+        "zh": "週二至週日 08:00–12:00、13:00–17:00｜週一休"
       },
-      "closed_day": null,
+      "closed_day": 0,
       "scraper": null,
       "lat": 23.008762,
-      "lng": 120.207442
+      "lng": 120.207442,
+      "closed_days": [
+        0
+      ]
     },
     {
       "id": "huashan",
