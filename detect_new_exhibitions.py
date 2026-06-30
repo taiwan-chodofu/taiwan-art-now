@@ -19,9 +19,7 @@ NOTIFY_RECIPIENT_ID = "27187879357530588"  # 管理者のsender_id
 def _normalize_title(title):
     """タイトルの表記揺れを吸収する正規化。"""
     t = title.strip().lower()
-    t = re.sub(r"[【】「」『』《》〈〉\[\]]", "", t)
-    t = re.sub(r"\s+", " ", t)
-    t = t.strip()
+    t = re.sub(r"[【】「」『』《》〈〉\[\]：:；;—－\-·・．\s]", "", t)
     return t
 
 

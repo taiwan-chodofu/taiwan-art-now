@@ -1928,6 +1928,33 @@
       ],
       "link": "https://yiriarts.com.tw/exhibitions/227-2026-solo-exhibition/",
       "status": "upcoming"
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "黏膩關係：內餡 // 縫隙",
+      "title_en": "Sticky Relationships: Filling // Fissures",
+      "dates": "2026.06.11 – 2026.10.11",
+      "artists": [
+        "王冠蓁",
+        "張競芝",
+        "童品元",
+        "黃韶瑩",
+        "黃曉茹",
+        "詹詠幀",
+        "蔡定邦",
+        "顏妤庭"
+      ],
+      "link": "https://www.tnam.museum/exhibition/detail/708",
+      "status": "current"
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "超現實主義：對話中的世界",
+      "title_en": "",
+      "dates": "2026.04.25 – 2026.08.30",
+      "artists": [],
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=806",
+      "status": "current"
     }
   ]
 }
