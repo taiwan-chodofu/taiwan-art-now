@@ -1871,6 +1871,24 @@
       "artists": [],
       "link": "https://artemperor.tw/tidbits/20043",
       "status": "current"
+    },
+    {
+      "museum": "nmh",
+      "title_zh": "埃及木乃伊—永生傳說",
+      "title_en": "Egyptian Mummies — Legends of Eternal Life",
+      "dates": "2026.06.17 – 2026.11.15",
+      "artists": [],
+      "link": "https://www.nmh.gov.tw",
+      "status": "current"
+    },
+    {
+      "museum": "nmh",
+      "title_zh": "終章未完：穿越生死的文化觀想特展",
+      "title_en": "",
+      "dates": "2026.05.23 – 2026.09.21",
+      "artists": [],
+      "link": "https://www.nmh.gov.tw",
+      "status": "current"
     }
   ]
 }
