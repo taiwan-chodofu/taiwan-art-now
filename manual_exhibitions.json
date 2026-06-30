@@ -94,7 +94,7 @@
       "title_ja": "",
       "dates": "2026/05/09 - 2026/07/19",
       "location": "毛刺 Glitch 4F",
-      "link": "https://www.facebook.com/profile.php?id=61556692779891",
+      "link": "https://www.facebook.com/profile.php?id=61556692779891#4f",
       "description": "散步與休息成為藝術家手捏造型的重要靈感來源，如同對日常生活的寫生與紀錄。那些細微而真實的感受，被轉化為豐潤飽滿的形體，以及鮮明而獨特的材質與色彩。品牌少見的大型陶作於毛刺限定展出，現場亦同步呈現專為本次展覽創作的「翻書系列盤」。",
       "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series created especially for this exhibition.",
       "artists": [
@@ -198,18 +198,6 @@
       ]
     },
     {
-      "museum": "redgold",
-      "title_zh": "草地郎 : 李義弘",
-      "title_en": "Emerging from the Fields : Lee Yih-hong",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/19",
-      "location": "赤粒藝術",
-      "link": "https://www.redgoldfineart.com",
-      "artists": [
-        "李義弘"
-      ]
-    },
-    {
       "museum": "soka",
       "title_zh": "低語的形體",
       "title_en": "Forms of Whisper",
@@ -246,7 +234,7 @@
       "title_ja": "",
       "dates": "2026/06/13 - 2026/07/15",
       "location": "福利社 FreeS Art Space",
-      "link": "https://www.frees-art.org",
+      "link": "https://www.facebook.com/freesartspace",
       "description": "一片白淨鬆軟的雪白地，閃爍著細碎的微光，其中一個個時而微微向下凹陷、時而隆起的痕跡，那是風在時間中遺留下記憶的足跡。鹽巴一層一層地盪在風中，沿著空氣路徑而後墜落，柔和地堆疊出綿密的厚度，灑下寫實繪畫般的明暗過度。通過對留痕的凝視，感受它們的質地、重量、形狀，甚至是它們在時間和空間中自然變化的痕跡，自然物質帶來的感官經歷，喚起身體對空間與時間的感知。",
       "description_en": "A pristine, soft expanse of white snow, shimmering with delicate glimmers, with traces that sometimes slightly indent and sometimes bulge—these are the footprints left by the wind as memories of time. Salt grains swirl in the wind, layer by layer, falling along the air's path, gently accumulating into a dense thickness, casting realistic painting-like transitions of light and shadow. Through gazing at the marks left behind, one can feel their texture, weight, shape, and even the traces of their natural changes over time and space. This sensory experience brought by natural materials awakens the body's perception of space and time.",
       "events": [
@@ -808,7 +796,7 @@
       "title_ja": "",
       "dates": "2026/07/03 - 2026/09/27",
       "location": "關渡美術館 1F展覽廳",
-      "link": "https://kdmofa.tnua.edu.tw/",
+      "link": "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9dfba4fbfa094efe4fe640b9db20b991a95",
       "description": "",
       "artists": []
     },
@@ -1830,8 +1818,60 @@
       "title_zh": "超現實主義：對話中的世界",
       "title_en": "",
       "dates": "2026.04.25 – 2026.08.30",
-      "artists": [],
-      "link": "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=806",
+      "artists": [
+        "赫伯特．拜爾",
+        "漢斯．貝爾默",
+        "雷娜特．貝特曼",
+        "馬可．布蘭比拉",
+        "布拉塞",
+        "卡米耶．布萊恩",
+        "克勞德．卡恩",
+        "李奧諾拉．卡靈頓",
+        "傑拉多．查維茲",
+        "喬治．康多",
+        "薩爾瓦多．達利",
+        "保羅．德爾沃",
+        "馬克思．恩斯特",
+        "艾羅",
+        "蕾奧諾爾‧菲尼",
+        "烏爾斯．費舍爾",
+        "恩斯特．福克斯",
+        "安德烈．蓋爾普克",
+        "雅各布．吉爾多",
+        "湯瑪斯．格林菲爾德",
+        "菲利普．哈爾斯曼",
+        "勞爾．豪斯曼",
+        "皮耶．查罕",
+        "芭芭拉．克魯格",
+        "林飛龍",
+        "莎拉．盧卡斯",
+        "雷內．馬格利特",
+        "馬塞爾．馬里恩",
+        "奧拉夫．馬滕斯",
+        "安德烈．馬松",
+        "羅貝托．馬塔",
+        "胡安．米羅",
+        "皮耶．莫利尼耶",
+        "勞倫．莫法特",
+        "梅雷特．奧本海姆",
+        "歐蘭",
+        "東尼．奧斯勒",
+        "沃爾夫岡．帕倫",
+        "派翠西亞．佩斯尼尼",
+        "米開朗基羅．皮斯特萊托",
+        "曼．雷",
+        "岡特．薩克斯",
+        "羅爾夫．薩克斯",
+        "辛蒂．雪曼",
+        "佩妮．斯林格",
+        "丹尼爾．史波利",
+        "艾琳娜．莎波茲尼科夫",
+        "伊夫．唐吉",
+        "多蘿西婭．坦寧",
+        "歐文．沃姆",
+        "托馬斯．齊普"
+      ],
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=806",
       "status": "current"
     },
     {
@@ -1877,6 +1917,150 @@
       ],
       "link": "https://artemperor.tw/tidbits/20019",
       "status": "current"
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "物質世界",
+      "title_en": "Material World",
+      "title_ja": "",
+      "dates": "2026.05.01 – 2026.08.16",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=808",
+      "artists": [
+        "日下淳一",
+        "白景瑞",
+        "朱嘉樺",
+        "何采柔",
+        "何德來",
+        "李元佳",
+        "李明學",
+        "李傑",
+        "周育正",
+        "林文熙",
+        "奚淞",
+        "徐揚聰",
+        "翁清土",
+        "張照堂",
+        "梅丁衍",
+        "陳典懋",
+        "陳順築",
+        "陸先銘",
+        "湯雅雯",
+        "黃文浩",
+        "黃冠鈞",
+        "黃榮禧",
+        "黃銘昌",
+        "鄭亭亭",
+        "澤拓",
+        "盧冠宏",
+        "賴九岑",
+        "顏水龍",
+        "顧何忠"
+      ]
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "共感：存在的節奏",
+      "title_en": "Sympathetic Resonance: The Rhythm of Being",
+      "title_ja": "",
+      "dates": "2026.05.09 – 2026.09.20",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=807",
+      "artists": [
+        "山城知佳子",
+        "吳其育",
+        "陳普",
+        "希朵・史戴爾",
+        "周東彥",
+        "桑佳．鮑梅爾",
+        "彭弘智",
+        "陽春麵研究舍",
+        "瑟琳・克拉內",
+        "蔡咅璟",
+        "盧明德",
+        "NOIZ Architects"
+      ]
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "2026 X-site 鏡・亭・山：相看兩不厭",
+      "title_en": "2026 X-site Mirror・Pavilion・Mountain",
+      "title_ja": "",
+      "dates": "2026.05.16 – 2026.07.26",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=809",
+      "artists": [
+        "做白工作室（溫子慶、蔡君陽、梁立白、鄭詠心、陳冠文）"
+      ]
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "造公園",
+      "title_en": "Making a Park",
+      "title_ja": "",
+      "dates": "2026.03.28 – 2026.08.30",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=804",
+      "artists": [
+        "石孟鑫",
+        "吳燦政",
+        "李鈺淇",
+        "明白實驗所",
+        "倪祥",
+        "陳姿尹",
+        "陳萬仁",
+        "楊雨樵",
+        "蕭聖健"
+      ]
+    },
+    {
+      "museum": "asiaart",
+      "title_zh": "Unseen Topographies",
+      "title_en": "Unseen Topographies: Tobe Kiu Sin Kan & Charlotte Keates",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.08.30",
+      "location": "亞洲藝術中心",
+      "link": "https://asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/",
+      "artists": [
+        "簡喬倩",
+        "Charlotte Keates"
+      ]
+    },
+    {
+      "museum": "sssart",
+      "title_zh": "未曾抵達的風景",
+      "title_en": "The Unreached Landscape",
+      "title_ja": "",
+      "dates": "2026.07.12 – ",
+      "location": "ss space space",
+      "link": "https://www.facebook.com/ssspacespace",
+      "artists": [
+        "廖進祥"
+      ]
+    },
+    {
+      "museum": "tinakeng",
+      "title_zh": "科羅曼德之花",
+      "title_en": "The Flowers of Coromandel",
+      "title_ja": "",
+      "dates": "2026.05.23 – 2026.07.11",
+      "location": "耿畫廊",
+      "link": "https://www.tinakenggallery.com/exhibitions/259/",
+      "artists": [
+        "蘇孟鴻"
+      ]
+    },
+    {
+      "museum": "tkgplus",
+      "title_zh": "於霧氣中懸浮的指引",
+      "title_en": "Suspended Guidance in the Mist",
+      "title_ja": "",
+      "dates": "2026.03.14 – 2026.07.04",
+      "location": "TKG+ Projects",
+      "link": "https://www.tkgplus.com/exhibitions/147/",
+      "artists": [
+        "大山．恩利科義薩姆"
+      ]
     }
   ]
 }

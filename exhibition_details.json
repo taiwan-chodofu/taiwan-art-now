@@ -1057,10 +1057,10 @@
   "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9dfba4fbfa094efe4fe640b9db20b991a95": {
     "artists": [],
     "curator": "",
-    "description": "本展以「圖書分類法」為核心概念，將龍顏藝術創作獎二十年來累積的200餘件獲獎典藏作品視為一座不斷擴充的「圖書館」。透過分類、編目與索引，作品得以被搜尋、對照與交叉閱讀。展覽引入生成式AI作為「圖書館員」，突破單一策展視角，生成多重流動的分類結果，反映當代藝術的跨領域與多義性。二十年的成果轉化為可閱讀、可搜尋、可持續擴充意義的知識系統。",
-    "description_en": "The exhibition uses \"library classification\" as its core concept, treating 200+ award-winning works accumulated over 20 years of the Longyen Art Award as a continuously expanding \"library.\" Through classification, cataloging, and indexing, works can be searched, compared, and cross-read. Generative AI is introduced as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple fluid classification results reflecting contemporary art's interdisciplinarity.",
-    "description_ja": "本展は「図書分類法」を核心概念に、龍顔芸術創作賞20年間で蓄積した200余件の受賞典蔵作品を絶えず拡充する「図書館」と見なす。分類・編目・索引を通じて作品は検索・対照・横断的読解が可能になる。生成AIを「図書館員」として導入し、単一の策展視点を突破し、現代芸術の分野横断性と多義性を反映する多重かつ流動的な分類結果を生成する。",
-    "fetched_at": "2026-06-29T14:42:32.977600+08:00"
+    "description": "本展以「圖書分類法」為核心，將「龍顏藝術創作獎」二十年逾兩百件作品視為一座持續擴展的「圖書館」。透過圖書館的分類、編目與索引機制，作品不再僅供觀看，而可被查找、比對與交叉閱讀。展覽引入生成式AI擔任「圖書館員」，突破單一策展視角，生成多重且流動的分類結果，反映當代藝術跨領域與多重詮釋的特質。空間以索引與書架為意象，觀眾得以依分類號或主題自由探索，建構個人觀看路徑。最終，「龍顏藝術創作獎」二十年的成果將不再只是時間序列的回顧，而是轉化為一套可被閱讀、檢索與持續擴充其意義的知識系統。",
+    "description_en": "Centered on \"library classification,\" this exhibition treats over two hundred works from twenty years of the Long Yen Art Scholarship as a continuously expanding \"library.\" Through classification, cataloging, and indexing mechanisms, artworks become not merely objects for viewing but items to be searched, compared, and cross-read. The exhibition introduces generative AI as the \"librarian,\" breaking through singular curatorial perspectives to generate multiple, fluid classification results that reflect the cross-disciplinary and multi-interpretive nature of contemporary art. With index cards and bookshelves as spatial metaphors, viewers explore freely by classification number or theme, constructing personal viewing paths. Ultimately, twenty years of the Long Yen Art Scholarship are transformed from a chronological retrospective into a knowledge system that can be read, searched, and continually expanded in meaning.",
+    "description_ja": "本展は「図書分類法」を核に、「龍顔芸術創作奨」20年間の200点超の作品を絶えず拡張する「図書館」とみなす。図書館の分類・目録・索引メカニズムを通じ、作品は鑑賞対象にとどまらず、検索・比較・交差的に読まれうるものとなる。生成AIを「図書館員」として導入し、単一の策展視点を突破して多重かつ流動的な分類結果を生成、現代美術の越境性と多重解釈の特質を反映する。空間は索引カードと書架をイメージし、鑑賞者は分類番号やテーマに従って自由に探索し、個人の鑑賞経路を構築できる。「龍顔芸術創作奨」20年の成果は時系列的回顧ではなく、読み・検索し・意味を持続的に拡充できる知識体系へと変換される。",
+    "fetched_at": "2026-06-30T15:52:58.095466+08:00"
   },
   "https://clab.org.tw/en/events/we-are-becoming/": {
     "artists": [
@@ -1986,5 +1986,233 @@
     "description_en": "A group of permanent and special exhibitions at the National Museum of Taiwan Literature: \"The Power of Literature\" permanent exhibition covers six thematic zones of Taiwan's literary history; \"Here and Now: Contemporary Czech Comics\" showcases the vibrant development of Czech comics since 2010; \"Kaleidoscope of Stories\" invites families to read together; \"Player Login: Children's Literature\" traces 100 years of Taiwanese children's literature; \"The Literary Path\" recreates the growth trajectories of traditionally educated literati through manuscripts, exam papers, and correspondence.",
     "description_ja": "国立台湾文学館の常設展・特展群：「文学力─書寫LÁN臺灣」は百年の台湾文学を六大テーマで展示する常設展。「此時此地：当代チェコ漫画」は2010年以降に蓬勃と発展するチェコ漫画の新貌を呈示。「童心故事万華鏡」は親子で読書を楽しむ主題書展。「玩家登入：児童文学特展」は日治時期から現代絵本までの百年を辿る。「文学之路」は書画・手稿・試験答案・書簡等の文物を通じ旧式教育を受けた文人の成長軌跡を再現する。",
     "fetched_at": "2026-06-30T15:23:29.701857+08:00"
+  },
+  "https://www.facebook.com/fotoaura.tw": {
+    "artists": [
+      "葉先傑"
+    ],
+    "curator": "",
+    "description": "被稱為雜草的，或許並不是植物，而是邊緣的產物；它們沒有被允許，也無意表達，卻以根、土與緩慢的蔓延，佔據著時間的遺忘。當雜草被遷移出原本生長之處，卻並非全然失根；它們仍攜帶著土、根系與未被整理的時間，在另一個場域中繼續生長、搖動、枯萎。這狀態是一種帶根的流離，指向一片在語言、秩序與歷史之前的場域——在那裡，存在可以是離散的、受傷的、暫時的，卻從未真正被清空。\n\n葉先傑，1987年生於台北，現居並創作於台灣。創作橫跨影像、裝置、行為與計劃性創作，長期關注觀看、身體、技術與歷史感知之間的關係。其作品常透過感知的錯置與時間的中斷，使觀看本身成為問題。近年活動延伸至新加坡、印尼、巴西與英國等地。",
+    "description_en": "That which is called a weed may not be a plant at all, but a product of the margins. Unpermitted, and without the intention to speak, it takes hold within the oblivion of time through roots, soil, and a slow, persistent spreading. When weeds are displaced from the place where they first grew, they are not entirely uprooted. They continue to carry soil, root systems, and time that has not yet been ordered, growing, trembling, and withering within another field. This condition is a form of rooted displacement. It points toward a field before language, order, and history—a place where existence may be dispersed, wounded, and provisional, yet never truly emptied.\n\nYe Sian Jie, born in Taipei in 1987, currently lives and works in Taiwan. His practice spans moving image, installation, performance, and project-based creation, and has long engaged with the relations between seeing, the body, technology, and historical perception. Often working through perceptual displacement and temporal interruption, his works turn the act of seeing itself into a site of inquiry.",
+    "description_ja": "雑草と呼ばれるものは、植物ではなく周縁の産物かもしれない。許されることなく、表現する意図もなく、根と土と緩慢な蔓延によって時間の忘却を占拠する。雑草が元の生育地から移されても完全に根を失うわけではない。土や根系、整理されていない時間を携えたまま、別の場で成長し、揺れ、枯れ続ける。この状態は「根を帯びた流離」であり、言語・秩序・歴史以前の場を指す——そこでは存在は離散的で、傷つき、暫時的でありながら、真に空にされることはない。\n\n葉先傑、1987年台北生まれ、台湾在住。映像・インスタレーション・パフォーマンス・プロジェクト型制作を横断し、観ること・身体・技術・歴史的知覚の関係を長期的に探究する。知覚の錯置と時間の中断を通じ、観る行為そのものを問いの場とする。近年はシンガポール、インドネシア、ブラジル、英国に活動を拡張。",
+    "fetched_at": "2026-06-30T15:42:41.529927+08:00"
+  },
+  "https://www.facebook.com/profile.php?id=61556692779891": {
+    "artists": [
+      "林庭宇"
+    ],
+    "curator": "",
+    "description": "藝術家林庭宇長期關注台灣糾纏而複雜的歷史脈絡，並透過古籍研究、梳理知識系譜建立過程中的縫隙與斷裂。本次林庭宇以《熱帶植物寫真集》為研究與再製對象。《熱帶植物寫真集》是一套於二戰前在臺北植物園拍攝完成的植物攝影集，由植物栽培技師工藤彌九郎（1889～？）製作，出版時間橫跨十四年（1929-1943），共六卷，收錄180種熱帶植物，可說是臺灣最早且相對完整的「熱帶植物」影像紀錄之一。\n\n「第七卷」並非單純補完一套未完成的書，而是試圖探問各種關於「痕跡」的問題：古書流轉與版本差異所留下的痕跡、時間在紙張上沉積的色澤與斑痕，以及東亞殖民歷史在知識、影像與自然分類中遺留下來的痕跡。這些痕跡彼此交疊，構成一種曖昧而複雜的情感結構，其中既有對植物、自然與生命形態的凝視與熱愛，也同時映照出殖民者觀看土地、命名自然、整理世界的權力目光。透過藝術家的轉譯，觀眾得以在泛黃的頁面與被放大的細節之間，重新感受知識如何被建立、自然如何被觀看，而歷史又如何在微小的斑痕、缺頁與影像複製之中，持續留下難以抹去的回聲。",
+    "description_en": "Artist Kenneth Ting-Yu explores Taiwan's complex histories through rare book research, reproduction, publishing, and archival translation, reopening historical objects to new ways of seeing and understanding. Iconography of Tropical Plants Vol. VII takes as its starting point a six-volume photographic collection produced between 1929 and 1943 at the Taipei Botanical Garden by Yakurō Kudō, a plant cultivation technician. Recording 180 species of tropical plants, it is one of Taiwan's earliest visual archives of tropical flora.\n\nRather than completing the original series, Vol. VII appears as its \"shadow.\" The exhibition traces the book's circulation, edition differences, and material life, while reflecting on the marks left by time, paper, images, and colonial systems of knowledge. Through Kenneth Ting-Yu's translation, viewers are invited to reconsider how nature was observed, classified, and remembered.",
+    "description_ja": "林庭宇は台湾の錯綜した歴史的文脈に長年注目し、古籍研究を通じて知識の系譜構築過程における隙間と断裂を整理してきた。本展は『熱帯植物写真集』を研究・再製の対象とする。同書は二戦前の台北植物園で植物栽培技師・工藤彌九郎（1889〜？）が制作した植物写真集で、1929年から1943年にかけて全6巻が刊行され、180種の熱帯植物を収録する台湾最初期の体系的な熱帯植物映像記録である。\n\n「第七巻」は未完の書を補完するものではなく、「痕跡」をめぐる問いを探る試みである——古書の流転と版の差異が残す痕跡、時間が紙面に沈積させた色沢と斑痕、そして東アジア植民地史が知識・映像・自然分類に遺した痕跡。これらが重なり合い、植物・自然・生命への凝視と愛情を映しながら、同時に植民者が土地を見・自然を命名し・世界を整理する権力の眼差しを照らし出す。",
+    "fetched_at": "2026-06-30T15:45:47.478871+08:00"
+  },
+  "https://www.facebook.com/profile.php?id=61556692779891#4f": {
+    "artists": [
+      "陳曦"
+    ],
+    "curator": "",
+    "description": "散步與休息成為藝術家手捏造型的重要靈感來源，如同對日常生活的寫生與紀錄。那些細微而真實的感受，被轉化為豐潤飽滿的形體，以及鮮明而獨特的材質與色彩。品牌少見的大型陶作於毛刺限定展出，現場亦同步呈現專為本次展覽創作的「翻書系列盤」。無論是對生活情趣的嚮往，或作為空間陳設與收藏，皆提供觀眾豐富而多樣的選擇。",
+    "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series, created especially for this exhibition. Whether appealing to a desire for everyday pleasure or considered as objects for interior display and collection, the works offer visitors a rich and diverse range of choices.",
+    "description_ja": "散歩と休息が、アーティストの手捻り造形の重要なインスピレーション源となる——日常生活のスケッチや記録のように。微細で真実の感覚が、豊潤で丸みのある形体へ、鮮明で独特な素材感と色彩へと変換される。ブランドでは珍しい大型陶芸作品が毛刺Glitchで限定展示され、本展のために制作された「翻書シリーズ皿」も同時に展示。生活の趣への憧れとして、あるいは空間のしつらえやコレクションとして、来場者に豊かで多様な選択肢を提供する。",
+    "fetched_at": "2026-06-30T15:46:04.910966+08:00"
+  },
+  "https://www.facebook.com/freesartspace": {
+    "artists": [
+      "李沛倫"
+    ],
+    "curator": "",
+    "description": "「通透」是一種質地、一種狀態——透明而不空，輕盈卻有重量；亦是一種境界，指涉穿越遮蔽、進入深處的可能，更是一種內在的通達與感受的穿越。\n\n展覽以「風」、「光」、「水」作為感知出發點，圍繞無形與輕盈的存在，探索它們如何穿透空間、時間與身體，喚起身體的敏銳感受；並試圖在靜與動之間尋找某種純粹的透明感，一如風吹過肌膚時所帶來的那股難以言喻的清澈與自由。當風輕輕吹過、光緩緩地灑落、水靜靜地墜落，一切開始變得流動。在物質與身體經驗交會的瞬間，正是這些細微變化與感知轉換，使過程本身便是最真實的存在狀態。\n\n這裡沒有明確的敘事，以身體作為接收器，在行走、凝視與停駐中，被輕柔的元素所滲透、包圍與喚醒，去感受那份幾乎要被日常掩蓋的輕盈與透明。輕輕地將伏藏於日常中的片刻凝滯為永恆，使身體緩慢地甦醒，讓存在被感知，讓那些無以言說的感受，悄悄穿過。",
+    "description_en": "\"Pervasive Luminosity\" is a texture, a state—transparent yet substantial, weightless yet possessing weight. It signifies a threshold, pointing toward the possibility of traversing concealment into the depths, while embodying an internal alignment and a breakthrough of perception.\n\nTaking \"wind,\" \"light,\" and \"water\" as perceptual departure points, the exhibition centers on intangible, featherlight existences, exploring how they infiltrate space, time, and the physique to evoke acute bodily sensations. It attempts to locate a pure transparency between stasis and kinetics, mirroring the elusive clarity and liberation felt when wind sweeps across the skin. When the wind blows gently, light cascades softly, and water drops silently, all boundaries dissolve into fluidity.\n\nAbsent of an explicit narrative, the exhibition positions the body as a receptor. Through walking, gazing, and pausing, one is permeated, enveloped, and awakened by these ephemeral elements, grasping the lightness and transparency routinely eclipsed by the everyday.",
+    "description_ja": "「通透」とは質感であり状態である——透明でありながら空ではなく、軽やかでありながら重みを持つ。遮蔽を貫き深部に至る可能性を指し示す境地であり、内なる通達と感受の貫通でもある。\n\n本展は「風」「光」「水」を知覚の出発点とし、無形で軽やかな存在をめぐり、それらがいかに空間・時間・身体を貫通して鋭敏な身体感覚を喚起するかを探る。静と動の間にある純粋な透明感を見出そうとする試み——風が肌を撫でる時の言い表し難い清澄さと自由のように。風がそっと吹き、光が緩やかに降り注ぎ、水が静かに落ちる時、すべてが流動し始める。物質と身体経験が交わる瞬間、微細な変化と知覚の転換こそが、過程そのものを最も真正な存在のあり方とする。\n\nここには明確な物語はない。身体を受信器として、歩き・凝視し・留まる中で、柔らかな要素に浸透され・包まれ・覚醒させられ、日常にほぼ覆い隠された軽やかさと透明さを感じ取る。",
+    "fetched_at": "2026-06-30T15:50:39.795776+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=808": {
+    "artists": [
+      "日下淳一",
+      "白景瑞",
+      "朱嘉樺",
+      "何采柔",
+      "何德來",
+      "李元佳",
+      "李明學",
+      "李傑",
+      "周育正",
+      "林文熙",
+      "奚淞",
+      "徐揚聰",
+      "翁清土",
+      "張照堂",
+      "梅丁衍",
+      "陳典懋",
+      "陳順築",
+      "陸先銘",
+      "湯雅雯",
+      "黃文浩",
+      "黃冠鈞",
+      "黃榮禧",
+      "黃銘昌",
+      "鄭亭亭",
+      "澤拓",
+      "盧冠宏",
+      "賴九岑",
+      "顏水龍",
+      "顧何忠"
+    ],
+    "curator": "馮馨",
+    "description": "物質塑造著人類的生活方式。我們每日一張開眼，從喝水的杯子、穿著的衣物、居住的空間、已不僅是通訊功能的手機，食衣住行育樂，所有的一切被物質所圍繞著。因應生活所需，物被不斷創造、發明、改良、演進，物被人所用，又因為使用而延伸出系統，系統回過頭化為生活中的直覺動作，甚至人們也因為使用被影響了原本的姿態、習慣甚至是思維模式。\n\n從70年代布希亞（Jean Baudrillard）揭示了消費社會中的符號價值，到90年代提姆．登特（Tim Dant）與斯蒂格勒（Bernard Stiegler）探討的物質實踐，物質不單單只是被消費或指涉意義，它也在日常的操作、使用與感知中，形成由物而衍伸的技術，進而影響人們的行動模式與社會的樣態。\n\n展覽試圖回望從農業社會轉變為工商社會之際至今，物質的生產與流通如何深刻改變諸多事物。小至我們的生活型態，大至推動、介入社會運作的機制，與隱沒在其後的力量。我們好奇物質是如何在社會、空間、尺度與感知中持續生成世界，而不同時期的創作者又是如何轉化時代性的感受，成為物質性的創作與實驗呈現，進一步回應我們伴隨其所改變的感知與想像。",
+    "description_en": "Material shapes human ways of living. From the cup we drink from each morning to our clothing, living spaces, and smartphones that have transcended mere communication—everything is surrounded by material. Objects are continuously created, invented, improved, and evolved to meet life's needs. Used by people, they extend into systems that become intuitive daily actions, even altering our postures, habits, and modes of thinking.\n\nFrom Baudrillard's revelation of sign value in consumer society in the 1970s, to Tim Dant and Bernard Stiegler's explorations of material practice in the 1990s, material is not merely consumed or referential—it generates techniques through daily operation, use, and perception that influence behavioral patterns and social forms.\n\nThe exhibition looks back at how material production and circulation have profoundly transformed everything since the transition from agricultural to industrial society—from our lifestyles to the mechanisms that drive and intervene in social operations, and the forces hidden behind them.",
+    "description_ja": "物質は人間の生活様式を形作る。毎朝目を開けた瞬間から、水を飲むコップ、着る衣服、住む空間、もはや通信機能だけではないスマートフォンまで、衣食住行楽の全てが物質に囲まれている。生活の必要に応じ物は絶えず創造・発明・改良・進化し、人に使われ、使用を通じてシステムへと拡張し、そのシステムが日常の直感的動作となり、使用者の姿勢・習慣・思考様式までも変容させる。\n\n1970年代のボードリヤールによる消費社会の記号価値の解明から、90年代のティム・デントやスティグレールの物質的実践の考察まで、物質は単に消費されたり意味を指示するだけでなく、日常の操作・使用・知覚の中で技術を生成し、行動様式と社会の様態に影響を与える。\n\n本展は農業社会から工商社会への転換以降、物質の生産と流通がいかに多くのものを深く変えてきたかを回望する。生活様態から社会運営に介入するメカニズム、その背後に潜む力まで。異なる時代の創作者がいかに時代的感受を物質的創作と実験へ転化してきたかを探る。",
+    "fetched_at": "2026-06-30T15:58:38.356281+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=807": {
+    "artists": [
+      "山城知佳子",
+      "吳其育",
+      "陳普",
+      "希朵・史戴爾",
+      "周東彥",
+      "桑佳．鮑梅爾",
+      "彭弘智",
+      "陽春麵研究舍",
+      "瑟琳・克拉內",
+      "蔡咅璟",
+      "盧明德",
+      "NOIZ Architects"
+    ],
+    "curator": "余思穎",
+    "description": "「共感：存在的節奏」展在概念上呼應現代物理學所揭示的現象：在量子層次中，某些粒子之間存在不可分割的關聯。這樣的觀點提示我們，「存在」或許不只是由彼此分離的個體所構成，而更像是一種由萬事萬物彼此連結、互動與生成的關係性整體。\n\n展覽從當代博物學的概念出發，邀請11位當代藝術家及團隊的藝術計劃，瞭解因技術的進展，不僅交疊原本過去、現在與未來的線性時間觀，亦探討人類應如何理解自身與物種、環境與世界的關係。從「人與非人共同演繹世界」（自然）、「擴增人類五感與時空觀」（技術）、與成為「互利共生的行動者」（行動實踐）三方面，讓我們感知原本無法觸及其它物種的環境界，在「選擇」與「介入」的實踐中，改變線性時間的進程，並產生生命倫理的責任。展場塑造為觀眾感知與實踐的場域，藉由共感與同理心，重新建構共享、互助與共生的倫理價值觀。",
+    "description_en": "The exhibition \"Sympathetic Resonance: The Rhythm of Being\" conceptually echoes phenomena revealed by modern physics: at the quantum level, certain particles share an inseparable connection. This perspective suggests that \"existence\" may not consist of separate individuals, but rather resembles a relational whole in which all things connect, interact, and co-generate.\n\nDeparting from concepts of contemporary natural history, the exhibition invites 11 artists and teams to explore how technological advances overlay linear notions of past, present, and future, while examining how humans might understand their relationship with species, environments, and the world. Through three dimensions—\"humans and non-humans co-performing the world\" (nature), \"augmenting human senses and spatiotemporal perception\" (technology), and \"becoming mutualistic actors\" (action)—we perceive environmental realms of other species previously beyond reach, altering linear time through practices of choice and intervention.",
+    "description_ja": "「共感：存在のリズム」展は現代物理学が明らかにした現象——量子レベルで特定の粒子間に不可分な関連が存在すること——に概念的に呼応する。「存在」は互いに分離した個体の集合ではなく、万物が連結・相互作用・生成し合う関係性の全体かもしれないことを示唆する。\n\n本展は現代博物学の概念から出発し、11組のアーティスト・チームを招聘。技術の進展が過去・現在・未来の線形的時間観を重層化するだけでなく、人類が自身と種・環境・世界との関係をいかに理解すべきかを探る。「人と非人が共に世界を演繹する」（自然）、「人間の五感と時空観を拡張する」（技術）、「互恵共生の行動者となる」（実践）の三側面から、他種の環境界を感知し、「選択」と「介入」の実践の中で線形時間の進程を変え、生命倫理の責任を生み出す。",
+    "fetched_at": "2026-06-30T15:58:59.011878+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=806": {
+    "artists": [
+      "赫伯特．拜爾",
+      "漢斯．貝爾默",
+      "雷娜特．貝特曼",
+      "馬可．布蘭比拉",
+      "布拉塞",
+      "卡米耶．布萊恩",
+      "克勞德．卡恩",
+      "李奧諾拉．卡靈頓",
+      "傑拉多．查維茲",
+      "喬治．康多",
+      "薩爾瓦多．達利",
+      "保羅．德爾沃",
+      "馬克思．恩斯特",
+      "艾羅",
+      "蕾奧諾爾‧菲尼",
+      "烏爾斯．費舍爾",
+      "恩斯特．福克斯",
+      "安德烈．蓋爾普克",
+      "雅各布．吉爾多",
+      "湯瑪斯．格林菲爾德",
+      "菲利普．哈爾斯曼",
+      "勞爾．豪斯曼",
+      "皮耶．查罕",
+      "芭芭拉．克魯格",
+      "林飛龍",
+      "莎拉．盧卡斯",
+      "雷內．馬格利特",
+      "馬塞爾．馬里恩",
+      "奧拉夫．馬滕斯",
+      "安德烈．馬松",
+      "羅貝托．馬塔",
+      "胡安．米羅",
+      "皮耶．莫利尼耶",
+      "勞倫．莫法特",
+      "梅雷特．奧本海姆",
+      "歐蘭",
+      "東尼．奧斯勒",
+      "沃爾夫岡．帕倫",
+      "派翠西亞．佩斯尼尼",
+      "米開朗基羅．皮斯特萊托",
+      "曼．雷",
+      "岡特．薩克斯",
+      "羅爾夫．薩克斯",
+      "辛蒂．雪曼",
+      "佩妮．斯林格",
+      "丹尼爾．史波利",
+      "艾琳娜．莎波茲尼科夫",
+      "伊夫．唐吉",
+      "多蘿西婭．坦寧",
+      "歐文．沃姆",
+      "托馬斯．齊普"
+    ],
+    "curator": "",
+    "description": "本展由德國圖賓根文化交流協會策劃，探討超現實主義思想，以及其自發軔以來跨越百年的影響力。展覽透過對話式的呈現，將1920年代的超現實主義運動時期的作品，與其後各世代藝術家的創作並置。此種交互對照證明了，超現實主義並非一個已終結於過去的歷史現象，而是一股與時代共振的動能。它是一種態度，一種未竟且不斷演進的思維模式。\n\n縱觀數十年的發展，超現實主義前衛藝術的主題與意象，在當下語境中尤具現實意義。關於身分認同、轉變、非理性，以及對現實與感知的質疑，至今仍在深受超現實主義啟發的作品中被反覆辯證。本展分為四個子題單元，演示跨世代乃至當代的超現實主義實踐，如何成為對當前與未來進行批判性及帶反諷意味的思考方式。本次展覽匯集百餘件繪畫、裝置、物件、攝影與電影，勾勒出超現實主義藝術豐富而多樣的面貌。",
+    "description_en": "Organized by the Institut für Kulturaustausch Tübingen, this exhibition explores Surrealist thought and its century-spanning influence. Through dialogic presentation, works from the 1920s Surrealist movement are juxtaposed with creations by subsequent generations of artists. This cross-referencing demonstrates that Surrealism is not a historical phenomenon concluded in the past, but a dynamic force resonating with the present—an attitude, an unfinished and continually evolving mode of thinking.\n\nAcross decades of development, the themes and imagery of Surrealist avant-garde art hold particular relevance in today's context. Questions of identity, transformation, irrationality, and challenges to reality and perception continue to be debated in Surrealism-inspired works. Divided into four thematic sections, the exhibition demonstrates how cross-generational and contemporary Surrealist practices serve as critical and ironic ways of thinking about the present and future. Featuring over one hundred paintings, installations, objects, photographs, and films.",
+    "description_ja": "本展はドイツ・テュービンゲン文化交流協会が企画し、シュルレアリスム思想とその発端以来百年を超える影響力を探る。1920年代のシュルレアリスム運動期の作品と、その後の各世代のアーティストの創作を対話形式で並置。この交互対照は、シュルレアリスムが過去に終結した歴史現象ではなく、時代と共振する動能——未完で絶えず進化する思考様式——であることを証明する。\n\n数十年の発展を通じ、シュルレアリスム前衛芸術のテーマとイメージは今日の文脈において特に現実的意味を持つ。アイデンティティ・変容・非理性、そして現実と知覚への疑問は、今なおシュルレアリスムに触発された作品の中で繰り返し弁証される。4つのサブテーマで構成され、絵画・インスタレーション・オブジェ・写真・映画の百余点を集め、シュルレアリスム芸術の豊かで多様な様相を描出する。",
+    "fetched_at": "2026-06-30T15:59:40.598189+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=809": {
+    "artists": [
+      "做白工作室"
+    ],
+    "curator": "",
+    "description": "「X-site 計畫」（2014～）以美術館戶外廣場為基地，每年公開徵選一件實驗性的臨時裝置提案。今年由跨領域團隊「做白工作室」《鏡‧亭‧山：相看兩不厭》獲得2026第13屆首獎。\n\n《鏡‧亭‧山》回應北美館室外廣場的環境條件，將地面輕輕掀起，創造具遮蔭且通透的空間，讓人們願意停留，「空白的、缺席的」廣場重獲公共性。為了達到「將地面輕輕掀起」的感覺，做白工作室創造一片完全穿透、不靠柱與牆支撐的自由場域。其中抵抗風浮力的鋼纜，看起來就像樂器中被繃緊的弦，利用這個意象設計出參觀者可互動的聲音裝置，「弦」被觸摸會發出聲音，揭露潛藏於美術館中、不容易被意識到的聲音地景。\n\n屋頂的蛇紋磚板片以塞尚（Paul Cézanne）反覆描繪聖維克多山的行動為靈感，將廣場衛星空拍圖作為像素，重組，構成蛇紋石圖案，是一個對於「真實」與「時間」的提問與反思。板片下方以鏡面組成，漸變角度可同時反映下方活動、廣場的蛇紋石與北美館正門。《鏡‧亭‧山》的目標與其說成為一件具有強烈意圖的作品，更希望能夠「創造環境」，在這個新環境中的人、事、物都是作品的一部分。",
+    "description_en": "The X-site Project (2014–) uses the museum's outdoor plaza as a base, annually selecting an experimental temporary installation proposal. This year, interdisciplinary team \"Zuobai Studio\" won the 13th X-site first prize with \"Mirror・Pavilion・Mountain.\"\n\nThe work responds to the environmental conditions of TFAM's outdoor plaza, gently lifting the ground to create a shaded yet transparent space that invites people to stay, restoring publicness to the \"blank, absent\" plaza. Steel cables resisting wind buoyancy resemble taut instrument strings—this imagery inspired interactive sound devices where touching the \"strings\" produces sounds, revealing the hidden soundscape of the museum.\n\nThe serpentine roof tiles draw inspiration from Cézanne's repeated paintings of Mont Sainte-Victoire, using satellite images of the plaza as pixels recombined into serpentine patterns—a questioning of \"reality\" and \"time.\" Mirror surfaces beneath reflect activities below, the plaza's serpentine stone, and TFAM's entrance simultaneously.",
+    "description_ja": "「X-site計画」（2014〜）は美術館屋外広場を拠点に、毎年実験的な仮設インスタレーション提案を公募する。今年は分野横断チーム「做白工作室」の《鏡・亭・山：相看兩不厭》が第13回首賞を獲得。\n\n本作は北美館屋外広場の環境条件に応答し、地面をそっと持ち上げ、日陰かつ通透な空間を創出して人々の滞留を促し、「空白で不在」だった広場に公共性を取り戻す。鋼のケーブルは楽器の張られた弦のように見え、このイメージから来場者がインタラクティブに触れると音を発する装置を設計——美術館に潜む意識されにくいサウンドスケープを露わにする。\n\n屋根の蛇紋石タイルはセザンヌがサント・ヴィクトワール山を繰り返し描いた行為に着想を得、広場の衛星写真をピクセルとして再構成し「真実」と「時間」への問いかけとする。下面の鏡面は下の活動・広場の蛇紋石・北美館正門を同時に映し出す。",
+    "fetched_at": "2026-06-30T16:00:06.769730+08:00"
+  },
+  "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=804": {
+    "artists": [
+      "石孟鑫",
+      "吳燦政",
+      "李鈺淇",
+      "明白實驗所",
+      "倪祥",
+      "陳姿尹",
+      "陳萬仁",
+      "楊雨樵",
+      "蕭聖健"
+    ],
+    "curator": "王瑋婷",
+    "description": "當孩子踏進公園時，一段充滿好奇的探索便悄然展開。從磨石子路的蜿蜒線條、鋪石踩踏的觸感與聲音，到發現一隻蝸牛、或一片形狀奇特的葉子，這些細瑣卻鮮明的經驗，都是吸引孩子目光停留的瞬間。然而，遊戲正是啟動學習與創造力的重要過程：小時候，我們會在公園裡嬉戲遊玩、築夢，將溜滑梯變成山岳、盪鞦韆化作飛行的起點。隨著年齡增長，公園成為我們散步、休憩、相遇或分離的場域。\n\n本次教育計畫以一座「公園的奇想」為起點，探索形狀與想像、公共性與互動的交織。我們邀請觀者透過互動作品、裝置與感官體驗，從圓山的歷史出發，延伸至造型、自然、公共性三大面向。藉由三個子題，參與者得以在探索中學習如何觀察日常、理解歷史、連結自然，並進一步想像未來的城市景觀：去思考「什麼是公共空間」，並嘗試以「想像力解決問題」。",
+    "description_en": "When a child steps into a park, a journey of curious exploration quietly begins. From the winding lines of terrazzo paths, the texture and sound of stepping on paving stones, to discovering a snail or an oddly shaped leaf—these small but vivid experiences capture a child's gaze and spark questions and imagination. Play is the crucial process that activates learning and creativity: as children, we turned slides into mountains and swings into launching pads for flight.\n\nThis educational project takes \"a park's fantasy\" as its starting point, exploring the intersection of shape and imagination, publicness and interaction. Through interactive works, installations, and sensory experiences, visitors depart from the history of Yuanshan and extend into three dimensions: form, nature, and publicness. Participants learn to observe the everyday, understand history, connect with nature, and imagine future urban landscapes.",
+    "description_ja": "子どもが公園に足を踏み入れた時、好奇心に満ちた探索が静かに始まる。磨き石の小道の蛇行する線、敷石を踏む感触と音、カタツムリの発見や奇妙な形の葉——これらの些細だが鮮明な体験が子どもの視線を留め、問いや想像の出発点となる。遊びは学びと創造力を起動する重要なプロセスである。\n\n本教育計画は「公園の奇想」を起点に、形状と想像、公共性とインタラクションの交織を探る。インタラクティブ作品・インスタレーション・感覚体験を通じ、円山の歴史から出発し造形・自然・公共性の三面に展開。参加者は探索の中で日常の観察・歴史の理解・自然との接続を学び、さらに未来の都市景観を想像する——「公共空間とは何か」を考え、「想像力で問題を解決する」ことを試みる。",
+    "fetched_at": "2026-06-30T16:01:12.610093+08:00"
+  },
+  "https://asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/": {
+    "artists": [
+      "簡喬倩",
+      "Charlotte Keates"
+    ],
+    "curator": "",
+    "description": "亞洲藝術中心呈獻 Unseen Topographies，推出香港藝術家簡喬倩（Tobe Kiu Sin KAN）與英國藝術家 Charlotte Keates 的雙人展。展覽匯聚了兩人皆十分風格化的繪畫實踐，探問記憶、感知、身分與情感，如何轉譯為既熟悉又難以捉摸的空間經驗。\n\nUnseen Topographies 所指向的並非現實中的地理景觀，而是構成生命經驗的隱性輪廓：記憶、渴望、心理聯想，以及內在世界與外部現實之間流動不羈的關係。透過繪畫，兩位藝術家試圖為那些無法直接目視的事物建立形體，並藉由氛圍、構圖與空間想像，映照出情緒與心理狀態的細微變化。\n\n兩位藝術家的一項重要共通點，在於她們皆居住於島嶼之上，卻身處截然不同的環境。簡喬倩成長於香港，這座高密度、快節奏，且深受多重文化與殖民歷史影響的城市；而Charlotte Keates 居住根西島，一個位於英吉利海峽中僅60000多人口的島嶼。這樣的差異也鮮明地體現在兩人的作品氣質之中：簡喬倩的畫面流露出介於其間的游移感，以及對自我定位的持續探尋；Keates 的作品則引領觀者進入一種靜觀、凝視與沉浸的狀態。",
+    "description_en": "Asia Art Center presents Unseen Topographies, a duo exhibition featuring Hong Kong artist Tobe Kiu Sin Kan and British artist Charlotte Keates. The exhibition brings together their highly stylized painting practices, interrogating how memory, perception, identity, and emotion translate into spatial experiences that are at once familiar and elusive.\n\nUnseen Topographies refers not to real geographical landscapes but to the invisible contours that constitute lived experience: memory, longing, psychological associations, and the unruly relationship between inner worlds and external reality. Through painting, both artists attempt to give form to what cannot be directly seen, using atmosphere, composition, and spatial imagination to reflect subtle shifts in emotional and psychological states.\n\nA key commonality is that both artists live on islands yet inhabit vastly different environments. Kan grew up in Hong Kong—a high-density, fast-paced city shaped by multiple cultures and colonial history; Keates lives on Guernsey, a quiet island of just over 60,000 people in the English Channel. This difference manifests clearly in their works: Kan's paintings convey a sense of in-betweenness and ongoing self-positioning, while Keates leads viewers into states of contemplation and immersion.",
+    "description_ja": "アジアアートセンターが「Unseen Topographies」を開催。香港アーティスト簡喬倩（Tobe Kiu Sin Kan）と英国アーティストCharlotte Keatesの二人展。両者の高度にスタイル化された絵画実践を集結し、記憶・知覚・アイデンティティ・感情がいかに馴染み深くも捉え難い空間体験へと翻訳されるかを問う。\n\nUnseen Topographiesが指し示すのは現実の地理的景観ではなく、生命経験を構成する隠れた輪郭——記憶、渇望、心理的連想、そして内的世界と外部現実の間の流動的な関係である。絵画を通じ、二人は直接目視できないものに形を与え、雰囲気・構図・空間想像によって感情と心理状態の微細な変化を映し出す。\n\n両者の重要な共通点は、共に島に暮らしながら全く異なる環境にいること。簡喬倩は高密度で多文化・植民地史の影響を受けた香港で育ち、Keatesは英仏海峡の人口6万余りの静かなガーンジー島に住む。この差異は作品の気質に鮮明に現れる。",
+    "fetched_at": "2026-06-30T16:05:33.463279+08:00"
+  },
+  "https://www.facebook.com/ssspacespace": {
+    "artists": [
+      "廖進祥"
+    ],
+    "curator": "",
+    "description": "地圖上的經緯、山海的輪廓、季節的推移，這些具體的形體座標了我們對風景的認識。然而「風景」究竟是客觀現實的投射，還是主體意識的構造？\n\n對廖進祥而言，繪畫不再是對客觀自然的再現，而是由感知、記憶與想像交織而成的內在探索。他以低限的線條與反覆塗抹的油彩製造細微的「錯位」，觀看畫作時，必須經歷一段聚焦與調整的時間間隙，讓風景在模糊與清晰之間擺盪，進而拆解並重組我們關於海或雲的記憶。未曾抵達的風景從來不是一個可抵達的終點，而是一種懸置了既定認知、始終保持開放的凝視。\n\n廖進祥出生於1970年，畢業於日本武藏野美術大學大學院造形研究科碩士，作品曾於日本、臺灣與英國等地展出，現經營武藏野畫室。",
+    "description_en": "The latitudes and longitudes on a map, the contours of mountains and seas, the shifting of the seasons—these concrete forms provide the coordinates for our understanding of landscape. Yet, is a \"landscape\" truly a projection of objective reality, or is it a construct of subjective consciousness?\n\nFor Chinhsiang Liao, painting is no longer a mere representation of objective nature, but an internal exploration interwoven with perception, memory, and imagination. Using minimalist lines and repeatedly applied oil paint, he creates subtle \"displacements.\" When viewing his canvases, one must experience a temporal gap of focusing and adjusting, allowing the landscape to oscillate between the blurred and the clear, thereby dismantling and reassembling our memories of the sea or clouds. \"The Unreached Landscape\" is never a final destination to be reached; rather, it is a suspension of preconceived notions—a perpetually open gaze.\n\nBorn in 1970, Chinhsiang Liao holds a Master's degree from Musashino Art University, Japan. His work has been exhibited across Japan, Taiwan, and the UK.",
+    "description_ja": "地図上の経緯度、山海の輪郭、季節の推移——これら具体的な形態が風景についての我々の認識を座標づける。しかし「風景」とは客観的現実の投射なのか、主体意識の構造なのか。\n\n廖進祥にとって絵画はもはや客観的自然の再現ではなく、知覚・記憶・想像が織り成す内的探索である。最小限の線と反復する油彩の塗布で微細な「ズレ」を生み出し、画面を見る時、焦点合わせと調整の時間的間隙を経験せねばならない。風景は曖昧と明晰の間を揺れ、海や雲に関する記憶を解体・再構成する。「未だ到達せぬ風景」は到達可能な終着点ではなく、既定の認知を宙吊りにし常に開かれた凝視である。\n\n1970年生まれ、日本・武蔵野美術大学大学院造形研究科修士修了。日本・台湾・英国等で作品を発表。現在武蔵野画室を運営。",
+    "fetched_at": "2026-06-30T16:11:10.184193+08:00"
+  },
+  "https://www.tinakenggallery.com/exhibitions/259/": {
+    "artists": [
+      "蘇孟鴻"
+    ],
+    "curator": "芭芭拉・波拉克（Barbara Pollack）",
+    "description": "甫於去年巴塞爾藝術博覽會發表大型屏風裝置，藝術家蘇孟鴻攜手美國策展人芭芭拉・波拉克（Barbara Pollack），於耿畫廊發表全新個展《科羅曼德之花》。展覽含括平面繪畫與屏風兩大創作主軸，展名破題點出兩大探問：關於傳統花鳥紋樣的華麗演繹，以及「真實性（authenticity）」與「挪用」的重新思辨與定義。\n\n歷史中，科羅曼德意指17、18世紀以降，中國經由印度科羅曼德海岸出口至歐洲的「款彩漆器屏風」。由於歐洲人在地理認知上的誤讀，「科羅曼德」一字成為此類中國屏風的通稱。對蘇孟鴻而言，科羅曼德的本質就是一場想像的投射。藝術家正是將此種「不真實之美（Inauthentic beauty）」的核心概念，進行進一步的實踐。\n\n作品中的花鳥紋樣並未經由藝術家親手創造，而是透過各種來源挪用而來：包含西方17世紀法國與荷蘭的畫作，經典中國畫譜《芥子園畫傳》、或是取樣清代畫師郎世寧的作品等。藉由絹印的轉印與變塗的打磨，藝術家將這些中西圖樣隱身於畫作中，營造出若隱若現的觀看趣味。近年旅歐的經歷，讓藝術家深受歐洲織錦掛毯之啟發，藉由消光凡尼斯的堆疊，試圖在畫布上仿現如掛毯絲綢般溫潤而幽微的光澤質地。",
+    "description_en": "Following his large-scale screen installation at Art Basel last year, artist Su Meng-Hung presents \"The Flowers of Coromandel\" at Tina Keng Gallery, curated by Barbara Pollack. The exhibition encompasses paintings and screens, posing two central inquiries: the ornate reinterpretation of traditional bird-and-flower motifs, and the redefinition of \"authenticity\" and \"appropriation.\"\n\nHistorically, \"Coromandel\" refers to Chinese lacquer screens exported to Europe via India's Coromandel Coast from the 17th-18th centuries. For Su, Coromandel's essence is a projection of imagination—he practices the core concept of \"inauthentic beauty.\" The bird-and-flower motifs are appropriated from 17th-century French and Dutch paintings, the classic Chinese painting manual \"Mustard Seed Garden,\" and works by Giuseppe Castiglione. Through silkscreen transfer and lacquer polishing, the artist conceals these cross-cultural patterns within the canvas. Inspired by European tapestries during recent travels, he layers matte varnish to evoke the warm, subtle luster of tapestry silk.",
+    "description_ja": "昨年のアート・バーゼルでの大型屏風インスタレーション発表に続き、蘇孟鴻が米国キュレーター芭芭拉・波拉克と共に耿画廊で新個展《科羅曼徳の花》を発表。平面絵画と屏風の二軸で構成し、伝統的花鳥紋様の華麗な演繹、そして「真正性」と「流用」の再思考・再定義という二つの問いを提起する。\n\n歴史的に「コロマンデル」とは17〜18世紀以降、インドのコロマンデル海岸経由で欧州に輸出された中国の款彩漆器屏風を指す。蘇孟鴻にとってコロマンデルの本質は想像の投射であり、「不真実の美（Inauthentic beauty）」の核心概念を実践する。作品の花鳥紋様はアーティスト自身の手で創造されたものではなく、17世紀仏蘭西・和蘭の絵画、『芥子園画伝』、郎世寧の作品等から流用。絹印の転写と変塗の研磨により中西の図様を画面に潜ませる。近年の欧州滞在で織錦タペストリーに啓発を受け、マットワニスの積層でタペストリーの絹のような温潤で幽微な光沢を画布上に再現する。",
+    "fetched_at": "2026-06-30T16:13:46.631180+08:00"
+  },
+  "https://www.tkgplus.com/exhibitions/147/": {
+    "artists": [
+      "大山．恩利科義薩姆"
+    ],
+    "curator": "",
+    "description": "承繼西方繪畫長期以畫具與畫布之間的直接接觸作為核心操作模式的歷史背景，當代繪畫逐漸意識到，單純透過形式語彙的演變，已難以回應當代繪畫所處的狀態。日本籍義大利裔藝術家大山．恩利科義薩姆（Enrico Isamu Oyama）透過此次展覽，將自身長期累積的書寫實踐轉化為一種繪畫方法來作為回應，其思考的是繪畫本質不僅建立於單一創作條件之上，更是在不斷轉換的媒材與環境條件之中加以檢視。\n\n大山出生於日本東京，擁有日本與義大利的雙重文化背景，現往返並創作於紐約布魯克林與東京之間。其創作橫跨繪畫、雕塑裝置與現地創作，長期關注書寫、線條與身體行為之間的互動關係，並經常以氣溶膠顏料作為主要創作媒材之一。氣溶膠顏料以霧化方式釋放，顏料不再以液態直接接觸畫面，而是轉化為極細微的粒子，懸浮於空氣之中。此非接觸的運作方式，使顏料在落地之前始終處於變動狀態，時間、距離與環境條件皆成為影響繪畫生成的重要因素。\n\n在此創作脈絡下，大山逐步發展出其核心視覺母題「快轉結構（Quick Turn Structure，QTS）」，取用身體於空氣中移動時所產生的弧度、速度與瞬間轉向，作為線條形成的基本單位。展覽透過氣溶膠、水墨、雷射刻寫與裝置等媒材實踐的並置，使其創作方法得以在不同材料條件中逐步展開。",
+    "description_en": "Inheriting Western painting's historical reliance on direct contact between tool and canvas, contemporary painting increasingly recognizes that formal evolution alone cannot adequately address its current condition. Japanese-Italian artist Enrico Isamu Oyama responds by transforming his long-accumulated writing practice into a painting methodology, examining how painting's essence is established not upon a single creative condition but through constantly shifting material and environmental conditions.\n\nBorn in Tokyo with dual Japanese-Italian heritage, Oyama works between Brooklyn and Tokyo. His practice spans painting, sculptural installation, and site-specific work, focusing on the interaction between writing, line, and bodily action, frequently employing aerosol paint. Released as atomized particles suspended in air, the paint remains in flux before settling—time, distance, and environment all become factors in the painting's formation.\n\nFrom this practice, Oyama developed his core visual motif \"Quick Turn Structure (QTS),\" drawing on the arcs, speeds, and instant directional shifts produced by the body moving through air. The exhibition juxtaposes aerosol, ink, laser inscription, and installation to unfold his method across different material conditions.",
+    "description_ja": "西洋絵画が画具と画布の直接接触を核心的操作としてきた歴史を継承しつつ、現代絵画は形式語彙の変遷だけでは自らの状態に応答し難いことを意識するようになった。日伊二重文化背景を持つ大山恩利科義薩姆（Enrico Isamu Oyama）は本展を通じ、長年蓄積した書写実践を絵画方法に転化し応答する——絵画の本質は単一の制作条件の上に成立するのではなく、絶えず転換する媒材と環境条件の中で検証されるものだと考える。\n\n東京生まれ、ニューヨーク・ブルックリンと東京を往来しながら制作。絵画・彫刻インスタレーション・サイトスペシフィック作品を横断し、書写・線・身体行為の相互関係に長期的に注目する。エアロゾル塗料は霧化して放出され、顔料は液体として画面に直接触れることなく極微粒子として空中に浮遊する。この非接触の方式により、顔料は着地前に常に変動状態にあり、時間・距離・環境条件が絵画の生成を左右する。\n\nこの文脈から核心的視覚モチーフ「クイックターンストラクチャー（QTS）」を発展させ、身体が空中を移動する際の弧度・速度・瞬間的転向を線条形成の基本単位とする。本展ではエアロゾル・水墨・レーザー刻写・インスタレーションを並置し、異なる素材条件の中で方法を展開する。",
+    "fetched_at": "2026-06-30T16:16:08.125853+08:00"
   }
 }
