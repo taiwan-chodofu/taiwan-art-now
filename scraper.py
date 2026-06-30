@@ -2171,27 +2171,10 @@ def _do_scrape_all():
     # 既存の専用スクレイパー（並列実行）
     from concurrent.futures import ThreadPoolExecutor, as_completed
     tasks = {
-        # moca: manual-only (scraper produces EN-only data, conflicts with manual ZH data)
-        "tfam": _scrape_tfam_api,
-        # honggah: manual-only (site returns 403, scraper produces junk data)
-        "ntcart": lambda: _with_fallback("ntcart", _scrape_ntcart),
-        # tcma: manual-only (scraper picks up junk like 角落任務, 開箱典藏庫)
-        "clab": lambda: _with_fallback("clab", _scrape_clab),
-        "thecube": _scrape_thecube,
-        "chiayi": _scrape_chiayi,
-        "kdmofa": lambda: _with_fallback("kdmofa", _scrape_kdmofa),
-        "goodug": lambda: _with_fallback("goodug", _scrape_goodug),
-        "tav": lambda: _with_fallback("tav", _scrape_tav),
-        "montue": lambda: _with_fallback("montue", _scrape_montue),
-        "pingtung": lambda: _with_fallback("pingtung", _scrape_pingtung),
-        "tinakeng": lambda: _with_fallback("tinakeng", lambda: _scrape_artlogic_gallery(
-            "tinakeng", "https://www.tinakenggallery.com/en/exhibitions", "Taipei")),
-        "asiaart": lambda: _with_fallback("asiaart", lambda: _scrape_artlogic_gallery(
-            "asiaart", "https://www.asiaartcenter.org/en/exhibitions", "Taipei")),
-        "tnam": lambda: _with_fallback("tnam", _scrape_tnam),
-        # soka: manual-only (scraper picks up nav menu as artists)
-        "jut": lambda: _with_fallback("jut", _scrape_jut),
-        "fubon": lambda: _with_fallback("fubon", _scrape_fubon),
+        # ALL SCRAPERS DISABLED — manual-only mode
+        # Scrapers produced junk data (wrong artists, nav menu text, expired exhibitions).
+        # New exhibition detection moved to separate notification script.
+        "tfam": _scrape_tfam_api,  # TFAM only: API is reliable for title/dates
     }
     results = {}
     with ThreadPoolExecutor(max_workers=6) as executor:
@@ -2205,10 +2188,8 @@ def _do_scrape_all():
                 results[name] = []
 
     # moca: manual-only (loaded via _load_all_manual)
-    for key in ["tfam", "ntcart", "clab",
-                "thecube", "chiayi", "kdmofa", "goodug", "tav",
-                "montue", "pingtung", "tinakeng", "asiaart", "tnam", "jut", "fubon"]:
-        all_exhibitions.extend(results.get(key, []))
+    # Only TFAM scraper results (others are manual-only)
+    all_exhibitions.extend(results.get("tfam", []))
 
     # マスターデータから汎用スクレイパー対象を取得
     master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
