@@ -2712,6 +2712,36 @@
         "lat": 25.031,
         "lng": 121.512
       }
+    },
+    {
+      "id": "orogeny",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Orogeny Art Space",
+        "ja": "噪山藝術空間",
+        "zh": "噪山藝術空間"
+      },
+      "address": {
+        "en": "No. 20, Ln. 80, Fuye Rd., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區富野路80巷20號",
+        "zh": "高雄市鹽埕區富野路80巷20號"
+      },
+      "url": "https://www.facebook.com/orogeny.art",
+      "hours": {
+        "en": "Thu–Sun 13:00–19:00",
+        "ja": "木〜日 13:00–19:00",
+        "zh": "週四至週日 13:00–19:00"
+      },
+      "closed_days": [
+        0,
+        1,
+        2
+      ],
+      "coordinates": {
+        "lat": 22.6235,
+        "lng": 120.2835
+      }
     }
   ]
 }

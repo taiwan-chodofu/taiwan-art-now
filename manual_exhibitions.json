@@ -1955,6 +1955,17 @@
       "artists": [],
       "link": "https://www.tfam.museum/Exhibition/Exhibition_page.aspx?id=806",
       "status": "current"
+    },
+    {
+      "museum": "orogeny",
+      "title_zh": "填入新的土——蔡鎮澤個展",
+      "title_en": "Filling with New Soil — TSAI Chen-Tse Solo Exhibition",
+      "dates": "2026.07.11 – 2026.08.30",
+      "artists": [
+        "蔡鎮澤"
+      ],
+      "link": "https://www.facebook.com/orogeny.art",
+      "status": "upcoming"
     }
   ]
 }
