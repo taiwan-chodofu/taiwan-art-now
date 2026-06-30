@@ -1904,6 +1904,26 @@
       ],
       "link": "https://soulangh.tnc.gov.tw/index.php?inter=exhibition",
       "status": "current"
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "2026亞洲藝術雙年展：Mrahul Tminun・共織・Co-Weaving",
+      "title_en": "2026 Asian Art Biennial: Mrahul Tminun / Co-Weaving",
+      "dates": "2026.11.07 – 2027.02.28",
+      "artists": [
+        "Citra Sasmita",
+        "Gegerboyo",
+        "Gudskul",
+        "Hylozoic/Desires",
+        "Meita Meilita",
+        "呉夏枝 OH Haji",
+        "Womanifesto",
+        "山中suplex Yamanaka Suplex",
+        "李繼忠&沈軍 Lee Jih-jong & Shen Jun",
+        "林介文 Labay Eyong"
+      ],
+      "link": "https://www.moc.gov.tw/en/News_Content2.aspx?n=467&s=254563",
+      "status": "upcoming"
     }
   ]
 }
