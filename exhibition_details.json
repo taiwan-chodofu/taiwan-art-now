@@ -1812,5 +1812,15 @@
     "description_en": "Double Square Gallery presents Japanese artist Yokomizo Miyuki's solo exhibition \"Landscape — Tracing the Invisible Route.\" Through linear vocabulary, she leads viewers to trace faint trajectories within memory and time at the boundary of tangible and intangible. Her sculpture background from Tama Art University leads her to treat canvas as three-dimensional space. Paint-dipped strings are stretched across canvas and flicked to leave marks; countless overlapping lines create textile-like textures. Spatial installations using carbon fiber tubes and silver leaf extend touchable lines into space.",
     "description_ja": "双方藝廊が日本人アーティスト横溝美由紀の個展「地景—行履無跡」を開催。線的語彙を通じ有形と無形の交界で記憶と時間の微かな軌跡を辿らせる。多摩美術大学彫刻科卒の堅実な彫塑背景からキャンバスを立体的空間として捉える。油絵具を含ませた細い紐をキャンバス上に張り指先で弾き、顔料を画面に弾射。無数の線が縦横に重なり織物のような肌理を構築。炭素繊維管と銀箔による空間インスタレーションは空間に触れうる線を延伸する。",
     "fetched_at": "2026-06-30T13:43:09.941810+08:00"
+  },
+  "https://www.facebook.com/orogeny.art": {
+    "artists": [
+      "蔡鎮澤"
+    ],
+    "curator": "",
+    "description": "展覽源於對失智與憂鬱長者創作的觀察。原本作為規訓工具的填色本，卻在長者筆下逐漸偏離既定路徑。創作取材自長者作品中的色彩與筆觸，將其拆解、轉譯、拼接與縫綴。布料、顏料與纖維在畫面中彼此滲透、覆蓋與交錯，形成持續生成的表面。在此，創作被視為一種陪伴性的勞動。作品並非再現疾病或描述照護，而是在材料的轉化與手工的累積之中，呈現生命如何面對缺失、斷裂與變動。「填入新的土」並非對過去的填補，而是為生命開啟新的生長條件。",
+    "description_en": "The exhibition originates from observing creative works by elderly people with dementia and depression. Coloring books, originally tools of discipline, gradually deviate from prescribed paths under their hands. The artist deconstructs, translates, and sutures colors and brushstrokes from their works. Fabric, paint, and fiber interpenetrate across the surface. Creation here is understood as companionate labor—not representing illness or describing care, but showing how life faces loss, rupture, and change. \"Filling with New Soil\" opens new conditions for growth rather than filling the past.",
+    "description_ja": "展覧会は認知症・うつの高齢者の創作観察から生まれた。規律の道具であった塗り絵が、高齢者の手の下で既定の経路から逸脱していく。アーティストは彼らの作品から色彩と筆触を解体・翻訳・縫合する。布・顔料・繊維が画面上で相互浸透し持続的に生成する表面を形成。創作は伴走的労働として捉えられ、疾病の再現でも介護の記述でもなく、生命がいかに欠落・断裂・変動に向き合うかを呈示する。「新しい土を入れる」とは過去の埋め合わせではなく、生命に新たな成長条件を開くこと。",
+    "fetched_at": "2026-06-30T14:33:42.087029+08:00"
   }
 }
