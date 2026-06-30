@@ -1762,5 +1762,25 @@
     "description_en": "YIRI ARTS presents Japanese artist Shindo Kyoko's solo exhibition \"Between the Terrarium and the Beyond.\" Shindo's practice has long centered on life cycles, memory, and natural order. She interweaves daily experience, personal memory, and mythology, constructing continuously generating life-landscapes between the figurative and imaginary. The exhibition depicts a state between enclosure and openness, finite and infinite—like a terrarium's micro-universe where life continuously undergoes birth, transformation, and rebirth.",
     "description_ja": "伊日藝術計劃台北が日本人アーティスト新藤杏子の個展《Between the Terrarium and the Beyond》を開催。生命循環・記憶・自然秩序を長期的テーマに、日常経験・個人の記憶・神話伝説を交織し、具象と想像の間に持続的に生成する生命景観を構築する。《Between the Terrarium and the Beyond》は閉鎖と開放、有限と無限の間の状態を描く——テラリウムの中の微小宇宙のように、生命は誕生・変化・再生を絶えず経験する。",
     "fetched_at": "2026-06-30T13:40:41.734800+08:00"
+  },
+  "https://yiriarts.com.tw/exhibitions/224-fan-solo-exhibition/": {
+    "artists": [
+      "蓮輪友子 Tomoko Hasuwa"
+    ],
+    "curator": "",
+    "description": "伊日藝術計劃台北空間推出日本藝術家蓮輪友子個展《FAN》。蓮輪友子的創作始於觀看——不同於以靜態照片作為繪畫依據，她長期透過錄像記錄旅途與日常中的片段，並反覆觀看流動影像，從中擷取光線、色彩、動態與氛圍，轉化為介於記憶與感知之間的繪畫作品。展覽標題《FAN》指向一種觀看世界的態度：那些曾經相遇的人物、風景與日常片刻，皆具有值得被凝視與珍藏的價值。對蓮輪友子而言，繪畫並非對現實的再現，而是一種留存情感的方式。",
+    "description_en": "YIRI ARTS presents Japanese artist Tomoko Hasuwa's solo exhibition \"FAN.\" Her practice begins with looking—unlike using static photographs, she records travel and daily fragments through video, repeatedly viewing flowing images to extract light, color, movement, and atmosphere, transforming them into paintings between memory and perception. The title \"FAN\" points to an attitude toward seeing the world: people, landscapes, and everyday moments encountered all hold value worth contemplating and treasuring. For Hasuwa, painting is not representation of reality but a way of preserving emotion.",
+    "description_ja": "伊日藝術計劃台北が日本人アーティスト蓮輪友子の個展《FAN》を開催。創作は「観ること」から始まる——静止写真ではなく映像で旅と日常の断片を記録し、流動するイメージを繰り返し観て、光・色彩・動態・雰囲気を抽出し記憶と知覚の間の絵画に変換する。展題《FAN》は世界を観る態度を指す：出会った人物・風景・日常の瞬間は全て凝視し珍蔵する価値を持つ。蓮輪にとって絵画は現実の再現ではなく感情を留める方法である。",
+    "fetched_at": "2026-06-30T13:41:21.184393+08:00"
+  },
+  "https://yiriarts.com.tw/exhibitions/226-solo-exhibition/": {
+    "artists": [
+      "王冠蓁"
+    ],
+    "curator": "",
+    "description": "伊日後樂園推出王冠蓁最新陶塑系列《尚未命名的涼亭》。本系列以日常生活中常見的涼亭作為創作主題，靈感源自藝術家童年時經常造訪的苗栗秋茂園，以及近年於蘭嶼旅行的經驗。透過陶土的堆塑與轉化，王冠蓁描繪的不僅是建築形式，更是關於停留、庇護與地方情感的記憶載體。涼亭成為一處能夠短暫停歇的精神空間，也映照著人們在移動與日常之中尋找安定與歸屬的渴望。",
+    "description_en": "BACK_Y presents Wang Kuan-Chen's latest ceramic sculpture series. Inspired by Miaoli's Qiumao Garden from childhood visits and recent travels to Lanyu (Orchid Island), the artist uses pavilions as her subject. Through clay's molding and transformation, Wang depicts not just architectural form but carriers of memory about pausing, shelter, and local emotion. The pavilion becomes a spiritual space for brief rest, reflecting the desire for stability and belonging amid movement and daily life.",
+    "description_ja": "伊日後楽園が王冠蓁の最新陶塑シリーズ《尚未命名的涼亭》を発表。日常の涼亭を創作テーマに、幼少期に訪れた苗栗・秋茂園と近年の蘭嶼旅行の経験に着想を得る。陶土の成形と変換を通じ、建築形式だけでなく停留・庇護・地方感情についての記憶の器を描く。涼亭は束の間の休息ができる精神的空間となり、移動と日常の中で安定と帰属を求める人々の渇望を映し出す。",
+    "fetched_at": "2026-06-30T13:41:39.691081+08:00"
   }
 }

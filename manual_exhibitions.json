@@ -1924,6 +1924,28 @@
       ],
       "link": "https://yiriarts.com.tw/exhibitions/223-between-the-terrarium-and-the-beyond-solo-exhibition/",
       "status": "upcoming"
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "蓮輪友子：FAN",
+      "title_en": "FAN",
+      "dates": "2026.07.16 – 2026.08.29",
+      "artists": [
+        "蓮輪友子 Tomoko Hasuwa"
+      ],
+      "link": "https://yiriarts.com.tw/exhibitions/224-fan-solo-exhibition/",
+      "status": "upcoming"
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "王冠蓁：尚未命名的涼亭",
+      "title_en": "",
+      "dates": "2026.07.16 – 2026.08.29",
+      "artists": [
+        "王冠蓁"
+      ],
+      "link": "https://yiriarts.com.tw/exhibitions/226-solo-exhibition/",
+      "status": "upcoming"
     }
   ]
 }
