@@ -1670,5 +1670,17 @@
     "description_en": "Anicka Yi has long focused on the ever-evolving relationship between the biological world and technology. Through sculpture, scent, image, machinery, and algorithms, she probes the indistinct boundaries between the organic and the artificial, the living and the mechanical. In her work, technology and the biological world are not opposite but interpenetrate, together forming part of how we perceive and experience the world. Yi's practice responds to the concept of interdependence—whether microscopic life forms or AI systems, she regards them all as interconnected networks of existence.",
     "description_ja": "安妮卡・易の創作は生物世界とテクノロジーの間の絶えず変化する関係に長期的に注目する。彫刻・匂い・映像・機械・アルゴリズムを媒介に、有機と人工、生命と機械の間の明確に区分し難い境界線を探測する。作品の中でテクノロジーと生物世界は対立せず相互浸透し、知覚と経験の一部を共に形成する。易の創作は相互依存の概念にも応答する——細菌・藻類・真菌等の微小生命もAIシステムも、互いに繋がる存在のネットワークとして捉える。",
     "fetched_at": "2026-06-30T10:46:31.264055+08:00"
+  },
+  "https://soulangh.tnc.gov.tw/index.php?inter=exhibition": {
+    "artists": [
+      "波帕夏·海雅特 Bipasha Hayat",
+      "安德莉亞·柯洛尼 Andrea Coronil",
+      "夏小筑 Hsiao-Chu (Julia) Hsia"
+    ],
+    "curator": "",
+    "description": "三位藝術家皆以「糖」為創作主題，各自從生命經驗出發，從文化、歷史與文學的觀點探討「糖」在不同時空、文化與人之間的關聯。波帕夏·海雅特從糖產殖民史中被殖民者被勞力剝削的黑暗歷史出發，受啟發於雪萊詩句「一首最甜美的歌，往往是用於歌頌最悲傷的想法」。安德莉亞·柯洛尼以甘蔗田的鐮刀探討殖民工具與女性賦權的雙面性。夏小筑以臺灣傳統小吃「糖蔥」為主題，回應臺灣人將殖民時期遺留的製糖方法視為特別技藝的包容民族性。",
+    "description_en": "Three artists explore \"sugar\" as creative theme from their life experiences, examining connections between sugar, different times, cultures, and people through cultural, historical, and literary perspectives. Bipasha Hayat examines the dark history of labor exploitation in colonial sugar production, inspired by Shelley's line \"Our sweetest songs are those that tell of saddest thought.\" Andrea Coronil explores the dual nature of machetes as colonial tools and symbols of women's empowerment. Hsiao-Chu Hsia's work centers on Taiwanese sugar scallions, reflecting how Taiwanese people transformed colonial legacy into appreciated craft.",
+    "description_ja": "3人のアーティストが「砂糖」を創作テーマに、それぞれの生命経験から文化・歴史・文学の視点で砂糖と異なる時空・文化・人の関連を探る。波帕夏・海雅特は植民地時代の砂糖生産における労働搾取の暗黒史から出発し、シェリーの詩「最も甘美な歌はしばしば最も悲しい想いを歌う」に触発される。安德莉亞・柯洛尼はサトウキビ畑の鎌で植民地の道具と女性のエンパワメントの両面性を探る。夏小筑は台湾伝統菓子「糖蔥」をテーマに、植民時代の製糖技法を特別な技として受容する台湾人の包容性に応答する。",
+    "fetched_at": "2026-06-30T11:00:14.808303+08:00"
   }
 }

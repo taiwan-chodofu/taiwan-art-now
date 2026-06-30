@@ -1889,6 +1889,19 @@
       "artists": [],
       "link": "https://www.nmh.gov.tw",
       "status": "current"
+    },
+    {
+      "museum": "soulangh",
+      "title_zh": "2026紐約－臺南藝術交流與對話：最甜美的歌之下",
+      "title_en": "2026 New York – Tainan Artistic Dialogues: Underneath the Sweetest Songs",
+      "dates": "2026.06.01 – 2026.07.26",
+      "artists": [
+        "波帕夏·海雅特 Bipasha Hayat",
+        "安德莉亞·柯洛尼 Andrea Coronil",
+        "夏小筑 Hsiao-Chu (Julia) Hsia"
+      ],
+      "link": "https://soulangh.tnc.gov.tw/index.php?inter=exhibition",
+      "status": "current"
     }
   ]
 }
