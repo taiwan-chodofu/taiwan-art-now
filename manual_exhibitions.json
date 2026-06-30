@@ -107,9 +107,12 @@
       "title_zh": "精靈在哪裡",
       "title_en": "Where's the Goblin?",
       "title_ja": "",
-      "dates": "2026/06/16 - 2026/07/19",
+      "dates": "2026.06.16 – 2026.07.19",
       "location": "新竹市美術館",
-      "link": "https://www.facebook.com/hsinchucityartgallery"
+      "link": "https://www.facebook.com/Hsinchuwarehouse/?locale=zh_TW",
+      "artists": [
+        "UKAI Projects"
+      ]
     },
     {
       "museum": "chinigallery",
