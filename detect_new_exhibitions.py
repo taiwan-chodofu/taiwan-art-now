@@ -16,8 +16,17 @@ MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
 NOTIFY_RECIPIENT_ID = "27187879357530588"  # 管理者のsender_id
 
 
+def _normalize_title(title):
+    """タイトルの表記揺れを吸収する正規化。"""
+    t = title.strip().lower()
+    t = re.sub(r"[【】「」『』《》〈〉\[\]]", "", t)
+    t = re.sub(r"\s+", " ", t)
+    t = t.strip()
+    return t
+
+
 def load_known_exhibitions():
-    """既に掲載済みの展示タイトルセットを取得。"""
+    """既に掲載済みの展示タイトルセット（正規化済み）を取得。"""
     manual_path = BASE_DIR / "manual_exhibitions.json"
     known = set()
     try:
@@ -26,7 +35,7 @@ def load_known_exhibitions():
         for ex in data.get("exhibitions", []):
             for t in (ex.get("title_zh", ""), ex.get("title_en", "")):
                 if t:
-                    known.add(t.strip().lower())
+                    known.add(_normalize_title(t))
     except Exception:
         pass
     return known
@@ -60,32 +69,50 @@ def fetch_artemperor_page(page=1):
     soup = BeautifulSoup(r.text, "html.parser")
     exhibitions = []
 
-    for link_tag in soup.find_all("a", href=re.compile(r"/tidbits/\d+")):
-        href = link_tag.get("href", "")
-        if not href.startswith("http"):
-            href = "https://artemperor.tw" + href
+    seen_urls = set()
+    all_links = soup.find_all("a", href=re.compile(r"artemperor\.tw/tidbits/\d+"))
 
-        # Find title and metadata
-        heading = link_tag.find(["h2", "h3"])
-        if not heading:
+    for a in all_links:
+        href = a.get("href", "")
+        if href in seen_urls:
             continue
-        title = heading.get_text(strip=True)
+
+        # Find h3 (gallery) and h2 (title) in parent container
+        parent = a.parent
+        if not parent:
+            continue
+
+        h3 = parent.find("h3")
+        h2 = parent.find("h2")
+        p = parent.find("p")
+
+        if not h2:
+            parent = parent.parent
+            if parent:
+                h3 = parent.find("h3")
+                h2 = parent.find("h2")
+                p = parent.find("p")
+
+        if not h2:
+            continue
+
+        gallery = h3.get_text(strip=True) if h3 else ""
+        title = h2.get_text(strip=True)
         if not title or len(title) < 3:
             continue
 
-        # Find gallery name
-        gallery_heading = link_tag.find("h3")
-        gallery = gallery_heading.get_text(strip=True) if gallery_heading else ""
+        # Skip non-exhibition content
+        if gallery in ("訪談", "焦點人物", "藝文產業", ""):
+            continue
 
-        # Find dates
-        p_tag = link_tag.find_next("p")
         dates = ""
-        if p_tag:
-            dates_text = p_tag.get_text(strip=True)
+        if p:
+            dates_text = p.get_text(strip=True)
             date_match = re.search(r"日期：(.+?)｜", dates_text)
             if date_match:
                 dates = date_match.group(1)
 
+        seen_urls.add(href)
         exhibitions.append({
             "title": title,
             "gallery": gallery,
@@ -136,10 +163,13 @@ def detect_new(pages=3):
         items = fetch_artemperor_page(page)
         for item in items:
             title = item["title"].strip()
-            title_lower = title.lower()
+            title_norm = _normalize_title(title)
 
             # Skip if already known
-            if title_lower in known_titles:
+            if title_norm in known_titles:
+                continue
+            # Also check partial match (8+ chars substring)
+            if any(title_norm[:8] in kt or kt[:8] in title_norm for kt in known_titles if len(kt) >= 8):
                 continue
 
             # Check if gallery maps to a known museum
