@@ -159,15 +159,6 @@
       ]
     },
     {
-      "museum": "maisonacme",
-      "title_zh": "老狗",
-      "title_en": "Old Dog",
-      "title_ja": "",
-      "dates": "2026/06/06 - 2026/06/28",
-      "location": "MAISON ACME 圓山別邸",
-      "link": "https://acmetaipei.com/pages/maison-acme_"
-    },
-    {
       "museum": "daxiangart",
       "title_zh": "在透鏡與日常之間：林正哲與黃嘉寧的物誌學",
       "title_en": "Between Lens and the Everyday: The Materialography of Lin Cheng-Che and Huang Chia-Ning",
@@ -195,34 +186,13 @@
       ]
     },
     {
-      "museum": "1839cg",
-      "title_zh": "《SCAPE》佐々木香輔 攝影個展",
-      "title_en": "SCAPE — Kosuke Sasaki Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026/05/22 - 2026/06/28",
-      "location": "1839當代藝廊",
-      "link": "https://www.1839cg.com"
-    },
-    {
-      "museum": "dynasty",
-      "title_zh": "伏流——李岳凌個展",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026/05/16 - 2026/06/27",
-      "location": "朝代畫廊",
-      "link": "https://www.dynastyart.com",
-      "artists": [
-        "李岳凌"
-      ]
-    },
-    {
       "museum": "projectfulfill",
       "title_zh": "偏移之際——高德亮個展",
       "title_en": "At the Threshold of Shift",
       "title_ja": "",
       "dates": "2026/05/30 - 2026/07/18",
       "location": "就在藝術空間",
-      "link": "https://www.facebook.com/projectfulfill",
+      "link": "https://www.projectfulfill.com/at-the-threshold-of-shift.html",
       "artists": [
         "高德亮"
       ]
@@ -386,17 +356,6 @@
       "description_en": ""
     },
     {
-      "museum": "zhengbin",
-      "title_zh": "永晝海濱美術館 6月｜流動與沉積",
-      "title_en": "Form in the Flow",
-      "title_ja": "",
-      "dates": "2026/06/06 - 2026/06/28",
-      "location": "SPACE MOOR",
-      "link": "https://www.facebook.com/spacemoor",
-      "description": "《流動與沉積》受到北海岸砂岩地貌所啟發。遍地繁複精美又銳利堅硬的風化紋理，呼應個人生命中，事物的無常流動。透過創作，進一步的觀察、模仿、提煉，將內心竄動卻無法轉化為言語或文字的時刻，一次次的，沉積在作品當中，成為靜定的節理。",
-      "description_en": ""
-    },
-    {
       "museum": "nmtl",
       "title_zh": "文學力─書寫LÁN臺灣 常設展",
       "title_en": "The Power of Literature — Writing Our Taiwan",
@@ -431,10 +390,10 @@
     },
     {
       "museum": "nmtl",
-      "title_zh": "臺灣兒童文學百年特展",
-      "title_en": "",
+      "title_zh": "玩家登入：兒童文學特展",
+      "title_en": "Player Login: Children's Literature Special Exhibition",
       "title_ja": "",
-      "dates": "2026/04/01 - 2026/11/15",
+      "dates": "2026.04.01 – 2026.11.15",
       "location": "國立臺灣文學館",
       "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
       "description": "臺灣兒童文學萌芽於百年前的日治時期，想像力的種子在當時便已悄悄埋入這片土地。",
@@ -442,10 +401,10 @@
     },
     {
       "museum": "nmtl",
-      "title_zh": "舊式教育文人展",
-      "title_en": "",
+      "title_zh": "文學之路：一起讀書、考試、交朋友的日子",
+      "title_en": "The Literary Path: Days of Reading, Exams, and Friendship",
       "title_ja": "",
-      "dates": "2025/11/28 - 2026/08/30",
+      "dates": "2025.11.28 – 2026.08.30",
       "location": "國立臺灣文學館",
       "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
       "description": "本展以接受舊式教育的文人為主角，透過書畫、手稿、課卷、書信、期刊、攝影與器物等多樣文物，再現他們的成長歷程。",
@@ -622,25 +581,6 @@
       "status": "upcoming"
     },
     {
-      "museum": "absence",
-      "title_zh": "焦點以外：策展的軌跡與未竟之事",
-      "title_en": "Beyond Focus: Curatorial Trajectories and Unfinished Business",
-      "title_ja": "",
-      "dates": "2026/06/06 - 2026/06/28",
-      "location": "不存在劇場 1F",
-      "link": "https://www.facebook.com/AbsenceSpace",
-      "description": "在白盒子的表面下，那些被隱藏的勞動、焦慮與未竟之事，才是展覽最真實的質地。本展嘗試將焦點從作品本身移開，轉向那些發生思考、爭辯、草圖，以及無數次關於「空間調度」的抉擇。展覽共邀請了三位「策展人」——呂瑋倫、王振愷、張碩尹，透過轉換身分觀察當他們從幕後的調度者轉變為台前的藝術家時，會如何運用各自的「策展方法」來回應本次的創作。",
-      "description_en": "",
-      "artists": [
-        "呂瑋倫",
-        "張碩尹",
-        "林鴻易",
-        "王振愷",
-        "蘇睿豪",
-        "黃俊凱"
-      ]
-    },
-    {
       "museum": "nwac",
       "title_zh": "Re：戰鬥之城",
       "title_en": "Re: Battle City",
@@ -679,39 +619,6 @@
       "description_en": "Using 300-year-old boat flags to connect the harbor, rivers, and Neiwei ponds, this project summons disappeared hydrology and ecology. Artist Lee Yi-Chih translates traditional maritime prayer into a prayer for the land, constructing 127 aquatic ecological illustrations through community workshops.",
       "artists": [
         "李怡志"
-      ]
-    },
-    {
-      "museum": "nwac",
-      "title_zh": "砰波波波！聲音的小宇宙",
-      "title_en": "Bang! Pop Pop Pop — The Little Universe of Sounds",
-      "title_ja": "",
-      "dates": "2025/07/05 - 2026/06/28",
-      "location": "內惟藝術中心 親子展廳",
-      "link": "https://www.nwac.org.tw/tw/art-content/4AfdAC64047E",
-      "description": "結合聽覺、視覺，試圖通過藝術家的創作，引領想像聲音、探索聲音，喚醒感官的多層次體驗。以聲景建構城市，聲音穿越了牆壁，飛過了空間，察覺城市不為人知的獨特風貌。",
-      "description_en": "Combining auditory and visual elements, this exhibition leads visitors to imagine and explore sound through artistic creation, awakening multi-layered sensory experiences. Constructing the city through soundscapes, sound passes through walls and flies through space.",
-      "artists": [
-        "平安",
-        "吳紹華",
-        "吳修銘",
-        "曾偉豪",
-        "蔡坤霖",
-        "不二擊聲音製造所"
-      ]
-    },
-    {
-      "museum": "ajian",
-      "title_zh": "抽風與打呼 — 黃萱個展",
-      "title_en": "Ventilation and Snoring — Huang Xuan Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026/05/29 - 2026/06/29",
-      "location": "一菅空間",
-      "link": "https://www.facebook.com/p/A-jian-space-%E4%B8%80%E8%8F%85%E7%A9%BA%E9%96%93-61572469571593/",
-      "description": "大半夜仍清醒的時候，常聽到窗外有一台機器運轉的聲音。日常生活靠著大小不同的迴圈維持運作，有的人是結帳檯、流水線、手扶梯；有的人是高速公路、導航系統、機場輸送帶。藝術家將各種生活雜物以高壓水槍噴上天去，像是為平凡的日子慶祝，施放一次次煙火。",
-      "description_en": "",
-      "artists": [
-        "黃萱"
       ]
     },
     {
@@ -904,33 +811,6 @@
       "link": "https://kdmofa.tnua.edu.tw/",
       "description": "",
       "artists": []
-    },
-    {
-      "museum": "ntmofa",
-      "title_zh": "無限副本與瞄準器",
-      "title_en": "Infinite Copies and Crosshairs",
-      "dates": "2026/03/28 - 2026/06/28",
-      "location": "國立臺灣美術館 103-107展覽室",
-      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60054",
-      "description": "本展以臺灣地緣政治為立足點，從電子遊戲式的世界觀出發，探索「資訊權力戰」、「地緣政治」以及「戰爭倫理」等議題。",
-      "artists": [
-        "艾莉絲．巴克內爾",
-        "克文．布黑",
-        "陳庭榕",
-        "鄭亭亭",
-        "塞薩爾．埃斯庫德羅．安達盧斯",
-        "許哲瑜",
-        "陳琬尹",
-        "阮柏遠",
-        "許天財",
-        "李亦凡",
-        "林瑜亮",
-        "劉廣隸",
-        "佐藤瞭太郎",
-        "全面拒絕",
-        "王連晟",
-        "艾蓮諾．韋伯"
-      ]
     },
     {
       "museum": "ntmofa",
