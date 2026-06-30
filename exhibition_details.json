@@ -106,7 +106,11 @@
     "artists": [
       "陳雲"
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "",
+    "description": "在當代藝術強調流動與不穩定的語境中，此次展覽試圖在變動的記憶與感知之間，為觀者保留一個覺察自身位置的座標——回應繪畫歷經時間沖刷後，如何持續生成其存在的密度。作品的視覺語言游移於人物光影、日常物件與抽象肌理之間。平塗的層次在畫布上堆疊的質感、組畫之間刻意留下的縫隙，在併組結構裡彼此對照共鳴，召喚出遠大於畫面本身的時間感與重量。",
+    "description_en": "In a contemporary art context emphasizing fluidity and instability, this exhibition attempts to preserve a coordinate of self-awareness between shifting memories and perceptions—responding to how painting continues to generate its existential density after being washed by time. The visual language drifts between figure and light, everyday objects, and abstract textures.",
+    "description_ja": "流動性と不安定性を強調する現代芸術の文脈の中で、本展は変動する記憶と知覚の間に観者が自身の位置を覚察する座標を保とうとする——時間に洗われた後も絵画がいかに存在の密度を生成し続けるかに応答する。視覚言語は人物の光影・日常物・抽象的テクスチャの間を漂い、平塗りの層がキャンバス上に重なる質感、組画の間に意図的に残された隙間が、併組構造の中で互いに対照・共鳴し、画面そのものより遥かに大きな時間感と重量を呼び起こす。",
+    "fetched_at": "2026-06-29T13:21:04.943721+08:00"
   },
   "https://yiriarts.com.tw/exhibitions/current/#huang": {
     "artists": [
@@ -1633,26 +1637,6 @@
     "description_ja": "コレクションは人類が世界と繋がる方法。「屏藏心」特展は大衆のキャラクターに対する「収蔵感情」を核心に、台湾の個性的な6組のオリジナルIPキャラクターを招聘し、没入型インタラクティブシーンを構築して新たな収蔵の思い出を共創する。個人のフィギュアや模型から博物館の芸術品まで、「収蔵」は物そのものだけでなく、人がいかに物に意味を与えるかに関わる。",
     "fetched_at": "2026-06-29T20:11:45.575140+08:00"
   },
-  "pingtung_caucau": {
-    "artists": [
-      "跩姬寶貝（高偉恩）",
-      "馬辰政",
-      "楊奕"
-    ],
-    "curator": "",
-    "description": "由屏東縣政府原住民處主辦的特展《花花caucau》，邀請三位跨領域藝術家——跩姬寶貝（高偉恩）、馬辰政與楊奕，透過各自的生命軌跡，在「肉身之宇」中綻放出絕美而真實的生命之花，詮釋何謂「nguanguaq a caucau」（美好的人）。歡迎走進這片不設限的花徑，在繁花之中發覺屬於自己的生命花語。",
-    "description_en": "Organized by Pingtung County's Indigenous Peoples Division, \"Flower Caucau\" invites three cross-disciplinary artists—Chuai Ji Bao Bei (Gao Wei-En), Ma Chen-Zheng, and Yang Yi—to bloom through their life trajectories, interpreting what it means to be \"nguanguaq a caucau\" (a beautiful person). Welcome to this boundless flower path where everyone discovers their own life's flower language.",
-    "description_ja": "屏東県政府原住民処が主催する特展《花花caucau》は、3人の越境的アーティスト——跩姫宝貝（高偉恩）、馬辰政、楊奕を招き、それぞれの生命の軌跡を通じて「nguanguaq a caucau」（美好な人）とは何かを表現する。制限のないこの花径に足を踏み入れ、繁花の中で自身の生命の花言葉を発見してほしい。",
-    "fetched_at": "2026-06-29T20:12:15.902638+08:00"
-  },
-  "pingtung_calrisi": {
-    "artists": [],
-    "curator": "",
-    "description": "由屏東縣政府原住民處策劃的年度重磅特展《Calrisi－承為自然》為跨館、跨國聯展，由屏東原民館領軍，攜手泰武、來義、霧臺文物館，並跨海連結帛琉國家博物館共同合作辦理。集結排灣、魯凱及帛琉的工藝師與傳唱者，以雕刻、織紋、古謠為線，見證不同色彩、質材共織出的文化藍圖。「Calisi / Calrisi」在排灣與魯凱族語中意為「線」——刻在織物上，更刻在航行的路徑與語言的共鳴裡。不再將海洋視為阻隔的邊界，而是聯繫彼此的水路。",
-    "description_en": "Calrisi is a cross-museum, cross-national exhibition led by Pingtung Indigenous Peoples Hall in collaboration with Taiwu, Laiyi, and Wutai Cultural Halls, along with Palau's Belau National Museum. Gathering Paiwan, Rukai, and Palauan craftspeople and traditional singers, the exhibition uses carving, weaving, and ancient songs as threads witnessing a cultural blueprint woven from different colors and materials. \"Calisi/Calrisi\" means \"thread\" in Paiwan and Rukai—inscribed not only on textiles but on navigation paths and linguistic resonance.",
-    "description_ja": "屏東県政府原住民処が企画する年度大型特展《Calrisi》は跨館・跨国聯展。屏東原民館が率い、泰武・来義・霧台文物館と連携し、海を越えてパラオ国立博物館とも共同開催。パイワン族・ルカイ族・パラオの工芸師と伝承歌い手を集結し、彫刻・織紋・古謡を糸に、異なる色彩・素材が共に織り上げる文化の青写真を目撃する。「Calisi/Calrisi」はパイワン語・ルカイ語で「糸」を意味し、織物だけでなく航路の軌跡と言語の共鳴に刻まれている。",
-    "fetched_at": "2026-06-29T20:12:55.165155+08:00"
-  },
   "https://www.cultural.pthg.gov.tw/pt1936/News_Content.aspx?n=8E5540CA059309A8&sms=9775CFD2833343CC&s=A323A0EEAA53846E": {
     "artists": [],
     "curator": "",
@@ -1738,5 +1722,25 @@
     "description_en": "Marking the 20th anniversary of the Asian Art Biennial established in 2007. The theme \"Mrahul Tminun / Co-Weaving\" is expressed in three languages—Taroko, Mandarin, and English. In Taroko, \"Tminun\" means weaving and \"Mrahul\" means gathering, inspired by the daily practice of Taroko women weaving together in public spaces. The Biennial focuses on collectivity, collaboration, community, and mutual aid, centering voices of women, Indigenous peoples, and queer communities historically marginalized from contemporary art's mainstream. Over 30 groups of artists, collectives, and alternative spaces will participate.",
     "description_ja": "2007年設立のアジアン・アート・ビエンナーレの20年の節目。テーマ「Mrahul Tminun・共織・Co-Weaving」はタロコ語・中国語・英語の3言語で表記。タロコ語で「トゥミヌン」は「織り」、「ムラフル」は「群衆・集まり」を意味し、タロコの女性たちが広場で共に織物をする日常の営みに着想を得た。集団性・協働・共同体・相互扶助に基づく実践を通じ、社会的・歴史的に周縁化されてきた女性・先住民・クィアの人々の声に焦点を当てる。30組以上が参加予定。",
     "fetched_at": "2026-06-30T12:59:57.583005+08:00"
+  },
+  "https://www.cultural.pthg.gov.tw/pt1936/Exhibition5": {
+    "artists": [
+      "跩姬寶貝（高偉恩）",
+      "馬辰政",
+      "楊奕"
+    ],
+    "curator": "",
+    "description": "由屏東縣政府原住民處主辦的特展《花花caucau》，邀請三位跨領域藝術家——跩姬寶貝（高偉恩）、馬辰政與楊奕，透過各自的生命軌跡，在「肉身之宇」中綻放出絕美而真實的生命之花，詮釋何謂「nguanguaq a caucau」（美好的人）。歡迎走進這片不設限的花徑，在繁花之中發覺屬於自己的生命花語。",
+    "description_en": "Organized by Pingtung County's Indigenous Peoples Division, \"Flower Caucau\" invites three cross-disciplinary artists—Chuai Ji Bao Bei (Gao Wei-En), Ma Chen-Zheng, and Yang Yi—to bloom through their life trajectories, interpreting what it means to be \"nguanguaq a caucau\" (a beautiful person). Welcome to this boundless flower path where everyone discovers their own life's flower language.",
+    "description_ja": "屏東県政府原住民処が主催する特展《花花caucau》は、3人の越境的アーティスト——跩姫宝貝（高偉恩）、馬辰政、楊奕を招き、それぞれの生命の軌跡を通じて「nguanguaq a caucau」（美好な人）とは何かを表現する。制限のないこの花径に足を踏み入れ、繁花の中で自身の生命の花言葉を発見してほしい。",
+    "fetched_at": "2026-06-29T20:12:15.902638+08:00"
+  },
+  "https://www.cultural.pthg.gov.tw/pt1936/Exhibition6": {
+    "artists": [],
+    "curator": "",
+    "description": "由屏東縣政府原住民處策劃的年度重磅特展《Calrisi－承為自然》為跨館、跨國聯展，由屏東原民館領軍，攜手泰武、來義、霧臺文物館，並跨海連結帛琉國家博物館共同合作辦理。集結排灣、魯凱及帛琉的工藝師與傳唱者，以雕刻、織紋、古謠為線，見證不同色彩、質材共織出的文化藍圖。「Calisi / Calrisi」在排灣與魯凱族語中意為「線」——刻在織物上，更刻在航行的路徑與語言的共鳴裡。不再將海洋視為阻隔的邊界，而是聯繫彼此的水路。",
+    "description_en": "Calrisi is a cross-museum, cross-national exhibition led by Pingtung Indigenous Peoples Hall in collaboration with Taiwu, Laiyi, and Wutai Cultural Halls, along with Palau's Belau National Museum. Gathering Paiwan, Rukai, and Palauan craftspeople and traditional singers, the exhibition uses carving, weaving, and ancient songs as threads witnessing a cultural blueprint woven from different colors and materials. \"Calisi/Calrisi\" means \"thread\" in Paiwan and Rukai—inscribed not only on textiles but on navigation paths and linguistic resonance.",
+    "description_ja": "屏東県政府原住民処が企画する年度大型特展《Calrisi》は跨館・跨国聯展。屏東原民館が率い、泰武・来義・霧台文物館と連携し、海を越えてパラオ国立博物館とも共同開催。パイワン族・ルカイ族・パラオの工芸師と伝承歌い手を集結し、彫刻・織紋・古謡を糸に、異なる色彩・素材が共に織り上げる文化の青写真を目撃する。「Calisi/Calrisi」はパイワン語・ルカイ語で「糸」を意味し、織物だけでなく航路の軌跡と言語の共鳴に刻まれている。",
+    "fetched_at": "2026-06-29T20:12:55.165155+08:00"
   }
 }
