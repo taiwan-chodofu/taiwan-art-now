@@ -2168,88 +2168,17 @@ def _do_scrape_all():
     """実際のスクレイピング処理（重い部分）。結果をキャッシュに保存して返す。"""
     all_exhibitions = []
 
-    # 既存の専用スクレイパー（並列実行）
-    from concurrent.futures import ThreadPoolExecutor, as_completed
-    tasks = {
-        # ALL SCRAPERS DISABLED — manual-only mode
-        # Scrapers produced junk data (wrong artists, nav menu text, expired exhibitions).
-        # New exhibition detection moved to separate notification script.
-        "tfam": _scrape_tfam_api,  # TFAM only: API is reliable for title/dates
-    }
-    results = {}
-    with ThreadPoolExecutor(max_workers=6) as executor:
-        futures = {executor.submit(fn): name for name, fn in tasks.items()}
-        for future in as_completed(futures):
-            name = futures[future]
-            try:
-                results[name] = future.result()
-            except Exception as exc:
-                logger.warning("Parallel scrape failed for %s: %s", name, exc)
-                results[name] = []
-
-    # moca: manual-only (loaded via _load_all_manual)
-    # Only TFAM scraper results (others are manual-only)
-    all_exhibitions.extend(results.get("tfam", []))
+    # ALL SCRAPERS COMPLETELY DISABLED — 100% manual-only mode
+    # Data source: manual_exhibitions.json ONLY (via _load_all_manual below)
+    # No TFAM API, no generic, no artemperor, no Facebook scraping.
+    # Reason: scrapers repeatedly produced junk data, wrong artists, nav menu text,
+    # expired exhibitions, and conflicts with manually curated data.
 
     # マスターデータから汎用スクレイパー対象を取得
-    master_path = os.path.join(os.path.dirname(__file__), "museums_master.json")
-    try:
-        with open(master_path, "r", encoding="utf-8") as f:
-            master = json.load(f)
-        existing_ids = {e["museum"] for e in all_exhibitions}
-        for m in master["museums"]:
-            mid = m["id"]
-            if mid in existing_ids:
-                continue
-            scraper_type = m.get("scraper")
-            ex_url = m.get("exhibition_url")
-            if scraper_type == "generic" and ex_url:
-                all_exhibitions.extend(_scrape_generic(mid, ex_url))
-            elif scraper_type and scraper_type.endswith("_manual"):
-                manual_path = os.path.join(
-                    os.path.dirname(__file__), f"{mid}_manual.json"
-                )
-                try:
-                    with open(manual_path, "r", encoding="utf-8") as f2:
-                        items = json.load(f2)
-                    all_exhibitions.extend(
-                        [{"museum": mid, **item} for item in items]
-                    )
-                except Exception:
-                    pass
-            elif not scraper_type:
-                fb_data = _load_fb_json(mid)
-                if fb_data:
-                    all_exhibitions.extend(fb_data)
-
-        # artemperor.tw アグリゲーターで未取得館を補完
-        existing_ids = {e["museum"] for e in all_exhibitions}
-        artemperor_data = _scrape_artemperor(pages=5)
-        for ex in artemperor_data:
-            mid = ex["museum"]
-            if mid not in existing_ids:
-                all_exhibitions.append(ex)
-                existing_ids.add(mid)
-            else:
-                existing_norm_titles = set()
-                for e in all_exhibitions:
-                    if e["museum"] == mid:
-                        for t in (e.get("title_en", ""), e.get("title_zh", "")):
-                            if t:
-                                existing_norm_titles.add(_normalize_title_for_compare(t))
-                new_title = ex.get("title_en", "") or ex.get("title_zh", "")
-                new_norm = _normalize_title_for_compare(new_title)
-                is_dup = False
-                if new_norm:
-                    for existing_norm in existing_norm_titles:
-                        if new_norm in existing_norm or existing_norm in new_norm:
-                            is_dup = True
-                            break
-                if not is_dup and new_title:
-                    all_exhibitions.append(ex)
-
-    except Exception as exc:
-        logger.warning("Master data load failed: %s", exc)
+    # ALL SCRAPERS DISABLED — manual-only mode
+    # All exhibition data comes exclusively from _load_all_manual() below.
+    # No generic scrapers, no artemperor, no Facebook scraping.
+    # New exhibition detection: detect_new_exhibitions.py (notification only, no cache write)
 
     # manual_exhibitions.json から全エントリを補完（専用スクレイパーがある施設も含む）
     # manual_exhibitions.json はソースオブトゥルース: 重複があればmanualで上書き
