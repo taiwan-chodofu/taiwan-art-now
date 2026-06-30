@@ -2657,6 +2657,32 @@
         "lat": 25.016,
         "lng": 121.218
       }
+    },
+    {
+      "id": "winsing",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Winsing Art Place",
+        "ja": "文心藝所",
+        "zh": "文心藝所 Winsing Art Place"
+      },
+      "address": {
+        "en": "No. 6, Aly. 10, Ln. 180, Sec. 6, Minquan E. Rd., Neihu Dist., Taipei",
+        "ja": "台北市內湖區民權東路六段180巷10弄6號",
+        "zh": "台北市內湖區民權東路六段180巷10弄6號"
+      },
+      "url": "https://www.winsingartplace.com",
+      "hours": {
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
+        "ja": "火〜日 10:00–18:00｜月休",
+        "zh": "週二至週日 10:00–18:00｜週一休"
+      },
+      "closed_day": 0,
+      "coordinates": {
+        "lat": 25.0708,
+        "lng": 121.6088
+      }
     }
   ]
 }
