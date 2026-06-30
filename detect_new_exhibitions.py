@@ -154,14 +154,28 @@ GALLERY_TO_MUSEUM = {
 
 
 def detect_new(pages=3):
-    """新展示を検出して返す。"""
+    """新展示を検出して返す。終了済み展示は除外。"""
     known_titles = load_known_exhibitions()
     known_museums = load_known_museum_ids()
     new_exhibitions = []
 
+    tw_tz = timezone(timedelta(hours=8))
+    today = datetime.now(tw_tz).date()
+
     for page in range(1, pages + 1):
         items = fetch_artemperor_page(page)
         for item in items:
+            # Skip expired exhibitions
+            dates = item.get("dates", "")
+            end_match = re.search(r"~\s*(\d{4})-(\d{2})-(\d{2})", dates)
+            if end_match:
+                try:
+                    end_date = datetime(int(end_match.group(1)), int(end_match.group(2)), int(end_match.group(3))).date()
+                    if end_date < today:
+                        continue
+                except ValueError:
+                    pass
+
             title = item["title"].strip()
             title_norm = _normalize_title(title)
 
