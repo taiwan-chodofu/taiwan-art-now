@@ -1822,5 +1822,26 @@
     "description_en": "The exhibition originates from observing creative works by elderly people with dementia and depression. Coloring books, originally tools of discipline, gradually deviate from prescribed paths under their hands. The artist deconstructs, translates, and sutures colors and brushstrokes from their works. Fabric, paint, and fiber interpenetrate across the surface. Creation here is understood as companionate labor—not representing illness or describing care, but showing how life faces loss, rupture, and change. \"Filling with New Soil\" opens new conditions for growth rather than filling the past.",
     "description_ja": "展覧会は認知症・うつの高齢者の創作観察から生まれた。規律の道具であった塗り絵が、高齢者の手の下で既定の経路から逸脱していく。アーティストは彼らの作品から色彩と筆触を解体・翻訳・縫合する。布・顔料・繊維が画面上で相互浸透し持続的に生成する表面を形成。創作は伴走的労働として捉えられ、疾病の再現でも介護の記述でもなく、生命がいかに欠落・断裂・変動に向き合うかを呈示する。「新しい土を入れる」とは過去の埋め合わせではなく、生命に新たな成長条件を開くこと。",
     "fetched_at": "2026-06-30T14:33:42.087029+08:00"
+  },
+  "https://www.art-msac.com/exhibitions/153/overview/": {
+    "artists": [
+      "邱瑋祥",
+      "李凱真",
+      "林銓居",
+      "劉星佑",
+      "馬堤耶．馬哈切克 Matěj Macháček",
+      "曾建穎",
+      "王翔",
+      "吳增榮",
+      "鄔一名",
+      "楊世芝",
+      "楊寓寧",
+      "于彭"
+    ],
+    "curator": "沈裕昌",
+    "description": "安卓藝術邀請國立台北教育大學助理教授沈裕昌策劃聚焦當代書畫美學的聯展「脈品：切診點畫」。策展援用中醫的「切診」與「脈象」概念，試圖在當代書畫發展中提出有別於傳統筆墨與書畫當代化表現的不同觀察。展覽以東亞藝術與文化的「技術—時間意識」為思想切口，探問書畫中的「點畫」究竟為何。「脈品」意指一種如同切脈般細緻辨識點畫質地、力度、節奏與氣韻的感知方式。展覽邀集國內外12位橫跨不同世代的藝術家，展出涵蓋水墨、水彩、壓克力顏料與影像等多元媒材。",
+    "description_en": "Mind Set Art Center invites Professor Shen Yu-Chang to curate \"PULSE PROFILE: Palpating Dots and Strokes,\" a group exhibition focusing on contemporary calligraphic aesthetics. Drawing on Traditional Chinese Medicine concepts of pulse diagnosis, the exhibition proposes new observations beyond traditional brush-ink and contemporary calligraphy. Using East Asian \"technique-time consciousness\" as intellectual framework, it asks what \"dots and strokes\" truly are in calligraphic painting. Featuring 12 artists across generations working in ink, watercolor, acrylic, and video.",
+    "description_ja": "安卓藝術が国立台北教育大学助理教授・沈裕昌を招き、当代書画美学に焦点を当てたグループ展「脈品：切診點畫」を企画。中医の「切診」「脈象」概念を援用し、伝統筆墨と書画の当代化とは異なる観察を提示する。東アジア芸術文化の「技術—時間意識」を思想的切り口に、書画における「点画」とは何かを探問。「脈品」とは切脈のように点画の質感・力度・節奏・気韻を精緻に弁別する感知方式を指す。12名の世代を超えたアーティストが水墨・水彩・アクリル・映像で参加。",
+    "fetched_at": "2026-06-30T14:38:16.061980+08:00"
   }
 }

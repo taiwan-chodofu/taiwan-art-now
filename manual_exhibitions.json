@@ -172,31 +172,6 @@
       ]
     },
     {
-      "museum": "mindset",
-      "title_zh": "滲透狀態——楊寓寧 x 甫月",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026/05/30 - 2026/06/27",
-      "location": "安卓藝術",
-      "link": "https://www.art-msac.com",
-      "artists": [
-        "楊寓寧",
-        "甫月"
-      ]
-    },
-    {
-      "museum": "mindset",
-      "title_zh": "綻放的圖層——周楷倫個展",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026/05/30 - 2026/07/03",
-      "location": "安卓藝術",
-      "link": "https://www.art-msac.com",
-      "artists": [
-        "周楷倫"
-      ]
-    },
-    {
       "museum": "1839cg",
       "title_zh": "《SCAPE》佐々木香輔 攝影個展",
       "title_en": "SCAPE — Kosuke Sasaki Solo Exhibition",
@@ -1965,6 +1940,28 @@
         "蔡鎮澤"
       ],
       "link": "https://www.facebook.com/orogeny.art",
+      "status": "upcoming"
+    },
+    {
+      "museum": "mindset",
+      "title_zh": "脈品：切診點畫",
+      "title_en": "PULSE PROFILE: Palpating Dots and Strokes",
+      "dates": "2026.07.11 – 2026.08.22",
+      "artists": [
+        "邱瑋祥",
+        "李凱真",
+        "林銓居",
+        "劉星佑",
+        "馬堤耶．馬哈切克 Matěj Macháček",
+        "曾建穎",
+        "王翔",
+        "吳增榮",
+        "鄔一名",
+        "楊世芝",
+        "楊寓寧",
+        "于彭"
+      ],
+      "link": "https://www.art-msac.com/exhibitions/153/overview/",
       "status": "upcoming"
     }
   ]
