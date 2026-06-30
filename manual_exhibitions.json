@@ -1913,6 +1913,17 @@
       ],
       "link": "https://www.moc.gov.tw/en/News_Content2.aspx?n=467&s=254563",
       "status": "upcoming"
+    },
+    {
+      "museum": "yiriarts",
+      "title_zh": "新藤杏子：Between the Terrarium and the Beyond",
+      "title_en": "Between the Terrarium and the Beyond",
+      "dates": "2026.07.16 – 2026.08.29",
+      "artists": [
+        "新藤杏子"
+      ],
+      "link": "https://yiriarts.com.tw/exhibitions/223-between-the-terrarium-and-the-beyond-solo-exhibition/",
+      "status": "upcoming"
     }
   ]
 }
