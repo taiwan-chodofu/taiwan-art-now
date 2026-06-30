@@ -1700,5 +1700,13 @@
     "description_en": "The National Museum of History presents \"Egyptian Mummies — Legends of Eternal Life.\" This exhibition assembles authentic mummies and exquisite funerary artifacts—painted coffins, amulets, and stelae with prayer inscriptions—fully decoding ancient Egyptians' faith and wisdom in pursuing eternal life. In ancient Egyptian belief, death was not an end but a transitional period of life's transformation. Following ancient Egyptian concepts of the afterlife, from embalming to the \"weighing of the heart\" judgment, the exhibition recreates their complex funerary customs. Artifacts come from Italy's National Archaeological Museum of Florence.",
     "description_ja": "国立歴史博物館が年度大型展《エジプト・ミイラ—永生伝説》を開催。本物のミイラと精緻な葬祭文物を集結——彩色棺・護身符・祈祷銘文の石碑から、古代エジプト人の永生追求の信仰と知恵を完全に解読する。古代エジプトの観念では死は終点ではなく、生命が変容する過渡期。展覧会は「来世」の認識に沿い、防腐処理から冥王の前での「心臓秤量」審判まで、複雑かつ精密な葬祭習俗を再現。文物はイタリア・フィレンツェ国立考古博物館から。",
     "fetched_at": "2026-06-30T11:02:51.573673+08:00"
+  },
+  "https://event.culture.tw/mocweb/reg/NMH/ExhibitionDetail.init.ctr?actId=60045&utm_source=moc&utm_medium=query&utm_campaign=60045&request_locale=tw&useLanguage=tw": {
+    "artists": [],
+    "curator": "",
+    "description": "本展以華人傳統與臺灣原住民族的生死觀為核心，從佛教、道教、儒家與祖靈信仰等不同文化脈絡出發，探討人們如何理解死亡、記憶與生命延續。展覽透過宗教文物、藝術作品、歷史圖像與數位互動內容，帶領觀眾重新思考「死亡是否真的是終點」。本展亦與館內《埃及木乃伊—永生傳說》特展形成跨文明對話，透過東西方對於死後世界的不同詮釋，呈現人類共同面對死亡時的焦慮、信仰與希望。結合AI生成影像、互動遊戲與數位策展，打造互動空間，讓觀眾透過科技媒介重新觀看死亡、記憶與情感之間的連結。",
+    "description_en": "Centering on Chinese traditional and Taiwanese Indigenous views of life and death, the exhibition explores how people understand death, memory, and life's continuation through Buddhist, Taoist, Confucian, and ancestral spirit beliefs. Through religious artifacts, artworks, historical images, and digital interactive content, it invites audiences to reconsider whether death is truly an end. The exhibition forms a cross-civilizational dialogue with the Egyptian Mummies exhibition, presenting East-West interpretations of the afterworld. Combining AI-generated imagery, interactive games, and digital curation to create spaces where technology reconnects death, memory, and emotion.",
+    "description_ja": "華人の伝統と台湾原住民族の生死観を核心に、仏教・道教・儒家・祖霊信仰から人々がいかに死・記憶・生命の延続を理解するかを探る。宗教文物・芸術作品・歴史画像・デジタルインタラクティブを通じ「死は本当に終点か」を再考させる。《エジプト・ミイラ》展と文明横断的対話を形成し、東西の死後世界の異なる解釈から、死に向き合う人類共通の不安・信仰・希望を呈示。AI生成画像・インタラクティブゲーム・デジタル策展で死と記憶と感情の繋がりを科技媒介で再観させる。",
+    "fetched_at": "2026-06-30T11:04:38.217251+08:00"
   }
 }
