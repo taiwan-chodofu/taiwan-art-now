@@ -2686,6 +2686,30 @@
         "lat": 22.6235,
         "lng": 120.2835
       }
+    },
+    {
+      "id": "asiamoma",
+      "category": "public",
+      "region": "taichung",
+      "name": {
+        "en": "Asia University Museum of Modern Art",
+        "ja": "亞洲大學附屬現代美術館",
+        "zh": "亞洲大學附屬現代美術館"
+      },
+      "address": {
+        "en": "No. 500, Liufeng Rd., Wufeng Dist., Taichung 41354",
+        "ja": "台中市霧峰區柳豐路500號",
+        "zh": "臺中市霧峰區柳豐路500號"
+      },
+      "url": "https://www.facebook.com/ASIAMOMA/",
+      "hours": {
+        "en": "Tue–Sun 9:30–17:00 | Closed Mon",
+        "ja": "火〜日 9:30–17:00｜月休",
+        "zh": "週二至週日 9:30–17:00｜週一休館"
+      },
+      "closed_days": [
+        0
+      ]
     }
   ]
 }
