@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).parent
 
 # Messenger通知設定
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
-NOTIFY_RECIPIENT_ID = "27187879357530588"  # 管理者のsender_id
+NOTIFY_RECIPIENT_ID = "27481470654840665"  # 管理者(gokawa)のsender_id
 
 
 def _normalize_title(title):
