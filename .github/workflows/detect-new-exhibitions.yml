@@ -1,0 +1,26 @@
+name: Detect new exhibitions
+
+on:
+  schedule:
+    # 毎日台湾時間09:00 (UTC 01:00) に実行
+    - cron: '0 1 * * *'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install curl-cffi beautifulsoup4
+
+      - name: Run detection script
+        env:
+          MESSENGER_PAGE_TOKEN: ${{ secrets.MESSENGER_PAGE_TOKEN }}
+        run: python detect_new_exhibitions.py
