@@ -101,22 +101,13 @@ def format_digest(ending_exhibitions):
         by_region[r].append(ex)
 
     lines = ["🎨 本週即將結束\n"]
-    count = 0
     for region_name, exs in by_region.items():
         lines.append(f"▸ {region_name}")
         for ex in exs:
-            if count >= 8:
-                break
             artist = f" ({ex['artists']})" if ex.get('artists') else ""
             lines.append(f"{ex['title']}{artist}")
             lines.append(f"〜{ex['end_date']}")
             lines.append("")
-            count += 1
-        if count >= 8:
-            break
-    remaining = len(ending_exhibitions) - count
-    if remaining > 0:
-        lines.append(f"+{remaining}檔")
 
     lines.append("─────")
     lines.append("taiwan-art-now.onrender.com")
