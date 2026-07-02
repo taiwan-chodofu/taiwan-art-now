@@ -1247,8 +1247,49 @@ def _load_subscribers():
 
 
 def _save_subscribers(data):
+    content = json.dumps(data, ensure_ascii=False, indent=2)
     with open(SUBSCRIBERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        f.write(content)
+    # Persist to GitHub repo (survives Render redeploys)
+    _save_to_github("subscribers.json", content)
+
+
+def _save_to_github(filename, content):
+    """Save file to GitHub repository via API."""
+    import urllib.request as urllib_req
+    import base64
+    gh_token = os.environ.get("GH_TOKEN", "")
+    if not gh_token:
+        return
+    repo = "taiwan-chodofu/taiwan-art-now"
+    api_url = f"https://api.github.com/repos/{repo}/contents/{filename}"
+    encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
+    # Get current file SHA (needed for update)
+    sha = ""
+    try:
+        req = urllib_req.Request(api_url, headers={
+            "Authorization": f"token {gh_token}",
+            "Accept": "application/vnd.github.v3+json",
+        })
+        resp = urllib_req.urlopen(req, timeout=10)
+        sha = json.loads(resp.read()).get("sha", "")
+    except Exception:
+        pass
+    # Create or update
+    payload = json.dumps({
+        "message": f"Auto-update {filename}",
+        "content": encoded,
+        "sha": sha,
+    }).encode()
+    try:
+        req = urllib_req.Request(api_url, data=payload, headers={
+            "Authorization": f"token {gh_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github.v3+json",
+        }, method="PUT")
+        urllib_req.urlopen(req, timeout=15)
+    except Exception:
+        pass
 
 
 ADMIN_SENDER_ID = "27481470654840665"
