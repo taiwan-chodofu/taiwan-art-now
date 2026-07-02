@@ -2710,6 +2710,32 @@
       "closed_days": [
         0
       ]
+    },
+    {
+      "id": "carp",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Carp Gallery",
+        "ja": "鯉魚藝廊",
+        "zh": "鯉魚藝廊"
+      },
+      "address": {
+        "en": "No. 194, Ln. 174, Gongyi Rd., West Dist., Taichung",
+        "ja": "台中市西區公益路174巷194號",
+        "zh": "台中市西區公益路174巷194號"
+      },
+      "url": "https://www.facebook.com/p/%E9%AF%89%E9%AD%9ACarp-Gallery-100070045041049/",
+      "hours": {
+        "en": "Thu–Fri 12:00–17:00, Sat–Sun 13:00–18:00 | Closed Mon–Wed",
+        "ja": "木金 12:00–17:00、土日 13:00–18:00｜月火水休",
+        "zh": "週四五 12:00–17:00、週六日 13:00–18:00｜週一二三休館"
+      },
+      "closed_days": [
+        0,
+        1,
+        2
+      ]
     }
   ]
 }
