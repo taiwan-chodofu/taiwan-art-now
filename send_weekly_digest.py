@@ -34,8 +34,28 @@ def load_exhibitions():
     return []
 
 
+def load_museum_regions():
+    """museum_id -> region mapping."""
+    master_path = BASE_DIR / "museums_master.json"
+    try:
+        with open(master_path, "r", encoding="utf-8") as f:
+            master = json.load(f)
+        return {m["id"]: m.get("region", "other") for m in master.get("museums", [])}
+    except Exception:
+        return {}
+
+
+REGION_NAMES = {
+    "taipei": "台北", "new_taipei": "新北", "taoyuan": "桃園",
+    "hsinchu": "新竹", "taichung": "台中", "tainan": "台南",
+    "kaohsiung": "高雄", "pingtung": "屏東", "yilan": "宜蘭",
+    "hualien": "花蓮", "taitung": "台東", "other": "其他",
+}
+
+
 def get_ending_soon(exhibitions, days=7):
     today = datetime.now(TW_TZ).date()
+    museum_regions = load_museum_regions()
     ending = []
     for ex in exhibitions:
         dates = ex.get("dates", "")
@@ -49,47 +69,64 @@ def get_ending_soon(exhibitions, days=7):
                     artist_str = " · ".join(artists[:3])
                     if len(artists) > 3:
                         artist_str += f" 等{len(artists)}人"
+                    museum_id = ex.get("museum", "")
+                    region = museum_regions.get(museum_id, "other")
                     ending.append({
                         "title": ex.get("title_zh", "") or ex.get("title_en", ""),
-                        "museum": ex.get("museum", ""),
+                        "museum": museum_id,
+                        "region": region,
+                        "region_name": REGION_NAMES.get(region, region),
                         "artists": artist_str,
                         "days_left": days_left,
                         "end_date": end_date.strftime("%m/%d"),
-                        "detail_url": f"https://taiwan-art-now.onrender.com/exhibition/{ex.get('museum', '')}/0?lang=zh",
-                        "key": ex.get("museum", "") + "__" + (ex.get("title_zh", "") or ex.get("title_en", "")),
+                        "detail_url": f"https://taiwan-art-now.onrender.com/exhibition/{museum_id}/0?lang=zh",
+                        "key": museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "")),
                     })
             except ValueError:
                 pass
-    ending.sort(key=lambda x: x["days_left"])
+    ending.sort(key=lambda x: (x["days_left"], x["region"]))
     return ending
 
 
 def format_digest(ending_exhibitions):
     if not ending_exhibitions:
         return None
-    # Keep under 2000 char Messenger limit - show up to 5 exhibitions
-    show = ending_exhibitions[:5]
-    remaining = len(ending_exhibitions) - len(show)
+    # Group by region, keep under 2000 char Messenger limit
+    from collections import OrderedDict
+    by_region = OrderedDict()
+    for ex in ending_exhibitions:
+        r = ex["region_name"]
+        if r not in by_region:
+            by_region[r] = []
+        by_region[r].append(ex)
+
     lines = ["🎨 本週即將結束的展覽\n"]
-    for ex in show:
-        lines.append(f"📍 {ex['title']}")
-        if ex.get('artists'):
-            lines.append(f"   {ex['artists']}")
-        lines.append(f"   〜{ex['end_date']} (剩{ex['days_left']}天)")
-        lines.append(f"   → {ex['detail_url']}\n")
+    count = 0
+    for region_name, exs in by_region.items():
+        lines.append(f"📍 {region_name}")
+        for ex in exs:
+            if count >= 8:
+                break
+            lines.append(f"  ・{ex['title']} 〜{ex['end_date']}")
+            if ex.get('artists'):
+                lines.append(f"    {ex['artists']}")
+            count += 1
+        lines.append("")
+        if count >= 8:
+            break
+    remaining = len(ending_exhibitions) - count
     if remaining > 0:
         lines.append(f"...其他 {remaining} 檔")
-    lines.append("\n─────────────────\n")
-    lines.append("🎨 Ending this week\n")
-    for ex in show:
-        lines.append(f"📍 {ex['title']}")
-        lines.append(f"   〜{ex['end_date']} ({ex['days_left']}d left)\n")
-    if remaining > 0:
-        lines.append(f"...+{remaining} more")
+
     lines.append(f"\n→ https://taiwan-art-now.onrender.com/")
     lines.append("\n━━━━━━━━━━")
     lines.append("取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
-    return "\n".join(lines)
+
+    msg = "\n".join(lines)
+    # Safety check: if over 2000 chars, truncate
+    if len(msg) > 1950:
+        msg = msg[:1900] + "\n\n→ https://taiwan-art-now.onrender.com/\n\n━━━━━━━━━━\n取消訂閱: 輸入「取消」"
+    return msg
 
 
 def format_fav_alert(exhibition):
