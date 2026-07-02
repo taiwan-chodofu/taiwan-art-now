@@ -668,6 +668,55 @@ ARCHIVE_LABELS = {
 }
 
 
+@app.route("/api/subscribers/sync", methods=["POST"])
+def api_sync_favs():
+    """Sync user favs/visited from client to server (tied to Messenger sender_id)."""
+    data = request.get_json(silent=True) or {}
+    sender_id = data.get("sender_id", "")
+    favs = data.get("favs", {})
+    visited = data.get("visited", {})
+    if not sender_id:
+        return {"error": "sender_id required"}, 400
+    subs = _load_subscribers()
+    if sender_id not in subs["users"]:
+        return {"error": "not subscribed"}, 404
+    subs["users"][sender_id]["favs"] = favs
+    subs["users"][sender_id]["visited"] = visited
+    _save_subscribers(subs)
+    return {"status": "synced"}
+
+
+@app.route("/api/subscribers/status")
+def api_subscriber_status():
+    """Check if a sender_id is subscribed and get settings."""
+    sender_id = request.args.get("sender_id", "")
+    if not sender_id:
+        return {"subscribed": False}
+    subs = _load_subscribers()
+    user = subs["users"].get(sender_id)
+    if user:
+        return {"subscribed": True, "weekly_digest": user.get("weekly_digest", True), "fav_alerts": user.get("fav_alerts", True)}
+    return {"subscribed": False}
+
+
+@app.route("/api/subscribers/settings", methods=["POST"])
+def api_subscriber_settings():
+    """Update notification settings for a subscriber."""
+    data = request.get_json(silent=True) or {}
+    sender_id = data.get("sender_id", "")
+    if not sender_id:
+        return {"error": "sender_id required"}, 400
+    subs = _load_subscribers()
+    if sender_id not in subs["users"]:
+        return {"error": "not subscribed"}, 404
+    if "weekly_digest" in data:
+        subs["users"][sender_id]["weekly_digest"] = bool(data["weekly_digest"])
+    if "fav_alerts" in data:
+        subs["users"][sender_id]["fav_alerts"] = bool(data["fav_alerts"])
+    _save_subscribers(subs)
+    return {"status": "updated"}
+
+
 @app.route("/api/archive")
 def api_archive():
     """Archive JSON API for mylist visited tab."""
@@ -1137,6 +1186,59 @@ def webhook_verify():
     return "Forbidden", 403
 
 
+SUBSCRIBERS_FILE = os.path.join(os.path.dirname(__file__), "subscribers.json")
+
+
+def _load_subscribers():
+    if os.path.exists(SUBSCRIBERS_FILE):
+        try:
+            with open(SUBSCRIBERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"users": {}}
+
+
+def _save_subscribers(data):
+    with open(SUBSCRIBERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def _add_subscriber(sender_id):
+    from datetime import datetime, timezone, timedelta
+    subs = _load_subscribers()
+    if sender_id not in subs["users"]:
+        subs["users"][sender_id] = {
+            "subscribed_at": datetime.now(timezone(timedelta(hours=8))).isoformat(),
+            "weekly_digest": True,
+            "fav_alerts": True,
+        }
+        _save_subscribers(subs)
+        return True
+    return False
+
+
+def _send_messenger_reply(sender_id, text):
+    import urllib.request as urllib_req
+    page_token = os.environ.get("MESSENGER_PAGE_TOKEN", "")
+    if not page_token:
+        return
+    payload = json.dumps({
+        "recipient": {"id": sender_id},
+        "message": {"text": text},
+    }).encode()
+    req = urllib_req.Request(
+        f"https://graph.facebook.com/v18.0/me/messages?access_token={page_token}",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    try:
+        urllib_req.urlopen(req, timeout=10)
+    except Exception:
+        pass
+
+
 @app.route("/webhook", methods=["POST"])
 def webhook_receive():
     """Receive messages from Messenger and create GitHub issues."""
@@ -1148,6 +1250,28 @@ def webhook_receive():
     for entry in entries:
         for event in entry.get("messaging", []):
             sender_id = event.get("sender", {}).get("id", "")
+
+            # Handle postback (Get Started / Ice Breakers)
+            postback = event.get("postback", {})
+            if postback:
+                payload = postback.get("payload", "")
+                if payload == "SUBSCRIBE_NOTIFICATIONS":
+                    is_new = _add_subscriber(sender_id)
+                    if is_new:
+                        _send_messenger_reply(sender_id,
+                            "🎨 登録完了！毎週水曜に展示終了お知らせをお届けします。\n"
+                            "Subscribed! You'll receive weekly exhibition updates every Wednesday.\n"
+                            "已訂閱！每週三將收到展覽結束提醒。")
+                    else:
+                        _send_messenger_reply(sender_id,
+                            "✓ 既に登録済みです / Already subscribed / 已訂閱")
+                    continue
+                elif payload == "INFO_REQUEST":
+                    _send_messenger_reply(sender_id,
+                        "🌐 Taiwan Art Now\nhttps://taiwan-art-now.onrender.com/\n\n"
+                        "台灣當代藝術展覽情報サイトです。展示情報の共有も歓迎！")
+                    continue
+
             message = event.get("message", {})
             text = message.get("text", "")
             attachments = message.get("attachments", [])
@@ -1156,6 +1280,9 @@ def webhook_receive():
 
             if not text and not image_urls:
                 continue
+
+            # Auto-subscribe anyone who messages the page
+            _add_subscriber(sender_id)
 
             body_parts = [f"**From Messenger:** sender_id={sender_id}"]
             if text:

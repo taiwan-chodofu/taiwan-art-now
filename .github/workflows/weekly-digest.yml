@@ -1,0 +1,22 @@
+name: Weekly exhibition digest
+
+on:
+  schedule:
+    # 毎週水曜 台湾時間12:00 (UTC 04:00)
+    - cron: '0 4 * * 3'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Send weekly digest
+        env:
+          MESSENGER_PAGE_TOKEN: ${{ secrets.MESSENGER_PAGE_TOKEN }}
+        run: python send_weekly_digest.py
