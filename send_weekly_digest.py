@@ -89,9 +89,9 @@ def get_ending_soon(exhibitions, days=7):
 
 
 def format_digest(ending_exhibitions):
+    """Returns a list of messages (split by region if over 2000 chars)."""
     if not ending_exhibitions:
-        return None
-    # Group by region, keep under 2000 char Messenger limit
+        return []
     from collections import OrderedDict
     by_region = OrderedDict()
     for ex in ending_exhibitions:
@@ -100,34 +100,44 @@ def format_digest(ending_exhibitions):
             by_region[r] = []
         by_region[r].append(ex)
 
-    lines = ["🎨 本週即將結束\n"]
+    footer = "\n─────\ntaiwan-art-now.onrender.com\n\n取消: 輸入「取消」"
+
+    # Build region blocks
+    region_blocks = []
     for region_name, exs in by_region.items():
-        lines.append(f"▸ {region_name}")
+        block_lines = [f"▸ {region_name}"]
         for ex in exs:
             artist = f" ({ex['artists']})" if ex.get('artists') else ""
-            lines.append(f"{ex['title']}{artist}")
-            lines.append(f"〜{ex['end_date']}")
-            lines.append("")
+            block_lines.append(f"{ex['title']}{artist}")
+            block_lines.append(f"〜{ex['end_date']}")
+            block_lines.append("")
+        region_blocks.append("\n".join(block_lines))
 
-    lines.append("─────")
-    lines.append("taiwan-art-now.onrender.com")
-    lines.append("")
-    lines.append("取消: 輸入「取消」")
+    # Assemble messages, split at region boundaries if needed
+    header = "🎨 本週即將結束\n\n"
+    messages = []
+    current = header
+    for block in region_blocks:
+        test = current + block + footer
+        if len(test) > 1900 and current != header:
+            # Send current, start new message
+            messages.append(current.rstrip() + footer)
+            current = "🎨 續\n\n" + block + "\n"
+        else:
+            current += block + "\n"
 
-    msg = "\n".join(lines)
-    # Safety check: if over 2000 chars, truncate
-    if len(msg) > 1950:
-        msg = msg[:1900] + "\n\n→ https://taiwan-art-now.onrender.com/\n\n━━━━━━━━━━\n取消訂閱: 輸入「取消」"
-    return msg
+    # Add final message
+    messages.append(current.rstrip() + footer)
+    return messages
 
 
 def format_fav_alert(exhibition):
-    artist = f"\n{exhibition['artists']}" if exhibition.get('artists') else ""
+    artist = f" ({exhibition['artists']})" if exhibition.get('artists') else ""
     return (
-        f"💡 收藏即將結束{artist}\n"
-        f"{exhibition['title']}\n"
+        f"💡 收藏即將結束\n\n"
+        f"{exhibition['title']}{artist}\n"
         f"〜{exhibition['end_date']} (剩{exhibition['days_left']}天)\n\n"
-        f"{exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
+        f"→ {exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
         f"─────\n"
         f"取消: 輸入「取消」"
     )
@@ -169,20 +179,15 @@ def run():
         print("No exhibitions ending soon. No digest to send.")
         return
 
-    digest_text = format_digest(ending)
+    digest_messages = format_digest(ending)
     sent_count = 0
 
     for sender_id, user_data in subs["users"].items():
         # Weekly digest
-        if user_data.get("weekly_digest", True) and digest_text:
-            # Exclude visited exhibitions from digest for this user
-            user_visited = set()
-            visited_data = user_data.get("visited", {})
-            for k in visited_data:
-                user_visited.add(k.replace("/[^a-zA-Z0-9一-鿿㐀-䶿]/g", "_"))
-
-            if send_message(sender_id, digest_text, page_token):
-                sent_count += 1
+        if user_data.get("weekly_digest", True) and digest_messages:
+            for msg in digest_messages:
+                send_message(sender_id, msg, page_token)
+            sent_count += 1
 
         # Individual fav alerts (3 days)
         if user_data.get("fav_alerts", True):
