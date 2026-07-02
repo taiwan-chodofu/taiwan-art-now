@@ -1298,24 +1298,25 @@ ADMIN_SENDER_ID = "27481470654840665"
 def _add_subscriber(sender_id, ref_code=None):
     from datetime import datetime, timezone, timedelta
     subs = _load_subscribers()
+    is_new = False
     if sender_id not in subs["users"]:
         subs["users"][sender_id] = {
             "subscribed_at": datetime.now(timezone(timedelta(hours=8))).isoformat(),
             "weekly_digest": True,
             "fav_alerts": True,
         }
-        if ref_code:
-            subs["users"][sender_id]["ref"] = ref_code
-            # Store ref -> sender_id mapping
-            if "refs" not in subs:
-                subs["refs"] = {}
-            subs["refs"][ref_code] = sender_id
+        is_new = True
+    # Always update ref if provided (handles existing users connecting from new device)
+    if ref_code:
+        subs["users"][sender_id]["ref"] = ref_code
+        if "refs" not in subs:
+            subs["refs"] = {}
+        subs["refs"][ref_code] = sender_id
+    if is_new or ref_code:
         _save_subscribers(subs)
-        # Notify admin of new subscriber
-        if sender_id != ADMIN_SENDER_ID:
-            _notify_admin_new_subscriber(sender_id)
-        return True
-    return False
+    if is_new and sender_id != ADMIN_SENDER_ID:
+        _notify_admin_new_subscriber(sender_id)
+    return is_new
 
 
 def _notify_admin_new_subscriber(new_sender_id):
@@ -1361,10 +1362,21 @@ def webhook_receive():
         for event in entry.get("messaging", []):
             sender_id = event.get("sender", {}).get("id", "")
 
+            # Handle standalone referral (existing user clicks m.me?ref=xxx)
+            referral = event.get("referral", {})
+            if referral and not event.get("postback") and not event.get("message"):
+                ref_code = referral.get("ref", "")
+                if ref_code:
+                    _add_subscriber(sender_id, ref_code=ref_code)
+                    _send_messenger_reply(sender_id,
+                        "✓ 已連結 / Connected\n\n"
+                        "🌐 https://taiwan-art-now.onrender.com/")
+                continue
+
             # Handle postback (Get Started / Ice Breakers)
             postback = event.get("postback", {})
-            referral = event.get("referral", {}) or postback.get("referral", {})
-            ref_code = referral.get("ref", "") if referral else ""
+            referral_from_postback = event.get("referral", {}) or postback.get("referral", {})
+            ref_code = referral_from_postback.get("ref", "") if referral_from_postback else ""
             if postback:
                 payload = postback.get("payload", "")
                 if payload == "SUBSCRIBE_NOTIFICATIONS":
