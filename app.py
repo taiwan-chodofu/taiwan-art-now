@@ -699,6 +699,24 @@ def api_subscriber_status():
     return {"subscribed": False}
 
 
+@app.route("/api/subscribers/unsubscribe", methods=["POST"])
+def api_unsubscribe():
+    """Unsubscribe via ref code (called from site UI)."""
+    data = request.get_json(silent=True) or {}
+    ref_code = data.get("ref", "")
+    if not ref_code:
+        return {"error": "ref required"}, 400
+    subs = _load_subscribers()
+    sender_id = subs.get("refs", {}).get(ref_code)
+    if sender_id and sender_id in subs["users"]:
+        del subs["users"][sender_id]
+        if ref_code in subs.get("refs", {}):
+            del subs["refs"][ref_code]
+        _save_subscribers(subs)
+        return {"status": "unsubscribed"}
+    return {"error": "not found"}, 404
+
+
 @app.route("/api/subscribers/settings", methods=["POST"])
 def api_subscriber_settings():
     """Update notification settings for a subscriber."""
@@ -1204,7 +1222,10 @@ def _save_subscribers(data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def _add_subscriber(sender_id):
+ADMIN_SENDER_ID = "27481470654840665"
+
+
+def _add_subscriber(sender_id, ref_code=None):
     from datetime import datetime, timezone, timedelta
     subs = _load_subscribers()
     if sender_id not in subs["users"]:
@@ -1213,9 +1234,28 @@ def _add_subscriber(sender_id):
             "weekly_digest": True,
             "fav_alerts": True,
         }
+        if ref_code:
+            subs["users"][sender_id]["ref"] = ref_code
+            # Store ref -> sender_id mapping
+            if "refs" not in subs:
+                subs["refs"] = {}
+            subs["refs"][ref_code] = sender_id
         _save_subscribers(subs)
+        # Notify admin of new subscriber
+        if sender_id != ADMIN_SENDER_ID:
+            _notify_admin_new_subscriber(sender_id)
         return True
     return False
+
+
+def _notify_admin_new_subscriber(new_sender_id):
+    page_token = os.environ.get("MESSENGER_PAGE_TOKEN", "")
+    if not page_token:
+        return
+    subs = _load_subscribers()
+    count = len(subs["users"])
+    _send_messenger_reply(ADMIN_SENDER_ID,
+        f"📢 新規登録！ (合計{count}人)\nsender_id: {new_sender_id}")
 
 
 def _send_messenger_reply(sender_id, text):
@@ -1253,10 +1293,12 @@ def webhook_receive():
 
             # Handle postback (Get Started / Ice Breakers)
             postback = event.get("postback", {})
+            referral = event.get("referral", {}) or postback.get("referral", {})
+            ref_code = referral.get("ref", "") if referral else ""
             if postback:
                 payload = postback.get("payload", "")
                 if payload == "SUBSCRIBE_NOTIFICATIONS":
-                    is_new = _add_subscriber(sender_id)
+                    is_new = _add_subscriber(sender_id, ref_code=ref_code)
                     if is_new:
                         _send_messenger_reply(sender_id,
                             "🎨 訂閱成功！每週三將收到展覽結束提醒，不再錯過好展覽。\n\n"
