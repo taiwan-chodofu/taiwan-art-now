@@ -968,7 +968,7 @@
       Object.keys(favs).forEach(function(key) {
         if (!visited[key]) items.push({ key: key, data: favs[key], type: 'fav' });
       });
-      content.innerHTML = tabs + _renderMylistItems(items, 'wantgo');
+      content.innerHTML = tabs + _renderMylistItems(items, 'wantgo') + _renderNotificationSection();
     } else {
       // Visited tab: include archive exhibitions too
       content.innerHTML = tabs + '<p style="text-align:center;color:var(--text-light);padding:1rem 0;font-size:0.75rem;">{% if current_lang == "zh" %}載入中...{% elif current_lang == "ja" %}読み込み中...{% else %}Loading...{% endif %}</p>';
@@ -991,7 +991,7 @@
         });
         // Sort by date visited (newest first)
         items.sort(function(a,b) { return (b.date||'') > (a.date||'') ? 1 : -1; });
-        content.innerHTML = tabs + _renderMylistItems(items, 'visited');
+        content.innerHTML = tabs + _renderMylistItems(items, 'visited') + _renderNotificationSection();
       });
     }
   }
@@ -1033,6 +1033,24 @@
     }
     renderMylist();
     _renderActions();
+  }
+
+  function _renderNotificationSection() {
+    var connected = localStorage.getItem('taiwan_art_messenger_connected');
+    if (!connected) {
+      return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
+        + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知{% elif current_lang == "ja" %}通知{% else %}Notifications{% endif %}</div>'
+        + '<a href="https://m.me/61591281572640" target="_blank" rel="noopener" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_connect_mylist\',{})" style="display:block;padding:10px 14px;background:#0084FF;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;text-align:center;">'
+        + '💬 {% if current_lang == "zh" %}用 Messenger 接收展覽見逃し防止通知{% elif current_lang == "ja" %}Messengerで見逃し防止通知を受け取る{% else %}Get notified via Messenger{% endif %}'
+        + '</a></div>';
+    }
+    return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
+      + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知設定{% elif current_lang == "ja" %}通知設定{% else %}Notification settings{% endif %}</div>'
+      + '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ Messenger {% if current_lang == "zh" %}已連結{% elif current_lang == "ja" %}連携中{% else %}connected{% endif %}</div>'
+      + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}每週三收到終了間近通知{% elif current_lang == "ja" %}毎週水曜に終了間近通知{% else %}Weekly ending-soon digest every Wednesday{% endif %}</div>'
+      + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}♡展覽結束前3天提醒{% elif current_lang == "ja" %}♡展示の終了3日前にリマインド{% else %}♡ exhibition reminder 3 days before closing{% endif %}</div>'
+      + '<a href="#" onclick="localStorage.removeItem(\'taiwan_art_messenger_connected\');renderMylist();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:6px;display:inline-block;">{% if current_lang == "zh" %}解除連結{% elif current_lang == "ja" %}連携解除{% else %}Disconnect{% endif %}</a>'
+      + '</div>';
   }
 
   // Close lang menu on outside tap
