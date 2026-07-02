@@ -670,20 +670,43 @@ ARCHIVE_LABELS = {
 
 @app.route("/api/subscribers/sync", methods=["POST"])
 def api_sync_favs():
-    """Sync user favs/visited from client to server (tied to Messenger sender_id)."""
+    """Sync user favs/visited from client to server (tied to Messenger sender_id or ref)."""
     data = request.get_json(silent=True) or {}
     sender_id = data.get("sender_id", "")
+    ref_code = data.get("ref", "")
     favs = data.get("favs", {})
     visited = data.get("visited", {})
-    if not sender_id:
-        return {"error": "sender_id required"}, 400
     subs = _load_subscribers()
+    # Resolve sender_id from ref if not provided directly
+    if not sender_id and ref_code:
+        sender_id = subs.get("refs", {}).get(ref_code, "")
+    if not sender_id:
+        return {"error": "sender_id or valid ref required"}, 400
     if sender_id not in subs["users"]:
         return {"error": "not subscribed"}, 404
     subs["users"][sender_id]["favs"] = favs
     subs["users"][sender_id]["visited"] = visited
     _save_subscribers(subs)
     return {"status": "synced"}
+
+
+@app.route("/api/subscribers/link-ref", methods=["POST"])
+def api_link_ref():
+    """Link a ref code to an existing subscriber (for manual pairing)."""
+    data = request.get_json(silent=True) or {}
+    ref_code = data.get("ref", "")
+    sender_id = data.get("sender_id", "")
+    if not ref_code or not sender_id:
+        return {"error": "ref and sender_id required"}, 400
+    subs = _load_subscribers()
+    if sender_id not in subs["users"]:
+        return {"error": "sender_id not subscribed"}, 404
+    if "refs" not in subs:
+        subs["refs"] = {}
+    subs["refs"][ref_code] = sender_id
+    subs["users"][sender_id]["ref"] = ref_code
+    _save_subscribers(subs)
+    return {"status": "linked"}
 
 
 @app.route("/api/subscribers/status")
