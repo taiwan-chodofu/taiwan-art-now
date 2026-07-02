@@ -67,27 +67,26 @@ def get_ending_soon(exhibitions, days=7):
 def format_digest(ending_exhibitions):
     if not ending_exhibitions:
         return None
+    # Keep under 2000 char Messenger limit - show up to 5 exhibitions
+    show = ending_exhibitions[:5]
+    remaining = len(ending_exhibitions) - len(show)
     lines = ["🎨 本週即將結束的展覽\n"]
-    for ex in ending_exhibitions[:8]:
+    for ex in show:
         lines.append(f"📍 {ex['title']}")
         if ex.get('artists'):
             lines.append(f"   {ex['artists']}")
         lines.append(f"   〜{ex['end_date']} (剩{ex['days_left']}天)")
         lines.append(f"   → {ex['detail_url']}\n")
-    if len(ending_exhibitions) > 8:
-        lines.append(f"...其他 {len(ending_exhibitions) - 8} 檔展覽")
-    lines.append("\n→ 完整列表: https://taiwan-art-now.onrender.com/?lang=zh")
-    lines.append("\n─────────────────")
-    lines.append("\n🎨 Exhibitions ending this week\n")
-    for ex in ending_exhibitions[:8]:
+    if remaining > 0:
+        lines.append(f"...其他 {remaining} 檔")
+    lines.append("\n─────────────────\n")
+    lines.append("🎨 Ending this week\n")
+    for ex in show:
         lines.append(f"📍 {ex['title']}")
-        if ex.get('artists'):
-            lines.append(f"   {ex['artists']}")
-        lines.append(f"   until {ex['end_date']} ({ex['days_left']}d left)")
-        lines.append(f"   → {ex['detail_url']}\n")
-    if len(ending_exhibitions) > 8:
-        lines.append(f"...and {len(ending_exhibitions) - 8} more")
-    lines.append("\n→ Full list: https://taiwan-art-now.onrender.com/?lang=en")
+        lines.append(f"   〜{ex['end_date']} ({ex['days_left']}d left)\n")
+    if remaining > 0:
+        lines.append(f"...+{remaining} more")
+    lines.append(f"\n→ https://taiwan-art-now.onrender.com/")
     lines.append("\n━━━━━━━━━━")
     lines.append("取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
     return "\n".join(lines)
