@@ -2487,7 +2487,7 @@ def _remove_expired(exhibitions):
         if end_dt and end_dt < today:
             is_expired = True
         elif start_dt and start_dt > today:
-            if start_dt > horizon:
+            if start_dt > horizon and ex.get("type") != "artfestival":
                 skip_far_future = True
             else:
                 status = "upcoming"
