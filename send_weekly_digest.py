@@ -66,6 +66,8 @@ def format_digest(ending_exhibitions):
         lines.append(f"   剩 {ex['days_left']} 天 / 残り{ex['days_left']}日\n")
     lines.append("→ 完整列表 Full list:")
     lines.append("https://taiwan-art-now.onrender.com/?lang=zh")
+    lines.append("\n━━━━━━━━━━")
+    lines.append("解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」")
     return "\n".join(lines)
 
 
@@ -74,7 +76,9 @@ def format_fav_alert(exhibition):
         f"💡 你的收藏即將結束！/ あなたの♡展示が終了間近！\n\n"
         f"📍 {exhibition['title']}\n"
         f"   剩 {exhibition['days_left']} 天 / 残り{exhibition['days_left']}日\n\n"
-        f"→ https://taiwan-art-now.onrender.com/?lang=zh"
+        f"→ https://taiwan-art-now.onrender.com/?lang=zh\n\n"
+        f"━━━━━━━━━━\n"
+        f"解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」"
     )
 
 
