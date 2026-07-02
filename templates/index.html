@@ -1078,11 +1078,9 @@
       if (visited[key]) {
         delete visited[key];
         _saveVisited(visited);
-        _showToast('{{ "已取消" if current_lang == "zh" else ("取り消しました" if current_lang == "ja" else "Unmarked") }}');
       } else {
         visited[key] = new Date().toISOString();
         _saveVisited(visited);
-        _showToast('{{ "已記錄觀展" if current_lang == "zh" else ("観た展示に記録しました" if current_lang == "ja" else "Marked as seen") }}');
         if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key });
         _promptMessengerOnce('visited');
       }
@@ -1091,7 +1089,6 @@
       if (favs[key]) {
         delete favs[key];
         _saveFavs(favs);
-        _showToast('{{ "已移除" if current_lang == "zh" else ("リストから削除" if current_lang == "ja" else "Removed") }}');
         if (typeof gtag === 'function') gtag('event', 'remove_from_favorites', { exhibition_key: key });
       } else {
         var title = rawKey.split('__')[1] || '';
@@ -1100,7 +1097,6 @@
         var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
         favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '' };
         _saveFavs(favs);
-        _showToast('{{ "已加入想去清單" if current_lang == "zh" else ("行きたいリストに追加" if current_lang == "ja" else "Added to list") }}');
         if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: key });
         _promptMessengerOnce('fav');
       }
@@ -1163,20 +1159,6 @@
     if (headerBtn) headerBtn.textContent = favCount > 0 ? '📋' + favCount : '📋';
   }
 
-  var _toastTimer;
-  function _showToast(msg) {
-    var t = document.getElementById('actionToast');
-    if (!t) {
-      t = document.createElement('div');
-      t.id = 'actionToast';
-      t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:9999;';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    t.style.opacity = '1';
-    clearTimeout(_toastTimer);
-    _toastTimer = setTimeout(function() { t.style.opacity = '0'; }, 2500);
-  }
 
   // Init actions on page load
   (function() { _renderActions(); })();
