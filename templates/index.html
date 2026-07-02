@@ -1084,6 +1084,7 @@
         _saveVisited(visited);
         _showToast('{{ "已記錄觀展" if current_lang == "zh" else ("観た展示に記録しました" if current_lang == "ja" else "Marked as seen") }}', true);
         if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key });
+        _promptMessengerOnce('visited');
       }
     } else if (action === 'fav') {
       var favs = _getFavs();
@@ -1101,9 +1102,37 @@
         _saveFavs(favs);
         _showToast('{{ "已加入想去清單" if current_lang == "zh" else ("行きたいリストに追加" if current_lang == "ja" else "Added to list") }}');
         if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: key });
+        _promptMessengerOnce('fav');
       }
     }
     _renderActions();
+  }
+
+  function _promptMessengerOnce(trigger) {
+    var promptKey = 'taiwan_art_messenger_prompted';
+    if (localStorage.getItem(promptKey)) return;
+    localStorage.setItem(promptKey, '1');
+    setTimeout(function() {
+      var msg = trigger === 'fav'
+        ? '{{ "展覽結束前提醒你？用 Messenger 接收通知 →" if current_lang == "zh" else ("この展示の終了前にお知らせしますか？Messengerで受け取る →" if current_lang == "ja" else "Get notified before it ends? Subscribe via Messenger →") }}'
+        : '{{ "每週收到展覽情報？用 Messenger 訂閱 →" if current_lang == "zh" else ("毎週の展示情報を受け取る？Messengerで登録 →" if current_lang == "ja" else "Get weekly exhibition updates via Messenger →") }}';
+      _showMessengerPrompt(msg);
+    }, 1500);
+  }
+
+  function _showMessengerPrompt(msg) {
+    var el = document.getElementById('messengerPrompt');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'messengerPrompt';
+      el.style.cssText = 'position:fixed;bottom:90px;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#333;';
+      document.body.appendChild(el);
+    }
+    el.innerHTML = '<span style="flex:1;">' + msg + '</span>'
+      + '<a href="https://m.me/61591281572640" target="_blank" rel="noopener" style="flex-shrink:0;background:#0084FF;color:#fff;padding:8px 14px;border-radius:18px;text-decoration:none;font-size:0.75rem;font-weight:600;" onclick="if(typeof gtag===\'function\')gtag(\'event\',\'messenger_subscribe_prompt_click\',{})">💬</a>'
+      + '<button onclick="this.parentElement.remove()" style="border:none;background:none;font-size:1.1rem;cursor:pointer;padding:0 4px;color:#999;">✕</button>';
+    el.style.display = 'flex';
+    if (typeof gtag === 'function') gtag('event', 'messenger_subscribe_prompt_shown', {});
   }
 
   function _renderActions() {
