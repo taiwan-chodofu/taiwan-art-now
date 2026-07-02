@@ -67,7 +67,7 @@ def get_ending_soon(exhibitions, days=7):
 def format_digest(ending_exhibitions):
     if not ending_exhibitions:
         return None
-    lines = ["🎨 本週即將結束的展覽 / 今週終了する展示:\n"]
+    lines = ["🎨 本週即將結束的展覽\n"]
     for ex in ending_exhibitions[:8]:
         lines.append(f"📍 {ex['title']}")
         if ex.get('artists'):
@@ -76,22 +76,37 @@ def format_digest(ending_exhibitions):
         lines.append(f"   → {ex['detail_url']}\n")
     if len(ending_exhibitions) > 8:
         lines.append(f"...其他 {len(ending_exhibitions) - 8} 檔展覽")
-    lines.append("\n→ 完整列表 Full list:")
-    lines.append("https://taiwan-art-now.onrender.com/?lang=zh")
+    lines.append("\n→ 完整列表: https://taiwan-art-now.onrender.com/?lang=zh")
+    lines.append("\n─────────────────")
+    lines.append("\n🎨 Exhibitions ending this week\n")
+    for ex in ending_exhibitions[:8]:
+        lines.append(f"📍 {ex['title']}")
+        if ex.get('artists'):
+            lines.append(f"   {ex['artists']}")
+        lines.append(f"   until {ex['end_date']} ({ex['days_left']}d left)")
+        lines.append(f"   → {ex['detail_url']}\n")
+    if len(ending_exhibitions) > 8:
+        lines.append(f"...and {len(ending_exhibitions) - 8} more")
+    lines.append("\n→ Full list: https://taiwan-art-now.onrender.com/?lang=en")
     lines.append("\n━━━━━━━━━━")
-    lines.append("解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」")
+    lines.append("取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
     return "\n".join(lines)
 
 
 def format_fav_alert(exhibition):
     artist_line = f"\n   {exhibition['artists']}" if exhibition.get('artists') else ""
     return (
-        f"💡 你的收藏即將結束！/ あなたの♡展示が終了間近！\n\n"
+        f"💡 你收藏的展覽即將結束！\n\n"
         f"📍 {exhibition['title']}{artist_line}\n"
         f"   〜{exhibition['end_date']} (剩{exhibition['days_left']}天)\n\n"
         f"→ {exhibition.get('detail_url', 'https://taiwan-art-now.onrender.com/?lang=zh')}\n\n"
+        f"─────────────────\n\n"
+        f"💡 Your saved exhibition is ending soon!\n\n"
+        f"📍 {exhibition['title']}{artist_line}\n"
+        f"   until {exhibition['end_date']} ({exhibition['days_left']}d left)\n\n"
+        f"→ {exhibition.get('detail_url', 'https://taiwan-art-now.onrender.com/?lang=en')}\n\n"
         f"━━━━━━━━━━\n"
-        f"解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」"
+        f"取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」"
     )
 
 
