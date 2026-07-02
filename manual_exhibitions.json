@@ -1209,7 +1209,8 @@
         "黃楷迪助理教授團隊"
       ],
       "link": "https://hong-gah.org.tw/hong-gah/yangmingshan-art-festivalechoes-in-the-interstices-cn",
-      "status": "current"
+      "status": "current",
+      "type": "artfestival"
     },
     {
       "museum": "honggah",
@@ -1749,7 +1750,8 @@
         "林介文 Labay Eyong"
       ],
       "link": "https://www.moc.gov.tw/en/News_Content2.aspx?n=467&s=254563",
-      "status": "upcoming"
+      "status": "upcoming",
+      "type": "artfestival"
     },
     {
       "museum": "yiriarts",
