@@ -134,7 +134,7 @@ def format_digest(ending_exhibitions):
 def format_fav_alert(exhibition):
     artist = f" ({exhibition['artists']})" if exhibition.get('artists') else ""
     return (
-        f"💡 收藏即將結束\n\n"
+        f"♡ 你想去的展覽即將結束\n\n"
         f"{exhibition['title']}{artist}\n"
         f"〜{exhibition['end_date']} (剩{exhibition['days_left']}天)\n\n"
         f"→ {exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
