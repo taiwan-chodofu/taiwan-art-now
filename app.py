@@ -668,6 +668,29 @@ ARCHIVE_LABELS = {
 }
 
 
+@app.route("/api/archive")
+def api_archive():
+    """Archive JSON API for mylist visited tab."""
+    from scraper import load_archive
+    master = _load_master()
+    museum_names = {m["id"]: m.get("name", {}) for m in master["museums"]}
+    items = []
+    for ex in load_archive():
+        mid = ex.get("museum", "")
+        names = museum_names.get(mid, {})
+        key_raw = (names.get("zh", mid) or mid) + "__" + (ex.get("title_zh", "") or ex.get("title_en", ""))
+        items.append({
+            "key": key_raw,
+            "title_zh": ex.get("title_zh", ""),
+            "title_en": ex.get("title_en", ""),
+            "museum": names.get("zh", mid),
+            "museum_en": names.get("en", mid),
+            "dates": ex.get("dates", ""),
+            "artists": ex.get("artists", []),
+        })
+    return {"exhibitions": items}
+
+
 @app.route("/search")
 def search():
     """展覧会・アーティスト・施設の横断検索。"""

@@ -936,6 +936,7 @@
   });
 
   var _mylistTab = 'wantgo';
+  var _archiveCache = null;
   function toggleMylistHeader(e) {
     e.preventDefault();
     if (typeof gtag === 'function') gtag('event', 'mylist_open', { event_category: 'engagement' });
@@ -944,50 +945,82 @@
     renderMylist();
   }
 
+  function _fetchArchive(cb) {
+    if (_archiveCache) { cb(_archiveCache); return; }
+    fetch('/api/archive').then(function(r){return r.json();}).then(function(data){
+      _archiveCache = data.exhibitions || [];
+      cb(_archiveCache);
+    }).catch(function(){ cb([]); });
+  }
+
   function renderMylist() {
     var content = document.getElementById('favsContent');
     var favs = _getFavs();
     var visited = _getVisited();
-    var favKeys = Object.keys(favs);
-    var visitedKeys = Object.keys(visited);
 
     var tabs = '<div style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);">';
     tabs += '<button onclick="_mylistTab=\'wantgo\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'transparent') + ';color:' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'var(--text-sub)') + ';">♡ {% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Want to go{% endif %}</button>';
     tabs += '<button onclick="_mylistTab=\'visited\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'visited' ? '#4caf50' : 'transparent') + ';color:' + (_mylistTab === 'visited' ? '#2e7d32' : 'var(--text-sub)') + ';">☑ {% if current_lang == "zh" %}觀了{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}</button>';
     tabs += '</div>';
 
-    var items = [];
     if (_mylistTab === 'wantgo') {
-      favKeys.forEach(function(key) {
+      var items = [];
+      Object.keys(favs).forEach(function(key) {
         if (!visited[key]) items.push({ key: key, data: favs[key], type: 'fav' });
       });
+      content.innerHTML = tabs + _renderMylistItems(items, 'wantgo');
     } else {
-      visitedKeys.forEach(function(key) {
-        var data = favs[key] || { title: key.split('__')[1] || key, museum: key.split('__')[0] || '' };
-        items.push({ key: key, data: data, type: 'visited' });
+      // Visited tab: include archive exhibitions too
+      content.innerHTML = tabs + '<p style="text-align:center;color:var(--text-light);padding:1rem 0;font-size:0.75rem;">{% if current_lang == "zh" %}載入中...{% elif current_lang == "ja" %}読み込み中...{% else %}Loading...{% endif %}</p>';
+      _fetchArchive(function(archiveData) {
+        var items = [];
+        var visitedKeys = Object.keys(visited);
+        var seenKeys = new Set();
+        // First: visited items from favs/current data
+        visitedKeys.forEach(function(key) {
+          var data = favs[key] || { title: key.split('__')[1] || key, museum: key.split('__')[0] || '' };
+          items.push({ key: key, data: data, type: 'visited', date: visited[key] });
+          seenKeys.add(key);
+        });
+        // Then: archive items that match visited keys (enrich with archive data)
+        archiveData.forEach(function(arch) {
+          var archKey = (arch.key || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+          if (visited[archKey] && !seenKeys.has(archKey)) {
+            items.push({ key: archKey, data: { title: arch.title_zh || arch.title_en, museum: arch.museum, dates: arch.dates }, type: 'visited', date: visited[archKey] });
+          }
+        });
+        // Sort by date visited (newest first)
+        items.sort(function(a,b) { return (b.date||'') > (a.date||'') ? 1 : -1; });
+        content.innerHTML = tabs + _renderMylistItems(items, 'visited');
       });
     }
+  }
 
-    var html = tabs;
+  function _renderMylistItems(items, tab) {
     if (items.length === 0) {
-      var emptyMsg = _mylistTab === 'wantgo'
+      var emptyMsg = tab === 'wantgo'
         ? '{% if current_lang == "zh" %}還沒有想去的展覽{% elif current_lang == "ja" %}行きたい展示はまだありません{% else %}No exhibitions saved yet{% endif %}'
         : '{% if current_lang == "zh" %}還沒有觀展紀錄{% elif current_lang == "ja" %}観た展示はまだありません{% else %}No exhibitions seen yet{% endif %}';
-      html += '<p style="text-align:center;color:var(--text-light);padding:2rem 0;">' + emptyMsg + '</p>';
-    } else {
-      items.forEach(function(item) {
-        var f = item.data;
-        html += '<div style="padding:10px 0;border-bottom:1px solid var(--border);">';
-        html += '<div style="font-weight:600;font-size:0.85rem;">' + (f.title || item.key) + '</div>';
-        if (f.museum) html += '<div style="font-size:0.72rem;color:var(--text-light);margin-top:2px;">' + f.museum + '</div>';
-        if (f.dates) html += '<div style="font-size:0.7rem;color:var(--text-light);">' + f.dates + '</div>';
-        html += '<div style="margin-top:4px;display:flex;gap:8px;">';
-        if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem;color:var(--blue);text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
-        html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.7rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
-        html += '</div></div>';
-      });
+      return '<p style="text-align:center;color:var(--text-light);padding:2rem 0;">' + emptyMsg + '</p>';
     }
-    content.innerHTML = html;
+    var html = '';
+    items.forEach(function(item) {
+      var f = item.data;
+      var dateStr = item.date ? new Date(item.date).toLocaleDateString() : '';
+      html += '<div style="padding:10px 0;border-bottom:1px solid var(--border);">';
+      html += '<div style="font-weight:600;font-size:0.85rem;">' + (f.title || item.key) + '</div>';
+      html += '<div style="font-size:0.72rem;color:var(--text-light);margin-top:2px;">';
+      if (f.museum) html += f.museum;
+      if (f.museum && f.dates) html += ' · ';
+      if (f.dates) html += f.dates;
+      html += '</div>';
+      if (dateStr && tab === 'visited') html += '<div style="font-size:0.65rem;color:var(--text-light);margin-top:2px;">{% if current_lang == "zh" %}觀展日{% elif current_lang == "ja" %}観覧日{% else %}Visited{% endif %}: ' + dateStr + '</div>';
+      html += '<div style="margin-top:4px;display:flex;gap:8px;">';
+      if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem;color:var(--blue);text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
+      html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.7rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
+      html += '</div></div>';
+    });
+    return html;
   }
 
   function removeFromMylist(key, type) {
