@@ -1261,15 +1261,12 @@ def webhook_receive():
                         _send_messenger_reply(sender_id,
                             "🎨 登録完了！毎週水曜に展示終了お知らせをお届けします。\n"
                             "Subscribed! You'll receive weekly exhibition updates every Wednesday.\n"
-                            "已訂閱！每週三將收到展覽結束提醒。")
+                            "已訂閱！每週三將收到展覽結束提醒。\n\n"
+                            "🌐 https://taiwan-art-now.onrender.com/")
                     else:
                         _send_messenger_reply(sender_id,
-                            "✓ 既に登録済みです / Already subscribed / 已訂閱")
-                    continue
-                elif payload == "INFO_REQUEST":
-                    _send_messenger_reply(sender_id,
-                        "🌐 Taiwan Art Now\nhttps://taiwan-art-now.onrender.com/\n\n"
-                        "台灣當代藝術展覽情報サイトです。展示情報の共有も歓迎！")
+                            "✓ 既に登録済みです / Already subscribed / 已訂閱\n\n"
+                            "🌐 https://taiwan-art-now.onrender.com/")
                     continue
 
             message = event.get("message", {})
