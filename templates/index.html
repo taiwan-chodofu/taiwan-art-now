@@ -1393,6 +1393,7 @@
     }
   </style>
 
+  <a class="fab fab-chair" id="chairFab" href="https://docs.google.com/forms/d/e/1FAIpQLScfq_Aeo2Kc3xaB9enEa0KCKaCtB_3TOeNixMZTl5TRxXiYmg/viewform" target="_blank" rel="noopener" aria-label="Chair collection" onclick="if(typeof gtag==='function')gtag('event','click_chair_fab',{})" style="bottom:84px;background:#8d6e63;font-size:1.3rem;">🪑</a>
   <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Send exhibition info via Messenger">💬</a>
   <div class="fab-tooltip" id="fabTooltip">
     {% if current_lang == 'zh' %}知道展覽資訊？點此傳送給我們！
@@ -1403,6 +1404,13 @@
 
   <script>
   (function() {
+    // Hide chair FAB after expiry
+    var chairExpiry = new Date('2026-07-14T00:00:00+08:00').getTime();
+    if (Date.now() > chairExpiry) {
+      var chairFab = document.getElementById('chairFab');
+      if (chairFab) chairFab.style.display = 'none';
+    }
+
     var fab = document.getElementById('fabBtn');
     var tooltip = document.getElementById('fabTooltip');
     var todayKey = 'fab_tooltip_' + new Date().toISOString().slice(0,10);
