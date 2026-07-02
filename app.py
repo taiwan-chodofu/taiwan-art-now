@@ -1260,13 +1260,17 @@ def webhook_receive():
                     if is_new:
                         _send_messenger_reply(sender_id,
                             "🎨 登録完了！毎週水曜に展示終了お知らせをお届けします。\n"
-                            "Subscribed! You'll receive weekly exhibition updates every Wednesday.\n"
+                            "Subscribed! Weekly exhibition updates every Wednesday.\n"
                             "已訂閱！每週三將收到展覽結束提醒。\n\n"
-                            "🌐 https://taiwan-art-now.onrender.com/")
+                            "🌐 https://taiwan-art-now.onrender.com/\n\n"
+                            "━━━━━━━━━━\n"
+                            "解除 Unsubscribe: 輸入「取消」或「unsubscribe」")
                     else:
                         _send_messenger_reply(sender_id,
                             "✓ 既に登録済みです / Already subscribed / 已訂閱\n\n"
-                            "🌐 https://taiwan-art-now.onrender.com/")
+                            "🌐 https://taiwan-art-now.onrender.com/\n\n"
+                            "━━━━━━━━━━\n"
+                            "解除 Unsubscribe: 輸入「取消」或「unsubscribe」")
                     continue
 
             message = event.get("message", {})
@@ -1276,6 +1280,34 @@ def webhook_receive():
             image_urls = [a["payload"]["url"] for a in attachments if a.get("type") == "image" and a.get("payload", {}).get("url")]
 
             if not text and not image_urls:
+                continue
+
+            # Handle unsubscribe keywords
+            text_lower = text.strip().lower()
+            if text_lower in ("取消", "unsubscribe", "解除", "退訂", "stop", "登録解除"):
+                subs = _load_subscribers()
+                if sender_id in subs["users"]:
+                    del subs["users"][sender_id]
+                    _save_subscribers(subs)
+                    _send_messenger_reply(sender_id,
+                        "✓ 已取消訂閱。不會再收到通知。\n"
+                        "Unsubscribed. You won't receive further notifications.\n"
+                        "登録解除しました。\n\n"
+                        "如需重新訂閱 Re-subscribe: 輸入「訂閱」或「subscribe」")
+                else:
+                    _send_messenger_reply(sender_id,
+                        "目前尚未訂閱 / Not currently subscribed")
+                continue
+
+            # Handle re-subscribe keywords
+            if text_lower in ("訂閱", "subscribe", "登録", "開始"):
+                is_new = _add_subscriber(sender_id)
+                _send_messenger_reply(sender_id,
+                    "🎨 已訂閱！每週三將收到展覽結束提醒。\n"
+                    "Subscribed! Weekly updates every Wednesday.\n\n"
+                    "🌐 https://taiwan-art-now.onrender.com/\n\n"
+                    "━━━━━━━━━━\n"
+                    "解除 Unsubscribe: 輸入「取消」或「unsubscribe」")
                 continue
 
             # Auto-subscribe anyone who messages the page
