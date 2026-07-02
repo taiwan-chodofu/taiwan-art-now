@@ -222,73 +222,122 @@
     </div>
 
     <div class="actions">
-      <button id="favBtn" class="action-btn" onclick="toggleFav()">
-        <span id="favIcon">☆</span>
-        <span id="favText">
-          {% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}保存{% else %}Save{% endif %}
-        </span>
+      <button class="action-btn" id="visitedBtn" onclick="toggleVisited()">
+        <span id="visitedIcon">☐</span>
+        <span id="visitedText">{% if current_lang == 'zh' %}觀了{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
+      </button>
+      <button class="action-btn" id="favBtn" onclick="toggleFav()">
+        <span id="favIcon">♡</span>
+        <span id="favText">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
       </button>
       <button class="action-btn" id="shareBtn" onclick="shareExhibition()">
         📤 {% if current_lang == 'zh' %}分享{% elif current_lang == 'ja' %}シェア{% else %}Share{% endif %}
       </button>
       {% if exhibition.link %}
-      <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener">
+      <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener" onclick="if(typeof gtag==='function')gtag('event','click_external',{exhibition_key:exId})">
         {% if current_lang == 'zh' %}查看官方頁面 →{% elif current_lang == 'ja' %}公式ページを見る →{% else %}View official page →{% endif %}
       </a>
       {% endif %}
     </div>
 
+    <a class="report-link" href="#" onclick="openReport(event)" style="display:block;font-size:0.75rem;color:var(--text-light);margin-top:16px;padding-top:12px;border-top:1px solid var(--border);text-decoration:none;">
+      ⚠️ {% if current_lang == 'zh' %}資訊有誤？點此回報{% elif current_lang == 'ja' %}情報に間違いがありますか？{% else %}Report incorrect information{% endif %}
+    </a>
+
+    <div id="reportOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:200;" onclick="closeReport()"></div>
+    <div id="reportSheet" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-radius:16px 16px 0 0;padding:24px 20px;z-index:201;max-width:480px;margin:0 auto;">
+      <h3 style="font-size:1rem;margin-bottom:12px;">{% if current_lang == 'zh' %}回報問題{% elif current_lang == 'ja' %}問題を報告{% else %}Report a problem{% endif %}</h3>
+      <label style="display:block;padding:10px 0;font-size:0.85rem;border-bottom:1px solid var(--border);cursor:pointer;"><input type="checkbox" value="dates" style="margin-right:8px;">{% if current_lang == 'zh' %}日期有誤{% elif current_lang == 'ja' %}日付が違う{% else %}Dates are wrong{% endif %}</label>
+      <label style="display:block;padding:10px 0;font-size:0.85rem;border-bottom:1px solid var(--border);cursor:pointer;"><input type="checkbox" value="closed" style="margin-right:8px;">{% if current_lang == 'zh' %}已閉館或搬遷{% elif current_lang == 'ja' %}閉館・移転{% else %}Venue closed/moved{% endif %}</label>
+      <label style="display:block;padding:10px 0;font-size:0.85rem;border-bottom:1px solid var(--border);cursor:pointer;"><input type="checkbox" value="ended" style="margin-right:8px;">{% if current_lang == 'zh' %}展覽已結束{% elif current_lang == 'ja' %}展示終了済み{% else %}Exhibition has ended{% endif %}</label>
+      <label style="display:block;padding:10px 0;font-size:0.85rem;cursor:pointer;"><input type="checkbox" value="other" style="margin-right:8px;">{% if current_lang == 'zh' %}其他{% elif current_lang == 'ja' %}その他{% else %}Other{% endif %}</label>
+      <button onclick="submitReport()" style="margin-top:14px;width:100%;padding:11px;background:var(--accent);color:var(--bg);border:none;border-radius:8px;font-size:0.85rem;cursor:pointer;">{% if current_lang == 'zh' %}送出{% elif current_lang == 'ja' %}送信{% else %}Submit{% endif %}</button>
+      <button onclick="closeReport()" style="margin-top:6px;width:100%;padding:9px;background:none;border:none;color:var(--text-sub);font-size:0.8rem;cursor:pointer;">{% if current_lang == 'zh' %}取消{% elif current_lang == 'ja' %}キャンセル{% else %}Cancel{% endif %}</button>
+    </div>
+
     <script>
-    var favKey = 'taiwan_art_favs';
     var exId = '{{ museum.name }}__{{ exhibition.title }}'.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-    function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
+
+    function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
+    function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
+
+    function toggleVisited() {
+      var visited = _getVisited();
+      if (visited[exId]) {
+        delete visited[exId];
+        if (typeof gtag === 'function') gtag('event', 'unmark_visited', { exhibition_key: exId });
+      } else {
+        visited[exId] = new Date().toISOString();
+        if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: exId });
+      }
+      localStorage.setItem('taiwan_art_visited', JSON.stringify(visited));
+      updateBtns();
+    }
+
     function toggleFav() {
-      var favs = getFavs();
+      var favs = _getFavs();
       if (favs[exId]) {
         delete favs[exId];
-        gtag('event', 'favorite_remove', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
+        if (typeof gtag === 'function') gtag('event', 'remove_from_favorites', { exhibition_key: exId });
       } else {
         favs[exId] = { title: '{{ exhibition.title }}', museum: '{{ museum.name }}', dates: '{{ exhibition.dates }}', url: window.location.href };
-        gtag('event', 'favorite_add', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
+        if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: exId });
       }
-      localStorage.setItem(favKey, JSON.stringify(favs));
-      updateBtn();
+      localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+      updateBtns();
     }
-    function updateBtn() {
-      var favs = getFavs();
-      var btn = document.getElementById('favBtn');
-      var icon = document.getElementById('favIcon');
-      var text = document.getElementById('favText');
-      if (favs[exId]) {
-        icon.textContent = '★';
-        text.textContent = '{% if current_lang == "zh" %}已收藏{% elif current_lang == "ja" %}保存済み{% else %}Saved{% endif %}';
-        btn.classList.add('saved');
+
+    function updateBtns() {
+      var visited = _getVisited();
+      var favs = _getFavs();
+      var vBtn = document.getElementById('visitedBtn');
+      var vIcon = document.getElementById('visitedIcon');
+      var vText = document.getElementById('visitedText');
+      var fBtn = document.getElementById('favBtn');
+      var fIcon = document.getElementById('favIcon');
+      var fText = document.getElementById('favText');
+      if (visited[exId]) {
+        vIcon.textContent = '☑';
+        vText.textContent = '{% if current_lang == "zh" %}已觀{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}';
+        vBtn.classList.add('saved');
       } else {
-        icon.textContent = '☆';
-        text.textContent = '{% if current_lang == "zh" %}收藏{% elif current_lang == "ja" %}保存{% else %}Save{% endif %}';
-        btn.classList.remove('saved');
+        vIcon.textContent = '☐';
+        vText.textContent = '{% if current_lang == "zh" %}觀了{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}';
+        vBtn.classList.remove('saved');
+      }
+      if (favs[exId]) {
+        fIcon.textContent = '♥';
+        fText.textContent = '{% if current_lang == "zh" %}已加入{% elif current_lang == "ja" %}追加済{% else %}Saved{% endif %}';
+        fBtn.classList.add('saved');
+      } else {
+        fIcon.textContent = '♡';
+        fText.textContent = '{% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Save{% endif %}';
+        fBtn.classList.remove('saved');
       }
     }
-    updateBtn();
+    updateBtns();
 
     function shareExhibition() {
-      var shareData = {
-        title: '{{ exhibition.title }}',
-        text: '{{ exhibition.title }} @ {{ museum.name }}\n{{ exhibition.dates }}',
-        url: window.location.href
-      };
+      var shareData = { title: '{{ exhibition.title }}', text: '{{ exhibition.title }} @ {{ museum.name }}\n{{ exhibition.dates }}', url: window.location.href };
       if (navigator.share) {
-        navigator.share(shareData).then(function() {
-          gtag('event', 'share', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}', museum: '{{ museum.name }}' });
-        }).catch(function() {});
+        navigator.share(shareData).then(function() { if(typeof gtag==='function') gtag('event','share',{exhibition_key:exId}); }).catch(function(){});
       } else {
         navigator.clipboard.writeText(shareData.text + '\n' + shareData.url).then(function() {
           var btn = document.getElementById('shareBtn');
           btn.textContent = '✓ {% if current_lang == "zh" %}已複製{% elif current_lang == "ja" %}コピー済{% else %}Copied{% endif %}';
           setTimeout(function() { btn.textContent = '📤 {% if current_lang == "zh" %}分享{% elif current_lang == "ja" %}シェア{% else %}Share{% endif %}'; }, 2000);
-          gtag('event', 'share_copy', { event_category: 'engagement', exhibition_title: '{{ exhibition.title }}' });
+          if(typeof gtag==='function') gtag('event','share_copy',{exhibition_key:exId});
         });
       }
+    }
+
+    function openReport(e) { e.preventDefault(); document.getElementById('reportOverlay').style.display='block'; document.getElementById('reportSheet').style.display='block'; }
+    function closeReport() { document.getElementById('reportOverlay').style.display='none'; document.getElementById('reportSheet').style.display='none'; }
+    function submitReport() {
+      var checks = []; document.querySelectorAll('#reportSheet input:checked').forEach(function(c){checks.push(c.value);});
+      if(typeof gtag==='function') gtag('event','report_error',{exhibition_key:exId,error_types:checks.join(',')});
+      closeReport();
+      alert('{% if current_lang == "zh" %}感謝回報，我們會盡快確認！{% elif current_lang == "ja" %}ありがとうございます。確認します。{% else %}Thanks! We will review this.{% endif %}');
     }
     </script>
   </div>

@@ -2339,16 +2339,15 @@ def _dates_overlap(dates_a, dates_b):
     return dates_a == dates_b
 
 
-def _titles_similar(norm_a, norm_b, min_common=5):
-    """2つの正規化タイトルが類似しているか（包含関係 or 共通部分5文字以上）。"""
+def _titles_similar(norm_a, norm_b, min_common=8):
+    """2つの正規化タイトルが類似しているか（完全包含関係のみ）。
+    部分一致は誤判定が多いため、包含関係に限定する。"""
     if not norm_a or not norm_b:
         return False
-    if norm_a in norm_b or norm_b in norm_a:
+    if norm_a == norm_b:
         return True
-    shorter = norm_a if len(norm_a) <= len(norm_b) else norm_b
-    longer = norm_b if len(norm_a) <= len(norm_b) else norm_a
-    for i in range(len(shorter) - min_common + 1):
-        if shorter[i:i+min_common] in longer:
+    if len(norm_a) >= min_common and len(norm_b) >= min_common:
+        if norm_a in norm_b or norm_b in norm_a:
             return True
     return False
 

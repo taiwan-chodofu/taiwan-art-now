@@ -61,6 +61,23 @@
       padding: 8px 0 8px 12px;
       border-left: 2px solid var(--border);
       margin-bottom: 6px;
+      transition: opacity 0.3s, filter 0.3s;
+    }
+    .nearby-ex.visited-item { opacity: 0.45; filter: grayscale(50%); }
+    .nearby-ex-actions { display: flex; gap: 6px; margin-top: 6px; }
+    .nearby-action-btn {
+      font-size: 0.7rem; padding: 3px 9px; border: 1px solid var(--border);
+      border-radius: 12px; background: var(--bg); cursor: pointer;
+      display: flex; align-items: center; gap: 3px; user-select: none;
+      -webkit-tap-highlight-color: transparent; transition: all 0.15s;
+      color: var(--text-sub);
+    }
+    .nearby-action-btn:active { transform: scale(0.93); }
+    .nearby-action-btn.active-visited { background: #e8f5e9; border-color: #66bb6a; color: #2e7d32; }
+    .nearby-action-btn.active-fav { background: #fce4ec; border-color: #ef5350; color: #c62828; }
+    @media (prefers-color-scheme: dark) {
+      .nearby-action-btn.active-visited { background: #1b3d1b; border-color: #4caf50; color: #81c784; }
+      .nearby-action-btn.active-fav { background: #3d1b1b; border-color: #ef5350; color: #ef9a9a; }
     }
     .nearby-ex-title {
       font-size: 0.85rem; font-weight: 500;
@@ -121,11 +138,8 @@
         <span class="nearby-dist">{{ venue.distance_km }} km</span>
       </div>
       {% for ex in venue.exhibitions %}
-      <div class="nearby-ex">
-        <div class="nearby-ex-title">
-          {{ ex.title }}
-          <button class="fav-btn" data-fav-key="{{ ex.fav_key }}" onclick="toggleFav(this)" aria-label="Save">☆</button>
-        </div>
+      <div class="nearby-ex" data-fav-key="{{ ex.fav_key }}">
+        <div class="nearby-ex-title">{{ ex.title }}</div>
         {% if ex.dates %}
         <div class="nearby-ex-dates">
           {{ ex.dates }}
@@ -144,6 +158,14 @@
           {% endif %}
         </div>
         {% endif %}
+        <div class="nearby-ex-actions">
+          <span class="nearby-action-btn" data-action="visited" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
+            <span class="act-icon">☐</span> {% if current_lang == 'zh' %}觀了{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}
+          </span>
+          <span class="nearby-action-btn" data-action="fav" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
+            <span class="act-icon">♡</span> {% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}
+          </span>
+        </div>
       </div>
       {% endfor %}
       <div class="venue-actions">
@@ -165,37 +187,65 @@
   </div>
 
   <script>
-  var favKey = 'taiwan_art_favs';
-  function getFavs() { try { return JSON.parse(localStorage.getItem(favKey) || '{}'); } catch(e) { return {}; } }
+  function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
+  function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
+  function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
 
-  function toggleFav(btn) {
-    var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-    var favs = getFavs();
-    if (favs[key]) {
-      delete favs[key];
-      btn.textContent = '☆';
-    } else {
-      var exEl = btn.closest('.nearby-ex');
-      var title = exEl.querySelector('.nearby-ex-title').textContent.replace('☆','').replace('★','').trim();
-      var venue = btn.closest('.nearby-card').querySelector('.nearby-name').textContent.trim();
-      var dates = '';
-      var datesEl = exEl.querySelector('.nearby-ex-dates');
-      if (datesEl) dates = datesEl.textContent.trim().split('\n')[0].trim();
-      favs[key] = { title: title, museum: venue, dates: dates, url: '' };
-      btn.textContent = '★';
-      gtag('event', 'favorite_add', { event_category: 'engagement', exhibition_title: title, museum: venue, source: 'nearby' });
+  function toggleAction(btn) {
+    var action = btn.getAttribute('data-action');
+    var rawKey = btn.getAttribute('data-key') || '';
+    var key = _normalizeKey(rawKey);
+    var exEl = btn.closest('.nearby-ex');
+
+    if (action === 'visited') {
+      var visited = _getVisited();
+      if (visited[key]) {
+        delete visited[key];
+      } else {
+        visited[key] = new Date().toISOString();
+        if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key, source: 'nearby' });
+      }
+      localStorage.setItem('taiwan_art_visited', JSON.stringify(visited));
+    } else if (action === 'fav') {
+      var favs = _getFavs();
+      if (favs[key]) {
+        delete favs[key];
+      } else {
+        var title = exEl.querySelector('.nearby-ex-title').textContent.trim();
+        var venue = btn.closest('.nearby-card').querySelector('.nearby-name').textContent.trim();
+        var datesEl = exEl.querySelector('.nearby-ex-dates');
+        var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
+        favs[key] = { title: title, museum: venue, dates: dates, url: '' };
+        if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: key, source: 'nearby' });
+      }
+      localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
     }
-    localStorage.setItem(favKey, JSON.stringify(favs));
+    renderAll();
   }
 
-  // Init: mark already-saved items
-  (function() {
-    var favs = getFavs();
-    document.querySelectorAll('.fav-btn').forEach(function(btn) {
-      var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-      if (favs[key]) btn.textContent = '★';
+  function renderAll() {
+    var visited = _getVisited();
+    var favs = _getFavs();
+    document.querySelectorAll('.nearby-ex').forEach(function(ex) {
+      var key = _normalizeKey(ex.getAttribute('data-fav-key'));
+      ex.classList.toggle('visited-item', !!visited[key]);
     });
-  })();
+    document.querySelectorAll('.nearby-action-btn').forEach(function(btn) {
+      var action = btn.getAttribute('data-action');
+      var key = _normalizeKey(btn.getAttribute('data-key'));
+      if (action === 'visited') {
+        var isV = !!visited[key];
+        btn.querySelector('.act-icon').textContent = isV ? '☑' : '☐';
+        btn.classList.toggle('active-visited', isV);
+      } else if (action === 'fav') {
+        var isF = !!favs[key];
+        btn.querySelector('.act-icon').textContent = isF ? '♥' : '♡';
+        btn.classList.toggle('active-fav', isF);
+      }
+    });
+  }
+
+  renderAll();
   </script>
 </body>
 </html>
