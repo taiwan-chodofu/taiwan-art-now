@@ -1203,7 +1203,22 @@
 
 
   // Init actions on page load
-  (function() { _renderActions(); })();
+  (function() {
+    _renderActions();
+    // Sync Messenger connection status from server
+    var ref = localStorage.getItem('taiwan_art_ref');
+    if (ref) {
+      fetch('/api/subscribers/status?ref=' + encodeURIComponent(ref))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.subscribed) {
+            localStorage.setItem('taiwan_art_messenger_connected', '1');
+          } else {
+            localStorage.removeItem('taiwan_art_messenger_connected');
+          }
+        }).catch(function() {});
+    }
+  })();
   </script>
 
   <!-- FILTER JS -->
