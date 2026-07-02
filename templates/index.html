@@ -106,7 +106,7 @@
         </div>
       </div>
       <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
-      <a href="#" id="favsBtn" class="refresh-btn" aria-label="Favorites" title="Favorites" onclick="showFavs(event)">☆</a>
+      <a href="#" id="mylistHeaderBtn" class="refresh-btn" aria-label="My List" title="My List" onclick="toggleMylistHeader(event)">📋</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
     </nav>
   </header>
@@ -281,13 +281,12 @@
     </div>
     <div class="filter-section">
       <div class="filter-row">
+        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" data-filter="closing" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}快結束{% elif current_lang == 'ja' %}終了間近{% else %}Ending{% endif %}({{ closing_soon|length }})</button>{% endif %}
         <button class="filter-chip" id="hasExBtn" data-filter="hasex" data-value="on">🎨 {% if current_lang == 'zh' %}展中{% elif current_lang == 'ja' %}展中{% else %}Now{% endif %}</button>
         <button class="filter-chip filter-chip-open" id="openTodayBtn" data-filter="open" data-value="off">
           <span class="open-dot"></span>{% if current_lang == 'zh' %}開館{% elif current_lang == 'ja' %}開館{% else %}Open{% endif %}
         </button>
         <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {% if current_lang == 'zh' %}開幕{% elif current_lang == 'ja' %}開幕{% else %}Soon{% endif %}</button>
-        <button class="filter-chip" id="favsFilterBtn" data-filter="favs" data-value="off">★</button>
-        {% if closing_soon %}<button class="filter-chip" id="closingSoonBtn" data-filter="closing" onclick="toggleClosingSection()">⏰ {% if current_lang == 'zh' %}快結束{% elif current_lang == 'ja' %}終了間近{% else %}Ending{% endif %}({{ closing_soon|length }})</button>{% endif %}
       </div>
     </div>
   </div>
@@ -445,8 +444,30 @@
     .ex-fav-btn {
       flex-shrink: 0; font-size: 0.9rem; cursor: pointer;
       opacity: 0.4; margin-left: auto; padding: 0 4px;
+      display: none;
     }
     .ex-fav-btn.saved { opacity: 1; }
+    .ex-actions { display: flex; gap: 6px; margin-top: 6px; }
+    .ex-action-btn {
+      font-size: 0.7rem; padding: 3px 9px; border: 1px solid var(--border);
+      border-radius: 12px; background: var(--bg); cursor: pointer;
+      display: flex; align-items: center; gap: 3px; user-select: none;
+      -webkit-tap-highlight-color: transparent; transition: all 0.15s;
+      color: var(--text-sub);
+    }
+    .ex-action-btn:active { transform: scale(0.93); }
+    .ex-action-btn.active-visited { background: #e8f5e9; border-color: #66bb6a; color: #2e7d32; }
+    .ex-action-btn.active-fav { background: #fce4ec; border-color: #ef5350; color: #c62828; }
+    @media (prefers-color-scheme: dark) {
+      .ex-action-btn.active-visited { background: #1b3d1b; border-color: #4caf50; color: #81c784; }
+      .ex-action-btn.active-fav { background: #3d1b1b; border-color: #ef5350; color: #ef9a9a; }
+    }
+    .ex-item.visited-item { opacity: 0.45; filter: grayscale(50%); }
+    .ex-item.favorited-item .ex-action-btn[data-action="fav"] .act-icon { color: #ef5350; font-size: 1rem; }
+    .mylist-dropdown { min-width: 160px; }
+    .mylist-option { display: block; width: 100%; text-align: left; padding: 8px 14px; border: none; background: none; font-size: 0.8rem; cursor: pointer; color: var(--text); }
+    .mylist-option:hover, .mylist-option:active { background: var(--hover-bg); }
+    .mylist-option.active { font-weight: 700; color: var(--red); }
     .ex-dates {
       font-size: 0.72rem; color: var(--text-sub); margin-top: 3px;
       display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
@@ -685,6 +706,14 @@
             {% if ex.curator %}
             <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
             {% endif %}
+            <div class="ex-actions">
+              <span class="ex-action-btn" data-action="visited" data-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleAction(event, this)">
+                <span class="act-icon">☐</span> <span class="act-label">{% if current_lang == 'zh' %}觀了{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
+              </span>
+              <span class="ex-action-btn" data-action="fav" data-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleAction(event, this)">
+                <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
+              </span>
+            </div>
             {% if ex.next_event %}
             <div class="ex-event {% if ex.next_event.days_until <= 2 %}ex-event-soon{% endif %}">
               <span>📅 {{ ex.next_event.date }}{% if ex.next_event.time %} {{ ex.next_event.time }}{% endif %} — {{ ex.next_event.title }}
@@ -855,43 +884,71 @@
     if (e.target === this) this.style.display = 'none';
   });
 
-  function showFavs(e) {
+  var _mylistTab = 'wantgo';
+  function toggleMylistHeader(e) {
     e.preventDefault();
-    gtag('event', 'favorites_open', { event_category: 'engagement' });
+    if (typeof gtag === 'function') gtag('event', 'mylist_open', { event_category: 'engagement' });
     var modal = document.getElementById('favsModal');
-    var content = document.getElementById('favsContent');
     modal.style.display = 'block';
+    renderMylist();
+  }
 
-    var favs = {};
-    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
+  function renderMylist() {
+    var content = document.getElementById('favsContent');
+    var favs = _getFavs();
+    var visited = _getVisited();
+    var favKeys = Object.keys(favs);
+    var visitedKeys = Object.keys(visited);
 
-    var keys = Object.keys(favs);
-    if (keys.length === 0) {
-      content.innerHTML = '<p style="text-align:center; color:var(--text-light); padding:2rem 0;">{% if current_lang == "zh" %}尚未收藏任何展覽{% elif current_lang == "ja" %}お気に入りはまだありません{% else %}No saved exhibitions yet{% endif %}</p>';
-      return;
+    var tabs = '<div style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);">';
+    tabs += '<button onclick="_mylistTab=\'wantgo\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'transparent') + ';color:' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'var(--text-sub)') + ';">♡ {% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Want to go{% endif %}</button>';
+    tabs += '<button onclick="_mylistTab=\'visited\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'visited' ? '#4caf50' : 'transparent') + ';color:' + (_mylistTab === 'visited' ? '#2e7d32' : 'var(--text-sub)') + ';">☑ {% if current_lang == "zh" %}觀了{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}</button>';
+    tabs += '</div>';
+
+    var items = [];
+    if (_mylistTab === 'wantgo') {
+      favKeys.forEach(function(key) {
+        if (!visited[key]) items.push({ key: key, data: favs[key], type: 'fav' });
+      });
+    } else {
+      visitedKeys.forEach(function(key) {
+        var data = favs[key] || { title: key.split('__')[1] || key, museum: key.split('__')[0] || '' };
+        items.push({ key: key, data: data, type: 'visited' });
+      });
     }
 
-    var html = '';
-    keys.forEach(function(key) {
-      var f = favs[key];
-      html += '<div style="padding:10px 0; border-bottom:1px solid var(--border);">';
-      html += '<div style="font-weight:600; font-size:0.85rem;">' + (f.title || key) + '</div>';
-      if (f.museum) html += '<div style="font-size:0.72rem; color:var(--text-light); margin-top:2px;">' + f.museum + '</div>';
-      if (f.dates) html += '<div style="font-size:0.7rem; color:var(--text-light);">' + f.dates + '</div>';
-      html += '<div style="margin-top:4px; display:flex; gap:8px;">';
-      if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem; color:var(--blue); text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
-      html += '<a href="#" onclick="removeFav(\'' + key.replace(/'/g, "\\'") + '\'); return false;" style="font-size:0.7rem; color:var(--red); text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
-      html += '</div></div>';
-    });
+    var html = tabs;
+    if (items.length === 0) {
+      var emptyMsg = _mylistTab === 'wantgo'
+        ? '{% if current_lang == "zh" %}還沒有想去的展覽{% elif current_lang == "ja" %}行きたい展示はまだありません{% else %}No exhibitions saved yet{% endif %}'
+        : '{% if current_lang == "zh" %}還沒有觀展紀錄{% elif current_lang == "ja" %}観た展示はまだありません{% else %}No exhibitions seen yet{% endif %}';
+      html += '<p style="text-align:center;color:var(--text-light);padding:2rem 0;">' + emptyMsg + '</p>';
+    } else {
+      items.forEach(function(item) {
+        var f = item.data;
+        html += '<div style="padding:10px 0;border-bottom:1px solid var(--border);">';
+        html += '<div style="font-weight:600;font-size:0.85rem;">' + (f.title || item.key) + '</div>';
+        if (f.museum) html += '<div style="font-size:0.72rem;color:var(--text-light);margin-top:2px;">' + f.museum + '</div>';
+        if (f.dates) html += '<div style="font-size:0.7rem;color:var(--text-light);">' + f.dates + '</div>';
+        html += '<div style="margin-top:4px;display:flex;gap:8px;">';
+        if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem;color:var(--blue);text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
+        html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.7rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
+        html += '</div></div>';
+      });
+    }
     content.innerHTML = html;
   }
 
-  function removeFav(key) {
-    var favs = {};
-    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
-    delete favs[key];
-    localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
-    showFavs({preventDefault: function(){}});
+  function removeFromMylist(key, type) {
+    if (type === 'fav') {
+      var favs = _getFavs(); delete favs[key];
+      localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+    } else {
+      var visited = _getVisited(); delete visited[key];
+      localStorage.setItem('taiwan_art_visited', JSON.stringify(visited));
+    }
+    renderMylist();
+    _renderActions();
   }
 
   // Close lang menu on outside tap
@@ -915,52 +972,101 @@
   function toggleExFav(event, btn) {
     event.preventDefault();
     event.stopPropagation();
-    var rawKey = btn.getAttribute('data-fav-key') || '';
-    var key = rawKey.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-    var favs = {};
-    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) {}
-    if (favs[key]) {
-      delete favs[key];
-      btn.textContent = '☆';
-      btn.classList.remove('saved');
-    } else {
-      var exItem = btn.closest('.ex-item');
-      var title = rawKey.split('__')[1] || '';
-      var museum = rawKey.split('__')[0] || '';
-      var datesEl = exItem ? exItem.querySelector('.ex-dates') : null;
-      var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
-      favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '' };
-      btn.textContent = '★';
-      btn.classList.add('saved');
-    }
-    localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
-    // Update header star
-    var headerBtn = document.getElementById('favsBtn');
-    if (headerBtn) headerBtn.textContent = Object.keys(favs).length > 0 ? '★' : '☆';
   }
 
-  // Init: mark already-saved exhibitions
-  (function() {
-    var favs = {};
-    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) {}
-    document.querySelectorAll('.ex-fav-btn').forEach(function(btn) {
-      var key = (btn.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+  // --- Unified action system: visited + favorites ---
+  function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
+  function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
+  function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
+  function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
+  function _saveFavs(f) { localStorage.setItem('taiwan_art_favs', JSON.stringify(f)); }
+
+  function toggleAction(event, btn) {
+    event.preventDefault();
+    event.stopPropagation();
+    var action = btn.getAttribute('data-action');
+    var rawKey = btn.getAttribute('data-key') || '';
+    var key = _normalizeKey(rawKey);
+    var exItem = btn.closest('.ex-item');
+
+    if (action === 'visited') {
+      var visited = _getVisited();
+      if (visited[key]) {
+        delete visited[key];
+        _saveVisited(visited);
+        _showToast('{{ "已取消" if current_lang == "zh" else ("取り消しました" if current_lang == "ja" else "Unmarked") }}');
+      } else {
+        visited[key] = new Date().toISOString();
+        _saveVisited(visited);
+        _showToast('{{ "已記錄觀展" if current_lang == "zh" else ("観た展示に記録しました" if current_lang == "ja" else "Marked as seen") }}', true);
+        if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key });
+      }
+    } else if (action === 'fav') {
+      var favs = _getFavs();
       if (favs[key]) {
-        btn.textContent = '★';
-        btn.classList.add('saved');
+        delete favs[key];
+        _saveFavs(favs);
+        _showToast('{{ "已移除" if current_lang == "zh" else ("リストから削除" if current_lang == "ja" else "Removed") }}');
+        if (typeof gtag === 'function') gtag('event', 'remove_from_favorites', { exhibition_key: key });
+      } else {
+        var title = rawKey.split('__')[1] || '';
+        var museum = rawKey.split('__')[0] || '';
+        var datesEl = exItem ? exItem.querySelector('.ex-dates') : null;
+        var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
+        favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '' };
+        _saveFavs(favs);
+        _showToast('{{ "已加入想去清單" if current_lang == "zh" else ("行きたいリストに追加" if current_lang == "ja" else "Added to list") }}');
+        if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: key });
+      }
+    }
+    _renderActions();
+  }
+
+  function _renderActions() {
+    var visited = _getVisited();
+    var favs = _getFavs();
+    document.querySelectorAll('.ex-action-btn').forEach(function(btn) {
+      var action = btn.getAttribute('data-action');
+      var key = _normalizeKey(btn.getAttribute('data-key'));
+      if (action === 'visited') {
+        var isV = !!visited[key];
+        btn.querySelector('.act-icon').textContent = isV ? '☑' : '☐';
+        btn.classList.toggle('active-visited', isV);
+      } else if (action === 'fav') {
+        var isF = !!favs[key];
+        btn.querySelector('.act-icon').textContent = isF ? '♥' : '♡';
+        btn.classList.toggle('active-fav', isF);
       }
     });
-  })();
+    // Update ex-item visual state
+    document.querySelectorAll('.ex-item[data-fav-key]').forEach(function(item) {
+      var key = _normalizeKey(item.getAttribute('data-fav-key'));
+      item.classList.toggle('visited-item', !!visited[key]);
+      item.classList.toggle('favorited-item', !!favs[key] && !visited[key]);
+    });
+    // Update header mylist badge
+    var headerBtn = document.getElementById('mylistHeaderBtn');
+    var favCount = Object.keys(favs).length;
+    if (headerBtn) headerBtn.textContent = favCount > 0 ? '📋' + favCount : '📋';
+  }
 
-  // Update header star if user has favorites
-  (function() {
-    var favs = {};
-    try { favs = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(ex) {}
-    if (Object.keys(favs).length > 0) {
-      var btn = document.getElementById('favsBtn');
-      if (btn) btn.textContent = '★';
+  var _toastTimer;
+  function _showToast(msg, undoable) {
+    var t = document.getElementById('actionToast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'actionToast';
+      t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:9999;';
+      document.body.appendChild(t);
     }
-  })();
+    t.innerHTML = msg + (undoable ? ' <span style="color:#7ecbff;margin-left:10px;cursor:pointer" onclick="this.parentElement.style.opacity=0">{{ "復原" if current_lang == "zh" else ("元に戻す" if current_lang == "ja" else "Undo") }}</span>' : '');
+    t.style.opacity = '1'; t.style.pointerEvents = 'auto';
+    clearTimeout(_toastTimer);
+    _toastTimer = setTimeout(function() { t.style.opacity = '0'; t.style.pointerEvents = 'none'; }, 3500);
+  }
+
+  // Init actions on page load
+  (function() { _renderActions(); })();
   </script>
 
   <!-- FILTER JS -->
@@ -973,9 +1079,13 @@
     let hasExOnly = params.get('hasex') === '1';
     let upcomingOnly = params.get('upcoming') === '1';
     let favsOnly = false;
+    let mylistMode = ''; // '', 'wantgo', 'visited', 'all'
 
     function getFavKeys() {
       try { var f = JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); return new Set(Object.keys(f)); } catch(e) { return new Set(); }
+    }
+    function getVisitedKeys() {
+      try { var v = JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); return new Set(Object.keys(v)); } catch(e) { return new Set(); }
     }
 
     function syncURL() {
@@ -1028,14 +1138,18 @@
         const upcomingOk = !upcomingOnly || hasUpcoming;
 
         let favsOk = true;
-        if (favsOnly) {
+        if (favsOnly || mylistMode) {
           const items = card.querySelectorAll('.ex-item');
-          let hasFav = false;
+          let hasMatch = false;
+          const visitedKeys = getVisitedKeys();
           items.forEach(function(it) {
             var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-            if (favKeys.has(fk)) hasFav = true;
+            if (mylistMode === 'wantgo' && favKeys.has(fk) && !visitedKeys.has(fk)) hasMatch = true;
+            else if (mylistMode === 'visited' && visitedKeys.has(fk)) hasMatch = true;
+            else if (mylistMode === 'all' && (favKeys.has(fk) || visitedKeys.has(fk))) hasMatch = true;
+            else if (favsOnly && !mylistMode && favKeys.has(fk)) hasMatch = true;
           });
-          favsOk = hasFav;
+          favsOk = hasMatch;
         }
 
         const cardVisible = regionOk && catOk && openOk && hasExOk && upcomingOk && favsOk;
@@ -1043,12 +1157,19 @@
         if (cardVisible) visibleCount++;
 
         const items = card.querySelectorAll('.ex-item');
+        const visitedKeysLocal = (mylistMode) ? getVisitedKeys() : new Set();
         items.forEach(function(it) {
           const status = it.getAttribute('data-status');
+          var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
           if (upcomingOnly) {
             it.style.display = (status === 'upcoming') ? '' : 'none';
-          } else if (favsOnly) {
-            var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+          } else if (mylistMode === 'wantgo') {
+            it.style.display = (favKeys.has(fk) && !visitedKeysLocal.has(fk)) ? '' : 'none';
+          } else if (mylistMode === 'visited') {
+            it.style.display = visitedKeysLocal.has(fk) ? '' : 'none';
+          } else if (mylistMode === 'all') {
+            it.style.display = (favKeys.has(fk) || visitedKeysLocal.has(fk)) ? '' : 'none';
+          } else if (favsOnly && !mylistMode) {
             it.style.display = favKeys.has(fk) ? '' : 'none';
           } else {
             it.style.display = '';
@@ -1103,11 +1224,8 @@
           return;
         }
 
-        if (filterType === 'favs') {
-          favsOnly = !favsOnly;
-          this.classList.toggle('active', favsOnly);
-          applyFilters();
-          return;
+        if (filterType === 'favs' || filterType === 'mylist') {
+          return; // handled by toggleMylist / setMylistFilter
         }
 
         if (filterType === 'closing') {
@@ -1132,6 +1250,44 @@
         syncURL();
       });
     });
+
+    // Mylist dropdown
+    window.toggleMylist = function(event) {
+      event.stopPropagation();
+      var dd = document.getElementById('mylistDropdown');
+      var btn = document.getElementById('mylistBtn');
+      if (dd.style.display === 'none') {
+        var rect = btn.getBoundingClientRect();
+        dd.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+        dd.style.left = rect.left + 'px';
+        dd.style.display = 'block';
+        setTimeout(function() { document.addEventListener('click', closeMylistDropdown, {once:true}); }, 0);
+      } else {
+        dd.style.display = 'none';
+      }
+    };
+    function closeMylistDropdown() {
+      document.getElementById('mylistDropdown').style.display = 'none';
+    }
+    window.setMylistFilter = function(mode) {
+      var dd = document.getElementById('mylistDropdown');
+      dd.style.display = 'none';
+      var btn = document.getElementById('mylistBtn');
+      if (mylistMode === mode || mode === '') {
+        mylistMode = '';
+        favsOnly = false;
+        btn.classList.remove('active');
+      } else {
+        mylistMode = mode;
+        favsOnly = false;
+        btn.classList.add('active');
+      }
+      // Highlight active option
+      dd.querySelectorAll('.mylist-option').forEach(function(o) {
+        o.classList.toggle('active', o.getAttribute('data-mylist') === mylistMode);
+      });
+      applyFilters();
+    };
 
     syncChipsFromState();
     applyFilters();
