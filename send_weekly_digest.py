@@ -45,10 +45,17 @@ def get_ending_soon(exhibitions, days=7):
                 end_date = datetime(int(matches[1][0]), int(matches[1][1]), int(matches[1][2])).date()
                 days_left = (end_date - today).days
                 if 0 <= days_left <= days:
+                    artists = ex.get("artists", [])
+                    artist_str = " · ".join(artists[:3])
+                    if len(artists) > 3:
+                        artist_str += f" 等{len(artists)}人"
                     ending.append({
                         "title": ex.get("title_zh", "") or ex.get("title_en", ""),
                         "museum": ex.get("museum", ""),
+                        "artists": artist_str,
                         "days_left": days_left,
+                        "end_date": end_date.strftime("%m/%d"),
+                        "detail_url": f"https://taiwan-art-now.onrender.com/exhibition/{ex.get('museum', '')}/0?lang=zh",
                         "key": ex.get("museum", "") + "__" + (ex.get("title_zh", "") or ex.get("title_en", "")),
                     })
             except ValueError:
@@ -61,10 +68,15 @@ def format_digest(ending_exhibitions):
     if not ending_exhibitions:
         return None
     lines = ["🎨 本週即將結束的展覽 / 今週終了する展示:\n"]
-    for ex in ending_exhibitions[:10]:
+    for ex in ending_exhibitions[:8]:
         lines.append(f"📍 {ex['title']}")
-        lines.append(f"   剩 {ex['days_left']} 天 / 残り{ex['days_left']}日\n")
-    lines.append("→ 完整列表 Full list:")
+        if ex.get('artists'):
+            lines.append(f"   {ex['artists']}")
+        lines.append(f"   〜{ex['end_date']} (剩{ex['days_left']}天)")
+        lines.append(f"   → {ex['detail_url']}\n")
+    if len(ending_exhibitions) > 8:
+        lines.append(f"...其他 {len(ending_exhibitions) - 8} 檔展覽")
+    lines.append("\n→ 完整列表 Full list:")
     lines.append("https://taiwan-art-now.onrender.com/?lang=zh")
     lines.append("\n━━━━━━━━━━")
     lines.append("解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」")
@@ -72,11 +84,12 @@ def format_digest(ending_exhibitions):
 
 
 def format_fav_alert(exhibition):
+    artist_line = f"\n   {exhibition['artists']}" if exhibition.get('artists') else ""
     return (
         f"💡 你的收藏即將結束！/ あなたの♡展示が終了間近！\n\n"
-        f"📍 {exhibition['title']}\n"
-        f"   剩 {exhibition['days_left']} 天 / 残り{exhibition['days_left']}日\n\n"
-        f"→ https://taiwan-art-now.onrender.com/?lang=zh\n\n"
+        f"📍 {exhibition['title']}{artist_line}\n"
+        f"   〜{exhibition['end_date']} (剩{exhibition['days_left']}天)\n\n"
+        f"→ {exhibition.get('detail_url', 'https://taiwan-art-now.onrender.com/?lang=zh')}\n\n"
         f"━━━━━━━━━━\n"
         f"解除通知 Unsubscribe: 輸入「取消」或「unsubscribe」"
     )
