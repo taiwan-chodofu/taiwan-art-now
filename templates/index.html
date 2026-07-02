@@ -116,6 +116,30 @@
     <span>📋 {% if current_lang == 'zh' %}新功能：可以記錄觀展和想去的展覽了！點右上角 📋 查看{% elif current_lang == 'ja' %}新機能：観た展示・行きたい展示を記録できるようになりました。右上📋から確認{% else %}NEW: Track exhibitions you've seen and want to visit! Tap 📋 above{% endif %}</span>
     <button onclick="dismissBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#2e7d32;">✕</button>
   </div>
+  <!-- ARTIST CALLOUT BANNER -->
+  <div id="chairBanner" style="display:none;max-width:720px;margin:0 auto;padding:10px 1rem;background:linear-gradient(135deg,#fff8e1,#fff3e0);border-bottom:1px solid #ffe0b2;font-size:0.75rem;color:#5d4037;align-items:center;justify-content:space-between;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScfq_Aeo2Kc3xaB9enEa0KCKaCtB_3TOeNixMZTl5TRxXiYmg/viewform" target="_blank" rel="noopener" style="color:#5d4037;text-decoration:none;flex:1;" onclick="if(typeof gtag==='function')gtag('event','click_chair_callout',{})">
+      {% if current_lang == 'zh' %}🪑 藝術家賈茜茹正在募集椅子！你家的一張椅子將成為C-LAB榕樹下作品《乘涼計畫》的一部分。有興趣？→{% elif current_lang == 'ja' %}🪑 アーティスト賈茜茹が椅子を募集中！あなたの椅子がC-LABのガジュマルの下のアート作品に。参加する？→{% else %}🪑 Artist Chia Chien-Ju is collecting chairs! Yours could become art under C-LAB's banyan trees. Interested? →{% endif %}
+    </a>
+    <button onclick="dismissChairBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#5d4037;">✕</button>
+  </div>
+  <script>
+  (function() {
+    var key = 'taiwan_art_banner_chair';
+    var expiry = new Date('2026-07-14T00:00:00+08:00').getTime();
+    var now = Date.now();
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e) {}
+    if (state.dismissed || now > expiry) return;
+    var banner = document.getElementById('chairBanner');
+    if (banner) banner.style.display = 'flex';
+    window.dismissChairBanner = function() {
+      banner.style.display = 'none';
+      state.dismissed = true;
+      localStorage.setItem(key, JSON.stringify(state));
+    };
+  })();
+  </script>
   <script>
   (function() {
     var bannerKey = 'taiwan_art_banner_v1';
