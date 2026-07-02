@@ -1035,13 +1035,23 @@
     _renderActions();
   }
 
+  function _getRefCode() {
+    var code = localStorage.getItem('taiwan_art_ref');
+    if (!code) {
+      code = 'ref_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('taiwan_art_ref', code);
+    }
+    return code;
+  }
+
   function _renderNotificationSection() {
     var connected = localStorage.getItem('taiwan_art_messenger_connected');
+    var ref = _getRefCode();
     if (!connected) {
       return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
         + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知{% elif current_lang == "ja" %}通知{% else %}Notifications{% endif %}</div>'
-        + '<a href="https://m.me/61591281572640" target="_blank" rel="noopener" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_connect_mylist\',{})" style="display:block;padding:10px 14px;background:#0084FF;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;text-align:center;">'
-        + '💬 {% if current_lang == "zh" %}用 Messenger 接收展覽見逃し防止通知{% elif current_lang == "ja" %}Messengerで見逃し防止通知を受け取る{% else %}Get notified via Messenger{% endif %}'
+        + '<a href="https://m.me/61591281572640?ref=' + ref + '" target="_blank" rel="noopener" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_connect_mylist\',{})" style="display:block;padding:10px 14px;background:#0084FF;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;text-align:center;">'
+        + '💬 {% if current_lang == "zh" %}用 Messenger 接收展覽通知{% elif current_lang == "ja" %}Messengerで通知を受け取る{% else %}Get notified via Messenger{% endif %}'
         + '</a></div>';
     }
     return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
@@ -1049,8 +1059,21 @@
       + '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ Messenger {% if current_lang == "zh" %}已連結{% elif current_lang == "ja" %}連携中{% else %}connected{% endif %}</div>'
       + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}每週三收到終了間近通知{% elif current_lang == "ja" %}毎週水曜に終了間近通知{% else %}Weekly ending-soon digest every Wednesday{% endif %}</div>'
       + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}♡展覽結束前3天提醒{% elif current_lang == "ja" %}♡展示の終了3日前にリマインド{% else %}♡ exhibition reminder 3 days before closing{% endif %}</div>'
-      + '<a href="#" onclick="localStorage.removeItem(\'taiwan_art_messenger_connected\');renderMylist();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:6px;display:inline-block;">{% if current_lang == "zh" %}解除連結{% elif current_lang == "ja" %}連携解除{% else %}Disconnect{% endif %}</a>'
+      + '<a href="#" onclick="_disconnectMessenger();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:6px;display:inline-block;">{% if current_lang == "zh" %}取消訂閱{% elif current_lang == "ja" %}登録解除{% else %}Unsubscribe{% endif %}</a>'
       + '</div>';
+  }
+
+  function _disconnectMessenger() {
+    var ref = localStorage.getItem('taiwan_art_ref');
+    if (ref) {
+      fetch('/api/subscribers/unsubscribe', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ref: ref})
+      }).catch(function(){});
+    }
+    localStorage.removeItem('taiwan_art_messenger_connected');
+    renderMylist();
   }
 
   // Close lang menu on outside tap
@@ -1142,8 +1165,9 @@
       el.style.cssText = 'position:fixed;bottom:90px;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#333;';
       document.body.appendChild(el);
     }
+    var ref = _getRefCode();
     el.innerHTML = '<span style="flex:1;">' + msg + '</span>'
-      + '<a href="https://m.me/61591281572640" target="_blank" rel="noopener" style="flex-shrink:0;background:#0084FF;color:#fff;padding:8px 14px;border-radius:18px;text-decoration:none;font-size:0.75rem;font-weight:600;" onclick="if(typeof gtag===\'function\')gtag(\'event\',\'messenger_subscribe_prompt_click\',{})">💬</a>'
+      + '<a href="https://m.me/61591281572640?ref=' + ref + '" target="_blank" rel="noopener" style="flex-shrink:0;background:#0084FF;color:#fff;padding:8px 14px;border-radius:18px;text-decoration:none;font-size:0.75rem;font-weight:600;" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_subscribe_prompt_click\',{})">💬</a>'
       + '<button onclick="this.parentElement.remove()" style="border:none;background:none;font-size:1.1rem;cursor:pointer;padding:0 4px;color:#999;">✕</button>';
     el.style.display = 'flex';
     if (typeof gtag === 'function') gtag('event', 'messenger_subscribe_prompt_shown', {});
