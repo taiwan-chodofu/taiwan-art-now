@@ -688,14 +688,20 @@ def api_sync_favs():
 
 @app.route("/api/subscribers/status")
 def api_subscriber_status():
-    """Check if a sender_id is subscribed and get settings."""
+    """Check subscription status by sender_id or ref code."""
     sender_id = request.args.get("sender_id", "")
-    if not sender_id:
-        return {"subscribed": False}
+    ref_code = request.args.get("ref", "")
     subs = _load_subscribers()
-    user = subs["users"].get(sender_id)
-    if user:
-        return {"subscribed": True, "weekly_digest": user.get("weekly_digest", True), "fav_alerts": user.get("fav_alerts", True)}
+    if ref_code:
+        sid = subs.get("refs", {}).get(ref_code)
+        if sid and sid in subs["users"]:
+            user = subs["users"][sid]
+            return {"subscribed": True, "weekly_digest": user.get("weekly_digest", True), "fav_alerts": user.get("fav_alerts", True)}
+        return {"subscribed": False}
+    if sender_id:
+        user = subs["users"].get(sender_id)
+        if user:
+            return {"subscribed": True, "weekly_digest": user.get("weekly_digest", True), "fav_alerts": user.get("fav_alerts", True)}
     return {"subscribed": False}
 
 
