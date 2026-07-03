@@ -2021,19 +2021,42 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
 
 
 def _load_all_manual():
-    """manual_exhibitions.json の全エントリを返す。"""
+    """manual_exhibitions.json の全エントリを返す。exhibition_details.jsonからdescriptionも取り込む。"""
     fb_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
+    details_path = os.path.join(os.path.dirname(__file__), "exhibition_details.json")
     if not os.path.exists(fb_path):
         return []
     try:
         with open(fb_path, "r", encoding="utf-8") as f:
             data = json.load(f)
+        # Load details for description enrichment
+        details_data = {}
+        if os.path.exists(details_path):
+            try:
+                with open(details_path, "r", encoding="utf-8") as f:
+                    details_data = json.load(f)
+            except Exception:
+                pass
         results = []
         for ex in data.get("exhibitions", []):
             if not ex.get("dates") and ex.get("date_start"):
                 start = ex["date_start"].replace("-", ".")
                 end = ex.get("date_end", "").replace("-", ".")
                 ex["dates"] = f"{start} – {end}" if end else start
+            # Merge descriptions from exhibition_details.json
+            link = ex.get("link", "")
+            if link and link in details_data:
+                d = details_data[link]
+                if not ex.get("description") and d.get("description"):
+                    ex["description"] = d["description"]
+                if not ex.get("description_en") and d.get("description_en"):
+                    ex["description_en"] = d["description_en"]
+                if not ex.get("description_ja") and d.get("description_ja"):
+                    ex["description_ja"] = d["description_ja"]
+                if not ex.get("curator") and d.get("curator"):
+                    ex["curator"] = d["curator"]
+                if not ex.get("artists") and d.get("artists"):
+                    ex["artists"] = d["artists"]
             results.append(ex)
         return results
     except Exception:
