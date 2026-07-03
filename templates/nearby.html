@@ -134,12 +134,15 @@
     {% for venue in nearby %}
     <div class="nearby-card">
       <div class="nearby-header">
-        <span class="nearby-name">{{ venue.name }}</span>
+        <span class="nearby-name">{{ venue.name }}{% if venue.closed_today %} <span style="font-size:0.65rem;color:var(--red);font-weight:600;">CLOSED</span>{% endif %}</span>
         <span class="nearby-dist">{{ venue.distance_km }} km</span>
       </div>
+      {% if venue.hours %}
+      <div style="font-size:0.68rem;color:var(--text-light);margin-bottom:6px;">{{ venue.hours }}</div>
+      {% endif %}
       {% for ex in venue.exhibitions %}
       <div class="nearby-ex" data-fav-key="{{ ex.fav_key }}">
-        <div class="nearby-ex-title">{{ ex.title }}</div>
+        <a href="{{ ex.detail_url }}" class="nearby-ex-title" style="text-decoration:none;color:var(--text);display:block;">{{ ex.title }}</a>
         {% if ex.dates %}
         <div class="nearby-ex-dates">
           {{ ex.dates }}
@@ -151,7 +154,9 @@
           </span>
           {% elif ex.days_left is not none and ex.days_left <= 14 %}
           <span class="badge-ending">
-            {%- if current_lang == 'ja' -%}残り{{ ex.days_left }}日
+            {%- if ex.days_left == 0 -%}
+              {%- if current_lang == 'ja' -%}今日まで{%- elif current_lang == 'zh' -%}今天最後{%- else -%}Last day{%- endif -%}
+            {%- elif current_lang == 'ja' -%}残り{{ ex.days_left }}日
             {%- elif current_lang == 'zh' -%}剩{{ ex.days_left }}天
             {%- else -%}{{ ex.days_left }}d left{%- endif -%}
           </span>
@@ -170,7 +175,7 @@
       {% endfor %}
       <div class="venue-actions">
         {% if venue.address %}
-        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.name|urlencode }}+{{ venue.address|urlencode }}" target="_blank" rel="noopener" onclick="gtag('event','click_google_maps',{event_category:'outbound',museum:'{{ venue.name }}',source:'nearby'})">
+        <a class="maps-link" href="https://www.google.com/maps/search/?api=1&query={{ venue.name|urlencode }}+{{ venue.address|urlencode }}" target="_blank" rel="noopener" onclick="if(typeof gtag==='function')gtag('event','click_google_maps',{museum:'{{ venue.name }}',source:'nearby'})">
           📍 Google Maps
         </a>
         {% endif %}
