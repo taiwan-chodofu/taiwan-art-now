@@ -833,10 +833,10 @@
   </div>
 
   <script>
-  // Museum coordinates data
+  // Museum coordinates data with exhibitions
   var museumCoords = {
     {% for region in regions %}{% for museum in region.museums %}{% if museum.exhibitions %}
-    "{{ museum.id }}": { name: "{{ museum.name }}", lat: {{ museum.lat|default(0) }}, lng: {{ museum.lng|default(0) }}, closed: {{ 'true' if museum.closed_today else 'false' }}, exCount: {{ museum.exhibitions|length }} },
+    "{{ museum.id }}": { name: "{{ museum.name }}", lat: {{ museum.lat|default(0) }}, lng: {{ museum.lng|default(0) }}, closed: {{ 'true' if museum.closed_today else 'false' }}, hours: "{{ museum.hours|default('')|replace('"','\\"') }}", exhibitions: [{% for ex in museum.exhibitions %}{ title: "{{ ex.title|replace('"','\\"') }}", daysLeft: {{ ex.days_left if ex.days_left is not none else 'null' }}, detailUrl: "{{ ex.detail_url }}", stableKey: "{{ ex.stable_key|replace('"','\\"') }}" }{% if not loop.last %},{% endif %}{% endfor %}] },
     {% endif %}{% endfor %}{% endfor %}
   };
 
@@ -863,7 +863,7 @@
         if (m.lat === 0 || m.closed) continue;
         var dist = haversine(lat, lng, m.lat, m.lng);
         if (dist <= 10) { // 10km以内
-          results.push({ id: id, name: m.name, dist: dist, exCount: m.exCount });
+          results.push({ id: id, name: m.name, dist: dist, hours: m.hours, exhibitions: m.exhibitions || [] });
         }
       }
 
@@ -900,17 +900,36 @@
         html += '</div>';
       }
 
-      html += '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">Open museums within 10km:</div>';
+      var visited = _getVisited();
+      var favs = _getFavs();
+      html += '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">{% if current_lang == "zh" %}10km 以內開館中{% elif current_lang == "ja" %}10km以内の開館施設{% else %}Open within 10km{% endif %}:</div>';
       results.slice(0, 8).forEach(function(r) {
         var mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(r.name) + '&travelmode=transit';
-        html += '<div style="padding:8px 0; border-bottom:1px solid var(--border);">';
+        html += '<div style="padding:10px 0; border-bottom:1px solid var(--border);">';
         html += '<div style="display:flex; justify-content:space-between; align-items:center;">';
-        html += '<span style="font-weight:600;">' + r.name + '</span>';
+        html += '<span style="font-weight:600;font-size:0.8rem;">' + r.name + '</span>';
         html += '<span style="font-size:0.6rem; color:#3498db; background:#ecf3fb; padding:2px 6px; border-radius:8px;">' + r.dist.toFixed(1) + 'km</span>';
         html += '</div>';
-        html += '<div style="margin-top:4px;">';
-        html += '<a href="/nearby/' + r.id + '?lang={{ current_lang }}" style="font-size:0.65rem; color:var(--text-sub); text-decoration:none;">View exhibitions</a>';
-        html += ' · <a href="' + mapsUrl + '" target="_blank" style="font-size:0.65rem; color:#3498db; text-decoration:none;">🗺 Route</a>';
+        if (r.hours) html += '<div style="font-size:0.62rem;color:var(--text-light);margin-top:2px;">' + r.hours + '</div>';
+        // Exhibition list
+        if (r.exhibitions) {
+          r.exhibitions.forEach(function(ex) {
+            var key = ex.stableKey ? ex.stableKey.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_') : '';
+            var isVisited = key && !!visited[key];
+            var isFav = key && !!favs[key];
+            var exStyle = isVisited ? 'opacity:0.45;filter:grayscale(50%);' : '';
+            html += '<div style="margin-top:6px;padding-left:8px;border-left:2px solid var(--border);' + exStyle + '">';
+            html += '<a href="' + ex.detailUrl + '" style="font-size:0.75rem;font-weight:500;color:var(--text);text-decoration:none;">' + ex.title + '</a>';
+            if (ex.daysLeft !== null && ex.daysLeft <= 14) {
+              var badge = ex.daysLeft === 0 ? '{% if current_lang == "zh" %}今天最後{% elif current_lang == "ja" %}今日まで{% else %}Last day{% endif %}' : (ex.daysLeft + '{% if current_lang == "zh" %}天{% elif current_lang == "ja" %}日{% else %}d{% endif %}');
+              html += ' <span style="font-size:0.6rem;color:var(--red);font-weight:600;">' + badge + '</span>';
+            }
+            if (isFav && !isVisited) html += ' <span style="font-size:0.6rem;color:#ef5350;">♥</span>';
+            html += '</div>';
+          });
+        }
+        html += '<div style="margin-top:6px;">';
+        html += '<a href="' + mapsUrl + '" target="_blank" style="font-size:0.65rem; color:#3498db; text-decoration:none;">📍 {% if current_lang == "zh" %}路線{% elif current_lang == "ja" %}ルート{% else %}Route{% endif %}</a>';
         html += '</div></div>';
       });
       content.innerHTML = html;
