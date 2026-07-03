@@ -1042,6 +1042,7 @@ def exhibition_detail(museum_id, idx):
         museum_id=museum_id,
         idx=idx,
         other_exhibitions=other_exs,
+        has_coordinates=bool(museum_info and museum_info.get("lat")),
     )
 
 

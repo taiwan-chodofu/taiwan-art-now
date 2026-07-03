@@ -269,9 +269,9 @@
       <button class="action-btn" id="shareBtn" onclick="shareExhibition()">
         📤 {% if current_lang == 'zh' %}分享{% elif current_lang == 'ja' %}シェア{% else %}Share{% endif %}
       </button>
-      {% if exhibition.link %}
+      {% if exhibition.link and exhibition.link != museum.url %}
       <a class="ext-link" href="{{ exhibition.link }}" target="_blank" rel="noopener" onclick="if(typeof gtag==='function')gtag('event','click_external',{exhibition_key:exId})">
-        {% if current_lang == 'zh' %}查看官方頁面 →{% elif current_lang == 'ja' %}公式ページを見る →{% else %}View official page →{% endif %}
+        {% if current_lang == 'zh' %}展覽頁面 →{% elif current_lang == 'ja' %}展示ページ →{% else %}Exhibition page →{% endif %}
       </a>
       {% endif %}
     </div>
@@ -288,6 +288,12 @@
       </a>
       {% endfor %}
     </div>
+    {% endif %}
+
+    {% if has_coordinates %}
+    <a href="/nearby/{{ museum_id }}?lang={{ current_lang }}" style="display:block;font-size:0.8rem;color:var(--blue);margin-top:16px;padding-top:12px;border-top:1px solid var(--border);text-decoration:none;">
+      📍 {% if current_lang == 'zh' %}附近其他展覽{% elif current_lang == 'ja' %}近くの他の展示{% else %}Nearby exhibitions{% endif %} →
+    </a>
     {% endif %}
 
     <a class="report-link" href="#" onclick="openReport(event)" style="display:block;font-size:0.75rem;color:var(--text-light);margin-top:16px;padding-top:12px;border-top:1px solid var(--border);text-decoration:none;">
