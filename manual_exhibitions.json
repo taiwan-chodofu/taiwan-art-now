@@ -2103,6 +2103,36 @@
       "artists": [
         "丁昶文"
       ]
+    },
+    {
+      "museum": "sleepark",
+      "title_zh": "留下來的我—李念聰個展",
+      "title_en": "Belong To… — Lee Nim Chung Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026.06.06 – 2026.07.05",
+      "location": "睡公園音畫書廊",
+      "link": "https://www.facebook.com/sleeparkbook",
+      "artists": [
+        "李念聰"
+      ],
+      "events": [
+        {
+          "date": "2026/06/24",
+          "time": "18:00",
+          "title_zh": "展覽對談II — 鄭亭亭 × 李念聰",
+          "title_en": "Artists Talk II — Ting-Ting Cheng × Lee Nim Chung",
+          "title_ja": "展覧会トークII — 鄭亭亭 × 李念聰",
+          "type": "talk"
+        },
+        {
+          "date": "2026/06/28",
+          "time": "16:00",
+          "title_zh": "展覽對談III — 魏肇儀 × 李念聰",
+          "title_en": "Artists Talk III — Wei Zhao-Yi × Lee Nim Chung",
+          "title_ja": "展覧会トークIII — 魏肇儀 × 李念聰",
+          "type": "talk"
+        }
+      ]
     }
   ]
 }

@@ -2736,6 +2736,28 @@
         1,
         2
       ]
+    },
+    {
+      "id": "sleepark",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Sleepark M&M Book Gallery",
+        "ja": "睡公園音畫書廊",
+        "zh": "睡公園音畫書廊"
+      },
+      "address": {
+        "en": "No. 247, Sec. 2, Gongxue Rd., Annan Dist., Tainan",
+        "ja": "台南市安南區公學路二段247號",
+        "zh": "台南市安南區公學路二段247號"
+      },
+      "url": "https://www.facebook.com/sleeparkbook",
+      "hours": {
+        "en": "By appointment (DM via Instagram or call)",
+        "ja": "予約制（IG DMまたは電話）",
+        "zh": "預約制（請透過IG私信或來電預約）"
+      },
+      "closed_days": []
     }
   ]
 }
