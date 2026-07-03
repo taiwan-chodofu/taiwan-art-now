@@ -231,7 +231,7 @@
     <div class="section-label">
       {% if current_lang == 'zh' %}關於{% elif current_lang == 'ja' %}概要{% else %}About{% endif %}
     </div>
-    <div class="description">{{ exhibition.description }}</div>
+    <div class="description">{{ exhibition.description|replace('\n', '<br>')|safe }}</div>
     {% endif %}
 
     <div class="section-label">
