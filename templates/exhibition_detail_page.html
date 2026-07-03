@@ -41,7 +41,7 @@
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #fff; --text: #111; --text-sub: #555; --text-light: #888;
@@ -59,7 +59,7 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Noto Sans TC", -apple-system, sans-serif;
+      font-family: {% if current_lang == 'ja' %}"Noto Sans JP", {% endif %}"Noto Sans TC", -apple-system, sans-serif;
       background: var(--bg); color: var(--text);
       line-height: 1.7; font-size: 15px;
     }
