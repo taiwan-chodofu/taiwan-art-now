@@ -980,15 +980,19 @@
         var seenKeys = new Set();
         // First: visited items from favs/current data
         visitedKeys.forEach(function(key) {
-          var data = favs[key] || { title: key.split('__')[1] || key, museum: key.split('__')[0] || '' };
-          items.push({ key: key, data: data, type: 'visited', date: visited[key] });
+          var vEntry = visited[key];
+          var vDate = (typeof vEntry === 'string') ? vEntry : (vEntry && vEntry.date ? vEntry.date : '');
+          var data = (typeof vEntry === 'object' && vEntry.title) ? vEntry : (favs[key] || { title: key.split('__')[1] || key, museum: key.split('__')[0] || '' });
+          items.push({ key: key, data: data, type: 'visited', date: vDate });
           seenKeys.add(key);
         });
         // Then: archive items that match visited keys (enrich with archive data)
         archiveData.forEach(function(arch) {
           var archKey = (arch.key || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
           if (visited[archKey] && !seenKeys.has(archKey)) {
-            items.push({ key: archKey, data: { title: arch.title_zh || arch.title_en, museum: arch.museum, dates: arch.dates }, type: 'visited', date: visited[archKey] });
+            var aEntry = visited[archKey];
+            var aDate = (typeof aEntry === 'string') ? aEntry : (aEntry && aEntry.date ? aEntry.date : '');
+            items.push({ key: archKey, data: { title: arch.title_zh || arch.title_en, museum: arch.museum, dates: arch.dates, region: arch.region || '' }, type: 'visited', date: aDate });
           }
         });
         // Sort by date visited (newest first)
@@ -1157,7 +1161,13 @@
         delete visited[key];
         _saveVisited(visited);
       } else {
-        visited[key] = new Date().toISOString();
+        var museumCard = exItem ? exItem.closest('.museum-card') : null;
+        var region = museumCard ? museumCard.getAttribute('data-region') : '';
+        var title = rawKey.split('__')[1] || '';
+        var museum = rawKey.split('__')[0] || '';
+        var datesEl = exItem ? exItem.querySelector('.ex-dates') : null;
+        var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
+        visited[key] = { date: new Date().toISOString(), title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '', region: region };
         _saveVisited(visited);
         if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key });
         _promptMessengerOnce('visited');
