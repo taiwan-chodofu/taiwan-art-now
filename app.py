@@ -193,12 +193,15 @@ def _normalize_dates(raw_dates):
 
 
 def _calc_days_left(end_dt):
-    """終了日までの残日数を計算する。Noneまたは14日超はNone。"""
+    """終了日までの残日数を計算する。Noneまたは14日超はNone。
+    最終日当日は1と表示（「今日が最後」）。"""
     if not end_dt:
         return None
     from datetime import datetime, timezone, timedelta
     tw_tz = timezone(timedelta(hours=8))
-    delta = (end_dt - datetime.now(tw_tz).replace(tzinfo=None)).days
+    today = datetime.now(tw_tz).date()
+    end_date = end_dt.date() if hasattr(end_dt, 'date') else end_dt
+    delta = (end_date - today).days
     if 0 <= delta <= 14:
         return delta
     return None

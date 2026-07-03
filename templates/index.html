@@ -730,7 +730,9 @@
               </span>
               {% elif ex.days_left is not none %}
               <span class="badge-ending">
-                {%- if current_lang == 'ja' -%}
+                {%- if ex.days_left == 0 -%}
+                  {%- if current_lang == 'ja' -%}今日まで{%- elif current_lang == 'zh' -%}今天最後{%- else -%}Last day{%- endif -%}
+                {%- elif current_lang == 'ja' -%}
                   あと{{ ex.days_left }}日
                 {%- elif current_lang == 'zh' -%}
                   剩{{ ex.days_left }}天
