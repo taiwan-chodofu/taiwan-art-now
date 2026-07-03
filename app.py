@@ -1091,20 +1091,28 @@ def nearby(museum_id):
             exs = ex_by_museum.get(m["id"], [])
             if exs:
                 venue_name = _get_localized(m["name"], lang)
+                is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
+                hours = _get_localized(m.get("hours", {}), lang)
                 ex_items = []
-                for ex in exs[:3]:
+                for i, ex in enumerate(exs[:3]):
                     normalized, start_dt, end_dt = _normalize_dates(ex.get("dates", ""))
+                    # Find exhibition index in full museum list for detail_url
+                    all_museum_exs = [e for e in exhibitions if e.get("museum") == m["id"]]
+                    ex_idx = next((j for j, e in enumerate(all_museum_exs) if e.get("title_zh") == ex.get("title_zh")), i)
                     ex_items.append({
                         "title": _get_display_title(ex, lang),
                         "dates": normalized or ex.get("dates", ""),
                         "days_left": _calc_days_left(end_dt),
                         "days_until_start": _calc_days_until_start(start_dt),
                         "fav_key": m["id"] + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or ""),
+                        "detail_url": f"/exhibition/{m['id']}/{ex_idx}?lang={lang}",
                     })
                 nearby_list.append({
                     "museum_id": m["id"],
                     "name": venue_name,
                     "address": _get_localized(m.get("address", {}), lang),
+                    "hours": hours,
+                    "closed_today": is_closed,
                     "distance_km": round(dist, 1),
                     "exhibitions": ex_items,
                 })
