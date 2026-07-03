@@ -437,6 +437,14 @@ def index():
     region_names = {r_id: _get_localized(r_data, lang) for r_id, r_data in master.get("regions", {}).items()}
     region_names["other"] = "Other" if lang == "en" else ("その他" if lang == "ja" else "其他")
 
+    # Museum name -> id mapping for localStorage key migration
+    museum_name_to_id = {}
+    for m in master["museums"]:
+        for l in ("zh", "en", "ja"):
+            n = m.get("name", {}).get(l, "")
+            if n:
+                museum_name_to_id[n] = m["id"]
+
     return render_template(
         "index.html",
         labels=labels,
@@ -445,6 +453,7 @@ def index():
         todays_events=todays_events,
         current_lang=lang,
         region_names_json=json.dumps(region_names, ensure_ascii=False),
+        museum_name_to_id_json=json.dumps(museum_name_to_id, ensure_ascii=False),
     )
 
 
@@ -994,6 +1003,19 @@ def exhibition_detail(museum_id, idx):
 
     stable_key = museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
 
+    # Other exhibitions at same museum
+    other_exs = []
+    for i, other in enumerate(museum_exs):
+        if i == idx:
+            continue
+        other_norm, other_start, other_end = _normalize_dates(other.get("dates", ""))
+        other_exs.append({
+            "title": _get_display_title(other, lang),
+            "dates": other_norm,
+            "days_left": _calc_days_left(other_end),
+            "detail_url": f"/exhibition/{museum_id}/{i}?lang={lang}",
+        })
+
     return render_template(
         "exhibition_detail_page.html",
         exhibition={
@@ -1019,6 +1041,7 @@ def exhibition_detail(museum_id, idx):
         current_lang=lang,
         museum_id=museum_id,
         idx=idx,
+        other_exhibitions=other_exs,
     )
 
 

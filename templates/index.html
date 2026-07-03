@@ -970,6 +970,14 @@
       Object.keys(favs).forEach(function(key) {
         if (!visited[key]) items.push({ key: key, data: favs[key], type: 'fav' });
       });
+      // Sort by end date (soonest first)
+      items.sort(function(a, b) {
+        var dA = (a.data.dates || '').match(/(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})/g);
+        var dB = (b.data.dates || '').match(/(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})/g);
+        var endA = dA && dA.length >= 2 ? dA[1] : '9999-99-99';
+        var endB = dB && dB.length >= 2 ? dB[1] : '9999-99-99';
+        return endA.localeCompare(endB);
+      });
       content.innerHTML = tabs + _renderMylistItems(items, 'wantgo') + _renderNotificationSection();
     } else {
       // Visited tab: include archive exhibitions too
@@ -1252,6 +1260,51 @@
     if (headerBtn) headerBtn.textContent = favCount > 0 ? '📋' + favCount : '📋';
   }
 
+
+  // Migrate old localStorage keys (museum_name__title -> museum_id__title_zh)
+  (function() {
+    var MIGRATED_KEY = 'taiwan_art_keys_migrated_v1';
+    if (localStorage.getItem(MIGRATED_KEY)) return;
+    var nameToId = {{ museum_name_to_id_json | safe }};
+    function migrateStore(storeName) {
+      var raw = localStorage.getItem(storeName);
+      if (!raw) return;
+      try {
+        var data = JSON.parse(raw);
+        var newData = {};
+        var changed = false;
+        Object.keys(data).forEach(function(oldKey) {
+          var parts = oldKey.split('__');
+          if (parts.length < 2) { newData[oldKey] = data[oldKey]; return; }
+          var museumPart = parts[0];
+          var titlePart = parts.slice(1).join('__');
+          // Check if museumPart is already an ID (short, no spaces)
+          if (museumPart.length < 20 && !museumPart.match(/[一-鿿\s]/)) {
+            newData[oldKey] = data[oldKey]; return;
+          }
+          // Try to find museum ID from name
+          var decoded = museumPart.replace(/_/g, ' ').trim();
+          var mid = null;
+          Object.keys(nameToId).forEach(function(name) {
+            if (name.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_') === museumPart || name === decoded) {
+              mid = nameToId[name];
+            }
+          });
+          if (mid) {
+            var newKey = (mid + '__' + titlePart).replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+            newData[newKey] = data[oldKey];
+            changed = true;
+          } else {
+            newData[oldKey] = data[oldKey];
+          }
+        });
+        if (changed) localStorage.setItem(storeName, JSON.stringify(newData));
+      } catch(e) {}
+    }
+    migrateStore('taiwan_art_favs');
+    migrateStore('taiwan_art_visited');
+    localStorage.setItem(MIGRATED_KEY, '1');
+  })();
 
   // Init actions on page load
   (function() {
