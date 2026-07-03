@@ -245,6 +245,20 @@
       {% endif %}
     </div>
 
+    {% if other_exhibitions %}
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+      <div style="font-size:0.75rem;font-weight:600;color:var(--text-sub);margin-bottom:8px;">
+        {% if current_lang == 'zh' %}同場其他展覽{% elif current_lang == 'ja' %}同会場の他の展示{% else %}Also at this venue{% endif %}
+      </div>
+      {% for other in other_exhibitions %}
+      <a href="{{ other.detail_url }}" style="display:block;padding:8px 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);">
+        <div style="font-size:0.8rem;font-weight:500;">{{ other.title }}</div>
+        <div style="font-size:0.68rem;color:var(--text-light);">{{ other.dates }}{% if other.days_left is not none and other.days_left <= 14 %} · <span style="color:var(--red);">{% if other.days_left == 0 %}{% if current_lang == 'zh' %}今天最後{% elif current_lang == 'ja' %}今日まで{% else %}Last day{% endif %}{% elif current_lang == 'zh' %}剩{{ other.days_left }}天{% elif current_lang == 'ja' %}残り{{ other.days_left }}日{% else %}{{ other.days_left }}d left{% endif %}</span>{% endif %}</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     <a class="report-link" href="#" onclick="openReport(event)" style="display:block;font-size:0.75rem;color:var(--text-light);margin-top:16px;padding-top:12px;border-top:1px solid var(--border);text-decoration:none;">
       ⚠️ {% if current_lang == 'zh' %}資訊有誤？點此回報{% elif current_lang == 'ja' %}情報に間違いがありますか？{% else %}Report incorrect information{% endif %}
     </a>
