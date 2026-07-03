@@ -429,6 +429,9 @@ def index():
                     })
 
     labels = UI_LABELS[lang]
+    region_names = {r_id: _get_localized(r_data, lang) for r_id, r_data in master.get("regions", {}).items()}
+    region_names["other"] = "Other" if lang == "en" else ("その他" if lang == "ja" else "其他")
+
     return render_template(
         "index.html",
         labels=labels,
@@ -436,6 +439,7 @@ def index():
         closing_soon=closing_soon,
         todays_events=todays_events,
         current_lang=lang,
+        region_names_json=json.dumps(region_names, ensure_ascii=False),
     )
 
 

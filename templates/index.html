@@ -996,6 +996,8 @@
     }
   }
 
+  var _regionNames = {{ region_names_json | safe }};
+
   function _renderMylistItems(items, tab) {
     if (items.length === 0) {
       var emptyMsg = tab === 'wantgo'
@@ -1003,22 +1005,55 @@
         : '{% if current_lang == "zh" %}還沒有觀展紀錄{% elif current_lang == "ja" %}観た展示はまだありません{% else %}No exhibitions seen yet{% endif %}';
       return '<p style="text-align:center;color:var(--text-light);padding:2rem 0;">' + emptyMsg + '</p>';
     }
-    var html = '';
+    // Group by region
+    var byRegion = {};
     items.forEach(function(item) {
-      var f = item.data;
-      var dateStr = item.date ? new Date(item.date).toLocaleDateString() : '';
-      html += '<div style="padding:10px 0;border-bottom:1px solid var(--border);">';
-      html += '<div style="font-weight:600;font-size:0.85rem;">' + (f.title || item.key) + '</div>';
-      html += '<div style="font-size:0.72rem;color:var(--text-light);margin-top:2px;">';
-      if (f.museum) html += f.museum;
-      if (f.museum && f.dates) html += ' · ';
-      if (f.dates) html += f.dates;
-      html += '</div>';
-      if (dateStr && tab === 'visited') html += '<div style="font-size:0.65rem;color:var(--text-light);margin-top:2px;">{% if current_lang == "zh" %}觀展日{% elif current_lang == "ja" %}観覧日{% else %}Visited{% endif %}: ' + dateStr + '</div>';
-      html += '<div style="margin-top:4px;display:flex;gap:8px;">';
-      if (f.url) html += '<a href="' + f.url + '" style="font-size:0.7rem;color:var(--blue);text-decoration:none;">{% if current_lang == "zh" %}查看{% elif current_lang == "ja" %}詳細{% else %}View{% endif %} →</a>';
-      html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.7rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
-      html += '</div></div>';
+      var r = (item.data && item.data.region) || 'other';
+      if (!byRegion[r]) byRegion[r] = [];
+      byRegion[r].push(item);
+    });
+
+    var html = '';
+    Object.keys(byRegion).forEach(function(region) {
+      var regionLabel = _regionNames[region] || region;
+      html += '<div style="font-size:0.72rem;font-weight:600;color:var(--text-sub);margin-top:12px;margin-bottom:4px;">▸ ' + regionLabel + '</div>';
+      byRegion[region].forEach(function(item) {
+        var f = item.data;
+        var dateStr = item.date ? new Date(item.date).toLocaleDateString() : '';
+        html += '<div style="padding:8px 0;border-bottom:1px solid var(--border);">';
+        // Title as link to detail page
+        if (f.url) {
+          html += '<a href="' + f.url + '" style="font-weight:600;font-size:0.82rem;color:var(--text);text-decoration:none;display:block;">' + (f.title || item.key) + '</a>';
+        } else {
+          html += '<div style="font-weight:600;font-size:0.82rem;">' + (f.title || item.key) + '</div>';
+        }
+        html += '<div style="font-size:0.7rem;color:var(--text-light);margin-top:2px;">';
+        if (f.museum) html += f.museum;
+        if (f.museum && f.dates) html += ' · ';
+        if (f.dates) html += f.dates;
+        // Calculate days left
+        if (f.dates && tab === 'wantgo') {
+          var dateMatches = f.dates.match(/(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})/g);
+          if (dateMatches && dateMatches.length >= 2) {
+            var endParts = dateMatches[1].match(/(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})/);
+            if (endParts) {
+              var endDate = new Date(parseInt(endParts[1]), parseInt(endParts[2])-1, parseInt(endParts[3]));
+              var today = new Date(); today.setHours(0,0,0,0);
+              var daysLeft = Math.ceil((endDate - today) / 86400000);
+              if (daysLeft >= 0 && daysLeft <= 14) {
+                html += ' <span style="color:var(--red);font-weight:600;">{% if current_lang == "zh" %}剩' + daysLeft + '天{% elif current_lang == "ja" %}残り' + daysLeft + '日{% else %}' + daysLeft + 'd left{% endif %}</span>';
+              }
+            }
+          }
+        }
+        html += '</div>';
+        if (dateStr && tab === 'visited') html += '<div style="font-size:0.65rem;color:var(--text-light);margin-top:2px;">{% if current_lang == "zh" %}觀展日{% elif current_lang == "ja" %}観覧日{% else %}Visited{% endif %}: ' + dateStr + '</div>';
+        if (f.event && tab === 'wantgo') html += '<div style="font-size:0.65rem;color:#6c5ce7;margin-top:2px;">📅 ' + f.event + '</div>';
+        html += '<div style="margin-top:4px;display:flex;gap:10px;align-items:center;">';
+        if (f.museum) html += '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.museum) + '" target="_blank" rel="noopener" style="font-size:0.68rem;color:var(--text-sub);text-decoration:none;">📍 {% if current_lang == "zh" %}地圖{% elif current_lang == "ja" %}地図{% else %}Map{% endif %}</a>';
+        html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.68rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
+        html += '</div></div>';
+      });
     });
     return html;
   }
@@ -1136,7 +1171,11 @@
         var museum = rawKey.split('__')[0] || '';
         var datesEl = exItem ? exItem.querySelector('.ex-dates') : null;
         var dates = datesEl ? datesEl.textContent.trim().split('\n')[0].trim() : '';
-        favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '' };
+        var museumCard = exItem ? exItem.closest('.museum-card') : null;
+        var region = museumCard ? museumCard.getAttribute('data-region') : '';
+        var eventEl = exItem ? exItem.querySelector('.ex-event') : null;
+        var eventText = eventEl ? eventEl.textContent.trim().split('\n')[0].trim() : '';
+        favs[key] = { title: title, museum: museum, dates: dates, url: exItem ? exItem.getAttribute('href') : '', region: region, event: eventText };
         _saveFavs(favs);
         if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: key });
         _promptMessengerOnce('fav');
