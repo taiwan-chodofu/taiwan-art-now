@@ -710,10 +710,10 @@
         {% if museum.exhibitions %}
         <div class="ex-list">
           {% for ex in museum.exhibitions %}
-          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ museum.name }}__{{ ex.title }}">
+          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ ex.stable_key }}">
             <div class="ex-title">
               {% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
-              <span class="ex-fav-btn" data-fav-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleExFav(event, this)">☆</span>
+              <span class="ex-fav-btn" data-fav-key="{{ ex.stable_key }}" onclick="toggleExFav(event, this)">☆</span>
             </div>
             {% if ex.dates %}
             <div class="ex-dates">
@@ -760,10 +760,10 @@
             <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
             {% endif %}
             <div class="ex-actions">
-              <span class="ex-action-btn" data-action="visited" data-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleAction(event, this)">
+              <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">☐</span> <span class="act-label">{% if current_lang == 'zh' %}觀了{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
               </span>
-              <span class="ex-action-btn" data-action="fav" data-key="{{ museum.name }}__{{ ex.title }}" onclick="toggleAction(event, this)">
+              <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
               </span>
             </div>

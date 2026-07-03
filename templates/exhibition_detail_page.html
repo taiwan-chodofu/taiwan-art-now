@@ -137,11 +137,16 @@
 </head>
 <body>
   <div class="container">
-    <a class="back-link" href="/?lang={{ current_lang }}">←
-      {% if current_lang == 'zh' %}返回展覽列表
-      {% elif current_lang == 'ja' %}展覧会一覧に戻る
-      {% else %}Back to exhibitions{% endif %}
-    </a>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+      <a class="back-link" href="/?lang={{ current_lang }}" style="margin-bottom:0;">←
+        {% if current_lang == 'zh' %}返回{% elif current_lang == 'ja' %}戻る{% else %}Back{% endif %}
+      </a>
+      <div style="display:flex;gap:4px;">
+        <a href="/exhibition/{{ museum_id }}/{{ idx }}?lang=zh" style="font-size:0.7rem;padding:3px 8px;border-radius:10px;text-decoration:none;{% if current_lang == 'zh' %}background:var(--text);color:var(--bg);{% else %}color:var(--text-light);border:1px solid var(--border);{% endif %}">中文</a>
+        <a href="/exhibition/{{ museum_id }}/{{ idx }}?lang=en" style="font-size:0.7rem;padding:3px 8px;border-radius:10px;text-decoration:none;{% if current_lang == 'en' %}background:var(--text);color:var(--bg);{% else %}color:var(--text-light);border:1px solid var(--border);{% endif %}">EN</a>
+        <a href="/exhibition/{{ museum_id }}/{{ idx }}?lang=ja" style="font-size:0.7rem;padding:3px 8px;border-radius:10px;text-decoration:none;{% if current_lang == 'ja' %}background:var(--text);color:var(--bg);{% else %}color:var(--text-light);border:1px solid var(--border);{% endif %}">日本語</a>
+      </div>
+    </div>
 
     <h1>{{ exhibition.title }}</h1>
 
@@ -256,7 +261,7 @@
     </div>
 
     <script>
-    var exId = '{{ museum.name }}__{{ exhibition.title }}'.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
+    var exId = '{{ exhibition.stable_key }}'.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
 
     function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
     function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }

@@ -287,8 +287,10 @@ def index():
                     break
             except (ValueError, KeyError):
                 pass
+        stable_key = key + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
         ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
+            "stable_key": stable_key,
             "dates": normalized,
             "days_left": _calc_days_left(end_dt),
             "days_until_start": _calc_days_until_start(start_dt),
@@ -990,11 +992,14 @@ def exhibition_detail(museum_id, idx):
             museum_info = m
             break
 
+    stable_key = museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+
     return render_template(
         "exhibition_detail_page.html",
         exhibition={
             "title": _get_display_title(ex, lang),
             "title_zh": ex.get("title_zh", ""),
+            "stable_key": stable_key,
             "dates": normalized,
             "days_left": _calc_days_left(end_dt),
             "days_until_start": _calc_days_until_start(start_dt),
@@ -1005,12 +1010,15 @@ def exhibition_detail(museum_id, idx):
             "status": ex.get("status", "unknown"),
         },
         museum={
+            "id": museum_id,
             "name": _get_localized(museum_info["name"], lang) if museum_info else museum_id,
             "address": _get_localized(museum_info.get("address", {}), lang) if museum_info else "",
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "url": museum_info.get("url", "") if museum_info else "",
         },
         current_lang=lang,
+        museum_id=museum_id,
+        idx=idx,
     )
 
 
@@ -1068,7 +1076,7 @@ def nearby(museum_id):
                         "dates": normalized or ex.get("dates", ""),
                         "days_left": _calc_days_left(end_dt),
                         "days_until_start": _calc_days_until_start(start_dt),
-                        "fav_key": venue_name + "__" + _get_display_title(ex, lang),
+                        "fav_key": m["id"] + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or ""),
                     })
                 nearby_list.append({
                     "museum_id": m["id"],
