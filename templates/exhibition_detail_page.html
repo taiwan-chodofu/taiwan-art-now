@@ -5,10 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');</script>
-  <title>{{ exhibition.title }} — Taiwan Art Now</title>
-  <meta name="description" content="{{ exhibition.title }} at {{ museum.name }}. {{ exhibition.dates }}">
-  <meta property="og:title" content="{{ exhibition.title }}">
-  <meta property="og:description" content="{{ museum.name }} · {{ exhibition.dates }}">
+  <title>{{ exhibition.title }} — {{ museum.name }} — Taiwan Art Now</title>
+  <meta name="description" content="{{ exhibition.title }}{% if exhibition.artists %} by {{ exhibition.artists[:3]|join(', ') }}{% endif %} at {{ museum.name }}. {{ exhibition.dates }}">
+  <meta property="og:title" content="{{ exhibition.title }} — {{ museum.name }}">
+  <meta property="og:description" content="{% if exhibition.artists %}{{ exhibition.artists[:3]|join(', ') }} · {% endif %}{{ exhibition.dates }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://taiwan-art-now.onrender.com/exhibition/{{ museum_id }}/{{ idx }}?lang={{ current_lang }}">
+  <meta property="og:locale" content="{{ 'ja_JP' if current_lang == 'ja' else ('en_US' if current_lang == 'en' else 'zh_TW') }}">
+  <meta property="og:site_name" content="Taiwan Art Now">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ exhibition.title }}">
+  <meta name="twitter:description" content="{{ museum.name }} · {{ exhibition.dates }}">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "{{ exhibition.title }}",
+    "description": "{{ exhibition.description[:200]|replace('"', '\\"')|replace('\n', ' ') if exhibition.description else '' }}",
+    "startDate": "{{ exhibition.dates.split('–')[0].strip().replace('.', '-').replace('/', '-') if '–' in exhibition.dates else exhibition.dates.split(' - ')[0].strip().replace('.', '-').replace('/', '-') if ' - ' in exhibition.dates else '' }}",
+    "endDate": "{{ exhibition.dates.split('–')[1].strip().replace('.', '-').replace('/', '-') if '–' in exhibition.dates else exhibition.dates.split(' - ')[1].strip().replace('.', '-').replace('/', '-') if ' - ' in exhibition.dates else '' }}",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "{{ museum.name }}",
+      "address": "{{ museum.address }}"
+    }{% if exhibition.artists %},
+    "performer": [{% for artist in exhibition.artists[:5] %}{"@type": "Person", "name": "{{ artist }}"}{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %},
+    "organizer": {
+      "@type": "Organization",
+      "name": "{{ museum.name }}",
+      "url": "{{ museum.url }}"
+    },
+    "url": "https://taiwan-art-now.onrender.com/exhibition/{{ museum_id }}/{{ idx }}?lang={{ current_lang }}"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
