@@ -761,7 +761,7 @@
             {% endif %}
             <div class="ex-actions">
               <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
-                <span class="act-icon">☐</span> <span class="act-label">{% if current_lang == 'zh' %}觀了{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
+                <span class="act-icon">☐</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
               </span>
               <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
@@ -962,7 +962,7 @@
 
     var tabs = '<div style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);">';
     tabs += '<button onclick="_mylistTab=\'wantgo\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'transparent') + ';color:' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'var(--text-sub)') + ';">♡ {% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Want to go{% endif %}</button>';
-    tabs += '<button onclick="_mylistTab=\'visited\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'visited' ? '#4caf50' : 'transparent') + ';color:' + (_mylistTab === 'visited' ? '#2e7d32' : 'var(--text-sub)') + ';">☑ {% if current_lang == "zh" %}觀了{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}</button>';
+    tabs += '<button onclick="_mylistTab=\'visited\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'visited' ? '#4caf50' : 'transparent') + ';color:' + (_mylistTab === 'visited' ? '#2e7d32' : 'var(--text-sub)') + ';">☑ {% if current_lang == "zh" %}已看{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}</button>';
     tabs += '</div>';
 
     if (_mylistTab === 'wantgo') {
