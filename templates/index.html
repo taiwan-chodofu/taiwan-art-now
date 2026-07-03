@@ -111,10 +111,12 @@
     </nav>
   </header>
 
-  <!-- FEATURE ANNOUNCEMENT BANNER -->
-  <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#e8f5e9,#e3f2fd);border-bottom:1px solid #a5d6a7;font-size:0.75rem;color:#2e7d32;display:flex;align-items:center;justify-content:space-between;">
-    <span>📋 {% if current_lang == 'zh' %}新功能：可以記錄觀展和想去的展覽了！點右上角 📋 查看{% elif current_lang == 'ja' %}新機能：観た展示・行きたい展示を記録できるようになりました。右上📋から確認{% else %}NEW: Track exhibitions you've seen and want to visit! Tap 📋 above{% endif %}</span>
-    <button onclick="dismissBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#2e7d32;">✕</button>
+  <!-- MESSENGER SUBSCRIBE BANNER -->
+  <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#e3f2fd,#ede7f6);border-bottom:1px solid #90caf9;font-size:0.75rem;color:#1565c0;align-items:center;justify-content:space-between;">
+    <a href="https://m.me/61591281572640" target="_blank" rel="noopener" style="color:#1565c0;text-decoration:none;flex:1;" onclick="if(typeof gtag==='function')gtag('event','banner_messenger_click',{})">
+      💬 {% if current_lang == 'zh' %}每週收到展覽結束提醒，不再錯過好展覽 →{% elif current_lang == 'ja' %}毎週の展示終了お知らせを受け取る →{% else %}Get weekly exhibition reminders →{% endif %}
+    </a>
+    <button onclick="dismissBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#1565c0;">✕</button>
   </div>
   <!-- ARTIST CALLOUT BANNER -->
   <div id="chairBanner" style="display:none;max-width:720px;margin:0 auto;padding:10px 1rem;background:linear-gradient(135deg,#fff8e1,#fff3e0);border-bottom:1px solid #ffe0b2;font-size:0.75rem;color:#5d4037;align-items:center;justify-content:space-between;">
@@ -142,12 +144,13 @@
   </script>
   <script>
   (function() {
-    var bannerKey = 'taiwan_art_banner_v1';
-    var bannerExpiry = new Date('2026-07-09T00:00:00+08:00').getTime();
+    var bannerKey = 'taiwan_art_banner_v2';
+    var bannerExpiry = new Date('2026-07-20T00:00:00+08:00').getTime();
     var now = Date.now();
     var state = {};
     try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
-    if (state.dismissed || now > bannerExpiry || (state.seen || 0) >= 3) return;
+    var connected = localStorage.getItem('taiwan_art_messenger_connected');
+    if (state.dismissed || now > bannerExpiry || connected || (state.seen || 0) >= 5) return;
     var banner = document.getElementById('featureBanner');
     if (banner) {
       banner.style.display = 'flex';
