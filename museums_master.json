@@ -2855,6 +2855,30 @@
         0,
         1
       ]
+    },
+    {
+      "id": "yistar",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Yi Star Art Center",
+        "ja": "藝星藝術中心",
+        "zh": "藝星藝術中心"
+      },
+      "address": {
+        "en": "No. 9, Aly. 53, Ln. 63, Sec. 2, Dunhua S. Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區敦化南路二段63巷53弄9號",
+        "zh": "台北市大安區敦化南路二段63巷53弄9號"
+      },
+      "url": "https://artemperor.tw/tidbits/20029",
+      "hours": {
+        "en": "Tue–Sun 11:00–19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休館"
+      },
+      "closed_days": [
+        0
+      ]
     }
   ]
 }
