@@ -2192,6 +2192,30 @@
         "詹士泰",
         "莊禾"
       ]
+    },
+    {
+      "museum": "absence",
+      "title_zh": "（糸白糸犬）（口口木口口）",
+      "title_en": "IN/RESTRU/MENT",
+      "title_ja": "",
+      "dates": "2026.07.04 – 2026.07.08",
+      "location": "不存在劇場",
+      "link": "https://www.instagram.com/absence_space0810/",
+      "artists": [
+        "nie.ooo"
+      ],
+      "events": [
+        {
+          "date": "2026/07/08",
+          "time": "19:00",
+          "title_zh": "Jina0King (Jina Kim) 2026 台灣巡演",
+          "title_en": "Jina0King (Jina Kim) 2026 Taiwan Tour",
+          "title_ja": "Jina0King (Jina Kim) 2026 台湾ツアー",
+          "type": "performance",
+          "note_zh": "自由定價｜出演: Jina0King + CJ Artecent + Chen En He + Fangyi Liu + OOONIE",
+          "note_en": "Free donation | Performers: Jina0King + CJ Artecent + Chen En He + Fangyi Liu + OOONIE"
+        }
+      ]
     }
   ]
 }
