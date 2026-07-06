@@ -2783,6 +2783,28 @@
         0,
         1
       ]
+    },
+    {
+      "id": "moolah",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "The Moolah Multi-Art Space",
+        "ja": "暮拉多元藝術空間",
+        "zh": "暮拉多元藝術空間"
+      },
+      "address": {
+        "en": "No. 15, Sec. 3, Guohua St., West Central Dist., Tainan 700",
+        "ja": "台南市中西區國華街三段15號",
+        "zh": "臺南市中西區國華街三段15號"
+      },
+      "url": "https://www.facebook.com/themoolahart",
+      "hours": {
+        "en": "Mon–Sun 10:30–19:00",
+        "ja": "毎日 10:30–19:00",
+        "zh": "每日 10:30–19:00"
+      },
+      "closed_days": []
     }
   ]
 }
