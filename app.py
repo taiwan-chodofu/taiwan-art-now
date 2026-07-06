@@ -1047,6 +1047,74 @@ def exhibition_detail(museum_id, idx):
 
 
 
+@app.route("/og-image/exhibition/<museum_id>/<int:idx>")
+def og_image_exhibition(museum_id, idx):
+    """動的OGP画像生成（展示詳細ページ用）。"""
+    from PIL import Image, ImageDraw, ImageFont
+    from io import BytesIO
+    from scraper import fetch_all_exhibitions
+
+    exhibitions = fetch_all_exhibitions()
+    museum_exs = [ex for ex in exhibitions if ex.get("museum") == museum_id]
+    if idx >= len(museum_exs):
+        return "", 404
+
+    ex = museum_exs[idx]
+    master = _load_master()
+    museum_info = next((m for m in master["museums"] if m["id"] == museum_id), None)
+    museum_name = museum_info["name"].get("zh", museum_id) if museum_info else museum_id
+
+    title = ex.get("title_zh", "") or ex.get("title_en", "")
+    dates = ex.get("dates", "")
+    artists = ex.get("artists", [])
+    artist_str = " · ".join(artists[:3])
+    if len(artists) > 3:
+        artist_str += f" +{len(artists)-3}"
+
+    # Generate image
+    width, height = 1200, 630
+    img = Image.new("RGB", (width, height), "#111111")
+    draw = ImageDraw.Draw(img)
+
+    import os
+    zh_font_path = None
+    en_font_path = None
+    for fp in ["C:/Windows/Fonts/msjh.ttc", "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc"]:
+        if os.path.exists(fp):
+            zh_font_path = fp
+            break
+    for fp in ["C:/Windows/Fonts/segoeuil.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]:
+        if os.path.exists(fp):
+            en_font_path = fp
+            break
+
+    try:
+        title_font = ImageFont.truetype(zh_font_path or en_font_path, 48) if (zh_font_path or en_font_path) else ImageFont.load_default()
+        sub_font = ImageFont.truetype(zh_font_path or en_font_path, 28) if (zh_font_path or en_font_path) else ImageFont.load_default()
+        small_font = ImageFont.truetype(en_font_path or zh_font_path, 22) if (en_font_path or zh_font_path) else ImageFont.load_default()
+    except Exception:
+        title_font = ImageFont.load_default()
+        sub_font = ImageFont.load_default()
+        small_font = ImageFont.load_default()
+
+    # Draw
+    draw.text((60, 180), title[:30], fill="#ffffff", font=title_font)
+    if len(title) > 30:
+        draw.text((60, 240), title[30:60], fill="#ffffff", font=title_font)
+    draw.text((60, 320), museum_name, fill="#aaaaaa", font=sub_font)
+    draw.text((60, 360), dates, fill="#888888", font=small_font)
+    if artist_str:
+        draw.text((60, 400), artist_str, fill="#888888", font=small_font)
+    draw.text((60, 530), "Taiwan Art Now", fill="#555555", font=small_font)
+    draw.rectangle([(60, 500), (400, 502)], fill="#ffffff")
+
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    from flask import send_file
+    return send_file(buf, mimetype="image/png")
+
+
 @app.route("/nearby/<museum_id>")
 def nearby(museum_id):
     """指定施設の近くにある他の展示を返すAPIエンドポイント。"""

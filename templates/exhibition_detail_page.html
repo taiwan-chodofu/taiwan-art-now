@@ -9,6 +9,7 @@
   <meta name="description" content="{{ exhibition.title }}{% if exhibition.artists %} by {{ exhibition.artists[:3]|join(', ') }}{% endif %} at {{ museum.name }}. {{ exhibition.dates }}">
   <meta property="og:title" content="{{ exhibition.title }} — {{ museum.name }}">
   <meta property="og:description" content="{% if exhibition.artists %}{{ exhibition.artists[:3]|join(', ') }} · {% endif %}{{ exhibition.dates }}">
+  <meta property="og:image" content="https://taiwan-art-now.onrender.com/og-image/exhibition/{{ museum_id }}/{{ idx }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://taiwan-art-now.onrender.com/exhibition/{{ museum_id }}/{{ idx }}?lang={{ current_lang }}">
   <meta property="og:locale" content="{{ 'ja_JP' if current_lang == 'ja' else ('en_US' if current_lang == 'en' else 'zh_TW') }}">
