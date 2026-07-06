@@ -2238,6 +2238,18 @@
           "type": "opening"
         }
       ]
+    },
+    {
+      "museum": "852art",
+      "title_zh": "孤獨的巨人",
+      "title_en": "The Lonely Giant",
+      "title_ja": "",
+      "dates": "2026.06.27 – 2026.07.09",
+      "location": "852藝術空間",
+      "link": "https://www.facebook.com/photo.php?fbid=122182914674800793&set=pb.61574023807656.-2207520000&type=3",
+      "artists": [
+        "劉蕓瑤"
+      ]
     }
   ]
 }

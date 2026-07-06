@@ -2805,6 +2805,31 @@
         "zh": "每日 10:30–19:00"
       },
       "closed_days": []
+    },
+    {
+      "id": "852art",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "852 Art Space",
+        "ja": "852藝術空間",
+        "zh": "852藝術空間"
+      },
+      "address": {
+        "en": "No. 11, Ln. 38, Yishu St., Longjing Dist., Taichung 434",
+        "ja": "台中市龍井區藝術街38巷11號",
+        "zh": "台中市龍井區藝術街38巷11號"
+      },
+      "url": "https://www.facebook.com/photo.php?fbid=122182914674800793&set=pb.61574023807656.-2207520000&type=3",
+      "hours": {
+        "en": "Wed–Fri 13:00–19:00, Sat–Sun 12:00–19:00",
+        "ja": "水〜金 13:00–19:00、土日 12:00–19:00",
+        "zh": "週三至五 13:00–19:00，六日 12:00–19:00"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
     }
   ]
 }
