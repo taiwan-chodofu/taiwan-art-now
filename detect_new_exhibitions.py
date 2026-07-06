@@ -103,6 +103,11 @@ def fetch_artemperor_page(page=1):
         if gallery in ("訪談", "焦點人物", "藝文產業", ""):
             continue
 
+        # Skip non-Taiwan galleries (Hong Kong etc.)
+        NON_TAIWAN_GALLERIES = {"牛棚藝術村", "M+M Gallery"}
+        if gallery in NON_TAIWAN_GALLERIES:
+            continue
+
         dates = ""
         if p:
             dates_text = p.get_text(strip=True)
