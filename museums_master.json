@@ -2879,6 +2879,30 @@
       "closed_days": [
         0
       ]
+    },
+    {
+      "id": "typl",
+      "category": "public",
+      "region": "taoyuan",
+      "name": {
+        "en": "Taoyuan City Library (Main Branch)",
+        "ja": "桃園市立圖書館總館",
+        "zh": "桃園市立圖書館總館"
+      },
+      "address": {
+        "en": "No. 303, Nanping Rd., Taoyuan Dist., Taoyuan City",
+        "ja": "桃園市桃園區南平路303號",
+        "zh": "桃園市桃園區南平路303號"
+      },
+      "url": "https://www.typl.gov.tw",
+      "hours": {
+        "en": "Tue–Sun 8:30–21:00 | Closed Mon",
+        "ja": "火〜日 8:30–21:00｜月休",
+        "zh": "週二至週日 8:30–21:00｜週一休館"
+      },
+      "closed_days": [
+        0
+      ]
     }
   ]
 }

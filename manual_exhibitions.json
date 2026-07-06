@@ -2309,6 +2309,36 @@
           "type": "workshop"
         }
       ]
+    },
+    {
+      "museum": "typl",
+      "title_zh": "綻候，臺灣雜草群像",
+      "title_en": "Postwar: A Portrait of Taiwan's Weeds",
+      "title_ja": "",
+      "dates": "2026.07.03 – 2026.08.23",
+      "location": "桃園市立圖書館總館 2F藝術廊道",
+      "link": "https://www.typl.gov.tw/zh-tw/Activity/Content/9865",
+      "artists": [
+        "雜草稍慢"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "14:00",
+          "title_zh": "講座〈臺灣食荒雜草一覽〉的前世今生",
+          "title_en": "Talk: Past and Present of Taiwan Famine Weeds",
+          "title_ja": "講座「台湾食荒雑草一覧」の前世今生",
+          "type": "talk"
+        },
+        {
+          "date": "2026/07/18",
+          "time": "16:30",
+          "title_zh": "走讀：食荒漫遊 x 雜草漫讀",
+          "title_en": "Walking Tour: Famine Foraging x Weed Reading",
+          "title_ja": "ウォーキング：食荒漫遊×雑草漫読",
+          "type": "workshop"
+        }
+      ]
     }
   ]
 }
