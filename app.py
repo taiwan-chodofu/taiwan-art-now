@@ -1079,11 +1079,11 @@ def og_image_exhibition(museum_id, idx):
     import os
     zh_font_path = None
     en_font_path = None
-    for fp in ["C:/Windows/Fonts/msjh.ttc", "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc"]:
+    for fp in ["C:/Windows/Fonts/msjh.ttc", "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc", "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc"]:
         if os.path.exists(fp):
             zh_font_path = fp
             break
-    for fp in ["C:/Windows/Fonts/segoeuil.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"]:
+    for fp in ["C:/Windows/Fonts/segoeuil.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Light.ttf"]:
         if os.path.exists(fp):
             en_font_path = fp
             break
