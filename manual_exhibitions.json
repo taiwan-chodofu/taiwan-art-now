@@ -2143,6 +2143,18 @@
           "type": "talk"
         }
       ]
+    },
+    {
+      "museum": "maisonacme",
+      "title_zh": "緩慢前行",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026.07.04 – 2026.07.26",
+      "location": "MAISON ACME 圓山別邸",
+      "link": "https://acmetaipei.com/zh/blogs/journal/mvm",
+      "artists": [
+        "MVM"
+      ]
     }
   ]
 }
