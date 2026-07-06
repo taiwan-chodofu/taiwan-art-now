@@ -2285,6 +2285,30 @@
       "artists": [
         "黃志超"
       ]
+    },
+    {
+      "museum": "asiamoma",
+      "title_zh": "共生未來：藝術永續的實踐場",
+      "title_en": "Future of Coexistence: A Site of Sustainable Practice",
+      "title_ja": "",
+      "dates": "2026.07.01 – 2026.11.01",
+      "location": "亞洲大學附屬現代美術館",
+      "link": "https://www.facebook.com/ASIAMOMA/",
+      "artists": [
+        "陳聖文",
+        "雜草稍慢",
+        "陳穎亭"
+      ],
+      "events": [
+        {
+          "date": "2026/08/01",
+          "time": "",
+          "title_zh": "共創工作坊（即將開放報名）",
+          "title_en": "Co-creation Workshop (registration opening soon)",
+          "title_ja": "共創ワークショップ（近日受付開始）",
+          "type": "workshop"
+        }
+      ]
     }
   ]
 }
