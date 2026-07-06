@@ -21,7 +21,7 @@ def add_no_cache_headers(response):
 UI_LABELS = {
     "en": {
         "title": "Taiwan Contemporary Art Exhibitions",
-        "subtitle": "Never miss a show. 90+ galleries, updated weekly.",
+        "subtitle": "Taiwan contemporary art exhibitions",
         "museum": "Museum",
         "exhibition": "Exhibition",
         "dates": "Dates",
@@ -47,7 +47,7 @@ UI_LABELS = {
     },
     "ja": {
         "title": "台湾 現代アート展覧会情報",
-        "subtitle": "見逃さない。90+のギャラリー、毎週更新。",
+        "subtitle": "台湾の現代アート展覧会情報",
         "museum": "美術館",
         "exhibition": "展覧会",
         "dates": "会期",
@@ -73,7 +73,7 @@ UI_LABELS = {
     },
     "zh": {
         "title": "台灣當代藝術展覽資訊",
-        "subtitle": "不再錯過好展覽。90+ 藝廊，每週更新。",
+        "subtitle": "台灣當代藝術展覽資訊",
         "museum": "美術館",
         "exhibition": "展覽",
         "dates": "展期",
