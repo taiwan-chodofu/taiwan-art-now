@@ -2250,6 +2250,29 @@
       "artists": [
         "劉蕓瑤"
       ]
+    },
+    {
+      "museum": "fugui",
+      "title_zh": "十年山海之微＆之間",
+      "title_en": "Hammered Horizons: A Decade of Mountains and Seas & In Between",
+      "title_ja": "",
+      "dates": "2026.07.05 – 2026.08.23",
+      "location": "鶯歌富貴美術館",
+      "link": "https://artemperor.tw/tidbits/20058",
+      "artists": [
+        "闕承慧",
+        "楊奕軒"
+      ],
+      "events": [
+        {
+          "date": "2026/07/04",
+          "time": "13:00",
+          "title_zh": "藝術家講座與茶席活動（預約制）",
+          "title_en": "Artist Talk & Tea Ceremony (reservation required)",
+          "title_ja": "アーティストトーク＆茶席（要予約）",
+          "type": "talk"
+        }
+      ]
     }
   ]
 }

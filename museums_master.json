@@ -2830,6 +2830,31 @@
         0,
         1
       ]
+    },
+    {
+      "id": "fugui",
+      "category": "private",
+      "region": "new_taipei",
+      "name": {
+        "en": "Fugui Museum of Art",
+        "ja": "鶯歌富貴美術館",
+        "zh": "鶯歌富貴美術館"
+      },
+      "address": {
+        "en": "No. 98, Chongqing St., Yingge Dist., New Taipei City",
+        "ja": "新北市鶯歌區重慶街98號",
+        "zh": "新北市鶯歌區重慶街98號"
+      },
+      "url": "https://www.facebook.com/fuguimuseum",
+      "hours": {
+        "en": "Wed–Sun (Closed Mon–Tue)",
+        "ja": "水〜日（月火休館）",
+        "zh": "週三至週日（週一二館休）"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
     }
   ]
 }
