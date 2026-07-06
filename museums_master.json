@@ -2758,6 +2758,31 @@
         "zh": "預約制（請透過IG私信或來電預約）"
       },
       "closed_days": []
+    },
+    {
+      "id": "yao",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "Yáo",
+        "ja": "窯座",
+        "zh": "窯座"
+      },
+      "address": {
+        "en": "2F, No. 9, Ln. 126, Minsheng Rd., West Dist., Taichung",
+        "ja": "台中市西區民生路126巷9號2樓",
+        "zh": "台中市西區民生路126巷9號2樓"
+      },
+      "url": "https://www.facebook.com/story.php?story_fbid=122320940372225287&id=61556758625583",
+      "hours": {
+        "en": "Wed–Sun 15:00–20:00 | Closed Mon–Tue",
+        "ja": "水〜日 15:00–20:00｜月火休",
+        "zh": "週三至週日 15:00–20:00｜週一二公休"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
     }
   ]
 }

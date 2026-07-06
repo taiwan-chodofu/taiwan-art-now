@@ -2155,6 +2155,28 @@
       "artists": [
         "MVM"
       ]
+    },
+    {
+      "museum": "yao",
+      "title_zh": "成天空隊形 散開",
+      "title_en": "Sky as Formation, Then Scattering",
+      "title_ja": "",
+      "dates": "2026.06.26 – 2026.07.19",
+      "location": "窯座",
+      "link": "https://www.facebook.com/story.php?story_fbid=122320940372225287&id=61556758625583&mibextid=wwXIfr&rdid=Ohp2eS0FPYibBHZ6",
+      "artists": [
+        "蕭安宏"
+      ],
+      "events": [
+        {
+          "date": "2026/07/05",
+          "time": "16:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Event",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ]
     }
   ]
 }
