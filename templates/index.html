@@ -503,11 +503,11 @@
     .ex-fav-btn.saved { opacity: 1; }
     .ex-actions { display: flex; gap: 6px; margin-top: 6px; }
     .ex-action-btn {
-      font-size: 0.7rem; padding: 3px 9px; border: 1px solid var(--border);
-      border-radius: 12px; background: var(--bg); cursor: pointer;
-      display: flex; align-items: center; gap: 3px; user-select: none;
+      font-size: 0.62rem; padding: 2px 7px; border: 1px solid var(--border);
+      border-radius: 10px; background: var(--bg); cursor: pointer;
+      display: flex; align-items: center; gap: 2px; user-select: none;
       -webkit-tap-highlight-color: transparent; transition: all 0.15s;
-      color: var(--text-sub);
+      color: var(--text-light);
     }
     .ex-action-btn:active { transform: scale(0.93); }
     .ex-action-btn.active-visited { background: #e8f5e9; border-color: #66bb6a; color: #2e7d32; }
@@ -759,9 +759,7 @@
               {% endif %}
             </div>
             {% endif %}
-            {% if ex.curator %}
-            <div class="ex-curator">{{ labels.curator }}: {{ ex.curator }}</div>
-            {% endif %}
+            {# curator hidden from list view - shown in detail page only #}
             <div class="ex-actions">
               <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">☐</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
