@@ -1085,12 +1085,24 @@
         if (dateStr && tab === 'visited') html += '<div style="font-size:0.65rem;color:var(--text-light);margin-top:2px;">{% if current_lang == "zh" %}觀展日{% elif current_lang == "ja" %}観覧日{% else %}Visited{% endif %}: ' + dateStr + '</div>';
         if (f.event && tab === 'wantgo') html += '<div style="font-size:0.65rem;color:#6c5ce7;margin-top:2px;">📅 ' + f.event + '</div>';
         html += '<div style="margin-top:4px;display:flex;gap:10px;align-items:center;">';
+        if (tab === 'wantgo') html += '<a href="#" onclick="markVisitedFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\');return false;" style="font-size:0.68rem;color:#2e7d32;text-decoration:none;">☑ {% if current_lang == "zh" %}已看{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}</a>';
         if (f.museum) html += '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(f.museum) + '" target="_blank" rel="noopener" style="font-size:0.68rem;color:var(--text-sub);text-decoration:none;">📍 {% if current_lang == "zh" %}地圖{% elif current_lang == "ja" %}地図{% else %}Map{% endif %}</a>';
         html += '<a href="#" onclick="removeFromMylist(\'' + item.key.replace(/'/g, "\\'") + '\',\'' + item.type + '\');return false;" style="font-size:0.68rem;color:var(--red);text-decoration:none;">{% if current_lang == "zh" %}移除{% elif current_lang == "ja" %}削除{% else %}Remove{% endif %}</a>';
         html += '</div></div>';
       });
     });
     return html;
+  }
+
+  function markVisitedFromMylist(key) {
+    var visited = _getVisited();
+    var favs = _getFavs();
+    var f = favs[key] || {};
+    visited[key] = { date: new Date().toISOString(), title: f.title || '', museum: f.museum || '', dates: f.dates || '', url: f.url || '', region: f.region || '' };
+    _saveVisited(visited);
+    if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: key, source: 'mylist' });
+    renderMylist();
+    _renderActions();
   }
 
   function removeFromMylist(key, type) {
