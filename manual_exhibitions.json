@@ -2216,6 +2216,28 @@
           "note_en": "Free donation | Performers: Jina0King + CJ Artecent + Chen En He + Fangyi Liu + OOONIE"
         }
       ]
+    },
+    {
+      "museum": "tinakeng",
+      "title_zh": "立體詩",
+      "title_en": "Sculptural Poems",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.09.12",
+      "location": "耿畫廊",
+      "link": "https://www.tinakenggallery.com/exhibitions/260/",
+      "artists": [
+        "郭思敏"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "16:30",
+          "title_zh": "開幕",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ]
     }
   ]
 }
