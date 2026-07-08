@@ -2392,6 +2392,59 @@
       "artists": [
         "褚天安"
       ]
+    },
+    {
+      "museum": "absolute",
+      "title_zh": "水的政治氣候",
+      "title_en": "The Political Climate of Water",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.08.23",
+      "location": "絕對空間",
+      "link": "https://www.facebook.com/AbsoluteSpacefortheArts/",
+      "artists": [
+        "曹明浩",
+        "陳建軍",
+        "陳宣誠",
+        "蕭聖健",
+        "金安娜",
+        "黃慧嫻",
+        "王若冰",
+        "陳賽華灌"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "15:00",
+          "title_zh": "開幕茶會＆座談（與談人：高俊宏）",
+          "title_en": "Opening & Forum (Guest: Kao Jun-Honn)",
+          "title_ja": "オープニング＆座談（高俊宏）",
+          "type": "opening"
+        },
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "工作坊：流水雨聲棒製作｜蕭聖健",
+          "title_en": "Workshop: Rain Stick Making | Hsiao Sheng-Chien",
+          "title_ja": "WS：雨音棒制作｜蕭聖健",
+          "type": "workshop"
+        },
+        {
+          "date": "2026/07/12",
+          "time": "13:30",
+          "title_zh": "工作坊：藍曬顯影——無相機攝影入門｜黃慧嫻",
+          "title_en": "Workshop: Cyanotype Introduction | Ng Hui Hsien",
+          "title_ja": "WS：サイアノタイプ入門｜黃慧嫻",
+          "type": "workshop"
+        },
+        {
+          "date": "2026/07/19",
+          "time": "10:30",
+          "title_zh": "工作坊：淺水——城市水聲採集｜王若冰×陳宣誠",
+          "title_en": "Workshop: Urban Water Sound Collection | Ruobing x Eric Chen",
+          "title_ja": "WS：都市水音採集｜王若冰×陳宣誠",
+          "type": "workshop"
+        }
+      ]
     }
   ]
 }
