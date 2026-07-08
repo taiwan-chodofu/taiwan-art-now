@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
+  if (new URLSearchParams(window.location.search).has('_exclude_ga')) localStorage.setItem('taiwan_art_ga_exclude','1');
   if (!localStorage.getItem('taiwan_art_ga_exclude')) {
     var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');
