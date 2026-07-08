@@ -974,6 +974,14 @@
     var modal = document.getElementById('favsModal');
     modal.style.display = 'block';
     renderMylist();
+    // 2nd time opening mylist: suggest home screen add
+    var openCount = parseInt(localStorage.getItem('taiwan_art_mylist_opens') || '0') + 1;
+    localStorage.setItem('taiwan_art_mylist_opens', openCount);
+    if (openCount === 2 && !window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem('taiwan_art_pwa_dismissed')) {
+      setTimeout(function() {
+        _showRetentionPrompt('📲', '{{ "常用嗎？加入主畫面更方便 →" if current_lang == "zh" else ("よく使う？ホーム画面に追加 →" if current_lang == "ja" else "Use it often? Add to Home Screen →") }}', function() { if (typeof showPWAInstall === 'function') showPWAInstall(); });
+      }, 500);
+    }
   }
 
   function _fetchArchive(cb) {
@@ -1252,8 +1260,55 @@
     _renderActions();
   }
 
+  function _checkFavMilestone() {
+    var favs = _getFavs();
+    var count = Object.keys(favs).length;
+    var milestone = localStorage.getItem('taiwan_art_fav_milestone') || '0';
+
+    if (count >= 3 && milestone === '0') {
+      localStorage.setItem('taiwan_art_fav_milestone', '3');
+      if (!window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem('taiwan_art_pwa_dismissed')) {
+        setTimeout(function() {
+          _showRetentionPrompt(
+            '📲',
+            '{{ "你有" if current_lang == "zh" else ("" if current_lang == "ja" else "You have ") }}' + count + '{{ "個想去的展覽。加入主畫面隨時查看 →" if current_lang == "zh" else ("件の行きたい展示。ホーム画面に追加して確認 →" if current_lang == "ja" else " saved exhibitions. Add to Home Screen →") }}',
+            function() { if (typeof showPWAInstall === 'function') showPWAInstall(); }
+          );
+        }, 1000);
+      }
+    } else if (count >= 5 && milestone === '3') {
+      localStorage.setItem('taiwan_art_fav_milestone', '5');
+      if (!localStorage.getItem('taiwan_art_messenger_connected')) {
+        setTimeout(function() {
+          _showRetentionPrompt(
+            '💬',
+            '{{ "5個展覽已保存！終了前 Messenger 通知你？" if current_lang == "zh" else ("5件保存中！終了前にMessengerで通知する？" if current_lang == "ja" else "5 saved! Get Messenger reminders before they end?") }}',
+            function() { window.open('https://m.me/61591281572640', '_blank'); localStorage.setItem('taiwan_art_messenger_connected', '1'); }
+          );
+        }, 1000);
+      }
+    }
+  }
+
+  function _showRetentionPrompt(icon, msg, action) {
+    var el = document.getElementById('retentionPrompt');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'retentionPrompt';
+      el.style.cssText = 'position:fixed;bottom:90px;left:16px;right:16px;max-width:360px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:var(--text);';
+      document.body.appendChild(el);
+    }
+    el.innerHTML = '<span style="flex:1;">' + msg + '</span>'
+      + '<button onclick="document.getElementById(\'retentionPrompt\')._action()" style="flex-shrink:0;background:#333;color:#fff;padding:8px 14px;border-radius:18px;border:none;font-size:0.75rem;font-weight:600;cursor:pointer;">' + icon + '</button>'
+      + '<button onclick="document.getElementById(\'retentionPrompt\').style.display=\'none\'" style="border:none;background:none;font-size:1.1rem;cursor:pointer;padding:0 4px;color:var(--text-light);">✕</button>';
+    el._action = action;
+    el.style.display = 'flex';
+    if (typeof gtag === 'function') gtag('event', 'retention_prompt_shown', { milestone: icon });
+  }
+
   function _promptMessengerOnce(trigger) {
     if (typeof showPwaFab === 'function') showPwaFab();
+    _checkFavMilestone();
     var promptKey = 'taiwan_art_messenger_prompted';
     if (localStorage.getItem(promptKey)) return;
     localStorage.setItem(promptKey, '1');
