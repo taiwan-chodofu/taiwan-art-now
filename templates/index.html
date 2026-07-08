@@ -1133,7 +1133,7 @@
       return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
         + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知{% elif current_lang == "ja" %}通知{% else %}Notifications{% endif %}</div>'
         + '<a href="https://m.me/61591281572640?ref=' + ref + '" target="_blank" rel="noopener" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_connect_mylist\',{})" style="display:block;padding:10px 14px;background:#0084FF;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;text-align:center;">'
-        + '💬 {% if current_lang == "zh" %}用 Messenger 接收展覽通知{% elif current_lang == "ja" %}Messengerで通知を受け取る{% else %}Get notified via Messenger{% endif %}'
+        + '💬 {% if current_lang == "zh" %}傳送訊息即可訂閱展覽通知{% elif current_lang == "ja" %}メッセージを送るだけで通知登録{% else %}Send a message to subscribe{% endif %}'
         + '</a></div>';
     }
     return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
@@ -1243,7 +1243,7 @@
     localStorage.setItem(promptKey, '1');
     setTimeout(function() {
       var msg = trigger === 'fav'
-        ? '{{ "展覽結束前提醒你？用 Messenger 接收通知 →" if current_lang == "zh" else ("この展示の終了前にお知らせしますか？Messengerで受け取る →" if current_lang == "ja" else "Get notified before it ends? Subscribe via Messenger →") }}'
+        ? '{{ "展覽結束前提醒你？傳送訊息即可訂閱 →" if current_lang == "zh" else ("終了前にお知らせ？メッセージを送るだけ →" if current_lang == "ja" else "Get reminded before it ends? Just send a message →") }}'
         : '{{ "每週收到展覽情報？用 Messenger 訂閱 →" if current_lang == "zh" else ("毎週の展示情報を受け取る？Messengerで登録 →" if current_lang == "ja" else "Get weekly exhibition updates via Messenger →") }}';
       _showMessengerPrompt(msg);
     }, 1500);
@@ -1632,11 +1632,11 @@
   </style>
 
   <a class="fab fab-chair" id="chairFab" href="https://docs.google.com/forms/d/e/1FAIpQLScfq_Aeo2Kc3xaB9enEa0KCKaCtB_3TOeNixMZTl5TRxXiYmg/viewform" target="_blank" rel="noopener" aria-label="Chair collection" onclick="if(typeof gtag==='function')gtag('event','click_chair_fab',{})" style="bottom:84px;background:#8d6e63;font-size:1.3rem;">🪑</a>
-  <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Send exhibition info via Messenger">💬</a>
+  <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Messenger" onclick="localStorage.setItem('taiwan_art_messenger_connected','1')">💬</a>
   <div class="fab-tooltip" id="fabTooltip">
-    {% if current_lang == 'zh' %}知道展覽資訊？點此傳送給我們！
-    {% elif current_lang == 'ja' %}展示情報をご存知ですか？こちらからお送りください！
-    {% else %}Know an exhibition? Tap to send us info!{% endif %}
+    {% if current_lang == 'zh' %}傳送任何訊息即可訂閱每週展覽通知 📩
+    {% elif current_lang == 'ja' %}メッセージを送るだけで毎週通知が届きます 📩
+    {% else %}Send any message to subscribe to weekly updates 📩{% endif %}
   </div>
 
 
