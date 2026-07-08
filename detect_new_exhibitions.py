@@ -24,8 +24,9 @@ def _normalize_title(title):
 
 
 def load_known_exhibitions():
-    """既に掲載済みの展示タイトルセット（正規化済み）を取得。"""
+    """既に掲載済み + 除外済みの展示タイトルセット（正規化済み）を取得。"""
     manual_path = BASE_DIR / "manual_exhibitions.json"
+    excluded_path = BASE_DIR / "excluded_exhibitions.json"
     known = set()
     try:
         with open(manual_path, "r", encoding="utf-8") as f:
@@ -34,6 +35,15 @@ def load_known_exhibitions():
             for t in (ex.get("title_zh", ""), ex.get("title_en", "")):
                 if t:
                     known.add(_normalize_title(t))
+    except Exception:
+        pass
+    # Load excluded (reviewed but not listed)
+    try:
+        with open(excluded_path, "r", encoding="utf-8") as f:
+            excluded = json.load(f)
+        for t in excluded.get("titles", []):
+            if t:
+                known.add(_normalize_title(t))
     except Exception:
         pass
     return known
