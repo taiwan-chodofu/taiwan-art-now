@@ -1238,6 +1238,7 @@
   }
 
   function _promptMessengerOnce(trigger) {
+    if (typeof showPwaFab === 'function') showPwaFab();
     var promptKey = 'taiwan_art_messenger_prompted';
     if (localStorage.getItem(promptKey)) return;
     localStorage.setItem(promptKey, '1');
@@ -1632,6 +1633,7 @@
   </style>
 
   <a class="fab fab-chair" id="chairFab" href="https://docs.google.com/forms/d/e/1FAIpQLScfq_Aeo2Kc3xaB9enEa0KCKaCtB_3TOeNixMZTl5TRxXiYmg/viewform" target="_blank" rel="noopener" aria-label="Chair collection" onclick="if(typeof gtag==='function')gtag('event','click_chair_fab',{})" style="bottom:84px;background:#8d6e63;font-size:1.3rem;">🪑</a>
+  <a class="fab" id="pwaFab" style="display:none;bottom:84px;background:#333;font-size:1.1rem;" onclick="showPWAInstall()">📲</a>
   <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Messenger" onclick="localStorage.setItem('taiwan_art_messenger_connected','1')">💬</a>
   <div class="fab-tooltip" id="fabTooltip">
     {% if current_lang == 'zh' %}傳送任何訊息即可訂閱每週展覽通知 📩
@@ -1666,6 +1668,62 @@
       tooltip.style.display = 'none';
       gtag('event', 'messenger_open', { event_category: 'engagement' });
     });
+  })();
+  </script>
+
+  <script>
+  // PWA Install Prompt
+  (function() {
+    // Skip if already installed as standalone
+    if (window.matchMedia('(display-mode: standalone)').matches) return;
+    if (localStorage.getItem('taiwan_art_pwa_dismissed')) return;
+
+    var deferredPrompt = null;
+    var pwaFab = document.getElementById('pwaFab');
+
+    // Android Chrome: capture beforeinstallprompt
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPrompt = e;
+      showPwaFab();
+    });
+
+    // Show PWA FAB after 3 page views or first ♡
+    var views = parseInt(sessionStorage.getItem('taiwan_art_views') || '0') + 1;
+    sessionStorage.setItem('taiwan_art_views', views);
+    if (views >= 3) showPwaFab();
+
+    window.showPwaFab = function() {
+      if (pwaFab && !window.matchMedia('(display-mode: standalone)').matches) {
+        pwaFab.style.display = 'flex';
+      }
+    };
+
+    window.showPWAInstall = function() {
+      if (deferredPrompt) {
+        // Android: use native prompt
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choice) {
+          if (choice.outcome === 'accepted') {
+            if (typeof gtag === 'function') gtag('event', 'pwa_install', {});
+            pwaFab.style.display = 'none';
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        // iOS / other: show manual instruction
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        var msg = isIOS
+          ? '{% if current_lang == "zh" %}點選下方「分享」按鈕 ⬆️ → 選擇「加入主畫面」{% elif current_lang == "ja" %}下の「共有」ボタン ⬆️ → 「ホーム画面に追加」{% else %}Tap Share ⬆️ below → "Add to Home Screen"{% endif %}'
+          : '{% if current_lang == "zh" %}點選瀏覽器選單 ⋮ → 選擇「加入主畫面」{% elif current_lang == "ja" %}ブラウザメニュー ⋮ →「ホーム画面に追加」{% else %}Tap browser menu ⋮ → "Add to Home Screen"{% endif %}';
+        // Show instruction popup
+        var popup = document.createElement('div');
+        popup.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
+        popup.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>' + msg + '</div><button onclick="this.parentElement.remove();localStorage.setItem(\'taiwan_art_pwa_dismissed\',\'1\')" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
+        document.body.appendChild(popup);
+        if (typeof gtag === 'function') gtag('event', 'pwa_prompt_shown', {});
+      }
+    };
   })();
   </script>
 
