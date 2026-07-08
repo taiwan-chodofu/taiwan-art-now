@@ -239,7 +239,7 @@
       {% if current_lang == 'zh' %}展覽地點{% elif current_lang == 'ja' %}会場{% else %}Venue{% endif %}
     </div>
     <div class="venue-card">
-      <div class="venue-name">{{ museum.name }}</div>
+      <div class="venue-name">{{ museum.name }}{% if museum.closed_today %} <span style="color:var(--red);font-size:0.75rem;font-weight:600;">CLOSED TODAY</span>{% endif %}</div>
       <div class="venue-info">
         {% if museum.hours %}{{ museum.hours }}<br>{% endif %}
         {% if museum.address %}{{ museum.address }}{% endif %}
