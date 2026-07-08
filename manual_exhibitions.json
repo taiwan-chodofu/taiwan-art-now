@@ -2445,6 +2445,31 @@
           "type": "workshop"
         }
       ]
+    },
+    {
+      "museum": "ponding",
+      "title_zh": "奶油色與石頭",
+      "title_en": "Cream and Stone — Book Launch & Exhibition",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.07.19",
+      "location": "朋丁三樓",
+      "link": "https://www.facebook.com/pondingspace",
+      "artists": [
+        "廖昀靖",
+        "XINs",
+        "身體山島"
+      ],
+      "events": [
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "新書分享會（廖昀靖 × XINs × 身體山島）",
+          "title_en": "Book Launch Talk (author x artists)",
+          "title_ja": "新書トーク",
+          "type": "talk",
+          "note_zh": "費用280元可折抵購書"
+        }
+      ]
     }
   ]
 }
