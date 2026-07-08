@@ -2903,6 +2903,53 @@
       "closed_days": [
         0
       ]
+    },
+    {
+      "id": "sinpink",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Sin Pin Pier Art Space",
+        "ja": "新浜碼頭藝術空間",
+        "zh": "新浜碼頭藝術空間"
+      },
+      "address": {
+        "en": "No. 146, Daren Rd., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區大仁路146號",
+        "zh": "高雄市鹽埕區大仁路146號"
+      },
+      "url": "https://artemperor.tw/tidbits/20134",
+      "hours": {
+        "en": "Wed-Sun (Closed Mon-Tue)",
+        "ja": "水〜日（月火休）",
+        "zh": "週三至週日（週一二公休）"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "elevenart",
+      "category": "private",
+      "region": "taoyuan",
+      "name": {
+        "en": "Eleven Art Gallery",
+        "ja": "桃園十一份美術館",
+        "zh": "桃園十一份美術館"
+      },
+      "address": {
+        "en": "No. 5, Jiaan W. Rd., Longtan Dist., Taoyuan",
+        "ja": "桃園市龍潭區佳安里佳安西路5號",
+        "zh": "桃園市龍潭區佳安里佳安西路5號"
+      },
+      "url": "https://www.facebook.com/11ElevenArtGallery/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_days": []
     }
   ]
 }
