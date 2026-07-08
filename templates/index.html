@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');</script>
+  <script>
+  if (!localStorage.getItem('taiwan_art_ga_exclude')) {
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');
+  } else {
+    function gtag(){}
+  }
+  </script>
   <title>{{ labels.title }}</title>
   <meta name="description" content="{{ labels.subtitle }}">
   <link rel="manifest" href="/static/manifest.json">
