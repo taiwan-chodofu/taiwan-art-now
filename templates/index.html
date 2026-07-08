@@ -974,14 +974,6 @@
     var modal = document.getElementById('favsModal');
     modal.style.display = 'block';
     renderMylist();
-    // 2nd time opening mylist: suggest home screen add
-    var openCount = parseInt(localStorage.getItem('taiwan_art_mylist_opens') || '0') + 1;
-    localStorage.setItem('taiwan_art_mylist_opens', openCount);
-    if (openCount === 2 && !window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem('taiwan_art_pwa_dismissed')) {
-      setTimeout(function() {
-        _showRetentionPrompt('📲', '{{ "常用嗎？加入主畫面更方便 →" if current_lang == "zh" else ("よく使う？ホーム画面に追加 →" if current_lang == "ja" else "Use it often? Add to Home Screen →") }}', function() { if (typeof showPWAInstall === 'function') showPWAInstall(); });
-      }, 500);
-    }
   }
 
   function _fetchArchive(cb) {
