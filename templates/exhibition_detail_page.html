@@ -260,7 +260,7 @@
 
     <div class="actions">
       <button class="action-btn" id="visitedBtn" onclick="toggleVisited()">
-        <span id="visitedIcon">☐</span>
+        <span id="visitedIcon">○</span>
         <span id="visitedText">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
       </button>
       <button class="action-btn" id="favBtn" onclick="toggleFav()">
@@ -366,11 +366,11 @@
       var fIcon = document.getElementById('favIcon');
       var fText = document.getElementById('favText');
       if (visited[exId]) {
-        vIcon.textContent = '☑';
+        vIcon.textContent = '✓';
         vText.textContent = '{% if current_lang == "zh" %}已看{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}';
         vBtn.classList.add('saved');
       } else {
-        vIcon.textContent = '☐';
+        vIcon.textContent = '○';
         vText.textContent = '{% if current_lang == "zh" %}已看{% elif current_lang == "ja" %}観た{% else %}Seen{% endif %}';
         vBtn.classList.remove('saved');
       }

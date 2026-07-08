@@ -165,7 +165,7 @@
         {% endif %}
         <div class="nearby-ex-actions">
           <span class="nearby-action-btn" data-action="visited" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
-            <span class="act-icon">☐</span> {% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}
+            <span class="act-icon">○</span> {% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}
           </span>
           <span class="nearby-action-btn" data-action="fav" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
             <span class="act-icon">♡</span> {% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}
@@ -240,7 +240,7 @@
       var key = _normalizeKey(btn.getAttribute('data-key'));
       if (action === 'visited') {
         var isV = !!visited[key];
-        btn.querySelector('.act-icon').textContent = isV ? '☑' : '☐';
+        btn.querySelector('.act-icon').textContent = isV ? '✓' : '○';
         btn.classList.toggle('active-visited', isV);
       } else if (action === 'fav') {
         var isF = !!favs[key];
