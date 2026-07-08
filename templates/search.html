@@ -98,11 +98,11 @@
       {% if results.exhibitions %}
       <div class="section-label">{{ labels.exhibitions }} ({{ results.exhibitions|length }})</div>
       {% for ex in results.exhibitions %}
-      {% if ex.link %}<a class="result-item" href="{{ ex.link }}" target="_blank" rel="noopener">{% else %}<div class="result-item">{% endif %}
+      <a class="result-item" href="{{ ex.detail_url }}">
         <div class="result-title">{{ ex.title }}</div>
         <div class="result-meta">{{ ex.museum_name }}{% if ex.dates %} · {{ ex.dates }}{% endif %}</div>
         {% if ex.artists %}<div class="result-artists">{{ ex.artists|join(' · ') }}</div>{% endif %}
-      {% if ex.link %}</a>{% else %}</div>{% endif %}
+      </a>
       {% endfor %}
       {% endif %}
 
