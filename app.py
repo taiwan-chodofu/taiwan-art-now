@@ -1037,6 +1037,7 @@ def exhibition_detail(museum_id, idx):
             "address": _get_localized(museum_info.get("address", {}), lang) if museum_info else "",
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "url": museum_info.get("url", "") if museum_info else "",
+            "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days")) if museum_info else False,
         },
         current_lang=lang,
         museum_id=museum_id,
@@ -1185,12 +1186,15 @@ def nearby(museum_id):
     for m in master["museums"]:
         if m["id"] == museum_id or not m.get("lat"):
             continue
+        # Skip closed venues
+        is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
+        if is_closed:
+            continue
         dist = distance_km(m["lat"], m["lng"])
         if dist <= 5.0:
             exs = ex_by_museum.get(m["id"], [])
             if exs:
                 venue_name = _get_localized(m["name"], lang)
-                is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
                 hours = _get_localized(m.get("hours", {}), lang)
                 ex_items = []
                 for i, ex in enumerate(exs[:3]):
