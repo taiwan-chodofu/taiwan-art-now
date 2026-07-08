@@ -2339,6 +2339,59 @@
           "type": "workshop"
         }
       ]
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "分類好難",
+      "title_en": "",
+      "dates": "2026.07.17 – 2026.08.12",
+      "location": "新浜碼頭藝術空間 2F",
+      "link": "https://artemperor.tw/tidbits/20134",
+      "artists": [
+        "陳則瑋"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ]
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "VUVU傳統智慧download巡迴展",
+      "title_en": "VUVU Traditional Wisdom Download",
+      "dates": "2026.07.17 – 2026.08.13",
+      "location": "新浜碼頭藝術空間 1F",
+      "link": "https://artemperor.tw/tidbits/20133",
+      "artists": [
+        "南和文化健康站長輩"
+      ],
+      "events": [
+        {
+          "date": "2026/07/17",
+          "time": "10:00",
+          "title_zh": "開幕茶會＆長輩故事分享",
+          "title_en": "Opening & Elder Story Sharing",
+          "title_ja": "オープニング＆長老物語交流",
+          "type": "opening"
+        }
+      ]
+    },
+    {
+      "museum": "elevenart",
+      "title_zh": "當下的風景——褚天安2026水彩寫生個展",
+      "title_en": "Landscapes of the Present",
+      "dates": "2026.08.08 – 2026.09.20",
+      "location": "桃園十一份美術館",
+      "link": "https://www.facebook.com/11ElevenArtGallery/",
+      "artists": [
+        "褚天安"
+      ]
     }
   ]
 }
