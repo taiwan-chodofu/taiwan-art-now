@@ -445,6 +445,8 @@ def index():
             if n:
                 museum_name_to_id[n] = m["id"]
 
+    holiday_today = _get_holiday_today()
+
     return render_template(
         "index.html",
         labels=labels,
@@ -454,13 +456,43 @@ def index():
         current_lang=lang,
         region_names_json=json.dumps(region_names, ensure_ascii=False),
         museum_name_to_id_json=json.dumps(museum_name_to_id, ensure_ascii=False),
+        holiday_today=holiday_today,
     )
 
 
-def _is_closed_today(closed_day, closed_days=None):
-    """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。"""
+TAIWAN_HOLIDAYS_2026 = {
+    "2026-01-01": "元旦",
+    "2026-02-16": "春節", "2026-02-17": "春節", "2026-02-18": "春節",
+    "2026-02-19": "春節", "2026-02-20": "春節",
+    "2026-02-27": "和平紀念日(補假)", "2026-02-28": "和平紀念日",
+    "2026-04-03": "兒童節(補假)", "2026-04-04": "兒童節",
+    "2026-04-05": "清明節", "2026-04-06": "清明節(補假)",
+    "2026-05-01": "勞動節",
+    "2026-06-19": "端午節",
+    "2026-09-25": "中秋節",
+    "2026-10-09": "國慶日(補假)", "2026-10-10": "國慶日",
+    "2026-12-25": "行憲紀念日",
+    "2026-12-31": "跨年",
+}
+
+
+def _get_holiday_today():
+    """本日が台湾の祝祭日かどうか判定し、祝日名を返す。Noneなら平日。"""
     from datetime import datetime, timezone, timedelta
     tw_tz = timezone(timedelta(hours=8))
+    today_str = datetime.now(tw_tz).strftime("%Y-%m-%d")
+    return TAIWAN_HOLIDAYS_2026.get(today_str)
+
+
+def _is_closed_today(closed_day, closed_days=None):
+    """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。
+    祝祭日の場合はFalseを返す（祝日は別途注意喚起するため）。"""
+    from datetime import datetime, timezone, timedelta
+    tw_tz = timezone(timedelta(hours=8))
+    # 祝祭日は曜日休館判定をスキップ（施設により対応が異なるため）
+    today_str = datetime.now(tw_tz).strftime("%Y-%m-%d")
+    if today_str in TAIWAN_HOLIDAYS_2026:
+        return False
     today_weekday = datetime.now(tw_tz).weekday()
     if closed_days:
         return today_weekday in closed_days
