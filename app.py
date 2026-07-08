@@ -849,8 +849,12 @@ def search():
     if query and len(query) >= 2:
         master = _load_master()
         museum_names = {m["id"]: _get_localized(m["name"], lang) for m in master["museums"]}
-        # 展覧会検索
+        # 展覧会検索（museum_ex_idxはトップページと同じ並び順で算出し、detail_urlを一致させる）
+        museum_ex_counts = {}
         for ex in fetch_all_exhibitions():
+            museum_id = ex.get("museum", "")
+            museum_ex_idx = museum_ex_counts.get(museum_id, 0)
+            museum_ex_counts[museum_id] = museum_ex_idx + 1
             haystack = " ".join([
                 ex.get("title_en", ""), ex.get("title_zh", ""), ex.get("title_ja", ""),
                 " ".join(ex.get("artists", [])), ex.get("curator", ""),
@@ -858,9 +862,10 @@ def search():
             if query in haystack:
                 results["exhibitions"].append({
                     "title": _get_display_title(ex, lang),
-                    "museum_name": museum_names.get(ex.get("museum", ""), ex.get("museum", "")),
+                    "museum_name": museum_names.get(museum_id, museum_id),
                     "dates": ex.get("dates", ""),
                     "link": ex.get("link", ""),
+                    "detail_url": f"/exhibition/{museum_id}/{museum_ex_idx}?lang={lang}",
                     "artists": ex.get("artists", []),
                 })
         # アーティスト検索
