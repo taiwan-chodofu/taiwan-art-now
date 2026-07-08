@@ -114,6 +114,19 @@
     </nav>
   </header>
 
+  {% if holiday_today %}
+  <!-- HOLIDAY WARNING BANNER -->
+  <div style="max-width:720px;margin:0 auto;padding:8px 1rem;background:#fffbeb;border-bottom:1px solid #fcd34d;font-size:0.72rem;color:#92400e;display:flex;align-items:center;gap:6px;">
+    <span>⚠️</span>
+    <span>
+      {% if current_lang == 'zh' %}今天是「{{ holiday_today }}」，部分場館可能休館或調整時間，請出發前確認各場館官方資訊。
+      {% elif current_lang == 'ja' %}本日は「{{ holiday_today }}」です。一部施設が休館または時間変更の可能性があります。お出かけ前に各施設の公式情報をご確認ください。
+      {% else %}Today is "{{ holiday_today }}." Some venues may be closed or have adjusted hours. Please check official venue pages before visiting.
+      {% endif %}
+    </span>
+  </div>
+  {% endif %}
+
   <!-- ADD TO HOME SCREEN BANNER -->
   <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#f3f4f6,#e8eaed);border-bottom:1px solid #d1d5db;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;">
     <span onclick="if(typeof showPWAInstall==='function')showPWAInstall()" style="cursor:pointer;flex:1;">
