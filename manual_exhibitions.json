@@ -2470,6 +2470,84 @@
           "note_zh": "費用280元可折抵購書"
         }
       ]
+    },
+    {
+      "museum": "fotoaura",
+      "title_zh": "Unattended",
+      "title_en": "Unattended",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.09.06",
+      "location": "海馬迴光畫館",
+      "link": "https://www.facebook.com/fotoaura.tw",
+      "artists": [
+        "賴金池"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        },
+        {
+          "date": "2026/08/15",
+          "time": "",
+          "title_zh": "座談（與談人：李傑、沈裕昌）",
+          "title_en": "Talk (Guests: Lee Kit, Shen Yu-Chang)",
+          "title_ja": "座談（李傑、沈裕昌）",
+          "type": "talk"
+        }
+      ]
+    },
+    {
+      "museum": "michaelku",
+      "title_zh": "小孤獨，行",
+      "title_en": "Little Solitude, Passage",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.09.12",
+      "location": "谷公館",
+      "link": "https://michaelkugallery.com/exhibitions/137",
+      "artists": [
+        "簡翊洪"
+      ]
+    },
+    {
+      "museum": "montue",
+      "title_zh": "雲在兩千米",
+      "title_en": "Cloud at 2000 Meters",
+      "title_ja": "",
+      "dates": "2026.07.25 – 2026.10.11",
+      "location": "北師美術館",
+      "link": "https://www.opentix.life/event/2064614366007234561",
+      "artists": [
+        "陳芯宜",
+        "吳明益"
+      ],
+      "curator": "林曼麗"
+    },
+    {
+      "museum": "nunufineart",
+      "title_zh": "時間的摺痕",
+      "title_en": "The Folds of Time",
+      "title_ja": "",
+      "dates": "2026.07.24 – 2026.09.26",
+      "location": "路由藝術",
+      "link": "https://www.nunufineart.com/ya-ting-kao-the-folds-of-time",
+      "artists": [
+        "高雅婷"
+      ],
+      "events": [
+        {
+          "date": "2026/07/24",
+          "time": "",
+          "title_zh": "開幕（藝術家出席）",
+          "title_en": "Opening (Artist present)",
+          "title_ja": "オープニング（アーティスト来場）",
+          "type": "opening"
+        }
+      ]
     }
   ]
 }
