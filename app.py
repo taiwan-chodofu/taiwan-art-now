@@ -1532,19 +1532,24 @@ def webhook_receive():
                     is_new = _add_subscriber(sender_id, ref_code=ref_code)
                     if is_new:
                         _send_messenger_reply(sender_id,
-                            "🎨 訂閱成功！每週三將收到展覽結束提醒，不再錯過好展覽。\n\n"
-                            "🌐 https://taiwan-art-now.onrender.com/\n\n"
-                            "─────────────────\n\n"
-                            "🎨 Subscribed! You'll receive weekly updates on exhibitions ending soon.\n\n"
-                            "🌐 https://taiwan-art-now.onrender.com/?lang=en\n\n"
-                            "━━━━━━━━━━\n"
-                            "取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
+                            "🎨 歡迎！你已訂閱每週展覽通知。\n\n"
+                            "也歡迎隨時傳送：\n"
+                            "📌 想掲載的展覽名稱或URL\n"
+                            "📍 想知道附近有什麼展覽\n\n"
+                            "🌐 taiwan-art-now.onrender.com\n\n"
+                            "─────\n"
+                            "Welcome! You're subscribed to weekly exhibition updates.\n\n"
+                            "Feel free to send:\n"
+                            "📌 Exhibition info you'd like listed\n"
+                            "📍 Ask what's nearby\n\n"
+                            "━━━━━\n"
+                            "取消: 輸入「取消」/ Unsubscribe: type \"stop\"")
                     else:
                         _send_messenger_reply(sender_id,
-                            "✓ 已訂閱 / Already subscribed\n\n"
-                            "🌐 https://taiwan-art-now.onrender.com/\n\n"
-                            "━━━━━━━━━━\n"
-                            "取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
+                            "✓ 已訂閱\n\n"
+                            "歡迎傳送展覽資訊或詢問附近展覽 📌📍\n\n"
+                            "━━━━━\n"
+                            "取消: 輸入「取消」")
                     continue
 
             message = event.get("message", {})
