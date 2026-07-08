@@ -297,6 +297,18 @@
     </a>
     {% endif %}
 
+    <div id="pwaDetailCTA" style="display:none;margin-top:16px;padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--tag-bg);font-size:0.75rem;color:var(--text-sub);cursor:pointer;" onclick="if(typeof showPWAInstall==='function')showPWAInstall();else{alert('{% if current_lang == 'zh' %}請點選分享按鈕 → 加入主畫面{% elif current_lang == 'ja' %}共有ボタン → ホーム画面に追加{% else %}Tap Share → Add to Home Screen{% endif %}');}">
+      📲 {% if current_lang == 'zh' %}加入主畫面，隨時查看展覽資訊{% elif current_lang == 'ja' %}ホーム画面に追加して、いつでも展示情報を確認{% else %}Add to Home Screen for quick access{% endif %}
+    </div>
+    <script>
+    (function(){
+      if (!window.matchMedia('(display-mode: standalone)').matches && !localStorage.getItem('taiwan_art_pwa_dismissed')) {
+        var el = document.getElementById('pwaDetailCTA');
+        if (el) el.style.display = 'block';
+      }
+    })();
+    </script>
+
     <a class="report-link" href="#" onclick="openReport(event)" style="display:block;font-size:0.75rem;color:var(--text-light);margin-top:16px;padding-top:12px;border-top:1px solid var(--border);text-decoration:none;">
       ⚠️ {% if current_lang == 'zh' %}資訊有誤？點此回報{% elif current_lang == 'ja' %}情報に間違いがありますか？{% else %}Report incorrect information{% endif %}
     </a>
