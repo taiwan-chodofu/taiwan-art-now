@@ -1102,79 +1102,108 @@ def og_image_exhibition(museum_id, idx):
     museum_info = next((m for m in master["museums"] if m["id"] == museum_id), None)
     museum_name = museum_info["name"].get("zh", museum_id) if museum_info else museum_id
 
-    title = ex.get("title_zh", "") or ex.get("title_en", "")
+    title_zh = ex.get("title_zh", "") or ex.get("title_en", "")
+    title_en = ex.get("title_en", "")
     dates = ex.get("dates", "")
     artists = ex.get("artists", [])
     artist_str = " · ".join(artists[:3])
     if len(artists) > 3:
         artist_str += f" +{len(artists)-3}"
 
-    # Generate image
-    width, height = 1200, 630
-    img = Image.new("RGB", (width, height), "#111111")
-    draw = ImageDraw.Draw(img)
-
     import os
     import hashlib
     import random as rnd
 
-    font_path = None
-    for fp in ["C:/Windows/Fonts/segoeuil.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Light.ttf"]:
-        if os.path.exists(fp):
-            font_path = fp
-            break
+    width, height = 1200, 630
+
+    # CJK対応フォント（バンドル済みNoto Sans TC、繁体中文をそのまま表示するため必須）
+    font_dir = os.path.join(os.path.dirname(__file__), "static", "fonts")
+    bold_path = os.path.join(font_dir, "NotoSansTC-Bold.otf")
+    regular_path = os.path.join(font_dir, "NotoSansTC-Regular.otf")
 
     try:
-        title_font = ImageFont.truetype(font_path, 42) if font_path else ImageFont.load_default()
-        sub_font = ImageFont.truetype(font_path, 24) if font_path else ImageFont.load_default()
-        small_font = ImageFont.truetype(font_path, 18) if font_path else ImageFont.load_default()
+        title_font = ImageFont.truetype(bold_path, 56)
+        sub_font = ImageFont.truetype(regular_path, 26)
+        small_font = ImageFont.truetype(regular_path, 20)
+        brand_font = ImageFont.truetype(bold_path, 22)
     except Exception:
         title_font = ImageFont.load_default()
         sub_font = ImageFont.load_default()
         small_font = ImageFont.load_default()
+        brand_font = ImageFont.load_default()
 
-    # Category colors for background
-    cat_colors = {"public": "#1a1a2e", "commercial": "#1a2e1a", "alternative": "#2e1a2e"}
-    line_colors = {"public": "#0f3460", "commercial": "#0f6034", "alternative": "#600f5a"}
+    # カテゴリごとの配色（怪可愛系：濃色ベース＋差し色）
+    cat_palettes = {
+        "public": {"bg": "#161a2e", "accent": "#7dd3fc", "line": "#2a3560"},
+        "commercial": {"bg": "#1a2620", "accent": "#86efac", "line": "#2d4a38"},
+        "alternative": {"bg": "#26182e", "accent": "#f0abfc", "line": "#4a2a56"},
+        "private": {"bg": "#2e1f16", "accent": "#fdba74", "line": "#5a3a28"},
+    }
     museum_cat = "public"
     for m in master.get("museums", []):
         if m["id"] == museum_id:
             museum_cat = m.get("category", "public")
             break
-    bg_color = cat_colors.get(museum_cat, "#1a1a2e")
-    ln_color = line_colors.get(museum_cat, "#0f3460")
+    palette = cat_palettes.get(museum_cat, cat_palettes["public"])
+    bg_color = palette["bg"]
+    accent = palette["accent"]
+    ln_color = palette["line"]
 
-    # Fill background
     img = Image.new("RGB", (width, height), bg_color)
     draw = ImageDraw.Draw(img)
 
-    # Generative pattern from title
-    seed = int(hashlib.md5(title.encode()).hexdigest()[:8], 16)
+    # タイトルからシードを作り、毎回同じ展示なら同じ模様になるようにする
+    seed = int(hashlib.md5(title_zh.encode()).hexdigest()[:8], 16)
     rnd.seed(seed)
-    for i in range(12):
+    for i in range(10):
         x, y = rnd.randint(0, width), rnd.randint(0, height)
-        r = rnd.randint(30, 130)
-        draw.ellipse([x-r, y-r, x+r, y+r], outline=ln_color, width=1)
-    for i in range(6):
-        pts = [(rnd.randint(0, width), rnd.randint(0, height)) for _ in range(8)]
-        draw.line(pts, fill=ln_color, width=1)
-    for i in range(40):
+        r = rnd.randint(40, 160)
+        draw.ellipse([x - r, y - r, x + r, y + r], outline=ln_color, width=2)
+    for i in range(50):
         x, y = rnd.randint(0, width), rnd.randint(0, height)
-        draw.ellipse([x-2, y-2, x+2, y+2], fill="#cccccc")
+        s = rnd.randint(2, 5)
+        draw.ellipse([x - s, y - s, x + s, y + s], fill=accent)
 
-    # Text (English/ASCII only for Linux compatibility)
-    title_en = ex.get("title_en", "") or title
-    draw.text((62, 352), title_en[:35], fill="#000000", font=title_font)
-    draw.text((60, 350), title_en[:35], fill="#ffffff", font=title_font)
-    if len(title_en) > 35:
-        draw.text((62, 402), title_en[35:70], fill="#000000", font=sub_font)
-        draw.text((60, 400), title_en[35:70], fill="#ffffff", font=sub_font)
-    draw.text((60, 460), museum_name if museum_name.isascii() else museum_id, fill="#aaaaaa", font=sub_font)
-    draw.text((60, 500), dates, fill="#888888", font=small_font)
+    # 左上にアクセントバー
+    draw.rectangle([(0, 0), (10, height)], fill=accent)
+
+    # タイトル（繁体中文）を折り返して表示。1行あたり最大14文字目安
+    def wrap_cjk(text, max_chars):
+        lines = []
+        cur = ""
+        for ch in text:
+            cur += ch
+            if len(cur) >= max_chars:
+                lines.append(cur)
+                cur = ""
+        if cur:
+            lines.append(cur)
+        return lines[:3]
+
+    title_lines = wrap_cjk(title_zh, 12)
+    # 行数が多いほど開始位置を上げ、下の情報とぶつからないようにする
+    ty = 240 - (len(title_lines) - 1) * 40
+    for line in title_lines:
+        draw.text((64, ty), line, fill="#000000", font=title_font)
+        draw.text((60, ty - 4), line, fill="#ffffff", font=title_font)
+        ty += 72
+
+    # 英題（あれば小さく添える）
+    if title_en and title_en != title_zh:
+        draw.text((60, ty + 6), title_en[:60], fill=accent, font=sub_font)
+        ty += 40
+
+    info_y = ty + 40
+    draw.text((60, info_y), museum_name, fill="#dddddd", font=sub_font)
+    info_y += 34
+    if dates:
+        draw.text((60, info_y), dates, fill="#999999", font=small_font)
+        info_y += 30
     if artist_str:
-        draw.text((60, 530), artist_str[:50], fill="#888888", font=small_font)
-    draw.rectangle([(60, 570), (300, 572)], fill="#ffffff")
-    draw.text((60, 580), "Taiwan Art Now", fill="#555555", font=small_font)
+        draw.text((60, info_y), artist_str[:50], fill="#999999", font=small_font)
+
+    # ブランドフッター
+    draw.text((60, height - 60), "Taiwan Art Now", fill=accent, font=brand_font)
 
     buf = BytesIO()
     img.save(buf, format="PNG")
