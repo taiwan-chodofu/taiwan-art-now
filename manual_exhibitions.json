@@ -38,15 +38,6 @@
       ]
     },
     {
-      "museum": "sinpin",
-      "title_en": "FLOW: Dialogue Between Art and Ocean — Kuo Chia-Hsiu & Chao Shu-Chiao Group Exhibition",
-      "title_zh": "FLOW：心流—藝術與海洋的對話 — 郭家秀、趙書巧聯展",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/08",
-      "location": "新浜碼頭藝術空間",
-      "link": "https://www.facebook.com/sinpinpier"
-    },
-    {
       "museum": "daxin",
       "title_en": "Between Fragments, Still a Universe",
       "title_zh": "碎片之間 仍是宇宙",
@@ -2545,6 +2536,77 @@
           "title_zh": "開幕（藝術家出席）",
           "title_en": "Opening (Artist present)",
           "title_ja": "オープニング（アーティスト来場）",
+          "type": "opening"
+        }
+      ]
+    },
+    {
+      "museum": "tkgplus",
+      "title_zh": "緩慢的電影配樂",
+      "title_en": "Slow Motion Picture Soundtrack",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.08.29",
+      "location": "TKG+",
+      "link": "https://www.tkgplus.com/exhibitions/149/",
+      "artists": [
+        "李傑"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "16:30",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ]
+    },
+    {
+      "museum": "artemin",
+      "title_zh": "Small Flame",
+      "title_en": "Small Flame",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.08.15",
+      "location": "Artemin Gallery",
+      "link": "https://www.artemingallery.com/portfolio-item/small-flame-chn/",
+      "artists": [
+        "Donghoon Rhee"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ]
+    },
+    {
+      "museum": "852art",
+      "title_zh": "踩在邊邊看到遠方的東東",
+      "title_en": "Standing at the Edge, Seeing What's Far Away",
+      "title_ja": "",
+      "dates": "2026.07.15 – 2026.08.06",
+      "location": "852藝術空間",
+      "link": "https://www.facebook.com/profile.php?id=61574023807656",
+      "artists": [
+        "陳喬恩",
+        "蕭灑",
+        "游子慶"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/19",
+          "time": "14:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
           "type": "opening"
         }
       ]
