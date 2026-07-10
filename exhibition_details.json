@@ -97,10 +97,25 @@
   },
   "https://www.alien.com.tw/u/zh-tw/list/exhibitions#crossing": {
     "artists": [
-      "伍韶勁",
-      "張慧婷"
+      "首頁",
+      "金馬賓館當代美術館",
+      "ALIEN Art Centre",
+      "804 高雄市鼓山區鼓山一路111號",
+      "T：",
+      "+886-7-972 1685",
+      "F：",
+      "+886-7-521 1292",
+      "E：",
+      "info@alien.com.tw",
+      "永添藝術台北辦事處",
+      "110 台灣台北市信義區松仁路100號34F",
+      "T：",
+      "+886-2-8729 5822",
+      "F："
     ],
-    "fetched_at": "2026-06-25"
+    "curator": "",
+    "description": "空間之形，時間之韻，點陣鳴響，化入永恆。《吟遊時空》重新召喚「抽象」在東亞語境中的精神核心，由華人幾何抽象藝術的開啟者 霍剛（Ho Kan）及韓國當代抽象藝術家 權純益（Soonik Kwon）共同揭開，在霍剛以明亮色面與幾何構成的「秩序」，與權純益藉筆觸與肌理，將氣的概念具現於畫布之上的「流動」，邀請觀者打開觀看的多重視角，從「抽象」的形式語言中，探往兩位藝術家游於藝的內在修煉 – 自由與超越之道。",
+    "fetched_at": "2026-07-10T18:05:50.934875"
   },
   "https://yiriarts.com.tw/exhibitions/current/#huang": {
     "artists": [
@@ -2458,5 +2473,37 @@
     "description_en": "Withering is not the end; rather, time has folded the entirety of the flower's life into the creases of its petals.",
     "description_ja": "萎れることは終わりではなく、時間が花の生涯すべてをその花弁の皺の中に「折り込んだ」のだ。",
     "fetched_at": "2026-07-08T21:47:50.037924+08:00"
+  },
+  "https://www.tkgplus.com/exhibitions/149/": {
+    "artists": [
+      "李傑"
+    ],
+    "curator": "",
+    "description": "2026年仲夏來臨之際，TKG+將推出藝術家李傑的全新個展《緩慢的電影配樂》。延續以往對日常細微情感的探索，李傑此次將視角轉向「社交」這座精巧的劇場，聚焦於那些滯留在日常互動中、無法被妥善消化的情緒感受。那些未曾說出口的話語、停留過久的沉默，以及反覆浮現的內疚與委屈，並未隨時間消逝，而是轉化為幾乎聽不見的心理噪音——像一段緩慢的、沒有明確來源的配樂，在意識深處若有似無地循環播放，漸漸成為現代人壓抑的情緒堆積。\n\n展覽透過投影、音樂與繪畫構築出一處半開放的私密場域。李傑將揀選出的一幀幀影像投射於現成物與空間表面，讓光影在物件表面游移、錯落。當觀者穿梭其間，於是被帶入一種極度私密、卻又略顯侷促與不安的觀看體驗。",
+    "description_en": "As midsummer 2026 arrives, TKG+ presents artist Lee Kit's new solo exhibition \"Slow Motion Picture Soundtrack.\" Continuing his exploration of subtle everyday emotions, Lee turns his focus to the delicate theater of \"social interaction,\" concentrating on feelings that linger in daily exchanges, unable to be properly processed. Unspoken words, prolonged silences, and recurring guilt and grievance do not fade with time but transform into nearly inaudible psychological noise—like a slow soundtrack with no clear source, looping faintly in the depths of consciousness.",
+    "description_ja": "2026年の盛夏を迎え、TKG+はアーティスト李傑の新作個展《緩慢的電影配樂》を発表。日常の微細な感情の探求を継続し、今回は「社交」という精巧な劇場に視点を転じ、日常のやり取りに滞留し十分に消化されない感情に焦点を当てる。語られなかった言葉、長すぎる沈黙、繰り返し浮かぶ罪悪感と不満は時間とともに消えず、ほとんど聞こえない心理的ノイズへと変化する——出所の定まらない緩やかなサウンドトラックのように、意識の深部で漂うように循環する。",
+    "fetched_at": "2026-07-10T18:05:17.358330+08:00"
+  },
+  "https://www.artemingallery.com/portfolio-item/small-flame-chn/": {
+    "artists": [
+      "Donghoon Rhee"
+    ],
+    "curator": "",
+    "description": "Small Flame 是 Donghoon Rhee 首次在台灣舉辦的個展,以此紀念 TWICE 於 2025 年在高雄舉行的台灣首場專場演唱會。這場演唱會所承載的文化與政治意義,遠遠超越了舞台本身。\n\n展覽名稱源自子瑜在演唱會上朗讀的一封信：「從那一刻開始,一道小小希望的火苗在我心裡點燃」。Rhee 長期關注 K-pop 偶像的姿態與身體存在感,以雕塑與炭筆素描為媒介,將展覽空間轉化為一座小型神殿,紀念那場演唱會,獻給以信念等待了整整十年的 ONCE 們。",
+    "description_en": "Small Flame is Donghoon Rhee's first solo exhibition in Taiwan, commemorating TWICE's first solo concert in Kaohsiung in 2025. The exhibition title comes from a letter Tzuyu read at the concert: \"From that moment, a small flame of hope was lit in my heart.\" Rhee, who focuses on the presence and embodiment of K-pop idols, transforms the gallery into a small shrine using sculpture and charcoal drawing, dedicated to the fans (ONCE) who waited ten years with unwavering belief.",
+    "description_ja": "Small FlameはDonghoon Rheeが台湾で開く初の個展。TWICEが2025年に高雄で行った台湾初の単独コンサートを記念する。展覧会名は子瑜がコンサートで読んだ手紙「その瞬間から、小さな希望の火が私の心に灯った」に由来。Rheeは彫刻と木炭デッサンを媒介に、ギャラリー空間を小さな神殿に変え、十年間信念を持って待ち続けたファン（ONCE）に捧げる。",
+    "fetched_at": "2026-07-10T18:05:17.358330+08:00"
+  },
+  "https://www.facebook.com/profile.php?id=61574023807656": {
+    "artists": [
+      "陳喬恩",
+      "蕭灑",
+      "游子慶"
+    ],
+    "curator": "",
+    "description": "邊界經常被理解為一條分隔彼此的線，它區分著內外、遠近、已知與未知。然而，對我們而言，邊界更像是一個觀看開始改變的位置。站在這裡，人既沒有完全停留在原本的一側，也尚未抵達另一側，而是在介於之間的狀態裡，看見原本不容易察覺的事物。\n\n這次展覽從「邊界」開始討論，卻沒有走向相同的答案。三位藝術家各自帶著不同的生命經驗與觀看方式，回應這個看似相同的問題。有人在信仰與理性之間，透過等待神明的回應重新凝視人的選擇；有人從生活中不斷出現的牆壁與隔板出發，看見邊界如何滲透日常、改變人與人之間的距離；也有人停留於那些尚未被命名的感受之中，在靠近與未抵達之間，尋找感知發生的可能。",
+    "description_en": "Boundaries are often understood as lines that separate—inside from outside, near from far, known from unknown. Yet for us, a boundary feels more like a position where seeing begins to shift. Standing here, one is neither fully on the original side nor yet arrived at the other, but in an in-between state where things not easily perceived become visible.\n\nThis exhibition begins with a discussion of \"boundaries\" but does not arrive at a single answer. Three artists, each carrying different life experiences and ways of seeing, respond to this seemingly shared question.",
+    "description_ja": "境界はしばしば内と外、遠と近、既知と未知を分ける線として理解される。しかし私たちにとって境界とは、見ることが変化し始める位置のようなものだ。ここに立つ人は元の側に完全に留まってもおらず、まだ別の側に到達してもいない、その間の状態にある。\n\n本展は「境界」から議論を始めるが、同じ答えには向かわない。三人の作家がそれぞれ異なる生命経験と視点を持って、同じように見える問いに応える。",
+    "fetched_at": "2026-07-10T18:05:17.358330+08:00"
   }
 }

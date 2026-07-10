@@ -787,34 +787,6 @@
       ]
     },
     {
-      "id": "sinpin",
-      "category": "alternative",
-      "region": "kaohsiung",
-      "name": {
-        "en": "Sin Pin Pier – Absolutely Art Space",
-        "ja": "新浜碼頭芸術空間",
-        "zh": "新浜碼頭藝術空間"
-      },
-      "address": {
-        "en": "2F, No.64, Dayong Rd., Kaohsiung",
-        "ja": "高雄市鹽埕區大勇路64號2F",
-        "zh": "高雄市鹽埕區大勇路64號2F"
-      },
-      "url": "https://www.facebook.com/sinpinpier",
-      "hours": {
-        "en": "Tue–Sun 11:00–19:00 | Closed Mon",
-        "ja": "火〜日 11:00–19:00｜月休",
-        "zh": "週二至週日 11:00–19:00｜週一休"
-      },
-      "closed_day": 0,
-      "scraper": null,
-      "lat": 22.626834,
-      "lng": 120.285729,
-      "closed_days": [
-        0
-      ]
-    },
-    {
       "id": "tav",
       "category": "alternative",
       "region": "taipei",
@@ -2918,11 +2890,11 @@
         "ja": "高雄市鹽埕區大仁路146號",
         "zh": "高雄市鹽埕區大仁路146號"
       },
-      "url": "https://artemperor.tw/tidbits/20134",
+      "url": "https://www.facebook.com/sinpinpier",
       "hours": {
-        "en": "Wed-Sun (Closed Mon-Tue)",
-        "ja": "水〜日（月火休）",
-        "zh": "週三至週日（週一二公休）"
+        "en": "Wed-Sun 12:00-19:00 (Closed Mon-Tue)",
+        "ja": "水〜日 12:00-19:00（月火休）",
+        "zh": "週三至週日 12:00-19:00（週一二公休）"
       },
       "closed_days": [
         0,
