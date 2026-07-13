@@ -104,7 +104,7 @@
   <header class="site-header">
     <a href="/?lang={{ current_lang }}" class="site-title" style="text-decoration:none;color:inherit;">
       Taiwan Art Now
-      <small>{{ labels.subtitle }}</small>
+      <small>{{ labels.subtitle }}{% if last_updated %} · {% if current_lang == 'zh' %}更新於 {{ last_updated }}{% elif current_lang == 'ja' %}{{ last_updated }} 更新{% else %}updated {{ last_updated }}{% endif %}{% endif %}</small>
     </a>
     <nav class="header-nav">
       <div class="lang-dropdown">
