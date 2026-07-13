@@ -2664,6 +2664,19 @@
           "type": "opening"
         }
       ]
+    },
+    {
+      "museum": "tnnua",
+      "title_zh": "無盡之圖",
+      "title_en": "Reincarnation",
+      "title_ja": "",
+      "dates": "2026.06.29 – 2026.07.17",
+      "location": "國立臺南藝術大學 視覺館一樓大廳",
+      "link": "https://www.instagram.com/p/DaIjzXzJYRf/",
+      "artists": [
+        "鄭以安"
+      ],
+      "curator": ""
     }
   ]
 }

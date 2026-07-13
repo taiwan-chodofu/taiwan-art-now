@@ -2969,6 +2969,28 @@
         0,
         1
       ]
+    },
+    {
+      "id": "tnnua",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Tainan National University of the Arts — Visual Arts Building",
+        "ja": "国立台南藝術大学 視覚館",
+        "zh": "國立臺南藝術大學 視覺館"
+      },
+      "address": {
+        "en": "No. 66, Daqi Village, Guantian Dist., Tainan",
+        "ja": "臺南市官田區大崎里66號",
+        "zh": "臺南市官田區大崎里66號"
+      },
+      "url": "https://www.tnnua.edu.tw",
+      "hours": {
+        "en": "Open all hours (natural light lobby)",
+        "ja": "終日開放（自然光ロビー）",
+        "zh": "全時段開放（採自然光）"
+      },
+      "closed_days": []
     }
   ]
 }
