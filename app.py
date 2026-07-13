@@ -446,6 +446,7 @@ def index():
                 museum_name_to_id[n] = m["id"]
 
     holiday_today = _get_holiday_today()
+    last_updated = _get_last_updated()
 
     return render_template(
         "index.html",
@@ -457,6 +458,7 @@ def index():
         region_names_json=json.dumps(region_names, ensure_ascii=False),
         museum_name_to_id_json=json.dumps(museum_name_to_id, ensure_ascii=False),
         holiday_today=holiday_today,
+        last_updated=last_updated,
     )
 
 
@@ -482,6 +484,28 @@ def _get_holiday_today():
     tw_tz = timezone(timedelta(hours=8))
     today_str = datetime.now(tw_tz).strftime("%Y-%m-%d")
     return TAIWAN_HOLIDAYS_2026.get(today_str)
+
+
+def _get_last_updated():
+    """全展示のfetched_atのうち最新の日付を返す（サイトの最終更新表示用）。"""
+    from datetime import datetime, timezone, timedelta
+    details_path = os.path.join(os.path.dirname(__file__), "exhibition_details.json")
+    try:
+        with open(details_path, "r", encoding="utf-8") as f:
+            details = json.load(f)
+    except Exception:
+        return None
+    dates = [v.get("fetched_at") for v in details.values() if v.get("fetched_at")]
+    if not dates:
+        return None
+    latest = max(dates)
+    try:
+        dt = datetime.fromisoformat(latest)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone(timedelta(hours=8)))
+        return dt.astimezone(timezone(timedelta(hours=8))).strftime("%Y.%m.%d")
+    except Exception:
+        return None
 
 
 def _is_closed_today(closed_day, closed_days=None):
