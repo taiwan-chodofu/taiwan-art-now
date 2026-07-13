@@ -2610,6 +2610,36 @@
           "type": "opening"
         }
       ]
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "2026信樂吹來的風展 台灣X日本藝術交流展",
+      "title_en": "2026 Shigaraki Wind Exhibition — Taiwan x Japan Art Exchange",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.07.22",
+      "location": "國立中正紀念堂 三樓 4展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60969",
+      "artists": [
+        "陳俞叡",
+        "酒井清",
+        "等近50位台日創作者"
+      ],
+      "curator": ""
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "未來視界─三種觀看的實驗",
+      "title_en": "Future Vision — Three Experiments in Seeing",
+      "title_ja": "",
+      "dates": "2026.07.25 – 2026.08.05",
+      "location": "國立中正紀念堂 4展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60970",
+      "artists": [
+        "陳柏宇",
+        "方信凱",
+        "魏子喻"
+      ],
+      "curator": "陳柏宇、方信凱、魏子喻"
     }
   ]
 }
