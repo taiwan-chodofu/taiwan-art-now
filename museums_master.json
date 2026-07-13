@@ -2944,6 +2944,31 @@
         "zh": "09:00-18:00"
       },
       "closed_days": []
+    },
+    {
+      "id": "guanglongxing",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Guang Long Xing",
+        "ja": "光隆行",
+        "zh": "光隆行"
+      },
+      "address": {
+        "en": "Hamasen, Kaohsiung",
+        "ja": "高雄市哈瑪星",
+        "zh": "高雄市哈瑪星"
+      },
+      "url": "https://www.facebook.com/p/光隆行Hamasen-61583270716729/",
+      "hours": {
+        "en": "13:00-19:00 (Closed Mon-Tue)",
+        "ja": "13:00-19:00（月火休）",
+        "zh": "13:00-19:00（週一二公休）"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
     }
   ]
 }

@@ -2640,6 +2640,30 @@
         "魏子喻"
       ],
       "curator": "陳柏宇、方信凱、魏子喻"
+    },
+    {
+      "museum": "guanglongxing",
+      "title_zh": "Daydreaming 白日夢中",
+      "title_en": "Daydreaming — Euro-Asian Disability Arts Touring Exhibition",
+      "title_ja": "",
+      "dates": "2026.06.20 – 2026.08.30",
+      "location": "光隆行",
+      "link": "https://www.facebook.com/photo.php?fbid=1933563061186547&set=pb.100035986165776.-2207520000&type=3",
+      "artists": [
+        "Palmer Nuyttens",
+        "等歐亞多國藝術家"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/06/20",
+          "time": "14:00",
+          "title_zh": "開幕活動 藝術家座談與特別節目",
+          "title_en": "Opening: Artist Talk & Special Program",
+          "title_ja": "オープニング：アーティストトーク",
+          "type": "opening"
+        }
+      ]
     }
   ]
 }
