@@ -2991,6 +2991,50 @@
         "zh": "全時段開放（採自然光）"
       },
       "closed_days": []
+    },
+    {
+      "id": "grassland",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Grassland",
+        "ja": "雑草町",
+        "zh": "雜草町"
+      },
+      "address": {
+        "en": "No. 52, Sec. 3, Yanping N. Rd., Datong Dist., Taipei",
+        "ja": "台北市大同區延平北路三段52號",
+        "zh": "臺北市大同區延平北路三段52號"
+      },
+      "url": "https://www.instagram.com/grassland_tw/",
+      "hours": {
+        "en": "Hours vary by event/booking",
+        "ja": "イベント・予約により変動",
+        "zh": "依活動場次而定"
+      },
+      "closed_days": []
+    },
+    {
+      "id": "openwide",
+      "category": "alternative",
+      "region": "new_taipei",
+      "name": {
+        "en": "Open Wide",
+        "ja": "掀牆",
+        "zh": "掀牆"
+      },
+      "address": {
+        "en": "2F, No. 55, Zhongxing N. St., Sanchong Dist., New Taipei",
+        "ja": "新北市三重區中興北街55號2樓",
+        "zh": "新北市三重區中興里中興北街55號2樓"
+      },
+      "url": "",
+      "hours": {
+        "en": "Hours vary by event/booking",
+        "ja": "イベント・予約により変動",
+        "zh": "依活動場次而定"
+      },
+      "closed_days": []
     }
   ]
 }
