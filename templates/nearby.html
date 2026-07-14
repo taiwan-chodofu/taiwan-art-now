@@ -133,8 +133,8 @@
       {% else %}You're in an in-app browser. ♡/☑ saves won't persist.
       {% endif %}
     </span>
-    <button onclick="tryOpenInBrowser()" style="border:1px solid #822727;background:none;border-radius:12px;font-size:0.68rem;font-weight:600;cursor:pointer;padding:4px 10px;color:#822727;flex-shrink:0;white-space:nowrap;">
-      {% if current_lang == 'zh' %}用瀏覽器開啟{% elif current_lang == 'ja' %}ブラウザで開く{% else %}Open in Browser{% endif %}
+    <button id="inAppBrowserActionBtn" onclick="tryOpenInBrowser()" style="border:1px solid #822727;background:none;border-radius:12px;font-size:0.68rem;font-weight:600;cursor:pointer;padding:4px 10px;color:#822727;flex-shrink:0;white-space:nowrap;">
+      {% if current_lang == 'zh' %}複製網址{% elif current_lang == 'ja' %}URLをコピー{% else %}Copy Link{% endif %}
     </button>
     <button onclick="document.getElementById('inAppBrowserBanner').style.display='none'" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#822727;flex-shrink:0;">✕</button>
   </div>
@@ -142,6 +142,12 @@
     {% if current_lang == 'zh' %}無法自動開啟，請點右上角「⋯」選擇「在瀏覽器中開啟」。
     {% elif current_lang == 'ja' %}自動で開けませんでした。右上の「…」から「ブラウザで開く」を選んでください。
     {% else %}Couldn't open automatically. Tap "⋯" (top right) and choose "Open in Browser."
+    {% endif %}
+  </div>
+  <div id="inAppBrowserCopied" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#f0fdf4;border-bottom:1px solid #86efac;font-size:0.7rem;color:#166534;">
+    {% if current_lang == 'zh' %}✓ 網址已複製！請貼到瀏覽器（Safari／Chrome）打開。
+    {% elif current_lang == 'ja' %}✓ URLをコピーしました！ブラウザ（SafariやChrome）に貼り付けて開いてください。
+    {% else %}✓ Link copied! Paste it into your browser (Safari/Chrome) to open.
     {% endif %}
   </div>
   <script>
@@ -155,22 +161,38 @@
     if (banner) banner.style.display = 'flex';
     if (typeof gtag === 'function') gtag('event', 'inapp_browser_detected', {});
 
+    function copyLink() {
+      var url = window.location.href;
+      var copied = document.getElementById('inAppBrowserCopied');
+      function showCopied() { if (copied) copied.style.display = 'block'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(showCopied, showCopied);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        showCopied();
+      }
+    }
+
     window.tryOpenInBrowser = function() {
       if (typeof gtag === 'function') gtag('event', 'inapp_browser_escape_attempt', {});
       var url = window.location.href;
       var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       if (isIOS) {
-        window.location.href = url.replace(/^https:\/\//, 'x-safari-https://');
-      } else {
-        var intentUrl = 'intent://' + url.replace(/^https?:\/\//, '') +
-          '#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=' +
-          encodeURIComponent(url) + ';end';
-        window.location.href = intentUrl;
+        copyLink();
+        return;
       }
-      setTimeout(function() {
-        var fb = document.getElementById('inAppBrowserFallback');
-        if (fb) fb.style.display = 'block';
-      }, 800);
+      var intentUrl = 'intent://' + url.replace(/^https?:\/\//, '') +
+        '#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+        encodeURIComponent(url) + ';end';
+      window.location.href = intentUrl;
+      setTimeout(copyLink, 800);
     };
   })();
   </script>
