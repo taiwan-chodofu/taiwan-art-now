@@ -2754,6 +2754,38 @@
         "袁廣鳴"
       ],
       "curator": "李曉婷"
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "地獄懺",
+      "title_en": "Hell Realm",
+      "title_ja": "",
+      "dates": "2026.06.06 – 2026.09.27",
+      "location": "國立臺灣美術館 U-108 SPACE",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60103",
+      "artists": [
+        "姚瑞中",
+        "海闊拉帝"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/06/06",
+          "time": "14:30",
+          "title_zh": "開幕演出（姚瑞中 × 陳伯瑜）",
+          "title_en": "Opening Performance (Yao Jui-Chung x Chen Po-Yu)",
+          "title_ja": "オープニング公演",
+          "type": "performance"
+        },
+        {
+          "date": "2026/09/26",
+          "time": "",
+          "title_zh": "閉幕演出（姚瑞中 × Mong Tong）",
+          "title_en": "Closing Performance (Yao Jui-Chung x Mong Tong)",
+          "title_ja": "クロージング公演",
+          "type": "performance"
+        }
+      ]
     }
   ]
 }
