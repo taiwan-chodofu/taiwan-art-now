@@ -3035,6 +3035,59 @@
         "zh": "依活動場次而定"
       },
       "closed_days": []
+    },
+    {
+      "id": "slyartspace",
+      "category": "alternative",
+      "region": "taoyuan",
+      "name": {
+        "en": "Shin Leh Yuan Art Space",
+        "ja": "新樂園藝術空間",
+        "zh": "新樂園藝術空間"
+      },
+      "address": {
+        "en": "1F, No. 18, Ln. 102, Zhongzheng Rd., Taoyuan Dist., Taoyuan City",
+        "ja": "桃園市桃園區中正路102巷18號1樓",
+        "zh": "桃園市桃園區中正路102巷18號1樓"
+      },
+      "url": "https://www.instagram.com/slyartspace/",
+      "hours": {
+        "en": "Wed-Sun 12:00-19:00",
+        "ja": "水〜日 12:00-19:00",
+        "zh": "週三至週日 12:00-19:00"
+      },
+      "closed_days": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "xirong23",
+      "category": "alternative",
+      "region": "chiayi",
+      "name": {
+        "en": "Xirong 23 Art",
+        "ja": "西榮23藝術",
+        "zh": "西榮23藝術"
+      },
+      "address": {
+        "en": "No. 23, Xirong St., West Dist., Chiayi City",
+        "ja": "嘉義市西區西榮街23號",
+        "zh": "嘉義市西區西榮街23號"
+      },
+      "url": "https://xirongart23.wixsite.com/website",
+      "hours": {
+        "en": "Sat-Sun 10:00-18:00 (other days by appointment via Facebook)",
+        "ja": "土日 10:00-18:00（他は要予約）",
+        "zh": "週六日 10:00-18:00（其他日期請私訊粉專預約）"
+      },
+      "closed_days": [
+        1,
+        2,
+        3,
+        4,
+        0
+      ]
     }
   ]
 }
