@@ -798,6 +798,9 @@
           {% if museum.hours %}{{ museum.hours }}{% endif %}
           {% if museum.hours and museum.address %} · {% endif %}
           {% if museum.address %}{{ museum.address }}{% endif %}
+          {% if museum.hours_uncertain and (museum.has_current or museum.has_upcoming) %}
+          <div style="color:#b91c1c;margin-top:2px;">⚠️ {% if current_lang == 'zh' %}營業時間未確認，請於出發前查詢官方頁面{% elif current_lang == 'ja' %}営業時間は未確認です。訪問前に公式ページをご確認ください{% else %}Hours unconfirmed — please check the official page before visiting{% endif %}</div>
+          {% endif %}
         </div>
         {% elif not museum.has_schedule %}
         <div class="mc-meta">
