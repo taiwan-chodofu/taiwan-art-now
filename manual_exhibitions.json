@@ -2999,6 +2999,80 @@
           "note_zh": "2026萬物生長#舞蹈單元｜預先報名250元、現場報名300元"
         }
       ]
+    },
+    {
+      "museum": "slyartspace",
+      "title_zh": "＃游離悠立 U r i U r i",
+      "title_en": "U r i U r i",
+      "title_ja": "",
+      "dates": "2026.07.12 – 2026.07.31",
+      "location": "新樂園藝術空間",
+      "link": "https://www.instagram.com/p/DarRhsiIGwC/",
+      "artists": [
+        "林琦潔",
+        "林湘庭",
+        "梁振朗"
+      ],
+      "curator": "張凱博",
+      "events": [
+        {
+          "date": "2026/07/19",
+          "time": "15:00",
+          "title_zh": "座談（與談人：黃海鳴、李依樺）",
+          "title_en": "Talk (Guests: Huang Hai-Ming, Li Yi-Hua)",
+          "title_ja": "座談",
+          "type": "talk"
+        },
+        {
+          "date": "2026/07/22",
+          "time": "15:00",
+          "title_zh": "講座（講者：陳梓聰，852藝術空間負責人）",
+          "title_en": "Lecture by Chen Tzu-Tsung (852 Art Space)",
+          "title_ja": "講座",
+          "type": "talk"
+        }
+      ]
+    },
+    {
+      "museum": "xirong23",
+      "title_zh": "生如夏花．觀自然三維度",
+      "title_en": "Life Like Summer Flowers: Three Dimensions of Observing Nature",
+      "title_ja": "",
+      "dates": "2026.07.04 – 2026.08.30",
+      "location": "西榮23藝術空間",
+      "link": "https://www.facebook.com/XirongArt23/posts/1025916476639955/",
+      "artists": [
+        "吳筱瑩",
+        "陳寶珠",
+        "陳慶夥"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/12",
+          "time": "14:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Tea Gathering",
+          "title_ja": "オープニング茶会",
+          "type": "opening"
+        },
+        {
+          "date": "2026/07/26",
+          "time": "14:00",
+          "title_zh": "藝術家座談（與談人：謝其昌教授）",
+          "title_en": "Artist Talk (Guest: Prof. Hsieh Chi-Chang)",
+          "title_ja": "アーティストトーク",
+          "type": "talk"
+        },
+        {
+          "date": "2026/08/16",
+          "time": "14:00",
+          "title_zh": "石膏板版畫工作坊（材料費100元）",
+          "title_en": "Plaster-board Printmaking Workshop (NT$100 material fee)",
+          "title_ja": "石版画ワークショップ",
+          "type": "workshop"
+        }
+      ]
     }
   ]
 }
