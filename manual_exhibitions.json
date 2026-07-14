@@ -2738,6 +2738,22 @@
         }
       ],
       "type": "artfestival"
+    },
+    {
+      "museum": "moca",
+      "title_zh": "境未竟",
+      "title_en": "The Unfathomable Landscape",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.09.06",
+      "location": "MOCA廣場電視牆",
+      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/境未竟",
+      "artists": [
+        "鄭子峰",
+        "羅玉梅",
+        "易連",
+        "袁廣鳴"
+      ],
+      "curator": "李曉婷"
     }
   ]
 }
