@@ -175,6 +175,56 @@
   </style>
 </head>
 <body>
+  <!-- IN-APP BROWSER WARNING BANNER (Instagram/Facebook/LINE) -->
+  <div id="inAppBrowserBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#fff5f5;border-bottom:1px solid #feb2b2;font-size:0.72rem;color:#822727;align-items:center;justify-content:space-between;gap:8px;">
+    <span style="flex:1;">⚠️
+      {% if current_lang == 'zh' %}你正在App內建瀏覽器中，♡想去／☑已看的資料不會保存下來。
+      {% elif current_lang == 'ja' %}アプリ内ブラウザで表示中です。♡行きたい／☑観たの記録は保存されません。
+      {% else %}You're in an in-app browser. ♡/☑ saves won't persist.
+      {% endif %}
+    </span>
+    <button onclick="tryOpenInBrowser()" style="border:1px solid #822727;background:none;border-radius:12px;font-size:0.68rem;font-weight:600;cursor:pointer;padding:4px 10px;color:#822727;flex-shrink:0;white-space:nowrap;">
+      {% if current_lang == 'zh' %}用瀏覽器開啟{% elif current_lang == 'ja' %}ブラウザで開く{% else %}Open in Browser{% endif %}
+    </button>
+    <button onclick="document.getElementById('inAppBrowserBanner').style.display='none'" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#822727;flex-shrink:0;">✕</button>
+  </div>
+  <div id="inAppBrowserFallback" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#fff5f5;border-bottom:1px solid #feb2b2;font-size:0.7rem;color:#822727;">
+    {% if current_lang == 'zh' %}無法自動開啟，請點右上角「⋯」選擇「在瀏覽器中開啟」。
+    {% elif current_lang == 'ja' %}自動で開けませんでした。右上の「…」から「ブラウザで開く」を選んでください。
+    {% else %}Couldn't open automatically. Tap "⋯" (top right) and choose "Open in Browser."
+    {% endif %}
+  </div>
+  <script>
+  (function() {
+    var ua = navigator.userAgent || '';
+    var isInApp = /Instagram|FB[\w_]+\//i.test(ua) || /Line\//.test(ua);
+    if (!isInApp) return;
+    if (sessionStorage.getItem('taiwan_art_inapp_banner_seen')) return;
+    sessionStorage.setItem('taiwan_art_inapp_banner_seen', '1');
+    var banner = document.getElementById('inAppBrowserBanner');
+    if (banner) banner.style.display = 'flex';
+    if (typeof gtag === 'function') gtag('event', 'inapp_browser_detected', {});
+
+    window.tryOpenInBrowser = function() {
+      if (typeof gtag === 'function') gtag('event', 'inapp_browser_escape_attempt', {});
+      var url = window.location.href;
+      var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+        window.location.href = url.replace(/^https:\/\//, 'x-safari-https://');
+      } else {
+        var intentUrl = 'intent://' + url.replace(/^https?:\/\//, '') +
+          '#Intent;scheme=https;action=android.intent.action.VIEW;S.browser_fallback_url=' +
+          encodeURIComponent(url) + ';end';
+        window.location.href = intentUrl;
+      }
+      setTimeout(function() {
+        var fb = document.getElementById('inAppBrowserFallback');
+        if (fb) fb.style.display = 'block';
+      }, 800);
+    };
+  })();
+  </script>
+
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
       <a class="back-link" href="/?lang={{ current_lang }}" style="margin-bottom:0;">←
