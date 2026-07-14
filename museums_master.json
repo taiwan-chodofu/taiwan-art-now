@@ -3008,9 +3008,9 @@
       },
       "url": "https://www.instagram.com/grassland_tw/",
       "hours": {
-        "en": "Hours vary by event/booking",
-        "ja": "イベント・予約により変動",
-        "zh": "依活動場次而定"
+        "en": "Hours vary by event/booking (approx. Thu-Sun afternoon-evening)",
+        "ja": "イベント・予約により変動（目安：木〜日 午後〜夜）",
+        "zh": "依活動場次而定（參考：約週四至週日午後至夜間）"
       },
       "closed_days": []
     },
@@ -3082,11 +3082,11 @@
         "zh": "週六日 10:00-18:00（其他日期請私訊粉專預約）"
       },
       "closed_days": [
+        0,
         1,
         2,
         3,
-        4,
-        0
+        4
       ]
     }
   ]
