@@ -362,6 +362,9 @@
       <div class="venue-info">
         {% if museum.hours %}{{ museum.hours }}<br>{% endif %}
         {% if museum.address %}{{ museum.address }}{% endif %}
+        {% if museum.hours_uncertain %}
+        <div style="color:var(--red);margin-top:4px;">⚠️ {% if current_lang == 'zh' %}營業時間未確認，請於出發前查詢官方頁面{% elif current_lang == 'ja' %}営業時間は未確認です。訪問前に公式ページをご確認ください{% else %}Hours unconfirmed — please check the official page before visiting{% endif %}</div>
+        {% endif %}
       </div>
       <div class="venue-links">
         {% if museum.address %}

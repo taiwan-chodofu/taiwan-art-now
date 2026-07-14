@@ -1523,9 +1523,9 @@
       },
       "url": "https://www.huashan1914.com",
       "hours": {
-        "en": "Daily 09:30–21:00",
-        "ja": "毎日 9:30–21:00",
-        "zh": "每日 09:30–21:00"
+        "en": "Outdoor areas open 24h; indoor venues vary by exhibition (approx. 9:30-21:00)",
+        "ja": "屋外は24時間開放、屋内は展示により異なる（目安9:30-21:00）",
+        "zh": "戶外空間24小時開放，室內展場依各展覽而定（原則9:30-21:00）"
       },
       "closed_day": null,
       "lat": 25.044609,
@@ -1548,15 +1548,16 @@
       },
       "url": "https://www.songshanculturalpark.org",
       "hours": {
-        "en": "Daily 09:00–18:00",
-        "ja": "毎日 9:00–18:00",
-        "zh": "每日 09:00–18:00"
+        "en": "Outdoor areas open 24h; individual venues vary by exhibition",
+        "ja": "屋外は24時間開放、各施設は展示により異なる",
+        "zh": "戶外空間24小時開放，各展館時間依展覽而定"
       },
       "closed_day": null,
       "scraper": null,
       "og_image": "https://www.songshanculturalpark.org/assets/images/fbshare.jpg",
       "lat": 25.043723,
-      "lng": 121.560797
+      "lng": 121.560797,
+      "closed_days": []
     },
     {
       "id": "cabcy",
@@ -1612,7 +1613,8 @@
       "scraper": null,
       "og_image": "https://static.wixstatic.com/media/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png/v1/fill/w_450,h_300,al_c/88e2c6_646e62190d6a4eb4ae1d5c4511cf113a~mv2.png",
       "lat": 25.011091,
-      "lng": 121.537193
+      "lng": 121.537193,
+      "hours_uncertain": true
     },
     {
       "id": "projectfulfill",
@@ -2261,9 +2263,9 @@
       },
       "url": "https://www.facebook.com/TaiwanReadingRoom",
       "hours": {
-        "en": "",
-        "ja": "",
-        "zh": ""
+        "en": "Wed-Sun 14:00-21:00 (Closed Mon-Tue)",
+        "ja": "水〜日 14:00-21:00（月火休）",
+        "zh": "週三至週日 14:00-21:00（週一二休館）"
       },
       "events": [
         {
@@ -2279,7 +2281,11 @@
         }
       ],
       "lat": 23.4801,
-      "lng": 120.4491
+      "lng": 120.4491,
+      "closed_days": [
+        0,
+        1
+      ]
     },
     {
       "id": "nhrm",
@@ -2350,12 +2356,13 @@
       },
       "url": "https://www.facebook.com/ffffffblank/",
       "hours": {
-        "en": "24h window gallery",
-        "ja": "24時間無人櫥窗ギャラリー",
-        "zh": "24小時無人櫥窗畫廊"
+        "en": "24 hours (viewable from outside)",
+        "ja": "24時間（外から観覧可能）",
+        "zh": "24小時開放（可從戶外觀看）"
       },
       "lat": 22.623511,
-      "lng": 120.288421
+      "lng": 120.288421,
+      "closed_days": []
     },
     {
       "id": "nwac",
@@ -2729,7 +2736,8 @@
         "ja": "予約制（IG DMまたは電話）",
         "zh": "預約制（請透過IG私信或來電預約）"
       },
-      "closed_days": []
+      "closed_days": [],
+      "hours_uncertain": true
     },
     {
       "id": "yao",
@@ -2917,11 +2925,13 @@
       },
       "url": "https://www.facebook.com/11ElevenArtGallery/",
       "hours": {
-        "en": "",
-        "ja": "",
-        "zh": ""
+        "en": "10:00-17:00 (Closed Mon)",
+        "ja": "10:00-17:00（月休）",
+        "zh": "10:00-17:00（週一休館）"
       },
-      "closed_days": []
+      "closed_days": [
+        0
+      ]
     },
     {
       "id": "cksmh",
@@ -3008,11 +3018,15 @@
       },
       "url": "https://www.instagram.com/grassland_tw/",
       "hours": {
-        "en": "Hours vary by event/booking (approx. Thu-Sun afternoon-evening)",
-        "ja": "イベント・予約により変動（目安：木〜日 午後〜夜）",
-        "zh": "依活動場次而定（參考：約週四至週日午後至夜間）"
+        "en": "Thu-Sun 15:00-21:00 (Closed Mon-Wed)",
+        "ja": "木〜日 15:00-21:00（月〜水休）",
+        "zh": "週四至週日 15:00-21:00（週一至週三休）"
       },
-      "closed_days": []
+      "closed_days": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "id": "openwide",
@@ -3030,11 +3044,12 @@
       },
       "url": "",
       "hours": {
-        "en": "Hours vary by event/booking",
-        "ja": "イベント・予約により変動",
-        "zh": "依活動場次而定"
+        "en": "Hours unconfirmed — weekdays by appointment, check official page before visiting",
+        "ja": "営業時間未確認 — 平日は予約制、訪問前に公式ページをご確認ください",
+        "zh": "營業時間未確認 — 平日採預約制，出發前請確認官方頁面"
       },
-      "closed_days": []
+      "closed_days": [],
+      "hours_uncertain": true
     },
     {
       "id": "slyartspace",
