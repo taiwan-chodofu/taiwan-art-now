@@ -1828,6 +1828,19 @@
     };
 
     window.showPWAInstall = function() {
+      var uaCheck = navigator.userAgent || '';
+      var isInAppNow = /Instagram|FB[\w_]+\//i.test(uaCheck) || /Line\//.test(uaCheck);
+      if (isInAppNow) {
+        // Can't add to home screen from inside an in-app browser at all —
+        // explain why (so the instruction feels worth following) instead
+        // of showing steps that won't work here.
+        var popup2 = document.createElement('div');
+        popup2.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
+        popup2.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>{% if current_lang == "zh" %}用瀏覽器開啟後，就能加入主畫面，也能保存♡想去的紀錄。點右上角「⋯」選擇「在瀏覽器中開啟」即可。{% elif current_lang == "ja" %}ブラウザで開くと、ホーム画面に追加できて、♡の記録も保存されます。右上の「…」から「ブラウザで開く」を選んでください。{% else %}Open in your browser to add this to your home screen and keep your ♡ saves. Tap "⋯" (top right) and choose "Open in Browser."{% endif %}</div><button onclick="this.parentElement.remove()" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
+        document.body.appendChild(popup2);
+        if (typeof gtag === 'function') gtag('event', 'pwa_prompt_shown_inapp', {});
+        return;
+      }
       if (deferredPrompt) {
         // Android: use native prompt
         deferredPrompt.prompt();
