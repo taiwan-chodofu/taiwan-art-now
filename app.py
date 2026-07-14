@@ -109,6 +109,16 @@ def _get_description(ex, lang):
     return ex.get("description", "")
 
 
+def _truncate_excerpt(text, length=38):
+    """カード一覧用に概要文を短く切り出す。"""
+    text = (text or "").strip().replace("\n", " ")
+    if not text:
+        return ""
+    if len(text) <= length:
+        return text
+    return text[:length].rstrip() + "…"
+
+
 def _get_display_title(exhibition, lang):
     """言語に応じた展覧会タイトルを返す。
     en/jaページ: title_enがあれば「EN — 中文」形式で両方表示（現地で展示を探しやすくする）。
@@ -302,6 +312,7 @@ def index():
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
             "description": ex.get("description", ""),
+            "excerpt": _truncate_excerpt(_get_description(ex, lang)),
             "next_event": next_event,
         })
 

@@ -622,6 +622,10 @@
       font-size: 0.72rem; color: var(--text-sub);
       margin-top: 3px;
     }
+    .ex-excerpt {
+      font-size: 0.72rem; color: var(--text-light);
+      margin-top: 4px; line-height: 1.4;
+    }
     .ex-curator {
       font-size: 0.68rem; color: var(--text-light);
       margin-top: 2px;
@@ -759,6 +763,7 @@
       .ex-title { font-size: 0.95rem; }
       .ex-dates { font-size: 0.78rem; }
       .ex-artists { font-size: 0.78rem; }
+      .ex-excerpt { font-size: 0.78rem; }
       .ex-curator { font-size: 0.72rem; }
       .venue-event { padding: 10px 14px; font-size: 0.78rem; }
       .ex-event { font-size: 0.74rem; }
@@ -857,6 +862,9 @@
                 {{ ex.artists|join(' · ') }}
               {% endif %}
             </div>
+            {% endif %}
+            {% if ex.excerpt %}
+            <div class="ex-excerpt">{{ ex.excerpt }}</div>
             {% endif %}
             {# curator hidden from list view - shown in detail page only #}
             <div class="ex-actions">
