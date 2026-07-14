@@ -2838,6 +2838,142 @@
           "note_zh": "入場費200元全數回饋場地，無須報名，隨喜贊助"
         }
       ]
+    },
+    {
+      "museum": "taoart",
+      "title_zh": "餘光：謝帆與丹尼斯．米蘭達．薩莫拉諾雙人展",
+      "title_en": "Light Remains: Xie Fan and Dennis Miranda Zamorano",
+      "title_ja": "",
+      "dates": "2026.05.23 – 2026.07.18",
+      "location": "TAO ART",
+      "link": "https://readymag.website/taoartspace/lightremains/",
+      "artists": [
+        "謝帆",
+        "Dennis Miranda Zamorano"
+      ]
+    },
+    {
+      "museum": "tinakeng",
+      "title_zh": "立體詩",
+      "title_en": "Sculptural Poetry",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.09.12",
+      "location": "耿畫廊",
+      "link": "https://www.tinakenggallery.com/exhibitions/260/",
+      "artists": [
+        "郭思敏"
+      ]
+    },
+    {
+      "museum": "asiaart",
+      "title_zh": "未曾抵達的風景",
+      "title_en": "Unseen Topographies",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.08.30",
+      "location": "亞洲藝術中心（台北）",
+      "link": "https://www.asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/",
+      "artists": [
+        "Tobe Kiu Sin Kan",
+        "Charlotte Keates"
+      ]
+    },
+    {
+      "museum": "doublesquare",
+      "title_zh": "存在的低語；感知的重新校準",
+      "title_en": "Whispers of Being; Recalibrating Perception",
+      "title_ja": "",
+      "dates": "2026.07.04 – 2026.08.08",
+      "location": "双方藝廊",
+      "link": "https://www.doublesquare.com.tw/tw/exhibition/whispers-of-being-recalibrating-perception",
+      "artists": [
+        "王公澤"
+      ]
+    },
+    {
+      "museum": "doublesquare",
+      "title_zh": "地景—行履無跡",
+      "title_en": "Landscape—Tracing the Invisible Route",
+      "title_ja": "",
+      "dates": "2026.07.04 – 2026.08.08",
+      "location": "双方藝廊",
+      "link": "https://www.doublesquare.com.tw/tw/exhibition/landscape-tracing-the-invisible-route",
+      "artists": [
+        "橫溝美由紀"
+      ]
+    },
+    {
+      "museum": "linlin",
+      "title_zh": "Soft Distances",
+      "title_en": "Soft Distances",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.09.12",
+      "location": "大未來林舍畫廊",
+      "link": "https://www.linlingallery.com/album_d.php?lang=en&tb=1&id=9376",
+      "artists": [
+        "Xu Hualing",
+        "Chen Ke",
+        "Tsai Yi-Ting",
+        "Caroline Walker",
+        "Yang Bodu",
+        "Veronika Pausova"
+      ]
+    },
+    {
+      "museum": "tav",
+      "title_zh": "蔓生‧衍續：竹圍工作室的根系網絡與文化實踐",
+      "title_en": "Sprawling Roots, Continuing Growth: Bamboo Curtain Studio's Network and Cultural Practice",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2027.12.31",
+      "location": "台北寶藏巖國際藝術村 邊境9號",
+      "link": "https://www.artistvillage.org/event-detail.php?p=5102",
+      "artists": []
+    },
+    {
+      "museum": "tav",
+      "title_zh": "開箱‧連線：文化中的移動與駐地",
+      "title_en": "Unpacking . Connecting: Mobility and Residency in Culture",
+      "title_ja": "",
+      "dates": "2026.06.06 – 2027.05.30",
+      "location": "台北寶藏巖國際藝術村 邊境11號/13號展間",
+      "link": "https://www.artistvillage.org/event-detail.php?p=5095",
+      "artists": []
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "未安之地",
+      "title_en": "Unsettled Territories",
+      "title_ja": "",
+      "dates": "2026.07.03 – 2026.09.27",
+      "location": "關渡美術館 2-3F",
+      "link": "https://kdmofa.tnua.edu.tw/en/",
+      "artists": [
+        "艾立森",
+        "紀凱淵",
+        "葛瑞芬",
+        "劉芸怡",
+        "鄭亭亭"
+      ],
+      "curator": "洪瑋翎"
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "大圖書館員—龍顏藝術創作獎二十年",
+      "title_en": "The Great Librarian: 20 Years of the Long Yen Foundation Art Scholarship",
+      "title_ja": "",
+      "dates": "2026.07.03 – 2026.09.27",
+      "location": "關渡美術館 1F",
+      "link": "https://kdmofa.tnua.edu.tw/en/",
+      "artists": []
+    },
+    {
+      "museum": "ntnuart",
+      "title_zh": "共生之華—日本美術璀璨時代與臺灣之交會",
+      "title_en": "Symbiotic Splendor: Japan's Golden Age of Art and Its Encounter with Taiwan",
+      "title_ja": "",
+      "dates": "2026.06.09 – 2026.09.20",
+      "location": "師大美術館",
+      "link": "https://www.artmuse.ntnu.edu.tw",
+      "artists": []
     }
   ]
 }
