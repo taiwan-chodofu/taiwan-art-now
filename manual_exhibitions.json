@@ -2688,6 +2688,56 @@
       "link": "https://chiayiartmuseum.chiayi.gov.tw",
       "artists": [],
       "curator": "游崴"
+    },
+    {
+      "museum": "tnam",
+      "title_zh": "迴圈．超展開：第一屆臺南藝術雙年展",
+      "title_en": "Unfolding Circuits: 1st Tainan Art Biennale",
+      "title_ja": "",
+      "dates": "2026.10.31 – 2027.03.01",
+      "location": "16主要會場＋16衛星會場（含臺南市美術館）",
+      "link": "https://www.tnam.museum/exhibition/detail/726",
+      "artists": [
+        "鹽月桃甫",
+        "石川欽一郎",
+        "木下靜涯",
+        "安力．給怒",
+        "梅志雄",
+        "許丙丁",
+        "葉石濤",
+        "郭俞平",
+        "楊淯緹",
+        "方偉文",
+        "陳毅哲",
+        "小事報團隊",
+        "太認真",
+        "吳佩珊",
+        "Joshua Sofaer",
+        "Jane Ingram Allen",
+        "拉黑子．達立夫",
+        "Wanapati Yunupiŋu",
+        "武玉玲",
+        "Sharbendu De",
+        "李若玫",
+        "吳耿禎",
+        "郭柏川",
+        "張炳堂",
+        "楊季涓",
+        "阮英俊",
+        "杉原信幸＆中村綾花"
+      ],
+      "curator": "林磐聳、謝宗哲、高俊宏、楊佳璇、柯春如、莊東橋、柯宜芸",
+      "events": [
+        {
+          "date": "2026/10/31",
+          "time": "10:00",
+          "title_zh": "開幕典禮",
+          "title_en": "Opening Ceremony",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ],
+      "type": "artfestival"
     }
   ]
 }
