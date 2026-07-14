@@ -1388,7 +1388,8 @@
         "鄭亭亭"
       ],
       "link": "https://kdmofa.tnua.edu.tw/mod/exhibition/index.php?REQUEST_ID=e1626ae68798853bcff9a390f902a9df9118b3a3b3b48451923c1a6808f7f40e",
-      "status": "current"
+      "status": "current",
+      "curator": "洪瑋翎"
     },
     {
       "museum": "ncpi",
@@ -2853,18 +2854,6 @@
       ]
     },
     {
-      "museum": "tinakeng",
-      "title_zh": "立體詩",
-      "title_en": "Sculptural Poetry",
-      "title_ja": "",
-      "dates": "2026.07.18 – 2026.09.12",
-      "location": "耿畫廊",
-      "link": "https://www.tinakenggallery.com/exhibitions/260/",
-      "artists": [
-        "郭思敏"
-      ]
-    },
-    {
       "museum": "asiaart",
       "title_zh": "未曾抵達的風景",
       "title_en": "Unseen Topographies",
@@ -2926,44 +2915,8 @@
       "dates": "2026.07.11 – 2027.12.31",
       "location": "台北寶藏巖國際藝術村 邊境9號",
       "link": "https://www.artistvillage.org/event-detail.php?p=5102",
-      "artists": []
-    },
-    {
-      "museum": "tav",
-      "title_zh": "開箱‧連線：文化中的移動與駐地",
-      "title_en": "Unpacking . Connecting: Mobility and Residency in Culture",
-      "title_ja": "",
-      "dates": "2026.06.06 – 2027.05.30",
-      "location": "台北寶藏巖國際藝術村 邊境11號/13號展間",
-      "link": "https://www.artistvillage.org/event-detail.php?p=5095",
-      "artists": []
-    },
-    {
-      "museum": "kdmofa",
-      "title_zh": "未安之地",
-      "title_en": "Unsettled Territories",
-      "title_ja": "",
-      "dates": "2026.07.03 – 2026.09.27",
-      "location": "關渡美術館 2-3F",
-      "link": "https://kdmofa.tnua.edu.tw/en/",
-      "artists": [
-        "艾立森",
-        "紀凱淵",
-        "葛瑞芬",
-        "劉芸怡",
-        "鄭亭亭"
-      ],
-      "curator": "洪瑋翎"
-    },
-    {
-      "museum": "kdmofa",
-      "title_zh": "大圖書館員—龍顏藝術創作獎二十年",
-      "title_en": "The Great Librarian: 20 Years of the Long Yen Foundation Art Scholarship",
-      "title_ja": "",
-      "dates": "2026.07.03 – 2026.09.27",
-      "location": "關渡美術館 1F",
-      "link": "https://kdmofa.tnua.edu.tw/en/",
-      "artists": []
+      "artists": [],
+      "curator": "國立中央大學視覺文化研究中心"
     },
     {
       "museum": "ntnuart",
