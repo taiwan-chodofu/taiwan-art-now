@@ -1061,6 +1061,7 @@
     var modal = document.getElementById('favsModal');
     modal.style.display = 'block';
     renderMylist();
+    if (typeof _maybeWarnInAppSave === 'function') _maybeWarnInAppSave();
   }
 
   function _fetchArchive(cb) {
@@ -1290,6 +1291,45 @@
   function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
   function _saveFavs(f) { localStorage.setItem('taiwan_art_favs', JSON.stringify(f)); }
 
+  // Warn (once per session) that ♡/☑ saves made inside an in-app browser
+  // are stuck in that browser's isolated storage — the save itself still
+  // succeeds, this just tells the user it won't follow them elsewhere.
+  function _maybeWarnInAppSave() {
+    var ua = navigator.userAgent || '';
+    var isInApp = /Instagram|FB[\w_]+\//i.test(ua) || /Line\//.test(ua);
+    if (!isInApp) return;
+    if (sessionStorage.getItem('taiwan_art_inapp_save_warned')) return;
+    sessionStorage.setItem('taiwan_art_inapp_save_warned', '1');
+    var toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;bottom:24px;left:16px;right:16px;max-width:360px;margin:0 auto;background:#822727;color:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:9999;font-size:0.75rem;display:flex;align-items:center;gap:10px;';
+    var msg = document.createElement('span');
+    msg.style.flex = '1';
+    msg.textContent = '{% if current_lang == "zh" %}⚠️ 這個記錄只留在目前的App瀏覽器裡{% elif current_lang == "ja" %}⚠️ この記録は今のアプリ内だけに残ります{% else %}⚠️ This save only stays in this app's browser{% endif %}';
+    var btn = document.createElement('button');
+    btn.style.cssText = 'flex-shrink:0;border:1px solid #fff;background:none;color:#fff;border-radius:10px;font-size:0.7rem;font-weight:600;padding:4px 10px;cursor:pointer;white-space:nowrap;';
+    btn.textContent = '{% if current_lang == "zh" %}複製網址{% elif current_lang == "ja" %}URLをコピー{% else %}Copy Link{% endif %}';
+    btn.onclick = function() {
+      var url = window.location.href;
+      function done() { toast.remove(); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+      if (typeof gtag === 'function') gtag('event', 'inapp_save_warning_copy', {});
+    };
+    toast.appendChild(msg);
+    toast.appendChild(btn);
+    document.body.appendChild(toast);
+    setTimeout(function() { if (toast.parentElement) toast.remove(); }, 6000);
+    if (typeof gtag === 'function') gtag('event', 'inapp_save_warning_shown', {});
+  }
+
   function toggleAction(event, btn) {
     event.preventDefault();
     event.stopPropagation();
@@ -1337,6 +1377,7 @@
       }
     }
     _renderActions();
+    _maybeWarnInAppSave();
   }
 
   function _checkFavMilestone() {
