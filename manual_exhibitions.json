@@ -2786,6 +2786,58 @@
           "type": "performance"
         }
       ]
+    },
+    {
+      "museum": "grassland",
+      "title_zh": "《她，這裡，然後》開放排練＆演前分享會",
+      "title_en": "\"She, Here, Then\" — Open Rehearsal & Pre-show Talk (Performance)",
+      "title_ja": "",
+      "dates": "2026.07.21",
+      "location": "雜草町",
+      "link": "https://www.opentix.life/event/2069611694253621249",
+      "artists": [
+        "劉凱榛",
+        "林育萱"
+      ],
+      "curator": "",
+      "type": "performance",
+      "events": [
+        {
+          "date": "2026/07/21",
+          "time": "20:00",
+          "title_zh": "開放排練＆創作分享會",
+          "title_en": "Open Rehearsal & Creative Talk",
+          "title_ja": "オープンリハーサル＆トーク",
+          "type": "performance",
+          "note_zh": "入場費200元，無須報名，隨喜贊助｜請著襪參與"
+        }
+      ]
+    },
+    {
+      "museum": "openwide",
+      "title_zh": "《她，這裡，然後》開放排練＆演前分享會",
+      "title_en": "\"She, Here, Then\" — Open Rehearsal & Pre-show Talk (Performance)",
+      "title_ja": "",
+      "dates": "2026.08.04",
+      "location": "掀牆",
+      "link": "https://www.opentix.life/event/2069611694253621249",
+      "artists": [
+        "劉凱榛",
+        "林育萱"
+      ],
+      "curator": "",
+      "type": "performance",
+      "events": [
+        {
+          "date": "2026/08/04",
+          "time": "20:00",
+          "title_zh": "開放排練＆創作分享會",
+          "title_en": "Open Rehearsal & Creative Talk",
+          "title_ja": "オープンリハーサル＆トーク",
+          "type": "performance",
+          "note_zh": "入場費200元全數回饋場地，無須報名，隨喜贊助"
+        }
+      ]
     }
   ]
 }

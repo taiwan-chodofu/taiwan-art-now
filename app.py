@@ -295,6 +295,7 @@ def index():
             "days_left": _calc_days_left(end_dt),
             "days_until_start": _calc_days_until_start(start_dt),
             "status": ex.get("status", "unknown"),
+            "type": ex.get("type", ""),
             "location": ex.get("location", ""),
             "link": ex.get("link", ""),
             "detail_url": f"/exhibition/{key}/{museum_ex_idx}?lang={lang}",
@@ -1091,6 +1092,7 @@ def exhibition_detail(museum_id, idx):
             "description": _get_description(ex, lang),
             "link": ex.get("link", ""),
             "status": ex.get("status", "unknown"),
+            "type": ex.get("type", ""),
         },
         museum={
             "id": museum_id,
