@@ -2974,6 +2974,31 @@
       "location": "師大美術館",
       "link": "https://www.artmuse.ntnu.edu.tw",
       "artists": []
+    },
+    {
+      "museum": "absence",
+      "title_zh": "饅頭",
+      "title_en": "Mantou (Steamed Bun)",
+      "title_ja": "",
+      "dates": "2026.08.01",
+      "location": "不存在劇場三樓",
+      "link": "https://www.facebook.com/absencespace/posts/pfbid02FjpjKWoUhwRwq92cvmKqSZRALDv2mfNgPh3TmjwLsMC3gznG3VrP33m7rNAKUH3Wl",
+      "artists": [
+        "施旻雯"
+      ],
+      "curator": "",
+      "type": "performance",
+      "events": [
+        {
+          "date": "2026/08/01",
+          "time": "19:30",
+          "title_zh": "演出（19:00進場）",
+          "title_en": "Performance (doors 19:00)",
+          "title_ja": "公演（開場19:00）",
+          "type": "performance",
+          "note_zh": "2026萬物生長#舞蹈單元｜預先報名250元、現場報名300元"
+        }
+      ]
     }
   ]
 }
