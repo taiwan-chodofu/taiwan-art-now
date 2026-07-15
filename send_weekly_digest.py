@@ -137,7 +137,12 @@ def format_digest(ending_exhibitions, today=None, days=7):
             by_region[r] = []
         by_region[r].append(ex)
 
-    footer = "\n─────\ntaiwan-art-now.onrender.com\n\n取消: 輸入「取消」"
+    footer = (
+        "\n─────\n"
+        "taiwan-art-now.onrender.com\n"
+        "（點選「⏰快結束」也能隨時查看）\n\n"
+        "取消: 輸入「取消」"
+    )
 
     # Build region blocks
     region_blocks = []
@@ -147,8 +152,8 @@ def format_digest(ending_exhibitions, today=None, days=7):
             artist = f" ({ex['artists']})" if ex.get('artists') else ""
             days_left_label = "今天最後" if ex["days_left"] == 0 else f"剩{ex['days_left']}天"
             emoji = _urgency_emoji(ex["days_left"])
-            block_lines.append(f"{emoji} {ex['title']}{artist}")
-            block_lines.append(f"〜{ex['end_date']}（{days_left_label}）")
+            block_lines.append(f"{ex['title']}{artist}")
+            block_lines.append(f"〜{ex['end_date']}（{days_left_label}）{emoji}")
             block_lines.append("")
         region_blocks.append("\n".join(block_lines))
 
@@ -175,9 +180,9 @@ def format_fav_alert(exhibition):
     days_left_label = "今天最後" if exhibition["days_left"] == 0 else f"剩{exhibition['days_left']}天"
     emoji = _urgency_emoji(exhibition["days_left"])
     return (
-        f"{emoji} 你想去的展覽即將結束\n\n"
+        f"♡ 你想去的展覽即將結束\n\n"
         f"{exhibition['title']}{artist}\n"
-        f"〜{exhibition['end_date']} ({days_left_label})\n\n"
+        f"〜{exhibition['end_date']} ({days_left_label}) {emoji}\n\n"
         f"→ {exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
         f"─────\n"
         f"取消: 輸入「取消」"
