@@ -39,11 +39,13 @@
       --red: #d63031; --red-light: #fff5f5;
       --cat-public: #2d3436; --cat-alt: #6c5ce7;
       --cat-commercial: #00b894; --cat-private: #e17055;
+      --chip-active-bg: #000; --chip-active-text: #fff;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #aaa; --text-light: #777;
         --accent: #fff; --border: #333; --border-dark: #444;
+        --chip-active-bg: #fff; --chip-active-text: #111;
         --tag-bg: #2a2a2a; --hover-bg: #252525;
         --red: #ff6b6b; --red-light: #2d1f1f;
         --cat-public: #74b9ff; --cat-alt: #a29bfe;
@@ -368,7 +370,7 @@
       -webkit-tap-highlight-color: transparent;
     }
     .filter-chip:active { border-color: var(--accent); color: var(--accent); }
-    .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .filter-chip.active { background: var(--chip-active-bg); color: var(--chip-active-text); border-color: var(--chip-active-bg); }
     .filter-chip-open .open-dot {
       display: inline-block; width: 8px; height: 8px;
       border-radius: 50%; background: #2ecc71;

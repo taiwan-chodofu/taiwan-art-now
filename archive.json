@@ -583,6 +583,39 @@
       "description_en": "Following his large-scale screen installation at Art Basel last year, artist Su Meng-Hung presents \"The Flowers of Coromandel\" at Tina Keng Gallery, curated by Barbara Pollack. The exhibition encompasses paintings and screens, posing two central inquiries: the ornate reinterpretation of traditional bird-and-flower motifs, and the redefinition of \"authenticity\" and \"appropriation.\"\n\nHistorically, \"Coromandel\" refers to Chinese lacquer screens exported to Europe via India's Coromandel Coast from the 17th-18th centuries. For Su, Coromandel's essence is a projection of imagination—he practices the core concept of \"inauthentic beauty.\" The bird-and-flower motifs are appropriated from 17th-century French and Dutch paintings, the classic Chinese painting manual \"Mustard Seed Garden,\" and works by Giuseppe Castiglione. Through silkscreen transfer and lacquer polishing, the artist conceals these cross-cultural patterns within the canvas. Inspired by European tapestries during recent travels, he layers matte varnish to evoke the warm, subtle luster of tapestry silk.",
       "description_ja": "昨年のアート・バーゼルでの大型屏風インスタレーション発表に続き、蘇孟鴻が米国キュレーター芭芭拉・波拉克と共に耿画廊で新個展《科羅曼徳の花》を発表。平面絵画と屏風の二軸で構成し、伝統的花鳥紋様の華麗な演繹、そして「真正性」と「流用」の再思考・再定義という二つの問いを提起する。\n\n歴史的に「コロマンデル」とは17〜18世紀以降、インドのコロマンデル海岸経由で欧州に輸出された中国の款彩漆器屏風を指す。蘇孟鴻にとってコロマンデルの本質は想像の投射であり、「不真実の美（Inauthentic beauty）」の核心概念を実践する。作品の花鳥紋様はアーティスト自身の手で創造されたものではなく、17世紀仏蘭西・和蘭の絵画、『芥子園画伝』、郎世寧の作品等から流用。絹印の転写と変塗の研磨により中西の図様を画面に潜ませる。近年の欧州滞在で織錦タペストリーに啓発を受け、マットワニスの積層でタペストリーの絹のような温潤で幽微な光沢を画布上に再現する。",
       "curator": "芭芭拉・波拉克（Barbara Pollack）"
+    },
+    {
+      "museum": "frees",
+      "title_zh": "吹來一陣通透 — 李沛倫個展",
+      "title_en": "A Breath Passing Through — LI Pei-Lun Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026/06/13 - 2026/07/15",
+      "location": "福利社 FreeS Art Space",
+      "link": "https://www.facebook.com/freesartspace",
+      "description": "一片白淨鬆軟的雪白地，閃爍著細碎的微光，其中一個個時而微微向下凹陷、時而隆起的痕跡，那是風在時間中遺留下記憶的足跡。鹽巴一層一層地盪在風中，沿著空氣路徑而後墜落，柔和地堆疊出綿密的厚度，灑下寫實繪畫般的明暗過度。通過對留痕的凝視，感受它們的質地、重量、形狀，甚至是它們在時間和空間中自然變化的痕跡，自然物質帶來的感官經歷，喚起身體對空間與時間的感知。",
+      "description_en": "A pristine, soft expanse of white snow, shimmering with delicate glimmers, with traces that sometimes slightly indent and sometimes bulge—these are the footprints left by the wind as memories of time. Salt grains swirl in the wind, layer by layer, falling along the air's path, gently accumulating into a dense thickness, casting realistic painting-like transitions of light and shadow. Through gazing at the marks left behind, one can feel their texture, weight, shape, and even the traces of their natural changes over time and space. This sensory experience brought by natural materials awakens the body's perception of space and time.",
+      "events": [
+        {
+          "date": "2026/06/27",
+          "time": "14:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note": ""
+        },
+        {
+          "date": "2026/06/27",
+          "time": "15:00",
+          "title_zh": "座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note": ""
+        }
+      ],
+      "artists": [
+        "李沛倫"
+      ],
+      "description_ja": "「通透」とは質感であり状態である——透明でありながら空ではなく、軽やかでありながら重みを持つ。遮蔽を貫き深部に至る可能性を指し示す境地であり、内なる通達と感受の貫通でもある。\n\n本展は「風」「光」「水」を知覚の出発点とし、無形で軽やかな存在をめぐり、それらがいかに空間・時間・身体を貫通して鋭敏な身体感覚を喚起するかを探る。静と動の間にある純粋な透明感を見出そうとする試み——風が肌を撫でる時の言い表し難い清澄さと自由のように。風がそっと吹き、光が緩やかに降り注ぎ、水が静かに落ちる時、すべてが流動し始める。物質と身体経験が交わる瞬間、微細な変化と知覚の転換こそが、過程そのものを最も真正な存在のあり方とする。\n\nここには明確な物語はない。身体を受信器として、歩き・凝視し・留まる中で、柔らかな要素に浸透され・包まれ・覚醒させられ、日常にほぼ覆い隠された軽やかさと透明さを感じ取る。"
     }
   ]
 }
