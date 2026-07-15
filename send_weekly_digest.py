@@ -93,6 +93,19 @@ def get_ending_soon(exhibitions, days=7):
     return ending
 
 
+def _urgency_emoji(days_left):
+    """Escalating-panic emoji so urgency is visible at a glance."""
+    if days_left <= 0:
+        return "🚨"
+    if days_left <= 2:
+        return "😭"
+    if days_left == 3:
+        return "😰"
+    if days_left <= 5:
+        return "😅"
+    return "🙂"
+
+
 def format_digest(ending_exhibitions, today=None, days=7):
     """Returns a list of messages (split by region if over 2000 chars)."""
     if not ending_exhibitions:
@@ -117,7 +130,8 @@ def format_digest(ending_exhibitions, today=None, days=7):
         for ex in exs:
             artist = f" ({ex['artists']})" if ex.get('artists') else ""
             days_left_label = "今天最後" if ex["days_left"] == 0 else f"剩{ex['days_left']}天"
-            block_lines.append(f"{ex['title']}{artist}")
+            emoji = _urgency_emoji(ex["days_left"])
+            block_lines.append(f"{emoji} {ex['title']}{artist}")
             block_lines.append(f"〜{ex['end_date']}（{days_left_label}）")
             block_lines.append("")
         region_blocks.append("\n".join(block_lines))
@@ -143,8 +157,9 @@ def format_digest(ending_exhibitions, today=None, days=7):
 def format_fav_alert(exhibition):
     artist = f" ({exhibition['artists']})" if exhibition.get('artists') else ""
     days_left_label = "今天最後" if exhibition["days_left"] == 0 else f"剩{exhibition['days_left']}天"
+    emoji = _urgency_emoji(exhibition["days_left"])
     return (
-        f"♡ 你想去的展覽即將結束\n\n"
+        f"{emoji} 你想去的展覽即將結束\n\n"
         f"{exhibition['title']}{artist}\n"
         f"〜{exhibition['end_date']} ({days_left_label})\n\n"
         f"→ {exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
