@@ -117,7 +117,7 @@ def format_digest(ending_exhibitions):
         region_blocks.append("\n".join(block_lines))
 
     # Assemble messages, split at region boundaries if needed
-    header = "🎨 本週即將結束\n\n"
+    header = "🎨 7天內即將結束\n\n"
     messages = []
     current = header
     for block in region_blocks:
