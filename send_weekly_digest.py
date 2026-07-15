@@ -67,9 +67,9 @@ def get_ending_soon(exhibitions, days=7):
             try:
                 end_date = datetime(int(matches[1][0]), int(matches[1][1]), int(matches[1][2])).date()
                 days_left = (end_date - today).days
-                # days_left == 0 means it closes today — already too late
-                # for a "closing soon" reminder to be useful, so skip it.
-                if 1 <= days_left <= days:
+                # Runs at 12:00 TW time — a same-day close is still worth
+                # flagging (the exhibition may still be open that afternoon).
+                if 0 <= days_left <= days:
                     artists = ex.get("artists", [])
                     artist_str = " · ".join(artists[:3])
                     if len(artists) > 3:
@@ -93,10 +93,13 @@ def get_ending_soon(exhibitions, days=7):
     return ending
 
 
-def format_digest(ending_exhibitions):
+def format_digest(ending_exhibitions, today=None, days=7):
     """Returns a list of messages (split by region if over 2000 chars)."""
     if not ending_exhibitions:
         return []
+    if today is None:
+        today = datetime.now(TW_TZ).date()
+    range_end = today + timedelta(days=days)
     from collections import OrderedDict
     by_region = OrderedDict()
     for ex in ending_exhibitions:
@@ -113,13 +116,14 @@ def format_digest(ending_exhibitions):
         block_lines = [f"▸ {region_name}"]
         for ex in exs:
             artist = f" ({ex['artists']})" if ex.get('artists') else ""
+            days_left_label = "今天最後" if ex["days_left"] == 0 else f"剩{ex['days_left']}天"
             block_lines.append(f"{ex['title']}{artist}")
-            block_lines.append(f"〜{ex['end_date']}")
+            block_lines.append(f"〜{ex['end_date']}（{days_left_label}）")
             block_lines.append("")
         region_blocks.append("\n".join(block_lines))
 
     # Assemble messages, split at region boundaries if needed
-    header = "🎨 7天內即將結束\n\n"
+    header = f"🎨 即將結束的展覽（{today.strftime('%m/%d')}－{range_end.strftime('%m/%d')}）\n\n"
     messages = []
     current = header
     for block in region_blocks:
@@ -138,10 +142,11 @@ def format_digest(ending_exhibitions):
 
 def format_fav_alert(exhibition):
     artist = f" ({exhibition['artists']})" if exhibition.get('artists') else ""
+    days_left_label = "今天最後" if exhibition["days_left"] == 0 else f"剩{exhibition['days_left']}天"
     return (
         f"♡ 你想去的展覽即將結束\n\n"
         f"{exhibition['title']}{artist}\n"
-        f"〜{exhibition['end_date']} (剩{exhibition['days_left']}天)\n\n"
+        f"〜{exhibition['end_date']} ({days_left_label})\n\n"
         f"→ {exhibition.get('detail_url', 'taiwan-art-now.onrender.com')}\n\n"
         f"─────\n"
         f"取消: 輸入「取消」"
