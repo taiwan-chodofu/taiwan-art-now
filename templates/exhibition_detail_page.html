@@ -452,6 +452,23 @@
     function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
     function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
 
+    // Push favs/visited to the server so Messenger fav-alerts (3-day-left
+    // reminders) have something to check against. Only fires if this browser
+    // has a ref code (i.e. the user came from/connected to Messenger).
+    var _syncSubscriberTimer = null;
+    function _syncSubscriberData() {
+      var ref = localStorage.getItem('taiwan_art_ref');
+      if (!ref) return;
+      clearTimeout(_syncSubscriberTimer);
+      _syncSubscriberTimer = setTimeout(function() {
+        fetch('/api/subscribers/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ref: ref, favs: _getFavs(), visited: _getVisited() })
+        }).catch(function() {});
+      }, 800);
+    }
+
     function toggleVisited() {
       var visited = _getVisited();
       if (visited[exId]) {
@@ -462,6 +479,7 @@
         if (typeof gtag === 'function') gtag('event', 'mark_visited', { exhibition_key: exId });
       }
       localStorage.setItem('taiwan_art_visited', JSON.stringify(visited));
+      _syncSubscriberData();
       updateBtns();
       if (typeof _maybeWarnInAppSave === 'function') _maybeWarnInAppSave();
     }
@@ -476,6 +494,7 @@
         if (typeof gtag === 'function') gtag('event', 'add_to_favorites', { exhibition_key: exId });
       }
       localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+      _syncSubscriberData();
       updateBtns();
       if (typeof _maybeWarnInAppSave === 'function') _maybeWarnInAppSave();
     }

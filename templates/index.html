@@ -1301,8 +1301,25 @@
   function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
   function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
   function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
-  function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
-  function _saveFavs(f) { localStorage.setItem('taiwan_art_favs', JSON.stringify(f)); }
+  function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); _syncSubscriberData(); }
+  function _saveFavs(f) { localStorage.setItem('taiwan_art_favs', JSON.stringify(f)); _syncSubscriberData(); }
+
+  // Push favs/visited to the server so Messenger fav-alerts (3-day-left
+  // reminders) have something to check against. Only fires if this browser
+  // has a ref code (i.e. the user came from/connected to Messenger).
+  var _syncSubscriberTimer = null;
+  function _syncSubscriberData() {
+    var ref = localStorage.getItem('taiwan_art_ref');
+    if (!ref) return;
+    clearTimeout(_syncSubscriberTimer);
+    _syncSubscriberTimer = setTimeout(function() {
+      fetch('/api/subscribers/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref: ref, favs: _getFavs(), visited: _getVisited() })
+      }).catch(function() {});
+    }, 800);
+  }
 
   // Warn (once per session) that ♡/☑ saves made inside an in-app browser
   // are stuck in that browser's isolated storage — the save itself still
