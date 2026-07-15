@@ -10,7 +10,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 SUBSCRIBERS_FILE = BASE_DIR / "subscribers.json"
-CACHE_FILE = BASE_DIR / "cache.json"
+# cache.json is gitignored and doesn't exist in the GitHub Actions checkout,
+# so it can never be read here — read from the committed source of truth
+# (manual_exhibitions.json) instead.
+MANUAL_EXHIBITIONS_FILE = BASE_DIR / "manual_exhibitions.json"
 TW_TZ = timezone(timedelta(hours=8))
 
 
@@ -25,9 +28,9 @@ def load_subscribers():
 
 
 def load_exhibitions():
-    if CACHE_FILE.exists():
+    if MANUAL_EXHIBITIONS_FILE.exists():
         try:
-            with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            with open(MANUAL_EXHIBITIONS_FILE, "r", encoding="utf-8") as f:
                 return json.load(f).get("exhibitions", [])
         except Exception:
             pass

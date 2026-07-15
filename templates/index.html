@@ -1306,7 +1306,8 @@
 
   // Push favs/visited to the server so Messenger fav-alerts (3-day-left
   // reminders) have something to check against. Only fires if this browser
-  // has a ref code (i.e. the user came from/connected to Messenger).
+  // has a ref code (i.e. the user came from/connected to Messenger) — the
+  // server silently no-ops if that ref isn't actually linked to a subscriber.
   var _syncSubscriberTimer = null;
   function _syncSubscriberData() {
     var ref = localStorage.getItem('taiwan_art_ref');
@@ -1320,6 +1321,9 @@
       }).catch(function() {});
     }, 800);
   }
+  // Also sync once on page load, so favs/visited saved before this fix was
+  // deployed (and never pushed to the server) get backfilled automatically.
+  _syncSubscriberData();
 
   // Warn (once per session) that ♡/☑ saves made inside an in-app browser
   // are stuck in that browser's isolated storage — the save itself still
