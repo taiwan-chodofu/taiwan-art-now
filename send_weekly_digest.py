@@ -55,6 +55,21 @@ REGION_NAMES = {
     "hualien": "花蓮", "taitung": "台東", "other": "其他",
 }
 
+# North to south, matching app.py's REGION_ORDER — keeps region blocks in a
+# geographically sensible order instead of alphabetical by internal id.
+REGION_ORDER = [
+    "taipei", "new_taipei", "taoyuan", "hsinchu", "yilan", "keelung",
+    "taichung", "nantou", "chiayi", "tainan", "kaohsiung", "pingtung",
+    "hualien", "taitung", "other",
+]
+
+
+def _region_rank(region):
+    try:
+        return REGION_ORDER.index(region)
+    except ValueError:
+        return len(REGION_ORDER)
+
 
 def get_ending_soon(exhibitions, days=7):
     today = datetime.now(TW_TZ).date()
@@ -89,7 +104,7 @@ def get_ending_soon(exhibitions, days=7):
                     })
             except ValueError:
                 pass
-    ending.sort(key=lambda x: (x["days_left"], x["region"]))
+    ending.sort(key=lambda x: (x["days_left"], _region_rank(x["region"])))
     return ending
 
 
@@ -113,9 +128,10 @@ def format_digest(ending_exhibitions, today=None, days=7):
     if today is None:
         today = datetime.now(TW_TZ).date()
     range_end = today + timedelta(days=days)
+
     from collections import OrderedDict
     by_region = OrderedDict()
-    for ex in ending_exhibitions:
+    for ex in sorted(ending_exhibitions, key=lambda x: _region_rank(x["region"])):
         r = ex["region_name"]
         if r not in by_region:
             by_region[r] = []
