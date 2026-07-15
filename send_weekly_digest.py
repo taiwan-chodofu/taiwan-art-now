@@ -67,7 +67,9 @@ def get_ending_soon(exhibitions, days=7):
             try:
                 end_date = datetime(int(matches[1][0]), int(matches[1][1]), int(matches[1][2])).date()
                 days_left = (end_date - today).days
-                if 0 <= days_left <= days:
+                # days_left == 0 means it closes today — already too late
+                # for a "closing soon" reminder to be useful, so skip it.
+                if 1 <= days_left <= days:
                     artists = ex.get("artists", [])
                     artist_str = " · ".join(artists[:3])
                     if len(artists) > 3:
