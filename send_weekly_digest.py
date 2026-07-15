@@ -218,6 +218,15 @@ def run():
     exhibitions = load_exhibitions()
     ending = get_ending_soon(exhibitions, days=7)
 
+    # For manual late-day re-sends: a same-day closer may already be shut
+    # by the time this runs, so let the run exclude it via env var. The
+    # scheduled 12:00 run never sets this and keeps today's closers included.
+    if os.environ.get("EXCLUDE_TODAY_CLOSING", "").lower() in ("1", "true"):
+        excluded = [e for e in ending if e["days_left"] == 0]
+        ending = [e for e in ending if e["days_left"] > 0]
+        for e in excluded:
+            print(f"Excluding (closes today): {e['title']}")
+
     print(f"Subscribers: {len(subs['users'])}")
     print(f"Ending within 7 days: {len(ending)}")
 

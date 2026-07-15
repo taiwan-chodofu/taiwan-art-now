@@ -5,6 +5,12 @@ on:
     # 毎週水曜 台湾時間12:00 (UTC 04:00)
     - cron: '0 4 * * 3'
   workflow_dispatch: # 手動実行も可能
+    inputs:
+      exclude_today_closing:
+        description: '今日終了の展示を除外する（遅い時間の手動再送用）'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   digest:
@@ -19,4 +25,5 @@ jobs:
       - name: Send weekly digest
         env:
           MESSENGER_PAGE_TOKEN: ${{ secrets.MESSENGER_PAGE_TOKEN }}
+          EXCLUDE_TODAY_CLOSING: ${{ github.event.inputs.exclude_today_closing }}
         run: python send_weekly_digest.py
