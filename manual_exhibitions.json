@@ -1290,7 +1290,7 @@
     {
       "museum": "moca",
       "title_zh": "Young Folks：世界是一片感知的膜",
-      "title_en": "",
+      "title_en": "Young Folks: The World as an Aesthetic Membrane",
       "dates": "2026.05.23 – 2026.08.30",
       "artists": [
         "洪瑞謙",
@@ -1301,7 +1301,8 @@
         "練柏宏"
       ],
       "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/Young*Folks%EF%BC%9A%E4%B8%96%E7%95%8C%E6%98%AF%E4%B8%80%E7%89%87%E6%84%9F%E7%9F%A5%E7%9A%84%E8%86%9C",
-      "status": "current"
+      "status": "current",
+      "curator": "朱峯誼"
     },
     {
       "museum": "moca",
