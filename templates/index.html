@@ -136,6 +136,9 @@
   </div>
   {% endif %}
 
+  <!-- DISASTER ALERT BANNER (typhoon/heavy rain/earthquake, populated via /api/disaster-alerts) -->
+  <div id="disasterBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#fef2f2;border-bottom:1px solid #fca5a5;font-size:0.72rem;color:#991b1b;align-items:center;gap:6px;"></div>
+
   <!-- IN-APP BROWSER WARNING BANNER (Instagram/Facebook/LINE) -->
   <div id="inAppBrowserBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#fff5f5;border-bottom:1px solid #feb2b2;font-size:0.72rem;color:#822727;align-items:center;justify-content:space-between;gap:8px;">
     <span style="flex:1;">⚠️
@@ -530,6 +533,14 @@
     @media (min-width: 768px) {
       .region-weather { display: inline; }
     }
+    /* Disaster alert badge: shown on mobile AND desktop (unlike region-weather) */
+    .region-alert {
+      font-size: 0.68rem; font-weight: 700; color: #b91c1c;
+      background: #fee2e2; padding: 2px 7px; border-radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .region-alert { background: #3d1f1f; color: #fca5a5; }
+    }
     .region-count {
       font-size: 0.7rem; color: var(--text-light);
       background: var(--bg); padding: 2px 8px; border-radius: 10px;
@@ -784,6 +795,7 @@
     <section class="region-section" id="region-{{ region.id }}" data-region="{{ region.id }}">
       <div class="region-header" role="button" tabindex="0" aria-expanded="true">
         <span class="region-name">{{ region.name }}</span>
+        <span class="region-alert" id="alert-{{ region.id }}" style="display:none;"></span>
         <span class="region-weather" id="weather-{{ region.id }}"></span>
         <span class="region-count">{{ region.active_count }}</span>
         <span class="region-toggle" aria-hidden="true">▾</span>
@@ -1974,15 +1986,24 @@
   </script>
 
   <script>
+  var regionToCity = {
+    'taipei': '臺北市', 'new_taipei': '新北市', 'taoyuan': '桃園市',
+    'hsinchu': '新竹縣', 'taichung': '臺中市', 'nantou': '南投縣',
+    'chiayi': '嘉義市', 'tainan': '臺南市', 'kaohsiung': '高雄市',
+    'yilan': '宜蘭縣', 'hualien': '花蓮縣', 'taitung': '臺東縣',
+    'keelung': '基隆市', 'pingtung': '屏東縣'
+  };
+  var regionNames = {
+    'taipei': {zh:'台北', ja:'台北', en:'Taipei'}, 'new_taipei': {zh:'新北', ja:'新北', en:'New Taipei'},
+    'taoyuan': {zh:'桃園', ja:'桃園', en:'Taoyuan'}, 'hsinchu': {zh:'新竹', ja:'新竹', en:'Hsinchu'},
+    'taichung': {zh:'台中', ja:'台中', en:'Taichung'}, 'nantou': {zh:'南投', ja:'南投', en:'Nantou'},
+    'chiayi': {zh:'嘉義', ja:'嘉義', en:'Chiayi'}, 'tainan': {zh:'台南', ja:'台南', en:'Tainan'},
+    'kaohsiung': {zh:'高雄', ja:'高雄', en:'Kaohsiung'}, 'yilan': {zh:'宜蘭', ja:'宜蘭', en:'Yilan'},
+    'hualien': {zh:'花蓮', ja:'花蓮', en:'Hualien'}, 'taitung': {zh:'台東', ja:'台東', en:'Taitung'},
+    'keelung': {zh:'基隆', ja:'基隆', en:'Keelung'}, 'pingtung': {zh:'屏東', ja:'屏東', en:'Pingtung'}
+  };
   // Weather display (desktop only)
   if (window.innerWidth >= 768) {
-    var regionToCity = {
-      'taipei': '臺北市', 'new_taipei': '新北市', 'taoyuan': '桃園市',
-      'hsinchu': '新竹縣', 'taichung': '臺中市', 'nantou': '南投縣',
-      'chiayi': '嘉義市', 'tainan': '臺南市', 'kaohsiung': '高雄市',
-      'yilan': '宜蘭縣', 'hualien': '花蓮縣', 'taitung': '臺東縣',
-      'keelung': '基隆市', 'pingtung': '屏東縣'
-    };
     var wxEmoji = {'1':'☀️','2':'🌤️','3':'🌤️','4':'⛅','5':'⛅','6':'⛅','7':'🌥️','8':'☁️','9':'🌧️','10':'🌧️','11':'⛈️','12':'⛈️','13':'⛈️','14':'🌧️','15':'⛈️','16':'⛈️','17':'⛈️','18':'🌧️','19':'🌧️','20':'🌧️','21':'⛈️','22':'⛈️','23':'⛈️','24':'🌫️','25':'🌫️','26':'🌫️','27':'🌫️','28':'🌫️','29':'🌧️','30':'🌫️','31':'🌫️','32':'🌧️','33':'⛈️','34':'⛈️','35':'⛈️','36':'⛈️','41':'⛈️','42':'❄️'};
     fetch('/api/weather').then(function(r){return r.json()}).then(function(data){
       if(data.error) return;
@@ -1999,6 +2020,71 @@
       }
     }).catch(function(){});
   }
+
+  // Disaster alert banner + per-region badges (mobile AND desktop).
+  // Only fires for alerts severe enough to plausibly close venues —
+  // see DISASTER_ALERT_KEYWORDS / earthquake intensity>=4 filter server-side.
+  (function() {
+    var lang = '{{ current_lang }}';
+    var labelFor = {
+      '颱風': {zh:'颱風', ja:'台風', en:'Typhoon'},
+      '海嘯': {zh:'海嘯', ja:'津波', en:'Tsunami'},
+      '豪雨': {zh:'豪雨', ja:'大雨', en:'Heavy rain'},
+      '大雨': {zh:'大雨', ja:'大雨', en:'Heavy rain'},
+      '土石流': {zh:'土石流', ja:'土砂崩れ', en:'Landslide'},
+      '陸上強風': {zh:'強風', ja:'強風', en:'Strong wind'},
+      '強風': {zh:'強風', ja:'強風', en:'Strong wind'},
+      '龍捲風': {zh:'龍捲風', ja:'竜巻', en:'Tornado'}
+    };
+    // Fallback: any phenomena string not in labelFor still shows as-is,
+    // so a badge/banner never silently disappears due to a wording
+    // mismatch with the CWA API (e.g. "海上颱風警報" vs plain "颱風").
+    function _labelOrRaw(p) {
+      var l = labelFor[p];
+      if (l) return l[lang] || l.en;
+      for (var key in labelFor) {
+        if (p.indexOf(key) !== -1) return labelFor[key][lang] || labelFor[key].en;
+      }
+      return p;
+    }
+    fetch('/api/disaster-alerts').then(function(r){return r.json()}).then(function(data){
+      if (!data.regions) return;
+      var affectedNames = [];
+      for (var regionId in data.regions) {
+        var info = data.regions[regionId];
+        var badges = [];
+        (info.weather || []).forEach(function(p) {
+          badges.push(_labelOrRaw(p));
+        });
+        if (info.earthquake) {
+          var eqLabel = lang === 'zh' ? ('地震 ' + info.earthquake.max_intensity + '級')
+            : lang === 'ja' ? ('地震 震度' + info.earthquake.max_intensity)
+            : ('Earthquake M' + info.earthquake.max_intensity);
+          badges.push(eqLabel);
+        }
+        if (!badges.length) continue;
+        var badgeEl = document.getElementById('alert-' + regionId);
+        if (badgeEl) {
+          badgeEl.textContent = '⚠️ ' + badges.join('・');
+          badgeEl.style.display = 'inline';
+        }
+        var rn = regionNames[regionId];
+        if (rn) affectedNames.push(rn[lang] || rn.en);
+      }
+      if (affectedNames.length) {
+        var banner = document.getElementById('disasterBanner');
+        if (banner) {
+          var msg = lang === 'zh'
+            ? ('⚠️ ' + affectedNames.join('、') + ' 目前有氣象或地震警報，部分場館可能提前休館，請出發前確認官方資訊並注意自身安全。')
+            : lang === 'ja'
+            ? ('⚠️ ' + affectedNames.join('・') + ' で気象・地震に関する警報が発表されています。一部施設が臨時休館する可能性があります。訪問前に公式情報をご確認のうえ、安全にお気をつけください。')
+            : ('⚠️ Active weather/earthquake alert in ' + affectedNames.join(', ') + '. Some venues may close early — please check official info and stay safe.');
+          banner.textContent = msg;
+          banner.style.display = 'flex';
+        }
+      }
+    }).catch(function(){});
+  })();
   </script>
   <script>
   if ('serviceWorker' in navigator) {

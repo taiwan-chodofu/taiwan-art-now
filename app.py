@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 from scraper import fetch_all_exhibitions, MUSEUMS
 import json
 import os
+import re
 
 app = Flask(__name__)
 
@@ -1474,6 +1475,144 @@ def weather_api():
         return json.dumps(result, ensure_ascii=False), 200, {"Content-Type": "application/json", "Cache-Control": "public, max-age=1800"}
     except Exception as e:
         return json.dumps({"error": str(e)}), 500
+
+
+# CWA county name -> internal region id (matches REGION_ORDER)
+CWA_COUNTY_TO_REGION = {
+    "臺北市": "taipei", "台北市": "taipei",
+    "新北市": "new_taipei",
+    "桃園市": "taoyuan",
+    "新竹市": "hsinchu", "新竹縣": "hsinchu",
+    "宜蘭縣": "yilan",
+    "基隆市": "keelung",
+    "臺中市": "taichung", "台中市": "taichung",
+    "南投縣": "nantou",
+    "嘉義市": "chiayi", "嘉義縣": "chiayi",
+    "臺南市": "tainan", "台南市": "tainan",
+    "高雄市": "kaohsiung",
+    "屏東縣": "pingtung",
+    "花蓮縣": "hualien",
+    "臺東縣": "taitung", "台東縣": "taitung",
+    # Offshore islands: no matching region in REGION_ORDER, alerts for
+    # these counties are dropped rather than mapped to the wrong region.
+}
+
+# Alert types severe enough to plausibly close exhibition venues.
+# Deliberately excludes routine advisories (e.g. 低溫特報, 空氣品質) that
+# don't affect whether a venue opens its doors.
+DISASTER_ALERT_KEYWORDS = ("颱風", "海嘯", "豪雨", "大雨", "土石流", "強風", "龍捲風")
+
+
+@app.route("/api/disaster-alerts")
+def disaster_alerts_api():
+    """Active typhoon/heavy-rain warnings by region + recent strong earthquakes
+    by region. Returns only alerts severe enough to plausibly affect whether
+    venues open — not a general weather feed.
+
+    Response shape:
+      {"regions": {region_id: {"weather": [phenomena,...], "earthquake": {...}|None}}}
+    """
+    import urllib.request as urllib_req
+    import ssl
+    from datetime import datetime, timezone, timedelta
+
+    cwa_key = os.environ.get("CWA_API_KEY", "")
+    if not cwa_key:
+        return json.dumps({"error": "no key"}), 500
+
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    tw_tz = timezone(timedelta(hours=8))
+    now = datetime.now(tw_tz)
+
+    def _fetch(dataset_id):
+        url = f"https://opendata.cwa.gov.tw/api/v1/rest/datastore/{dataset_id}?Authorization={cwa_key}&format=JSON"
+        req = urllib_req.Request(url)
+        with urllib_req.urlopen(req, timeout=10, context=ctx) as resp:
+            return json.loads(resp.read())
+
+    # CWA's validTime timestamps ("2026-07-17 23:00:00") have no timezone —
+    # they're always Taiwan local time, so attach tw_tz explicitly.
+    def _parse_tw_time(s):
+        dt = datetime.fromisoformat(s.strip())
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=tw_tz)
+        return dt
+
+    weather_by_region = {}
+    try:
+        data = _fetch("W-C0033-001")
+        for rec in data.get("records", {}).get("location", []):
+            county = rec.get("locationName", "")
+            region_id = CWA_COUNTY_TO_REGION.get(county)
+            if not region_id:
+                continue
+            for hazard in rec.get("hazardConditions", {}).get("hazards", []):
+                info = hazard.get("info", {})
+                phenomena = info.get("phenomena", "")
+                if not any(kw in phenomena for kw in DISASTER_ALERT_KEYWORDS):
+                    continue
+                end_str = hazard.get("validTime", {}).get("endTime", "")
+                try:
+                    if _parse_tw_time(end_str) < now:
+                        continue
+                except ValueError:
+                    pass
+                weather_by_region.setdefault(region_id, set()).add(phenomena)
+    except Exception as e:
+        logger.warning("disaster_alerts_api: warning fetch failed: %s", e)
+
+    eq_by_region = {}
+    try:
+        eq_data = _fetch("E-A0015-001")
+        quakes = eq_data.get("records", {}).get("Earthquake", [])
+        if quakes:
+            latest = quakes[0]
+            eq_info = latest.get("EarthquakeInfo", {})
+            origin_time = eq_info.get("OriginTime", "")
+            try:
+                is_recent = (now - _parse_tw_time(origin_time)).total_seconds() < 6 * 3600
+            except ValueError:
+                is_recent = False
+            if is_recent:
+                magnitude = eq_info.get("EarthquakeMagnitude", {}).get("MagnitudeValue")
+                epicenter = eq_info.get("Epicenter", {}).get("Location", "")
+                # ShakingArea includes both per-county entries and summary
+                # "最大震度N級地區" rows whose CountyName lists multiple
+                # counties comma/dot-separated — split those out too.
+                for area in latest.get("Intensity", {}).get("ShakingArea", []):
+                    try:
+                        level = int(str(area.get("AreaIntensity", "")).replace("級", "").strip() or 0)
+                    except (ValueError, TypeError):
+                        continue
+                    if level < 4:
+                        continue
+                    for county in re.split("[、,]", area.get("CountyName", "")):
+                        region_id = CWA_COUNTY_TO_REGION.get(county.strip())
+                        if not region_id:
+                            continue
+                        existing = eq_by_region.get(region_id)
+                        if not existing or level > existing["max_intensity"]:
+                            eq_by_region[region_id] = {
+                                "magnitude": magnitude,
+                                "max_intensity": level,
+                                "epicenter": epicenter,
+                                "time": origin_time,
+                            }
+    except Exception as e:
+        logger.warning("disaster_alerts_api: earthquake fetch failed: %s", e)
+
+    all_region_ids = set(weather_by_region) | set(eq_by_region)
+    regions = {
+        rid: {
+            "weather": sorted(weather_by_region.get(rid, [])),
+            "earthquake": eq_by_region.get(rid),
+        }
+        for rid in all_region_ids
+    }
+    result = {"regions": regions}
+    return json.dumps(result, ensure_ascii=False), 200, {"Content-Type": "application/json", "Cache-Control": "public, max-age=600"}
 
 
 MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
