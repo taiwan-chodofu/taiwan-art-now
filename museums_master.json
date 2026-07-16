@@ -1206,9 +1206,9 @@
         "zh": "谷公館"
       },
       "address": {
-        "en": "4F, No.21, Sec.1, Dunhua S. Rd., Taipei",
-        "ja": "台北市松山區敦化南路一段21號4F",
-        "zh": "臺北市松山區敦化南路一段21號4F"
+        "en": "4F-2, No.21, Sec.1, Dunhua S. Rd., Taipei",
+        "ja": "台北市敦化南路一段21號4樓之2",
+        "zh": "臺北市敦化南路一段21號4樓之2"
       },
       "url": "https://www.michaelkugallery.com",
       "hours": {
@@ -1225,7 +1225,7 @@
         0,
         6
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "aki",
