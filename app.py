@@ -367,6 +367,7 @@ def index():
                 "id": mid,
                 "name": _get_localized(m["name"], lang),
                 "hours": _get_localized(m.get("hours", {}), lang),
+                "note": _get_localized(m.get("note", {}), lang),
                 "address": _get_localized(m.get("address", {}), lang),
                 "url": m.get("url", ""),
                 "category": m.get("category", ""),
