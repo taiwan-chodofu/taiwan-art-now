@@ -835,21 +835,33 @@
       },
       "url": "https://www.lightboxlib.org",
       "hours": {
-        "en": "Wed–Sun 13:00–20:00 | Closed Mon–Tue",
-        "ja": "水〜日 13:00–20:00｜月火休",
-        "zh": "週三至週日 13:00–20:00｜週一二休"
+        "en": "Library Hours: Thu-Sat 14:00-19:00 (Office Hours: Tue-Sat 10:00-19:00)",
+        "ja": "開館時間：木〜土 14:00–19:00（辦公時間：火〜土 10:00–19:00）",
+        "zh": "開館時間：週四至週六 14:00–19:00（辦公時間：週二至週六 10:00–19:00）"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://www.lightboxlib.org/sites/default/files/assets/new_logo_notext.jpg",
       "lat": 25.019761,
       "lng": 121.53065,
       "closed_days": [
-        0,
-        1
+        6,
+        0
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false,
+      "events": [
+        {
+          "date": "2026/07/25",
+          "time": "15:00",
+          "title_zh": "講座：飛行、感知與記憶——東亞空戰影像的當代重探",
+          "title_en": "Talk: Flight, Perception, and Memory — Rethinking East Asian Aerial War Imagery",
+          "title_ja": "講演：飛行・知覚・記憶――東アジア空戦映像の現代的再考",
+          "type": "talk",
+          "note_zh": "講者：蔡旻螢｜14:30開放入場，採報名制（30位）",
+          "note_en": "Speaker: Tsai Min-Ying | Doors 14:30, registration required (30 seats)"
+        }
+      ]
     },
     {
       "id": "fuzhong15",
