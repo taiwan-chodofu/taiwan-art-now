@@ -1410,12 +1410,39 @@
     {
       "museum": "thecube",
       "title_zh": "李漢強：最後のCD",
-      "dates": "2026.05.23 – 2026.08.03",
+      "dates": "2026.05.23 – 2026.08.16",
       "artists": [
         "李漢強"
       ],
-      "link": "https://thecubespace.com",
-      "status": "current"
+      "link": "https://thecubespace.com/project/the-last-cd/",
+      "status": "current",
+      "title_en": "Lee Han-Chiang: The Last CD",
+      "curator": "游崴",
+      "description": "立方計劃空間推出旅日藝術家李漢強個展「李漢強：最後のCD」，由游崴策展，延續藝術家近年對舊媒體的興趣，親手重製數百張CD封面，帶領觀眾重新審視東亞流行文化如何在實體物件與技術記憶中流動，也回應數位時代下影像與聲音被快速生產、消費的現象。展場所在的台北公館，在1990年代曾是唱片行密集的區域，本次展覽以此為地緣背景，透過重製CD、聲音裝置與空間安排，將展場打造成一座介於「唱片行」與「媒體資料庫」之間的感官場域。",
+      "description_en": "TheCube Project Space presents \"The Last CD\" by Tokyo-based artist Lee Han-Chiang, curated by You Wei. Continuing the artist's recent interest in obsolete media, Lee hand-remakes hundreds of CD covers, inviting viewers to reconsider how East Asian pop culture circulates through physical objects and technological memory, and responding to how images and sound are rapidly produced and consumed in the digital era. The venue's neighborhood, Taipei's Gongguan, was once dense with record shops in the 1990s; the exhibition turns the space into a sensory field between a record store and a media archive through remade CDs, sound installation, and spatial arrangement.",
+      "description_ja": "立方計劃空間にて、東京在住のアーティスト李漢強（リー・ハンチアン）の個展「最後のCD」を開催。游崴のキュレーションによる本展は、旧メディアへの関心を続ける作家が数百枚のCDジャケットを手作業で再現し、東アジアのポップカルチャーが実物とテクノロジーの記憶のなかでどのように流通してきたかを問い直すと同時に、デジタル時代における映像・音の急速な生産と消費のあり方に応答する。会場のある台北・公館は1990年代にレコード店が密集していた地域で、本展はこの地縁を背景に、CDの再制作・音響インスタレーション・空間構成を通じて「レコード店」と「メディア資料庫」の間を漂う感覚的な場を作り出す。",
+      "events": [
+        {
+          "date": "2026/05/23",
+          "time": "14:00",
+          "title_zh": "開幕茶會暨展覽與談 x 最後のCD READERS' POLL",
+          "title_en": "Opening Reception & Artist Talk x Readers' Poll",
+          "title_ja": "オープニング＆トーク",
+          "type": "talk",
+          "note_zh": "與談人：李漢強、游崴、張世倫（13:30開放入場）",
+          "note_en": "Speakers: Lee Han-Chiang, You Wei, Chang Shih-Lun (doors open 13:30)"
+        },
+        {
+          "date": "2026/08/01",
+          "time": "",
+          "title_zh": "「最後のCD」重新開幕 × 新書發表 CDJ 派對",
+          "title_en": "Reopening & Book Launch CDJ Party",
+          "title_ja": "再開＆新刊発表 CDJパーティー",
+          "type": "event",
+          "note_zh": "演出者：DJ味王、王信權",
+          "note_en": "Performers: DJ Weiwang, Wang Hsin-Chuan"
+        }
+      ]
     },
     {
       "museum": "kdmofa",

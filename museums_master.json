@@ -300,9 +300,9 @@
       },
       "url": "https://thecubespace.com",
       "hours": {
-        "en": "Wed-Sun 14:00-20:00 | Closed Mon-Tue",
-        "ja": "水〜日 14:00–20:00｜月火休",
-        "zh": "週三至週日 14:00–20:00｜週一二休"
+        "en": "Wed-Sun 14:00-20:00 | Closed Mon-Tue (Summer break: closed Jul 6-31, 2026, reopens Aug 1)",
+        "ja": "水〜日 14:00–20:00｜月火休（夏季休館: 2026年7/6-7/31、8/1(土)再開）",
+        "zh": "週三至週日 14:00–20:00｜週一二休（暑假休館：2026/7/6-7/31，8/1(六)重新開幕）"
       },
       "closed_day": 0,
       "scraper": "thecube",
@@ -312,7 +312,9 @@
         0,
         1
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false,
+      "temp_closure_start": "2026-07-06",
+      "temp_closure_end": "2026-07-31"
     },
     {
       "id": "kdmofa",
@@ -726,7 +728,7 @@
       "closed_days": [
         0
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "absolute",

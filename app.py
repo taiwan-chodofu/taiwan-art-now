@@ -336,7 +336,7 @@ def index():
                 (1 if e.get("status") == "upcoming" else 2),
                 e.get("days_until_start") or 0,
             ))
-            is_closed_today = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
+            is_closed_today = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"))
             has_current = any(e.get("status") == "current" or (
                 e.get("status") == "unknown" and e.get("days_until_start") is None
             ) for e in exs)
@@ -521,13 +521,16 @@ def _get_last_updated():
         return None
 
 
-def _is_closed_today(closed_day, closed_days=None):
+def _is_closed_today(closed_day, closed_days=None, temp_closure_start=None, temp_closure_end=None):
     """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。
-    祝祭日の場合はFalseを返す（祝日は別途注意喚起するため）。"""
+    祝祭日の場合はFalseを返す（祝日は別途注意喚起するため）。
+    temp_closure_start/end（"YYYY-MM-DD"）が指定されていれば、その期間中は常にTrue（夏季休館等）。"""
     from datetime import datetime, timezone, timedelta
     tw_tz = timezone(timedelta(hours=8))
-    # 祝祭日は曜日休館判定をスキップ（施設により対応が異なるため）
     today_str = datetime.now(tw_tz).strftime("%Y-%m-%d")
+    if temp_closure_start and temp_closure_end and temp_closure_start <= today_str <= temp_closure_end:
+        return True
+    # 祝祭日は曜日休館判定をスキップ（施設により対応が異なるため）
     if today_str in TAIWAN_HOLIDAYS_2026:
         return False
     today_weekday = datetime.now(tw_tz).weekday()
@@ -1113,7 +1116,7 @@ def exhibition_detail(museum_id, idx):
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "hours_uncertain": museum_info.get("hours_uncertain", False) if museum_info else False,
             "url": museum_info.get("url", "") if museum_info else "",
-            "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days")) if museum_info else False,
+            "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days"), museum_info.get("temp_closure_start"), museum_info.get("temp_closure_end")) if museum_info else False,
         },
         current_lang=lang,
         museum_id=museum_id,
@@ -1292,7 +1295,7 @@ def nearby(museum_id):
         if m["id"] == museum_id or not m.get("lat"):
             continue
         # Skip closed venues
-        is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"))
+        is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"))
         if is_closed:
             continue
         dist = distance_km(m["lat"], m["lng"])
