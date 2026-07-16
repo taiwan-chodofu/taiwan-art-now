@@ -3101,6 +3101,36 @@
           "type": "workshop"
         }
       ]
+    },
+    {
+      "museum": "soka",
+      "title_zh": "萬物的微光",
+      "title_en": "Glimmers of All Things",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.08.22",
+      "location": "索卡藝術．台南",
+      "link": "https://www.soka-art.com/tr/exhibition/works/12115",
+      "artists": [
+        "陳紀夫",
+        "陳奕龍",
+        "陳懷欣",
+        "翁祥鈞"
+      ],
+      "description": "臺南索卡藝術舉辦《萬物的微光 Glimmers of All Things》第19屆索卡好樣青年藝術家聯展，透過公開徵件發掘具潛力之青年創作者，本屆由陳紀夫、陳奕龍、陳懷欣與翁祥鈞四位藝術家獲選展出。四位分別運用毛根、皮革、膠彩、油彩等不同媒材創作，回應展覽所關注的那些微小、緩慢且難以被察覺的事物——稍縱即逝的光影、一閃而過的記憶、被反覆凝視的物件，以及深藏於文化與信仰中的精神痕跡。陳紀夫以毛根重塑盆景與器物，帶有東方文人賞玩之趣；陳奕龍以皮影媒材轉譯神話與信仰；陳懷欣以膠彩描繪旅途中的光影與記憶；翁祥鈞則以油彩重組日常景觀，使熟悉空間產生陌生感。",
+      "description_en": "Soka Art Tainan presents Glimmers of All Things, the 19th edition of its Young Artist Group Exhibition, which discovers promising young artists through open submission. This edition features four selected artists: Chen Gi Fu, Chen I Long, Chen Huai Sin, and Wong Siang Jyun, working respectively in pipe cleaners, leather, mineral pigment, and oil paint. Their works respond to the exhibition's focus on things small, slow, and easily overlooked — fleeting light and shadow, momentary memories, repeatedly gazed-upon objects, and spiritual traces embedded in culture and belief. Chen Gi Fu reshapes bonsai and vessels from pipe cleaners with a literati sensibility; Chen I Long translates myth and belief through shadow-puppet leatherwork; Chen Huai Sin paints light and memory from her travels in mineral pigment; Wong Siang Jyun reassembles everyday scenes in oil, rendering the familiar unfamiliar.",
+      "description_ja": "台南索卡藝術にて、公募により有望な若手作家を発掘する第19回「索卡好樣青年藝術家聯展」《萬物的微光（あらゆるものの微かな光）》を開催。今回選出されたのは陳紀夫、陳奕龍、陳懷欣、翁祥鈞の4名で、それぞれモールワイヤー・皮革・膠彩・油彩といった異なる素材で制作する。展示が注目する、小さく・ゆるやかで・気づかれにくい存在——一瞬の光と影、ふと過ぎる記憶、繰り返し見つめられる物、文化や信仰に潜む精神的な痕跡に応答する。陳紀夫はモールワイヤーで盆栽や器を作り、東方文人の趣を漂わせる。陳奕龍は皮影（影絵）の技法で神話と信仰を翻案し、陳懷欣は膠彩で旅の光と記憶を描き、翁祥鈞は油彩で日常の風景を再構成し、見慣れた空間に違和感を生み出す。",
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "16:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "type": "opening",
+          "note_zh": "四位藝術家親臨現場",
+          "note_en": "All four artists will be present"
+        }
+      ]
     }
   ]
 }
