@@ -1063,9 +1063,9 @@
       },
       "url": "https://www.asiaartcenter.org",
       "hours": {
-        "en": "Tue–Sun 10:00–18:30",
-        "ja": "火〜日 10:00–18:30",
-        "zh": "週二至週日 10:00–18:30"
+        "en": "Tue-Sun 10:00-18:30 | Closed Mon",
+        "ja": "火〜日 10:00–18:30｜月休",
+        "zh": "週二至週日 10:00–18:30｜週一休"
       },
       "closed_day": 0,
       "scraper": "asiaart",
@@ -1076,7 +1076,7 @@
       "closed_days": [
         0
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "chiwen",

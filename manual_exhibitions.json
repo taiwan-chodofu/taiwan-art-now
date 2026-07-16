@@ -2098,16 +2098,19 @@
     },
     {
       "museum": "asiaart",
-      "title_zh": "Unseen Topographies",
+      "title_zh": "未曾抵達的風景",
       "title_en": "Unseen Topographies: Tobe Kiu Sin Kan & Charlotte Keates",
       "title_ja": "",
       "dates": "2026.07.11 – 2026.08.30",
       "location": "亞洲藝術中心",
-      "link": "https://asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/",
+      "link": "https://www.asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/",
       "artists": [
         "簡喬倩",
         "Charlotte Keates"
-      ]
+      ],
+      "description": "亞洲藝術中心很榮幸呈獻《Unseen Topographies》，推出香港藝術家簡喬倩（Tobe Kiu Sin KAN）與英國藝術家Charlotte Keates的雙人展。展覽匯聚了兩人皆十分風格化的繪畫實踐，探問記憶、感知、身分與情感，如何轉譯為既熟悉又難以捉摸的空間經驗。Unseen Topographies所指向的並非現實中的地理景觀，而是構成生命經驗的隱性輪廓：記憶、渴望、心理聯想，以及內在世界與外部現實之間流動不羈的關係。簡喬倩成長於香港，持續驅動她對文化差異、身分認同與歸屬感的思索；Charlotte Keates居住於根西島，發展出更為沉著而內省的觀看方式。新冠疫情期間，簡喬倩開始在拱形畫布上作畫，呼應歐洲祭壇畫與香港殖民建築語言；Keates則以電影劇照為靈感，呈現一組三聯作，賦予作品戲劇張力與舞台感。",
+      "description_en": "Asia Art Center is pleased to present Unseen Topographies, a two-person exhibition featuring Hong Kong artist Tobe Kiu Sin Kan and British artist Charlotte Keates. The show brings together two highly stylized painting practices, asking how memory, perception, identity, and emotion translate into spatial experiences that feel both familiar and elusive. Unseen Topographies points not to real geography but to the hidden contours that shape lived experience — memory, longing, psychological association, and the restless relationship between inner world and outer reality. Kan grew up in Hong Kong, a dense, fast-paced city shaped by layered colonial history; Keates lives on Guernsey, a small, relatively quiet island in the English Channel. During the pandemic, Kan began painting on arched canvases echoing European altarpieces and Hong Kong's colonial architecture, while Keates began collecting film stills, presenting a triptych with strong theatrical and stage-like qualities.",
+      "description_ja": "亞洲藝術中心は、香港のアーティスト簡喬倩（Tobe Kiu Sin Kan）と英国のアーティストCharlotte Keatesによる二人展《Unseen Topographies》を開催する。両者ともに高度に様式化された絵画実践を通じて、記憶・知覚・アイデンティティ・感情がいかに、親密でありながら捉えがたい空間的経験へと翻訳されるかを問う。Unseen Topographiesが指すのは現実の地理ではなく、記憶・憧れ・心理的連想、そして内なる世界と外部の現実との間の絶えず流動する関係——生の経験を形作る見えない輪郭である。簡喬倩は香港で育ち、複層的な植民地の歴史に形作られた高密度で速いペースの都市の中で、文化的差異やアイデンティティ、帰属意識について考え続けている。一方Keatesは英仏海峡に浮かぶ小さく静かな島、ガーンジー島に暮らす。コロナ禍で簡喬倩は欧州の祭壇画や香港の植民地建築を想起させるアーチ型のキャンバスに描き始め、Keatesは映画のスチール写真を収集し始め、演劇的で舞台のような質感を持つ三連作を発表する。"
     },
     {
       "museum": "sssart",
@@ -2957,19 +2960,6 @@
       "artists": [
         "謝帆",
         "Dennis Miranda Zamorano"
-      ]
-    },
-    {
-      "museum": "asiaart",
-      "title_zh": "未曾抵達的風景",
-      "title_en": "Unseen Topographies",
-      "title_ja": "",
-      "dates": "2026.07.11 – 2026.08.30",
-      "location": "亞洲藝術中心（台北）",
-      "link": "https://www.asiaartcenter.org/exhibitions/236-unseen-topographies-tobe-kiu-sin-kan-charlotte/overview/",
-      "artists": [
-        "Tobe Kiu Sin Kan",
-        "Charlotte Keates"
       ]
     },
     {
