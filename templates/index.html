@@ -816,7 +816,7 @@
         </div>
         {% endif %}
 
-        {% if museum.exhibitions %}
+        {% if museum.exhibitions or museum.venue_events %}
         <div class="ex-list">
           {% for ex in museum.exhibitions %}
           <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ ex.stable_key }}">

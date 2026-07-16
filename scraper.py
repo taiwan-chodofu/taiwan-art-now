@@ -1972,6 +1972,10 @@ def _enrich_exhibitions(exhibitions, max_to_fetch=5):
             continue
         if link in shared_links:
             continue
+        # manual_exhibitions.json側に既に十分な概要が入っている展示は
+        # 再スクレイプしない（劣化した自動抽出データで上書きされるのを防ぐ）
+        if ex.get("description") and len(ex["description"]) >= 50:
+            continue
         # トップページのみのリンクは除外（クエリパラメータ付きやパス深いURLは詳細とみなす）
         is_trunk = (
             link.count("/") < 4
