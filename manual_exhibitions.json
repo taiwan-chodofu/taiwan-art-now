@@ -259,7 +259,8 @@
       "location": "蘭陽博物館",
       "link": "https://www.lym.gov.tw",
       "description": "國定Blihun漢本考古遺址遺物標本自2022年起向文化部文化資產局借展至蘭陽博物館展出。本次主題展以回顧方式呈現，讓觀眾再次看見國定Blihun漢本考古遺址出土文物的多元風貌與文化價值。展示內容涵蓋遺址年代與文化內涵、聚落形成、考古發掘歷程，以及以家域為核心的社會組織型態。",
-      "description_en": ""
+      "description_en": "Since 2022, artifact specimens from the nationally designated Blihun Hanben Archaeological Site have been on loan from the Bureau of Cultural Heritage, Ministry of Culture, for display at the Lanyang Museum. This thematic exhibition takes a retrospective approach, allowing visitors to once again encounter the diverse character and cultural value of the artifacts unearthed at the site. It covers the site's chronology and cultural context, the formation of its settlement, the history of its archaeological excavation, and the household-centered form of social organization that shaped its community.",
+      "description_ja": "国定Blihun漢本考古遺跡の遺物標本は、2022年より文化部文化資産局から借用され、蘭陽博物館にて展示されている。本テーマ展は回顧形式で構成され、国定Blihun漢本考古遺跡から出土した文物の多様な姿と文化的価値を、観覧者が改めて見つめ直せる内容となっている。展示内容は、遺跡の年代と文化的背景、集落の形成過程、考古発掘の歴史、そして家族単位を核とした社会組織の形態にまで及ぶ。"
     },
     {
       "museum": "goodug",
@@ -1022,7 +1023,10 @@
       "link": "https://yiriarts.com.tw/exhibitions/current/#yokoyama",
       "artists": [
         "橫山麻衣"
-      ]
+      ],
+      "description": "橫山麻衣以在義大利、希臘旅居期間所見的古代遺跡與出土文物為創作起點，思考「真實」的本質。她運用數位素描、水彩與油畫層層轉譯，如同數位繪圖中的「圖層」機制，讓不同時刻的痕跡疊合於同一畫面。展覽不試圖回返單一而純粹的「原初真實」，而是關注事物在時間與物質變化中，如何以殘缺、覆寫與消逝間的曖昧狀態持續存在——遺跡如幽靈般滯留於當代，持續以變形的樣貌存在。",
+      "description_en": "Mai Yokoyama draws on ancient ruins and excavated artifacts she encountered during extended stays in Italy and Greece to probe the nature of authenticity. Working across digital sketches, watercolor, and oil painting, she treats the \"layer\" — a key mechanism in digital image-making — as a way of collapsing different moments and states into a single ambiguous image. Rather than seeking a singular, pure \"original truth,\" the exhibition considers how things persist between presence and disappearance through erosion and transformation, with ruins lingering in the contemporary world like ghosts, continuing to exist in altered form long after losing their original function.",
+      "description_ja": "橫山麻衣は、イタリアやギリシャ滞在中に目にした古代遺跡や発掘された遺物を出発点に、「真実」とは何かを問い直す。デジタルスケッチ、水彩、油彩を重ねて制作する手法は、デジタル画像における「レイヤー」の仕組みに通じ、異なる時間や状態の痕跡を一枚の曖昧なイメージに積層させる。本展は単一で純粋な「原初の真実」への回帰を目指すのではなく、時間と物質の変化のなかで事物が損壊・上書き・消失の間を漂いながら存在し続けるさまに注目する。遺跡は幽霊のように現代に留まり、姿を変えながらも存在し続けている。"
     },
     {
       "museum": "pingtung",
@@ -2090,7 +2094,11 @@
         "楊前興",
         "藍氏君",
         "王文心"
-      ]
+      ],
+      "description": "《土地與水——從馬來西亞出發探訪亞洲性》由張集強、蔡集淞、陳宣誠三位策展人共同策劃，以馬來西亞為起點，探討「亞洲性」並非固定不變，而是在歷史、地理與文化變遷中持續形成的概念。展名TANAHAIR取自馬來語「Tanah（土地）」與「Air（水）」的複合詞，源自詩人穆罕默德・亞明1922年詩集《Tanah Air》，意指「家鄉、故土」。展覽以西馬巴生河與東馬砂拉越河兩條河流為敘事線，呈現馬來西亞多族群、多語言、多宗教的文化樣貌，集結馬來西亞、台灣藝術家與建築團隊，透過雨林、記憶、生態等主題的作品，回應人與土地、文化認同之間的關係。",
+      "description_en": "TANAHAIR: Navigating Asianness from Malaysia, co-curated by Chang Chi-Chiang, Tsai Chi-Sung, and Chen Hsuan-Cheng, takes Malaysia as a starting point to argue that \"Asianness\" is not fixed but continually formed through history, geography, and cultural change. The title combines the Malay words \"Tanah\" (land) and \"Air\" (water), tracing back to poet Mohammad Yamin's 1922 poetry collection Tanah Air, meaning \"homeland.\" Structured around two rivers — the Klang River in West Malaysia and the Sarawak River in East Malaysia — the exhibition brings together artists and architectural collectives from Malaysia and Taiwan, presenting works engaging with the rainforest, memory, and ecology to explore the relationship between people, land, and cultural identity.",
+      "description_ja": "《土地與水——從馬來西亞出發探訪亞洲性（TANAHAIR）》は張集強、蔡集淞、陳宣誠の3名によるキュレーションで、マレーシアを出発点に「アジア性」が固定的なものではなく、歴史・地理・文化の変遷のなかで絶えず形成され続ける概念であることを問い直す。展覧会名「TANAHAIR」はマレー語の「Tanah（土地）」と「Air（水）」を組み合わせた語で、詩人モハマド・ヤミンが1922年に発表した詩集『Tanah Air』に由来し、「故郷・祖国」を意味する。西マレーシアのクラン川と東マレーシアのサラワク川という二つの川を軸に、マレーシアの多民族・多言語・多宗教的な文化のありようを描き出し、マレーシアと台湾のアーティスト・建築チームが参加。雨林や記憶、生態などをテーマとした作品を通じて、人と土地、文化的アイデンティティの関係を探る。",
+      "curator": "張集強、蔡集淞、陳宣誠"
     },
     {
       "museum": "carp",
@@ -2222,7 +2230,7 @@
       "title_zh": "立體詩",
       "title_en": "Sculptural Poems",
       "title_ja": "",
-      "dates": "2026.07.18 – 2026.09.12",
+      "dates": "2026.07.18 – 2026.09.19",
       "location": "耿畫廊",
       "link": "https://www.tinakenggallery.com/exhibitions/260/",
       "artists": [
@@ -2237,7 +2245,10 @@
           "title_ja": "オープニング",
           "type": "opening"
         }
-      ]
+      ],
+      "description": "郭思敏個展《立體詩》以鐵與不鏽鋼為主要媒材，透過幾何構成、結構秩序、留白處理與光影穿透，探討空間、感知與物質之間的關係。建築出身的郭思敏視雕塑為建築負空間概念的延伸，讓空隙、光線與觀者的身體共同成為作品的一部分；部分作品經烤漆固定光澤，部分則任其自然氧化，使鏽蝕成為時間最直接的痕跡。展出作品包括《奕奕》、《暫佇》、《內照空間》、《冉冉》、《虛實間》、《共生》系列等。",
+      "description_en": "Kuo Szu-Min's solo exhibition Sculptural Poems uses iron and stainless steel to explore the relationship between space, perception, and materiality through geometric composition, structural order, negative space, and the play of light. Trained as an architect, Kuo treats sculpture as an extension of architectural negative space, in which gaps, light, and the viewer's own body become part of the work. Some pieces are lacquered to fix their surface, while others are left to oxidize naturally, letting rust register as the most direct trace of time. Featured works include the series Yi Yi, Temporarily Resting, Inner-Lit Space, Ran Ran, Between Reality and Illusion, and Symbiosis.",
+      "description_ja": "郭思敏の個展《立體詩（彫刻詩）》は、鉄とステンレスを主素材に、幾何学的構成、構造の秩序、余白の処理、光と影の透過を通して、空間・知覚・物質の関係を探る。建築出身の郭思敏は、彫刻を建築における「負の空間」概念の延長として捉え、隙間や光、観者自身の身体が作品の一部となるよう構成する。一部の作品は塗装によって光沢を固定し、一部はあえて自然に酸化させることで、錆を時間の最も直接的な痕跡として提示する。出品作には《奕奕》《暫佇》《内照空間》《冉冉》《虛實間》《共生》シリーズなどが含まれる。"
     },
     {
       "museum": "852art",
@@ -2548,7 +2559,10 @@
           "title_ja": "オープニング（アーティスト来場）",
           "type": "opening"
         }
-      ]
+      ],
+      "description": "高雅婷個展《時間的摺痕》以盛開後逐漸凋萼、半謝或乾枯捲曲的花朵為主題，不追求花卉最美的瞬間，而是關注凋萎狀態中蘊含的另一種時間感。藝術家將凋萎視為時間的「摺疊」——花朵一生的樣態被壓縮進花瓣的皺褶之中，在殘缺與蕭索裡尋得恆常與真實，與盛放時的短暫易逝形成對照。作品以油畫棒與水彩、水墨於紙上並置，媒材的流動性呼應植物本身隨時間變化的質地，模糊了短暫與原初之間的界線。",
+      "description_en": "Kao Ya-Ting's solo exhibition The Folds of Time turns to flowers past their peak — half-fallen, dried, or curling — rather than the moment of full bloom. She frames withering not as an ending but as a kind of temporal folding, in which an entire life cycle is compressed into the creases of a petal, finding constancy and truth in states of imperfection and desolation, set against the fleetingness of a flower at its most beautiful. The works pair oil pastel on paper with watercolor and ink on paper, using the fluidity of these media to echo the plants' own transformation over time and blur the line between the ephemeral and the primordial.",
+      "description_ja": "高雅婷の個展《時間的摺痕（時間の折り皴）》は、満開の一瞬ではなく、半ば散り、乾いて縮れた花に着目する。作家は「萎れ」を終わりではなく、時間が花びらの皺のなかに生涯の全てを「折り込んだ」状態として捉え、不完全さや荒涼のなかにこそ恒常性と真実を見出し、満開の花の儚さと対比させる。作品は紙にオイルパステルを用いたものと、水彩・墨を用いたものを並置し、両者の流動性によって植物自体の時間的変化を映し出し、儚さと原初性の境界を曖昧にする。"
     },
     {
       "museum": "tkgplus",
@@ -2686,7 +2700,10 @@
       "artists": [
         "鄭以安"
       ],
-      "curator": ""
+      "curator": "",
+      "description": "鄭以安個展《無盡之圖》於國立臺南藝術大學視覺館一樓大廳展出，以陶瓷/磚板為主要創作媒材。藝術家提出核心概念：「生命並非是直線前進，而是不斷的折返、重組與再現」，展覽以此思考生命歷程的循環性——並非單向的成長與消逝，而是持續的回返、拆解與再生。展場仰賴自然採光，全天開放供觀者隨時入內觀看。",
+      "description_en": "Cheng Yi-An's solo exhibition Reincarnation, held in the first-floor lobby of the Visual Arts Building at Tainan National University of the Arts, works primarily in ceramic/tile-based media. The show is built around the artist's core statement that \"life does not move forward in a straight line, but continually folds back, reassembles, and reappears\" — framing life's course not as one-directional growth and decline, but as an ongoing cycle of return, disassembly, and regeneration. The space relies on natural light and is open to view throughout the day.",
+      "description_ja": "鄭以安の個展《無盡之圖（尽きることのない図）》は、國立臺南藝術大學ヴィジュアルアーツ館1階ロビーで開催され、陶磁・タイルを主な素材とする。展覧会は作家の核心的な言葉「生命は直線的に進むのではなく、絶えず折り返し、再構成され、再び現れる」を軸に構成され、生命の過程を一方向的な成長と消滅ではなく、絶え間ない回帰・分解・再生の循環として捉え直す。会場は自然光に依存しており、日中は常時観覧が可能。"
     },
     {
       "museum": "chiayi",
