@@ -2169,18 +2169,15 @@
       },
       "url": "https://www.facebook.com/simpleobjectofficial/",
       "hours": {
-        "en": "Wed–Sun 13:00–19:00 | Closed Mon & Tue",
-        "ja": "水〜日 13:00–19:00｜月火休",
-        "zh": "週三至週日 13:00–19:00｜週一二休"
+        "en": "Daily 11:00-19:00",
+        "ja": "毎日 11:00–19:00",
+        "zh": "每日 11:00–19:00"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "lat": 25.030949,
       "lng": 121.550163,
-      "closed_days": [
-        0,
-        1
-      ],
-      "hours_uncertain": true
+      "closed_days": [],
+      "hours_uncertain": false
     },
     {
       "id": "glitch",
@@ -2209,7 +2206,7 @@
         0,
         1
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "soka_taipei",
@@ -2306,7 +2303,7 @@
         0,
         1
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "nhrm",
@@ -2440,7 +2437,7 @@
       ],
       "lat": 22.624,
       "lng": 120.285,
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "doublesquare",
@@ -2523,33 +2520,6 @@
         6,
         0
       ]
-    },
-    {
-      "id": "itpark",
-      "category": "alternative",
-      "region": "taipei",
-      "name": {
-        "en": "IT Park",
-        "ja": "伊通公園",
-        "zh": "伊通公園"
-      },
-      "address": {
-        "en": "2F, No. 41, Yitong St., Taipei",
-        "ja": "台北市伊通街41號2樓",
-        "zh": "台北市中山區伊通街41號2樓"
-      },
-      "url": "https://www.itpark.com.tw/",
-      "hours": {
-        "en": "Tue-Sat 13:00-21:00",
-        "ja": "火〜土 13:00–21:00",
-        "zh": "週二至週六 13:00–21:00"
-      },
-      "closed_day": null,
-      "closed_days": [
-        0,
-        6
-      ],
-      "hours_uncertain": true
     },
     {
       "id": "artemin",
@@ -2638,7 +2608,7 @@
       "closed_days": [
         1
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "nmh",
