@@ -1497,10 +1497,13 @@ CWA_COUNTY_TO_REGION = {
     # these counties are dropped rather than mapped to the wrong region.
 }
 
-# Alert types severe enough to plausibly close exhibition venues.
-# Deliberately excludes routine advisories (e.g. 低溫特報, 空氣品質) that
-# don't affect whether a venue opens its doors.
-DISASTER_ALERT_KEYWORDS = ("颱風", "海嘯", "豪雨", "大雨", "土石流", "強風", "龍捲風")
+# Alert types severe enough to plausibly close exhibition venues AND rare
+# enough that showing them stays meaningful. Deliberately excludes 豪雨/大雨/強風:
+# Taiwan's monsoon and squall patterns make heavy-rain/wind advisories a
+# near-daily occurrence in some region, which would keep the banner
+# permanently visible and defeat its purpose as a warning. Earthquakes are
+# handled separately (intensity>=4 threshold) so they aren't listed here.
+DISASTER_ALERT_KEYWORDS = ("颱風", "海嘯", "土石流", "龍捲風")
 
 
 @app.route("/api/disaster-alerts")

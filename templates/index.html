@@ -2026,14 +2026,12 @@
   // see DISASTER_ALERT_KEYWORDS / earthquake intensity>=4 filter server-side.
   (function() {
     var lang = '{{ current_lang }}';
+    // Kept in sync with app.py's DISASTER_ALERT_KEYWORDS — 豪雨/大雨/強風
+    // deliberately excluded (see comment there for why).
     var labelFor = {
       '颱風': {zh:'颱風', ja:'台風', en:'Typhoon'},
       '海嘯': {zh:'海嘯', ja:'津波', en:'Tsunami'},
-      '豪雨': {zh:'豪雨', ja:'大雨', en:'Heavy rain'},
-      '大雨': {zh:'大雨', ja:'大雨', en:'Heavy rain'},
       '土石流': {zh:'土石流', ja:'土砂崩れ', en:'Landslide'},
-      '陸上強風': {zh:'強風', ja:'強風', en:'Strong wind'},
-      '強風': {zh:'強風', ja:'強風', en:'Strong wind'},
       '龍捲風': {zh:'龍捲風', ja:'竜巻', en:'Tornado'}
     };
     // Fallback: any phenomena string not in labelFor still shows as-is,
