@@ -1095,9 +1095,9 @@
       },
       "url": "https://chiwengallery.com",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
+        "en": "Tue-Fri 13:00-18:00 (by appointment) | Closed Sat-Mon",
+        "ja": "火〜金 13:00–18:00（要予約）｜土日月休",
+        "zh": "週二至週五 13:00–18:00（採預約制）｜週六日一休"
       },
       "scraper": null,
       "og_image": "https://s0.wp.com/_si/?t=eyJpbWciOiJodHRwczpcL1wvaTAud3AuY29tXC9jaGl3ZW5nYWxsZXJ5LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyMlwvMDRcL2Nyb3BwZWQtMTgxOTQ4NzVfODI5NDkxNzMzODY2NzI0XzQyOTA4NTQ5MzU5NzMxNDA4NzJfbi5qcGc_Zml0PTUxMiUyQzUxMiZzc2w9MSIsInR4dCI6IkNoaS1XZW4iLCJ0ZW1wbGF0ZSI6ImVkZ2UiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM2MDU1MTI3fQ.TX8wb83RUmgtQsE5ks73RpAMOmYwMY0Z3SB9rCfLKpwMQ",
@@ -1105,9 +1105,11 @@
       "lng": 121.525088,
       "closed_days": [
         0,
+        5,
         6
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false,
+      "closed_day": null
     },
     {
       "id": "liang",
@@ -1306,20 +1308,18 @@
       },
       "url": "https://www.facebook.com/333gallery",
       "hours": {
-        "en": "Tue–Sun 10:00–19:00",
-        "ja": "火〜日 10:00–19:00",
-        "zh": "週二至週日 10:00–19:00"
+        "en": "Daily 10:00-19:00",
+        "ja": "毎日 10:00–19:00",
+        "zh": "每日 10:00–19:00"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://333-gallery.com/wp-content/uploads/2022/08/Nathan-Paddison-_KEN-WE-TORQUE_-Solo-Exhibition.jpg",
       "lat": 25.060797,
       "lng": 121.575685,
-      "closed_days": [
-        0
-      ],
-      "hours_uncertain": true
+      "closed_days": [],
+      "hours_uncertain": false
     },
     {
       "id": "yiyun",
@@ -1337,9 +1337,9 @@
       },
       "url": "https://www.facebook.com/yiyunart",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
+        "en": "Tue-Sat 12:00-18:00 (hours may vary by exhibition) | Closed Sun-Mon",
+        "ja": "火〜土 12:00–18:00（展覧会により変動あり）｜日月休",
+        "zh": "週二至週六 12:00–18:00（依展期可能調整）｜週日一休"
       },
       "scraper": null,
       "lat": 25.032464,
@@ -1348,7 +1348,7 @@
         0,
         6
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "moon",
@@ -1366,9 +1366,9 @@
       },
       "url": "https://www.facebook.com/MoonGallery.Taichung/",
       "hours": {
-        "en": "Tue–Sat 10:00–18:00",
-        "ja": "火〜土 10:00–18:00",
-        "zh": "週二至週六 10:00–18:00"
+        "en": "Tue-Sat 11:00-18:00 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–18:00｜日月休",
+        "zh": "週二至週六 11:00–18:00｜週日一休"
       },
       "scraper": null,
       "lat": 24.151591,
@@ -1377,7 +1377,7 @@
         0,
         6
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "jut",
@@ -1544,7 +1544,7 @@
       "closed_days": [
         0
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "huashan",
@@ -1597,36 +1597,6 @@
       "lat": 25.043723,
       "lng": 121.560797,
       "closed_days": []
-    },
-    {
-      "id": "cabcy",
-      "category": "private",
-      "region": "chiayi",
-      "name": {
-        "en": "Chiayi Railway Art Village",
-        "ja": "嘉義鐵道藝術村",
-        "zh": "嘉義鐵道藝術村"
-      },
-      "address": {
-        "en": "No.37-10, Beixing St., Chiayi",
-        "ja": "嘉義市北興街37-10號",
-        "zh": "嘉義市北興街37-10號"
-      },
-      "url": "https://cabcy.chiayi.gov.tw",
-      "hours": {
-        "en": "Tue-Sun 09:00-17:00 | Closed Mon",
-        "ja": "火〜日 9:00–17:00｜月休",
-        "zh": "週二至週日 09:00–17:00｜週一休"
-      },
-      "closed_day": null,
-      "scraper": null,
-      "exhibition_url": "",
-      "lat": 23.480477,
-      "lng": 120.441069,
-      "closed_days": [
-        0
-      ],
-      "hours_uncertain": true
     },
     {
       "id": "zhengbin",
