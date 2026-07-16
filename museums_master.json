@@ -902,9 +902,9 @@
         "zh": "朋丁"
       },
       "address": {
-        "en": "No.53, Tianjin St., Taipei",
-        "ja": "台北市中山區天津街53號",
-        "zh": "臺北市中山區天津街53號"
+        "en": "No.6, Ln.53, Sec.1, Zhongshan N. Rd., Zhongshan Dist., Taipei",
+        "ja": "台北市中山區中山北路一段53巷6號",
+        "zh": "臺北市中山區中山北路一段53巷6號"
       },
       "url": "https://www.pon-ding.com",
       "hours": {
@@ -920,7 +920,12 @@
       "closed_days": [
         0
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false,
+      "note": {
+        "en": "Combines an art/exhibition space with an independent bookstore",
+        "ja": "展示スペースと独立書店を兼ねる複合施設",
+        "zh": "同時具備展示空間與獨立書店功能"
+      }
     },
     {
       "id": "art182",
