@@ -513,9 +513,9 @@
       },
       "url": "https://ntcart.museum",
       "hours": {
-        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
-        "ja": "火〜日 10:00–18:00｜月休",
-        "zh": "週二至週日 10:00–18:00｜週一休"
+        "en": "Tue-Fri 10:00-17:30, Sat-Sun 10:00-18:00 | Closed Mon (open on public holidays, closed following day instead)",
+        "ja": "火〜金 10:00–17:30、土・日 10:00–18:00｜月休（祝日は開館、翌日休館に振替）",
+        "zh": "週二至週五 10:00–17:30，週六・週日 10:00–18:00｜週一休（逢國定假日照常開放，隔日休館）"
       },
       "closed_day": 0,
       "scraper": "ntcart",
@@ -597,9 +597,9 @@
       },
       "url": "https://www.hccc.gov.tw",
       "hours": {
-        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
-        "ja": "火〜日 9:00–17:00｜月休",
-        "zh": "週二至週日 09:00–17:00｜週一休"
+        "en": "Tue–Sun 09:00–17:00 | Closed Mon (also closed public holidays)",
+        "ja": "火〜日 9:00–17:00｜月休（国定祝日も休館）",
+        "zh": "週二至週日 09:00–17:00｜週一休（國定假日亦休館）"
       },
       "closed_day": 0,
       "scraper": null,
@@ -725,7 +725,8 @@
       "lng": 121.528653,
       "closed_days": [
         0
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "absolute",
@@ -743,9 +744,9 @@
       },
       "url": "https://www.absoluteart.space",
       "hours": {
-        "en": "Wed–Sun 14:00–20:00 | Closed Mon–Tue",
-        "ja": "水〜日 14:00–20:00｜月火休",
-        "zh": "週三至週日 14:00–20:00｜週一二休"
+        "en": "Wed-Sun 13:00-19:00 | Closed Mon, Tue by appointment only",
+        "ja": "水〜日 13:00–19:00｜月休、火曜は予約制",
+        "zh": "週三至週日 13:00–19:00｜週一公休，週二採預約制"
       },
       "closed_day": 0,
       "scraper": "absolute_manual",
@@ -845,7 +846,8 @@
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "fuzhong15",
@@ -962,7 +964,8 @@
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "tkgplus",
@@ -992,7 +995,8 @@
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "linlin",
@@ -1010,9 +1014,9 @@
       },
       "url": "https://www.linlingallery.com",
       "hours": {
-        "en": "Tue–Sat 10:00–18:00",
-        "ja": "火〜土 10:00–18:00",
-        "zh": "週二至週六 10:00–18:00"
+        "en": "Tue-Sat 11:00-18:30 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–18:30｜日月休",
+        "zh": "週二至週六 11:00–18:30｜週日一休"
       },
       "scraper": null,
       "exhibition_url": "",
@@ -1082,7 +1086,8 @@
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "liang",
@@ -1100,9 +1105,9 @@
       },
       "url": "https://www.lianggallery.com",
       "hours": {
-        "en": "Tue–Sat 10:00–18:00",
-        "ja": "火〜土 10:00–18:00",
-        "zh": "週二至週六 10:00–18:00"
+        "en": "Tue-Sun 11:00-18:00",
+        "ja": "火〜日 11:00–18:00",
+        "zh": "週二至週日 11:00–18:00"
       },
       "scraper": null,
       "exhibition_url": "https://www.lianggallery.com/en/?cat=112",
@@ -1129,9 +1134,9 @@
       },
       "url": "https://www.eachmodern.com",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
+        "en": "Wed-Sat 12:30-18:30 (by appointment also available)",
+        "ja": "水〜土 12:30–18:30（予約制での対応も可）",
+        "zh": "週三至週六 12:30–18:30（亦可預約參觀）"
       },
       "scraper": "generic",
       "exhibition_url": "https://www.eachmodern.com/exhibitions",
@@ -1219,9 +1224,9 @@
       },
       "url": "https://www.galleryaki.com",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00",
-        "ja": "火〜土 11:00–19:00",
-        "zh": "週二至週六 11:00–19:00"
+        "en": "Tue-Sat 12:00-18:30",
+        "ja": "火〜土 12:00–18:30",
+        "zh": "週二至週六 12:00–18:30"
       },
       "scraper": null,
       "og_image": "https://galleryaki.com/assets/images/logo-line.jpg",
@@ -1259,7 +1264,8 @@
       "lng": 120.168558,
       "closed_days": [
         0
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "g333",
@@ -1318,7 +1324,8 @@
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "moon",
@@ -1346,7 +1353,8 @@
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "jut",
@@ -1583,9 +1591,9 @@
       },
       "url": "https://cabcy.chiayi.gov.tw",
       "hours": {
-        "en": "Wed–Sun 09:00–17:00 | Closed Mon–Tue",
-        "ja": "水〜日 9:00–17:00｜月火休",
-        "zh": "週三至週日 09:00–17:00｜週一二休"
+        "en": "Tue-Sun 09:00-17:00 | Closed Mon",
+        "ja": "火〜日 9:00–17:00｜月休",
+        "zh": "週二至週日 09:00–17:00｜週一休"
       },
       "closed_day": 0,
       "scraper": null,
@@ -1595,7 +1603,8 @@
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "zhengbin",
@@ -1779,7 +1788,8 @@
           "note_en": "Led by artist Hsu Chih-Yu | 12 spots | 400 NTD",
           "link": "https://www.facebook.com/ssspacespace"
         }
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "nmtl",
@@ -2089,7 +2099,8 @@
       "lng": 121.544942,
       "closed_days": [
         6
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "mindset",
@@ -2135,9 +2146,9 @@
       },
       "url": "https://www.dynastyart.com",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
-        "ja": "火〜土 11:00–19:00｜日月休",
-        "zh": "週二至週六 11:00–19:00｜週日一休"
+        "en": "Mon-Sat 11:00-19:00 | Closed Sun (open Sun during special events)",
+        "ja": "月〜土 11:00–19:00｜日休（特別イベント週は日曜も営業）",
+        "zh": "週一至週六 11:00–19:00｜週日休（特別活動週日照常營業）"
       },
       "closed_day": 6,
       "lat": 25.027038,
@@ -2172,7 +2183,8 @@
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "glitch",
@@ -2229,7 +2241,8 @@
         6
       ],
       "lat": 25.0789,
-      "lng": 121.567
+      "lng": 121.567,
+      "hours_uncertain": true
     },
     {
       "id": "hakkapark",
@@ -2296,7 +2309,8 @@
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "nhrm",
@@ -2429,7 +2443,8 @@
         3
       ],
       "lat": 22.624,
-      "lng": 120.285
+      "lng": 120.285,
+      "hours_uncertain": true
     },
     {
       "id": "doublesquare",
@@ -2475,9 +2490,9 @@
       },
       "url": "https://www.nunufineart.com/",
       "hours": {
-        "en": "Tue–Sat 11:00–19:00 | Closed Sun & Mon",
-        "ja": "火〜土 11:00–19:00｜日月休",
-        "zh": "週二至週六 11:00–19:00｜週日一休"
+        "en": "Tue-Sat 11:00-18:00 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–18:00｜日月休",
+        "zh": "週二至週六 11:00–18:00｜週日一休"
       },
       "closed_day": 6,
       "closed_days": [
@@ -2529,15 +2544,16 @@
       },
       "url": "https://www.itpark.com.tw/",
       "hours": {
-        "en": "Wed-Sun 13:00-21:00 | Closed Mon-Tue",
-        "ja": "水〜日 13:00–21:00｜月火休",
-        "zh": "週三至週日 13:00–21:00｜週一二休"
+        "en": "Tue-Sat 13:00-21:00",
+        "ja": "火〜土 13:00–21:00",
+        "zh": "週二至週六 13:00–21:00"
       },
       "closed_day": 0,
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "artemin",
@@ -3062,9 +3078,9 @@
       },
       "url": "",
       "hours": {
-        "en": "Hours unconfirmed — weekdays by appointment, check official page before visiting",
-        "ja": "営業時間未確認 — 平日は予約制、訪問前に公式ページをご確認ください",
-        "zh": "營業時間未確認 — 平日採預約制，出發前請確認官方頁面"
+        "en": "Weekdays by appointment only, Sat 13:00-20:00, Sun hours unconfirmed",
+        "ja": "平日は予約制、土曜 13:00–20:00、日曜は未確認",
+        "zh": "平日採預約制，週六 13:00–20:00，週日時間未確認"
       },
       "closed_days": [],
       "hours_uncertain": true
