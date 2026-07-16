@@ -195,9 +195,9 @@
       },
       "url": "https://ncpi.ntmofa.gov.tw",
       "hours": {
-        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
-        "ja": "火〜日 10:00–18:00｜月休",
-        "zh": "週二至週日 10:00–18:00｜週一休"
+        "en": "Tue–Sun 10:00–18:00 | Closed Mon (also closed Lunar New Year's Eve/Day)",
+        "ja": "火〜日 10:00–18:00｜月休（大晦日・旧正月元日も休館）",
+        "zh": "週二至週日 10:00–18:00｜週一休（除夕、初一休）"
       },
       "closed_day": 0,
       "scraper": "generic",
@@ -281,7 +281,8 @@
           "note_en": "Speakers: Oskar Thorén, Toomore, Tseng Ke-Wei | Free",
           "link": ""
         }
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "thecube",
@@ -299,9 +300,9 @@
       },
       "url": "https://thecubespace.com",
       "hours": {
-        "en": "Wed–Sun 13:00–19:00 | Closed Mon–Tue",
-        "ja": "水〜日 13:00–19:00｜月火休",
-        "zh": "週三至週日 13:00–19:00｜週一二休"
+        "en": "Wed-Sun 14:00-20:00 | Closed Mon-Tue",
+        "ja": "水〜日 14:00–20:00｜月火休",
+        "zh": "週三至週日 14:00–20:00｜週一二休"
       },
       "closed_day": 0,
       "scraper": "thecube",
@@ -310,7 +311,8 @@
       "closed_days": [
         0,
         1
-      ]
+      ],
+      "hours_uncertain": true
     },
     {
       "id": "kdmofa",
@@ -328,9 +330,9 @@
       },
       "url": "https://kdmofa.tnua.edu.tw",
       "hours": {
-        "en": "Tue–Sun 10:00–17:00 | Closed Mon",
-        "ja": "火〜日 10:00–17:00｜月休",
-        "zh": "週二至週日 10:00–17:00｜週一休"
+        "en": "Tue-Sun 10:00-17:00 (last entry 16:30) | Closed Mon and public holidays",
+        "ja": "火〜日 10:00–17:00（入館は16:30まで）｜月休・国定祝日休",
+        "zh": "週二至週日 10:00–17:00（16:30入館截止）｜週一、國定假日休"
       },
       "closed_day": 0,
       "scraper": "kdmofa",
@@ -357,9 +359,9 @@
       },
       "url": "https://www.ntmofa.gov.tw",
       "hours": {
-        "en": "Tue–Sun 09:00–17:00 | Closed Mon",
-        "ja": "火〜日 9:00–17:00｜月休",
-        "zh": "週二至週日 09:00–17:00｜週一休"
+        "en": "Tue-Fri 09:00-17:00, Sat-Sun 09:00-18:00 | Closed Mon",
+        "ja": "火〜金 9:00–17:00、土・日 9:00–18:00｜月休",
+        "zh": "週二至週五 09:00–17:00，週六・週日延長至18:00｜週一休"
       },
       "closed_day": 0,
       "lat": 24.14149,
@@ -455,9 +457,9 @@
       },
       "url": "https://www.tnam.museum",
       "hours": {
-        "en": "Tue–Sun 10:00–18:00 | Closed Mon",
-        "ja": "火〜日 10:00–18:00｜月休",
-        "zh": "週二至週日 10:00–18:00｜週一休"
+        "en": "Tue-Fri, Sun 10:00-18:00, Sat 10:00-21:00 | Closed Mon (open if Mon is a public holiday)",
+        "ja": "火〜金・日 10:00–18:00、土 10:00–21:00｜月休（月曜が祝日の場合は開館）",
+        "zh": "週二至週五・週日 10:00–18:00，週六延長至21:00｜週一休（遇國定假日照常開放）"
       },
       "closed_day": 0,
       "lat": 22.997364,
