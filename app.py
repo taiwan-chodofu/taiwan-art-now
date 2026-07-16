@@ -337,7 +337,7 @@ def index():
                 (1 if e.get("status") == "upcoming" else 2),
                 e.get("days_until_start") or 0,
             ))
-            is_closed_today = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"))
+            is_closed_today = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"), m.get("closed_monthly_weekday"), m.get("closed_monthly_nth", 1))
             has_current = any(e.get("status") == "current" or (
                 e.get("status") == "unknown" and e.get("days_until_start") is None
             ) for e in exs)
@@ -376,7 +376,7 @@ def index():
                     master["categories"].get(m.get("category", ""), {}), lang
                 ),
                 "closed_today": is_closed_today,
-                "has_schedule": m.get("closed_day") is not None or bool(m.get("closed_days")),
+                "has_schedule": m.get("closed_day") is not None or bool(m.get("closed_days")) or m.get("closed_monthly_weekday") is not None,
                 "hours_uncertain": m.get("hours_uncertain", False),
                 "has_current": has_current,
                 "has_upcoming": has_upcoming,
@@ -523,10 +523,13 @@ def _get_last_updated():
         return None
 
 
-def _is_closed_today(closed_day, closed_days=None, temp_closure_start=None, temp_closure_end=None):
+def _is_closed_today(closed_day, closed_days=None, temp_closure_start=None, temp_closure_end=None, closed_monthly_weekday=None, closed_monthly_nth=1):
     """本日が休館日かどうか判定する（0=月曜, 6=日曜）。台湾時間(UTC+8)基準。
     祝祭日の場合はFalseを返す（祝日は別途注意喚起するため）。
-    temp_closure_start/end（"YYYY-MM-DD"）が指定されていれば、その期間中は常にTrue（夏季休館等）。"""
+    temp_closure_start/end（"YYYY-MM-DD"）が指定されていれば、その期間中は常にTrue（夏季休館等）。
+    closed_monthly_weekday/closed_monthly_nthが指定されていれば「毎月第N〜曜日」休館として判定する
+    （例: fuzhong15の「毎月第1月曜」はclosed_monthly_weekday=0, closed_monthly_nth=1）。
+    この場合、通常の曜日ベースclosed_day/closed_daysより優先される。"""
     from datetime import datetime, timezone, timedelta
     tw_tz = timezone(timedelta(hours=8))
     today_str = datetime.now(tw_tz).strftime("%Y-%m-%d")
@@ -535,7 +538,13 @@ def _is_closed_today(closed_day, closed_days=None, temp_closure_start=None, temp
     # 祝祭日は曜日休館判定をスキップ（施設により対応が異なるため）
     if today_str in TAIWAN_HOLIDAYS_2026:
         return False
-    today_weekday = datetime.now(tw_tz).weekday()
+    today = datetime.now(tw_tz)
+    today_weekday = today.weekday()
+    if closed_monthly_weekday is not None:
+        if today_weekday != closed_monthly_weekday:
+            return False
+        nth = (today.day - 1) // 7 + 1
+        return nth == closed_monthly_nth
     if closed_days:
         return today_weekday in closed_days
     if closed_day is not None:
@@ -1118,7 +1127,7 @@ def exhibition_detail(museum_id, idx):
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "hours_uncertain": museum_info.get("hours_uncertain", False) if museum_info else False,
             "url": museum_info.get("url", "") if museum_info else "",
-            "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days"), museum_info.get("temp_closure_start"), museum_info.get("temp_closure_end")) if museum_info else False,
+            "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days"), museum_info.get("temp_closure_start"), museum_info.get("temp_closure_end"), museum_info.get("closed_monthly_weekday"), museum_info.get("closed_monthly_nth", 1)) if museum_info else False,
         },
         current_lang=lang,
         museum_id=museum_id,
@@ -1297,7 +1306,7 @@ def nearby(museum_id):
         if m["id"] == museum_id or not m.get("lat"):
             continue
         # Skip closed venues
-        is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"))
+        is_closed = _is_closed_today(m.get("closed_day"), m.get("closed_days"), m.get("temp_closure_start"), m.get("temp_closure_end"), m.get("closed_monthly_weekday"), m.get("closed_monthly_nth", 1))
         if is_closed:
             continue
         dist = distance_km(m["lat"], m["lng"])

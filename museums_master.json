@@ -548,11 +548,11 @@
         "ja": "水〜月 9:30–17:00｜火曜休館",
         "zh": "週三至週一 09:30–17:00｜週二休館"
       },
-      "closed_day": 2,
+      "closed_day": null,
       "lat": 24.971301,
       "lng": 121.288594,
       "closed_days": [
-        2
+        1
       ]
     },
     {
@@ -721,12 +721,13 @@
         "ja": "火〜土 11:00–19:00｜日月休",
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "lat": 25.065735,
       "lng": 121.528653,
       "closed_days": [
-        0
+        0,
+        6
       ],
       "hours_uncertain": false
     },
@@ -883,14 +884,14 @@
         "ja": "展示フロア(2-5F) 火〜日 09:30–17:00｜毎月第1月曜休（祝日の場合は翌日休館に振替）",
         "zh": "展覽樓層(2-5F) 週二至週日 09:30–17:00｜每月第一個星期一休館（遇假日順延）"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "lat": 25.009427,
       "lng": 121.45952,
-      "closed_days": [
-        0
-      ],
-      "hours_uncertain": true
+      "closed_days": [],
+      "hours_uncertain": false,
+      "closed_monthly_weekday": 0,
+      "closed_monthly_nth": 1
     },
     {
       "id": "ponding",
@@ -1015,7 +1016,7 @@
         0,
         6
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "linlin",
@@ -1133,9 +1134,9 @@
       "lat": 25.07709,
       "lng": 121.573403,
       "closed_days": [
-        0,
-        6
-      ]
+        0
+      ],
+      "closed_day": null
     },
     {
       "id": "eachmodern",
@@ -1164,8 +1165,10 @@
       "lng": 121.563963,
       "closed_days": [
         0,
+        1,
         6
-      ]
+      ],
+      "closed_day": null
     },
     {
       "id": "taoart",
@@ -1615,14 +1618,13 @@
         "ja": "火〜日 9:00–17:00｜月休",
         "zh": "週二至週日 09:00–17:00｜週一休"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "exhibition_url": "",
       "lat": 23.480477,
       "lng": 120.441069,
       "closed_days": [
-        0,
-        1
+        0
       ],
       "hours_uncertain": true
     },
@@ -1673,14 +1675,15 @@
         "ja": "火〜土 11:00–19:00｜日月休",
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "scraper": null,
       "exhibition_url": "",
       "og_image": "https://www.projectfulfill.com/uploads/3/1/1/6/31169469/20260425-v5-a5size-orig_orig.png",
       "lat": 25.033538,
       "lng": 121.540688,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1703,12 +1706,13 @@
         "ja": "火〜土 14:00–19:00（最終入場18:30）｜日月休・旧正月休",
         "zh": "週二至週六 14:00–19:00（最後入場18:30）｜週日、週一及農曆春節休館"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "og_image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,f_auto,fl_lossy,q_auto/ws-artlogicwebsite1218/usr/images/exhibitions/home_page_image/items/db/dbd7443a356844c684b37eca4bea6189/adz_5801.jpg",
       "lat": 25.041748,
       "lng": 121.54827,
       "closed_days": [
-        0
+        0,
+        6
       ]
     },
     {
@@ -1889,10 +1893,11 @@
         "ja": "火〜土 10:00–19:00｜日月休",
         "zh": "週二至週六 10:00–19:00｜週日一休"
       },
-      "closed_day": 6,
+      "closed_day": null,
       "lat": 25.023314,
       "lng": 121.55142,
       "closed_days": [
+        0,
         6
       ],
       "hours_uncertain": true
@@ -2114,10 +2119,11 @@
         "ja": "火〜土 11:00–19:00｜日月休",
         "zh": "週二至週六 11:00–19:00｜週日一休"
       },
-      "closed_day": 6,
+      "closed_day": null,
       "lat": 25.039821,
       "lng": 121.544942,
       "closed_days": [
+        0,
         6
       ],
       "hours_uncertain": true
@@ -2142,10 +2148,11 @@
         "ja": "展示観覧 12:30–18:30｜日月休",
         "zh": "展場開放 12:30–18:30｜週日一休"
       },
-      "closed_day": 6,
+      "closed_day": null,
       "lat": 25.07892,
       "lng": 121.567033,
       "closed_days": [
+        0,
         6
       ],
       "hours_uncertain": true
@@ -2568,10 +2575,10 @@
         "ja": "火〜土 13:00–21:00",
         "zh": "週二至週六 13:00–21:00"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "closed_days": [
         0,
-        1
+        6
       ],
       "hours_uncertain": true
     },
@@ -2595,11 +2602,15 @@
         "ja": "火〜土 11:00–18:00｜日月休",
         "zh": "週二至週六 11:00–18:00｜週日一休"
       },
-      "closed_day": 0,
+      "closed_day": null,
       "coordinates": {
         "lat": 25.0925825,
         "lng": 121.5226164
-      }
+      },
+      "closed_days": [
+        0,
+        6
+      ]
     },
     {
       "id": "tmofa_kids",
