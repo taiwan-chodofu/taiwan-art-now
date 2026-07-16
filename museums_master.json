@@ -224,9 +224,9 @@
       },
       "url": "https://clab.org.tw",
       "hours": {
-        "en": "Tue–Sun 11:00–18:00 | Closed Mon",
-        "ja": "火〜日 11:00–18:00｜月休",
-        "zh": "週二至週日 11:00–18:00｜週一休"
+        "en": "Tue-Sun 12:00-19:00 | Closed Mon",
+        "ja": "火〜日 12:00–19:00｜月休",
+        "zh": "週二至週日 12:00–19:00｜週一休"
       },
       "closed_day": 0,
       "scraper": "clab",
@@ -282,7 +282,7 @@
           "link": ""
         }
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "thecube",
