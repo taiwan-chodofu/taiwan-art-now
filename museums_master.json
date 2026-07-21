@@ -3277,6 +3277,34 @@
       ],
       "lat": 24.1486757,
       "lng": 120.668356
+    },
+    {
+      "id": "pttspace",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "PTT Space",
+        "ja": "PTT Space",
+        "zh": "PTT Space"
+      },
+      "address": {
+        "en": "Beside No. 31, Aly. 5, Ln. 100, Sec. 1, Dunhua S. Rd., Songshan Dist., Taipei",
+        "ja": "台北市松山區敦化南路一段100巷5弄31號旁",
+        "zh": "台北市松山區敦化南路一段100巷5弄31號旁"
+      },
+      "url": "https://www.instagram.com/ptt_space/",
+      "hours": {
+        "en": "Tue-Fri 12:30-18:30, Sat 12:30-19:00 | Closed Sun-Mon",
+        "ja": "火〜金 12:30–18:30、土 12:30–19:00｜日月休",
+        "zh": "週二至週五 12:30–18:30，週六 12:30–19:00｜週日一休"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        6
+      ],
+      "lat": 25.0455532,
+      "lng": 121.5473673
     }
   ]
 }
