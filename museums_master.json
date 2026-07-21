@@ -2542,14 +2542,12 @@
         "zh": "週二至週六 11:00–18:00｜週日一休"
       },
       "closed_day": null,
-      "coordinates": {
-        "lat": 25.0925825,
-        "lng": 121.5226164
-      },
       "closed_days": [
         0,
         6
-      ]
+      ],
+      "lat": 25.0925825,
+      "lng": 121.5226164
     },
     {
       "id": "tmofa_kids",
@@ -3250,34 +3248,6 @@
       "hours_uncertain": true,
       "lat": 25.0508919,
       "lng": 121.51322
-    },
-    {
-      "id": "artemin",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Artemin Gallery",
-        "ja": "Artemin Gallery",
-        "zh": "Artemin Gallery"
-      },
-      "address": {
-        "en": "1F, No. 32, Ln. 251, Jihe Rd., Shilin Dist., Taipei",
-        "ja": "台北市士林區基河路251巷32號1樓",
-        "zh": "台北市士林區基河路251巷32號1樓"
-      },
-      "url": "https://www.artemingallery.com",
-      "hours": {
-        "en": "Tue-Sat 11:00-18:00 | Closed Sun-Mon",
-        "ja": "火〜土 11:00–18:00｜日月休",
-        "zh": "週二至週六 11:00–18:00｜週日一休"
-      },
-      "closed_day": null,
-      "closed_days": [
-        0,
-        6
-      ],
-      "lat": 25.0925825,
-      "lng": 121.5226164
     },
     {
       "id": "springbao",
