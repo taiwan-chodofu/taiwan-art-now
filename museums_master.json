@@ -3278,6 +3278,35 @@
       ],
       "lat": 25.0925825,
       "lng": 121.5226164
+    },
+    {
+      "id": "springbao",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "SpringBao",
+        "ja": "白水 SpringBao",
+        "zh": "白水 SpringBao"
+      },
+      "address": {
+        "en": "No. 112, Minsheng N. Rd., West Dist., Taichung",
+        "ja": "台中市西區民生北路112號",
+        "zh": "台中市西區民生北路112號"
+      },
+      "url": "https://www.springbao.com",
+      "hours": {
+        "en": "Thu, Fri, Sun 13:00-18:00, Sat 13:00-20:00 | Closed Mon-Wed",
+        "ja": "木金日 13:00–18:00、土 13:00–20:00｜月火水休",
+        "zh": "週四、五、日 13:00–18:00，週六 13:00–20:00｜週一至三休"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        1,
+        2
+      ],
+      "lat": 24.1486757,
+      "lng": 120.668356
     }
   ]
 }
