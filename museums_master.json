@@ -3108,6 +3108,64 @@
         3,
         4
       ]
+    },
+    {
+      "id": "funyearart",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Fun Year Art Gallery",
+        "ja": "凡亞藝術空間",
+        "zh": "凡亞藝術空間"
+      },
+      "address": {
+        "en": "B1, No.16, Ln. 301, Sec. 2, Henan Rd., Xitun Dist., Taichung",
+        "ja": "台中市西屯區河南路二段301巷16號B1",
+        "zh": "台中市西屯區河南路二段301巷16號B1"
+      },
+      "url": "https://www.funyearart.com",
+      "hours": {
+        "en": "Tue-Sat 10:30-18:00 | Closed Sun-Mon",
+        "ja": "火〜土 10:30–18:00｜日月休",
+        "zh": "週二至週六 10:30–18:00｜週日一休"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        6
+      ],
+      "lat": 24.1668591,
+      "lng": 120.6516203
+    },
+    {
+      "id": "gallery80a",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Gallery 80A",
+        "ja": "軟輪畫廊",
+        "zh": "軟輪畫廊"
+      },
+      "address": {
+        "en": "3F, No. 192, Sec. 6, Zhongshan N. Rd., Shilin Dist., Taipei",
+        "ja": "台北市士林區中山北路六段192號3樓",
+        "zh": "台北市士林區中山北路六段192號3樓"
+      },
+      "url": "https://instagram.com/gallery80a",
+      "hours": {
+        "en": "Fri-Sun 13:30-18:00 | Weekdays by appointment with the artist",
+        "ja": "金土日 13:30–18:00｜平日は作家との予約制",
+        "zh": "五六日 13:30–18:00｜平日與藝術家預約"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "lat": 25.1078888,
+      "lng": 121.5252435
     }
   ]
 }
