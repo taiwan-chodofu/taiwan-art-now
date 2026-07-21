@@ -3166,6 +3166,36 @@
       ],
       "lat": 25.1078888,
       "lng": 121.5252435
+    },
+    {
+      "id": "zitdim",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Zit-Dim Art Space",
+        "ja": "節點藝術空間",
+        "zh": "節點藝術空間"
+      },
+      "address": {
+        "en": "No. 84, Sec. 2, Yongfu Rd., West Central Dist., Tainan",
+        "ja": "台南市中西區永福路二段84號（永福國小旁）",
+        "zh": "台南市中西區永福路二段84號（永福國小旁）"
+      },
+      "url": "https://www.facebook.com/Zit.Dim.Art.space/",
+      "hours": {
+        "en": "Fri-Mon 13:00-19:00 (hours may vary by exhibition)",
+        "ja": "金〜月 13:00–19:00（展覧会により変動あり）",
+        "zh": "週五至週一 13:00–19:00（依展期可能調整）"
+      },
+      "closed_day": null,
+      "closed_days": [
+        1,
+        2,
+        3
+      ],
+      "hours_uncertain": true,
+      "lat": 22.9927069,
+      "lng": 120.201105
     }
   ]
 }
