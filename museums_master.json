@@ -3196,6 +3196,60 @@
       "hours_uncertain": true,
       "lat": 22.9927069,
       "lng": 120.201105
+    },
+    {
+      "id": "ocac",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Open Contemporary Art Center (OCAC)",
+        "ja": "打開-當代藝術工作站",
+        "zh": "打開-當代藝術工作站"
+      },
+      "address": {
+        "en": "No. 25, Ganzhou St., Datong Dist., Taipei",
+        "ja": "台北市大同區甘州街25號",
+        "zh": "台北市大同區甘州街25號"
+      },
+      "url": "https://www.facebook.com/opencontemporary",
+      "hours": {
+        "en": "Wed-Sun 14:00-20:00 | Closed Mon-Tue & public holidays",
+        "ja": "水〜日 14:00–20:00｜月火・国定祝日休",
+        "zh": "週三至週日 14:00–20:00｜週一二及國定假日休"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.0589067,
+      "lng": 121.5129167
+    },
+    {
+      "id": "piecetw",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Pièce",
+        "ja": "Pièce",
+        "zh": "Pièce"
+      },
+      "address": {
+        "en": "No. 4-2, Aly. 9, Ln. 26, Sec. 1, Chongqing N. Rd., Datong Dist., Taipei (near MRT Beimen Station)",
+        "ja": "台北市大同區重慶北路一段26巷9弄4-2號（近捷運北門站）",
+        "zh": "台北市大同區重慶北路一段26巷9弄4-2號（近捷運北門站）"
+      },
+      "url": "https://www.instagram.com/piece.tw/",
+      "hours": {
+        "en": "Exhibition hours vary; typically 14:00-19:00, closed Mon (check official page)",
+        "ja": "展覧会により変動（目安14:00–19:00、週一休、公式ページで確認推奨）",
+        "zh": "依展期彈性調整（參考14:00–19:00，週一休，請確認官方頁面）"
+      },
+      "closed_day": null,
+      "closed_days": [],
+      "hours_uncertain": true,
+      "lat": 25.0508919,
+      "lng": 121.51322
     }
   ]
 }
