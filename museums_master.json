@@ -2804,15 +2804,15 @@
       },
       "url": "https://www.facebook.com/photo.php?fbid=122182914674800793&set=pb.61574023807656.-2207520000&type=3",
       "hours": {
-        "en": "Wed–Fri 13:00–19:00, Sat–Sun 12:00–19:00",
-        "ja": "水〜金 13:00–19:00、土日 12:00–19:00",
-        "zh": "週三至五 13:00–19:00，六日 12:00–19:00"
+        "en": "Wed-Sun 12:00-19:00 | Closed Mon-Tue",
+        "ja": "水〜日 12:00–19:00｜月火休",
+        "zh": "週三至週日 12:00–19:00｜週一二休"
       },
       "closed_days": [
         0,
         1
       ],
-      "hours_uncertain": true
+      "hours_uncertain": false
     },
     {
       "id": "fugui",
