@@ -99,6 +99,14 @@
           "url": "/exhibition/tfam/3?lang=zh",
           "region": "taipei",
           "event": ""
+        },
+        "tnam__迴圈_超展開_第一屆臺南藝術雙年展": {
+          "title": "迴圈．超展開：第一屆臺南藝術雙年展",
+          "museum": "tnam",
+          "dates": "2026.10.31 – 2027.03.01",
+          "url": "/exhibition/tnam/7?lang=zh",
+          "region": "tainan",
+          "event": ""
         }
       },
       "visited": {
