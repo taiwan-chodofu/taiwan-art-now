@@ -684,6 +684,21 @@
       .ex-event { color: #a78bfa; }
       .ex-event-soon { background: #2e1065; border-color: #4c1d95; }
     }
+    .ex-notice {
+      font-size: 0.7rem; color: #92400e; margin-top: 6px;
+      font-weight: 600;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+      background: #fffbeb; padding: 6px 8px; border-radius: 6px;
+      border: 1px solid #fde68a;
+    }
+    .ex-notice-note {
+      font-size: 0.65rem; color: #92400e; margin-top: 2px;
+      font-weight: 400; opacity: 0.9;
+    }
+    @media (prefers-color-scheme: dark) {
+      .ex-notice { color: #fcd34d; background: #3a2a0a; border-color: #78350f; }
+      .ex-notice-note { color: #fcd34d; }
+    }
     .badge-ending {
       display: inline-block; background: #fee2e2; color: #b91c1c;
       font-size: 0.7rem; font-weight: 700;
@@ -892,6 +907,13 @@
                 <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
               </span>
             </div>
+            {% if ex.next_notice %}
+            <div class="ex-notice">
+              <span>⚠️ {{ ex.next_notice.date }}{% if ex.next_notice.time %} {{ ex.next_notice.time }}{% endif %} — {{ ex.next_notice.title }}
+              {% if ex.next_notice.days_until == 0 %}<span class="event-badge">{% if current_lang == 'zh' %}今天{% elif current_lang == 'ja' %}今日{% else %}Today{% endif %}</span>{% elif ex.next_notice.days_until == 1 %}<span class="event-badge">{% if current_lang == 'zh' %}明天{% elif current_lang == 'ja' %}明日{% else %}Tomorrow{% endif %}</span>{% endif %}
+              {% if ex.next_notice.note %}<div class="ex-notice-note">{{ ex.next_notice.note }}</div>{% endif %}</span>
+            </div>
+            {% endif %}
             {% if ex.next_event %}
             <div class="ex-event {% if ex.next_event.days_until <= 2 %}ex-event-soon{% endif %}">
               <span>📅 {{ ex.next_event.date }}{% if ex.next_event.time %} {{ ex.next_event.time }}{% endif %} — {{ ex.next_event.title }}

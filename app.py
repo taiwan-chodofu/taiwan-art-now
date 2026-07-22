@@ -285,6 +285,7 @@ def index():
         # 展覧会のインデックス（詳細ページ用）
         museum_ex_idx = len([e for e in ex_by_museum.get(key, [])])
         next_event = None
+        next_notice = None
         for evt in ex.get("events", []):
             try:
                 from datetime import datetime
@@ -294,8 +295,12 @@ def index():
                 if evt_date >= today_date:
                     days_until = (evt_date - today_date).days
                     evt_title = evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", "")
-                    next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "days_until": days_until}
-                    break
+                    evt_note = evt.get(f"note_{lang}", "") or evt.get("note_en", "") or evt.get("note_zh", "")
+                    if evt.get("type") == "notice":
+                        if next_notice is None:
+                            next_notice = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "note": evt_note, "days_until": days_until}
+                    elif next_event is None:
+                        next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "days_until": days_until}
             except (ValueError, KeyError):
                 pass
         stable_key = key + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
@@ -315,6 +320,7 @@ def index():
             "description": ex.get("description", ""),
             "excerpt": _truncate_excerpt(_get_description(ex, lang)),
             "next_event": next_event,
+            "next_notice": next_notice,
         })
 
     # 地域ごとにグループ化
@@ -1089,6 +1095,27 @@ def exhibition_detail(museum_id, idx):
             museum_info = m
             break
 
+    # 臨時休館・変更告知（type=notice、未来or当日分のみ）
+    notices = []
+    from datetime import datetime, timezone, timedelta
+    today_date = datetime.now(timezone(timedelta(hours=8))).date()
+    for evt in ex.get("events", []):
+        if evt.get("type") != "notice":
+            continue
+        try:
+            evt_date = datetime.strptime(evt["date"], "%Y/%m/%d").date()
+        except (ValueError, KeyError):
+            continue
+        if evt_date < today_date:
+            continue
+        notices.append({
+            "date": evt["date"],
+            "time": evt.get("time", ""),
+            "title": evt.get(f"title_{lang}", "") or evt.get("title_en", "") or evt.get("title_zh", ""),
+            "note": evt.get(f"note_{lang}", "") or evt.get("note_en", "") or evt.get("note_zh", ""),
+            "days_until": (evt_date - today_date).days,
+        })
+
     stable_key = museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
 
     # Other exhibitions at same museum
@@ -1119,6 +1146,7 @@ def exhibition_detail(museum_id, idx):
             "link": ex.get("link", ""),
             "status": ex.get("status", "unknown"),
             "type": ex.get("type", ""),
+            "notices": notices,
         },
         museum={
             "id": museum_id,
