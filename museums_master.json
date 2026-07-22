@@ -3335,6 +3335,32 @@
       "hours_uncertain": false,
       "lat": 25.1163521,
       "lng": 121.505488
+    },
+    {
+      "id": "regentgalleria",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Zhongshan Gallery, Regent Galleria (Regent Taipei B2)",
+        "ja": "中山藝廊（晶華酒店B2 麗晶精品）",
+        "zh": "中山藝廊（晶華酒店B2 麗晶精品）"
+      },
+      "address": {
+        "en": "B2, No. 3, Ln. 39, Sec. 2, Zhongshan N. Rd., Zhongshan Dist., Taipei",
+        "ja": "台北市中山區中山北路二段39巷3號B2",
+        "zh": "台北市中山區中山北路二段39巷3號B2"
+      },
+      "url": "https://www.instagram.com/regentgalleria/",
+      "hours": {
+        "en": "Daily 10:00-21:00 (Regent Galleria general hours; gallery-specific hours unconfirmed)",
+        "ja": "毎日 10:00–21:00（麗晶精品全体の営業時間、藝廊個別の時間は未確認）",
+        "zh": "每日 10:00–21:00（麗晶精品整體營業時間，藝廊個別開放時間未確認）"
+      },
+      "closed_day": null,
+      "closed_days": [],
+      "hours_uncertain": true,
+      "lat": 25.054158,
+      "lng": 121.524288
     }
   ]
 }
