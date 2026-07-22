@@ -944,16 +944,17 @@
       },
       "url": "https://www.facebook.com/182artspace",
       "hours": {
-        "en": "Mon, Wed–Sun 14:00–00:00 | Closed Tue",
-        "ja": "月・水〜日 14:00–0:00｜火曜休",
-        "zh": "週一、週三至週日 14:00–00:00｜週二休"
+        "en": "Thu-Mon 14:00-00:00 | Closed Tue-Wed",
+        "ja": "木〜月 14:00–0:00｜火水休",
+        "zh": "週四至週一 14:00–00:00｜週二三休"
       },
-      "closed_day": 1,
+      "closed_day": null,
       "scraper": null,
       "lat": 22.998338,
       "lng": 120.201574,
       "closed_days": [
-        1
+        1,
+        2
       ]
     },
     {
