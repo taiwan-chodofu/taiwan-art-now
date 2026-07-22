@@ -6,22 +6,207 @@
       "fav_alerts": true,
       "ref": "ref_2z4htkjai",
       "favs": {
+        "fotoaura__原_The_Field_Before___葉先傑個展": {
+          "title": "原 The Field Before — 葉先傑個展",
+          "museum": "海馬迴光畫館",
+          "dates": "2026.06.20 – 2026.07.11",
+          "url": ""
+        },
+        "mindset__脈品_切診點畫": {
+          "title": "脈品：切診點畫",
+          "museum": "mindset",
+          "dates": "2026.07.11 – 2026.08.22",
+          "url": "/exhibition/mindset/0?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "art182__你在這裡_鄭亭亭個展": {
+          "title": "你在這裡－鄭亭亭個展",
+          "museum": "art182",
+          "dates": "2026.06.25 – 2026.08.09",
+          "url": "/exhibition/art182/0?lang=zh",
+          "region": "tainan",
+          "event": ""
+        },
+        "honggah__指尖儀式___廖烜榛個展": {
+          "title": "指尖儀式 – 廖烜榛個展",
+          "museum": "honggah",
+          "dates": "2026.06.13 – 2026.08.23",
+          "url": "/exhibition/honggah/2?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "tfam__物質世界": {
+          "title": "物質世界",
+          "museum": "tfam",
+          "dates": "2026.05.01 – 2026.08.16",
+          "url": "/exhibition/tfam/2?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "tfam__超現實主義_對話中的世界": {
+          "title": "超現實主義：對話中的世界",
+          "museum": "tfam",
+          "dates": "2026.04.25 – 2026.08.30",
+          "url": "/exhibition/tfam/1?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "tfam__調_心境與聲景之間": {
+          "title": "調：心境與聲景之間",
+          "museum": "tfam",
+          "dates": "2026.07.04 – 2026.09.27",
+          "url": "/exhibition/tfam/0?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "kmfa__2041_臨繫未來的界隈": {
+          "title": "2041：臨繫未來的界隈",
+          "museum": "kmfa",
+          "dates": "2026.07.04 – 2026.08.16",
+          "url": "/exhibition/kmfa/2?lang=zh",
+          "region": "kaohsiung",
+          "event": ""
+        },
+        "tfam__造公園": {
+          "title": "造公園",
+          "museum": "tfam",
+          "dates": "2026.03.28 – 2026.08.30",
+          "url": "/exhibition/tfam/5?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "moca__Young_Folks_世界是一片感知的膜": {
+          "title": "Young Folks：世界是一片感知的膜",
+          "museum": "moca",
+          "dates": "2026.05.23 – 2026.08.30",
+          "url": "/exhibition/moca/0?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "clab__我們正成為": {
+          "title": "我們正成為",
+          "museum": "clab",
+          "dates": "2026.05.08 – 2026.08.16",
+          "url": "/exhibition/clab/0?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
         "tfam__共感_存在的節奏": {
           "title": "共感：存在的節奏",
-          "museum": "臺北市立美術館",
+          "museum": "tfam",
           "dates": "2026.05.09 – 2026.09.20",
-          "url": "/exhibition/tfam/3?lang=zh"
-        },
-        "moca__她於歷史之中忽隱忽現_艾莉莎_賈爾迪納_帕帕個展": {
-          "title": "她於歷史之中忽隱忽現—艾莉莎・賈爾迪納・帕帕個展",
-          "museum": "台北當代藝術館",
-          "dates": "2026.05.09 – 2026.07.05",
-          "url": "/exhibition/moca/3?lang=zh"
+          "url": "/exhibition/tfam/3?lang=zh",
+          "region": "taipei",
+          "event": ""
         }
       },
       "visited": {
-        "tfam__2026_X_site_鏡_亭_山_相看兩不厭": "2026-07-02T08:25:10.945Z",
-        "moca__記憶的囚徒困境": "2026-07-02T08:25:14.342Z"
+        "fotoaura__原_The_Field_Before___葉先傑個展": {
+          "date": "2026-07-03T07:47:09.230Z",
+          "title": "原 The Field Before — 葉先傑個展",
+          "museum": "fotoaura",
+          "dates": "2026.06.20 – 2026.07.11",
+          "url": "/exhibition/fotoaura/0?lang=zh",
+          "region": "tainan"
+        },
+        "nmth__轉機_臺灣女子移動紀事特展": {
+          "date": "2026-07-03T23:16:34.200Z",
+          "title": "轉機：臺灣女子移動紀事特展",
+          "museum": "nmth",
+          "dates": "2025.12.23 – 2026.08.30",
+          "url": "/exhibition/nmth/2?lang=zh",
+          "region": "tainan"
+        },
+        "absolute__曾經在場_鄭安利個展": {
+          "date": "2026-07-04T09:41:31.221Z",
+          "title": "曾經在場－鄭安利個展",
+          "museum": "absolute",
+          "dates": "2026.05.24 – 2026.07.13",
+          "url": "/exhibition/absolute/0?lang=zh",
+          "region": "tainan"
+        },
+        "art182__你在這裡_鄭亭亭個展": {
+          "date": "2026-07-04T09:41:38.334Z",
+          "title": "你在這裡－鄭亭亭個展",
+          "museum": "art182",
+          "dates": "2026.06.25 – 2026.08.09",
+          "url": "/exhibition/art182/0?lang=zh",
+          "region": "tainan"
+        },
+        "moca__七日談_蔡咅璟個展": {
+          "date": "2026-07-04T11:00:37.147Z",
+          "title": "七日談—蔡咅璟個展",
+          "museum": "moca",
+          "dates": "2026.04.25 – 2026.07.05",
+          "url": "/exhibition/moca/0?lang=zh",
+          "region": "taipei"
+        },
+        "kmfa__典藏庫房的竊竊私語": {
+          "date": "2026-07-05T11:50:10.966Z",
+          "title": "典藏庫房的竊竊私語",
+          "museum": "kmfa",
+          "dates": "2026.05.09 – 2026.09.06",
+          "url": "/exhibition/kmfa/0?lang=zh",
+          "region": "kaohsiung"
+        },
+        "kmfa__2026映所跨域談典藏系列_黑土_Ebony_Terra_": {
+          "date": "2026-07-05T11:50:17.535Z",
+          "title": "2026映所跨域談典藏系列《黑土 Ebony Terra》",
+          "museum": "kmfa",
+          "dates": "2026.06.13 – 2027.01.17",
+          "url": "/exhibition/kmfa/3?lang=zh",
+          "region": "kaohsiung"
+        },
+        "kmfa__完美的日常_王大閎自宅家具復刻展": {
+          "date": "2026-07-05T11:50:18.385Z",
+          "title": "完美的日常：王大閎自宅家具復刻展",
+          "museum": "kmfa",
+          "dates": "2026.06.07 – 2027.01.03",
+          "url": "/exhibition/kmfa/4?lang=zh",
+          "region": "kaohsiung"
+        },
+        "kmfa__漂流宴": {
+          "date": "2026-07-05T11:50:19.786Z",
+          "title": "漂流宴",
+          "museum": "kmfa",
+          "dates": "2026.05.30 – 2026.10.18",
+          "url": "/exhibition/kmfa/5?lang=zh",
+          "region": "kaohsiung"
+        },
+        "kmfa__高雄獎30年_藝術的未竟與再啟": {
+          "date": "2026-07-05T11:50:20.506Z",
+          "title": "高雄獎30年：藝術的未竟與再啟",
+          "museum": "kmfa",
+          "dates": "2026.05.23 – 2026.11.29",
+          "url": "/exhibition/kmfa/6?lang=zh",
+          "region": "kaohsiung"
+        },
+        "kmfa__浮生__人間_中的報導攝影_1985_1989": {
+          "date": "2026-07-05T11:58:43.768Z",
+          "title": "浮生—《人間》中的報導攝影，1985–1989",
+          "museum": "kmfa",
+          "dates": "2026.05.23 – 2026.08.30",
+          "url": "/exhibition/kmfa/7?lang=zh",
+          "region": "kaohsiung"
+        },
+        "honggah__指尖儀式___廖烜榛個展": "2026-07-07T05:30:00.238Z",
+        "clab__我們正成為": {
+          "date": "2026-07-07T11:58:17.854Z",
+          "title": "我們正成為",
+          "museum": "clab",
+          "dates": "2026.05.08 – 2026.08.16",
+          "url": "/exhibition/clab/0?lang=zh",
+          "region": "taipei"
+        },
+        "kmfa__2041_臨繫未來的界隈": {
+          "date": "2026-07-08T02:08:13.997Z",
+          "title": "2041：臨繫未來的界隈",
+          "museum": "kmfa",
+          "dates": "2026.07.04 – 2026.08.16",
+          "url": "/exhibition/kmfa/2?lang=zh",
+          "region": "kaohsiung"
+        }
       }
     },
     "27674222165536703": {
