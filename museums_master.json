@@ -3322,16 +3322,16 @@
       },
       "url": "https://www.instagram.com/kokoro_artstudio/",
       "hours": {
-        "en": "Tue-Sat 11:00-18:00 (some sources list 18:30) | Closed Sun-Mon",
-        "ja": "火〜土 11:00–18:00（一部情報源では18:30の表記あり）｜日月休",
-        "zh": "週二至週六 11:00–18:00（部分資訊來源標示18:30）｜週日一休"
+        "en": "Tue-Sat 11:00-18:00 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–18:00｜日月休",
+        "zh": "週二至週六 11:00–18:00｜週日一休"
       },
       "closed_day": null,
       "closed_days": [
         0,
         6
       ],
-      "hours_uncertain": true,
+      "hours_uncertain": false,
       "lat": 25.1163521,
       "lng": 121.505488
     }
