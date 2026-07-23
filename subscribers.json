@@ -107,6 +107,14 @@
           "url": "/exhibition/tnam/7?lang=zh",
           "region": "tainan",
           "event": ""
+        },
+        "ajian__不佔地方": {
+          "title": "不佔地方",
+          "museum": "ajian",
+          "dates": "2026.07.31 – 2026.08.31",
+          "url": "/exhibition/ajian/0?lang=zh",
+          "region": "kaohsiung",
+          "event": ""
         }
       },
       "visited": {
