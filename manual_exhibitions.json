@@ -3454,6 +3454,30 @@
       ],
       "description": "插畫 × 刺青コラボ POP UP PROJECT。tader_（イラストレーター）× Zipper（刺青師・ダンサー）。オリジナルキャラクターイラスト6点を展示、キャラクターの刺青デザインをその場で施術可能。開幕パーティー8/2 15:00-20:00（DJ出演：Kayton, Tien, Jesus）。14:00-19:00開放。",
       "link": "https://www.instagram.com/piece.tw/"
+    },
+    {
+      "museum": "eachmodern",
+      "title_zh": "刁德謙、李元佳、陳曉朋",
+      "title_en": "David Diao, Li Yuan-Chia, Chen Shiau-Peng",
+      "dates": "2026.08.08 – 2026.09.12",
+      "artists": [
+        "刁德謙",
+        "李元佳",
+        "陳曉朋"
+      ],
+      "description": "Each Modern三人展。現代主義の再考をテーマにした展覧会。",
+      "link": "https://eachmodern.com/exhibitions/92-david-diao-li-yuan-chia-chen-shiau-peng/overview/"
+    },
+    {
+      "museum": "1839cg",
+      "title_zh": "植物獨白",
+      "title_en": "",
+      "dates": "2026.09.05 – 2026.10.25",
+      "artists": [
+        "松本幸之"
+      ],
+      "description": "松本幸之（Matsumoto Yukiyuki）個展。",
+      "link": "https://www.1839cg.com/current-exhibition"
     }
   ]
 }
