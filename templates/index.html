@@ -427,6 +427,7 @@
           <span class="open-dot"></span>{% if current_lang == 'zh' %}開館{% elif current_lang == 'ja' %}開館{% else %}Open{% endif %}
         </button>
         <button class="filter-chip" id="upcomingBtn" data-filter="upcoming" data-value="off">📅 {% if current_lang == 'zh' %}開幕{% elif current_lang == 'ja' %}開幕{% else %}Soon{% endif %}</button>
+        <button class="filter-chip" id="recentlyAddedBtn" data-filter="added" data-value="off">📌 {% if current_lang == 'zh' %}最近追加{% elif current_lang == 'ja' %}最近追加{% else %}Added{% endif %}</button>
       </div>
     </div>
   </div>
@@ -704,6 +705,14 @@
       font-size: 0.7rem; font-weight: 700;
       padding: 3px 8px; border-radius: 4px;
     }
+    .badge-added {
+      display: inline-block; background: #dbeafe; color: #1d4ed8;
+      font-size: 0.65rem; font-weight: 600;
+      padding: 2px 6px; border-radius: 3px; margin-left: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .badge-added { background: #1e3a5f; color: #93c5fd; }
+    }
     .badge-opening {
       display: inline-block; background: #dbeafe; color: #1d4ed8;
       font-size: 0.7rem; font-weight: 700;
@@ -849,9 +858,9 @@
         {% if museum.exhibitions or museum.venue_events %}
         <div class="ex-list">
           {% for ex in museum.exhibitions %}
-          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ ex.stable_key }}">
+          <a class="ex-item" href="{{ ex.detail_url }}" data-status="{{ ex.status }}" data-fav-key="{{ ex.stable_key }}"{% if ex.recently_added %} data-recently-added="1"{% endif %}>
             <div class="ex-title">
-              {% if ex.type == 'performance' %}<span class="status-tag tag-performance">🎭 {% if current_lang == 'zh' %}表演{% elif current_lang == 'ja' %}パフォーマンス{% else %}Performance{% endif %}</span> {% endif %}{% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}
+              {% if ex.type == 'performance' %}<span class="status-tag tag-performance">🎭 {% if current_lang == 'zh' %}表演{% elif current_lang == 'ja' %}パフォーマンス{% else %}Performance{% endif %}</span> {% endif %}{% if ex.days_until_start is not none and ex.days_until_start <= 7 %}<span class="status-tag tag-thisweek">NEW</span> {% elif ex.status == 'upcoming' %}<span class="status-tag tag-upcoming">{{ labels.upcoming }}</span> {% endif %}{{ ex.title }}{% if ex.recently_added %}<span class="badge-added">📌 {% if current_lang == 'zh' %}追加{% elif current_lang == 'ja' %}追加{% else %}Added{% endif %}</span>{% endif %}
               <span class="ex-fav-btn" data-fav-key="{{ ex.stable_key }}" onclick="toggleExFav(event, this)">☆</span>
             </div>
             {% if ex.dates %}
@@ -1629,6 +1638,7 @@
     let openOnly = params.get('open') === '1';
     let hasExOnly = params.get('hasex') === '1';
     let upcomingOnly = params.get('upcoming') === '1';
+    let addedOnly = params.get('added') === '1';
     let favsOnly = false;
     let mylistMode = ''; // '', 'wantgo', 'visited', 'all'
 
@@ -1647,6 +1657,7 @@
       if (openOnly) p.set('open', '1'); else p.delete('open');
       if (hasExOnly) p.set('hasex', '1'); else p.delete('hasex');
       if (upcomingOnly) p.set('upcoming', '1'); else p.delete('upcoming');
+      if (addedOnly) p.set('added', '1'); else p.delete('added');
       var qs = p.toString();
       var newURL = window.location.pathname + (qs ? '?' + qs : '');
       window.history.replaceState(null, '', newURL);
@@ -1665,6 +1676,8 @@
       if (hasExBtn) hasExBtn.classList.toggle('active', hasExOnly);
       var upcomingBtn = document.getElementById('upcomingBtn');
       if (upcomingBtn) upcomingBtn.classList.toggle('active', upcomingOnly);
+      var addedBtn = document.getElementById('recentlyAddedBtn');
+      if (addedBtn) addedBtn.classList.toggle('active', addedOnly);
       var favsFilterBtn = document.getElementById('favsFilterBtn');
       if (favsFilterBtn) favsFilterBtn.classList.toggle('active', favsOnly);
     }
@@ -1687,6 +1700,8 @@
         const openOk = !openOnly || (!closed && hasCurrent);
         const hasExOk = !hasExOnly || hasEx;
         const upcomingOk = !upcomingOnly || hasUpcoming;
+        const hasAdded = card.querySelector('[data-recently-added="1"]') !== null;
+        const addedOk = !addedOnly || hasAdded;
 
         let favsOk = true;
         if (favsOnly || mylistMode) {
@@ -1703,7 +1718,7 @@
           favsOk = hasMatch;
         }
 
-        const cardVisible = regionOk && catOk && openOk && hasExOk && upcomingOk && favsOk;
+        const cardVisible = regionOk && catOk && openOk && hasExOk && upcomingOk && addedOk && favsOk;
         card.style.display = cardVisible ? '' : 'none';
         if (cardVisible) visibleCount++;
 
@@ -1712,7 +1727,9 @@
         items.forEach(function(it) {
           const status = it.getAttribute('data-status');
           var fk = (it.getAttribute('data-fav-key') || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-          if (upcomingOnly) {
+          if (addedOnly) {
+            it.style.display = it.getAttribute('data-recently-added') === '1' ? '' : 'none';
+          } else if (upcomingOnly) {
             it.style.display = (status === 'upcoming') ? '' : 'none';
           } else if (mylistMode === 'wantgo') {
             it.style.display = (favKeys.has(fk) && !visitedKeysLocal.has(fk)) ? '' : 'none';
@@ -1770,6 +1787,14 @@
         if (filterType === 'upcoming') {
           upcomingOnly = !upcomingOnly;
           this.classList.toggle('active', upcomingOnly);
+          applyFilters();
+          syncURL();
+          return;
+        }
+
+        if (filterType === 'added') {
+          addedOnly = !addedOnly;
+          this.classList.toggle('active', addedOnly);
           applyFilters();
           syncURL();
           return;
