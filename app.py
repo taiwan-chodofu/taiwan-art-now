@@ -304,6 +304,16 @@ def index():
             except (ValueError, KeyError):
                 pass
         stable_key = key + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+        recently_added = False
+        added_at = ex.get("added_at")
+        if added_at:
+            try:
+                from datetime import datetime, timezone, timedelta
+                added_date = datetime.fromisoformat(added_at).date()
+                today_date = datetime.now(timezone(timedelta(hours=8))).date()
+                recently_added = (today_date - added_date).days <= 7
+            except (ValueError, TypeError):
+                pass
         ex_by_museum[key].append({
             "title": _get_display_title(ex, lang),
             "stable_key": stable_key,
@@ -321,6 +331,7 @@ def index():
             "excerpt": _truncate_excerpt(_get_description(ex, lang)),
             "next_event": next_event,
             "next_notice": next_notice,
+            "recently_added": recently_added,
         })
 
     # 地域ごとにグループ化
