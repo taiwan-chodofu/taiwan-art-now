@@ -1162,16 +1162,50 @@
       "added_at": "2026-07-29"
     },
     {
-      "museum": "absence",
-      "title_zh": "無意義的×Y×Y'",
-      "title_en": "Meaningless WAWA",
-      "dates": "2026.07.29 – 2026.08.02",
+      "museum": "852art",
+      "title_zh": "踩在邊邊看到遠方的東東",
+      "title_en": "Standing at the Edge, Seeing What's Far Away",
+      "title_ja": "",
+      "dates": "2026.07.15 – 2026.08.06",
+      "location": "852藝術空間",
+      "link": "https://www.facebook.com/profile.php?id=61574023807656",
       "artists": [
-        "Alica Han"
+        "陳喬恩",
+        "蕭灑",
+        "游子慶"
       ],
-      "description": "Alica Han（Lica）首次創作分享展覽。這是一個跟蹤繡品（大部分）有關的創作，也有凸版印刷/紙雕塑/跟服裝合作的木潮。",
-      "link": "https://www.facebook.com/AbsenceSpace",
-      "added_at": "2026-08-03"
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/19",
+          "time": "14:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ],
+      "description": "邊界經常被理解為一條分隔彼此的線，它區分著內外、遠近、已知與未知。然而，對我們而言，邊界更像是一個觀看開始改變的位置。站在這裡，人既沒有完全停留在原本的一側，也尚未抵達另一側，而是在介於之間的狀態裡，看見原本不容易察覺的事物。\n\n這次展覽從「邊界」開始討論，卻沒有走向相同的答案。三位藝術家各自帶著不同的生命經驗與觀看方式，回應這個看似相同的問題。有人在信仰與理性之間，透過等待神明的回應重新凝視人的選擇；有人從生活中不斷出現的牆壁與隔板出發，看見邊界如何滲透日常、改變人與人之間的距離；也有人停留於那些尚未被命名的感受之中，在靠近與未抵達之間，尋找感知發生的可能。",
+      "description_en": "Boundaries are often understood as lines that separate—inside from outside, near from far, known from unknown. Yet for us, a boundary feels more like a position where seeing begins to shift. Standing here, one is neither fully on the original side nor yet arrived at the other, but in an in-between state where things not easily perceived become visible.\n\nThis exhibition begins with a discussion of \"boundaries\" but does not arrive at a single answer. Three artists, each carrying different life experiences and ways of seeing, respond to this seemingly shared question.",
+      "description_ja": "境界はしばしば内と外、遠と近、既知と未知を分ける線として理解される。しかし私たちにとって境界とは、見ることが変化し始める位置のようなものだ。ここに立つ人は元の側に完全に留まってもおらず、まだ別の側に到達してもいない、その間の状態にある。\n\n本展は「境界」から議論を始めるが、同じ答えには向かわない。三人の作家がそれぞれ異なる生命経験と視点を持って、同じように見える問いに応える。"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "未來視界─三種觀看的實驗",
+      "title_en": "Future Vision — Three Experiments in Seeing",
+      "title_ja": "",
+      "dates": "2026.07.25 – 2026.08.05",
+      "location": "國立中正紀念堂 4展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60970",
+      "artists": [
+        "陳柏宇",
+        "方信凱",
+        "魏子喻"
+      ],
+      "curator": "陳柏宇、方信凱、魏子喻",
+      "description": "本展由陳柏宇、方信凱、魏子喻三位藝術家共同策劃，以「世界的樣貌，取決於我們如何觀看」為策展主軸，呈現「美麗新世界」、「夢境地圖」與「無形的凝視」三大主題共約50件作品。\n\n陳柏宇《美麗新世界》：探討科技文明發展下的焦慮與控制，反思當代社會的運作模式。\n方信凱《夢境地圖》：以夢境與潛意識為題，展開充滿奇幻色彩的視覺敘事。\n魏子喻《無形的凝視》：從超現實視角出發，探尋無形力量對人類情感與行為的影響。\n\n三人透過繪畫與多元藝術創作，探索人類觀看世界的不同方式。",
+      "description_en": "Curated collaboratively by three artists — Chen Bo-Yu, Fang Xin-Kai, and Wei Zi-Yu — this exhibition takes \"the shape of the world depends on how we see it\" as its central theme, presenting around 50 works across three sections: \"Brave New World,\" \"Dream Map,\" and \"Invisible Gaze.\"\n\nChen Bo-Yu's \"Brave New World\" examines anxiety and control under technological civilization. Fang Xin-Kai's \"Dream Map\" unfolds a fantastical visual narrative rooted in dreams and the subconscious. Wei Zi-Yu's \"Invisible Gaze\" explores, from a surrealist perspective, how unseen forces shape human emotion and behavior.",
+      "description_ja": "陳柏宇・方信凱・魏子喻の3名のアーティストが共同で企画。「世界の姿は、私たちがどう見るかによって決まる」を主軸に、「美麗新世界」「夢境地圖」「無形的凝視」の3テーマ、約50点の作品を展示。\n\n陳柏宇《美麗新世界》：科技文明下の焦慮と統制を探り、現代社会の運行様式を省みる。\n方信凱《夢境地圖》：夢と無意識を題材に、幻想的な視覚的物語を展開。\n魏子喻《無形的凝視》：超現実的視点から、見えない力が人間の感情と行動に与える影響を探る。"
     }
   ]
 }
