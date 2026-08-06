@@ -2,30 +2,6 @@
   "generated": "2026-06-05T12:00:00",
   "exhibitions": [
     {
-      "museum": "fotoaura",
-      "title_en": "The Field Before — Ye Sian Jie Solo Exhibition",
-      "title_zh": "原 The Field Before — 葉先傑個展",
-      "title_ja": "",
-      "dates": "2026/06/20 - 2026/07/11",
-      "location": "海馬迴光畫館",
-      "link": "https://www.facebook.com/fotoaura.tw",
-      "events": [
-        {
-          "date": "2026/07/11",
-          "time": "",
-          "title_zh": "閉幕座談 w/ 陳蕉",
-          "title_en": "Closing Talk w/ Chen Chiao",
-          "title_ja": "クロージングトーク w/ 陳蕉",
-          "note": ""
-        }
-      ],
-      "description": "被稱為雜草的，或許並不是植物，而是邊緣的產物；它們沒有被允許，也無意表達，卻以根、土與緩慢的蔓延，佔據著時間的遺忘。當雜草被遷移出原本生長之處，卻並非全然失根；它們仍攜帶著土、根系與未被整理的時間，在另一個場域中繼續生長、搖動、枯萎。這狀態是一種帶根的流離，指向一片在語言、秩序與歷史之前的場域——在那裡，存在可以是離散的、受傷的、暫時的，卻從未真正被清空。",
-      "description_en": "That which is called a weed may not be a plant at all, but a product of the margins. Unpermitted, and without the intention to speak, it takes hold within the oblivion of time through roots, soil, and a slow, persistent spreading. When weeds are displaced from the place where they first grew, they are not entirely uprooted. This condition is a form of rooted displacement—pointing toward a field before language, order, and history, where existence may be dispersed, wounded, and provisional, yet never truly emptied.",
-      "artists": [
-        "葉先傑"
-      ]
-    },
-    {
       "museum": "art182",
       "title_en": "YOU ARE HERE — Ting-Ting Cheng Solo Exhibition",
       "title_zh": "你在這裡－鄭亭亭個展",
@@ -35,94 +11,6 @@
       "link": "https://www.facebook.com/182artspace",
       "artists": [
         "鄭亭亭"
-      ]
-    },
-    {
-      "museum": "daxin",
-      "title_en": "Between Fragments, Still a Universe",
-      "title_zh": "碎片之間 仍是宇宙",
-      "title_ja": "",
-      "dates": "2026/05/01 - 2026/07/19",
-      "location": "大新美術館",
-      "link": "https://www.facebook.com/DaXinArtMuseum/",
-      "artists": [
-        "劉自明",
-        "吳東龍",
-        "黃文力",
-        "黃昱昊",
-        "徐娜",
-        "汪祥鳳"
-      ]
-    },
-    {
-      "museum": "glitch",
-      "title_zh": "熱帶植物寫真集 第七卷 — 林庭宇個展",
-      "title_en": "Iconography of Tropical Plants Vol. VII — Kenneth Ting-Yu Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/19",
-      "location": "毛刺 Glitch",
-      "link": "https://www.facebook.com/profile.php?id=61556692779891",
-      "events": [
-        {
-          "date": "2026/06/20",
-          "time": "15:00",
-          "title_zh": "導覽＆茶會",
-          "title_en": "Guided Tour & Tea",
-          "title_ja": "ガイドツアー＆お茶会",
-          "note": ""
-        }
-      ],
-      "description": "《熱帶植物寫真集》是一套於二戰前在臺北植物園拍攝完成的植物攝影集，由工藤彌九郎自1929年至1943年陸續完成，共六卷，收錄180種熱帶植物，是臺灣最早且相對完整的「熱帶植物」影像紀錄之一。「第七卷」並非單純補完一套未完成的書，而是試圖探問各種關於「痕跡」的問題：古書流轉與版本差異所留下的痕跡、時間在紙張上沉積的色澤與斑痕，以及東亞殖民歷史在知識、影像與自然分類中遺留下來的痕跡。",
-      "description_en": "Iconography of Tropical Plants is a six-volume photographic collection produced between 1929 and 1943 at the Taipei Botanical Garden by Yakurō Kudō, recording 180 species of tropical plants—one of Taiwan's earliest visual archives of tropical flora. Rather than completing the original series, Vol. VII appears as its \"shadow,\" tracing the book's circulation, edition differences, and material life, while reflecting on the marks left by time, paper, images, and colonial systems of knowledge.",
-      "artists": [
-        "林庭宇"
-      ]
-    },
-    {
-      "museum": "glitch",
-      "title_zh": "休息一下 let's 狗",
-      "title_en": "Let'go, Take a Rest!",
-      "title_ja": "",
-      "dates": "2026/05/09 - 2026/07/19",
-      "location": "毛刺 Glitch 4F",
-      "link": "https://www.facebook.com/profile.php?id=61556692779891#4f",
-      "description": "散步與休息成為藝術家手捏造型的重要靈感來源，如同對日常生活的寫生與紀錄。那些細微而真實的感受，被轉化為豐潤飽滿的形體，以及鮮明而獨特的材質與色彩。品牌少見的大型陶作於毛刺限定展出，現場亦同步呈現專為本次展覽創作的「翻書系列盤」。",
-      "description_en": "Walking and resting serve as important sources of inspiration for the artist's hand-built forms, much like sketches and records of everyday life. These subtle yet genuine sensations are transformed into full, rounded shapes, expressed through distinctive textures and vivid colours. The brand's rarely seen large-scale ceramic works are presented exclusively at Glitch, alongside the Page-Turning Plate Series created especially for this exhibition.",
-      "artists": [
-        "陳曦"
-      ]
-    },
-    {
-      "museum": "hcfam",
-      "title_zh": "百合——直到觸及我們的情感象限",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026/05/26 - 2026/08/02",
-      "location": "新竹市美術館",
-      "link": "https://www.facebook.com/hsinchuartgallery/?locale=ja_JP",
-      "artists": [
-        "王亮尹",
-        "西山美奈子",
-        "Petra Totten",
-        "李奧森",
-        "林安琪",
-        "黃海欣",
-        "劉文瑄",
-        "鄭恩瑛",
-        "凹與山",
-        "沂風漫研社"
-      ]
-    },
-    {
-      "museum": "hcfam",
-      "title_zh": "精靈在哪裡",
-      "title_en": "Where's the Goblin?",
-      "title_ja": "",
-      "dates": "2026.06.16 – 2026.07.19",
-      "location": "新竹市美術館",
-      "link": "https://www.facebook.com/Hsinchuwarehouse/?locale=zh_TW",
-      "artists": [
-        "UKAI Projects"
       ]
     },
     {
@@ -165,39 +53,6 @@
       ]
     },
     {
-      "museum": "yiyun",
-      "title_zh": "夜拾 —— 顏妤庭個展",
-      "title_en": "Nocturnals",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/04",
-      "location": "異雲書屋",
-      "link": "https://www.facebook.com/yiyunart",
-      "artists": [
-        "顏妤庭"
-      ]
-    },
-    {
-      "museum": "projectfulfill",
-      "title_zh": "偏移之際——高德亮個展",
-      "title_en": "At the Threshold of Shift",
-      "title_ja": "",
-      "dates": "2026/05/30 - 2026/07/18",
-      "location": "就在藝術空間",
-      "link": "https://www.projectfulfill.com/at-the-threshold-of-shift.html",
-      "artists": [
-        "高德亮"
-      ]
-    },
-    {
-      "museum": "soka",
-      "title_zh": "低語的形體",
-      "title_en": "Forms of Whisper",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/11",
-      "location": "索卡藝術 台南",
-      "link": "https://www.soka-art.com/cn/exhibition/details/12082"
-    },
-    {
       "museum": "ttam",
       "title_zh": "2026泛太平洋國際駐村交流展",
       "title_en": "Pan-Pacific Triennial: Archipelagic Encounters",
@@ -219,38 +74,6 @@
       ]
     },
     {
-      "museum": "frees",
-      "title_zh": "吹來一陣通透 — 李沛倫個展",
-      "title_en": "A Breath Passing Through — LI Pei-Lun Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/15",
-      "location": "福利社 FreeS Art Space",
-      "link": "https://www.facebook.com/freesartspace",
-      "description": "一片白淨鬆軟的雪白地，閃爍著細碎的微光，其中一個個時而微微向下凹陷、時而隆起的痕跡，那是風在時間中遺留下記憶的足跡。鹽巴一層一層地盪在風中，沿著空氣路徑而後墜落，柔和地堆疊出綿密的厚度，灑下寫實繪畫般的明暗過度。通過對留痕的凝視，感受它們的質地、重量、形狀，甚至是它們在時間和空間中自然變化的痕跡，自然物質帶來的感官經歷，喚起身體對空間與時間的感知。",
-      "description_en": "A pristine, soft expanse of white snow, shimmering with delicate glimmers, with traces that sometimes slightly indent and sometimes bulge—these are the footprints left by the wind as memories of time. Salt grains swirl in the wind, layer by layer, falling along the air's path, gently accumulating into a dense thickness, casting realistic painting-like transitions of light and shadow. Through gazing at the marks left behind, one can feel their texture, weight, shape, and even the traces of their natural changes over time and space. This sensory experience brought by natural materials awakens the body's perception of space and time.",
-      "events": [
-        {
-          "date": "2026/06/27",
-          "time": "14:00",
-          "title_zh": "開幕",
-          "title_en": "Opening",
-          "title_ja": "オープニング",
-          "note": ""
-        },
-        {
-          "date": "2026/06/27",
-          "time": "15:00",
-          "title_zh": "座談",
-          "title_en": "Artist Talk",
-          "title_ja": "アーティストトーク",
-          "note": ""
-        }
-      ],
-      "artists": [
-        "李沛倫"
-      ]
-    },
-    {
       "museum": "lym",
       "title_zh": "再現漢本 — 國定Blihun漢本考古遺址主題展",
       "title_en": "Revisiting Hanben — Blihun Archaeological Site Exhibition",
@@ -261,17 +84,6 @@
       "description": "國定Blihun漢本考古遺址遺物標本自2022年起向文化部文化資產局借展至蘭陽博物館展出。本次主題展以回顧方式呈現，讓觀眾再次看見國定Blihun漢本考古遺址出土文物的多元風貌與文化價值。展示內容涵蓋遺址年代與文化內涵、聚落形成、考古發掘歷程，以及以家域為核心的社會組織型態。",
       "description_en": "Since 2022, artifact specimens from the nationally designated Blihun Hanben Archaeological Site have been on loan from the Bureau of Cultural Heritage, Ministry of Culture, for display at the Lanyang Museum. This thematic exhibition takes a retrospective approach, allowing visitors to once again encounter the diverse character and cultural value of the artifacts unearthed at the site. It covers the site's chronology and cultural context, the formation of its settlement, the history of its archaeological excavation, and the household-centered form of social organization that shaped its community.",
       "description_ja": "国定Blihun漢本考古遺跡の遺物標本は、2022年より文化部文化資産局から借用され、蘭陽博物館にて展示されている。本テーマ展は回顧形式で構成され、国定Blihun漢本考古遺跡から出土した文物の多様な姿と文化的価値を、観覧者が改めて見つめ直せる内容となっている。展示内容は、遺跡の年代と文化的背景、集落の形成過程、考古発掘の歴史、そして家族単位を核とした社会組織の形態にまで及ぶ。"
-    },
-    {
-      "museum": "goodug",
-      "title_zh": "浮光影藏10th — 私人座標-靈感森林 攝影書專題展",
-      "title_en": "Hidden Light 10th — Personal Coordinates: Inspiration Forest Photography Book Exhibition",
-      "title_ja": "",
-      "dates": "2026/06/06 - 2026/07/13",
-      "location": "好地下藝術空間",
-      "link": "https://www.facebook.com/goodunderground/",
-      "description": "特邀選書人：全會華、姚瑞中、陳伯義、廖子寧、蔡胤勤、陳盈孜。攝影書專題展，邀請觀眾來看書、翻閱攝影書。",
-      "description_en": ""
     },
     {
       "museum": "fuzhong15",
@@ -346,17 +158,6 @@
       ]
     },
     {
-      "museum": "g333",
-      "title_zh": "無隅・白魚｜第一樂章：北冥有魚",
-      "title_en": "Infinity Art・Bai Yu | First Movement: A Fish in the Northern Sea",
-      "title_ja": "",
-      "dates": "2026/06/20 - 2026/07/26",
-      "location": "333 Gallery 台北",
-      "link": "https://www.facebook.com/333gallery",
-      "description": "國際藝術家白魚長年旅居歐洲創作，作品獲梵蒂岡博物館永久典藏。以《逍遙遊》中「鯤化為鵬」的精神意象為引，〈北冥有魚〉作為本次展覽的第一樂章，是藝術家精神蛻變的映照。白魚以百年古墨、天然礦石與璀璨純金交織創作，使媒材超越物質疆界，化為流動於時間與靈性之間的永恆能量。",
-      "description_en": ""
-    },
-    {
       "museum": "nmtl",
       "title_zh": "文學力─書寫LÁN臺灣 常設展",
       "title_en": "The Power of Literature — Writing Our Taiwan",
@@ -367,29 +168,6 @@
       "description": "本展以「注意，你已被文學包圍了」、「始動，島孕育的‧與海帶來的（〜1895）」、「立志，文明開化的夢與傷（1895〜1945）」、「跨越，窒息年代的游擊戰（1945〜1980）」、「爆炸，每個人都飆出高音（1980〜2000）」、「＿＿＿＿，寫我們一起的未來」六大主題展區，將百年來的台灣文學史化為可親近的常設展。",
       "description_en": "Organized into six thematic zones spanning from pre-1895 to the present, this permanent exhibition traces a century of Taiwan's literary history — from the island's origins and colonial-era awakening, through the suffocation and guerrilla resistance of martial law, to the explosive plurality of voices since the 1980s — making literary history approachable and alive.",
       "description_ja": "「注意、あなたはすでに文学に包まれている」から「＿＿＿＿、私たちの未来を書く」まで6つのテーマ展示区で構成される常設展。台湾文学の百年の歴史を、島の誕生から戒国時代の抑圧と抵抗、1980年代以降の多声化まで、親しみやすい形で辿る。"
-    },
-    {
-      "museum": "nmtl",
-      "title_zh": "此時此地：當代捷克漫畫",
-      "title_en": "Here and Now: Contemporary Czech Comics",
-      "title_ja": "",
-      "dates": "2026/05/27 - 2026/07/31",
-      "location": "國立臺灣文學館",
-      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
-      "description": "捷克漫畫在經歷了20世紀的動盪與中斷後，正以史無前例的活力蓬勃發展。本次展覽《此時此地：當代捷克漫畫》延續前作《同時，在別處：捷克漫畫百年》的精神，聚焦於2010年後捷克漫畫顯著繁榮的創作群像。",
-      "description_en": "Having endured the upheavals and interruptions of the 20th century, Czech comics are now flourishing with unprecedented vitality. Continuing the spirit of the earlier exhibition \"Meanwhile, Elsewhere,\" this show focuses on the remarkable boom in Czech comics since 2010.",
-      "description_ja": "20世紀の動乱と中断を経て、チェコの漫画は前例のない活気で発展を続けている。前作『同時に、別の場所で：チェコ漫画百年』の精神を引き継ぎ、2010年以降に顕著な盛り上がりを見せたチェコ漫画の創作群に焦点を当てる。"
-    },
-    {
-      "museum": "nmtl",
-      "title_zh": "童心故事萬花筒主題書展",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026/03/31 - 2026/07/12",
-      "location": "國立臺灣文學館",
-      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
-      "description": "",
-      "description_en": ""
     },
     {
       "museum": "nmtl",
@@ -489,20 +267,6 @@
       "description_en": ""
     },
     {
-      "museum": "simpleobject",
-      "title_zh": "陽光明媚的日子 — 侯連秦創作個展",
-      "title_en": "Sunny Days — Hou Lien-Chin Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026/06/13 - 2026/07/12",
-      "location": "純Object",
-      "link": "https://www.facebook.com/simpleobjectofficial/",
-      "description": "從每日擠牙膏聯想到的日常異想，到折射出迷人魅力的外太空草莓，藝術家侯連秦在最新個展中具象日常萬物所給予的溫柔正能量。感受厚重與輕盈、實體與空間融為一體的視覺震撼，在陽光明媚的氛圍中，尋找屬於自己的生命覺知。",
-      "description_en": "",
-      "artists": [
-        "侯連秦"
-      ]
-    },
-    {
       "museum": "hakkapark",
       "title_zh": "物件交換所",
       "title_en": "The Exchange of Things",
@@ -537,34 +301,6 @@
       "link": "https://www.nhrm.gov.tw/w/nhrm/Exhibitions",
       "description": "國家人權博物館以白色恐怖景美紀念園區與綠島紀念園區為基地，保存台灣威權統治時期的歷史記憶，透過常設展覽、人權教育與藝術活動，促進轉型正義與人權意識。",
       "description_en": ""
-    },
-    {
-      "museum": "jut",
-      "title_zh": "燼光之城 — 文明之後的迴響",
-      "title_en": "City of Embers — Echoes After Civilization",
-      "title_ja": "",
-      "dates": "2026/03/21 - 2026/07/12",
-      "location": "忠泰美術館",
-      "link": "https://jam.jutfoundation.org.tw/",
-      "description": "本展結合歷史、文化與未來想像，觀察並反思人類文明發展週期的循環。戰爭、氣候災難、產業轉型與權力結構失衡等結構性變動，使許多城市長期處於臨界狀態。展覽聚焦於較少被主流敘事所涵蓋的非歐美城市經驗，透過11組藝術家的創作，重新思考「城市」在不同歷史、政治與經濟條件下的現實樣貌。",
-      "description_en": "Combining history, culture and future imagination, this exhibition observes the cyclical nature of human civilization. Focusing on non-Western urban experiences rarely covered by mainstream narratives, it features 11 groups of artists rethinking \"the city\" under different historical, political and economic conditions—from Bucharest to Damascus, Agbogbloshie to Hong Kong and Tainan.",
-      "artists": [
-        "Elom 20ce",
-        "艾哈姆·賈布爾",
-        "伊莎貝爾&艾佛雷多·阿奎禮贊",
-        "The Fruitjuice Factori Studio Collective",
-        "阿布都·哈里克·阿濟茲",
-        "林書楷",
-        "金雅瑛",
-        "韋恩·艾希莉（FuturePerfect Studio）",
-        "馬克·薩瓦圖斯",
-        "格雷戈爾·卡斯帕",
-        "致穎",
-        "梅丁衍",
-        "黃海欣",
-        "塞巴斯蒂安·摩爾多萬",
-        "蔡坤霖"
-      ]
     },
     {
       "museum": "ntcart",
@@ -655,20 +391,6 @@
       "description_en": "",
       "artists": [
         "橫溝美由紀"
-      ]
-    },
-    {
-      "museum": "nunufineart",
-      "title_zh": "彼得．辛默曼：繪畫規則",
-      "title_en": "Peter Zimmermann: Painting Rules",
-      "title_ja": "",
-      "dates": "2026/04/11 - 2026/07/11",
-      "location": "路由藝術",
-      "link": "https://www.cn.nunufineart.com/peter-zimmermann-painting-rules",
-      "description": "路由藝術與菲律賓馬尼拉大都會美術館共同籌劃德國藝術家彼得・辛默曼個展「繪畫規則」，以全新發展的貼紙裝置藝術為核心，結合環氧樹脂繪畫的新作，呈現其近年創作中一次關鍵性的轉向與實驗，引導觀眾重新思考在數位影像與人工智慧快速發展的當代語境。",
-      "description_en": "Nunu Fine Art co-presents Peter Zimmermann's solo exhibition \"Painting Rules\" with the Metropolitan Museum of Manila. Centering on newly developed sticker installation art combined with epoxy resin paintings, the exhibition presents a pivotal turn in Zimmermann's recent practice.",
-      "artists": [
-        "Peter Zimmermann"
       ]
     },
     {
@@ -1003,53 +725,6 @@
       "artists": []
     },
     {
-      "museum": "yiriarts",
-      "title_zh": "陳雲：時雨隙光",
-      "title_en": "Chen Yun: Showers of Glinting Light",
-      "dates": "2026/05/21 - 2026/07/04",
-      "location": "YIRI ARTS",
-      "link": "https://yiriarts.com.tw/exhibitions/217-solo-exhibition/",
-      "artists": [
-        "陳雲"
-      ]
-    },
-    {
-      "museum": "yiriarts",
-      "title_zh": "黃姿瑜：馬鈴薯種在地下一樓",
-      "title_en": "HUANG Tzu-Yu: Ms. Potato in B1",
-      "dates": "2026/05/21 - 2026/07/04",
-      "location": "YIRI ARTS",
-      "link": "https://yiriarts.com.tw/exhibitions/216-solo-exhibition/",
-      "artists": [
-        "黃姿瑜"
-      ]
-    },
-    {
-      "museum": "yiriarts",
-      "title_zh": "袁心元：兩棵樹與群鳥",
-      "title_en": "Yuan Hsin-Yuan: Two Trees and a Flock of Birds",
-      "dates": "2026/05/21 - 2026/07/04",
-      "location": "BACK_Y",
-      "link": "https://yiriarts.com.tw/exhibitions/218-solo-exhibition/",
-      "artists": [
-        "袁心元"
-      ]
-    },
-    {
-      "museum": "yiriarts",
-      "title_zh": "橫山麻衣：Solar Phantasm",
-      "title_en": "Solar Phantasm",
-      "dates": "2026/05/21 - 2026/07/04",
-      "location": "BACK_Y",
-      "link": "https://yiriarts.com.tw/exhibitions/current/#yokoyama",
-      "artists": [
-        "橫山麻衣"
-      ],
-      "description": "橫山麻衣以在義大利、希臘旅居期間所見的古代遺跡與出土文物為創作起點，思考「真實」的本質。她運用數位素描、水彩與油畫層層轉譯，如同數位繪圖中的「圖層」機制，讓不同時刻的痕跡疊合於同一畫面。展覽不試圖回返單一而純粹的「原初真實」，而是關注事物在時間與物質變化中，如何以殘缺、覆寫與消逝間的曖昧狀態持續存在——遺跡如幽靈般滯留於當代，持續以變形的樣貌存在。",
-      "description_en": "Mai Yokoyama draws on ancient ruins and excavated artifacts she encountered during extended stays in Italy and Greece to probe the nature of authenticity. Working across digital sketches, watercolor, and oil painting, she treats the \"layer\" — a key mechanism in digital image-making — as a way of collapsing different moments and states into a single ambiguous image. Rather than seeking a singular, pure \"original truth,\" the exhibition considers how things persist between presence and disappearance through erosion and transformation, with ruins lingering in the contemporary world like ghosts, continuing to exist in altered form long after losing their original function.",
-      "description_ja": "橫山麻衣は、イタリアやギリシャ滞在中に目にした古代遺跡や発掘された遺物を出発点に、「真実」とは何かを問い直す。デジタルスケッチ、水彩、油彩を重ねて制作する手法は、デジタル画像における「レイヤー」の仕組みに通じ、異なる時間や状態の痕跡を一枚の曖昧なイメージに積層させる。本展は単一で純粋な「原初の真実」への回帰を目指すのではなく、時間と物質の変化のなかで事物が損壊・上書き・消失の間を漂いながら存在し続けるさまに注目する。遺跡は幽霊のように現代に留まり、姿を変えながらも存在し続けている。"
-    },
-    {
       "museum": "pingtung",
       "title_zh": "當繁花盛開 日本當代藝術展",
       "title_en": "",
@@ -1150,37 +825,6 @@
       ]
     },
     {
-      "museum": "tav",
-      "title_zh": "跨‧觀音合作社",
-      "title_en": "Trans-Guanyin Collective",
-      "dates": "2026.05.23 – 2026.07.05",
-      "location": "台北寶藏巖國際藝術村",
-      "link": "https://www.artistvillage.org/event-detail.php?p=5092",
-      "artists": [
-        "Sally Chen",
-        "Moly Prouff",
-        "Roxane / Xonron Denel",
-        "Yeyint Naing",
-        "Johan Amatsakio",
-        "Adrian Pacres",
-        "Jimena Riso",
-        "Jett Ilagan",
-        "Mauk Evertse"
-      ],
-      "status": "current"
-    },
-    {
-      "museum": "hengshan",
-      "title_zh": "躲貓貓：王意淳書法創作展",
-      "title_en": "",
-      "dates": "2026/05/01 - 2026/07/31",
-      "location": "桃園市立美術館",
-      "link": "https://tmofa.tycg.gov.tw/ch/exhibitions/current-exhibitions/154",
-      "artists": [
-        "王意淳"
-      ]
-    },
-    {
       "museum": "tnam",
       "title_zh": "隨波逐潮：流動的跨文化海洋敘事",
       "title_en": "Flowing with the Waves: Intercultural Sea Stories in Motion",
@@ -1210,18 +854,6 @@
       "location": "臺南市美術館",
       "link": "https://www.tnam.museum/exhibition/detail/577",
       "artists": []
-    },
-    {
-      "museum": "artemin",
-      "title_zh": "One and One 淡淡",
-      "title_en": "One and One",
-      "artists": [
-        "Nicolas Mehdi Pour Vahid"
-      ],
-      "link": "https://www.artemingallery.com/portfolio-item/one-and-one/",
-      "status": "current",
-      "description": "旅法伊朗裔藝術家 Nicolas Mehdi Pour Vahid 在台灣的首次個展，以13件繪畫回溯個人小史，隱含對台灣新浪潮電影的致敬，特別呈現他對楊德昌2000年作品〈一一〉所產生的共鳴。其中9件作品靈感得自於藝術家2025年在日本九州駐村期間的經驗。",
-      "dates": "2026.05.30 – 2026.07.04"
     },
     {
       "museum": "honggah",
@@ -1263,15 +895,6 @@
     },
     {
       "museum": "tcma",
-      "title_zh": "大肚之盟：山海間的物際外交",
-      "title_en": "The Covenant of Dadu: A Diplomacy of Things between Mountains and Seas",
-      "dates": "2026.05.08 – 2026.08.02",
-      "artists": [],
-      "link": "https://www.tcam.museum/zh/exhibition/the-covenant-of-dadu",
-      "status": "current"
-    },
-    {
-      "museum": "tcma",
       "title_zh": "越南移民花園計畫－無界花園",
       "title_en": "Vietnamese Immigrating Garden Project — Borderless Garden",
       "dates": "2026.05.16 – 2027.12.31",
@@ -1298,17 +921,6 @@
       ],
       "link": "https://tmofa.tycg.gov.tw/ch/exhibitions/upcoming-exhibitions/156",
       "status": "upcoming"
-    },
-    {
-      "museum": "moca",
-      "title_zh": "七日談—蔡咅璟個展",
-      "title_en": "In the Course of Seven Days — Tsai Pou-Ching Solo Exhibition",
-      "dates": "2026.04.25 – 2026.07.05",
-      "artists": [
-        "蔡咅璟"
-      ],
-      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E4%B8%83%E6%97%A5%E8%AB%87%E2%80%94%E8%94%A1%E5%92%85%E7%92%9F%E5%80%8B%E5%B1%95",
-      "status": "current"
     },
     {
       "museum": "tcma",
@@ -1355,17 +967,6 @@
       "status": "current"
     },
     {
-      "museum": "moca",
-      "title_zh": "她於歷史之中忽隱忽現—艾莉莎・賈爾迪納・帕帕個展",
-      "title_en": "",
-      "dates": "2026.05.09 – 2026.07.05",
-      "artists": [
-        "艾莉莎・賈爾迪納・帕帕"
-      ],
-      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E5%A5%B9%E6%96%BC%E6%AD%B7%E5%8F%B2%E4%B9%8B%E4%B8%AD%E5%BF%BD%E9%9A%B1%E5%BF%BD%E7%8F%BE%E2%80%94%E8%89%BE%E8%8E%89%E8%8E%8E%E3%83%BB%E8%B3%88%E7%88%BE%E8%BF%AA%E7%B4%8D%E3%83%BB%E5%B8%95%E5%B8%95%E5%80%8B%E5%B1%95",
-      "status": "current"
-    },
-    {
       "museum": "chiayi",
       "title_zh": "「Signal Verse 嘉義宇宙」",
       "title_en": "Signal Verse",
@@ -1377,17 +978,6 @@
         "戴明德"
       ],
       "link": "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=4eab33a9-fcf3-4e2d-b8a5-5478f8ee2592&appname=Exhibition3110",
-      "status": "current"
-    },
-    {
-      "museum": "chiayi",
-      "title_zh": "北緯23度58分－許震唐個展",
-      "title_en": "",
-      "dates": "2026.06.02 – 2026.08.02",
-      "artists": [
-        "許震唐"
-      ],
-      "link": "https://chiayiartmuseum.chiayi.gov.tw/ExhibitionsDetailC003100.aspx?Cond=25ae76d1-a93f-4ec7-9368-14b5812586db&appname=Exhibition3110",
       "status": "current"
     },
     {
@@ -1496,16 +1086,6 @@
       "status": "current"
     },
     {
-      "museum": "absolute",
-      "title_zh": "曾經在場－鄭安利個展",
-      "dates": "2026.05.24 – 2026.07.13",
-      "artists": [
-        "鄭安利"
-      ],
-      "link": "https://www.absoluteart.space/14641687",
-      "status": "current"
-    },
-    {
       "museum": "moca",
       "title_zh": "野草不服管",
       "title_en": "",
@@ -1519,22 +1099,6 @@
       ],
       "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/%E9%87%8E%E8%8D%89%E4%B8%8D%E6%9C%8D%E7%AE%A1",
       "status": "upcoming"
-    },
-    {
-      "museum": "tav",
-      "title_zh": "野沈浸",
-      "title_en": "",
-      "dates": "2026.05.21 – 2026.07.12",
-      "artists": [
-        "陳鈺琇",
-        "林沛涵",
-        "林亭羽",
-        "王楚雯",
-        "黃姿婷",
-        "潘保源"
-      ],
-      "link": "https://www.artistvillage.org/event-detail.php?p=5091",
-      "status": "current"
     },
     {
       "museum": "tav",
@@ -1801,19 +1365,6 @@
       "status": "current"
     },
     {
-      "museum": "soulangh",
-      "title_zh": "2026紐約－臺南藝術交流與對話：最甜美的歌之下",
-      "title_en": "2026 New York – Tainan Artistic Dialogues: Underneath the Sweetest Songs",
-      "dates": "2026.06.01 – 2026.07.26",
-      "artists": [
-        "波帕夏·海雅特 Bipasha Hayat",
-        "安德莉亞·柯洛尼 Andrea Coronil",
-        "夏小筑 Hsiao-Chu (Julia) Hsia"
-      ],
-      "link": "https://soulangh.tnc.gov.tw/index.php?inter=exhibition",
-      "status": "current"
-    },
-    {
       "museum": "ntmofa",
       "title_zh": "2026亞洲藝術雙年展：Mrahul Tminun・共織・Co-Weaving",
       "title_en": "2026 Asian Art Biennial: Mrahul Tminun / Co-Weaving",
@@ -1991,17 +1542,6 @@
       "status": "upcoming"
     },
     {
-      "museum": "hcfam",
-      "title_zh": "陳彥齊 個展 —— co-co-co-co-co-co-",
-      "title_en": "co-co-co-co-co-co-",
-      "dates": "2026.06.07 – 2026.07.19",
-      "artists": [
-        "陳彥齊"
-      ],
-      "link": "https://artemperor.tw/tidbits/20019",
-      "status": "current"
-    },
-    {
       "museum": "tfam",
       "title_zh": "物質世界",
       "title_en": "Material World",
@@ -2066,18 +1606,6 @@
     },
     {
       "museum": "tfam",
-      "title_zh": "2026 X-site 鏡・亭・山：相看兩不厭",
-      "title_en": "2026 X-site Mirror・Pavilion・Mountain",
-      "title_ja": "",
-      "dates": "2026.05.16 – 2026.07.26",
-      "location": "臺北市立美術館",
-      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=809",
-      "artists": [
-        "做白工作室（溫子慶、蔡君陽、梁立白、鄭詠心、陳冠文）"
-      ]
-    },
-    {
-      "museum": "tfam",
       "title_zh": "造公園",
       "title_en": "Making a Park",
       "title_ja": "",
@@ -2122,30 +1650,6 @@
       "link": "https://www.facebook.com/ssspacespace",
       "artists": [
         "廖進祥"
-      ]
-    },
-    {
-      "museum": "tinakeng",
-      "title_zh": "科羅曼德之花",
-      "title_en": "The Flowers of Coromandel",
-      "title_ja": "",
-      "dates": "2026.05.23 – 2026.07.11",
-      "location": "耿畫廊",
-      "link": "https://www.tinakenggallery.com/exhibitions/259/",
-      "artists": [
-        "蘇孟鴻"
-      ]
-    },
-    {
-      "museum": "tkgplus",
-      "title_zh": "於霧氣中懸浮的指引",
-      "title_en": "Suspended Guidance in the Mist",
-      "title_ja": "",
-      "dates": "2026.03.14 – 2026.07.04",
-      "location": "TKG+ Projects",
-      "link": "https://www.tkgplus.com/exhibitions/147/",
-      "artists": [
-        "大山．恩利科義薩姆"
       ]
     },
     {
@@ -2203,94 +1707,6 @@
       ]
     },
     {
-      "museum": "sleepark",
-      "title_zh": "留下來的我—李念聰個展",
-      "title_en": "Belong To… — Lee Nim Chung Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026.06.06 – 2026.07.05",
-      "location": "睡公園音畫書廊",
-      "link": "https://www.facebook.com/sleeparkbook",
-      "artists": [
-        "李念聰"
-      ],
-      "events": [
-        {
-          "date": "2026/06/24",
-          "time": "18:00",
-          "title_zh": "展覽對談II — 鄭亭亭 × 李念聰",
-          "title_en": "Artists Talk II — Ting-Ting Cheng × Lee Nim Chung",
-          "title_ja": "展覧会トークII — 鄭亭亭 × 李念聰",
-          "type": "talk"
-        },
-        {
-          "date": "2026/06/28",
-          "time": "16:00",
-          "title_zh": "展覽對談III — 魏肇儀 × 李念聰",
-          "title_en": "Artists Talk III — Wei Zhao-Yi × Lee Nim Chung",
-          "title_ja": "展覧会トークIII — 魏肇儀 × 李念聰",
-          "type": "talk"
-        }
-      ]
-    },
-    {
-      "museum": "maisonacme",
-      "title_zh": "緩慢前行",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026.07.04 – 2026.07.26",
-      "location": "MAISON ACME 圓山別邸",
-      "link": "https://acmetaipei.com/zh/blogs/journal/mvm",
-      "artists": [
-        "MVM"
-      ]
-    },
-    {
-      "museum": "yao",
-      "title_zh": "成天空隊形 散開",
-      "title_en": "Sky as Formation, Then Scattering",
-      "title_ja": "",
-      "dates": "2026.06.26 – 2026.07.19",
-      "location": "窯座",
-      "link": "https://www.facebook.com/story.php?story_fbid=122320940372225287&id=61556758625583&mibextid=wwXIfr&rdid=Ohp2eS0FPYibBHZ6",
-      "artists": [
-        "蕭安宏"
-      ],
-      "events": [
-        {
-          "date": "2026/07/05",
-          "time": "16:00",
-          "title_zh": "開幕活動",
-          "title_en": "Opening Event",
-          "title_ja": "オープニング",
-          "type": "opening"
-        }
-      ]
-    },
-    {
-      "museum": "absence",
-      "title_zh": "（糸白糸犬）（口口木口口）",
-      "title_en": "IN/RESTRU/MENT",
-      "title_ja": "",
-      "dates": "2026.07.04 – 2026.07.18",
-      "location": "不存在劇場",
-      "link": "https://www.instagram.com/absence_space0810/",
-      "artists": [
-        "nie.ooo"
-      ],
-      "events": [
-        {
-          "date": "2026/07/08",
-          "time": "19:00",
-          "title_zh": "Jina0King (Jina Kim) 2026 台灣巡演",
-          "title_en": "Jina0King (Jina Kim) 2026 Taiwan Tour",
-          "title_ja": "Jina0King (Jina Kim) 2026 台湾ツアー",
-          "type": "performance",
-          "note_zh": "自由定價｜出演: Jina0King + CJ Artecent + Chen En He + Fangyi Liu + OOONIE",
-          "note_en": "Free donation | Performers: Jina0King + CJ Artecent + Chen En He + Fangyi Liu + OOONIE"
-        }
-      ]
-    },
-    {
       "museum": "tinakeng",
       "title_zh": "立體詩",
       "title_en": "Sculptural Poems",
@@ -2314,18 +1730,6 @@
       "description": "在當代藝術的脈絡中，雕塑早已不再只是對形體的塑造，逐漸成為探討空間、感知與物質關係的重要媒介。對郭思敏而言，雕塑並非是對建築形式的縮影或再現，她始終關注作品與光、影及空間之間的相互生成，以及人如何透過身體的移動，察覺空間的存在。本次展覽「立體詩」所呈現的系列作品，延續其長期以來的創作探索，以鐵與不鏽鋼為主要媒材，藉由幾何構成、結構秩序、留白處理與光影穿透，建立一種介於雕塑與建築之間的語彙，使雕塑從單純的物質形體轉化為一種可被感知、被穿越、被經驗的空間場域。她關注的並非量體的堆疊，而是虛空如何在結構之間生成，呼應建築學中的「負空間」概念——那些由形體圍塑出的「空」看似缺席，卻始終是關係得以發生之處，使觀看、移動與光線得以介入並參與其中。展出作品包括《奕奕》、《暫佇》、《內照空間》、《冉冉》、《虛實間》、《共生》系列等。",
       "description_en": "In contemporary art, sculpture has long ceased to be merely the shaping of form, evolving instead into a medium for exploring the relationships between space, perception, and materiality. For Kuo Szu-Min, sculpture is not a miniature reproduction of architectural form; she remains focused on how her works generate light, shadow, and space in relation to one another, and how the body's movement reveals the presence of space. This exhibition, Sculptural Poems, continues her long-standing practice in iron and stainless steel, using geometric composition, structural order, negative space, and the play of light to build a vocabulary between sculpture and architecture — transforming sculpture from pure physical form into a spatial field that can be perceived, traversed, and experienced. Rather than the accumulation of mass, she is concerned with how voids are generated between structures, echoing the architectural concept of \"negative space\": the emptiness enclosed by form appears absent yet is where relationships take place, allowing viewing, movement, and light to enter and participate. Featured works include the series Yi Yi, Temporarily Resting, Inner-Lit Space, Ran Ran, Between Reality and Illusion, and Symbiosis.",
       "description_ja": "現代美術の文脈において、彫刻はもはや単に形を作ることではなく、空間・知覚・物質の関係を探る重要なメディアとなっている。郭思敏にとって彫刻は建築形式の縮図や再現ではなく、作品と光・影・空間がどのように相互に生成し合うか、そして人が身体の移動を通じてどのように空間の存在を察知するかに一貫して関心を向けている。本展「立體詩」は、長年の創作探求を継続するもので、鉄とステンレスを主素材に、幾何学的構成・構造の秩序・余白の処理・光と影の透過を通して、彫刻と建築の間の語彙を築き、彫刻を単なる物質的形体から知覚・通過・体験されうる空間の場へと転化させる。作家が注目するのは量の積み重ねではなく、構造の間にどのように虚空が生成されるかであり、これは建築学における「負の空間」の概念と響き合う――形によって囲われた「空」は不在に見えて、実は関係が生起する場所であり、観る・動く・光が介入し参与することを可能にする。出品作には《奕奕》《暫佇》《内照空間》《冉冉》《虛實間》《共生》シリーズなどが含まれる。"
-    },
-    {
-      "museum": "852art",
-      "title_zh": "孤獨的巨人",
-      "title_en": "The Lonely Giant",
-      "title_ja": "",
-      "dates": "2026.06.27 – 2026.07.09",
-      "location": "852藝術空間",
-      "link": "https://www.facebook.com/photo.php?fbid=122182914674800793&set=pb.61574023807656.-2207520000&type=3",
-      "artists": [
-        "劉蕓瑤"
-      ]
     },
     {
       "museum": "fugui",
@@ -2523,31 +1927,6 @@
       ]
     },
     {
-      "museum": "ponding",
-      "title_zh": "奶油色與石頭",
-      "title_en": "Cream and Stone — Book Launch & Exhibition",
-      "title_ja": "",
-      "dates": "2026.07.11 – 2026.07.19",
-      "location": "朋丁三樓",
-      "link": "https://www.facebook.com/pondingspace",
-      "artists": [
-        "廖昀靖",
-        "XINs",
-        "身體山島"
-      ],
-      "events": [
-        {
-          "date": "2026/07/11",
-          "time": "15:00",
-          "title_zh": "新書分享會（廖昀靖 × XINs × 身體山島）",
-          "title_en": "Book Launch Talk (author x artists)",
-          "title_ja": "新書トーク",
-          "type": "talk",
-          "note_zh": "費用280元可折抵購書"
-        }
-      ]
-    },
-    {
       "museum": "fotoaura",
       "title_zh": "Unattended",
       "title_en": "Unattended",
@@ -2694,61 +2073,6 @@
       "description": "韓國藝術家Donghoon Rhee（李東勲，b.1991）在台灣的首次個展，將畫廊轉化為受K-pop偶像Tzuyu（周子瑜）於高雄首場個人演唱會上朗讀感人信件啟發的小型祠堂。展覽聚焦於藝術家對K-pop偶像身體、姿態與文化影響力的著迷，藉此探討流行文化與更廣泛的人類歷史如何交織。展出其標誌性的木雕作品搭配炭筆素描，Rhee以順著木料紋理與密度尋找形體聞名，再將雕塑轉譯回繪畫，在兩種媒材之間反覆觀看。近年曾於首爾Gallery SP與洛杉磯VSF&milk舉辦個展，並參與昌原雕塑雙年展、北首爾市立美術館等機構聯展。"
     },
     {
-      "museum": "852art",
-      "title_zh": "踩在邊邊看到遠方的東東",
-      "title_en": "Standing at the Edge, Seeing What's Far Away",
-      "title_ja": "",
-      "dates": "2026.07.15 – 2026.08.06",
-      "location": "852藝術空間",
-      "link": "https://www.facebook.com/profile.php?id=61574023807656",
-      "artists": [
-        "陳喬恩",
-        "蕭灑",
-        "游子慶"
-      ],
-      "curator": "",
-      "events": [
-        {
-          "date": "2026/07/19",
-          "time": "14:00",
-          "title_zh": "開幕茶會",
-          "title_en": "Opening",
-          "title_ja": "オープニング",
-          "type": "opening"
-        }
-      ]
-    },
-    {
-      "museum": "cksmh",
-      "title_zh": "2026信樂吹來的風展 台灣X日本藝術交流展",
-      "title_en": "2026 Shigaraki Wind Exhibition — Taiwan x Japan Art Exchange",
-      "title_ja": "",
-      "dates": "2026.07.11 – 2026.07.22",
-      "location": "國立中正紀念堂 三樓 4展廳",
-      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60969",
-      "artists": [
-        "陳俞叡",
-        "酒井清",
-        "等近50位台日創作者"
-      ],
-      "curator": ""
-    },
-    {
-      "museum": "cksmh",
-      "title_zh": "未來視界─三種觀看的實驗",
-      "title_en": "Future Vision — Three Experiments in Seeing",
-      "title_ja": "",
-      "dates": "2026.07.25 – 2026.08.05",
-      "location": "國立中正紀念堂 4展廳",
-      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60970",
-      "artists": [
-        "陳柏宇",
-        "方信凱",
-        "魏子喻"
-      ],
-      "curator": "陳柏宇、方信凱、魏子喻"
-    },
-    {
       "museum": "guanglongxing",
       "title_zh": "Daydreaming 白日夢中",
       "title_en": "Daydreaming — Euro-Asian Disability Arts Touring Exhibition",
@@ -2771,22 +2095,6 @@
           "type": "opening"
         }
       ]
-    },
-    {
-      "museum": "tnnua",
-      "title_zh": "無盡之圖",
-      "title_en": "Reincarnation",
-      "title_ja": "",
-      "dates": "2026.06.29 – 2026.07.17",
-      "location": "國立臺南藝術大學 視覺館一樓大廳",
-      "link": "https://www.instagram.com/p/DaIjzXzJYRf/",
-      "artists": [
-        "鄭以安"
-      ],
-      "curator": "",
-      "description": "鄭以安個展《無盡之圖》於國立臺南藝術大學視覺館一樓大廳展出，以陶瓷/磚板為主要創作媒材。藝術家提出核心概念：「生命並非是直線前進，而是不斷的折返、重組與再現」，展覽以此思考生命歷程的循環性——並非單向的成長與消逝，而是持續的回返、拆解與再生。展場仰賴自然採光，全天開放供觀者隨時入內觀看。",
-      "description_en": "Cheng Yi-An's solo exhibition Reincarnation, held in the first-floor lobby of the Visual Arts Building at Tainan National University of the Arts, works primarily in ceramic/tile-based media. The show is built around the artist's core statement that \"life does not move forward in a straight line, but continually folds back, reassembles, and reappears\" — framing life's course not as one-directional growth and decline, but as an ongoing cycle of return, disassembly, and regeneration. The space relies on natural light and is open to view throughout the day.",
-      "description_ja": "鄭以安の個展《無盡之圖（尽きることのない図）》は、國立臺南藝術大學ヴィジュアルアーツ館1階ロビーで開催され、陶磁・タイルを主な素材とする。展覧会は作家の核心的な言葉「生命は直線的に進むのではなく、絶えず折り返し、再構成され、再び現れる」を軸に構成され、生命の過程を一方向的な成長と消滅ではなく、絶え間ない回帰・分解・再生の循環として捉え直す。会場は自然光に依存しており、日中は常時観覧が可能。"
     },
     {
       "museum": "chiayi",
@@ -2950,19 +2258,6 @@
       ]
     },
     {
-      "museum": "taoart",
-      "title_zh": "餘光：謝帆與丹尼斯．米蘭達．薩莫拉諾雙人展",
-      "title_en": "Light Remains: Xie Fan and Dennis Miranda Zamorano",
-      "title_ja": "",
-      "dates": "2026.05.23 – 2026.07.18",
-      "location": "TAO ART",
-      "link": "https://readymag.website/taoartspace/lightremains/",
-      "artists": [
-        "謝帆",
-        "Dennis Miranda Zamorano"
-      ]
-    },
-    {
       "museum": "linlin",
       "title_zh": "Soft Distances",
       "title_en": "Soft Distances",
@@ -3022,39 +2317,6 @@
           "title_ja": "公演（開場19:00）",
           "type": "performance",
           "note_zh": "2026萬物生長#舞蹈單元｜預先報名250元、現場報名300元"
-        }
-      ]
-    },
-    {
-      "museum": "slyartspace",
-      "title_zh": "＃游離悠立 U r i U r i",
-      "title_en": "U r i U r i",
-      "title_ja": "",
-      "dates": "2026.07.12 – 2026.07.31",
-      "location": "新樂園藝術空間",
-      "link": "https://www.instagram.com/p/DarRhsiIGwC/",
-      "artists": [
-        "林琦潔",
-        "林湘庭",
-        "梁振朗"
-      ],
-      "curator": "張凱博",
-      "events": [
-        {
-          "date": "2026/07/19",
-          "time": "15:00",
-          "title_zh": "座談（與談人：黃海鳴、李依樺）",
-          "title_en": "Talk (Guests: Huang Hai-Ming, Li Yi-Hua)",
-          "title_ja": "座談",
-          "type": "talk"
-        },
-        {
-          "date": "2026/07/22",
-          "time": "15:00",
-          "title_zh": "講座（講者：陳梓聰，852藝術空間負責人）",
-          "title_en": "Lecture by Chen Tzu-Tsung (852 Art Space)",
-          "title_ja": "講座",
-          "type": "talk"
         }
       ]
     },
@@ -3183,28 +2445,6 @@
       "link": "https://www.instagram.com/zitdimartspace/"
     },
     {
-      "museum": "ocac",
-      "title_zh": "放在棕櫸上 朝向遠方",
-      "title_en": "Carried Afar on a Palm Leaf",
-      "dates": "2026.07.25 – 2026.08.02",
-      "artists": [
-        "陳重穎"
-      ],
-      "description": "ちぇんしげ（陳重穎）個展。ちぇんしげは、絵画・マンガ・言語を用いて、コミュニケーションや多言語社会をテーマに制作するアーティスト。今回は台湾のインドネシア人移民労働者との交流を通して、言語を学びながら彼らの背景や物語を探る。展示に加え、駐村期間中には繪畫（Drawing）と書寫（Writing）の関係性に焦点を当てたワークショップも開催。開放時間14:00-20:00。関連イベント：藝術家導覽7/25 18:00-19:00、藝術家工作坊7/26 15:00、秘密活動（台北車站印尼街）7/18,19,25,26&8/1,2、半路二BAR 7/28 19:00〜。",
-      "link": "https://www.instagram.com/ocac_tw/"
-    },
-    {
-      "museum": "piecetw",
-      "title_zh": "快樂的最小單位 hapiunit",
-      "title_en": "HAPIUNIT",
-      "dates": "2026.07.17 – 2026.07.26",
-      "artists": [
-        "王昱儒"
-      ],
-      "description": "王昱儒個展。作品以「快樂」作為切入點，蒐集Pantone色彩系統中與愉悅感受相關的命名語言，將這些被文化編碼的情感元素重新拆解，並透過大量複製的小熊轉化為可被量化與消費的最小單位。透過挪用小熊軟糖所代表的消費性符號系統，作品試圖探討當代消費文化如何將快樂轉化為一套可被生產、展示與消費的循環機制，使原本無形且難以定義的感受，逐漸成為可被標準化生產、流通與持續消耗的商品形式。展覽開幕7/18 15:00，開放時間14:00-19:00。",
-      "link": "https://www.instagram.com/piece.tw/"
-    },
-    {
       "museum": "goodug",
       "title_zh": "成為張姐",
       "title_en": "Becoming Zhang-jie",
@@ -3214,17 +2454,6 @@
       ],
       "description": "蔡定邦個展，策展人傅爾得（Joanna Fu）。A Story of Migration, Motherhood and Reinvention。過去三十年間，台灣描述越南婚姻移民的用語從「越南新娘」轉變為「外籍配偶」，再到「新住民」，但討論的焦點始終圍繞著「抵達」——這些女性如何來到台灣、進入婚姻與家庭生活、適應新環境，卻很少被問及「之後」發生了什麼。《成為張姐》從這個問題出發，透過近百張橫跨藝術家母親近五十年生命的肖像，蔡定邦探索長期被家族記憶與社會標籤所遮蔽的部分。她十九歲時結婚並移居台灣，她的人生在婚姻、遷徙、勞動、親密關係、經商與持續追尋機會中展開。這些肖像以連續的影像之河形式在展場中裝置，拒絕對她的人生做出單一解讀。開幕暨藝術家對談7/18 14:00-16:00。",
       "link": "https://www.instagram.com/goodunderground_art_space/"
-    },
-    {
-      "museum": "springbao",
-      "title_zh": "人造天然",
-      "title_en": "Making Nature",
-      "dates": "2026.06.27 – 2026.08.02",
-      "artists": [
-        "黃淑婷"
-      ],
-      "description": "黃淑婷個展。匯集了新加坡藝術家黃淑婷在過去十年間不同人生階段創作的作品，梳理自己十年來的創作，討論人類與自然之間的關係，藝術家在個人的經驗中汲取養分，帶來攝影作品的回顧展。展覽開幕暨藝術家對談6/27 14:00。展期間購買白水報09將附贈由藝術家製作的別冊套別版本（限量50份）。",
-      "link": "https://www.instagram.com/springbaopress/"
     },
     {
       "museum": "pttspace",
@@ -3276,17 +2505,6 @@
       ],
       "description": "大果文化策劃聯展。本體覺（Proprioception）是一種來自身體內部的感知能力，生理學上指人體感知自身肢體位置、動作與力量的內部感受系統，不靠眼睛，而是靠感覺受器，讓我們「知道自己在哪裡」。展覽借用這個概念，提出問題：我們如何透過身體感知世界與自己？朱理安以擁抱與撫觸、身體邊界的逸散與消融投射情緒覺察；楊佳諭以幽默題材呈現微妙的身體感；捷克藝術家蘭卡·哈諾娃以水彩暈染家暴倖存者與飲食失調症患者的身體輪廓，透過療癒儀式般的創作方法重建身體自信。7/26(日)15:00-16:00藝術家楊佳諭現場分享創作脈絡。",
       "link": "https://www.accupass.com/event/2606290436361047371738"
-    },
-    {
-      "museum": "absence",
-      "title_zh": "無意義的ㄨㄚㄨㄚˇ",
-      "title_en": "Meaningless WAWA",
-      "dates": "2026.07.29 – 2026.08.02",
-      "artists": [
-        "__chyl_e"
-      ],
-      "description": "創作者首次個人分享展。以織品為主的創作展，也包含凸版印刷、紙雕塑，以及與@90kcy合作的木雕。創作者學習服裝製作十餘年，目前為英國大學服裝設計系學生，趁著placement year期間在台灣、比利時、巴黎時裝周、冰島駐村、英國農場打工換宿後，來到台南不存在劇場，嘗試脫離服裝設計的框架進行藝術創作。作品核心角色「ㄨㄚㄨㄚˇ」源自筆記本上隨性筆觸創造的無意義生物。展期間舉辦兩場工作坊（7/31(五)、8/2(日) 14:30，各1.5-2小時，材料費300元，需私訊@__chyl_e預約或現場報名，一場最多4人），帶領大家創作自己的娃娃吊飾。開放時間11:00-18:00。",
-      "link": "https://www.instagram.com/absence_space0810/"
     },
     {
       "museum": "hcam",
@@ -3344,18 +2562,6 @@
       "artists": [],
       "description": "永晝海濱美術館7-8月展。AnD HOUSE以素色寢具為語言，將對家的無邊想像濃縮在一方微型之中。邀請觀者穿梭於不同色調之間，將床鋪化為畫布，在1:10的微型世界裡拾起微光中的靈感碎片。每日12:30-18:30開放。",
       "link": "https://www.accupass.com/event/2606300244452053240671",
-      "added_at": "2026-07-29"
-    },
-    {
-      "museum": "aki",
-      "title_zh": "A House That Finds Its Way",
-      "title_en": "A House That Finds Its Way",
-      "dates": "2026.06.13 – 2026.07.25",
-      "artists": [
-        "山口藍"
-      ],
-      "description": "日本藝術家山口藍（Ai Yamaguchi）個展。",
-      "link": "https://www.galleryaki.com/",
       "added_at": "2026-07-29"
     },
     {

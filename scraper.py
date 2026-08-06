@@ -2533,7 +2533,9 @@ def _remove_expired(exhibitions):
 
 
 def _archive_exhibitions(expired):
-    """終了済み展覧会をアーカイブに追加する（重複なし）。"""
+    """終了済み展覧会をアーカイブに追加する（重複なし）。
+    manual_exhibitions.json由来のものは、アーカイブ後にソースファイルからも削除する
+    （削除しないとcache.json上は非表示のままだがソースが肥大化し続け、重複登録のリスクが残る）。"""
     archive = []
     if os.path.exists(ARCHIVE_FILE):
         try:
@@ -2564,6 +2566,38 @@ def _archive_exhibitions(expired):
     text = re.sub(r"[\ud800-\udfff]", "", text)
     with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
         f.write(text)
+    _remove_expired_from_manual(expired)
+
+
+def _remove_expired_from_manual(expired):
+    """manual_exhibitions.jsonから、期限切れになったエントリを削除する。"""
+    manual_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
+    if not os.path.exists(manual_path):
+        return
+    expired_keys = {
+        (ex.get("museum"), (ex.get("title_zh") or ex.get("title_en") or "").strip().lower(), ex.get("dates"))
+        for ex in expired
+    }
+    if not expired_keys:
+        return
+    try:
+        with open(manual_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception:
+        return
+    original = data.get("exhibitions", [])
+    kept = [
+        ex for ex in original
+        if (ex.get("museum"), (ex.get("title_zh") or ex.get("title_en") or "").strip().lower(), ex.get("dates")) not in expired_keys
+    ]
+    if len(kept) == len(original):
+        return
+    data["exhibitions"] = kept
+    text = json.dumps(data, ensure_ascii=False, indent=2)
+    text = re.sub(r"[\ud800-\udfff]", "", text)
+    with open(manual_path, "w", encoding="utf-8") as f:
+        f.write(text)
+        f.write("\n")
 
 
 def load_archive():
