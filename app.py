@@ -1,6 +1,6 @@
 """台湾現代アート展覧会情報アプリ"""
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from scraper import fetch_all_exhibitions, MUSEUMS
 import json
 import os
@@ -1927,6 +1927,63 @@ def webhook_receive():
                     pass
 
     return "OK", 200
+
+
+SITE_URL = "https://taiwan-art-now.onrender.com"
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    body = f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n"
+    return Response(body, mimetype="text/plain")
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    """全展覧会・アーティスト・固定ページのURLを列挙するサイトマップ。
+    Organic Search流入がゼロだった原因調査(2026-08-06)で robots.txt/sitemap.xml が
+    どちらも存在しないことが判明したため新設。"""
+    from scraper import fetch_all_exhibitions, get_artist_index
+
+    urls = [
+        {"loc": f"{SITE_URL}/", "changefreq": "daily", "priority": "1.0"},
+        {"loc": f"{SITE_URL}/artists", "changefreq": "weekly", "priority": "0.6"},
+        {"loc": f"{SITE_URL}/taishin", "changefreq": "monthly", "priority": "0.5"},
+        {"loc": f"{SITE_URL}/featured", "changefreq": "weekly", "priority": "0.6"},
+        {"loc": f"{SITE_URL}/archive", "changefreq": "weekly", "priority": "0.4"},
+    ]
+
+    exhibitions = fetch_all_exhibitions()
+    by_museum = {}
+    for ex in exhibitions:
+        mid = ex.get("museum", "")
+        by_museum.setdefault(mid, []).append(ex)
+    for mid, exs in by_museum.items():
+        for idx in range(len(exs)):
+            urls.append({
+                "loc": f"{SITE_URL}/exhibition/{mid}/{idx}",
+                "changefreq": "weekly",
+                "priority": "0.8",
+            })
+
+    for artist_key in get_artist_index().keys():
+        urls.append({
+            "loc": f"{SITE_URL}/artist/{artist_key}",
+            "changefreq": "monthly",
+            "priority": "0.5",
+        })
+
+    entries = "\n".join(
+        f"  <url><loc>{u['loc']}</loc><changefreq>{u['changefreq']}</changefreq><priority>{u['priority']}</priority></url>"
+        for u in urls
+    )
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{entries}\n"
+        "</urlset>"
+    )
+    return Response(xml, mimetype="application/xml")
 
 
 @app.route("/health")
