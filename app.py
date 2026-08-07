@@ -519,18 +519,32 @@ def _get_holiday_today():
 
 
 def _get_last_updated():
-    """全展示のfetched_atのうち最新の日付を返す（サイトの最終更新表示用）。"""
+    """サイトの最終更新表示用。exhibition_details.jsonのfetched_at(description充実化)と
+    manual_exhibitions.jsonのadded_at(新規展示追加)、両方の最新日付を比較して新しい方を返す。
+    片方だけ見ると「新規展示を追加したのにdescriptionスクレイプはしていない」ケースで
+    表示が古いまま止まって見える(2026-08-06に発覚)ため両方見る。"""
     from datetime import datetime, timezone, timedelta
+    candidates = []
+
     details_path = os.path.join(os.path.dirname(__file__), "exhibition_details.json")
     try:
         with open(details_path, "r", encoding="utf-8") as f:
             details = json.load(f)
+        candidates += [v.get("fetched_at") for v in details.values() if v.get("fetched_at")]
     except Exception:
+        pass
+
+    manual_path = os.path.join(os.path.dirname(__file__), "manual_exhibitions.json")
+    try:
+        with open(manual_path, "r", encoding="utf-8") as f:
+            manual = json.load(f)
+        candidates += [e.get("added_at") for e in manual.get("exhibitions", []) if e.get("added_at")]
+    except Exception:
+        pass
+
+    if not candidates:
         return None
-    dates = [v.get("fetched_at") for v in details.values() if v.get("fetched_at")]
-    if not dates:
-        return None
-    latest = max(dates)
+    latest = max(candidates)
     try:
         dt = datetime.fromisoformat(latest)
         if dt.tzinfo is None:

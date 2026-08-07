@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
+  // Mark first-time visitors before paint (avoids a flash of the full nav)
+  // so above-the-fold can be lighter for them; returning visitors keep the
+  // full nav/filters. See .first-visit rules in <style> and the
+  // localStorage.setItem call near the bottom of this page.
+  if (!localStorage.getItem('taiwan_art_visited_before')) document.documentElement.classList.add('first-visit');
   if (new URLSearchParams(window.location.search).has('_exclude_ga')) localStorage.setItem('taiwan_art_ga_exclude','1');
   if (!localStorage.getItem('taiwan_art_ga_exclude')) {
     var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
@@ -332,6 +337,13 @@
     .subnav a.current { color: var(--text); font-weight: 600; }
     .subnav a:active { color: var(--accent); }
     .subnav-sep { color: var(--text-light); }
+    /* First-time visitors (no localStorage visit flag yet) get a lighter
+       above-the-fold: hide the secondary nav and collapse the category
+       filter row so the exhibition list appears sooner. Returning visitors
+       are unaffected — this class is only added by JS before paint when
+       taiwan_art_visited_before is absent. */
+    html.first-visit .subnav { display: none; }
+    html.first-visit #catFilters { display: none; }
   </style>
   <nav class="subnav" aria-label="Site navigation">
     <a href="/?lang={{ current_lang }}" class="current">{{ labels.title.split('—')[0].strip() if '—' in labels.title else 'Exhibitions' }}</a>
@@ -1984,6 +1996,11 @@
     var views = parseInt(sessionStorage.getItem('taiwan_art_views') || '0') + 1;
     sessionStorage.setItem('taiwan_art_views', views);
     if (views >= 3) showPwaFab();
+
+    // Mark this visitor as returning for next time (see .first-visit rules
+    // near the top of <head>). Set on every load, not just once — cheap and
+    // idempotent.
+    localStorage.setItem('taiwan_art_visited_before', '1');
 
     window.showPwaFab = function() {
       if (pwaFab && !window.matchMedia('(display-mode: standalone)').matches) {
