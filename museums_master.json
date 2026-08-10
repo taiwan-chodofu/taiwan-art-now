@@ -3466,6 +3466,32 @@
       "hours_uncertain": false,
       "lat": 25.0196388,
       "lng": 121.2952888
+    },
+    {
+      "id": "99dac",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "99 Degree Art Center",
+        "ja": "99°藝術中心",
+        "zh": "99°藝術中心"
+      },
+      "address": {
+        "en": "1F, No. 286, Sec. 7, Chengde Rd., Beitou Dist., Taipei",
+        "ja": "台北市北投區承德路七段286號1樓",
+        "zh": "台北市北投區承德路七段286號1樓"
+      },
+      "url": "https://99dac.com",
+      "hours": {
+        "en": "Daily 11:00-18:30 | Closed Sun-Mon",
+        "ja": "毎日 11:00–18:30｜日月休",
+        "zh": "每日 11:00–18:30｜週日一休"
+      },
+      "closed_day": null,
+      "closed_days": [0, 1],
+      "hours_uncertain": false,
+      "lat": 25.116307,
+      "lng": 121.5053863
     }
   ]
 }
