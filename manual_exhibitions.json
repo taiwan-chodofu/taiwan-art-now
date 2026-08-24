@@ -1261,18 +1261,6 @@
       "description_ja": "亞洲藝術中心は、香港のアーティスト簡喬倩（Tobe Kiu Sin Kan）と英国のアーティストCharlotte Keatesによる二人展《Unseen Topographies》を開催する。両者ともに高度に様式化された絵画実践を通じて、記憶・知覚・アイデンティティ・感情がいかに、親密でありながら捉えがたい空間的経験へと翻訳されるかを問う。Unseen Topographiesが指すのは現実の地理ではなく、記憶・憧れ・心理的連想、そして内なる世界と外部の現実との間の絶えず流動する関係——生の経験を形作る見えない輪郭である。簡喬倩は香港で育ち、複層的な植民地の歴史に形作られた高密度で速いペースの都市の中で、文化的差異やアイデンティティ、帰属意識について考え続けている。一方Keatesは英仏海峡に浮かぶ小さく静かな島、ガーンジー島に暮らす。コロナ禍で簡喬倩は欧州の祭壇画や香港の植民地建築を想起させるアーチ型のキャンバスに描き始め、Keatesは映画のスチール写真を収集し始め、演劇的で舞台のような質感を持つ三連作を発表する。"
     },
     {
-      "museum": "sssart",
-      "title_zh": "未曾抵達的風景",
-      "title_en": "The Unreached Landscape",
-      "title_ja": "",
-      "dates": "2026.07.12 – ",
-      "location": "ss space space",
-      "link": "https://www.facebook.com/ssspacespace",
-      "artists": [
-        "廖進祥"
-      ]
-    },
-    {
       "museum": "asiamoma",
       "title_zh": "土地與水——從馬來西亞出發探訪亞洲性",
       "title_en": "TANAHAIR: Navigating Asianness from Malaysia",
@@ -1622,58 +1610,6 @@
       ]
     },
     {
-      "museum": "grassland",
-      "title_zh": "《她，這裡，然後》開放排練＆演前分享會",
-      "title_en": "\"She, Here, Then\" — Open Rehearsal & Pre-show Talk (Performance)",
-      "title_ja": "",
-      "dates": "2026.07.21",
-      "location": "雜草町",
-      "link": "https://www.opentix.life/event/2069611694253621249",
-      "artists": [
-        "劉凱榛",
-        "林育萱"
-      ],
-      "curator": "",
-      "type": "performance",
-      "events": [
-        {
-          "date": "2026/07/21",
-          "time": "20:00",
-          "title_zh": "開放排練＆創作分享會",
-          "title_en": "Open Rehearsal & Creative Talk",
-          "title_ja": "オープンリハーサル＆トーク",
-          "type": "performance",
-          "note_zh": "入場費200元，無須報名，隨喜贊助｜請著襪參與"
-        }
-      ]
-    },
-    {
-      "museum": "openwide",
-      "title_zh": "《她，這裡，然後》開放排練＆演前分享會",
-      "title_en": "\"She, Here, Then\" — Open Rehearsal & Pre-show Talk (Performance)",
-      "title_ja": "",
-      "dates": "2026.08.04",
-      "location": "掀牆",
-      "link": "https://www.opentix.life/event/2069611694253621249",
-      "artists": [
-        "劉凱榛",
-        "林育萱"
-      ],
-      "curator": "",
-      "type": "performance",
-      "events": [
-        {
-          "date": "2026/08/04",
-          "time": "20:00",
-          "title_zh": "開放排練＆創作分享會",
-          "title_en": "Open Rehearsal & Creative Talk",
-          "title_ja": "オープンリハーサル＆トーク",
-          "type": "performance",
-          "note_zh": "入場費200元全數回饋場地，無須報名，隨喜贊助"
-        }
-      ]
-    },
-    {
       "museum": "linlin",
       "title_zh": "Soft Distances",
       "title_en": "Soft Distances",
@@ -1710,31 +1646,6 @@
       "location": "師大美術館",
       "link": "https://www.artmuse.ntnu.edu.tw",
       "artists": []
-    },
-    {
-      "museum": "absence",
-      "title_zh": "饅頭",
-      "title_en": "Mantou (Steamed Bun)",
-      "title_ja": "",
-      "dates": "2026.08.01",
-      "location": "不存在劇場三樓",
-      "link": "https://www.facebook.com/absencespace/posts/pfbid02FjpjKWoUhwRwq92cvmKqSZRALDv2mfNgPh3TmjwLsMC3gznG3VrP33m7rNAKUH3Wl",
-      "artists": [
-        "施旻雯"
-      ],
-      "curator": "",
-      "type": "performance",
-      "events": [
-        {
-          "date": "2026/08/01",
-          "time": "19:30",
-          "title_zh": "演出（19:00進場）",
-          "title_en": "Performance (doors 19:00)",
-          "title_ja": "公演（開場19:00）",
-          "type": "performance",
-          "note_zh": "2026萬物生長#舞蹈單元｜預先報名250元、現場報名300元"
-        }
-      ]
     },
     {
       "museum": "xirong23",
@@ -2050,18 +1961,6 @@
       "added_at": "2026-07-29",
       "description_en": "Solo exhibition by Wang Wu. For the artist, creating and presenting work is a way of organizing what he has learned, revealing a process of moving between different artistic systems while continually seeking nourishment. His research into folk art has taken him into the field many times, where he has come to admire the bold yet unpretentious beauty of farmer-artisans' brushwork, leading him to add extensive brushwork and paper-cut collage onto his woodblock prints. Rooted in a cultural affinity for traditional calligraphy and painting, he treats the carving knife as an extension of the brush, practicing calligraphy daily and developing a fusion of calligraphy and printmaking. In recent years he has studied Nanguan (southern Fujian music); \"Zilai Shengzhang\" (Growing Naturally) is his favorite zhitao (finger-suite) piece, and he hopes his own work can likewise unfold as long and endlessly varied as this music. Sponsored by the National Culture and Arts Foundation.",
       "description_ja": "王午（ワン・ウー）による個展。作家にとって創作と発表は、学びを整理する行為であり、異なる芸術体系の間を行き来しながら養分を掘り続けていく過程を示すものである。民間芸術の研究のために度々フィールドに赴き、農民芸術家の筆致に宿る大胆さと素朴な美しさに感銘を受け、木版画に大量の筆描きと切り紙のコラージュを加えるようになった。伝統書画への文化的な帰属意識を基盤に、刀技を筆墨の延長とみなし、日々の臨書を習慣とすることで、書法と版画を融合させる独自の表現を発展させてきた。近年は南管音楽を学んでおり、〈自來生長〉は作者が最も愛する指套（南管の器楽曲）で、自身の創作もこの曲のように綿々と続き、変化に富んだものであることを願っている。協賛：国家文化芸術基金会（国芸会）。"
-    },
-    {
-      "museum": "hcrailway",
-      "title_zh": "進駐的痕跡——身體、物件、記憶",
-      "title_en": "Traces of Residency – Bodies, Objects, Memories",
-      "dates": "2026.07.23",
-      "artists": [],
-      "added_at": "2026-08-03",
-      "description": "由利澤國際偶戲藝術村於新竹市鐵道藝術村策劃展出。回望藝術村近十年來透過藝術家駐村計畫（Artist-in-Residence Program）所累積的藝術交流、實驗與創作歷程。自2017年起，利澤國際偶戲藝術村邀請來自臺灣及世界各地的藝術家前來宜蘭駐村，展覽透過戲偶、物件、攝影、錄像、手稿、聲音、演出紀錄，呈現2017年至2026年間歷屆駐村藝術家所留下的作品與記憶。策展人：海樂·彌飛達（Helmi Fita，利澤國際偶戲藝術村國際事務長）。※詳細會期尚待確認，請洽官方頁面。",
-      "link": "https://www.instagram.com/artsite_aaf/",
-      "description_en": "Curated and presented by the Lize International Puppet Theatre Art Village at the Hsinchu City Railway Art Village, this exhibition looks back on nearly a decade of artistic exchange, experimentation, and creation accumulated through the village's Artist-in-Residence Program. Since 2017, Lize International Puppet Theatre Art Village has hosted artists from Taiwan and around the world for residencies in Yilan; the exhibition presents puppets, objects, photographs, video, manuscripts, sound, and performance documentation left behind by resident artists between 2017 and 2026. Curator: Helmi Fita, International Affairs Director of Lize International Puppet Theatre Art Village. Note: exact exhibition dates are yet to be confirmed — please check the official page.",
-      "description_ja": "利澤国際人形劇芸術村が新竹市鉄道芸術村にて企画・開催する展覧会。同芸術村がアーティスト・イン・レジデンス・プログラムを通じてこの10年近くに積み重ねてきた芸術交流・実験・創作の過程を振り返る。利澤国際人形劇芸術村は2017年より台湾内外のアーティストを宜蘭に招いてレジデンスを行っており、本展では2017年から2026年にかけて歴代の在住アーティストが残した人形、物、写真、映像、手稿、音、パフォーマンスの記録を展示する。キュレーターは海樂・彌飛達（ヘルミ・フィタ、利澤国際人形劇芸術村国際事務局長）。※詳しい会期は未確定のため、公式ページをご確認ください。"
     },
     {
       "museum": "waleyart",
