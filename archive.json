@@ -1366,6 +1366,694 @@
       "added_at": "2026-07-29",
       "description_en": "An upcoming exhibition using \"happiness\" as its entry point, collecting Pantone naming language associated with pleasurable feelings and deconstructing these culturally-coded emotional elements, transforming them through mass-replicated bear figures into a quantifiable and consumable smallest unit.\n\nBy appropriating the consumer symbol system represented by gummy bears, the work explores how contemporary consumer culture transforms happiness into a cycle that can be produced, displayed, and consumed, turning an intangible and hard-to-define feeling into a standardized, produced, circulated, and continuously consumed commodity form.\n\nExhibition: HAPIUNIT - Wang Yu-Ju Solo Exhibition\nDates: 2026.7.17(Fri) - 7.26(Sun), closed Mondays\nHours: 14:00-19:00\nOpening: 7/18 15:00",
       "description_ja": "来週始まる展覧会。作品は「幸福」を切り口として、Pantoneカラーシステムの中で快い感情に関連する命名言語を収集し、これらの文化的にコード化された感情要素を再分解し、大量に複製された熊のフィギュアを通じて、数量化・消費可能な最小単位へと変換する。\n\nグミベアが代表する消費的シンボルシステムを転用することで、本作は当代の消費文化がいかにして幸福を生産・展示・消費されうる循環メカニズムへと変換し、本来無形で定義しがたい感覚を、標準化され生産・流通・持続的に消費される商品形態へと変えていくのかを探る。\n\n【快樂的最小單位 hapiunit：王昱儒個展】\n会期｜2026.7.17（金）〜7.26（日）（月曜休館）\n開放時間｜14:00-19:00\n展覧会オープニング｜7/18 15:00"
+    },
+    {
+      "museum": "daxiangart",
+      "title_zh": "在透鏡與日常之間：林正哲與黃嘉寧的物誌學",
+      "title_en": "Between Lens and the Everyday: The Materialography of Lin Cheng-Che and Huang Chia-Ning",
+      "title_ja": "",
+      "dates": "2026/06/06 - 2026/08/15",
+      "location": "大象藝術空間館",
+      "link": "https://daxiang.com.tw/exhib/detail/290",
+      "description": "在當代影像氾濫的語境下，寫實繪畫的存在意義已從「再現客體」轉向藝術家如何透過肉身的長期凝視，重新定義「真實」的內核。本展呈現林正哲與黃嘉寧的作品，透過兩位藝術家對「物」與「象」截然不同的處理邏輯，展開一場關於觀看本質的深度對話。",
+      "description_en": "In the context of contemporary image overload, realistic painting has shifted from \"reproducing objects\" to redefining the core of \"truth\" through prolonged physical gazing. Lin Cheng-Che explores optical phenomena through transparent spheres and glass lenses; Huang Chia-Ning focuses on overlooked everyday fragments—crumpled plastic bags, splashing ducks—stripping objects of functionality through micro-perspective. Together they demonstrate that realistic painting remains a vital sensory medium for understanding reality.",
+      "artists": [
+        "林正哲",
+        "黃嘉寧"
+      ],
+      "description_ja": "現代の映像氾濫の文脈において、写実絵画の意義は「客体の再現」から、肉体による長期的凝視を通じて「真実」の核心を再定義することへと転換した。林正哲は透明球体とガラスレンズで光学現象を探求し、黃嘉寧は見過ごされる日常の断片——くしゃくしゃのビニール袋、アヒルの水しぶき——に焦点を当て微視的視点で物の機能性を剥ぐ。仮想イメージが席巻する時代に、写実絵画が現実を理解し自己を位置づける重要な感覚メディアであることを共に証言する。",
+      "curator": "鍾經新"
+    },
+    {
+      "museum": "nmth",
+      "title_zh": "信風基隆 Keelung 400 Mail Art",
+      "title_en": "Keelung 400 Mail Art",
+      "title_ja": "",
+      "dates": "2026/05/15 - 2026/08/16",
+      "location": "國立臺灣歷史博物館 展示教育大樓4F第三特展室",
+      "link": "https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791",
+      "description": "從基隆出發，續航臺南。以「信風基隆」為起點，本展透過一張張被寄出的明信片，書寫祝福、記錄記憶，開啟城市之間的交流。明信片作為可寄送、可閱讀、亦可珍藏的媒介，承載個人的情感與城市的想像，在往返之間，串聯在地與世界的目光。這些跨越地域與時間而來的作品，在臺南交會、停留，成為連結城市與城市、過去與當代的重要媒介。",
+      "description_en": "Starting from \"Fair Wind Keelung,\" this exhibition uses postcards sent between cities to carry blessings and memories, opening a dialogue between places. Tracing the path of the trade winds, the show sails from the port city of Keelung to Tainan, weaving individual sentiment and civic imagination into a shared cultural memory of Taiwan.",
+      "description_ja": "「信風基隆」を起点に、送られた一枚一枚の葉書を通して祝福や記憶を書き記し、都市と都市の対話を開く展示。信風の軌跡をたどり、港湾都市・基隆から台南へと航海するように展開し、個人の感情と都市への想像が往還する中で、台湾文化の多様な織り合いを映し出す。"
+    },
+    {
+      "museum": "tfam",
+      "title_zh": "物質世界",
+      "title_en": "Material World",
+      "title_ja": "",
+      "dates": "2026.05.01 – 2026.08.16",
+      "location": "臺北市立美術館",
+      "link": "https://www.tfam.museum/Exhibition/Exhibition_Special.aspx?ddlLang=zh-tw&id=808",
+      "artists": [
+        "日下淳一",
+        "白景瑞",
+        "朱嘉樺",
+        "何采柔",
+        "何德來",
+        "李元佳",
+        "李明學",
+        "李傑",
+        "周育正",
+        "林文熙",
+        "奚淞",
+        "徐揚聰",
+        "翁清土",
+        "張照堂",
+        "梅丁衍",
+        "陳典懋",
+        "陳順築",
+        "陸先銘",
+        "湯雅雯",
+        "黃文浩",
+        "黃冠鈞",
+        "黃榮禧",
+        "黃銘昌",
+        "鄭亭亭",
+        "澤拓",
+        "盧冠宏",
+        "賴九岑",
+        "顏水龍",
+        "顧何忠"
+      ],
+      "description": "物質塑造著人類的生活方式。我們每日一張開眼，從喝水的杯子、穿著的衣物、居住的空間、已不僅是通訊功能的手機，食衣住行育樂，所有的一切被物質所圍繞著。因應生活所需，物被不斷創造、發明、改良、演進，物被人所用，又因為使用而延伸出系統，系統回過頭化為生活中的直覺動作，甚至人們也因為使用被影響了原本的姿態、習慣甚至是思維模式。\n\n從70年代布希亞（Jean Baudrillard）揭示了消費社會中的符號價值，到90年代提姆．登特（Tim Dant）與斯蒂格勒（Bernard Stiegler）探討的物質實踐，物質不單單只是被消費或指涉意義，它也在日常的操作、使用與感知中，形成由物而衍伸的技術，進而影響人們的行動模式與社會的樣態。\n\n展覽試圖回望從農業社會轉變為工商社會之際至今，物質的生產與流通如何深刻改變諸多事物。小至我們的生活型態，大至推動、介入社會運作的機制，與隱沒在其後的力量。我們好奇物質是如何在社會、空間、尺度與感知中持續生成世界，而不同時期的創作者又是如何轉化時代性的感受，成為物質性的創作與實驗呈現，進一步回應我們伴隨其所改變的感知與想像。",
+      "description_en": "Material shapes human ways of living. From the cup we drink from each morning to our clothing, living spaces, and smartphones that have transcended mere communication—everything is surrounded by material. Objects are continuously created, invented, improved, and evolved to meet life's needs. Used by people, they extend into systems that become intuitive daily actions, even altering our postures, habits, and modes of thinking.\n\nFrom Baudrillard's revelation of sign value in consumer society in the 1970s, to Tim Dant and Bernard Stiegler's explorations of material practice in the 1990s, material is not merely consumed or referential—it generates techniques through daily operation, use, and perception that influence behavioral patterns and social forms.\n\nThe exhibition looks back at how material production and circulation have profoundly transformed everything since the transition from agricultural to industrial society—from our lifestyles to the mechanisms that drive and intervene in social operations, and the forces hidden behind them.",
+      "description_ja": "物質は人間の生活様式を形作る。毎朝目を開けた瞬間から、水を飲むコップ、着る衣服、住む空間、もはや通信機能だけではないスマートフォンまで、衣食住行楽の全てが物質に囲まれている。生活の必要に応じ物は絶えず創造・発明・改良・進化し、人に使われ、使用を通じてシステムへと拡張し、そのシステムが日常の直感的動作となり、使用者の姿勢・習慣・思考様式までも変容させる。\n\n1970年代のボードリヤールによる消費社会の記号価値の解明から、90年代のティム・デントやスティグレールの物質的実践の考察まで、物質は単に消費されたり意味を指示するだけでなく、日常の操作・使用・知覚の中で技術を生成し、行動様式と社会の様態に影響を与える。\n\n本展は農業社会から工商社会への転換以降、物質の生産と流通がいかに多くのものを深く変えてきたかを回望する。生活様態から社会運営に介入するメカニズム、その背後に潜む力まで。異なる時代の創作者がいかに時代的感受を物質的創作と実験へ転化してきたかを探る。",
+      "curator": "馮馨"
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "破土：臺灣當代原住民藝術與行動主義",
+      "title_en": "Breaking Ground: Art and Activism in Indigenous Taiwan",
+      "dates": "2026/04/23 - 2026/08/21",
+      "location": "文化部藝廊（新北市新莊區中平路439號）",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60089",
+      "description": "國立臺灣美術館與IAIA當代原住民藝術博物館（MoCNA）共同策劃，聚焦於臺灣當代原民藝術中的藝術行動主義，展現新一代臺灣原住民藝術中的多元認同、生存困境與自然意識。",
+      "artists": [
+        "胡家瑜",
+        "武玉玲",
+        "張恩滿",
+        "林安琪",
+        "宜德思．盧信",
+        "伊祐．噶照",
+        "林介文",
+        "Makotaay 生態藝術村",
+        "馬躍．比吼",
+        "余欣蘭"
+      ],
+      "description_en": "A collaborative project between the National Taiwan Museum of Fine Arts and the IAIA Museum of Contemporary Native Arts (MoCNA), featuring 10 artists/groups focused on artistic activism within contemporary Taiwanese Indigenous art. The exhibition explores diverse identities, survival challenges, and nature consciousness, examining themes of colonialism and Indigeneity, gender identity and belief, and learning from nature.",
+      "description_ja": "国立台湾美術館とIAIA現代先住民芸術博物館（MoCNA）の共同企画。台湾の現代原住民アートにおけるアーティスティック・アクティヴィズムに焦点を当て、10組のアーティスト/グループを紹介。多元的アイデンティティ、生存の困難、自然意識を探求し、植民地性と先住民性、ジェンダー・アイデンティティと信仰、自然に学ぶことをテーマに展開する。",
+      "curator": "Manuela Well-Off-Man、那高．卜沌（Nakaw Putun）、賴駿杰"
+    },
+    {
+      "museum": "yuhsiu",
+      "title_zh": "我們走了十年",
+      "title_en": "Walking Through a Decade",
+      "dates": "2026/02/24 - 2026/08/23",
+      "location": "毓繡美術館 1-4F",
+      "link": "https://www.yu-hsiu.org/en/exhibition/1/data/40",
+      "artists": [
+        "Sam Jinks",
+        "Miwa Ogasawara",
+        "Jeff Robb",
+        "李足新",
+        "秋山泉",
+        "Zdenek Janda",
+        "深堀隆介",
+        "林煒翔",
+        "梁兆熙",
+        "小林敬生",
+        "Uttaporn Nimmalaikae",
+        "徐均育",
+        "徐睿甫",
+        "Odd Nerdrum",
+        "Nicola Samori",
+        "Patricia Piccinini",
+        "鈴木貴彥",
+        "Kusofiyah Nibuesa"
+      ],
+      "description": "毓繡美術館自2016年開館至今，終於來到了第十年。若細細回望，當我們在這座山中美術館重複著日常，實際上則是在事件反覆的過程之間，召喚那些未被完成的可能性。一入展館，映入眼簾的是《跪著的女人》，揭開館方當代寫實的基調。美術館坐落在烏溪與九九峰之間，二樓展區以此環境意象述說這十年來持續播下的美感種子。三樓回到館藏作品的觀看，討論自然環境、時空錯綜、存在與死亡等抽象概念。四樓高閣的作品對應著台灣與異國兩地街頭景觀的對話。",
+      "description_en": "The exhibition celebrates Yu-Hsiu Museum's 10th anniversary (opened 2016), spanning four floors centered on contemporary realism. 1F: Sam Jinks' Kneeling Woman establishes the museum's central theme. 2F: Environmental imagery showcasing aesthetic ideas between the Wu River and Jiu Jiu Peaks. 3F: Collection exploring nature, spatiotemporal connections, existence, and death. 4F: Conversations between Taiwan's streetscapes and those of other countries.",
+      "description_ja": "毓繡美術館開館10周年記念展。4フロアにわたり現代写実を中心テーマに展開。1階はSam Jinksの《跪く女》で美術館の現代写実の核心命題を確立。2階は烏渓と九九峰の間に位置する環境美学を提示。3階は典蔵に立ち返り自然環境・時空の接続・存在と死を探求。4階は台湾の街並みと他国の街並みの対話を創出する。"
+    },
+    {
+      "museum": "yuhsiu",
+      "title_zh": "翻頁",
+      "title_en": "FLIP",
+      "dates": "2026/02/24 - 2026/08/23",
+      "location": "毓繡美術館",
+      "link": "https://www.yu-hsiu.org/exhibition/1/data/44",
+      "artists": [],
+      "description": "十年過去，在持續被時間推進前行的過程中，痕跡從未真正消逝，而是隨機的滲入每一個當下，促成每一次的巧合與相遇。本展以「翻頁FLIP」作為概念，過去的展覽書籍與延伸設計物作為媒介，試圖將這些承載內容的物件重新定義，它們透過觀者的介入如翻動、閱讀、端詳摸索，再次被經驗與創造意義。正如墨西哥概念藝術家烏利西斯‧卡列昂所說：「書是一連串的空間。」「翻頁」意念不僅對應著書籍，亦可以是展覽作品、物件設計、飲食體驗，甚至是美術館的園區角落。",
+      "description_en": "A decade has passed. Traces of the past never truly disappear but rather randomly seep into each present moment, shaping every coincidence and encounter. This exhibition uses \"flip\" as its central theme, employing books from past exhibitions and related design objects as media to redefine these artifacts. Through visitors' interventions—flipping, reading, examining, and tactile exploration—they are re-experienced and given new meanings. As Ulises Carrión states, \"A book is a sequence of spaces.\" The concept of \"flip\" applies not only to books but also to artworks, object designs, culinary experiences, and different corners of the museum.",
+      "description_ja": "10年が過ぎた。時間に押されて前進する過程で、痕跡は消えることなく各瞬間に滲み込み、巧合と出会いを促す。本展は「翻頁FLIP」を概念に、過去の展覧会書籍と延伸デザイン物を媒介として、これらの物件を再定義する。観者の介入——めくる・読む・検する・触る——を通じて再び経験され意味が創造される。メキシコの概念芸術家ウリセス・カリオンの言葉：「本とは一連の空間である。」「翻頁」は書籍のみならず、作品・物件デザイン・飲食体験・美術館の片隅にまで及ぶ。"
+    },
+    {
+      "museum": "tav",
+      "title_zh": "2026夏季開放工作室——出訪海外藝術家聯合展覽",
+      "title_en": "2026 Summer Open Studios",
+      "dates": "2026.06.20 – 2026.08.16",
+      "location": "台北寶藏巖國際藝術村",
+      "link": "https://www.artistvillage.org/event-detail.php?p=5098",
+      "artists": [
+        "林彥翔",
+        "何彥諺",
+        "黃孟雯",
+        "趙若彤"
+      ],
+      "description": "今年夏季開放工作室，邀請四位曾赴海外駐村的臺灣藝術家重返寶藏巖，帶著異地生活的感知、旅行中的碰撞，以及跨文化後沉澱出的創作軌跡，呈現駐村期間之創作成果與延伸計畫。林彥翔出訪日本東京Tokyo Arts and Space；何彥諺出訪澳洲伯斯Perth Institute of Contemporary Arts；黃孟雯出訪韓國高陽MMCA Residency Goyang；趙若彤出訪英國Platform Asia + East Street Arts。",
+      "description_en": "For the 2026 Summer Open Studios, four Taiwanese artists who previously participated in international residency programs return to Treasure Hill. Bringing impressions gathered from living abroad, encounters experienced through travel, and creative trajectories shaped by cross-cultural exchange, they present works developed during their residencies as well as projects that have continued to evolve. LIN Yan-Xiang (Tokyo Arts and Space), HO Yen-Yen (Perth Institute of Contemporary Arts), HUANG Meng-Wen (MMCA Residency Goyang), ZHAO Ruo-Tong (Platform Asia + East Street Arts, UK).",
+      "description_ja": "2026年夏季オープンスタジオでは、海外レジデンスに参加した4人の台湾アーティストが宝蔵巌に再集結。異国での生活の感知、旅での出会い、異文化交流から沈殿した創作の軌跡を携え、駐村期間の創作成果と延伸プロジェクトを発表する。林彦翔（東京Arts and Space）、何彦諺（パースPICA）、黄孟雯（韓国MMCA Residency Goyang）、趙若彤（英国Platform Asia + East Street Arts）。"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Yangmingshan Art Festival｜Echoes in the Interstices",
+      "title_zh": "陽明山藝術季：石間迴響",
+      "dates": "2026.06.13 – 2026.08.23",
+      "artists": [
+        "黃楷迪助理教授團隊"
+      ],
+      "link": "https://hong-gah.org.tw/hong-gah/yangmingshan-art-festivalechoes-in-the-interstices-cn",
+      "status": "current",
+      "type": "artfestival",
+      "description": "2026陽明山藝術季以「風土人」為核心視角，關注陽明山地景、氣候與人長期交織的生活樣貌，以18個藝術行動串聯山中的人、地與生活。鳳甲美術館是陽明山藝術季從城市進入山林的第一站。《石間迴響》以北投唭哩岸石為核心，透過3D掃描、聲音與互動影像，重新觀看石頭、地方記憶與身體經驗之間的關係。作品從採石遺跡、石材紋理與匠人敲擊聲出發，將石頭轉化為破碎而流動的數位影像。這些回應形成一種「迴響」：不是單純的回聲，而是人與石之間長時間累積的對話、記憶與身體經驗。",
+      "description_en": "The 2026 Yangmingshan Art Festival takes \"terroir and people\" as its core perspective, focusing on the long-intertwined landscape, climate, and life of Yangmingshan through 18 artistic actions. Hong-Gah Museum is the first stop from city to mountain. \"Echoes in the Interstices\" centers on Beitou's Qilianshan Stone, using 3D scanning, sound, and interactive imagery to re-examine the relationship between stone, local memory, and bodily experience. These responses form a kind of \"echo\"—not simple reverberations, but long-accumulated dialogue between human and stone.",
+      "description_ja": "2026陽明山芸術祭は「風土人」を核心的視点に、陽明山の地景・気候・人が長期にわたり織り交ぜてきた生活の姿に注目し、18の芸術アクションで山中の人・地・生活を繋ぐ。鳳甲美術館は都市から山林への最初の拠点。《石間迴響》は北投の唭哩岸石を核に、3Dスキャン・音・インタラクティブ映像で石・地方の記憶・身体経験の関係を再観察する。採石遺跡・石材の肌理・職人の打撃音から出発し、石を破砕され流動するデジタルイメージに変換。これらの応答は「回響」を形成する——単なる反響ではなく、人と石の間の長い対話・記憶・身体経験の蓄積である。"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Upon the Gathering Waters — Hong-gah Museum Summer Collection",
+      "title_zh": "于彼行潦－鳳甲美術館丙午夏季典藏精選",
+      "dates": "2026.06.13 – 2026.08.23",
+      "artists": [
+        "王萬春",
+        "鄭政煌",
+        "盧天炎（盧怡仲）",
+        "鄭在東",
+        "施並錫"
+      ],
+      "link": "https://hong-gah.org.tw/hong-gah/upon-the-gathering-waters_ch",
+      "status": "current",
+      "description": "鳳甲美術館創辦人邱再興先生自1980年代開啟收藏之路，所收藏的媒材橫跨繪畫、雕塑、攝影、錄像，以及傳統工藝等範疇，數量高達兩千多件。本次典藏作品選介配合「指尖儀式：廖烜榛個展」，挑選了五位藝術家共七件作品，回應對於日常生活與地方環境的不同取景及對內在經驗的探索。展題「于彼行潦」取自《詩經》〈召南‧采蘋〉篇，形容流水匯集之處的水窪。透過繪畫與物件，呈現各種對自然風景產生的內在心靈多樣感受，以及日常生活點滴匯流聚集的情感，並呼應人與非人的依存關係。",
+      "description_en": "Hong-Gah Museum founder Chiu Tsai-Hsing began collecting in the 1980s, amassing over 2,000 works spanning painting, sculpture, photography, video, and traditional crafts. This collection selection accompanies \"Fingertip Ritual\" and presents seven works by five artists responding to different perspectives on daily life, local environment, and inner experience. The title \"Upon the Gathering Waters\" comes from the Book of Songs, describing pools where flowing water converges.",
+      "description_ja": "鳳甲美術館創設者・邱再興は1980年代に収集を開始し、絵画・彫刻・写真・映像・伝統工芸を網羅する2千点以上を収蔵。本選は「指尖儀式：廖烜榛個展」に合わせ5人7作品を選出、日常生活と地方環境への異なる視角と内的経験の探索に応答する。展題「于彼行潦」は『詩経』召南・采蘋篇から、流水が集まる水溜まりを形容。絵画と物件を通じ自然風景に対する内的心霊の多様な感受と、日常の滴りが匯流する情感を呈示し、人と非人の依存関係に呼応する。"
+    },
+    {
+      "museum": "honggah",
+      "title_en": "Fingertip Ritual – Liao Xuan Zhen Solo Exhibition",
+      "title_zh": "指尖儀式 – 廖烜榛個展",
+      "dates": "2026.06.13 – 2026.08.23",
+      "artists": [
+        "廖烜榛"
+      ],
+      "link": "https://hong-gah.org.tw/hong-gah/fingertip-ritual-ch",
+      "status": "current",
+      "description": "鳳甲美術館推出藝術家廖烜榛以北投環境特質為起點所展開的研究型創作計畫「指尖儀式」。創作契機源於一次偶然的嗅覺經驗：成長過程中習以為常的工業硫化物氣味，竟與北投溫泉區的氣味產生驚人的相似性。北投以天然硫磺溫泉聞名，那股氣味喚起她對後勁溪的記憶。對廖烜榛而言，這股氣味成為一種時代的隱喻，象徵療癒與滅絕並存的狀態，促使她重新思考自然與人文、藥與毒之間的模糊界線。創作發展為兩個軸線：透過野地採集建構可移動的水族造景方舟，以及以帶有硫磺氣味的石蠟製作流動有機的氣味裝置。",
+      "description_en": "Hong-Gah Museum presents artist Liao Xuan Zhen's research-based project \"Fingertip Ritual,\" departing from Beitou's environmental characteristics. The work originated from an olfactory experience: the industrial sulfide smell familiar from childhood bore a striking resemblance to Beitou's hot spring area. For Liao, this smell becomes a temporal metaphor symbolizing the coexistence of healing and extinction, prompting reflection on the blurred boundaries between nature and culture, medicine and poison. The project develops along two axes: constructing a movable aquascape ark through field collection, and creating an organic scent installation using sulfur-infused paraffin.",
+      "description_ja": "鳳甲美術館がアーティスト廖烜榛の北投の環境特質を起点とした研究型制作プロジェクト「指尖儀式」を開催。創作の契機は偶然の嗅覚体験——幼少期から慣れ親しんだ工業硫化物の匂いが北投温泉地区の匂いと驚くほど類似していたこと。廖烜榛にとってこの匂いは時代の隠喩となり、癒しと絶滅の共存を象徴し、自然と人文、薬と毒の曖昧な境界線の再考を促す。制作は2つの軸で展開：野外採集による移動可能な水族景観の方舟の構築、および硫黄の匂いを帯びたパラフィンによる流動的・有機的な気味装置の創作。"
+    },
+    {
+      "museum": "clab",
+      "title_zh": "我們正成為",
+      "title_en": "WE Are Becoming",
+      "dates": "2026.05.08 – 2026.08.16",
+      "artists": [
+        "李石樵",
+        "彭瑞麟",
+        "藤井光",
+        "劉秋兒",
+        "劉致宏",
+        "徐容",
+        "洪辰煊",
+        "Posak Jodian",
+        "阮柏遠",
+        "區秀詒 ✕ 陳侑汝",
+        "謝德慶",
+        "陳來興",
+        "許哲瑜 ✕ 陳琬尹",
+        "Jimmy Shy ✕ 張鈺",
+        "何銳安",
+        "金令恩",
+        "江康泉",
+        "崔廣宇",
+        "阮英俊",
+        "陳曉朋",
+        "楊祐丞 ✕ 彭思錡",
+        "廉仁和",
+        "艾米莉亞．史卡努力特",
+        "安娜．特蕾莎．巴博扎"
+      ],
+      "link": "https://clab.org.tw/en/events/we-are-becoming/",
+      "status": "current",
+      "curator": "吳達坤、郭昭蘭",
+      "description": "臺灣當代文化實驗場C-LAB 2026年度大展「我們正成為 WE Are Becoming」，策展團隊以「Becoming」為核心，不再追尋固定的文化身份，而是在藝術之中探尋一種持續流動、交織再構的生成狀態。展覽相信當我們一起把故事重新講一遍的同時，我們已經不是昨天的我們，因為每一個回返都在重新界定何謂「我們」。展覽集結來自臺灣、美國、日本、韓國、新加坡、越南、馬來西亞、立陶宛與祕魯等9國的藝術家，呈現29件跨媒介作品，邀請觀眾走入一座持續生成的文化場域，重新思考藝術在當代社會中的角色與可能。",
+      "description_en": "C-LAB's 2026 flagship exhibition \"WE Are Becoming\" takes \"Becoming\" as its curatorial core, moving away from a fixed cultural identity toward a continuously flowing, interwoven state of formation within art. The exhibition holds that as we retell our stories together, we are no longer who we were yesterday, since every act of return redefines what \"we\" means. It brings together artists from nine countries — Taiwan, the US, Japan, South Korea, Singapore, Vietnam, Malaysia, Lithuania, and Peru — presenting 29 cross-media works that invite visitors into a continuously generative cultural field, rethinking the role and possibilities of art in contemporary society.",
+      "description_ja": "台湾当代文化実験場C-LABの2026年度大型展「我們正成為（WE Are Becoming）」は、「Becoming」をキュレーションの核心に据え、固定的な文化的アイデンティティを追い求めるのではなく、芸術の中に絶えず流動し織り合わされ続ける生成の状態を探る。物語を共に語り直すたびに私たちはもはや昨日の私たちではない、なぜなら各々の回帰が「私たち」の意味を再定義するからだ、という考えに基づく。台湾・米国・日本・韓国・シンガポール・ベトナム・マレーシア・リトアニア・ペルーの9か国から集ったアーティストによる29点の複合メディア作品を通じて、観客を絶えず生成し続ける文化的な場へと誘い、現代社会における芸術の役割と可能性を問い直す。"
+    },
+    {
+      "museum": "thecube",
+      "title_zh": "李漢強：最後のCD",
+      "dates": "2026.05.23 – 2026.08.16",
+      "artists": [
+        "李漢強"
+      ],
+      "link": "https://thecubespace.com/project/the-last-cd/",
+      "status": "current",
+      "title_en": "Lee Han-Chiang: The Last CD",
+      "curator": "游崴",
+      "description": "立方計劃空間推出旅日藝術家李漢強個展「李漢強：最後のCD」，由游崴策展，延續藝術家近年對舊媒體的興趣，親手重製數百張CD封面，帶領觀眾重新審視東亞流行文化如何在實體物件與技術記憶中流動，也回應數位時代下影像與聲音被快速生產、消費的現象。展場所在的台北公館，在1990年代曾是唱片行密集的區域，本次展覽以此為地緣背景，透過重製CD、聲音裝置與空間安排，將展場打造成一座介於「唱片行」與「媒體資料庫」之間的感官場域。",
+      "description_en": "TheCube Project Space presents \"The Last CD\" by Tokyo-based artist Lee Han-Chiang, curated by You Wei. Continuing the artist's recent interest in obsolete media, Lee hand-remakes hundreds of CD covers, inviting viewers to reconsider how East Asian pop culture circulates through physical objects and technological memory, and responding to how images and sound are rapidly produced and consumed in the digital era. The venue's neighborhood, Taipei's Gongguan, was once dense with record shops in the 1990s; the exhibition turns the space into a sensory field between a record store and a media archive through remade CDs, sound installation, and spatial arrangement.",
+      "description_ja": "立方計劃空間にて、東京在住のアーティスト李漢強（リー・ハンチアン）の個展「最後のCD」を開催。游崴のキュレーションによる本展は、旧メディアへの関心を続ける作家が数百枚のCDジャケットを手作業で再現し、東アジアのポップカルチャーが実物とテクノロジーの記憶のなかでどのように流通してきたかを問い直すと同時に、デジタル時代における映像・音の急速な生産と消費のあり方に応答する。会場のある台北・公館は1990年代にレコード店が密集していた地域で、本展はこの地縁を背景に、CDの再制作・音響インスタレーション・空間構成を通じて「レコード店」と「メディア資料庫」の間を漂う感覚的な場を作り出す。",
+      "events": [
+        {
+          "date": "2026/05/23",
+          "time": "14:00",
+          "title_zh": "開幕茶會暨展覽與談 x 最後のCD READERS' POLL",
+          "title_en": "Opening Reception & Artist Talk x Readers' Poll",
+          "title_ja": "オープニング＆トーク",
+          "type": "talk",
+          "note_zh": "與談人：李漢強、游崴、張世倫（13:30開放入場）",
+          "note_en": "Speakers: Lee Han-Chiang, You Wei, Chang Shih-Lun (doors open 13:30)"
+        },
+        {
+          "date": "2026/08/01",
+          "time": "",
+          "title_zh": "「最後のCD」重新開幕 × 新書發表 CDJ 派對",
+          "title_en": "Reopening & Book Launch CDJ Party",
+          "title_ja": "再開＆新刊発表 CDJパーティー",
+          "type": "event",
+          "note_zh": "演出者：DJ味王、王信權",
+          "note_en": "Performers: DJ Weiwang, Wang Hsin-Chuan"
+        }
+      ]
+    },
+    {
+      "museum": "kmfa",
+      "title_zh": "2041：臨繫未來的界隈",
+      "title_en": "",
+      "dates": "2026.07.04 – 2026.08.16",
+      "artists": [
+        "程仁珮",
+        "邱俊達",
+        "莊禾",
+        "蕭禹琦",
+        "方彥翔",
+        "黃建樺",
+        "林正偉"
+      ],
+      "link": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=c2c52e4f-a6fb-4285-9b0d-607e2e6aca79",
+      "status": "upcoming",
+      "description": "《2041:臨繫未來的界隈》為當代藝術群體二零四一文藝俱樂部之展演。計畫以跨越不同城市經驗、藝術背景與文化軌跡的成員組成為基礎，關注多元藝術/文化社群之間如何透過異質連結，形成臨時而具行動性的關係網絡。透過作品、行為、表演、工坊與交誼性行動等複合形式，探問「社群如何形成」，更提出：在流動、碎片化與演算法化的當代社會之中，文化生產與文化行動如何成為一種「臨繫未來」的方法。",
+      "description_en": "2041: The Neighborhood of Proximate Futures is a presentation by the contemporary art collective 2041 Literature and Art Club. Based on members spanning different cities, art backgrounds, and cultural trajectories, it focuses on how diverse art/cultural communities form temporary yet actionable relational networks through heterogeneous connections. Through works, actions, performances, workshops, and convivial actions, it asks how cultural production becomes a method for \"proximate futures\" in a fluid, fragmented, algorithmic society.",
+      "description_ja": "《2041:臨繫未来の界隈》は現代芸術グループ「二零四一文藝倶楽部」の展演。異なる都市経験・芸術背景・文化軌跡を横断するメンバー構成を基盤に、多元的芸術/文化コミュニティがいかに異質な連結を通じて臨時的かつ行動的な関係ネットワークを形成するかに注目。作品・行為・パフォーマンス・ワークショップ・交誼的行動の複合形式で、流動的・断片的・アルゴリズム化された現代社会における文化生産と文化行動が「臨繫未来」の方法となりうるかを問う。",
+      "curator": "方彥翔、邱俊達"
+    },
+    {
+      "museum": "mindset",
+      "title_zh": "脈品：切診點畫",
+      "title_en": "PULSE PROFILE: Palpating Dots and Strokes",
+      "dates": "2026.07.11 – 2026.08.22",
+      "artists": [
+        "邱瑋祥",
+        "李凱真",
+        "林銓居",
+        "劉星佑",
+        "馬堤耶．馬哈切克 Matěj Macháček",
+        "曾建穎",
+        "王翔",
+        "吳增榮",
+        "鄔一名",
+        "楊世芝",
+        "楊寓寧",
+        "于彭"
+      ],
+      "link": "https://www.art-msac.com/exhibitions/153/overview/",
+      "status": "upcoming",
+      "description": "安卓藝術邀請國立台北教育大學助理教授沈裕昌策劃聚焦當代書畫美學的聯展「脈品：切診點畫」。策展援用中醫的「切診」與「脈象」概念，試圖在當代書畫發展中提出有別於傳統筆墨與書畫當代化表現的不同觀察。展覽以東亞藝術與文化的「技術—時間意識」為思想切口，探問書畫中的「點畫」究竟為何。「脈品」意指一種如同切脈般細緻辨識點畫質地、力度、節奏與氣韻的感知方式。展覽邀集國內外12位橫跨不同世代的藝術家，展出涵蓋水墨、水彩、壓克力顏料與影像等多元媒材。",
+      "description_en": "Mind Set Art Center invites Professor Shen Yu-Chang to curate \"PULSE PROFILE: Palpating Dots and Strokes,\" a group exhibition focusing on contemporary calligraphic aesthetics. Drawing on Traditional Chinese Medicine concepts of pulse diagnosis, the exhibition proposes new observations beyond traditional brush-ink and contemporary calligraphy. Using East Asian \"technique-time consciousness\" as intellectual framework, it asks what \"dots and strokes\" truly are in calligraphic painting. Featuring 12 artists across generations working in ink, watercolor, acrylic, and video.",
+      "description_ja": "安卓藝術が国立台北教育大学助理教授・沈裕昌を招き、当代書画美学に焦点を当てたグループ展「脈品：切診點畫」を企画。中医の「切診」「脈象」概念を援用し、伝統筆墨と書画の当代化とは異なる観察を提示する。東アジア芸術文化の「技術—時間意識」を思想的切り口に、書画における「点画」とは何かを探問。「脈品」とは切脈のように点画の質感・力度・節奏・気韻を精緻に弁別する感知方式を指す。12名の世代を超えたアーティストが水墨・水彩・アクリル・映像で参加。",
+      "curator": "沈裕昌"
+    },
+    {
+      "museum": "carp",
+      "title_zh": "尚未落定",
+      "title_en": "Before It Settles",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.08.16",
+      "location": "鯉魚藝廊",
+      "link": "https://www.facebook.com/p/%E9%AF%89%E9%AD%9ACarp-Gallery-100070045041049/",
+      "artists": [
+        "丁昶文"
+      ],
+      "events": [
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "type": "opening"
+        }
+      ],
+      "description": "《尚未落定》從一個簡單的提問出發：那些在創作過程中留下、卻始終未成為作品的材料，究竟是什麼？展覽將聚集藝術家多年田野調查與研究中累積的照片、物件、影音紀錄與拾得物，將它們從工作室帶進展場，並以「檔案室」與「二手店」兩種形式召喚空間，形成一個介於作品、檔案與商品之間的開放狀態。這些物件尚未被定義，也尚未落定。它們等待觀看、等待閱讀，也等待新的連結與意義生成。展覽試圖保留的，正是那些意義尚未沉澱的瞬間，讓每一件物件以自身原本的樣子存在，邀請觀者在觀看之中，重新思考藝術、記憶與價值如何被形塑。",
+      "description_en": "\"Before It Settles\" begins with a simple question: What are the materials left behind in the process of making? Those that never become artworks? The exhibition brings together photographs, objects, video recordings, and found materials accumulated through years of the artist's field research and studies. Transported from studio into the gallery, these materials are presented through two kinds of spacial framework: an archive and a thrift store, creating an open zone that exists between artwork, archive, and commodity. These objects remain undefined and not yet settled. They await looking, reading, and the possibility of new connections and meanings. The exhibition seeks to preserve this suspended moment before meaning solidifies, allowing each object to exist on its own terms while inviting viewers to reconsider how art, memory, and value are shaped through the act of viewing.",
+      "description_ja": "《尚未落定》は一つの素朴な問いから始まる——創作過程で残されながら、作品にならなかった素材とは一体何か。本展はアーティストが長年のフィールドワークと研究で蓄積した写真・物件・映像記録・拾得物を集め、スタジオから展示空間に運び込み、「アーカイブ室」と「古着屋」という二つの空間形式で提示する。作品・アーカイブ・商品の間に開かれた状態を形成する。これらの物件はまだ定義されておらず、まだ落ち着いていない。観ること、読むこと、新たな接続と意味の生成を待っている。展覧会が保存しようとするのは、意味がまだ沈殿していない瞬間——各物件をそのままの姿で存在させ、鑑賞者に芸術・記憶・価値がいかに観る行為を通じて形作られるかを再考させる。"
+    },
+    {
+      "museum": "fugui",
+      "title_zh": "十年山海之微＆之間",
+      "title_en": "Hammered Horizons: A Decade of Mountains and Seas & In Between",
+      "title_ja": "",
+      "dates": "2026.07.05 – 2026.08.23",
+      "location": "鶯歌富貴美術館",
+      "link": "https://artemperor.tw/tidbits/20058",
+      "artists": [
+        "闕承慧",
+        "楊奕軒"
+      ],
+      "events": [
+        {
+          "date": "2026/07/04",
+          "time": "13:00",
+          "title_zh": "藝術家講座與茶席活動（預約制）",
+          "title_en": "Artist Talk & Tea Ceremony (reservation required)",
+          "title_ja": "アーティストトーク＆茶席（要予約）",
+          "type": "talk"
+        }
+      ],
+      "description": "富貴美術館推出《十年山海之微》闕承慧與《之間》楊奕軒創作雙個展。此次展出匯集兩位藝術家歷時多年深耕的代表性作品，分別透過金工與繪畫，回應自然景物與地貌之美，展現對山海意象、自然、環境的細膩觀察與深度感知和理解。\n\n金工創作者闕承慧以「山海微觀系列」，透過鎚鍛紋理與金屬皺摺的塊面結構，描繪細膩而內斂的山海意象。今年亦為該系列完整邁入十年的重要節點。展出作品涵蓋茶、酒與咖啡等日常器皿，透過實際使用的動態過程，展現金屬獨一無二的鎚鍛表情。\n\n楊奕軒以在地生活作為感知土地的藝術實踐，長時間行走於山、海與田野之間，以幾何結構重新定義地平線與稻田的層次，透過近乎極簡的視覺語彙，將風景中更為安靜、內斂的狀態，轉化為低飽和、近乎寂靜的色彩結構。",
+      "description_en": "Fugui Museum of Art presents a dual solo exhibition by Chueh Cheng-Hui and Yang Yi-Hsuan. The show brings together representative works developed over many years, responding to the beauty of natural landscapes through metalwork and painting respectively.\n\nMetalworker Chueh Cheng-Hui's \"Micro Mountain and Sea Series\" depicts subtle mountain-and-sea imagery through hammered textures and folded metal surfaces—marking the series' tenth anniversary. Works include tea, wine, and coffee vessels that reveal unique hammered expressions through actual use.\n\nYang Yi-Hsuan practices art as a way of perceiving the land through local living, walking between mountains, seas, and fields. Using geometric structures to redefine horizons and rice paddies, he transforms quiet, restrained states in landscapes into low-saturation, near-silent color structures.",
+      "description_ja": "富貴美術館が闕承慧《十年山海之微》と楊奕軒《之間》の二人展を開催。多年にわたる代表作を集結し、金工と絵画を通じて自然景観と地貌の美に応答する。\n\n金工作家・闕承慧は「山海微観シリーズ」で鍛造テクスチャーと金属の皺褶構造により、繊細で内斂な山海イメージを描く。今年はシリーズ10周年の節目。茶・酒・珈琲の日常器皿を展示し、実際の使用を通じて金属の唯一無二の鍛造表情を見せる。\n\n楊奕軒は在地の生活を土地を知覚する芸術実践とし、山・海・田野の間を長期間歩く。幾何学構造で地平線と田畑の層を再定義し、ほぼミニマルな視覚語彙で風景の静かで内斂な状態を低彩度・ほぼ静寂な色彩構造へと変換する。"
+    },
+    {
+      "museum": "typl",
+      "title_zh": "綻候，臺灣雜草群像",
+      "title_en": "Postwar: A Portrait of Taiwan's Weeds",
+      "title_ja": "",
+      "dates": "2026.07.03 – 2026.08.23",
+      "location": "桃園市立圖書館總館 2F藝術廊道",
+      "link": "https://www.typl.gov.tw/zh-tw/Activity/Content/9865",
+      "artists": [
+        "雜草稍慢"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "14:00",
+          "title_zh": "講座〈臺灣食荒雜草一覽〉的前世今生",
+          "title_en": "Talk: Past and Present of Taiwan Famine Weeds",
+          "title_ja": "講座「台湾食荒雑草一覧」の前世今生",
+          "type": "talk"
+        },
+        {
+          "date": "2026/07/18",
+          "time": "16:30",
+          "title_zh": "走讀：食荒漫遊 x 雜草漫讀",
+          "title_en": "Walking Tour: Famine Foraging x Weed Reading",
+          "title_ja": "ウォーキング：食荒漫遊×雑草漫読",
+          "type": "workshop"
+        }
+      ],
+      "description": "紀念二戰結束八十週年，獻給我們的母親，台灣。探索台灣在戰後八十年間所遺留的歷史痕跡，以及在今日地緣政治張力下，對人與植物、記憶與身份、島嶼與國族的共生關係提出思考。\n\n二戰末期為因應糧荒，日本殖民政權配給出版〈臺灣食用野草一覽圖〉，指導軍民辨認野草以求溫飽。啟發我們繪製當代的〈臺灣食荒雜草一覽〉收錄21種當代常見的救荒植物，不僅是一份韌性食荒指南、雜草生態盤點，更是對台灣歷史的回望。畫作的蟲蝕痕跡，看似千瘡百孔，卻是光流洩出來的地方，呈現台灣的脆弱、堅強和韌性。\n\n作品亦試圖回應當代台灣所面對的島嶼定位議題——在多重移民、外來物種、殖民歷史與政權更替之下，台灣如何理解自己與「他者」共處的經驗？我們如何與腳下的土地、雜草與記憶共處，繼續說出自己的故事。",
+      "description_en": "Commemorating the 80th anniversary of the end of WWII, dedicated to our mother, Taiwan. The work explores historical traces left over eighty postwar years and reflects on the symbiotic relationships between humans and plants, memory and identity, island and nation under today's geopolitical tensions.\n\nDuring the late WWII famine, the Japanese colonial government published a guide to edible wild grasses. Inspired by this, the artists created a contemporary version documenting 21 common famine plants—not only a resilience guide and ecological inventory, but a look back at Taiwan's history. The insect-eaten traces in the paintings appear riddled with holes, yet they are where light flows through, presenting Taiwan's vulnerability, strength, and resilience.\n\nThe work also responds to Taiwan's contemporary positioning—amid multiple migrations, invasive species, colonial history, and regime changes, how does Taiwan understand its experience of coexisting with \"others\"?",
+      "description_ja": "二戦終結80周年を記念し、我々の母・台湾に捧げる。戦後80年間に残された歴史の痕跡を探り、今日の地政学的緊張の下で人と植物・記憶とアイデンティティ・島嶼と国家の共生関係を問う。\n\n二戦末期の食糧危機に際し日本植民政権は〈臺灣食用野草一覧図〉を配給出版した。これに啓発され現代版〈臺灣食荒雜草一覧〉を制作、21種の当代常見救荒植物を収録——韌性食糧ガイドであり雑草生態の棚卸しであり、台湾史への回望でもある。画作の虫食い痕は穴だらけに見えるが、光が漏れ出す場所であり、台湾の脆さ・強さ・韌性を呈示する。\n\n作品は台湾が直面する島の位置づけにも応答する——多重移民・外来種・植民地史・政権交替の下、台湾はいかに「他者」との共存経験を理解するか。"
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "分類好難",
+      "title_en": "",
+      "dates": "2026.07.17 – 2026.08.12",
+      "location": "新浜碼頭藝術空間 2F",
+      "link": "https://artemperor.tw/tidbits/20134",
+      "artists": [
+        "陳則瑋"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ],
+      "description": "每當要解釋自己在做哪一種類型的創作都讓我感到尷尬。偏偏分類這件事讓我覺得非常困難。常常感受到一種既是什麼又可以是什麼的處境，「non binary」這樣的詞彙或許很接近。同時也讓我聯想到在柏林待了9年之後有一種距離德國很遠，同時距離台灣也很遠的感受。",
+      "description_en": "The difficulty of classifying one's practice mirrors the artist's experience of being far from both Germany and Taiwan after 9 years in Berlin. The concept of 'non-binary' resonates with this in-between state.",
+      "description_ja": "ベルリンに9年滞在し自身の制作を分類する困難に直面。ドイツからも台湾からも遠いという感覚と重なる「ノンバイナリー」的状態。"
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "VUVU傳統智慧download巡迴展",
+      "title_en": "VUVU Traditional Wisdom Download",
+      "dates": "2026.07.17 – 2026.08.13",
+      "location": "新浜碼頭藝術空間 1F",
+      "link": "https://artemperor.tw/tidbits/20133",
+      "artists": [
+        "南和文化健康站長輩"
+      ],
+      "events": [
+        {
+          "date": "2026/07/17",
+          "time": "10:00",
+          "title_zh": "開幕茶會＆長輩故事分享",
+          "title_en": "Opening & Elder Story Sharing",
+          "title_ja": "オープニング＆長老物語交流",
+          "type": "opening"
+        }
+      ],
+      "description": "本展以「生命交織、記憶、技藝」為主軸，從南和文化健康站長期陪伴的VUVU生命故事出發，呈現長者在家庭、部落、土地與文化中的生活經驗。讓觀眾看見文化不是抽象符號，而是存在於VUVU的手藝、口述記憶、歌謠、農事與日常照顧之中。高雄巡迴展讓VUVU從被照顧者重新被看見為文化分享者、智慧保存者與部落故事的主體。",
+      "description_en": "Centered on interwoven lives, memory, and craftsmanship, this exhibition presents life stories of elders (VUVU) from Nanhe Cultural Health Station. Culture is not abstract symbols but exists in handicrafts, oral memories, songs, farming, and daily care. The Kaohsiung edition repositions VUVU as cultural sharers and wisdom keepers.",
+      "description_ja": "「生命の交織・記憶・技藝」を主軸に南和文化健康站のVUVU（長老）の生命物語を呈示。文化は抽象的符号ではなく手仕事・口述記憶・歌謡・農事の中に存在する。高雄巡回展はVUVUを文化の共有者・智慧の保存者として再認識させる。"
+    },
+    {
+      "museum": "absolute",
+      "title_zh": "水的政治氣候",
+      "title_en": "The Political Climate of Water",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.08.23",
+      "location": "絕對空間",
+      "link": "https://www.facebook.com/AbsoluteSpacefortheArts/",
+      "artists": [
+        "曹明浩",
+        "陳建軍",
+        "陳宣誠",
+        "蕭聖健",
+        "金安娜",
+        "黃慧嫻",
+        "王若冰",
+        "陳賽華灌"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "15:00",
+          "title_zh": "開幕茶會＆座談（與談人：高俊宏）",
+          "title_en": "Opening & Forum (Guest: Kao Jun-Honn)",
+          "title_ja": "オープニング＆座談（高俊宏）",
+          "type": "opening"
+        },
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "工作坊：流水雨聲棒製作｜蕭聖健",
+          "title_en": "Workshop: Rain Stick Making | Hsiao Sheng-Chien",
+          "title_ja": "WS：雨音棒制作｜蕭聖健",
+          "type": "workshop"
+        },
+        {
+          "date": "2026/07/12",
+          "time": "13:30",
+          "title_zh": "工作坊：藍曬顯影——無相機攝影入門｜黃慧嫻",
+          "title_en": "Workshop: Cyanotype Introduction | Ng Hui Hsien",
+          "title_ja": "WS：サイアノタイプ入門｜黃慧嫻",
+          "type": "workshop"
+        },
+        {
+          "date": "2026/07/19",
+          "time": "10:30",
+          "title_zh": "工作坊：淺水——城市水聲採集｜王若冰×陳宣誠",
+          "title_en": "Workshop: Urban Water Sound Collection | Ruobing x Eric Chen",
+          "title_ja": "WS：都市水音採集｜王若冰×陳宣誠",
+          "type": "workshop"
+        }
+      ],
+      "description": "一條河流自高山發源，自由地穿行於森林與農田之間。沿著下游的旅程，每一滴水都被捲入人類的生態系統——水庫、運河、工廠與城市。在流動之中，水承載著記憶、歷史與變遷。\n\n《水的政治氣候》探討在氣候變遷與溫室效應的時代，水與生態、社會及人類生活之間的糾纏關係。展覽追溯水如何塑造、並被人類行動所塑造——從海平面的上升，到森林的呼吸，從務實的利用到靈魂儀式的淨化，再到掠取與消耗的行為。水既是主體，也是見證者——作為一種生命的媒介，它讓氣候的變化變得可感亦可見。\n\n本展邀請觀者「品嚐」水——不僅將其視為資源，更視為一種關係：一種連結社會、身體、物種與未來的存在。關愛水，便是關愛氣候本身——流經河流的，也同樣流經我們。曾經作為共享之體的水，如今成為一種政治存在——權力、抵抗與生存的場域。",
+      "description_en": "A river originates from high mountains, flowing freely through forests and farmlands. Along its downstream journey, every drop is drawn into the human ecosystem—reservoirs, canals, factories, and cities. In its flow, water carries memory, history, and transformation.\n\n\"The Political Climate of Water\" explores the entangled relationships between water, ecology, society, and human life in an era of climate change. The exhibition traces how water shapes and is shaped by human action—from rising sea levels to forests breathing, from practical use to ritual purification, to extraction and consumption. Water is both subject and witness.\n\nThis exhibition invites viewers to 'taste' water—not merely as resource but as relationship: a connection linking society, body, species, and future.",
+      "description_ja": "一本の河が高山に源を発し、森林と農田の間を自由に流れる。下流への旅の途上で一滴一滴が人間の生態系——貯水池・運河・工場・都市——に巻き込まれる。流動の中で水は記憶・歴史・変遷を運ぶ。\n\n《水の政治的気候》は気候変動と温室効果の時代における水と生態・社会・人間生活の絡み合いを探る。海面上昇から森の呼吸、実用的利用から霊的浄化の儀式、搾取と消費まで、水がいかに形作りまた人間の行動に形作られるかを追う。水は主体であり証人である。\n\n本展は鑑賞者に水を「味わう」ことを促す——資源としてだけでなく関係として：社会・身体・種・未来を繋ぐ存在として。",
+      "curator": "王若冰 Wang Ruobing"
+    },
+    {
+      "museum": "artemin",
+      "title_zh": "Small Flame",
+      "title_en": "Small Flame",
+      "title_ja": "",
+      "dates": "2026.07.11 – 2026.08.15",
+      "location": "Artemin Gallery",
+      "link": "https://www.artemingallery.com/portfolio-item/small-flame-chn/",
+      "artists": [
+        "Donghoon Rhee"
+      ],
+      "curator": "",
+      "events": [
+        {
+          "date": "2026/07/11",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ],
+      "description": "韓國藝術家Donghoon Rhee（李東勲，b.1991）在台灣的首次個展，將畫廊轉化為受K-pop偶像Tzuyu（周子瑜）於高雄首場個人演唱會上朗讀感人信件啟發的小型祠堂。展覽聚焦於藝術家對K-pop偶像身體、姿態與文化影響力的著迷，藉此探討流行文化與更廣泛的人類歷史如何交織。展出其標誌性的木雕作品搭配炭筆素描，Rhee以順著木料紋理與密度尋找形體聞名，再將雕塑轉譯回繪畫，在兩種媒材之間反覆觀看。近年曾於首爾Gallery SP與洛杉磯VSF&milk舉辦個展，並參與昌原雕塑雙年展、北首爾市立美術館等機構聯展。",
+      "description_en": "Donghoon Rhee: Small Flame\n\"From that moment, a small flame of hope was lit in my heart.\" Kaohsiung, 2025. At TWICE's first solo concert in Kaohsiung, Tzuyu read a moving letter to her fans — an event that inspired this exhibition, transforming the gallery into a small shrine.\n\nSmall Flame focuses on Korean contemporary artist Donghoon Rhee (b. 1991) and his fascination with the bodies, gestures, and cultural impact of K-pop idols. Through this exhibition, Rhee explores how pop culture and broader human histories intersect.\n\nThe exhibition features his signature wood sculptures alongside charcoal drawings. Rhee is known for sculpting directly into the grain and density of materials like walnut and cedar, then translating those physical sculptures back into paintings and drawings, allowing him to oscillate between the two mediums.\n\nHe has recently held solo exhibitions at Gallery SP in Seoul and VSF & milk in Los Angeles, and participated in group exhibitions including the Changwon Sculpture Biennale and the Buk-Seoul Museum of Art.\n\nDates: July 18 - August 15, 2026\nOpening Reception: July 18, 2026\nVenue: Artemin Gallery, Lane 251, Jihe Road, Shilin District, Taipei City, Taiwan",
+      "description_ja": "Donghoon Rhee: Small Flame\n「その瞬間から、小さな希望の火が私の心に灯った。」高雄、2025年。TWICEの高雄での初の単独コンサートで、ツウィがファンへ心を込めた手紙を読み上げた出来事に着想を得て、本展はギャラリーを小さな祠のような空間へと変貌させる。\n\n「Small Flame」は、韓国の現代アーティストDonghoon Rhee（李東勲、1991年生）の、K-POPアイドルの身体・所作・文化的影響力への魅了に焦点を当てる。本展を通じてRheeは、ポップカルチャーとより広範な人類史がどのように交差するかを探る。\n\n展示では、彼の代名詞である木彫作品と、チャコールドローイングを併せて紹介する。Rheeはクルミやシダーなどの素材の木目と密度に従って直接彫刻することで知られ、それらの立体作品を再び絵画へと翻訳することで、二つの媒体の間を往復しながら制作を続けている。\n\n近年ではソウルのGallery SP、ロサンゼルスのVSF & milkで個展を開催し、昌原彫刻ビエンナーレや北ソウル市立美術館などの企画展にも参加している。\n\n会期：2026年7月18日〜8月15日\nオープニングレセプション：2026年7月18日\n会場：Artemin Gallery（台北市士林區基河路251巷32號1樓）"
+    },
+    {
+      "museum": "absence",
+      "title_zh": "萬物生長｜行為單元1+1（八月場）",
+      "title_en": "",
+      "dates": "2026.08.15 – 2026.08.16",
+      "artists": [
+        "孫士閔",
+        "葉子啓"
+      ],
+      "added_at": "2026-08-10",
+      "description": "「萬物生長－不存在劇場深化藝術串連平台」2026年度計畫的行為單元。八月場由公開徵選藝術家孫士閔，及邀請藝術家葉子啓帶來週六兩場工作坊、週日兩場行為演出。屬於不存在劇場長期串連平台（行為/聲音/影像/舞蹈/小誌五子單元）的一部分。8/15(六) 工作坊14:00-16:00，16:30演出；8/16(日) 演出2場，首場14:30起。",
+      "link": "https://www.facebook.com/absencespace/posts/996026546117080"
+    },
+    {
+      "museum": "soka",
+      "title_zh": "萬物的微光",
+      "title_en": "Glimmers of All Things",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.08.22",
+      "location": "索卡藝術．台南",
+      "link": "https://www.soka-art.com/tr/exhibition/works/12115",
+      "artists": [
+        "陳紀夫",
+        "陳奕龍",
+        "陳懷欣",
+        "翁祥鈞"
+      ],
+      "description": "臺南索卡藝術舉辦《萬物的微光 Glimmers of All Things》第19屆索卡好樣青年藝術家聯展，透過公開徵件發掘具潛力之青年創作者，本屆由陳紀夫、陳奕龍、陳懷欣與翁祥鈞四位藝術家獲選展出。四位分別運用毛根、皮革、膠彩、油彩等不同媒材創作，回應展覽所關注的那些微小、緩慢且難以被察覺的事物——稍縱即逝的光影、一閃而過的記憶、被反覆凝視的物件，以及深藏於文化與信仰中的精神痕跡。陳紀夫以毛根重塑盆景與器物，帶有東方文人賞玩之趣；陳奕龍以皮影媒材轉譯神話與信仰；陳懷欣以膠彩描繪旅途中的光影與記憶；翁祥鈞則以油彩重組日常景觀，使熟悉空間產生陌生感。",
+      "description_en": "Soka Art Tainan presents Glimmers of All Things, the 19th edition of its Young Artist Group Exhibition, which discovers promising young artists through open submission. This edition features four selected artists: Chen Gi Fu, Chen I Long, Chen Huai Sin, and Wong Siang Jyun, working respectively in pipe cleaners, leather, mineral pigment, and oil paint. Their works respond to the exhibition's focus on things small, slow, and easily overlooked — fleeting light and shadow, momentary memories, repeatedly gazed-upon objects, and spiritual traces embedded in culture and belief. Chen Gi Fu reshapes bonsai and vessels from pipe cleaners with a literati sensibility; Chen I Long translates myth and belief through shadow-puppet leatherwork; Chen Huai Sin paints light and memory from her travels in mineral pigment; Wong Siang Jyun reassembles everyday scenes in oil, rendering the familiar unfamiliar.",
+      "description_ja": "台南索卡藝術にて、公募により有望な若手作家を発掘する第19回「索卡好樣青年藝術家聯展」《萬物的微光（あらゆるものの微かな光）》を開催。今回選出されたのは陳紀夫、陳奕龍、陳懷欣、翁祥鈞の4名で、それぞれモールワイヤー・皮革・膠彩・油彩といった異なる素材で制作する。展示が注目する、小さく・ゆるやかで・気づかれにくい存在——一瞬の光と影、ふと過ぎる記憶、繰り返し見つめられる物、文化や信仰に潜む精神的な痕跡に応答する。陳紀夫はモールワイヤーで盆栽や器を作り、東方文人の趣を漂わせる。陳奕龍は皮影（影絵）の技法で神話と信仰を翻案し、陳懷欣は膠彩で旅の光と記憶を描き、翁祥鈞は油彩で日常の風景を再構成し、見慣れた空間に違和感を生み出す。",
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "16:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "type": "opening",
+          "note_zh": "四位藝術家親臨現場",
+          "note_en": "All four artists will be present"
+        }
+      ]
+    },
+    {
+      "museum": "funyearart",
+      "title_zh": "留下的畫面",
+      "title_en": "The Landscapes That Remain",
+      "dates": "2026.07.25 – 2026.08.22",
+      "artists": [
+        "金庭伃",
+        "陳俊偉",
+        "陳汶慶"
+      ],
+      "description": "新銳藝術家聯展。在資訊與影像快速流動的當代，我們對世界的理解，往往並非來自完整的敘事，而是由片段的經驗、殘留的影像，以及不斷累積的記憶所構成。本次展覽邀集陳俊偉、陳汶慶與金庭伃三位甫自藝術學院畢業的新銳藝術家，三人皆獲選為2026「藝術新聲—藝術星勢力Art Star」畫廊媒合計畫推薦藝術家，展現新世代藝術家對繪畫、媒材與觀看經驗的多元探索。",
+      "link": "https://www.instagram.com/funyearart/",
+      "description_en": "In an era of rapidly flowing information and images, our understanding of the world often comes not from complete narratives, but from fragmented experiences, residual images, and accumulated memories.\n\nThis exhibition brings together three emerging artists fresh from art school — Chen Jun-Wei, Chen Wen-Ching, and Chin Ting-Yu — all selected for the 2026 \"Art Star\" gallery matching program, showcasing new-generation artists' diverse explorations of painting, materials, and modes of seeing. Though their visual vocabularies differ, all three artists draw from personal experience to rethink how images are generated, accumulated, and preserved amid natural landscapes, everyday memory, and the perception of time.",
+      "description_ja": "情報とイメージが急速に流動する現代において、私たちの世界理解は完全な物語からではなく、断片的な経験、残留するイメージ、そして積み重なる記憶から形成されることが多い。\n\n本展は、美術学院を卒業したばかりの新鋭アーティスト3名、陳俊偉・陳汶慶・金庭伃を招聘。3名はいずれも2026年度「藝術新聲—藝術星勢力Art Star」ギャラリーマッチングプログラムの推薦アーティストに選出されており、新世代アーティストによる絵画・素材・観看体験への多様な探求を示す。表現の語彙は異なるが、3名はいずれも個人的経験を出発点とし、自然景観・日常の記憶・時間感覚の間でイメージがどのように生成・蓄積・保存されるかを再考している。\n\n陳俊偉は絵画を思考の媒介とし、個人的感情・歴史的イメージ・生活経験を交錯させながら、具象と抽象の間に流動的で開かれた視覚的物語を構築する。陳汶慶は自然景観とデジタルイメージの観看経験を融合させ、ゲーム的視覚とデジタルメディアの知覚論理で現実を再翻訳し、リアルとバーチャルの間に位置する現代的風景を構築する。金庭伃は鉱物顔料・金属箔・複合素材を用い、日常で見過ごされがちな微細な瞬間を記録し、素材を重層的に積み上げることで時間と記憶を画面に沈積させる。"
+    },
+    {
+      "museum": "gallery80a",
+      "title_zh": "雲的兩次回覆",
+      "title_en": "Clouds, Unremembering",
+      "dates": "2026.07.24 – 2026.08.23",
+      "artists": [
+        "黃羽慈"
+      ],
+      "description": "黃羽慈個展。古人曾以雙手一陰一陽的棋子卜算未來，成了圍棋起源的傳說之一。幾千年後，藝術家也對於貌似能觀測未來的事物深深著迷——易經、卜卦、占星、紫微斗數……試著把萬物與自我的關係看得更通透。展覽從觀測與記憶的無邊界棋盤出發，探討時間流動中「現在」如何變得面目全非，以及消散的雲僅能留給觀測者的回應。開幕茶會7/25(六)15:00，展覽座談8/1(六)15:00（與談人：莊馨怡）。",
+      "link": "https://www.instagram.com/gallery80a/",
+      "description_en": "The ancients once used two stones, one dark and one light, to divine the future—one of the legends surrounding the origins of Go. Millennia later, I too became deeply fascinated by things that seem to observe the future: the I Ching, divination, astrology, Zi Wei Dou Shu... Between stars and points, I first saw the patterns of all things that the ancients observed by gazing at the sky, then bowed my head to calculate on the board, trying to see the relationship between all things and myself more clearly. A small board seemed to condense the entire universe, letting one glimpse the mind through the impermanent changes of each placed stone.\n\nYet this learning never let me truly foresee the future. Instead I became stuck in an awkward moment, caught between advancing and retreating—one foot stepping into what has not yet arrived, the other still sunk in what has not yet passed. I long for the future prematurely while still clinging to the past, and the \"present\" before me becomes unrecognizable. Perhaps over-observation causes all things to lose their boundaries; what remains constant is that time never stops, or perhaps it offers me a hint, and I can only feel my way across a boundless board until every calculation collapses, on the verge of disintegration. Each time I try to find some pattern, I arrive again at this same helpless experience.\n\nLike one day on the metro, staring at the sky, white clouds approaching and brushing past me in an instant—that afternoon that can never return again. The ever-shifting sky carried my memories away, fading on a page where nothing could be seen, quietly releasing all the messages once sent from the past: \"Loss itself is the only response that the vanishing clouds can leave for the observer.\"",
+      "description_ja": "古人はかつて両手に陰陽の石を持って未来を占い、それが囲碁の起源にまつわる伝説の一つとなった。数千年後、私も未来を観測できそうなものに深く魅了された。易経、卜卦、占星、紫微斗数……星と点の間で、まず古人が天を仰いで観察した万物の法則を見出し、頭を垂れて盤上で推し量りながら、万物と自己の関係をより透徹して見ようと試みた。小さな碁盤ひとつに、宇宙全体が凝縮されているかのようで、石を置く無常な変化から心象を窺い知ることができる。\n\nしかしこうした学びは、私に本当の未来を見せてくれることはなく、むしろ気まずい時間の中で進退窮まることになった。一方の足はまだ来ていない未来を踏み、もう一方の足はまだ過ぎ去っていない過去に陷っている。私は未来を早くも懐かしみながら、過去にも執着し、目の前の「現在」は見る影もなく変わってしまった。過度な観測がすべての境界を失わせたのかもしれない。変わらないのは、時間が止まることなく流れ続けているということだけで、あるいは何かの暗示を与えてくれるのか、私はただ境界のない碁盤を手探りするしかなく、やがてすべての推論は次々と崩れ、瓦解寸前となる。何らかの法則を見出そうとするたびに、こうした無力な経験を繰り返し得ている。\n\nある日、地下鉄の中で空を見つめていたときのように、白い雲が迎えるように近づき、すれ違った瞬間、二度と戻れないあの午後、変幻自在な天象が私の記憶を連れ去り、何も見えない紙の上で消え去っていく。過去に投げかけられた様々なメッセージを密かに解き放ちながら——「失うこと自体が、やがて消え去る雲が観測者にのみ残せる応答なのだ。」"
+    },
+    {
+      "museum": "goodug",
+      "title_zh": "成為張姐",
+      "title_en": "Becoming Zhang-jie",
+      "dates": "2026.07.18 – 2026.08.17",
+      "artists": [
+        "蔡定邦"
+      ],
+      "description": "蔡定邦個展，策展人傅爾得（Joanna Fu）。A Story of Migration, Motherhood and Reinvention。過去三十年間，台灣描述越南婚姻移民的用語從「越南新娘」轉變為「外籍配偶」，再到「新住民」，但討論的焦點始終圍繞著「抵達」——這些女性如何來到台灣、進入婚姻與家庭生活、適應新環境，卻很少被問及「之後」發生了什麼。《成為張姐》從這個問題出發，透過近百張橫跨藝術家母親近五十年生命的肖像，蔡定邦探索長期被家族記憶與社會標籤所遮蔽的部分。她十九歲時結婚並移居台灣，她的人生在婚姻、遷徙、勞動、親密關係、經商與持續追尋機會中展開。這些肖像以連續的影像之河形式在展場中裝置，拒絕對她的人生做出單一解讀。開幕暨藝術家對談7/18 14:00-16:00。",
+      "link": "https://www.instagram.com/goodunderground_art_space/",
+      "description_en": "Over the past three decades, the terms used in Taiwan to describe Vietnamese marriage migrants have shifted from \"Vietnamese bride\" to \"foreign spouse,\" and later to \"new resident.\" Each new term appears more considered, yet the conversation often remains centred on arrival: how these women came to Taiwan, entered marriage and family life, and adapted to a new environment. Far less is asked about what came afterwards.\n\nBecoming Zhang-jie begins with this question. Through nearly one hundred portraits spanning almost fifty years of his mother's life, Ting-Bang Tsai approaches the parts of her story long obscured by family memory and social labels. At nineteen, she married and moved to Taiwan. Her life unfolded through marriage, migration, labour, intimacy, business, and the continual pursuit of opportunity. Installed across the gallery as a continuous river of images, the portraits resist any single reading of her life.\n\n2026.7.18 Sat.~2026.8.17 Mon.\nGoodunderground Art Space | B1F, No.37, jieyue St., Hualien City, Taiwan\nFri. to Mon. | 12pm - 8pm\n\nOpening & Artist Talk | 7.18 Sat. 2pm-4pm",
+      "description_ja": "過去30年間、台湾でベトナムからの婚姻移民を指す言葉は「ベトナム花嫁」から「外国籍配偶者」、そして「新住民」へと変化してきた。新しい呼び名が生まれるたびに、より配慮された表現になったように見えるが、議論の焦点は常に「到着」に集中している——これらの女性たちがどのように台湾へやって来て、結婚し、家庭生活に入り、新しい環境に適応したか。しかし彼女たちの「その後」について問われることは非常に少ない。\n\n『成為張姐』はこの問いから始まる。アーティストの母親の人生約50年間にわたるほぼ100枚の肖像写真を通じて、蔡定邦（ティン・バン・ツァイ）は、家族の記憶や社会的レッテルによって長らく覆い隠されてきた彼女の物語の部分に迫る。彼女は19歳で結婚し台湾に移り住んだ。その人生は結婚、移住、労働、親密な関係、商売、そして絶えざる機会の追求を通じて展開してきた。展示空間には、これらの肖像写真が連続するイメージの川として設置され、彼女の人生についての単一の解釈を拒む。\n\n会期｜2026年7月18日（土）〜2026年8月17日（月）\n場所｜Goodunderground Art Space（花蓮市街道路37号 B1F）\n開館時間｜金〜月 12:00〜20:00\n\nオープニング＆アーティストトーク｜7/18（土）14:00〜16:00",
+      "curator": "傅爾得 Joanna Fu"
+    },
+    {
+      "museum": "regentgalleria",
+      "title_zh": "本體覺",
+      "title_en": "Proprioception",
+      "dates": "2026.07.02 – 2026.08.15",
+      "artists": [
+        "朱理安",
+        "楊佳諭",
+        "蘭卡·哈諾娃 Lenka Chánová"
+      ],
+      "description": "大果文化策劃聯展。本體覺（Proprioception）是一種來自身體內部的感知能力，生理學上指人體感知自身肢體位置、動作與力量的內部感受系統，不靠眼睛，而是靠感覺受器，讓我們「知道自己在哪裡」。展覽借用這個概念，提出問題：我們如何透過身體感知世界與自己？朱理安以擁抱與撫觸、身體邊界的逸散與消融投射情緒覺察；楊佳諭以幽默題材呈現微妙的身體感；捷克藝術家蘭卡·哈諾娃以水彩暈染家暴倖存者與飲食失調症患者的身體輪廓，透過療癒儀式般的創作方法重建身體自信。7/26(日)15:00-16:00藝術家楊佳諭現場分享創作脈絡。",
+      "link": "https://www.accupass.com/event/2606290436361047371738",
+      "description_en": "Proprioception\n\nProprioception is a perceptual capacity originating from within the body - physiologically, an internal sensory system through which the body senses the position, movement, and force of its own limbs. It does not rely on the eyes but on sensory receptors, letting us \"know where we are.\" This exhibition borrows the concept to pose a broader question: how do we perceive the world and ourselves through the body?\n\nThe exhibition brings together three artists - Lian Jhu, Jia-Yu Yang, and Lenka Chánová - each exploring, from a different angle, how bodily perception precedes language and consciousness. Lian Jhu's paintings often depict embraces and touches in varying postures, the transformation of the body's texture, and the dissolution of bodily boundaries, projecting the artist's own awareness of shifting emotions. Jia-Yu Yang uses humorous subjects and compositions to render subtle bodily sensations - a bruise from an apple, a tongue piercing, a row of conspicuous braces - evoking a strong mirrored, tactile resonance in the viewer. Czech artist Lenka Chánová uses delicate watercolor washes to render the body contours of survivors of domestic violence and eating disorders, working through a ritual-like healing process in which she and her models jointly choose poses and record their stories, empowering them and rebuilding bodily confidence and subjectivity.\n\nDates: 2026.07.02 - 2026.08.15\nArtists: Lian Jhu, Jia-Yu Yang, Lenka Chánová\nOpening Reception: 2026.07.05 (Sun) 15:00\nVenue: Zhongshan Gallery, Regent Galleria B2, Regent Taipei, No. 3, Ln. 39, Sec. 2, Zhongshan N. Rd., Taipei\nPresented by: Core Cultural, Art Collections Taipei",
+      "description_ja": "『本體覺（プロプリオセプション／固有受容覚）』\n\n固有受容覚（Proprioception）は身体内部から生じる知覚能力であり、生理学的には自身の四肢の位置・動き・力を感知する内的感覚システムを指す。目に頼るのではなく感覚受容器に頼ることで、私たちは「自分がどこにいるか」を知ることができる。本展はこの概念を借用し、より広い問いを提示する：私たちは身体を通してどのように世界と自分自身を知覚しているのか？\n\n本展は朱理安（リアン・ジュー）、楊佳諭（ジアユー・ヤン）、蘭卡・哈諾娃（レンカ・ハノヴァー）の3名のアーティストを招き、それぞれ異なる視点から、言語や意識より先に生じる身体的知覚の経験を探る。朱理安の絵画は、様々な姿勢での抱擁や触れ合い、人物の質感の変容、身体の境界の溶解といったモチーフを通じて、アーティスト自身の感情の覚知を映し出す。楊佳諭はユーモラスな主題と構図によって微妙な身体感覚を表現する——りんごにぶつけてできたこぶ、舌のピアス、目立つ矯正器具の列——これらは観客に強い鏡像的な触覚と感覚的共鳴を喚起する。チェコのアーティスト、蘭卡・ハノヴァーは淡い水彩でDV被害の生存者や摂食障害の患者の身体の輪郭を描き出し、儀式的な癒しの創作プロセスを通じて、モデルと共にポーズや物語を選び記録することで、身体的な自信と主体性を再構築する。\n\n会期｜2026年7月2日〜8月15日\nアーティスト｜朱理安、楊佳諭、蘭卡・哈諾娃\nオープニング｜2026年7月5日（日）15:00\n会場｜晶華酒店B2 麗晶精品 中山藝廊（台北市中山區中山北路二段39巷3號）\n主催｜大果文化 Core Cultural、台北藝術收藏 Art Collections Taipei",
+      "curator": "莊乃綺（大果文化）"
+    },
+    {
+      "museum": "moon",
+      "title_zh": "來自遠古的花束",
+      "title_en": "A Bouquet from Ancient Times",
+      "dates": "2026.07.11 – 2026.08.22",
+      "artists": [
+        "夏愛華"
+      ],
+      "description": "夏愛華個展。當代社群媒體使許多外形奇異、彷彿來自神話世界的動物重新進入人們的視野。本次展出的部份作品以佛教文化中守護藥師如來的十二神將為發想，將其傳統神格轉化為當代真實存在的珍稀動物形象，攜帶花束作為「守護者」的意象。《來自遠古的花束》試圖建構一個跨越時間的寓言：從遠古至今，生命始終以不同形式彼此依存。",
+      "link": "https://www.facebook.com/MoonGallery.Taichung/",
+      "added_at": "2026-07-29"
+    },
+    {
+      "museum": "maisonacme",
+      "title_zh": "台藝大書畫系展 Fragments of Time",
+      "title_en": "Fragments of Time: The Curated Nostalgia",
+      "dates": "2026.07.29 – 2026.08.16",
+      "artists": [],
+      "description": "国立台湾芸術大学書画芸術学系修士課程展。キュレーター：Chang Wei-Yuan, Huang Pin-Hsuan, Chiang Ko-En。MAISON ACMEの建築（窓・壁・光と影）を「感情・記憶・時間を集める宝箱」として捉え、境界（boundary）をテーマに花・岩・蛾等のモチーフで内面の感情を表現。出展作家14名。",
+      "link": "https://acmetaipei.com/blogs/journal/台藝大書畫系展",
+      "added_at": "2026-07-29"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "塵囂之外・駐足 林美珠寫生創作展",
+      "title_en": "",
+      "dates": "2026.08.08 – 2026.08.16",
+      "artists": [
+        "林美珠"
+      ],
+      "description": "林美珠寫生創作展。以鉛筆素描、水彩、油畫為主，以「原地寫生、原地完成」的手法，描繪林安泰古厝、水㓓洞漁港、國立歷史博物館、二二八公園等台灣各地的自然景觀與歷史建築。四季的變化與人生的體悟凝縮於各作品之中。免費參觀。",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=60993",
+      "added_at": "2026-07-29"
+    },
+    {
+      "museum": "ponding",
+      "title_zh": "在路上",
+      "title_en": "On the Way",
+      "dates": "2026.07.24 – 2026.08.23",
+      "artists": [
+        "陳向榮"
+      ],
+      "added_at": "2026-07-29",
+      "description": "陳向榮個展。去年習得的烘焙新技能——扭結麵包（pretzel），是這次展覽的起點。在將麵團塑型的過程中，看見線條的形狀，這些線在筆記本上繼續延伸、轉彎、打結，是隨意的塗鴉，也是尚未明朗的思緒的形狀。它們成為各種路徑，不確定通往何處。若年初於nos:books的展覽〈在桌上〉是聚焦於桌面方寸之間的靜物觀察，那麼此次展覽〈在路上〉則是向外展開，試圖捕捉一種動態，利用作品的造型、排列、裝置呈現出不同的行進中狀態——有直行、有轉彎、有快、有慢，但沒有目的地。陳向榮為陶藝創作者，現居住及工作於台北，從日常生活中擷取靈感，透過觀察、放大，將主題與意念純化，解構成幾何造型與明亮色彩。開幕7/25(六)15:00-17:00。",
+      "link": "https://www.instagram.com/pondingspace/"
     }
   ]
 }
