@@ -35,7 +35,8 @@
           "title_ja": "オープニング",
           "note": ""
         }
-      ]
+      ],
+      "description_ja": "展覧会は、アートが海洋的な世界観、移民の歴史、先住民の知識体系、環境の変容、脱植民地化の実践にどう応答し、つながっていくかを探る。泛太平洋（パン・パシフィック）の視点から、島々が歴史と移動によっていかに結びついているかを見つめ直す。太平洋地域のアーティスト・キュレーターを招き、創作と文化交流を通じて、この地域の歴史・文化・現代的課題を探求する。"
     },
     {
       "museum": "lym",
@@ -100,7 +101,8 @@
           "note_zh": "16:00-21:00｜結合知名街頭賽事、音樂人與DJ",
           "note_en": "16:00-21:00 | With street competitions, musicians, and DJs"
         }
-      ]
+      ],
+      "description_ja": "「新北街頭学校」第3学年が再び開講。「創作接力中（クリエイティブ・リレー）」をテーマに、展示・講座・パーティーイベントを組み合わせ、初の「創作リアリティショー」を開催。蛋頭・比杰・Forty・Quanzoの4人のラップ・メンターと、人四・書愷・Puzzleman・Chrisflowの4人のビートメーカーが新世代とともに創作の最前線に立ち、新北から生まれた4曲を作り上げる。"
     },
     {
       "museum": "linlin",
@@ -261,7 +263,8 @@
         "梁正居",
         "林柏樑"
       ],
-      "status": "upcoming"
+      "status": "upcoming",
+      "description_ja": "本展は台湾写真史の研究視点に立ち、「民間」が異なる世代の写真家たちにとって、見つめ、対話し、論じ続けてきた重要な場としてどう機能してきたかを再考する。台湾と東アジアの歴史的文脈において、「民間」は単なる民俗風情ではなく、公的領域と非公式な領域の間に位置する動態的な社会空間である。展覧会は松山虔三・張才・黃則修・張照堂・黃永松・姚孟嘉・梁正居・林柏樑ら写真家たちに焦点を当てる。"
     },
     {
       "museum": "nwac",
@@ -288,7 +291,8 @@
           "note_en": "Bring your own T-shirt/tote | NTD 300",
           "link": ""
         }
-      ]
+      ],
+      "description_ja": "「Re」には再起動、再び戻るという意味がある。本展はアーティスト張立人が14年をかけて完成させた《戰鬥之城》シリーズを中心に、アニメーション映像、漫画、コンテ原稿、ジオラマ模型、キャラクター、撮影道具を通じて、《戰鬥之城》の中で構築された「世界観」を提示し、遡ることと更新することの間で、現実世界との多重的な対照関係を形づくる。"
     },
     {
       "museum": "nwac",
@@ -302,7 +306,8 @@
       "description_en": "Using 300-year-old boat flags to connect the harbor, rivers, and Neiwei ponds, this project summons disappeared hydrology and ecology. Artist Lee Yi-Chih translates traditional maritime prayer into a prayer for the land, constructing 127 aquatic ecological illustrations through community workshops.",
       "artists": [
         "李怡志"
-      ]
+      ],
+      "description_ja": "300年前の船旗を港・河川から內惟埤塘（内惟の池）へとつなぎ、消えた水文と生態を呼び起こす。アーティスト李怡志は伝統的な「祈漁（漁への祈り）」の意味を、土地への「祈生（生命への祈り）」へと翻訳し、コミュニティ参加型のワークショップを通じて127点の古內惟水族生態図鑑を制作、消えた鱗の輝き・貝類・水草を再現する。"
     },
     {
       "museum": "juming",
@@ -336,7 +341,8 @@
         "賴彥勳",
         "賴科維",
         "雜波"
-      ]
+      ],
+      "description_ja": "本展は「恆形（永久のかたち）」を核心概念とし、名称は数学のトポロジー（位相幾何学）から着想を得ている。展覧会は台湾現代彫刻の多様な姿を提示し、トポロジー的思考によって「彫刻の境界とは何か」「芸術を認識する方法とは何か」を改めて問い直す。形態が絶えず変化し続ける現在において、「永久に変わらない」構造こそが、芸術を理解するための新たな出発点となるかもしれない。"
     },
     {
       "museum": "tfam",
@@ -1955,7 +1961,9 @@
           "type": "opening"
         }
       ],
-      "description": "韓國藝術家Donghoon Rhee（李東勲，b.1991）在台灣的首次個展，將畫廊轉化為受K-pop偶像Tzuyu（周子瑜）於高雄首場個人演唱會上朗讀感人信件啟發的小型祠堂。展覽聚焦於藝術家對K-pop偶像身體、姿態與文化影響力的著迷，藉此探討流行文化與更廣泛的人類歷史如何交織。展出其標誌性的木雕作品搭配炭筆素描，Rhee以順著木料紋理與密度尋找形體聞名，再將雕塑轉譯回繪畫，在兩種媒材之間反覆觀看。近年曾於首爾Gallery SP與洛杉磯VSF&milk舉辦個展，並參與昌原雕塑雙年展、北首爾市立美術館等機構聯展。"
+      "description": "韓國藝術家Donghoon Rhee（李東勲，b.1991）在台灣的首次個展，將畫廊轉化為受K-pop偶像Tzuyu（周子瑜）於高雄首場個人演唱會上朗讀感人信件啟發的小型祠堂。展覽聚焦於藝術家對K-pop偶像身體、姿態與文化影響力的著迷，藉此探討流行文化與更廣泛的人類歷史如何交織。展出其標誌性的木雕作品搭配炭筆素描，Rhee以順著木料紋理與密度尋找形體聞名，再將雕塑轉譯回繪畫，在兩種媒材之間反覆觀看。近年曾於首爾Gallery SP與洛杉磯VSF&milk舉辦個展，並參與昌原雕塑雙年展、北首爾市立美術館等機構聯展。",
+      "description_en": "Small Flame marks Donghoon Rhee's first solo exhibition in Taiwan, commemorating TWICE's first solo concert on the island, held in Kaohsiung in 2025, a moment that carried profound cultural and political weight far beyond the stage. For over a decade, TWICE maintained a deep connection to Taiwan through Tzuyu, their Taiwanese member, yet a solo concert on the island remained out of reach due to political circumstances. When the concert finally took place ten years after the group's debut, a letter Tzuyu read aloud to the audience became one of the most widely shared moments of the year. The exhibition title draws from that letter: the phrase \"small flame\" recurs throughout Tzuyu's words, evoking the quiet hope she carried from her trainee years through her debut and beyond. Working in sculpture and charcoal drawings, Rhee transforms the gallery into a small temple, a space that holds the concert as a commemorative act, honoring both the performers and the fans whose devotion outlasted the wait.",
+      "description_ja": "「Small Flame」は、イ・ドンフン（Donghoon Rhee）の台湾初個展であり、2025年に高雄で開催されたTWICE初の台湾単独コンサートを記念する展示である。TWICEは台湾出身メンバーのツウィ（子瑜）を通じて10年以上台湾と深い結びつきを持ち続けてきたが、政治的な事情により台湾での単独コンサートは長らく実現しなかった。デビューから10年を経てついに開催されたこのコンサートで、ツウィが観客に向けて読んだ手紙は、この年最も広く共有された場面の一つとなった。展覧会タイトルはこの手紙に由来する。「small flame（小さな灯）」という言葉が手紙の中で繰り返され、練習生時代からデビュー後まで彼女が抱き続けた静かな希望を喚起する。彫刻とチャコール素描を用いて、イ・ドンフンはギャラリー空間を小さな聖堂のように変容させ、コンサートを記念する行為として、パフォーマーだけでなく、長い待ちの時間を経てきたファンたちの献身にも敬意を捧げている。"
     },
     {
       "museum": "guanglongxing",
@@ -2460,7 +2468,9 @@
       ],
       "description": "索卡藝術台北雙人展。1樓：顏展呈（Yan Zhancheng）心理與記憶驅動的繪畫作品；3樓：横坂拓也（Tatsuya Yokosaka）個展，代表作「Film Box Series」以模型套件盒為題材的超寫實繪画、動漫文化・サブカルチャーの影響を受けた作品。",
       "link": "https://soka-art.com/en/exhibition/details/12192",
-      "added_at": "2026-07-29"
+      "added_at": "2026-07-29",
+      "description_en": "SOKA Art Taipei presents a two-person exhibition by Yen Chan-Cheng and Takuya Yokosaka, bringing together two artists whose practices engage differently with light, texture, and the passage of time. Yen Chan-Cheng's paintings explore the layered accumulation of memory and material, while Takuya Yokosaka's works draw on traditional Japanese aesthetics reinterpreted through contemporary abstraction. Presented side by side, the exhibition opens a dialogue between two distinct sensibilities toward surface, atmosphere, and the quiet resonance of everyday perception.",
+      "description_ja": "SOKA ART台北は、顏展呈（イェン・チャンチェン）と横坂拓也の二人展を開催する。それぞれ光・質感・時間の経過への異なるアプローチを持つ二人の作家による展覧会である。顏展呈の絵画は記憶と物質の層状の蓄積を探求し、横坂拓也の作品は日本の伝統的美意識を現代的な抽象表現として再解釈する。両者を並置することで、表面・雰囲気・日常的知覚の静かな響きという主題に対する、二つの異なる感性の対話が開かれる。"
     },
     {
       "museum": "jut",
@@ -2694,7 +2704,8 @@
       "added_at": "2026-08-10",
       "description": "TAO ART呈現一場跨越藝術與時尚邊界的展覽。2025年適逢美國藝術巨擘羅伯特．勞森伯格（1925–2008）百年誕辰，享譽國際的台裔加拿大時裝設計師Jason Wu（吳季剛）以其創作為靈感，打造2026春季〈拼貼〉(COLLAGE)系列。本次展覽除呈現Jason Wu 2026春季系列作品外，更特別展出來自紐約羅伯特・勞森伯格基金會的私人典藏作品，包含直接啟發設計的重要作品。開幕茶會2026.08.01 4-7PM。",
       "description_en": "TAO ART presents a groundbreaking cross-disciplinary exhibition bridging art and fashion. 2025 marked the centennial of Robert Rauschenberg (1925-2008). Taiwanese-Canadian fashion designer Jason Wu drew inspiration from the artist's oeuvre for his Spring 2026 collection. The exhibition features artworks on loan from the Robert Rauschenberg Foundation in New York, including those which directly inspired the collection.",
-      "link": "https://www.taoartspace.com/exhibitions"
+      "link": "https://www.taoartspace.com/exhibitions",
+      "description_ja": "TAO ARTは、アートとファッションの境界を横断する展覧会を開催する。2025年は米国の巨匠アーティスト、ロバート・ラウシェンバーグ（1925–2008）の生誕100周年にあたる。国際的に評価される台湾系カナダ人ファッションデザイナー、ジェイソン・ウー（吳季剛）は彼の作品からインスピレーションを得て、2026年春〈コラージュ（COLLAGE）〉シリーズを制作した。本展ではジェイソン・ウーの2026年春シリーズ作品に加え、ニューヨークのロバート・ラウシェンバーグ財団からの個人コレクション作品——このコレクションに直接着想を与えた重要作も含む——を特別展示する。オープニングレセプション：2026.08.01 16:00-19:00。"
     },
     {
       "museum": "liang",
