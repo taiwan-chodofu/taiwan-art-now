@@ -19,7 +19,7 @@ NOTIFY_RECIPIENT_ID = "27481470654840665"  # 管理者(gokawa)のsender_id
 def _normalize_title(title):
     """タイトルの表記揺れを吸収する正規化。"""
     t = title.strip().lower()
-    t = re.sub(r"[【】「」『』《》〈〉\[\]：:；;—－\-·・．\s]", "", t)
+    t = re.sub(r"[【】「」『』《》〈〉\[\]：:；;—－\-·・．─\s]", "", t)
     return t
 
 
@@ -198,8 +198,23 @@ def detect_new(pages=3):
                 continue
             # 非池中の見出しは「タイトル+アーティスト名」が連結される場合がある
             # (例: "【相繫之縷……】魯伊・米蓋爾・萊陶・費雷拉") ため、既知タイトルが
-            # 検出タイトルの部分文字列として含まれていれば既知とみなす
-            if any(kt in title_norm for kt in known_titles if len(kt) >= 4):
+            # 検出タイトルの部分文字列として含まれていれば既知とみなす。
+            # 逆に、非池中側が副題を省略した短縮タイトルの場合もあるため
+            # (例: 既知"朴劭妍創作個展：夢遊石花園" vs 検出"朴劭妍創作個展")、
+            # 検出タイトルが既知タイトルの部分文字列である場合も既知とみなす
+            if len(title_norm) >= 4 and any(
+                kt in title_norm or title_norm in kt for kt in known_titles if len(kt) >= 4
+            ):
+                continue
+            # 中文タイトルの前半は共通だが、片方に英語副題・片方に中文副題が付く場合
+            # (例: 既知"朴劭妍創作個展：夢遊石花園" vs 検出"【朴劭妍創作個展】Park So Yeon
+            # Solo Exhibition") は上記の部分文字列マッチでも解決できないため、
+            # 先頭6文字の漢字のみを取り出して比較する
+            cjk_prefix = "".join(c for c in title_norm if "一" <= c <= "鿿")[:6]
+            if len(cjk_prefix) >= 6 and any(
+                cjk_prefix == "".join(c for c in kt if "一" <= c <= "鿿")[:6]
+                for kt in known_titles
+            ):
                 continue
 
             # Check if gallery maps to a known museum
@@ -216,7 +231,10 @@ def detect_new(pages=3):
             # 互いの完全な部分文字列ではないが、4文字以上の連続する共通部分があればマッチとみなす。
             # ただし「美術館」等の一般的すぎる接尾辞のみの一致では誤マッチするため除外する。
             if not museum_id:
-                GENERIC_SUBSTRINGS = {"美術館", "藝術館", "藝術中心", "藝廊", "畫廊", "藝術空間", "文化園區", "紀念館", "當代館", "藝術村"}
+                GENERIC_SUBSTRINGS = {
+                    "美術館", "藝術館", "藝術中心", "藝廊", "畫廊", "藝術空間", "文化園區", "紀念館", "當代館", "藝術村",
+                    "市立", "縣立", "國立", "私立",
+                }
                 for gname, mid in GALLERY_TO_MUSEUM.items():
                     if len(gname) < 4 or len(gallery) < 4:
                         continue
