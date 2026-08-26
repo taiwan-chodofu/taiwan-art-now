@@ -6,16 +6,21 @@ from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 
 def validate_exhibitions():
-    cache_path = os.path.join(os.path.dirname(__file__), 'cache.json')
+    # cache.json はローカルの一時キャッシュ（6時間TTL、gitで管理されない）で
+    # 古くなっていることが多く、これを検証してもmanual_exhibitions.jsonへの
+    # 直近の変更は一切チェックされない（2026-08-26に発覚：cache.jsonが2日前の
+    # 134件のまま、その間に171件まで追加されたデータが未検証だった）。
+    # source of truthであるmanual_exhibitions.jsonを直接検証する。
+    manual_path = os.path.join(os.path.dirname(__file__), 'manual_exhibitions.json')
     log_path = os.path.join(os.path.dirname(__file__), 'validation_log.txt')
-    
-    if not os.path.exists(cache_path):
+
+    if not os.path.exists(manual_path):
         return
-    
-    with open(cache_path, 'r', encoding='utf-8') as f:
-        cache = json.load(f)
-    
-    exhibitions = cache.get('exhibitions', [])
+
+    with open(manual_path, 'r', encoding='utf-8') as f:
+        manual = json.load(f)
+
+    exhibitions = manual.get('exhibitions', [])
     issues = []
     
     # Check 1: Same artists appearing in multiple exhibitions at same museum
@@ -79,6 +84,28 @@ def validate_exhibitions():
                     f"[MISSING FIELD] {museum}: '{title[:30]}' is missing '{field}'"
                 )
     
+    # Check 5: 3言語完全性（description / description_en / description_ja）
+    # performance/eventタイプ（venue_eventsとして別枠表示され、descriptionを使わない）は対象外
+    for ex in exhibitions:
+        if not isinstance(ex, dict):
+            continue
+        if ex.get('type') == 'performance' or 'events' in ex:
+            continue
+        title = ex.get('title_zh', '') or ex.get('title_en', '') or '(no title)'
+        museum = ex.get('museum', '?')
+        desc = (ex.get('description') or '').strip()
+        desc_en = (ex.get('description_en') or '').strip()
+        desc_ja = (ex.get('description_ja') or '').strip()
+        if not desc and not desc_en and not desc_ja:
+            issues.append(
+                f"[NO DESCRIPTION AT ALL] {museum}: '{title[:30]}' has no description in any language"
+            )
+        elif desc and (not desc_en or not desc_ja):
+            missing = [lang for lang, val in (('EN', desc_en), ('JA', desc_ja)) if not val]
+            issues.append(
+                f"[MISSING {'/'.join(missing)} TRANSLATION] {museum}: '{title[:30]}' has zh description but no {'/'.join(missing)}"
+            )
+
     # Write log
     if issues:
         tw_now = datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%d %H:%M')
