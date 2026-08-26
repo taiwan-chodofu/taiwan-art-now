@@ -136,34 +136,32 @@ def fetch_artemperor_page(page=1):
     return exhibitions
 
 
-# 非池中のギャラリー名 → museum_id マッピング
-GALLERY_TO_MUSEUM = {
-    "臺北市立美術館": "tfam",
-    "台北當代藝術館": "moca",
-    "國立臺灣美術館": "ntmofa",
-    "高雄市立美術館": "kmfa",
-    "臺中市立美術館": "tcma",
-    "臺南市美術館": "tnam",
-    "新北市美術館": "ntcart",
-    "嘉義市立美術館": "chiayi",
-    "關渡美術館": "kdmofa",
-    "鳳甲美術館": "honggah",
-    "朱銘美術館": "juming",
-    "忠泰美術館": "jut",
-    "富邦美術館": "fubon",
-    "毓繡美術館": "yuhsiu",
-    "寶藏巖國際藝術村": "tav",
-    "伊日藝術計劃": "yiriarts",
-    "誠品畫廊": "eslite",
-    "双方藝廊": "doublesquare",
-    "耿畫廊": "tinakeng",
-    "文心藝所 Winsing Art Place": "winsing",
-    "蕭壠文化園區": "soulangh",
-    "國立歷史博物館": "nmh",
-    "C-LAB": "clab",
-    "立方計劃空間": "thecube",
-    "金馬賓館當代美術館": "alien",
-}
+def _load_gallery_to_museum():
+    """museums_master.jsonからギャラリー名(zh/en) → museum_id マッピングを動的に構築する。
+    新規施設が追加されるたびに手動でこの辞書を更新する必要がなくなる
+    (2026-08-26: 安卓藝術/也趣藝廊/新浜碼頭/852藝術空間/大象藝術空間館/多納藝術/暮拉多元藝術空間
+    等の欠落により、既に掲載済みの展示が繰り返し「新展示」として誤検出されていた)。"""
+    master_path = BASE_DIR / "museums_master.json"
+    mapping = {}
+    try:
+        with open(master_path, "r", encoding="utf-8") as f:
+            master = json.load(f)
+        museums = master if isinstance(master, list) else master.get("museums", master)
+        for m in museums:
+            mid = m.get("id")
+            if not mid:
+                continue
+            for lang in ("zh", "en", "ja"):
+                name = (m.get("name", {}) or {}).get(lang, "")
+                if name:
+                    mapping[name] = mid
+    except Exception:
+        logger.warning("failed to load museums_master.json for gallery mapping", exc_info=True)
+    return mapping
+
+
+# 非池中のギャラリー名 → museum_id マッピング（museums_master.jsonから動的生成）
+GALLERY_TO_MUSEUM = _load_gallery_to_museum()
 
 
 def detect_new(pages=3):
@@ -198,6 +196,11 @@ def detect_new(pages=3):
             # Also check partial match (8+ chars substring)
             if any(title_norm[:8] in kt or kt[:8] in title_norm for kt in known_titles if len(kt) >= 8):
                 continue
+            # 非池中の見出しは「タイトル+アーティスト名」が連結される場合がある
+            # (例: "【相繫之縷……】魯伊・米蓋爾・萊陶・費雷拉") ため、既知タイトルが
+            # 検出タイトルの部分文字列として含まれていれば既知とみなす
+            if any(kt in title_norm for kt in known_titles if len(kt) >= 4):
+                continue
 
             # Check if gallery maps to a known museum
             gallery = item["gallery"]
@@ -207,6 +210,24 @@ def detect_new(pages=3):
             if not museum_id:
                 for gname, mid in GALLERY_TO_MUSEUM.items():
                     if gname in gallery or gallery in gname:
+                        museum_id = mid
+                        break
+            # Fuzzy match: 表記揺れ吸収。「高雄市新浜碼頭藝術學會」vs 既存の「新浜碼頭藝術空間」のように
+            # 互いの完全な部分文字列ではないが、4文字以上の連続する共通部分があればマッチとみなす。
+            # ただし「美術館」等の一般的すぎる接尾辞のみの一致では誤マッチするため除外する。
+            if not museum_id:
+                GENERIC_SUBSTRINGS = {"美術館", "藝術館", "藝術中心", "藝廊", "畫廊", "藝術空間", "文化園區", "紀念館", "當代館", "藝術村"}
+                for gname, mid in GALLERY_TO_MUSEUM.items():
+                    if len(gname) < 4 or len(gallery) < 4:
+                        continue
+                    # 英数字を含む共通部分は "ART"/"Gallery" 等の一般語で誤マッチしやすいため、
+                    # 漢字のみの共通部分文字列に限定する（中文の表記揺れ吸収が目的）
+                    common = next(
+                        (gname[i:i + 4] for i in range(len(gname) - 3)
+                         if gname[i:i + 4] in gallery and gname[i:i + 4].isascii() is False),
+                        None,
+                    )
+                    if common and not any(g in common or common in g for g in GENERIC_SUBSTRINGS):
                         museum_id = mid
                         break
 
