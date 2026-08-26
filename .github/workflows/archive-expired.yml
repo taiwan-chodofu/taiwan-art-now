@@ -19,11 +19,14 @@ jobs:
       - name: Run archive script
         run: python archive_expired.py || true
 
+      - name: Run validation
+        run: python validate_exhibitions.py || true
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add manual_exhibitions.json archive.json
+          git add manual_exhibitions.json archive.json validation_log.txt
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
