@@ -3527,6 +3527,257 @@
       "lat": 25.0494071,
       "lng": 121.5142965,
       "hours_uncertain": true
+    },
+    {
+      "id": "fishart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Fish Art Center",
+        "ja": "秋刀魚藝術中心",
+        "zh": "秋刀魚藝術中心"
+      },
+      "address": {
+        "en": "1F, No. 137, Jihu Rd., Zhongshan District, Taipei City 104, Taiwan",
+        "ja": "台北市中山區基湖路137號一樓",
+        "zh": "104台北市中山區基湖路137號一樓"
+      },
+      "url": "http://www.fishart.com.tw",
+      "hours": {
+        "en": "Wed-Sat 13:00-19:00 | Tue by appointment | Closed Sun & Mon",
+        "ja": "水〜土 13:00–19:00｜火は予約制｜日月休",
+        "zh": "週三至週六 13:00–19:00｜週二採預約制（週日、週一休）"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.0776064,
+      "lng": 121.5632355,
+      "hours_uncertain": true,
+      "closed_day": 0
+    },
+    {
+      "id": "chishangbarn",
+      "category": "public",
+      "region": "hualien_taitung",
+      "name": {
+        "en": "Chihshang Rice Barn Art Museum",
+        "ja": "池上穀倉藝術館",
+        "zh": "池上穀倉藝術館"
+      },
+      "address": {
+        "en": "No. 6, Zhongxi 3rd Rd., Fuyuan Village, Chishang Township, Taitung County 958, Taiwan",
+        "ja": "台東縣池上鄉福原村中西三路6號",
+        "zh": "958台東縣池上鄉福原村中西三路6號"
+      },
+      "url": "https://artchishang.lovelytaiwan.org.tw/barn/home",
+      "hours": {
+        "en": "Daily 10:30-17:30 | Closed Mon & Tue",
+        "ja": "毎日 10:30–17:30｜月火休",
+        "zh": "每日 10:30–17:30（週一、週二休館）"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 23.1244016,
+      "lng": 121.2173692,
+      "hours_uncertain": false,
+      "closed_day": 0
+    },
+    {
+      "id": "daxiagallery",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Daxia Gallery (CCU School of Continuing Education)",
+        "ja": "大夏藝廊",
+        "zh": "大夏藝廊"
+      },
+      "address": {
+        "en": "1F, Daxia Bldg., No. 231, Sec. 2, Jianguo South Rd., Da'an District, Taipei City 106, Taiwan",
+        "ja": "台北市大安區建國南路二段231號（大夏館1樓大夏藝廊-特展區）",
+        "zh": "106台北市大安區建國南路二段231號（大夏館1樓大夏藝廊-特展區）"
+      },
+      "url": "https://cacc.sce.pccu.edu.tw/",
+      "hours": {
+        "en": "Hours not published",
+        "ja": "開館時間は未公開",
+        "zh": "開放時間未公開"
+      },
+      "closed_days": [],
+      "lat": 25.028,
+      "lng": 121.5377,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "the201art",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "THE 201 ART",
+        "ja": "THE 201 ART 順天建築．文化．藝術中心",
+        "zh": "THE 201 ART 順天建築．文化．藝術中心"
+      },
+      "address": {
+        "en": "B2F, No. 201, Sec. 2, Wenxin Rd., Xitun District, Taichung City 407, Taiwan",
+        "ja": "台中市西屯區文心路二段201號B2F",
+        "zh": "407台中市西屯區文心路二段201號B2F"
+      },
+      "url": "https://www.sweeten.com.tw/the201/",
+      "hours": {
+        "en": "Tue-Sat 10:00-17:30 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–17:30｜日月休",
+        "zh": "週二至週六 10:00–17:30（週日、週一休）"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 24.1588564,
+      "lng": 120.6469951,
+      "hours_uncertain": true,
+      "closed_day": 0
+    },
+    {
+      "id": "taishinart",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Taishin Bank Foundation for Arts and Culture (Lobby)",
+        "ja": "台新銀行文化藝術基金會",
+        "zh": "台新銀行文化藝術基金會"
+      },
+      "address": {
+        "en": "1F Lobby, No. 1, Section 4, Ren'ai Road, Da'an District, Taipei City, Taiwan",
+        "ja": "台北市大安區仁愛路四段1號一樓大廳",
+        "zh": "台北市大安區仁愛路四段1號一樓大廳"
+      },
+      "url": "https://www.taishinart.org.tw/",
+      "hours": {
+        "en": "During exhibition run: 09:00-19:00, free admission",
+        "ja": "展覧会期間中 09:00–19:00（入場無料）",
+        "zh": "展覽期間 09:00–19:00，免費參觀"
+      },
+      "closed_days": [],
+      "lat": 25.0373698,
+      "lng": 121.5499116,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "tartch",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "TARTCH",
+        "ja": "TARTCH 得然藝術",
+        "zh": "TARTCH 得然藝術"
+      },
+      "address": {
+        "en": "No. 503, 1F, Section 6, Nanjing East Road, Neihu District, Taipei, Taiwan",
+        "ja": "台北市內湖區南京東路六段503號1樓",
+        "zh": "台北市內湖區南京東路六段503號1樓"
+      },
+      "url": "https://tartch.com",
+      "hours": {
+        "en": "Tue-Sat 10:00-18:30 | Closed Sun & Mon",
+        "ja": "火〜土 10:00–18:30｜日月休",
+        "zh": "週二至週六 10:00–18:30，週日、週一休館"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.0565,
+      "lng": 121.58,
+      "hours_uncertain": false,
+      "closed_day": 0
+    },
+    {
+      "id": "getart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Get Art Museum",
+        "ja": "得藝美術館",
+        "zh": "得藝美術館"
+      },
+      "address": {
+        "en": "1F, No. 168, Sanmin Rd., Songshan Dist., Taipei City 105, Taiwan",
+        "ja": "台北市松山區三民路168號1樓",
+        "zh": "105台北市松山區三民路168號1樓"
+      },
+      "url": "https://www.getart.com.tw",
+      "hours": {
+        "en": "Mon/Tue/Wed/Fri/Sat 11:00-20:00, Thu/Sun 11:00-18:00, free admission, open year-round",
+        "ja": "月火水金土 11:00–20:00、木日 11:00–18:00（入場無料・年中無休）",
+        "zh": "週一/二/三/五/六 11:00–20:00、週四/日 11:00–18:00（免費入場，全年無休）"
+      },
+      "closed_days": [],
+      "lat": 25.062056,
+      "lng": 121.5633091,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "blueriderart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Bluerider ART",
+        "ja": "Bluerider ART 藍騎士藝術空間",
+        "zh": "Bluerider ART 藍騎士藝術空間"
+      },
+      "address": {
+        "en": "1F, No. 77, Sec. 2, Dunhua S. Rd., Da'an Dist., Taipei City, Taiwan",
+        "ja": "台北市大安區敦化南路二段77號1樓",
+        "zh": "台北市大安區敦化南路二段77號1樓"
+      },
+      "url": "https://www.blueriderart.com",
+      "hours": {
+        "en": "Tue-Sun 10:00-18:30 | Closed Mon",
+        "ja": "火〜日 10:00–18:30｜月休",
+        "zh": "週二至週日 10:00–18:30（週一休）"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 25.0301848,
+      "lng": 121.5493151,
+      "hours_uncertain": false,
+      "closed_day": 1
+    },
+    {
+      "id": "capitalart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Capital Art Center",
+        "ja": "首都藝術中心",
+        "zh": "首都藝術中心"
+      },
+      "address": {
+        "en": "2F, No. 343, Sec. 4, Ren'ai Rd., Da'an Dist., Taipei City, Taiwan",
+        "ja": "台北市大安區仁愛路四段343號2樓",
+        "zh": "台北市大安區仁愛路四段343號2樓"
+      },
+      "url": "https://www.capitalart.com.tw",
+      "hours": {
+        "en": "Tue-Sat 10:00-18:00 | Closed Sun & Mon, free admission",
+        "ja": "火〜土 10:00–18:00｜日月休（入場無料）",
+        "zh": "週二至週六 10:00–18:00（週日、週一休，免費入場）"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.038131,
+      "lng": 121.553781,
+      "hours_uncertain": false,
+      "closed_day": 0
     }
   ]
 }
