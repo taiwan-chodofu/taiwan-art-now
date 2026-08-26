@@ -388,3 +388,8 @@
 [SHARED LINK] 3 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 [SHARED LINK] 2 exhibitions share link: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
 [SHARED LINK] 2 exhibitions share link: https://www.opentix.life/event/2069611694253621249
+
+--- Validation 2026-08-26 21:14 ---
+[SHARED LINK] 3 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[SHARED LINK] 2 exhibitions share link: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
+[SHARED LINK] 2 exhibitions share link: https://www.opentix.life/event/2069611694253621249
