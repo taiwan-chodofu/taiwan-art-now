@@ -3436,7 +3436,11 @@
         "zh": "週三四 12:00–18:00・週五六 11:00–18:00｜週日一二休"
       },
       "closed_day": null,
-      "closed_days": [0, 1, 2],
+      "closed_days": [
+        0,
+        1,
+        2
+      ],
       "hours_uncertain": false,
       "lat": 22.9883917,
       "lng": 120.2195814
@@ -3462,7 +3466,10 @@
         "zh": "週三至日 12:00–18:00｜週一二與國定假日休館"
       },
       "closed_day": null,
-      "closed_days": [1, 2],
+      "closed_days": [
+        1,
+        2
+      ],
       "hours_uncertain": false,
       "lat": 25.0196388,
       "lng": 121.2952888
@@ -3488,10 +3495,38 @@
         "zh": "每日 11:00–18:30｜週日一休"
       },
       "closed_day": null,
-      "closed_days": [0, 1],
+      "closed_days": [
+        0,
+        1
+      ],
       "hours_uncertain": false,
       "lat": 25.116307,
       "lng": 121.5053863
+    },
+    {
+      "id": "weimingming",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Wei Ming Ming",
+        "ja": "未命名 Wei Ming Ming",
+        "zh": "未命名 Wei Ming Ming"
+      },
+      "address": {
+        "en": "4F & 5F, No. 25, Zhengzhou Rd., Datong Dist., Taipei (near Taipei Main Station Exit Y13)",
+        "ja": "台北市大同區鄭州路25號4樓・5樓（台北車站Y13出口付近）",
+        "zh": "臺北市大同區鄭州路25號4樓、5樓（近臺北車站Y13出口）"
+      },
+      "url": "https://www.facebook.com/weimingmingwmm",
+      "hours": {
+        "en": "Hours vary by exhibition, see Facebook page",
+        "ja": "開放時間は展示ごとに異なる（Facebook要確認）",
+        "zh": "開放時間請見粉專公告"
+      },
+      "closed_day": null,
+      "lat": 25.0494071,
+      "lng": 121.5142965,
+      "hours_uncertain": true
     }
   ]
 }
