@@ -86,6 +86,7 @@
       overflow-y: auto; height: 100%; padding-right: 10px;
       max-width: 30em; white-space: pre-wrap;
       scrollbar-width: thin; scrollbar-color: var(--text-light) transparent;
+      touch-action: pan-y; cursor: auto;
     }
     .card .excerpt::-webkit-scrollbar { width: 5px; }
     .card .excerpt::-webkit-scrollbar-thumb { background: var(--text-light); border-radius: 4px; }
@@ -367,7 +368,7 @@
 
       stage.appendChild(el);
       currentCardEl = el;
-      attachDragHandlers(el, likeStamp, seenStamp);
+      attachDragHandlers(el, likeStamp, seenStamp, excerptDiv);
     }
 
     function escapeHtml(s) {
@@ -376,8 +377,11 @@
       return d.innerHTML;
     }
 
-    function attachDragHandlers(el, likeStamp, seenStamp) {
+    function attachDragHandlers(el, likeStamp, seenStamp, excerptEl) {
       el.addEventListener('pointerdown', function(e) {
+        if (excerptEl && excerptEl.contains(e.target)) {
+          return; // description text scrolls natively; don't hijack it as a swipe/tap
+        }
         isDragging = true;
         activePointerId = e.pointerId;
         dragStartX = e.clientX; dragStartY = e.clientY; dragX = 0;
