@@ -2,6 +2,7 @@
 キャッシュリフレッシュ後に自動実行し、問題を検出してログに記録する。"""
 import json
 import os
+import re
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 
@@ -104,6 +105,22 @@ def validate_exhibitions():
             missing = [lang for lang, val in (('EN', desc_en), ('JA', desc_ja)) if not val]
             issues.append(
                 f"[MISSING {'/'.join(missing)} TRANSLATION] {museum}: '{title[:30]}' has zh description but no {'/'.join(missing)}"
+            )
+
+    # Check 6: description(中文)欄への日本語混入（2026-08-27発覚: 一部展示のdescription
+    # フィールドに、翻訳作成時の取り違いで日本語のかな・カタカナ交じり文がそのまま
+    # 残っていた。全角中点(U+30FB)等は日中共通の記号なので誤検出防止のため除外し、
+    # 実際のひらがな/カタカナ文字のみを検出対象にする。
+    kana_pattern = re.compile(r'[ぁ-ゖァ-ヺ]')
+    for ex in exhibitions:
+        if not isinstance(ex, dict):
+            continue
+        desc = ex.get('description') or ''
+        if kana_pattern.search(desc):
+            title = ex.get('title_zh', '') or ex.get('title_en', '') or '(no title)'
+            museum = ex.get('museum', '?')
+            issues.append(
+                f"[MIXED LANGUAGE IN ZH] {museum}: '{title[:30]}' description field contains Japanese kana"
             )
 
     # Write log
