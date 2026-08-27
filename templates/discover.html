@@ -266,9 +266,42 @@
     function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
 
     var visitedKeys = _getVisited();
-    var deck = ALL_CARDS.filter(function(c) {
-      return !visitedKeys[_normalizeKey(c.stable_key)];
-    });
+    var DECK_ORDER_KEY = 'taiwan_art_discover_deck';
+
+    // サーバーは毎リクエストで新たにシャッフルするため、詳細ページに遷移して
+    // ブラウザの「戻る」で帰ってきた際にそのままだと全く別の並び・カードから
+    // 再開してしまう。同一タブでのセッション中はsessionStorageに残りデッキの
+    // 順序を保持し、戻ってきたときは直前と同じカードから再開できるようにする。
+    var deck;
+    var savedOrder = null;
+    try { savedOrder = JSON.parse(sessionStorage.getItem(DECK_ORDER_KEY) || 'null'); } catch (e) {}
+    if (savedOrder && Array.isArray(savedOrder) && savedOrder.length > 0) {
+      var byKey = {};
+      ALL_CARDS.forEach(function(c) { byKey[_normalizeKey(c.stable_key)] = c; });
+      var seen = {};
+      deck = savedOrder.map(function(k) { return byKey[k]; }).filter(function(c) {
+        if (!c) return false;
+        seen[_normalizeKey(c.stable_key)] = true;
+        return !visitedKeys[_normalizeKey(c.stable_key)];
+      });
+      // 前回のセッション以降に新規追加された展示があれば末尾に加える
+      var extra = ALL_CARDS.filter(function(c) {
+        var k = _normalizeKey(c.stable_key);
+        return !seen[k] && !visitedKeys[k];
+      });
+      deck = deck.concat(extra);
+    } else {
+      deck = ALL_CARDS.filter(function(c) {
+        return !visitedKeys[_normalizeKey(c.stable_key)];
+      });
+    }
+
+    function saveDeckOrder() {
+      try {
+        sessionStorage.setItem(DECK_ORDER_KEY, JSON.stringify(deck.map(function(c) { return _normalizeKey(c.stable_key); })));
+      } catch (e) {}
+    }
+    saveDeckOrder();
 
     var actionHistory = []; // {card, action} for undo
     var stage = document.getElementById('stage');
@@ -442,6 +475,7 @@
         el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (action === 'like' ? 20 : -20) + 'deg)';
       }
       recordAction(card, action);
+      saveDeckOrder();
       if (typeof gtag === 'function') gtag('event', 'discover_' + action, { exhibition_key: _normalizeKey(card.stable_key) });
       setTimeout(renderCard, 220);
     }
@@ -474,6 +508,7 @@
         var visited = _getVisited(); delete visited[key]; _saveVisited(visited);
       }
       deck.unshift(last.card);
+      saveDeckOrder();
       renderCard();
     }
 
@@ -484,6 +519,7 @@
     document.getElementById('restartBtn').addEventListener('click', function() {
       deck = ALL_CARDS.slice();
       actionHistory = [];
+      saveDeckOrder();
       renderCard();
     });
 
