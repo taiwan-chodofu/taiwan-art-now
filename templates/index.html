@@ -45,7 +45,7 @@
       --cat-public: #2d3436; --cat-alt: #6c5ce7;
       --cat-commercial: #00b894; --cat-private: #e17055;
       --chip-active-bg: #000; --chip-active-text: #fff;
-      --bn-h: 58px; /* bottom-nav height, used to keep FABs/toasts clear of it */
+      --bn-h: 80px; /* floating bottom-nav dock height + margin, used to keep FABs/toasts clear of it */
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -2130,26 +2130,39 @@
   </script>
 
   <!-- BOTTOM NAV (Home / Discover / Saved / More) — replaces the old header
-       icon row + subnav row, and stays reachable while the list scrolls. -->
+       icon row + subnav row. A floating pill "dock" (inset from the edges,
+       elevated with a shadow) rather than an edge-to-edge bar, so it stays
+       reachable while the list scrolls without reading as generic app chrome. -->
   <style>
     .bottom-nav {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 800;
-      display: flex; background: var(--bg); border-top: 1px solid var(--border);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-      max-width: 720px; margin: 0 auto;
+      position: fixed; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%); z-index: 800;
+      width: min(400px, calc(100% - 32px));
+      display: flex; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 26px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.16), 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bottom-nav { box-shadow: 0 10px 28px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3); }
     }
     .bottom-nav-item {
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2px; height: var(--bn-h);
+      gap: 2px; padding: 9px 0 8px;
       color: var(--text-light); text-decoration: none; background: none; border: none;
       font-family: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
     }
     .bottom-nav-item.active { color: var(--text); }
+    .bottom-nav-item.active .bn-icon {
+      background: var(--tag-bg); border-radius: 999px;
+      width: 30px; height: 22px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1px;
+    }
     .bottom-nav-item:active { opacity: 0.6; }
-    .bn-icon { font-size: 1.15rem; line-height: 1; position: relative; }
-    .bn-label { font-size: 0.6rem; line-height: 1; }
+    .bn-icon { font-size: 1.05rem; line-height: 1; position: relative; }
+    .bn-label { font-size: 0.58rem; line-height: 1; }
     .bn-badge {
-      position: absolute; top: -4px; right: -10px;
+      position: absolute; top: -6px; right: -11px;
       background: var(--red); color: #fff; font-size: 0.55rem; font-weight: 700;
       border-radius: 999px; padding: 1px 4px; min-width: 14px; text-align: center;
     }
