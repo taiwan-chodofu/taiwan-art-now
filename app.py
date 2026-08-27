@@ -661,6 +661,121 @@ TAISHIN_LABELS = {
 }
 
 
+DISCOVER_LABELS = {
+    "en": {
+        "title": "Discover — Taiwan Art Now",
+        "heading": "Discover",
+        "subtitle": "Swipe through exhibition descriptions and find what speaks to you",
+        "back": "Exhibitions",
+        "like": "Want to go",
+        "seen": "Already seen",
+        "undo": "Undo",
+        "empty": "You've seen every exhibition currently listed.",
+        "empty_sub": "Come back after new exhibitions are added.",
+        "restart": "Start over",
+        "days_left": "days left",
+        "today_last": "last day",
+        "view_details": "Tap for full details →",
+        "count_left": "left",
+    },
+    "ja": {
+        "title": "発見 — Taiwan Art Now",
+        "heading": "発見",
+        "subtitle": "展覧会の概要をスワイプして、気になる一つと出会う",
+        "back": "展覧会情報",
+        "like": "行きたい",
+        "seen": "観た",
+        "undo": "戻す",
+        "empty": "現在掲載中の展覧会はすべて見終わりました。",
+        "empty_sub": "新しい展覧会が追加されたら、また見に来てください。",
+        "restart": "最初から見る",
+        "days_left": "日で終了",
+        "today_last": "本日最終日",
+        "view_details": "タップで詳細を見る →",
+        "count_left": "件残り",
+    },
+    "zh": {
+        "title": "發現 — Taiwan Art Now",
+        "heading": "發現",
+        "subtitle": "滑動瀏覽展覽簡介，遇見讓你心動的那一檔",
+        "back": "展覽資訊",
+        "like": "想去",
+        "seen": "已看過",
+        "undo": "復原",
+        "empty": "目前刊載的展覽都看過了。",
+        "empty_sub": "有新展覽上架時再回來看看吧。",
+        "restart": "重新開始",
+        "days_left": "天結束",
+        "today_last": "今天最後一天",
+        "view_details": "點擊查看詳情 →",
+        "count_left": "則",
+    },
+}
+
+
+@app.route("/discover")
+def discover():
+    """展覧会概要をカード形式でスワイプ発見できるページ。画像は使わずテキストの
+    読みやすさを最優先にする（2026-08-27、ユーザー要望による新規ページ）。
+    「セレンディピティ原則」を守るため、対象は常に全展覧会（フィルタなし）、
+    表示順は毎回シャッフルして特定施設に偏らないようにする。"""
+    lang = request.args.get("lang", "zh")
+    if lang not in DISCOVER_LABELS:
+        lang = "zh"
+
+    master = _load_master()
+    museum_by_id = {m["id"]: m for m in master["museums"]}
+    exhibitions = fetch_all_exhibitions()
+
+    idx_by_museum = {}
+    cards = []
+    for ex in exhibitions:
+        mid = ex.get("museum", "")
+        idx = idx_by_museum.get(mid, 0)
+        idx_by_museum[mid] = idx + 1
+
+        if ex.get("type") == "performance" or "events" in ex:
+            continue  # 会期のない催しものはスワイプ発見に不向き
+
+        desc = _get_description(ex, lang)
+        excerpt = _truncate_excerpt(desc, length=150)
+        if not excerpt:
+            continue  # 読ませる概要がないカードは対象外
+
+        _, _, end_dt = _normalize_dates(ex.get("dates", ""))
+        m = museum_by_id.get(mid, {})
+        region_id = m.get("region", "other")
+        region_name = _get_localized(master["regions"].get(region_id, {}), lang) or region_id
+
+        artists = ex.get("artists", [])
+        artists_label = "、".join(artists[:3]) if lang == "zh" else ", ".join(artists[:3])
+        if len(artists) > 3:
+            artists_label += "…"
+
+        title_zh = ex.get("title_zh", "") or ex.get("title_en", "")
+        cards.append({
+            "title": _get_display_title(ex, lang),
+            "museum": _get_localized(m.get("name", {}), lang) or mid,
+            "region": region_name,
+            "dates": _normalize_dates(ex.get("dates", ""))[0],
+            "days_left": _calc_days_left(end_dt),
+            "artists": artists_label,
+            "excerpt": excerpt,
+            "stable_key": mid + "__" + title_zh,
+            "detail_url": f"/exhibition/{mid}/{idx}?lang={lang}",
+        })
+
+    import random
+    random.shuffle(cards)
+
+    return render_template(
+        "discover.html",
+        labels=DISCOVER_LABELS[lang],
+        cards=cards,
+        current_lang=lang,
+    )
+
+
 @app.route("/featured")
 def featured():
     """台新賞受賞アーティストの動向ページ。"""
