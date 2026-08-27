@@ -123,6 +123,7 @@
         </div>
       </div>
       <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
+      <a href="/discover?lang={{ current_lang }}" class="refresh-btn" aria-label="Discover" title="{% if current_lang == 'zh' %}發現{% elif current_lang == 'ja' %}発見{% else %}Discover{% endif %}">✨</a>
       <a href="#" id="mylistHeaderBtn" class="refresh-btn" aria-label="My List" title="My List" onclick="toggleMylistHeader(event)">📋</a>
       <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
     </nav>
