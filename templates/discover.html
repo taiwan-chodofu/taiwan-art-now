@@ -115,20 +115,21 @@
     .stamp.like { right: 20px; color: var(--like); background: var(--like-bg); transform: rotate(8deg); }
     .stamp.seen { left: 20px; color: var(--seen); background: var(--seen-bg); transform: rotate(-8deg); }
     .actions {
-      flex: 0 0 auto; display: flex; justify-content: center; gap: 22px;
-      padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
+      flex: 0 0 auto; display: flex; justify-content: center; gap: 8px;
+      padding: 16px 12px calc(16px + env(safe-area-inset-bottom));
       border-top: 1px solid var(--border);
     }
     .actions button {
-      flex: 0 1 160px; display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 13px 18px; border-radius: 999px; border: 1.5px solid var(--border);
-      background: var(--bg); color: var(--text); font-size: 0.95rem; font-weight: 500;
-      cursor: pointer;
+      flex: 1 1 auto; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 5px;
+      padding: 11px 8px; border-radius: 999px; border: 1.5px solid var(--border);
+      background: var(--bg); color: var(--text); font-size: 0.82rem; font-weight: 500;
+      cursor: pointer; white-space: nowrap;
     }
-    .actions button.seen-btn { color: var(--seen); border-color: var(--seen); }
+    .actions button.skip-btn { color: var(--text-sub); }
+    .actions button.visited-btn { color: var(--seen); border-color: var(--seen); }
     .actions button.like-btn { color: var(--like); border-color: var(--like); }
     .actions .undo-btn {
-      flex: 0 0 44px; border-radius: 999px; font-size: 1.05rem;
+      flex: 0 0 40px; border-radius: 999px; font-size: 1rem; padding: 11px 0;
     }
     .empty-state {
       text-align: center; padding: 40px 24px; max-width: 340px;
@@ -248,7 +249,8 @@
 
   <div class="actions" id="actionsBar" style="display:none;">
     <button class="undo-btn" id="undoBtn" title="{{ labels.undo }}">↺</button>
-    <button class="seen-btn" id="seenBtn">✕ {{ labels.seen }}</button>
+    <button class="skip-btn" id="skipBtn">✕ {{ labels.skip }}</button>
+    <button class="visited-btn" id="visitedBtn">👁 {{ labels.seen }}</button>
     <button class="like-btn" id="likeBtn">♡ {{ labels.like }}</button>
   </div>
 
@@ -361,14 +363,14 @@
       likeStamp.textContent = '♡ ' + LABELS.like;
       el.appendChild(likeStamp);
 
-      var seenStamp = document.createElement('div');
-      seenStamp.className = 'stamp seen';
-      seenStamp.textContent = '✕ ' + LABELS.seen;
-      el.appendChild(seenStamp);
+      var skipStamp = document.createElement('div');
+      skipStamp.className = 'stamp seen';
+      skipStamp.textContent = '✕ ' + LABELS.skip;
+      el.appendChild(skipStamp);
 
       stage.appendChild(el);
       currentCardEl = el;
-      attachDragHandlers(el, likeStamp, seenStamp, excerptDiv);
+      attachDragHandlers(el, likeStamp, skipStamp, excerptDiv);
     }
 
     function escapeHtml(s) {
@@ -377,7 +379,7 @@
       return d.innerHTML;
     }
 
-    function attachDragHandlers(el, likeStamp, seenStamp, excerptEl) {
+    function attachDragHandlers(el, likeStamp, skipStamp, excerptEl) {
       el.addEventListener('pointerdown', function(e) {
         if (excerptEl && excerptEl.contains(e.target)) {
           return; // description text scrolls natively; don't hijack it as a swipe/tap
@@ -397,9 +399,9 @@
         var progress = Math.min(Math.abs(dragX) / 110, 1);
         if (dragX > 0) {
           likeStamp.style.opacity = progress;
-          seenStamp.style.opacity = 0;
+          skipStamp.style.opacity = 0;
         } else if (dragX < 0) {
-          seenStamp.style.opacity = progress;
+          skipStamp.style.opacity = progress;
           likeStamp.style.opacity = 0;
         }
       });
@@ -419,7 +421,7 @@
         if (dragX > threshold) {
           commitSwipe('like');
         } else if (dragX < -threshold) {
-          commitSwipe('seen');
+          commitSwipe('skip');
         } else {
           el.style.transition = 'transform 0.25s ease';
           el.style.transform = '';
@@ -440,17 +442,21 @@
         el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (action === 'like' ? 20 : -20) + 'deg)';
       }
       recordAction(card, action);
-      if (typeof gtag === 'function') gtag('event', action === 'like' ? 'discover_like' : 'discover_seen', { exhibition_key: _normalizeKey(card.stable_key) });
+      if (typeof gtag === 'function') gtag('event', 'discover_' + action, { exhibition_key: _normalizeKey(card.stable_key) });
       setTimeout(renderCard, 220);
     }
 
     function recordAction(card, action) {
+      // 'skip' means "not sure / not interested right now" — per the site's
+      // serendipity principle, this is NOT recorded anywhere, so the same
+      // exhibition can resurface on a future visit rather than being
+      // permanently excluded (that would create a filter bubble).
       var key = _normalizeKey(card.stable_key);
       if (action === 'like') {
         var favs = _getFavs();
         favs[key] = { title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region, event: '' };
         _saveFavs(favs);
-      } else {
+      } else if (action === 'visited') {
         var visited = _getVisited();
         visited[key] = { date: new Date().toISOString(), title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region };
         _saveVisited(visited);
@@ -464,7 +470,7 @@
       var key = _normalizeKey(last.card.stable_key);
       if (last.action === 'like') {
         var favs = _getFavs(); delete favs[key]; _saveFavs(favs);
-      } else {
+      } else if (last.action === 'visited') {
         var visited = _getVisited(); delete visited[key]; _saveVisited(visited);
       }
       deck.unshift(last.card);
@@ -472,7 +478,8 @@
     }
 
     document.getElementById('likeBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('like'); });
-    document.getElementById('seenBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('seen'); });
+    document.getElementById('visitedBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('visited'); });
+    document.getElementById('skipBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('skip'); });
     document.getElementById('undoBtn').addEventListener('click', undo);
     document.getElementById('restartBtn').addEventListener('click', function() {
       deck = ALL_CARDS.slice();
