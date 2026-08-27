@@ -677,6 +677,11 @@ DISCOVER_LABELS = {
         "today_last": "last day",
         "view_details": "Tap for full details →",
         "count_left": "left",
+        "tutorial_title": "How to browse",
+        "tutorial_like": "Swipe right to mark “Want to go”",
+        "tutorial_seen": "Swipe left to mark “Already seen”",
+        "tutorial_tap": "Tap the card for full details",
+        "tutorial_got_it": "Got it, let's go",
     },
     "ja": {
         "title": "発見 — Taiwan Art Now",
@@ -693,6 +698,11 @@ DISCOVER_LABELS = {
         "today_last": "本日最終日",
         "view_details": "タップで詳細を見る →",
         "count_left": "件残り",
+        "tutorial_title": "使い方",
+        "tutorial_like": "右にスワイプすると「行きたい」に登録",
+        "tutorial_seen": "左にスワイプすると「観た」に登録",
+        "tutorial_tap": "カードをタップすると詳細を表示",
+        "tutorial_got_it": "わかった、見てみる",
     },
     "zh": {
         "title": "發現 — Taiwan Art Now",
@@ -709,6 +719,11 @@ DISCOVER_LABELS = {
         "today_last": "今天最後一天",
         "view_details": "點擊查看詳情 →",
         "count_left": "則",
+        "tutorial_title": "使用方式",
+        "tutorial_like": "向右滑動可標記「想去」",
+        "tutorial_seen": "向左滑動可標記「已看過」",
+        "tutorial_tap": "點擊卡片可查看完整詳情",
+        "tutorial_got_it": "了解，開始瀏覽",
     },
 }
 
@@ -738,7 +753,7 @@ def discover():
             continue  # 会期のない催しものはスワイプ発見に不向き
 
         desc = _get_description(ex, lang)
-        excerpt = _truncate_excerpt(desc, length=150)
+        excerpt = (desc or "").strip()
         if not excerpt:
             continue  # 読ませる概要がないカードは対象外
 
