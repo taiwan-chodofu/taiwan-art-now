@@ -682,6 +682,7 @@ DISCOVER_LABELS = {
         "tutorial_seen": "Swipe left to mark “Already seen”",
         "tutorial_tap": "Tap the card for full details",
         "tutorial_got_it": "Got it, let's go",
+        "scroll_more": "scroll for more",
     },
     "ja": {
         "title": "発見 — Taiwan Art Now",
@@ -703,6 +704,7 @@ DISCOVER_LABELS = {
         "tutorial_seen": "左にスワイプすると「観た」に登録",
         "tutorial_tap": "カードをタップすると詳細を表示",
         "tutorial_got_it": "わかった、見てみる",
+        "scroll_more": "スクロールで続きを読む",
     },
     "zh": {
         "title": "發現 — Taiwan Art Now",
@@ -724,6 +726,7 @@ DISCOVER_LABELS = {
         "tutorial_seen": "向左滑動可標記「已看過」",
         "tutorial_tap": "點擊卡片可查看完整詳情",
         "tutorial_got_it": "了解，開始瀏覽",
+        "scroll_more": "下滑閱讀更多",
     },
 }
 

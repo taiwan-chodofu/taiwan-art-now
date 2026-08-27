@@ -55,7 +55,7 @@
       padding: 16px; min-height: 0;
     }
     .card {
-      position: relative; width: min(92vw, 420px); height: min(65vh, 560px);
+      position: relative; width: min(92vw, 440px); height: min(82vh, 720px);
       background: var(--bg); border: 1px solid var(--border); border-radius: 18px;
       padding: 28px 26px; display: flex; flex-direction: column;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -78,11 +78,30 @@
     .card .artists {
       font-size: 0.92rem; color: var(--text-sub); margin-bottom: 18px; line-height: 1.6;
     }
+    .card .excerpt-wrap {
+      position: relative; flex: 1 1 auto; min-height: 0;
+    }
     .card .excerpt {
       font-size: 1.05rem; line-height: 1.95; color: var(--text);
-      overflow-y: auto; flex: 1 1 auto; padding-right: 4px;
+      overflow-y: auto; height: 100%; padding-right: 10px;
       max-width: 30em; white-space: pre-wrap;
+      scrollbar-width: thin; scrollbar-color: var(--text-light) transparent;
     }
+    .card .excerpt::-webkit-scrollbar { width: 5px; }
+    .card .excerpt::-webkit-scrollbar-thumb { background: var(--text-light); border-radius: 4px; }
+    .card .excerpt::-webkit-scrollbar-track { background: transparent; }
+    .card .scroll-fade {
+      position: absolute; left: 0; right: 10px; bottom: 0; height: 46px;
+      background: linear-gradient(to bottom, transparent, var(--bg) 85%);
+      pointer-events: none; transition: opacity 0.2s; opacity: 1;
+    }
+    .card .scroll-fade.hidden { opacity: 0; }
+    .card .scroll-hint {
+      position: absolute; right: 8px; bottom: 6px; font-size: 0.7rem; color: var(--text-light);
+      pointer-events: none; transition: opacity 0.2s; opacity: 1;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .card .scroll-hint.hidden { opacity: 0; }
     .card .hint {
       flex: 0 0 auto; margin-top: 16px; font-size: 0.78rem; color: var(--text-light);
       text-align: center; padding-top: 12px; border-top: 1px solid var(--border);
@@ -302,10 +321,34 @@
         el.appendChild(artistsDiv);
       }
 
+      var excerptWrap = document.createElement('div');
+      excerptWrap.className = 'excerpt-wrap';
+
       var excerptDiv = document.createElement('div');
       excerptDiv.className = 'excerpt';
       excerptDiv.textContent = currentCard.excerpt;
-      el.appendChild(excerptDiv);
+      excerptWrap.appendChild(excerptDiv);
+
+      var scrollFade = document.createElement('div');
+      scrollFade.className = 'scroll-fade';
+      excerptWrap.appendChild(scrollFade);
+
+      var scrollHint = document.createElement('div');
+      scrollHint.className = 'scroll-hint';
+      scrollHint.textContent = '↓ ' + (LABELS.scroll_more || '');
+      excerptWrap.appendChild(scrollHint);
+
+      el.appendChild(excerptWrap);
+
+      function updateScrollFade() {
+        var atBottom = excerptDiv.scrollHeight - excerptDiv.scrollTop - excerptDiv.clientHeight < 8;
+        var scrollable = excerptDiv.scrollHeight > excerptDiv.clientHeight + 4;
+        scrollFade.classList.toggle('hidden', !scrollable || atBottom);
+        scrollHint.classList.toggle('hidden', !scrollable || atBottom);
+      }
+      excerptDiv.addEventListener('scroll', updateScrollFade);
+      // Content isn't laid out until the card is in the DOM; measure next frame.
+      requestAnimationFrame(updateScrollFade);
 
       var hint = document.createElement('div');
       hint.className = 'hint';
