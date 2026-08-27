@@ -2160,6 +2160,36 @@
       "description_en": "Curated and presented by the Lize International Puppet Theatre Art Village at the Hsinchu City Railway Art Village, this exhibition looks back on nearly a decade of artistic exchange, experimentation, and creation accumulated through the village's Artist-in-Residence Program. Since 2017, Lize International Puppet Theatre Art Village has hosted artists from Taiwan and around the world for residencies in Yilan; the exhibition presents puppets, objects, photographs, video, manuscripts, sound, and performance documentation left behind by resident artists between 2017 and 2026. Curator: Helmi Fita, International Affairs Director of Lize International Puppet Theatre Art Village. Note: exact exhibition dates are yet to be confirmed — please check the official page.",
       "description_ja": "利澤国際人形劇芸術村が新竹市鉄道芸術村にて企画・開催する展覧会。同芸術村がアーティスト・イン・レジデンス・プログラムを通じてこの10年近くに積み重ねてきた芸術交流・実験・創作の過程を振り返る。利澤国際人形劇芸術村は2017年より台湾内外のアーティストを宜蘭に招いてレジデンスを行っており、本展では2017年から2026年にかけて歴代の在住アーティストが残した人形、物、写真、映像、手稿、音、パフォーマンスの記録を展示する。キュレーターは海樂・彌飛達（ヘルミ・フィタ、利澤国際人形劇芸術村国際事務局長）。※詳しい会期は未確定のため、公式ページをご確認ください。",
       "status": "ended"
+    },
+    {
+      "museum": "852art",
+      "title_zh": "日復一日",
+      "title_en": "",
+      "title_ja": "",
+      "dates": "2026.08.15 – 2026.08.27",
+      "link": "https://www.facebook.com/profile.php?id=61574023807656",
+      "artists": [
+        "魏仲偉"
+      ],
+      "description": "《日復一日》收錄藝術家魏仲偉自去年十月至今的創作，記錄他觀看方式逐漸形成的過程與創作思考的轉變。他最初試圖以繪畫表達內在情緒，逐漸從情緒性描繪轉向對光影、空間與日常生活中「陌生感」的關注。此次展覽並非某系列的完成，而是一段創作歷程的整理，呈現藝術家如何在日復一日的觀看與描繪之中，逐漸找到屬於自己的創作方式。",
+      "description_en": "\"Day After Day\" brings together artist Wei Chung-wei's (nickname \"Wayne\") works created since last October, documenting the gradual formation of his way of seeing and the evolution of his creative thinking. He initially tried to express inner emotions through painting, gradually shifting from emotional depiction toward an interest in light, space, and the sense of \"strangeness\" in everyday life. Rather than completing a particular series, the exhibition is an organization of a creative journey, showing how the artist, through day-after-day observation and depiction, gradually found his own way of creating.",
+      "description_ja": "「日復一日（デイ・アフター・デイ）」は、アーティスト魏仲偉（愛称ウェイン）が昨年10月以降に制作した作品を集めた個展で、彼のものの見方が徐々に形成されていく過程と、創作上の思考の変化を記録している。当初は絵画によって内なる感情を表現しようとしていたが、次第に感情的な描写から、光と影、空間、そして日常生活の中の「異質感」への関心へと移行していった。本展はある系列の完成を示すものではなく、一つの創作の軌跡の整理であり、日々繰り返される観察と描写の中で、作家が自分自身の創作方法を見出していく過程を示している。",
+      "added_at": "2026-08-26"
+    },
+    {
+      "museum": "artshubbq",
+      "title_zh": "幻貓成形—楊于萱創作個展",
+      "title_en": "Cat Taking Shape — Yang Yu-Hsuan Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026.08.05 – 2026.08.27",
+      "link": "https://artemperor.tw/tidbits/20217",
+      "artists": [
+        "楊于萱"
+      ],
+      "description": "本展以藝術家自身的貓咪為創作主題，透過膠彩與陶瓷創作，細膩記錄人與貓相伴中的凝視、依戀與情感投射。展覽引用「有些生命，是先以一根毛、一截尾巴的模樣，悄悄走進你的生活中」，描繪街角流浪貓與紙箱裡貓咪的日常意象，邀請觀者反思自身未曾言說的情感經驗。展期間同時舉辦手捏貓陶器工作坊。",
+      "description_en": "This exhibition takes the artist's own cat as its subject, using nikawa-pigment painting and ceramics to capture the gaze, attachment, and emotional projection found in the quiet moments of companionship between human and cat. Drawing on the line \"some lives quietly enter yours first as just a strand of fur, a glimpse of a tail,\" it depicts everyday images of stray cats on street corners and cats curled up in cardboard boxes, inviting viewers to reflect on their own unspoken feelings. A hand-shaped cat-pottery workshop was also held during the run.",
+      "description_ja": "本展は作家自身の猫を創作の主題とし、膠彩画と陶芸によって、人と猫が寄り添う中で生まれるまなざし・愛着・感情の投影を繊細に描き出す。「ある命は、まず一本の毛、一筋の尾の姿でそっとあなたの生活に入り込む」という言葉に着想を得て、街角の野良猫や段ボール箱の中の猫といった日常のイメージを描き、観る者に自身のまだ言葉にしていない感情を振り返るよう促す。会期中には猫の手びねり陶器ワークショップも開催された。",
+      "added_at": "2026-08-26"
     }
   ]
 }
