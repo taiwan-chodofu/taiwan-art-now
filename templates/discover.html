@@ -81,7 +81,7 @@
     .card .excerpt {
       font-size: 1.05rem; line-height: 1.95; color: var(--text);
       overflow-y: auto; flex: 1 1 auto; padding-right: 4px;
-      max-width: 30em;
+      max-width: 30em; white-space: pre-wrap;
     }
     .card .hint {
       flex: 0 0 auto; margin-top: 16px; font-size: 0.78rem; color: var(--text-light);
@@ -118,14 +118,105 @@
       margin-top: 18px; padding: 12px 28px; border-radius: 999px; border: none;
       background: var(--text); color: var(--bg); font-size: 0.95rem; cursor: pointer;
     }
+    .lang-dropdown { position: relative; display: inline-block; }
+    .lang-btn {
+      font-size: 0.9rem; background: none; border: none; color: var(--text);
+      cursor: pointer; padding: 4px 6px;
+    }
+    .lang-menu {
+      display: none; position: absolute; top: 100%; right: 0;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 4px 0; z-index: 200; min-width: 90px;
+    }
+    @media (prefers-color-scheme: dark) {
+      .lang-menu { box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+    }
+    .lang-menu.show { display: block; }
+    .lang-menu a {
+      display: block; padding: 8px 14px; font-size: 0.78rem;
+      color: var(--text-sub); text-decoration: none;
+    }
+    .lang-menu a.active { color: var(--text); font-weight: 600; }
+
+    .tutorial-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 500;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 28px 20px;
+    }
+    .tutorial-overlay h3 {
+      color: #fff; font-size: 1.15rem; margin-bottom: 26px; font-weight: 700;
+    }
+    .tutorial-demo {
+      position: relative; width: 180px; height: 110px; margin-bottom: 30px;
+    }
+    .tutorial-demo .mini-card {
+      position: absolute; inset: 0; background: var(--bg); border-radius: 14px;
+      display: flex; flex-direction: column; padding: 14px; gap: 6px;
+      animation: tutorialSwing 3.2s ease-in-out infinite;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .tutorial-demo .mini-card .mini-line { height: 8px; border-radius: 4px; background: var(--border); }
+    .tutorial-demo .mini-card .mini-line.title { width: 70%; height: 10px; background: var(--text-light); }
+    .tutorial-demo .mini-card .mini-line.w1 { width: 100%; }
+    .tutorial-demo .mini-card .mini-line.w2 { width: 85%; }
+    .tutorial-demo .mini-card .mini-line.w3 { width: 60%; }
+    @keyframes tutorialSwing {
+      0%, 14% { transform: translateX(0) rotate(0deg); }
+      28% { transform: translateX(-46px) rotate(-9deg); }
+      42% { transform: translateX(0) rotate(0deg); }
+      56% { transform: translateX(0) rotate(0deg); }
+      70% { transform: translateX(46px) rotate(9deg); }
+      84%, 100% { transform: translateX(0) rotate(0deg); }
+    }
+    .tutorial-steps { display: flex; flex-direction: column; gap: 16px; max-width: 300px; margin-bottom: 30px; }
+    .tutorial-step { display: flex; align-items: center; gap: 12px; color: #eee; font-size: 0.92rem; line-height: 1.5; }
+    .tutorial-step .icon {
+      flex: 0 0 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; background: rgba(255,255,255,0.12);
+    }
+    .tutorial-step.like .icon { color: var(--like); }
+    .tutorial-step.seen .icon { color: var(--seen); }
+    .tutorial-overlay .got-it-btn {
+      padding: 13px 32px; border-radius: 999px; border: none;
+      background: #fff; color: #111; font-size: 0.95rem; font-weight: 600; cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <header>
     <a href="/?lang={{ current_lang }}">← {{ labels.back }}</a>
     <div class="heading">{{ labels.heading }}</div>
-    <div class="progress" id="progressLabel"></div>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div class="progress" id="progressLabel"></div>
+      <div class="lang-dropdown">
+        <button class="lang-btn" id="langBtn" onclick="document.getElementById('langMenu').classList.toggle('show')">🌐</button>
+        <div class="lang-menu" id="langMenu">
+          <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
+          <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
+          <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>English</a>
+        </div>
+      </div>
+    </div>
   </header>
+
+  <div class="tutorial-overlay" id="tutorialOverlay" style="display:none;">
+    <h3>{{ labels.tutorial_title }}</h3>
+    <div class="tutorial-demo">
+      <div class="mini-card">
+        <div class="mini-line title"></div>
+        <div class="mini-line w1"></div>
+        <div class="mini-line w2"></div>
+        <div class="mini-line w3"></div>
+      </div>
+    </div>
+    <div class="tutorial-steps">
+      <div class="tutorial-step like"><span class="icon">♡</span><span>{{ labels.tutorial_like }}</span></div>
+      <div class="tutorial-step seen"><span class="icon">✕</span><span>{{ labels.tutorial_seen }}</span></div>
+      <div class="tutorial-step"><span class="icon">👆</span><span>{{ labels.tutorial_tap }}</span></div>
+    </div>
+    <button class="got-it-btn" id="tutorialGotIt">{{ labels.tutorial_got_it }}</button>
+  </div>
 
   <div class="stage" id="stage">
     <div class="empty-state" id="emptyState" style="display:none;">
@@ -343,6 +434,15 @@
     });
 
     renderCard();
+
+    var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
+    if (!localStorage.getItem(TUTORIAL_KEY)) {
+      document.getElementById('tutorialOverlay').style.display = 'flex';
+    }
+    document.getElementById('tutorialGotIt').addEventListener('click', function() {
+      localStorage.setItem(TUTORIAL_KEY, '1');
+      document.getElementById('tutorialOverlay').style.display = 'none';
+    });
   </script>
 </body>
 </html>
