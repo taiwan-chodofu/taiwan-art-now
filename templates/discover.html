@@ -413,20 +413,46 @@
     }
 
     function attachDragHandlers(el, likeStamp, skipStamp, excerptEl) {
+      // 説明文の中で始まったジェスチャーは、最初は「横スワイプか縦スクロールか」
+      // 未確定の状態で保留し(directionLocked=false)、指が十分動いた時点で
+      // 方向を判定する。横方向優勢ならここからカードのスワイプとして扱い、
+      // 縦方向優勢ならisDragging=falseにしてブラウザのネイティブスクロール
+      // (touch-action:pan-y)に委ねる。カードの他の部分(タイトル等)で始まった
+      // ジェスチャーは従来通り即座にスワイプ判定を開始する。
+      var startedInExcerpt = false;
+      var directionLocked = false;
+      var isHorizontalSwipe = false;
+
       el.addEventListener('pointerdown', function(e) {
-        if (excerptEl && excerptEl.contains(e.target)) {
-          return; // description text scrolls natively; don't hijack it as a swipe/tap
-        }
+        startedInExcerpt = !!(excerptEl && excerptEl.contains(e.target));
+        directionLocked = !startedInExcerpt;
+        isHorizontalSwipe = !startedInExcerpt;
         isDragging = true;
         activePointerId = e.pointerId;
         dragStartX = e.clientX; dragStartY = e.clientY; dragX = 0;
         el.style.cursor = 'grabbing';
-        el.setPointerCapture(e.pointerId);
+        if (!startedInExcerpt) {
+          el.setPointerCapture(e.pointerId);
+        }
       });
       el.addEventListener('pointermove', function(e) {
         if (!isDragging || e.pointerId !== activePointerId) return;
-        dragX = e.clientX - dragStartX;
-        var dragY = (e.clientY - dragStartY) * 0.3;
+        var dx = e.clientX - dragStartX;
+        var dy = e.clientY - dragStartY;
+
+        if (!directionLocked) {
+          if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return; // 判定にはもう少し動きが必要
+          directionLocked = true;
+          isHorizontalSwipe = Math.abs(dx) > Math.abs(dy) * 1.2;
+          if (!isHorizontalSwipe) {
+            isDragging = false; // 縦スクロールと判定。ネイティブスクロールに任せる
+            return;
+          }
+          el.setPointerCapture(e.pointerId);
+        }
+
+        dragX = dx;
+        var dragY = dy * 0.3;
         var rotate = dragX / 18;
         el.style.transform = 'translate(' + dragX + 'px,' + dragY + 'px) rotate(' + rotate + 'deg)';
         var progress = Math.min(Math.abs(dragX) / 110, 1);
@@ -444,8 +470,10 @@
         el.style.cursor = 'grab';
         var threshold = 100;
         if (Math.abs(dragX) < 6) {
-          // treated as a tap, not a swipe
           el.style.transform = '';
+          if (startedInExcerpt) {
+            return; // 説明文内での小さな動きは読む操作。詳細ページには飛ばさない
+          }
           if (currentCard && currentCard.detail_url) {
             window.location.href = currentCard.detail_url;
           }
