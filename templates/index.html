@@ -45,6 +45,7 @@
       --cat-public: #2d3436; --cat-alt: #6c5ce7;
       --cat-commercial: #00b894; --cat-private: #e17055;
       --chip-active-bg: #000; --chip-active-text: #fff;
+      --bn-h: 58px; /* bottom-nav height, used to keep FABs/toasts clear of it */
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -63,6 +64,7 @@
       background: var(--bg); color: var(--text);
       line-height: 1.6; -webkit-font-smoothing: antialiased;
       font-size: 15px;
+      padding-bottom: calc(var(--bn-h) + env(safe-area-inset-bottom, 0px));
     }
 
     /* ===== HEADER ===== */
@@ -79,16 +81,6 @@
       display: block; font-size: 0.6rem; font-weight: 300;
       color: var(--text-sub); letter-spacing: 0; margin-top: 1px;
     }
-    .header-nav { display: flex; align-items: center; gap: 2px; }
-    .header-nav a {
-      color: var(--text-light); text-decoration: none; font-size: 0.7rem;
-      padding: 4px 8px; border-radius: 4px;
-      transition: all 0.15s;
-    }
-    .header-nav a:active, .header-nav a.active {
-      color: var(--accent); background: var(--tag-bg);
-    }
-    .refresh-btn { font-size: 0.8rem !important; }
     .lang-dropdown { position: relative; display: inline-block; }
     .lang-menu {
       display: none; position: absolute; top: 100%; right: 0;
@@ -113,20 +105,6 @@
       Taiwan Art Now
       <small>{{ labels.subtitle }}{% if last_updated %} · {% if current_lang == 'zh' %}更新於 {{ last_updated }}{% elif current_lang == 'ja' %}{{ last_updated }} 更新{% else %}updated {{ last_updated }}{% endif %}{% endif %}</small>
     </a>
-    <nav class="header-nav">
-      <div class="lang-dropdown">
-        <button class="refresh-btn" id="langBtn" onclick="document.getElementById('langMenu').classList.toggle('show')">🌐</button>
-        <div class="lang-menu" id="langMenu">
-          <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
-          <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
-          <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>English</a>
-        </div>
-      </div>
-      <a href="#" id="nearMeBtn" class="refresh-btn" aria-label="Near me" title="Near me" onclick="showNearMe(event)">📍</a>
-      <a href="/discover?lang={{ current_lang }}" class="refresh-btn" aria-label="Discover" title="{% if current_lang == 'zh' %}發現{% elif current_lang == 'ja' %}発見{% else %}Discover{% endif %}">✨</a>
-      <a href="#" id="mylistHeaderBtn" class="refresh-btn" aria-label="My List" title="My List" onclick="toggleMylistHeader(event)">📋</a>
-      <a href="/search?lang={{ current_lang }}" class="refresh-btn" aria-label="Search" title="Search">🔍</a>
-    </nav>
   </header>
 
   {% if holiday_today %}
@@ -317,32 +295,9 @@
   </script>
   {% endif %}
 
-  <!-- SUBNAV -->
+  <!-- Secondary nav (Taishin/Featured/Artists/Archive/Search/Lang) moved into
+       the bottom-nav "More" sheet — see BOTTOM NAV near end of body. -->
   <style>
-    .subnav {
-      max-width: 720px; margin: 0 auto;
-      padding: 6px 1rem;
-      display: flex; gap: 14px; align-items: center;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.7rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .subnav::-webkit-scrollbar { display: none; }
-    .subnav a {
-      color: var(--text-sub); text-decoration: none;
-      white-space: nowrap;
-      padding: 3px 0;
-      transition: color 0.15s;
-    }
-    .subnav a.current { color: var(--text); font-weight: 600; }
-    .subnav a:active { color: var(--accent); }
-    .subnav-sep { color: var(--text-light); }
-    /* First-time visitors (no localStorage visit flag yet) get a lighter
-       above-the-fold: hide the secondary nav so the exhibition list appears
-       sooner. Returning visitors are unaffected — this class is only added
-       by JS before paint when taiwan_art_visited_before is absent. */
-    html.first-visit .subnav { display: none; }
     /* Category (public/alt/gallery/private) filter row is collapsed by
        default for everyone to keep the top of the page tidy; a small
        toggle chip reveals it on demand. */
@@ -351,14 +306,6 @@
     #catToggleBtn .cat-toggle-arrow { display: inline-block; transition: transform 0.15s; font-size: 0.6rem; }
     .filter-bar.cat-open #catToggleBtn .cat-toggle-arrow { transform: rotate(180deg); }
   </style>
-  <nav class="subnav" aria-label="Site navigation">
-    <a href="/?lang={{ current_lang }}" class="current">{{ labels.title.split('—')[0].strip() if '—' in labels.title else 'Exhibitions' }}</a>
-    <span class="subnav-sep">·</span>
-    <a href="/taishin?lang={{ current_lang }}">🏆 Taishin Award</a>
-    <a href="/featured?lang={{ current_lang }}">⭐ Featured</a>
-    <a href="/artists?lang={{ current_lang }}">👥 Artists</a>
-    <a href="/archive?lang={{ current_lang }}">📚 Archive</a>
-  </nav>
 
   <!-- FILTER BAR (sticky) -->
   <style>
@@ -1408,7 +1355,7 @@
     if (sessionStorage.getItem('taiwan_art_inapp_save_warned')) return;
     sessionStorage.setItem('taiwan_art_inapp_save_warned', '1');
     var toast = document.createElement('div');
-    toast.style.cssText = 'position:fixed;bottom:24px;left:16px;right:16px;max-width:360px;margin:0 auto;background:#822727;color:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:9999;font-size:0.75rem;display:flex;align-items:center;gap:10px;';
+    toast.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 24px);left:16px;right:16px;max-width:360px;margin:0 auto;background:#822727;color:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 4px 16px rgba(0,0,0,0.25);z-index:9999;font-size:0.75rem;display:flex;align-items:center;gap:10px;';
     var msg = document.createElement('span');
     msg.style.flex = '1';
     msg.textContent = '{% if current_lang == "zh" %}⚠️ 這個記錄只留在目前的App瀏覽器裡{% elif current_lang == "ja" %}⚠️ この記録は今のアプリ内だけに残ります{% else %}⚠️ This save only stays in this app's browser{% endif %}';
@@ -1522,7 +1469,7 @@
     if (!el) {
       el = document.createElement('div');
       el.id = 'retentionPrompt';
-      el.style.cssText = 'position:fixed;bottom:90px;left:16px;right:16px;max-width:360px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:var(--text);';
+      el.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 90px);left:16px;right:16px;max-width:360px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:var(--text);';
       document.body.appendChild(el);
     }
     el.innerHTML = '<span style="flex:1;">' + msg + '</span>'
@@ -1552,7 +1499,7 @@
     if (!el) {
       el = document.createElement('div');
       el.id = 'messengerPrompt';
-      el.style.cssText = 'position:fixed;bottom:90px;left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#333;';
+      el.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 90px);left:16px;right:16px;max-width:360px;margin:0 auto;background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:14px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.15);z-index:9999;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:#333;';
       document.body.appendChild(el);
     }
     var ref = _getRefCode();
@@ -1585,10 +1532,22 @@
       item.classList.toggle('visited-item', !!visited[key]);
       item.classList.toggle('favorited-item', !!favs[key] && !visited[key]);
     });
-    // Update header mylist badge
-    var headerBtn = document.getElementById('mylistHeaderBtn');
+    // Update bottom-nav mylist badge
+    var mylistIcon = document.getElementById('mylistNavIcon');
     var favCount = Object.keys(favs).length;
-    if (headerBtn) headerBtn.textContent = favCount > 0 ? '📋' + favCount : '📋';
+    if (mylistIcon) {
+      var badge = mylistIcon.querySelector('.bn-badge');
+      if (favCount > 0) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'bn-badge';
+          mylistIcon.appendChild(badge);
+        }
+        badge.textContent = favCount > 99 ? '99+' : String(favCount);
+      } else if (badge) {
+        badge.remove();
+      }
+    }
   }
 
 
@@ -1917,7 +1876,7 @@
   <!-- FLOATING POST BUTTON + MODAL -->
   <style>
     .fab {
-      position: fixed; bottom: 24px; right: 20px; z-index: 900;
+      position: fixed; bottom: calc(var(--bn-h) + 24px + env(safe-area-inset-bottom, 0px)); right: 20px; z-index: 900;
       width: 52px; height: 52px; border-radius: 50%;
       background: #0084FF; color: #fff;
       border: none; font-size: 1.5rem; font-weight: 300;
@@ -1928,7 +1887,7 @@
     }
     .fab:active { transform: scale(0.92); }
     .fab-tooltip {
-      display: none; position: fixed; bottom: 84px; right: 16px; z-index: 901;
+      display: none; position: fixed; bottom: calc(var(--bn-h) + 84px + env(safe-area-inset-bottom, 0px)); right: 16px; z-index: 901;
       background: var(--text); color: var(--bg);
       font-size: 0.75rem; padding: 8px 14px; border-radius: 8px;
       max-width: 200px; line-height: 1.4;
@@ -1946,7 +1905,7 @@
     }
   </style>
 
-  <a class="fab" id="nearYouFab" style="bottom:84px;background:#1a1a1a;" onclick="showNearMe(event)" href="#">📍</a>
+  <a class="fab" id="nearYouFab" style="bottom:calc(var(--bn-h) + 84px + env(safe-area-inset-bottom, 0px));background:#1a1a1a;" onclick="showNearMe(event)" href="#">📍</a>
   <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Subscribe" onclick="localStorage.setItem('taiwan_art_messenger_connected','1')">🔔</a>
   <div class="fab-tooltip" id="fabTooltip">
     {% if current_lang == 'zh' %}訂閱通知 / 傳送展覽資訊
@@ -2032,7 +1991,7 @@
         // explain why (so the instruction feels worth following) instead
         // of showing steps that won't work here.
         var popup2 = document.createElement('div');
-        popup2.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
+        popup2.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 100px);left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
         popup2.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>{% if current_lang == "zh" %}用瀏覽器開啟後，就能加入主畫面，也能保存♡想去的紀錄。點右上角「⋯」選擇「在瀏覽器中開啟」即可。{% elif current_lang == "ja" %}ブラウザで開くと、ホーム画面に追加できて、♡の記録も保存されます。右上の「…」から「ブラウザで開く」を選んでください。{% else %}Open in your browser to add this to your home screen and keep your ♡ saves. Tap "⋯" (top right) and choose "Open in Browser."{% endif %}</div><button onclick="this.parentElement.remove()" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
         document.body.appendChild(popup2);
         if (typeof gtag === 'function') gtag('event', 'pwa_prompt_shown_inapp', {});
@@ -2056,7 +2015,7 @@
           : '{% if current_lang == "zh" %}點選瀏覽器選單 ⋮ → 選擇「加入主畫面」{% elif current_lang == "ja" %}ブラウザメニュー ⋮ →「ホーム画面に追加」{% else %}Tap browser menu ⋮ → "Add to Home Screen"{% endif %}';
         // Show instruction popup
         var popup = document.createElement('div');
-        popup.style.cssText = 'position:fixed;bottom:100px;left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
+        popup.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 100px);left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
         popup.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>' + msg + '</div><button onclick="this.parentElement.remove();localStorage.setItem(\'taiwan_art_pwa_dismissed\',\'1\')" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
         document.body.appendChild(popup);
         if (typeof gtag === 'function') gtag('event', 'pwa_prompt_shown', {});
@@ -2167,6 +2126,114 @@
   <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/static/sw.js');
+  }
+  </script>
+
+  <!-- BOTTOM NAV (Home / Discover / Saved / More) — replaces the old header
+       icon row + subnav row, and stays reachable while the list scrolls. -->
+  <style>
+    .bottom-nav {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 800;
+      display: flex; background: var(--bg); border-top: 1px solid var(--border);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      max-width: 720px; margin: 0 auto;
+    }
+    .bottom-nav-item {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; height: var(--bn-h);
+      color: var(--text-light); text-decoration: none; background: none; border: none;
+      font-family: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    }
+    .bottom-nav-item.active { color: var(--text); }
+    .bottom-nav-item:active { opacity: 0.6; }
+    .bn-icon { font-size: 1.15rem; line-height: 1; position: relative; }
+    .bn-label { font-size: 0.6rem; line-height: 1; }
+    .bn-badge {
+      position: absolute; top: -4px; right: -10px;
+      background: var(--red); color: #fff; font-size: 0.55rem; font-weight: 700;
+      border-radius: 999px; padding: 1px 4px; min-width: 14px; text-align: center;
+    }
+    .more-sheet-overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 950;
+    }
+    .more-sheet-overlay.show { display: block; }
+    .more-sheet {
+      display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 951;
+      max-width: 720px; margin: 0 auto;
+      background: var(--bg); border-radius: 16px 16px 0 0;
+      padding: 8px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    }
+    .more-sheet.show { display: block; }
+    .more-sheet-handle {
+      width: 36px; height: 4px; border-radius: 999px; background: var(--border);
+      margin: 4px auto 8px;
+    }
+    .more-sheet-item {
+      display: block; padding: 12px 20px; font-size: 0.85rem;
+      color: var(--text); text-decoration: none;
+    }
+    .more-sheet-item:active { background: var(--hover-bg); }
+    .more-sheet-lang-row {
+      display: flex; gap: 8px; padding: 10px 20px 4px; border-top: 1px solid var(--border); margin-top: 6px;
+    }
+    .more-sheet-lang-row a {
+      flex: 1; text-align: center; padding: 8px 0; border-radius: 8px;
+      font-size: 0.75rem; color: var(--text-sub); text-decoration: none; background: var(--tag-bg);
+    }
+    .more-sheet-lang-row a.active { font-weight: 700; background: var(--chip-active-bg); color: var(--chip-active-text); }
+  </style>
+
+  <div class="more-sheet-overlay" id="moreSheetOverlay" onclick="closeMoreMenu()"></div>
+  <div class="more-sheet" id="moreSheet" role="dialog" aria-label="More">
+    <div class="more-sheet-handle"></div>
+    <a class="more-sheet-item" href="/taishin?lang={{ current_lang }}">🏆 Taishin Award</a>
+    <a class="more-sheet-item" href="/featured?lang={{ current_lang }}">⭐ Featured</a>
+    <a class="more-sheet-item" href="/artists?lang={{ current_lang }}">👥 Artists</a>
+    <a class="more-sheet-item" href="/archive?lang={{ current_lang }}">📚 Archive</a>
+    <a class="more-sheet-item" href="/search?lang={{ current_lang }}">🔍 {% if current_lang == 'zh' %}搜尋{% elif current_lang == 'ja' %}検索{% else %}Search{% endif %}</a>
+    <div class="more-sheet-lang-row">
+      <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
+      <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
+      <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>English</a>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Primary navigation">
+    <a href="/?lang={{ current_lang }}" class="bottom-nav-item active">
+      <span class="bn-icon">🏠</span>
+      <span class="bn-label">{% if current_lang == 'zh' %}首頁{% elif current_lang == 'ja' %}ホーム{% else %}Home{% endif %}</span>
+    </a>
+    <a href="/discover?lang={{ current_lang }}" class="bottom-nav-item">
+      <span class="bn-icon">✨</span>
+      <span class="bn-label">{% if current_lang == 'zh' %}發現{% elif current_lang == 'ja' %}発見{% else %}Discover{% endif %}</span>
+    </a>
+    <button type="button" class="bottom-nav-item" id="mylistNavBtn" onclick="toggleMylistHeader(event)">
+      <span class="bn-icon" id="mylistNavIcon">📋</span>
+      <span class="bn-label">{% if current_lang == 'zh' %}收藏{% elif current_lang == 'ja' %}お気に入り{% else %}Saved{% endif %}</span>
+    </button>
+    <button type="button" class="bottom-nav-item" id="moreNavBtn" onclick="toggleMoreMenu(event)" aria-expanded="false" aria-controls="moreSheet">
+      <span class="bn-icon">⋯</span>
+      <span class="bn-label">{% if current_lang == 'zh' %}更多{% elif current_lang == 'ja' %}もっと{% else %}More{% endif %}</span>
+    </button>
+  </nav>
+
+  <script>
+  function toggleMoreMenu(e) {
+    if (e) e.preventDefault();
+    var sheet = document.getElementById('moreSheet');
+    var overlay = document.getElementById('moreSheetOverlay');
+    var btn = document.getElementById('moreNavBtn');
+    var open = !sheet.classList.contains('show');
+    sheet.classList.toggle('show', open);
+    overlay.classList.toggle('show', open);
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeMoreMenu() {
+    document.getElementById('moreSheet').classList.remove('show');
+    document.getElementById('moreSheetOverlay').classList.remove('show');
+    var btn = document.getElementById('moreNavBtn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   }
   </script>
 </body>
