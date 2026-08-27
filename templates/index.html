@@ -339,12 +339,17 @@
     .subnav a:active { color: var(--accent); }
     .subnav-sep { color: var(--text-light); }
     /* First-time visitors (no localStorage visit flag yet) get a lighter
-       above-the-fold: hide the secondary nav and collapse the category
-       filter row so the exhibition list appears sooner. Returning visitors
-       are unaffected — this class is only added by JS before paint when
-       taiwan_art_visited_before is absent. */
+       above-the-fold: hide the secondary nav so the exhibition list appears
+       sooner. Returning visitors are unaffected — this class is only added
+       by JS before paint when taiwan_art_visited_before is absent. */
     html.first-visit .subnav { display: none; }
-    html.first-visit #catFilters { display: none; }
+    /* Category (public/alt/gallery/private) filter row is collapsed by
+       default for everyone to keep the top of the page tidy; a small
+       toggle chip reveals it on demand. */
+    #catFiltersSection { display: none; }
+    .filter-bar.cat-open #catFiltersSection { display: block; }
+    #catToggleBtn .cat-toggle-arrow { display: inline-block; transition: transform 0.15s; font-size: 0.6rem; }
+    .filter-bar.cat-open #catToggleBtn .cat-toggle-arrow { transform: rotate(180deg); }
   </style>
   <nav class="subnav" aria-label="Site navigation">
     <a href="/?lang={{ current_lang }}" class="current">{{ labels.title.split('—')[0].strip() if '—' in labels.title else 'Exhibitions' }}</a>
@@ -421,9 +426,10 @@
         {% for region in regions %}
         <button class="filter-chip" data-filter="region" data-value="{{ region.id }}">{{ region.name }}{% if region.active_count %} <span class="chip-count">{{ region.active_count }}</span>{% endif %}</button>
         {% endfor %}
+        <button class="filter-chip" id="catToggleBtn" onclick="toggleCatFilters()" aria-expanded="false" aria-controls="catFilters">{{ labels.cat_toggle }} <span class="cat-toggle-arrow" aria-hidden="true">▾</span></button>
       </div>
     </div>
-    <div class="filter-section">
+    <div class="filter-section" id="catFiltersSection">
       <div class="filter-row" id="catFilters">
         <button class="filter-chip active" data-filter="cat" data-value="all">All</button>
         <button class="filter-chip" data-filter="cat" data-value="public" aria-label="{{ labels.cat_public }}"><span aria-hidden="true">🏛</span> {{ labels.cat_public }}</button>
@@ -1351,6 +1357,14 @@
     }
   }
 
+  function toggleCatFilters() {
+    var bar = document.querySelector('.filter-bar');
+    var btn = document.getElementById('catToggleBtn');
+    if (!bar) return;
+    var open = bar.classList.toggle('cat-open');
+    if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
   function toggleExFav(event, btn) {
     event.preventDefault();
     event.stopPropagation();
@@ -1880,6 +1894,7 @@
 
     syncChipsFromState();
     applyFilters();
+    if (activeCat !== 'all') toggleCatFilters();
 
     // Accordion: region header click toggles section
     document.querySelectorAll('.region-header').forEach(function(header) {
