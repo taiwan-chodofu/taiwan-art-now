@@ -456,3 +456,8 @@
 [NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
 [NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
 [NO DESCRIPTION AT ALL] orogeny: '填入新的土——蔡鎮澤個展' has no description in any language
+
+--- Validation 2026-08-31 03:33 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
