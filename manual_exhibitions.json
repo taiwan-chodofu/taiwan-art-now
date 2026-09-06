@@ -642,53 +642,6 @@
     },
     {
       "museum": "kmfa",
-      "title_zh": "典藏庫房的竊竊私語",
-      "title_en": "",
-      "dates": "2026.05.09 – 2026.09.06",
-      "artists": [
-        "王仲堃",
-        "王挺宇",
-        "王雅慧",
-        "石晉華",
-        "江柏萱",
-        "吳耿禎",
-        "李承亮",
-        "李俊陽",
-        "李屏宜",
-        "杜珮詩",
-        "沈昭良",
-        "林介文",
-        "林玉婷",
-        "林良材",
-        "林柏樑",
-        "林純如",
-        "侯俊明",
-        "姚瑞中",
-        "袁廣鳴",
-        "袁慧莉",
-        "張乃文",
-        "張新丕",
-        "梁任宏",
-        "陳伯義",
-        "陳怡潔",
-        "黃美惠",
-        "黃嘉寧",
-        "黃頤勝",
-        "賈茜茹",
-        "劉世芬",
-        "劉柏村",
-        "賴珮瑜",
-        "謝鴻均",
-        "黨若洪"
-      ],
-      "link": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=3fa4f217-9953-4813-975b-1b6d8529dfb0",
-      "status": "current",
-      "description": "本展由高雄市立美術館與台灣藝術銀行合作策劃，總策劃林平，研究與選件莊偉慈、黃彥穎、葉佳蓉，匯集兩館典藏共33位藝術家作品，邀請觀眾進入典藏庫房這座如巨樹根系般有序的世界。展覽以漫畫式的視覺敘事，探討藝術創作的永續性、作品的流通，以及藝術家生涯發展的軌跡，並呈現高美館（1994年成立，南台灣首座現代美術館）與台灣藝術銀行（2013年成立，仿效加拿大1972年首創的藝術銀行制度）如何透過收藏機制影響台灣藝術與社會的發展。展覽將作品比擬為形態不定、難以被定性的「軟體動物」，穿梭於根系般的典藏系統中，帶著創作者與機構賦予的生命史，從地底庫房遊歷至地面展廳。",
-      "description_en": "Co-curated by the Kaohsiung Museum of Fine Arts (KMFA) and Taiwan's Art Bank, with Lin Ping as chief curator and Chuang Wei-Tsu, Huang Yen-Ying, and Yeh Chia-Jung handling research and selection, this exhibition draws on the collections of both institutions to bring visitors into the ordered world of collection storage, likened to the root system of a great tree. Using comic-style visual storytelling, the show examines the sustainability of artistic practice, the circulation of artworks, and patterns of artists' career development, while situating KMFA (founded in 1994 as southern Taiwan's first museum of modern art) alongside Taiwan's Art Bank (established in 2013, modeled on Canada's pioneering 1972 art bank system) as institutions that shape Taiwan's art and society through their collection mechanisms. Artworks are imagined as shapeless, hard-to-categorize \"mollusks\" moving through root-like storage systems, carrying life histories given to them by their creators and institutions as they travel from underground vaults to gallery walls above.",
-      "description_ja": "高雄市立美術館(KMFA)と台湾アートバンクの共同企画による本展は、林平(リン・ピン)を総合キュレーターに、莊偉慈、黃彥穎、葉佳蓉がリサーチと作品選定を担当し、両機関の所蔵作品から選ばれた33名の作家の作品を展示する。観客を、巨樹の根系のように秩序立った収蔵庫の世界へと導く構成で、マンガ的な視覚表現を用いながら、芸術創作の持続可能性、作品の流通、作家のキャリア形成の軌跡を考察する。1994年に開館した南台湾初の近代美術館であるKMFAと、1972年にカナダで始まったアートバンク制度をモデルに2013年に設立された台湾アートバンクが、それぞれの収蔵の仕組みを通じて台湾の美術と社会にどのような影響を与えてきたかを描き出す。作品は、形が定まらず分類しがたい「軟体動物」として擬人化され、根のような収蔵システムの中を移動しながら、制作者や機関から与えられた生命の物語を携え、地下の収蔵庫から地上の展示室へと旅する存在として描かれる。"
-    },
-    {
-      "museum": "kmfa",
       "title_zh": "和光同塵：李安成",
       "title_en": "",
       "dates": "2026.07.04 – 2026.11.08",
@@ -1040,50 +993,6 @@
       "description_ja": "「当下の風景――褚天安2026水彩スケッチ個展」は、アーティスト褚天安（チュー・ティエンアン）による水彩スケッチの個展で、2026年8月8日から9月20日まで桃園十一份美術館にて開催される。"
     },
     {
-      "museum": "fotoaura",
-      "title_zh": "Unattended",
-      "title_en": "Unattended",
-      "title_ja": "",
-      "dates": "2026.07.18 – 2026.09.06",
-      "location": "海馬迴光畫館",
-      "link": "https://www.facebook.com/fotoaura.tw",
-      "artists": [
-        "賴金池"
-      ],
-      "events": [
-        {
-          "date": "2026/07/18",
-          "time": "15:00",
-          "title_zh": "開幕",
-          "title_en": "Opening",
-          "title_ja": "オープニング",
-          "type": "opening"
-        },
-        {
-          "date": "2026/08/15",
-          "time": "",
-          "title_zh": "座談（與談人：李傑、沈裕昌）",
-          "title_en": "Talk (Guests: Lee Kit, Shen Yu-Chang)",
-          "title_ja": "座談（李傑、沈裕昌）",
-          "type": "talk"
-        },
-        {
-          "date": "2026/07/23",
-          "time": "",
-          "title_zh": "臨時休館公告（白天）／耳集 Cochlea-gigs no.96（晚上）",
-          "title_en": "Temporary daytime closure / Cochlea-gigs no.96 (evening)",
-          "title_ja": "臨時休館のお知らせ（日中）／耳集 Cochlea-gigs no.96（夜）",
-          "type": "notice",
-          "note_zh": "因進行作品調整，展場白天暫不開放。晚上7點耳集Cochlea-gigs no.96實驗音樂演出照常進行，演出者：黃時浩(Eric Wong)、劉芳一(Fangyi Liu)。入場350元起自由定價（學生250元起）。地點：海馬迴光畫館2樓（台南市中西區成功路83號）。",
-          "note_en": "The exhibition will be temporarily closed during the day due to artwork adjustments. The Cochlea-gigs no.96 experimental music performance at 7:00 PM will take place as scheduled, featuring Eric Wong and Fangyi Liu. Admission: NT$350+ (NT$250+ for students), pay-what-you-wish. Venue: Fotoaura Institute of Photography, 2F, No. 83, Chenggong Rd., Zhongxi Dist., Tainan.",
-          "note_ja": "作品調整のため、日中は展示スペースを一時休館。夜19:00からの耳集Cochlea-gigs no.96実験音楽演出は通常通り開催。出演：Eric Wong（黄時浩）、Fangyi Liu（劉芳一）。入場料350元〜（学生250元〜、投げ銭形式）。会場：海馬迴光畫館2階（台南市中西區成功路83號）。"
-        }
-      ],
-      "description": "那些事物的外表，覆蓋了一層質地，像是「暫時離開」，時間被蒸發過後留下的場景。這不是來自某個人的，也不是物自己的主意，它來自環境，來自已默認的系統，background process。在系統結構的後方，注意力未及之處，事物乾枯捲曲，向內收起。\n\n賴金池 1993年生於台灣。畢業於國立臺南藝術大學造形藝術研究所。現居住與工作於台中。創作經常來自生活中意興闌珊的「動」，以及在經驗世界中無意識的遊蕩。在現實的三維空間中，某些不經意的動作、意外的遭遇，使主體得以從混亂中抽離，一瞥那尚未被資訊沖刷前的身體感知。將物(事物)視為一連串人為/非人為運作之下的結果，藉由檢視其在人類活動內的座標與環境，摸索存於日常縫隙中非人稱的時空生態。",
-      "description_en": "The surfaces of these things are covered with a certain texture, as if 'temporarily away' — scenes left behind after time has evaporated. This is not the idea of any particular person, nor of the objects themselves; it comes from the environment, from an already-defaulted system, a background process. Behind the structure of the system, in places attention never reaches, things dry out, curl up, and withdraw inward.\n\nLai Chin-Chih was born in Taiwan in 1993. He graduated from the Graduate Institute of Plastic Arts at Tainan National University of the Arts, and currently lives and works in Taichung. His work often stems from listless 'movements' in daily life and unconscious wandering through the experienced world. In three-dimensional physical space, certain unintentional gestures and chance encounters allow the subject to step back from chaos and catch a glimpse of bodily perception before it is washed over by information. Treating objects as the outcome of a series of human and non-human operations, he examines their coordinates and surroundings within human activity, probing the impersonal spatiotemporal ecology that exists within the gaps of everyday life.",
-      "description_ja": "物事の表面には、ある質感が覆いかぶさっている。それは「一時的な不在」のようであり、時間が蒸発した後に残された光景である。これは誰か個人の考えでも、物自体の意思でもなく、環境から、すでに既定されたシステムから、いわばバックグラウンドプロセスから生じるものだ。システム構造の背後、意識の届かない場所で、物は乾いて丸まり、内側へと縮こまっていく。\n\n賴金池（ライ・ジンチー）は1993年台湾生まれ。国立台南芸術大学造形芸術研究所修了。現在は台中を拠点に制作活動を行う。彼の創作は、日常生活における気だるい「動き」や、経験世界における無意識の徘徊から生まれることが多い。現実の三次元空間において、何気ない動作や予期せぬ出会いによって、主体は混沌から一旦離れ、情報に洗われる前の身体感覚を垣間見ることができる。物（事物）を人為的／非人為的な一連の作用の結果として捉え、それが人間の活動の中でどのような座標・環境に置かれているかを検証することで、日常の隙間に存在する非人称的な時空の生態を探る。"
-    },
-    {
       "museum": "michaelku",
       "title_zh": "小孤獨，行",
       "title_en": "Little Solitude, Passage",
@@ -1205,25 +1114,6 @@
       "type": "artfestival"
     },
     {
-      "museum": "moca",
-      "title_zh": "境未竟",
-      "title_en": "The Unfathomable Landscape",
-      "title_ja": "",
-      "dates": "2026.07.11 – 2026.09.06",
-      "location": "MOCA廣場電視牆",
-      "link": "https://www.moca.taipei/tw/ExhibitionAndEvent/Info/境未竟",
-      "artists": [
-        "鄭子峰",
-        "羅玉梅",
-        "易連",
-        "袁廣鳴"
-      ],
-      "curator": "李曉婷",
-      "description": "《境未竟》由策展人李曉婷策劃,於臺北當代藝術館廣場電視牆展出,探討影像與記憶的關係——鏡頭下、螢幕中的風景彷彿造就了永恆,日常生活中的影像紀錄則成為印象裡的碎片與存在的憑證。展覽刻意擺脫線性敘事的假設,透過影像凝視、風景過渡與地境介入,將感知轉化為獨特的碎片。四位藝術家帶來各自的代表作:鄭子峰《成為風景》、羅玉梅《過境》、易連《上下》,以及袁廣鳴《日常演習》,分別以新聞攝影背景出身的凝視、擴延電影式的田野調查、對中國當代現實的觀察,以及新媒體藝術的日常演練,呈現風景與地境如何承載記憶與存在的痕跡。",
-      "description_en": "Curated by Li Hsiao-Ting and presented on the outdoor video wall at the Museum of Contemporary Art Taipei, The Unfathomable Landscape explores the relationship between image and memory—suggesting that landscapes captured through the lens or shown on screen seem to create a sense of permanence, while everyday image-making becomes fragments of impression and evidence of existence. The exhibition deliberately departs from linear narrative assumptions, transforming perception into distinct fragments through the gaze of the image, shifting landscapes, and interventions in place. Four artists present representative works: Cheng Tsz-Fung's Becoming Scenery, Law Yuk-Mui's Transit, Yi Lian's Up and Down, and Yuan Goang-Ming's Everyday Maneuver—bringing together a photojournalist's gaze, expanded-cinema-style field research, observations of contemporary reality in China, and a new-media artist's everyday exercises to show how landscape and place carry traces of memory and existence.",
-      "description_ja": "李曉婷（リー・シャオティン）がキュレーションを務めた「境未竟」は、台北市立現代美術館(MOCA)広場の大型ビジョンで展開される展覧会で、映像と記憶の関係を探る。レンズやスクリーンに映る風景はあたかも永遠を作り出すかのようであり、日常の映像記録は印象の断片であり存在の証となる。本展は線的な物語の前提から意図的に距離を置き、映像への凝視、風景の推移、そして場への介入を通じて知覚を独自の断片へと変換する。鄭子峰(チェン・ツーフォン)《成為風景》、羅玉梅(ロー・ユクムイ)《過境》、易連(イー・リエン)《上下》、袁廣鳴(ユエン・ゴアンミン)《日常演習》という4組の代表作が並び、報道写真出身者の眼差し、拡張映画的なフィールドワーク、中国の現代的現実への観察、そして新しいメディア・アーティストによる日常の訓練を通して、風景と場所が記憶と存在の痕跡をどのように担うのかを示している。"
-    },
-    {
       "museum": "ntmofa",
       "title_zh": "地獄懺",
       "title_en": "Hell Realm",
@@ -1290,22 +1180,6 @@
       "description_ja": "「蔓生・衍続:竹圍工作室(バンブーカーテン・スタジオ)の根系ネットワークと文化実践」は、マングローブの絡み合う根系をイメージの核として、1990年代以降台湾のアートシーンで竹圍工作室が果たしてきた役割——アーティストの実験的探求を育成する基地であり、国際的な展示や機関をつなぐハブでもあった——を回顧する展覧会である。1995年の設立から蕭麗虹(シャオ・リーホン)率いるチームによる長年の文化的な取り組みと国際的な連携、そして2021年の運営終了までの歴史を辿り、国際交流やレジデンス事業における具体的な貢献を示す。アーカイブ調査型の展覧会として、キュレーションチームは機関終了後のアーカイブ整理が抱える困難も率直に認めており、重要な文書と映像記録の展示を通じて竹圍工作室の文化実践に刻印を残し、このアートコミュニティの精神が継承されていくことを願っている。"
     },
     {
-      "museum": "glitch",
-      "title_zh": "Room In Room Out",
-      "title_en": "Room In Room Out",
-      "dates": "2026.07.25 – 2026.09.06",
-      "artists": [
-        "蕭其珩",
-        "吳聯吟",
-        "林君晏",
-        "林家佑"
-      ],
-      "description": "策展人張碩尹策劃，邀集蕭其珩、吳聯吟、林君晏與林家佑四位藝術家，帶領觀眾穿梭於作品與空間的調度之間。展覽源自藝術家過去以「福來爹繪畫教室」為名展開的聯展實踐。以毛刺橫跨兩個樓層、連結室內與室外的空間條件為起點，讓作品在共享場域中彼此滲透、回應。「Room In」是向內聚焦，進入作品的細節與微觀敘事；「Room Out」則透過樓層移動與視線拉遠，重新組織作品之間的關係，使觀看成為持續發生的空間經驗。開幕座談7/25(六)20:00。",
-      "link": "https://www.facebook.com/profile.php?id=61556692779891",
-      "description_en": "Curated by Chang Shuo-Yin, this exhibition brings together four artists — Hsiao Chi-Heng, Wu Lien-Yin, Lin Chun-Yen, and Lin Chia-Yu — guiding viewers through the interplay between the works and the arrangement of space. The exhibition grows out of the artists' earlier collaborative practice under the name 'Fulaidie Painting Classroom.' Taking as its starting point Glitch's spatial condition of spanning two floors and linking indoor and outdoor space, the exhibition allows the works to permeate and respond to one another within a shared field. 'Room In' focuses inward, entering the details and micro-narratives of the works; 'Room Out' reorganizes the relationships between the works through movement between floors and a widening of view, turning viewing into an ongoing spatial experience. Opening talk: Saturday, July 25 at 20:00.",
-      "description_ja": "キュレーター張碩尹（チャン・シュオイン）による企画。蕭其珩、吳聯吟、林君晏、林家佑の4名のアーティストを招き、作品と空間の配置の間を観客が行き来するよう導く。本展は、アーティストたちが過去に「福来爹絵画教室」という名で行ってきた合同展の実践に由来する。ギャラリー毛刺（Glitch）が2フロアにまたがり室内と屋外をつなぐという空間条件を出発点として、作品同士が共有された場の中で互いに浸透し、応答し合うようにする。「Room In」は内側に焦点を当て、作品の細部やミクロな物語に入り込むこと。「Room Out」はフロア間の移動と視線の引きによって作品同士の関係を再構成し、観ることを継続的に発生する空間的経験へと変える。オープニングトーク：7月25日（土）20:00。"
-    },
-    {
       "museum": "pttspace",
       "title_zh": "Ctrl C+V",
       "title_en": "Ctrl C+V",
@@ -1320,22 +1194,6 @@
       "link": "https://www.instagram.com/ptt_space/",
       "description_en": "Curated by Glitch. The exhibition approaches waves of technology on a macro scale, viewing them as an endlessly cyclical historical process, while the artists work from a micro scale of emotion and everyday experience, gazing at the contemporary living conditions they find themselves in. The title 'Ctrl C+V' echoes, through computer syntax, the exhibition's reflection on technological scale and cyclical structure, while also pointing to the artists' creative methods — through copying, translation, symmetry, and appropriation, they continually test the boundaries of materiality in the digital age. Both the Japanese and Korean artists are presenting in Taiwan for the first time, showing their latest works. Opening event: July 18 at 14:00.",
       "description_ja": "毛刺Glitchによる企画。本展は技術の波をマクロな尺度から捉え、絶えず循環する歴史的プロセスとして見る一方、アーティストたちは感情や日常経験というミクロな視点から、自らが置かれている現代の生活状況を見つめる。展覧会名「Ctrl C+V」は、コンピュータの文法を用いて技術の尺度と循環構造への考察に応えるとともに、参加アーティストの創作方法——複製、翻訳、対称、そして流用を通じてデジタル時代における物質性の境界を試み続けること——を示している。日本と韓国のアーティストはいずれも台湾初出展であり、最新作を展示する。オープニングイベント：7月18日 14:00。"
-    },
-    {
-      "museum": "hcam",
-      "title_zh": "換個心情吧!",
-      "title_en": "Change Your Mood!",
-      "dates": "2026.07.14 – 2026.09.06",
-      "artists": [
-        "張育嘉",
-        "林祐愷",
-        "徐兆甫"
-      ],
-      "description": "花蓮美術館新鋭策展人育成企画（策展人：徐祖寬）。從輕盈幽默的視角重新詮釋當代藝術。張育嘉以遊樂園為創作母題；花蓮出身的林祐愷則以牛、貓、在地植物等觀察為基礎發展裝置作品；徐兆甫聚焦「睡眠」與「療癒」主題，處理都市生活中的疲憊與焦慮。開幕2026.7.18(六)14:00。",
-      "link": "https://www.hccc.gov.tw/zh-tw/Activity/Detail/15465",
-      "added_at": "2026-07-29",
-      "description_en": "Part of the Hualien Museum of Fine Arts' Emerging Curator Incubation Program, curated by Hsu Tsu-kuan. The exhibition reinterprets contemporary art through a light and humorous lens. Chang Yu-chia takes the amusement park as her recurring motif; Lin You-kai, a Hualien native, develops installation works based on observations of cattle, cats, and local plants; and Hsu Chao-fu focuses on the themes of \"sleep\" and \"healing,\" addressing the fatigue and anxiety of urban life. Opening: Sat, July 18, 2026, 14:00.",
-      "description_ja": "花蓮美術館の新鋭キュレーター育成企画(キュレーター:徐祖寬)。軽やかでユーモラスな視点から現代美術を再解釈する。張育嘉は遊園地を創作のモチーフとし、花蓮出身の林祐愷は牛や猫、地元の植物などの観察をもとにインスタレーション作品を展開する。徐兆甫は「睡眠」と「癒し」をテーマに、都市生活における疲労や不安を扱う。オープニング:2026年7月18日(土)14:00。"
     },
     {
       "museum": "songshan",
@@ -1568,24 +1426,6 @@
       "description_ja": "王羲之の『蘭亭序』を出発点に、原文中に20回登場する「之」の字に着目し、その書法としての可能性を探る個展。反復・重層・再構成という手法を通じて、文字は本来の読むための機能から離れ、書・絵画・抽象造形のあいだを揺れ動き、筆致はリズム・エネルギー・時間の視覚的痕跡となる。本展では新作の立体作品「三維書写系列」も発表される。オープニング：2026年8月23日（日）14:00。"
     },
     {
-      "museum": "yao",
-      "title_zh": "Mix Inn 雜居客棧",
-      "title_en": "",
-      "dates": "2026.08.21 – 2026.09.06",
-      "artists": [
-        "韓旼璟",
-        "郭柏云",
-        "朝彤",
-        "劉詩盟",
-        "Lee Daesung"
-      ],
-      "added_at": "2026-08-10",
-      "description": "以「迷信」——科學根據不明確卻形塑東亞日常行為的傳承信念——為主題。展覽將夜間口笛、忌贈鞋子與時鐘等習俗，視為一種面對無法解釋之事的、活生生且具適應性的語言，探討個人與集體身分如何持續受迷信形塑。開幕2026.08.21（五）17:00，開幕表演: 郭柏云《另一個存在》；策展人分享2026.08.22（六）16:00；電影放映18:00。",
-      "link": "https://www.instagram.com/p/DbsCK_rSMdC/",
-      "description_en": "Group exhibition themed around \"superstition\"—inherited beliefs with no clear scientific basis that nonetheless continue to shape everyday behavior across East Asia. Customs such as not whistling at night and avoiding gifts of shoes or clocks are treated as a living, adaptive language for confronting the inexplicable, examining how individual and collective identities are continually shaped by superstition. Opening Friday, August 21, 2026 at 17:00, with an opening performance, \"Another Existence,\" by Kuo Po-Yun; curator talk on Saturday, August 22 at 16:00, followed by a film screening at 18:00.",
-      "description_ja": "科学的根拠が明確でないにもかかわらず東アジアの日常的な行動を形づくってきた伝承的な信念「迷信」をテーマとするグループ展。夜間の口笛や、靴・時計を贈ることを忌避する習俗などを、説明のつかない事柄に向き合うための生きた適応的な「言語」として捉え、個人と集団のアイデンティティがいかに迷信によって形づくられ続けているかを考察する。オープニングは2026年8月21日（金）17:00、オープニングパフォーマンスは郭柏云（クォ・ボーユン）《もう一つの存在》。8月22日（土）16:00にキュレーター・トーク、18:00より映画上映を行う。"
-    },
-    {
       "museum": "hengshan",
       "title_zh": "書寫的變奏與對話：書法・設計的當代語境",
       "title_en": "",
@@ -1763,34 +1603,6 @@
       "description": "由星濱山團隊策劃的「永晝海濱美術館」9月展覽「薛丁格藝術盲盒」，於基隆正濱漁港的常設展空間SPACE MOOR舉行，由創作者「玩子」帶來個展。展覽以量子力學中「薛丁格的貓」的概念為發想，呈現一切事物處於不確定、無法明狀且反日常的疊加狀態，作品持續進行、尚未定型。展期為2026年9月1日至9月30日，展覽時間為每日12:30至18:30。",
       "description_en": "Curated by the Xingbinshan (星濱山) team, the September exhibition \"Schrödinger's Art Blind Box\" at Everlasting Daylight Seaside Museum's permanent space SPACE MOOR in Zhengbin Fishing Harbor, Keelung, features a solo presentation by the artist \"Wanzi\" (玩子). Drawing on the quantum-mechanics concept of \"Schrödinger's cat,\" the exhibition presents all things as existing in an uncertain, indescribable, anti-everyday state of superposition that remains continuously in flux. It runs from September 1 to September 30, 2026, daily from 12:30 to 18:30.",
       "description_ja": "基隆・正濱漁港のアートスペース「SPACE MOOR」を拠点とする「永晝海濱美術館」（星濱山チーム企画）の9月展「薛丁格藝術盲盒（シュレーディンガーのアートブラインドボックス）」。作家「玩子（ワンズ）」による個展で、量子力学の「シュレーディンガーの猫」の概念に着想を得て、あらゆる物事が不確定で説明しがたく、日常とは異なる重ね合わせの状態にあり、それが継続的に進行中であることを表現する。会期は2026年9月1日〜9月30日、開館時間は毎日12:30〜18:30。",
-      "added_at": "2026-08-26"
-    },
-    {
-      "museum": "maisonacme",
-      "title_zh": "臺藝大雕塑系展26：那些被留下的部分",
-      "title_en": "The Parts Left Behind (NTUA Department of Sculpture Exhibition 26)",
-      "title_ja": "",
-      "dates": "2026.08.19 – 2026.09.06",
-      "link": "https://acmetaipei.com/zh/blogs/journal/臺藝大雕塑系展26",
-      "artists": [
-        "林虹妤",
-        "蔡佳彤",
-        "李芸樺",
-        "鄭名秀",
-        "陳佩妤",
-        "陳亦奎",
-        "陳立沛",
-        "林郁庭",
-        "林琪軒",
-        "曾盈菲",
-        "李凱莉",
-        "邱怡郡",
-        "吳苡睿",
-        "邱晨峯"
-      ],
-      "description": "國立臺灣藝術大學雕塑學系第26屆學生展「那些被留下的部分」於MAISON ACME圓山別邸展出，展期為2026年8月19日至9月6日，週二至週日11:00–17:00開放，週一公休，免費入場。本展以木雕為創作核心，將雕刻視為減法而非加法的過程——透過持續削去與移除讓形體逐漸浮現。作品從木材本身的紋理、節點與裂痕出發，結合刀痕與切削的介入，呈現自然與人為交織下形體浮現與消逝的狀態；展覽刻意保留作品的未完成狀態，透過保留、中斷與殘留的痕跡，傳達一種持續生成中的存在感，使「被留下的部分」不僅是物質結果，更象徵著選擇與遺失。參展藝術家共14位：林虹妤、蔡佳彤、李芸樺、鄭名秀、陳佩妤、陳亦奎、陳立沛、林郁庭、林琪軒、曾盈菲、李凱莉、邱怡郡、吳苡睿、邱晨峯。",
-      "description_en": "The National Taiwan University of Arts (NTUA) Department of Sculpture presents its 26th student exhibition, \"The Parts Left Behind,\" at MAISON ACME, Taipei, from August 19 to September 6, 2026 (Tue–Sun, 11:00–17:00, closed Mondays, free admission). Centered on woodcarving, the exhibition treats sculpture as a subtractive rather than additive process, in which form gradually emerges through continuous removal. The works draw on the wood's own grain, knots, and cracks, combined with carved and cut marks, to reveal how form appears and dissolves at the intersection of nature and human intervention. The show deliberately preserves an unfinished quality — traces of retention, interruption, and residue — so that \"the parts left behind\" signify not just a material outcome but also a reflection on choice and loss. Fourteen artists take part: Lin Hong-Yu, Tsai Chia-Tung, Li Yun-Hua, Zheng Ming-Xiu, Chen Pei-Yu, Chen Yi-Kuei, Chen Li-Pei, Lin Yu-Ting, Lin Qi-Xuan, Zeng Ying-Fei, Li Kai-Li, Qiu Yi-Jun, Wu Yi-Rui, and Qiu Chen-Feng.",
-      "description_ja": "国立台湾藝術大学（NTUA）彫塑学系による第26回学生展「那些被留下的部分（残されたもの）」が、台北のMAISON ACME 圓山別邸にて開催される。会期は2026年8月19日〜9月6日、開館時間は火〜日11:00〜17:00（月休、入場無料）。本展は木彫を中心に据え、彫刻を「加算」ではなく「減算」の過程として捉え、削り取り、取り除く行為の繰り返しによって形が徐々に現れることを主題とする。作品は木材そのものの木目・節・ひびを起点に、刻みや切削の跡を組み合わせ、自然と人の手が交わる中で形が現れては消えていく様相を表現する。展覧會はあえて作品の未完成な状態を残し、保留・中断・残留の痕跡を通して「生成し続ける存在感」を伝えることで、「残されたもの」が単なる物質的結果ではなく、選択と失うことの象徴となることを意図している。出展作家は14名：林虹妤、蔡佳彤、李芸樺、鄭名秀、陳佩妤、陳亦奎、陳立沛、林郁庭、林琪軒、曾盈菲、李凱莉、邱怡郡、吳苡睿、邱晨峯。",
       "added_at": "2026-08-26"
     },
     {
@@ -2068,21 +1880,6 @@
       "added_at": "2026-08-26"
     },
     {
-      "museum": "getart",
-      "title_zh": "水色云間",
-      "title_en": "",
-      "title_ja": "",
-      "dates": "2026.08.09 – 2026.09.06",
-      "link": "https://www.getart.com.tw",
-      "artists": [
-        "高小云"
-      ],
-      "description": "得藝美術館為位於台北市松山區民生社區的複合式藝文空間，結合藝廊展覽與咖啡輕食服務，長期提供優質藝術家多元展出平台，全年開放、免費入場。本次個展「水色云間」呈現藝術家高小云的創作。經查官方網站，展期公告為2026年8月9日至9月6日，與原始資料的8月11日略有一天以上的差異，屬同一檔展覽的日期誤差，建議入庫前再次核對。",
-      "description_en": "Get Art Museum is a hybrid gallery-and-café art space in Taipei's Minsheng community (Songshan District), offering a platform for a variety of artists alongside café service, open year-round with free admission. This exhibition, \"Water-Color Clouds\" (水色云間), presents new works by artist Kao Hsiao-Yun. The venue's own website lists the run as August 9 – September 6, 2026, which differs slightly (by a couple of days on the start date) from the originally supplied dates; this is likely the same show with a minor date discrepancy that should be reconfirmed before publishing.",
-      "description_ja": "得藝美術館は台北市松山區・民生コミュニティにあるギャラリー併設カフェの複合アートスペースで、多様なアーティストに展示の場を提供しており、年中無休・入場無料で運営されている。本展「水色云間」ではアーティスト高小云（コウ・ショウウン）の作品を展示する。公式サイトによる会期表記は2026年8月9日〜9月6日で、元データの8月11日開始とは数日のズレがあるが、同一の展覧会と見られる。掲載前に日付の再確認を推奨する。",
-      "added_at": "2026-08-26"
-    },
-    {
       "museum": "blueriderart",
       "title_zh": "少年行：折若木以拂日兮—2026台灣1985後青年藝術家徵件展",
       "title_en": "Song of Youth: Brushing the Sun — 2026 Open Call Exhibition for Taiwan Artists Born After 1985",
@@ -2176,21 +1973,6 @@
       "description": "本次個展呈現高小云融合油畫與水墨美感的創作風格，畫面不只是風景，更是一場心靈與自然的對話。藝術家以東方美學為精神核心，融入當代繪畫語彙，透過細膩而富有層次的筆觸，描繪山川、建築與萬物生命的流轉。作品在留白與色彩間追求和諧，並以「天人合一」與「萬物與我為一」的創作理念，引領觀者走進一個寧靜、純粹且充滿生命能量的藝術世界。",
       "description_en": "This solo exhibition presents Kao Hsiao-Yun's style, which fuses oil painting with the aesthetics of ink wash — the images are not merely landscapes, but a dialogue between the mind and nature. Rooted in Eastern aesthetics while incorporating a contemporary painting vocabulary, the artist depicts mountains, rivers, architecture, and the flow of all living things through delicate, layered brushwork. Her work seeks harmony between blank space and color, guided by the philosophy of \"unity of heaven and humanity\" and \"oneness with all things,\" leading viewers into a tranquil, pure world brimming with life energy.",
       "description_ja": "本個展では、油彩と水墨の美意識を融合させた高小云の作風が紹介される。画面は単なる風景ではなく、心と自然との対話である。東洋美学を精神的な核としながら現代絵画の語彙を取り入れ、繊細で重層的な筆致によって山川、建築、そして万物の生命の流転を描き出す。余白と色彩の調和を追求し、「天人合一」「万物我と一体」という創作理念のもと、観る者を静謐で純粋、生命力に満ちた芸術世界へと導く。",
-      "added_at": "2026-08-26"
-    },
-    {
-      "museum": "74artcenter",
-      "title_zh": "藝起玩陶：蕭為仁陶器個展",
-      "title_en": "Playing with Clay Together: Hsiao Wei-Jen Solo Ceramics Exhibition",
-      "title_ja": "",
-      "dates": "2026.07.08 – 2026.09.06",
-      "link": "https://www.74artcenter.com/exhibitions/藝起玩陶:蕭為仁陶器個展",
-      "artists": [
-        "蕭為仁"
-      ],
-      "description": "「陶藝作品是冷的，唯有人去使用及欣賞，才能產生溫度。」本展為74藝術中心第57檔接力展，邀請現任陶藝協會理事長蕭為仁舉辦個展，呈現老師習陶四十年來的創作歷程。蕭為仁因熱愛盆景，二十年前開始為植物親手製作盆器而踏入陶藝領域，對柴燒情有獨鍾，著迷於落灰所形成的古拙之美，近年也嘗試將國際交流經驗融入現代雕塑創作。展出作品涵蓋充滿未知驚喜的生活器皿，呈現其師法自然、融入生活的工藝理念。",
-      "description_en": "\"Ceramic works are cold; only through use and appreciation can they generate warmth.\" This exhibition is the 57th installment in 74 Art Center's rotating solo-show series, inviting Hsiao Wei-Jen, current chairman of a ceramics association, to present forty years of his practice. Hsiao entered ceramics about twenty years ago out of a love for bonsai, making pots for his plants by hand; he has a particular fondness for wood-firing and the rustic beauty created by ash deposits, and in recent years has begun incorporating experiences from international exchange into contemporary sculpture. The show spans everyday vessels full of unexpected surprises, reflecting his philosophy of learning from nature and integrating craft into daily life.",
-      "description_ja": "「陶芸作品は冷たいものであり、人が使い、鑑賞することによってのみ温かみが生まれる。」本展は74藝術中心のリレー展第57回にあたり、現陶芸協会理事長を務める蕭為仁氏の個展として、40年におよぶ陶芸人生の創作歴を紹介する。蕭氏は盆栽を愛したことから20年前に自ら鉢を手作りし始め陶芸の道に入り、薪窯焼成と灰による古拙な美しさに強く魅せられている。近年は国際交流での経験を現代彫刻の創作にも取り入れている。展示作品は驚きに満ちた生活器を中心に、自然に学び生活に溶け込む工芸理念を表現する。",
       "added_at": "2026-08-26"
     },
     {
