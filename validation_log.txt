@@ -1,4 +1,3 @@
-
 --- Validation 2026-07-15 14:18 ---
 [SHARED LINK] 4 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 [SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
@@ -17,19 +16,7 @@
 [SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
 [MISSING DATES] lightbox: 'Lightbox 十週年小型回顧展（日程未定・7月予定）'
 
---- Validation 2026-07-16 10:17 ---
-[SHARED LINK] 4 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
-[SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
-[SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
-[MISSING DATES] lightbox: 'Lightbox 十週年小型回顧展（日程未定・7月予定）'
-
 --- Validation 2026-07-16 10:19 ---
-[SHARED LINK] 4 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
-[SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
-[SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
-[MISSING DATES] lightbox: 'Lightbox 十週年小型回顧展（日程未定・7月予定）'
-
---- Validation 2026-07-16 10:21 ---
 [SHARED LINK] 4 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 [SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
 [SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
@@ -324,11 +311,6 @@
 [SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
 [SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
 
---- Validation 2026-08-06 13:43 ---
-[SHARED LINK] 3 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
-[SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
-[SHARED LINK] 2 exhibitions share: https://www.opentix.life/event/2069611694253621249
-
 --- Validation 2026-08-06 13:47 ---
 [SHARED LINK] 3 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 [SHARED LINK] 3 exhibitions share: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
@@ -513,6 +495,47 @@
 [NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
 
 --- Validation 2026-09-11 03:19 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+
+--- Validation 2026-09-11 15:58 ---
+[SHARED LINK] 3 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[SHARED LINK] 2 exhibitions share link: https://www.nmth.gov.tw/News2.aspx?n=4105&sms=13791
+[SHARED LINK] 2 exhibitions share link: https://www.mezzoart.net/%E5%B1%95%E8%A6%BD-exhibitions
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+[NO DESCRIPTION AT ALL] orogeny: '填入新的土——蔡鎮澤個展' has no description in any language
+[MIXED LANGUAGE IN ZH] 1839cg: '【松本幸之（KOSHI MATSUMOTO）】《植物の獨白》' description field contains Japanese kana
+
+--- Validation 2026-09-11 16:00 ---
+[SHARED LINK] 2 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+
+--- Validation 2026-09-11 16:04 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[SHARED LINK] 2 exhibitions share link: https://www.mezzoart.net/%E5%B1%95%E8%A6%BD-exhibitions
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+
+--- Validation 2026-09-11 16:05 ---
+[SHARED LINK] 2 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+
+--- Validation 2026-09-11 16:08 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+
+--- Validation 2026-09-11 16:10 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+
+--- Validation 2026-09-11 16:33 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
+
+--- Validation 2026-09-11 17:06 ---
 [SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 [NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
 [NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
