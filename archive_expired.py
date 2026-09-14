@@ -62,14 +62,23 @@ def check_possible_extension(ex, today, recorded_end):
         logger.info("recheck fetch failed for %s: %s", link, e)
         return None
 
-    if title not in text:
+    title_idx = text.find(title)
+    if title_idx == -1:
         # リンク先がもう当該展示のページではない可能性が高く、判断材料にならない
         return None
 
+    # 一覧・関連展示欄に他展示の日付が並ぶページ(artemperor.tw等)で誤検知しないよう、
+    # タイトル出現位置直後の範囲のみを検索対象にする
+    text = text[title_idx:title_idx + 12000]
+
     found_dates = []
     for y, m, d in DATE_RE.findall(text):
+        year = int(y)
+        if not (today.year - 1 <= year <= today.year + 2):
+            # 電話番号・注文番号等の誤マッチを除外（現実的な年の範囲に限定）
+            continue
         try:
-            found_dates.append(datetime(int(y), int(m), int(d)).date())
+            found_dates.append(datetime(year, int(m), int(d)).date())
         except ValueError:
             continue
 

@@ -57,7 +57,7 @@
       "title_ja": "",
       "dates": "2024/01/01 - 2026/12/31",
       "location": "國立臺灣文學館",
-      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "link": "https://event.culture.tw/mocweb/reg/NMTL/Detail.init.ctr?actId=00060",
       "description": "本展以「注意，你已被文學包圍了」、「始動，島孕育的‧與海帶來的（〜1895）」、「立志，文明開化的夢與傷（1895〜1945）」、「跨越，窒息年代的游擊戰（1945〜1980）」、「爆炸，每個人都飆出高音（1980〜2000）」、「＿＿＿＿，寫我們一起的未來」六大主題展區，將百年來的台灣文學史化為可親近的常設展。",
       "description_en": "Organized into six thematic zones spanning from pre-1895 to the present, this permanent exhibition traces a century of Taiwan's literary history — from the island's origins and colonial-era awakening, through the suffocation and guerrilla resistance of martial law, to the explosive plurality of voices since the 1980s — making literary history approachable and alive.",
       "description_ja": "「注意、あなたはすでに文学に包まれている」から「＿＿＿＿、私たちの未来を書く」まで6つのテーマ展示区で構成される常設展。台湾文学の百年の歴史を、島の誕生から戒国時代の抑圧と抵抗、1980年代以降の多声化まで、親しみやすい形で辿る。"
@@ -69,7 +69,7 @@
       "title_ja": "",
       "dates": "2026.04.01 – 2026.11.15",
       "location": "國立臺灣文學館",
-      "link": "https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367",
+      "link": "https://event.culture.tw/mocweb/reg/NMTL/Detail.init.ctr?actId=60084",
       "description": "臺灣兒童文學萌芽於百年前的日治時期，想像力的種子在當時便已悄悄埋入這片土地。從早期的口傳兒歌、童詩，演變至當代的少年小說與精美繪本，每一段文字都是島嶼生長的記憶，展現兒童文學從純文字創作到結合插畫繪本的獨特說故事技巧。",
       "description_en": "Taiwanese children's literature took root a century ago during the Japanese colonial era, when seeds of imagination were quietly planted on this island. From early oral nursery rhymes and children's poems to contemporary YA novels and picture books, each text is a memory of the island's growth, tracing storytelling from pure text to illustrated picture books.",
       "description_ja": "台湾の児童文学は100年前の日本統治時代に萌芽し、想像力の種がひそかに島に埋め込まれた。初期の口承童謡・童詩から、現代のヤングアダルト小説や絵本まで、一つ一つの文章が島の成長の記憶であり、純粋な文章表現から挿絵と結びついた絵本創作へと物語る技法の変遷を示す。"
@@ -338,20 +338,24 @@
       "museum": "ntmofa",
       "title_zh": "115年全國美術展",
       "title_en": "",
-      "dates": "2026/05/21 - 2026/10/11",
+      "dates": "2026.07.18 – 2026.10.11",
       "location": "國立臺灣美術館",
-      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60098",
-      "description": "",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60118",
+      "description": "由國立臺灣美術館主辦，今年已邁入第16屆的公募制美術大展，涵蓋水墨、書法、篆刻、膠彩、油畫、水彩、版畫、雕塑、攝影、新媒體藝術與複合媒材共11個類別。隨著跨媒材與跨領域趨勢的持續發展，現代藝術創作早已擺脫單一類型之窠臼，本展從超過千件徵件中評選出114件入選及獲獎作品，並特邀4位免審查獎藝術家共同展出，呈現台灣當代創作能量的年度縮影。",
+      "description_en": "Organized by the National Taiwan Museum of Fine Arts, this open-call exhibition — now in its 16th edition — spans 11 categories including ink painting, calligraphy, seal carving, gouache, oil painting, watercolor, printmaking, sculpture, photography, new media art, and mixed media. Reflecting the ongoing trend of cross-media and cross-disciplinary practice, contemporary art has long moved beyond rigid categorization; from over a thousand submissions, 114 works were selected for awards and inclusion, joined by four artists invited under the exemption-from-review award, together offering an annual snapshot of Taiwan's contemporary creative energy.",
+      "description_ja": "国立台湾美術館の主催による公募制美術展で、今年で第16回を迎える。水墨画、書法、篆刻、膠彩画、油画、水彩画、版画、彫刻、写真、新メディアアート、複合メディアの11分野で構成される。メディアやジャンルを横断する潮流が進む中、現代美術の創作はすでに単一のジャンルという枠を超えており、千件を超える応募の中から114件の入選・受賞作品が選ばれ、審査免除枠で招待された4名のアーティストの作品も併せて展示される、台湾の現代創作力を映す年次展。",
       "artists": []
     },
     {
       "museum": "ntmofa",
       "title_zh": "中華民國第二十二屆國際版畫雙年展",
       "title_en": "2026 Taiwan International Print Biennial",
-      "dates": "2026/05/21 - 2026/10/11",
+      "dates": "2026.07.11 – 2026.10.18",
       "location": "國立臺灣美術館",
-      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60101",
-      "description": "",
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60123",
+      "description": "國立臺灣美術館主辦的國際版畫雙年展創始於1983年，已有超過40年歷史，本屆為第22屆。本次徵件共吸引來自81個國家、1,336件作品參賽，經初審、複審後入選202件，最終展出183件（其中15件獲獎），來自36個國家，並由台灣、美國、日本及比利時評審共同組成的國際評審團進行評選。作品主題涵蓋個人經驗、地域記憶、自然環境與當代社會議題，除傳統版畫技法外，亦可見複合媒材、空間裝置及攝影與數位技術的運用。",
+      "description_en": "Founded in 1983, the National Taiwan Museum of Fine Arts' International Print Biennial marks over 40 years of history with this 22nd edition. The open call drew 1,336 entries from 81 countries; after preliminary and final review, 202 works were selected, with 183 ultimately exhibited (15 of them award-winning) from 36 countries, judged by an international jury from Taiwan, the United States, Japan, and Belgium. Themes range from personal experience and regional memory to the natural environment and contemporary social issues, with works spanning traditional printmaking techniques alongside mixed media, spatial installation, and photographic and digital technologies.",
+      "description_ja": "1983年に創設された国立台湾美術館の国際版画ビエンナーレは40年以上の歴史を持ち、今回で第22回を迎える。今回の公募では81カ国から1,336点の応募があり、一次・二次審査を経て202点が入選、最終的に36カ国から183点（うち受賞15点）が展示される。審査は台湾・アメリカ・日本・ベルギーの審査員による国際審査団が担当した。作品テーマは個人的な経験、地域の記憶、自然環境、現代社会の課題にまで及び、伝統的な版画技法に加え、複合メディアや空間インスタレーション、写真・デジタル技術を用いた作品も見られる。",
       "artists": []
     },
     {
