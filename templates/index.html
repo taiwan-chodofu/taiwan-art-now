@@ -346,36 +346,52 @@
       return outputArray;
     }
 
-    window.requestPushSubscription = function() {
-      if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+    window.getPushStatus = function() {
+      if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return 'unsupported';
+      return Notification.permission; // 'default' | 'granted' | 'denied'
+    };
+
+    window.requestPushSubscription = function(onDone) {
+      if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) {
+        if (onDone) onDone('unsupported');
+        return;
+      }
       if (typeof gtag === 'function') gtag('event', 'push_banner_click', {});
       Notification.requestPermission().then(function(permission) {
         if (permission !== 'granted') {
           if (typeof gtag === 'function') gtag('event', 'push_permission_' + permission, {});
           var state = getState(); state.dismissed = true; setState(state);
-          document.getElementById('pushBanner').style.display = 'none';
+          var b = document.getElementById('pushBanner'); if (b) b.style.display = 'none';
+          if (onDone) onDone(permission);
           return;
         }
         if (typeof gtag === 'function') gtag('event', 'push_permission_granted', {});
         navigator.serviceWorker.ready.then(function(reg) {
-          fetch('/api/push/vapid-public-key').then(function(r) { return r.json(); }).then(function(data) {
-            if (!data.key) return;
-            return reg.pushManager.subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: urlBase64ToUint8Array(data.key),
+          return reg.pushManager.getSubscription().then(function(existing) {
+            if (existing) return existing;
+            return fetch('/api/push/vapid-public-key').then(function(r) { return r.json(); }).then(function(data) {
+              if (!data.key) throw new Error('no vapid key');
+              return reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(data.key),
+              });
             });
-          }).then(function(sub) {
-            if (!sub) return;
-            return fetch('/api/push/subscribe', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(sub.toJSON()),
-            });
-          }).then(function() {
-            if (typeof gtag === 'function') gtag('event', 'push_subscribed', {});
-            var state = getState(); state.subscribed = true; state.dismissed = true; setState(state);
-            document.getElementById('pushBanner').style.display = 'none';
           });
+        }).then(function(sub) {
+          if (!sub) throw new Error('no subscription');
+          return fetch('/api/push/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(sub.toJSON()),
+          });
+        }).then(function() {
+          if (typeof gtag === 'function') gtag('event', 'push_subscribed', {});
+          var state = getState(); state.subscribed = true; state.dismissed = true; setState(state);
+          var b = document.getElementById('pushBanner'); if (b) b.style.display = 'none';
+          if (onDone) onDone('granted');
+        }).catch(function(err) {
+          if (typeof gtag === 'function') gtag('event', 'push_subscribe_error', { error: String(err && err.message || err) });
+          if (onDone) onDone('error');
         });
       });
     };
@@ -1360,20 +1376,50 @@
   function _renderNotificationSection() {
     var connected = localStorage.getItem('taiwan_art_messenger_connected');
     var ref = _getRefCode();
+    var messengerBlock;
     if (!connected) {
-      return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
+      messengerBlock = '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
         + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知{% elif current_lang == "ja" %}通知{% else %}Notifications{% endif %}</div>'
         + '<a href="https://m.me/61591281572640?ref=' + ref + '" target="_blank" rel="noopener" onclick="localStorage.setItem(\'taiwan_art_messenger_connected\',\'1\');if(typeof gtag===\'function\')gtag(\'event\',\'messenger_connect_mylist\',{})" style="display:block;padding:10px 14px;background:#0084FF;color:#fff;border-radius:8px;text-decoration:none;font-size:0.8rem;text-align:center;">'
         + '💬 {% if current_lang == "zh" %}傳送訊息即可訂閱展覽通知{% elif current_lang == "ja" %}メッセージを送るだけで通知登録{% else %}Send a message to subscribe{% endif %}'
         + '</a></div>';
+    } else {
+      messengerBlock = '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
+        + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知設定{% elif current_lang == "ja" %}通知設定{% else %}Notification settings{% endif %}</div>'
+        + '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ Messenger {% if current_lang == "zh" %}已連結{% elif current_lang == "ja" %}連携中{% else %}connected{% endif %}</div>'
+        + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}每週三收到終了間近通知{% elif current_lang == "ja" %}毎週水曜に終了間近通知{% else %}Weekly ending-soon digest every Wednesday{% endif %}</div>'
+        + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}♡展覽結束前3天提醒{% elif current_lang == "ja" %}♡展示の終了3日前にリマインド{% else %}♡ exhibition reminder 3 days before closing{% endif %}</div>'
+        + '<a href="#" onclick="_disconnectMessenger();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:6px;display:inline-block;">{% if current_lang == "zh" %}取消訂閱{% elif current_lang == "ja" %}登録解除{% else %}Unsubscribe{% endif %}</a>'
+        + '</div>';
+    }
+    return messengerBlock + _renderWebPushBlock();
+  }
+
+  function _renderWebPushBlock() {
+    var status = (typeof getPushStatus === 'function') ? getPushStatus() : 'unsupported';
+    var label = '🔔 {% if current_lang == "zh" %}瀏覽器推播通知{% elif current_lang == "ja" %}ブラウザ通知{% else %}Browser push notifications{% endif %}';
+    var body;
+    if (status === 'granted') {
+      body = '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ {% if current_lang == "zh" %}已開啟{% elif current_lang == "ja" %}有効になっています{% else %}Enabled{% endif %}</div>';
+    } else if (status === 'denied') {
+      body = '<div style="font-size:0.7rem;color:var(--text-light);padding:4px 0;">{% if current_lang == "zh" %}已被封鎖，請在系統設定中開啟通知權限{% elif current_lang == "ja" %}ブロックされています。設定アプリの通知権限を確認してください{% else %}Blocked — enable notifications in device Settings{% endif %}</div>';
+    } else if (status === 'unsupported') {
+      body = '<div style="font-size:0.7rem;color:var(--text-light);padding:4px 0;">{% if current_lang == "zh" %}請先將本站加入主畫面才能開啟通知{% elif current_lang == "ja" %}ホーム画面に追加したアプリからのみ設定できます{% else %}Add to Home Screen first to enable{% endif %}</div>';
+    } else {
+      body = '<div id="webPushToggleWrap"><a href="#" onclick="_toggleWebPush();return false;" style="display:block;padding:8px 14px;background:var(--tag-bg);color:var(--text);border-radius:8px;text-decoration:none;font-size:0.75rem;text-align:center;">'
+        + '{% if current_lang == "zh" %}開啟通知{% elif current_lang == "ja" %}通知を有効にする{% else %}Enable notifications{% endif %}</a></div>';
     }
     return '<div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);">'
-      + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">🔔 {% if current_lang == "zh" %}通知設定{% elif current_lang == "ja" %}通知設定{% else %}Notification settings{% endif %}</div>'
-      + '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ Messenger {% if current_lang == "zh" %}已連結{% elif current_lang == "ja" %}連携中{% else %}connected{% endif %}</div>'
-      + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}每週三收到終了間近通知{% elif current_lang == "ja" %}毎週水曜に終了間近通知{% else %}Weekly ending-soon digest every Wednesday{% endif %}</div>'
-      + '<div style="font-size:0.7rem;color:var(--text-light);padding:2px 0;">{% if current_lang == "zh" %}♡展覽結束前3天提醒{% elif current_lang == "ja" %}♡展示の終了3日前にリマインド{% else %}♡ exhibition reminder 3 days before closing{% endif %}</div>'
-      + '<a href="#" onclick="_disconnectMessenger();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:6px;display:inline-block;">{% if current_lang == "zh" %}取消訂閱{% elif current_lang == "ja" %}登録解除{% else %}Unsubscribe{% endif %}</a>'
-      + '</div>';
+      + '<div style="font-size:0.75rem;color:var(--text-sub);margin-bottom:8px;">' + label + '</div>'
+      + body + '</div>';
+  }
+
+  function _toggleWebPush() {
+    var wrap = document.getElementById('webPushToggleWrap');
+    if (wrap) wrap.innerHTML = '<div style="font-size:0.7rem;color:var(--text-light);">…</div>';
+    requestPushSubscription(function(result) {
+      renderMylist();
+    });
   }
 
   function _disconnectMessenger() {
