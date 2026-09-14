@@ -15,6 +15,11 @@ def add_no_cache_headers(response):
     if response.content_type and "text/html" in response.content_type:
         response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
         response.headers["Pragma"] = "no-cache"
+    if request.path == "/static/sw.js":
+        # Without this, a SW served from /static/ defaults to that scope —
+        # navigator.serviceWorker.ready then never resolves for pages
+        # outside /static/ (i.e. every real page), hanging Web Push forever.
+        response.headers["Service-Worker-Allowed"] = "/"
     return response
 
 

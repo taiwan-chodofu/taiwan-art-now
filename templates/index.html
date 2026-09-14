@@ -357,12 +357,30 @@
         return;
       }
       if (typeof gtag === 'function') gtag('event', 'push_banner_click', {});
+
+      // Any step here (navigator.serviceWorker.ready especially) can hang
+      // indefinitely instead of rejecting — without this timeout a stuck
+      // promise leaves onDone uncalled forever and the UI stuck on "…".
+      var settled = false;
+      var timer = setTimeout(function() {
+        if (settled) return;
+        settled = true;
+        if (typeof gtag === 'function') gtag('event', 'push_subscribe_timeout', {});
+        if (onDone) onDone('timeout');
+      }, 10000);
+      function finish(result) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        if (onDone) onDone(result);
+      }
+
       Notification.requestPermission().then(function(permission) {
         if (permission !== 'granted') {
           if (typeof gtag === 'function') gtag('event', 'push_permission_' + permission, {});
           var state = getState(); state.dismissed = true; setState(state);
           var b = document.getElementById('pushBanner'); if (b) b.style.display = 'none';
-          if (onDone) onDone(permission);
+          finish(permission);
           return;
         }
         if (typeof gtag === 'function') gtag('event', 'push_permission_granted', {});
@@ -388,11 +406,14 @@
           if (typeof gtag === 'function') gtag('event', 'push_subscribed', {});
           var state = getState(); state.subscribed = true; state.dismissed = true; setState(state);
           var b = document.getElementById('pushBanner'); if (b) b.style.display = 'none';
-          if (onDone) onDone('granted');
+          finish('granted');
         }).catch(function(err) {
           if (typeof gtag === 'function') gtag('event', 'push_subscribe_error', { error: String(err && err.message || err) });
-          if (onDone) onDone('error');
+          finish('error');
         });
+      }).catch(function(err) {
+        if (typeof gtag === 'function') gtag('event', 'push_permission_error', { error: String(err && err.message || err) });
+        finish('error');
       });
     };
 
@@ -1426,7 +1447,13 @@
     var wrap = document.getElementById('webPushToggleWrap');
     if (wrap) wrap.innerHTML = '<div style="font-size:0.7rem;color:var(--text-light);">…</div>';
     requestPushSubscription(function(result) {
-      renderMylist();
+      if (result === 'granted') { renderMylist(); return; }
+      var msg = result === 'timeout'
+        ? '{% if current_lang == "zh" %}逾時，請再試一次{% elif current_lang == "ja" %}タイムアウトしました。もう一度お試しください{% else %}Timed out — please try again{% endif %}'
+        : '{% if current_lang == "zh" %}發生錯誤，請再試一次{% elif current_lang == "ja" %}エラーが発生しました。もう一度お試しください{% else %}Something went wrong — please try again{% endif %}';
+      var w = document.getElementById('webPushToggleWrap');
+      if (w) w.innerHTML = '<div style="font-size:0.7rem;color:#dc2626;">' + msg + '</div>';
+      setTimeout(renderMylist, 3000);
     });
   }
 
@@ -2282,7 +2309,7 @@
   </script>
   <script>
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/static/sw.js');
+    navigator.serviceWorker.register('/static/sw.js', { scope: '/' });
   }
   </script>
 
