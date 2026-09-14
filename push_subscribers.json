@@ -30,6 +30,14 @@
           "url": "/exhibition/ntcart/1?lang=zh",
           "region": "new_taipei",
           "event": ""
+        },
+        "montue__雲在兩千米": {
+          "title": "Cloud at 2000 Meters — 雲在兩千米",
+          "museum": "北師美術館（MoNTUE）",
+          "dates": "2026.07.25 – 2026.10.11",
+          "url": "/exhibition/montue/0?lang=ja",
+          "region": "台北",
+          "event": ""
         }
       },
       "visited": {}
