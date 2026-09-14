@@ -295,6 +295,33 @@
   </script>
   {% endif %}
 
+  <!-- DISCOVER FEATURE BANNER -->
+  <div id="discoverBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#fff0f0,#ffe4e6);border-bottom:1px solid #fecdd3;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;gap:8px;">
+    <a href="/discover?lang={{ current_lang }}" onclick="if(typeof gtag==='function')gtag('event','discover_banner_click',{})" style="flex:1;color:inherit;text-decoration:none;">
+      ✨ {% if current_lang == 'zh' %}用滑動探索展覽，快速找到喜歡的展覽{% elif current_lang == 'ja' %}スワイプで気になる展示をサクッと探せます{% else %}Swipe to discover exhibitions you'll love{% endif %}
+    </a>
+    <button onclick="dismissDiscoverBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#6b7280;">✕</button>
+  </div>
+  <script>
+  (function() {
+    var bannerKey = 'taiwan_art_banner_v1_discover';
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
+    if (state.dismissed || (state.seen || 0) >= 5) return;
+    var banner = document.getElementById('discoverBanner');
+    if (banner) {
+      banner.style.display = 'flex';
+      state.seen = (state.seen || 0) + 1;
+      localStorage.setItem(bannerKey, JSON.stringify(state));
+    }
+    window.dismissDiscoverBanner = function() {
+      banner.style.display = 'none';
+      state.dismissed = true;
+      localStorage.setItem(bannerKey, JSON.stringify(state));
+    };
+  })();
+  </script>
+
   <!-- Secondary nav (Taishin/Featured/Artists/Archive/Search/Lang) moved into
        the bottom-nav "More" sheet — see BOTTOM NAV near end of body. -->
   <style>
