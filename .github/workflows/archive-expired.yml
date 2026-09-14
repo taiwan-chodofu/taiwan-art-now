@@ -16,7 +16,13 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: |
+          pip install curl-cffi beautifulsoup4
+
       - name: Run archive script
+        env:
+          MESSENGER_PAGE_TOKEN: ${{ secrets.MESSENGER_PAGE_TOKEN }}
         run: python archive_expired.py || true
 
       - name: Run validation
