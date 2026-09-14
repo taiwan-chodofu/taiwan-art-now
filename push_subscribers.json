@@ -1,3 +1,11 @@
 {
-  "subscriptions": {}
+  "subscriptions": {
+    "https://web.push.apple.com/QGXGTT_ySgR4I8HekpBiATWMaNPpF3hBA8tbxZeQHbiAtMBOovO6ZByv86sKiW69al2q8QFxIEFuMCiZKY2JWqc6kPKewXCe3maVTYQUmQOe4sRPFqxdQE9zFFjDXcXPM5isuJmQLFkccTHOYrCWRKWY7X4Va40O4zZJlq7XoeM": {
+      "endpoint": "https://web.push.apple.com/QGXGTT_ySgR4I8HekpBiATWMaNPpF3hBA8tbxZeQHbiAtMBOovO6ZByv86sKiW69al2q8QFxIEFuMCiZKY2JWqc6kPKewXCe3maVTYQUmQOe4sRPFqxdQE9zFFjDXcXPM5isuJmQLFkccTHOYrCWRKWY7X4Va40O4zZJlq7XoeM",
+      "keys": {
+        "p256dh": "BH2j5Cgpy-02Bu9S_hVYlPwtxP8LDTp8M9URZYrfbJ47Xh6luXxUvIyyaeIfcn8OInHnKurtLfOn7t5kkzYwlIE",
+        "auth": "rpm3XBr6iElC3YuYIJ7dhw"
+      }
+    }
+  }
 }
