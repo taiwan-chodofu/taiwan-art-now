@@ -322,6 +322,82 @@
   })();
   </script>
 
+  <!-- PUSH NOTIFICATION OPT-IN BANNER -->
+  <div id="pushBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#eef2ff,#e0e7ff);border-bottom:1px solid #c7d2fe;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;gap:8px;">
+    <span onclick="requestPushSubscription()" style="cursor:pointer;flex:1;">
+      🔔 {% if current_lang == 'zh' %}開啟通知，展覽即將結束時提醒你{% elif current_lang == 'ja' %}通知をオンにして、終了間近の展示をお知らせ{% else %}Turn on notifications for exhibitions ending soon{% endif %}
+    </span>
+    <button onclick="dismissPushBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#6b7280;">✕</button>
+  </div>
+  <script>
+  (function() {
+    var bannerKey = 'taiwan_art_banner_v1_push';
+    function getState() {
+      try { return JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) { return {}; }
+    }
+    function setState(state) { localStorage.setItem(bannerKey, JSON.stringify(state)); }
+
+    function urlBase64ToUint8Array(base64String) {
+      var padding = '='.repeat((4 - base64String.length % 4) % 4);
+      var base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+      var rawData = atob(base64);
+      var outputArray = new Uint8Array(rawData.length);
+      for (var i = 0; i < rawData.length; i++) outputArray[i] = rawData.charCodeAt(i);
+      return outputArray;
+    }
+
+    window.requestPushSubscription = function() {
+      if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+      if (typeof gtag === 'function') gtag('event', 'push_banner_click', {});
+      Notification.requestPermission().then(function(permission) {
+        if (permission !== 'granted') {
+          if (typeof gtag === 'function') gtag('event', 'push_permission_' + permission, {});
+          var state = getState(); state.dismissed = true; setState(state);
+          document.getElementById('pushBanner').style.display = 'none';
+          return;
+        }
+        if (typeof gtag === 'function') gtag('event', 'push_permission_granted', {});
+        navigator.serviceWorker.ready.then(function(reg) {
+          fetch('/api/push/vapid-public-key').then(function(r) { return r.json(); }).then(function(data) {
+            if (!data.key) return;
+            return reg.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: urlBase64ToUint8Array(data.key),
+            });
+          }).then(function(sub) {
+            if (!sub) return;
+            return fetch('/api/push/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(sub.toJSON()),
+            });
+          }).then(function() {
+            if (typeof gtag === 'function') gtag('event', 'push_subscribed', {});
+            var state = getState(); state.subscribed = true; state.dismissed = true; setState(state);
+            document.getElementById('pushBanner').style.display = 'none';
+          });
+        });
+      });
+    };
+
+    window.dismissPushBanner = function() {
+      document.getElementById('pushBanner').style.display = 'none';
+      var state = getState(); state.dismissed = true; setState(state);
+    };
+
+    if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
+    if (Notification.permission !== 'default') return; // already granted or denied — nothing to ask
+    var state = getState();
+    if (state.dismissed || (state.seen || 0) >= 5) return;
+    var banner = document.getElementById('pushBanner');
+    if (banner) {
+      banner.style.display = 'flex';
+      state.seen = (state.seen || 0) + 1;
+      setState(state);
+    }
+  })();
+  </script>
+
   <!-- Secondary nav (Taishin/Featured/Artists/Archive/Search/Lang) moved into
        the bottom-nav "More" sheet — see BOTTOM NAV near end of body. -->
   <style>

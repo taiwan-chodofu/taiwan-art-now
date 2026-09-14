@@ -1035,6 +1035,38 @@ def api_subscriber_settings():
     return {"status": "updated"}
 
 
+@app.route("/api/push/vapid-public-key")
+def api_push_vapid_public_key():
+    return {"key": VAPID_PUBLIC_KEY}
+
+
+@app.route("/api/push/subscribe", methods=["POST"])
+def api_push_subscribe():
+    """Store a browser's Push subscription (called after Notification
+    permission is granted). Keyed by endpoint, which is unique per
+    browser+device+origin, so re-subscribing just overwrites in place."""
+    data = request.get_json(silent=True) or {}
+    endpoint = data.get("endpoint", "")
+    keys = data.get("keys", {})
+    if not endpoint or not keys.get("p256dh") or not keys.get("auth"):
+        return {"error": "invalid subscription"}, 400
+    subs = _load_push_subscribers()
+    subs["subscriptions"][endpoint] = {"endpoint": endpoint, "keys": keys}
+    _save_push_subscribers(subs)
+    return {"status": "subscribed"}
+
+
+@app.route("/api/push/unsubscribe", methods=["POST"])
+def api_push_unsubscribe():
+    data = request.get_json(silent=True) or {}
+    endpoint = data.get("endpoint", "")
+    subs = _load_push_subscribers()
+    if endpoint in subs.get("subscriptions", {}):
+        del subs["subscriptions"][endpoint]
+        _save_push_subscribers(subs)
+    return {"status": "unsubscribed"}
+
+
 @app.route("/api/archive")
 def api_archive():
     """Archive JSON API for mylist visited tab."""
@@ -1891,6 +1923,72 @@ def _save_to_github(filename, content):
         urllib_req.urlopen(req, timeout=15)
     except Exception:
         pass
+
+
+PUSH_SUBSCRIBERS_FILE = os.path.join(os.path.dirname(__file__), "push_subscribers.json")
+VAPID_PUBLIC_KEY = os.environ.get("VAPID_PUBLIC_KEY", "")
+VAPID_PRIVATE_KEY = os.environ.get("VAPID_PRIVATE_KEY", "")
+VAPID_CLAIMS_EMAIL = os.environ.get("VAPID_CLAIMS_EMAIL", "mailto:contact@taiwan-art-now.onrender.com")
+
+
+def _load_push_subscribers():
+    if os.path.exists(PUSH_SUBSCRIBERS_FILE):
+        try:
+            with open(PUSH_SUBSCRIBERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"subscriptions": {}}
+
+
+def _save_push_subscribers(data):
+    content = json.dumps(data, ensure_ascii=False, indent=2)
+    with open(PUSH_SUBSCRIBERS_FILE, "w", encoding="utf-8") as f:
+        f.write(content)
+    _save_to_github("push_subscribers.json", content)
+
+
+def send_web_push(subscription_info, title, body, url="/"):
+    """Send a single Web Push notification. Returns False (and drops the
+    subscription) if the browser reports it as gone (410/404) — endpoints
+    expire when a user uninstalls/clears the PWA."""
+    from pywebpush import webpush, WebPushException
+    try:
+        webpush(
+            subscription_info=subscription_info,
+            data=json.dumps({"title": title, "body": body, "url": url}),
+            vapid_private_key=VAPID_PRIVATE_KEY,
+            vapid_claims={"sub": VAPID_CLAIMS_EMAIL},
+            timeout=10,
+        )
+        return True
+    except WebPushException as e:
+        status = getattr(e.response, "status_code", None)
+        if status in (404, 410):
+            return False
+        app.logger.warning("Web push failed: %s", e)
+        return True  # keep subscription; likely a transient error
+    except Exception as e:
+        app.logger.warning("Web push failed: %s", e)
+        return True
+
+
+def broadcast_web_push(title, body, url="/"):
+    """Send to every stored subscription, pruning ones the browser reports gone."""
+    if not VAPID_PRIVATE_KEY:
+        return 0
+    subs = _load_push_subscribers()
+    sent = 0
+    alive = {}
+    for endpoint, info in subs.get("subscriptions", {}).items():
+        if send_web_push(info, title, body, url):
+            alive[endpoint] = info
+            sent += 1
+        # dropped (expired) subscriptions are simply not carried over
+    if len(alive) != len(subs.get("subscriptions", {})):
+        subs["subscriptions"] = alive
+        _save_push_subscribers(subs)
+    return sent
 
 
 ADMIN_SENDER_ID = "27481470654840665"
