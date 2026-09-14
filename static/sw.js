@@ -31,6 +31,36 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Web Push: 通知を表示
+self.addEventListener('push', (event) => {
+  let payload = { title: 'Taiwan Art Now', body: '', url: '/' };
+  try {
+    if (event.data) payload = Object.assign(payload, event.data.json());
+  } catch (e) {}
+  event.waitUntil(
+    self.registration.showNotification(payload.title, {
+      body: payload.body,
+      icon: '/static/icon-192.png',
+      badge: '/static/icon-192.png',
+      data: { url: payload.url },
+    })
+  );
+});
+
+// 通知タップ: 該当URLでアプリを開く（既に開いていればフォーカス）
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || '/';
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        if (client.url.includes(url) && 'focus' in client) return client.focus();
+      }
+      if (self.clients.openWindow) return self.clients.openWindow(url);
+    })
+  );
+});
+
 // フェッチ: ネットワーク優先、失敗時キャッシュ
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;

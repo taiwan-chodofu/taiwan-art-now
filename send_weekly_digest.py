@@ -10,6 +10,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 SUBSCRIBERS_FILE = BASE_DIR / "subscribers.json"
+PUSH_SUBSCRIBERS_FILE = BASE_DIR / "push_subscribers.json"
 # cache.json is gitignored and doesn't exist in the GitHub Actions checkout,
 # so it can never be read here — read from the committed source of truth
 # (manual_exhibitions.json) instead.
@@ -189,6 +190,105 @@ def format_fav_alert(exhibition):
     )
 
 
+def load_push_subscribers():
+    if PUSH_SUBSCRIBERS_FILE.exists():
+        try:
+            with open(PUSH_SUBSCRIBERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"subscriptions": {}}
+
+
+def save_push_subscribers_to_github(data):
+    """Mirrors app.py's _save_to_github so expired subscriptions pruned here
+    (via 404/410 from the push service) don't keep being retried every week."""
+    import base64
+    gh_token = os.environ.get("GH_TOKEN", "")
+    if not gh_token:
+        return
+    content = json.dumps(data, ensure_ascii=False, indent=2)
+    repo = "taiwan-chodofu/taiwan-art-now"
+    api_url = f"https://api.github.com/repos/{repo}/contents/push_subscribers.json"
+    encoded = base64.b64encode(content.encode("utf-8")).decode("ascii")
+    sha = ""
+    try:
+        req = urllib.request.Request(api_url, headers={
+            "Authorization": f"token {gh_token}",
+            "Accept": "application/vnd.github.v3+json",
+        })
+        resp = urllib.request.urlopen(req, timeout=10)
+        sha = json.loads(resp.read()).get("sha", "")
+    except Exception:
+        pass
+    payload = json.dumps({"message": "Prune expired push subscriptions", "content": encoded, "sha": sha}).encode()
+    try:
+        req = urllib.request.Request(api_url, data=payload, headers={
+            "Authorization": f"token {gh_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/vnd.github.v3+json",
+        }, method="PUT")
+        urllib.request.urlopen(req, timeout=15)
+    except Exception:
+        pass
+
+
+def send_web_push_digest(ending):
+    """Broadcast a short Web Push notification summarizing exhibitions ending
+    soon to every subscribed browser. Best-effort: a missing pywebpush install
+    or unset VAPID key simply skips this (Messenger digest is unaffected)."""
+    vapid_private_key = os.environ.get("VAPID_PRIVATE_KEY", "")
+    vapid_claims_email = os.environ.get("VAPID_CLAIMS_EMAIL", "mailto:contact@taiwan-art-now.onrender.com")
+    if not vapid_private_key:
+        print("VAPID_PRIVATE_KEY not set. Skipping Web Push digest.")
+        return
+
+    subs = load_push_subscribers()
+    subscriptions = subs.get("subscriptions", {})
+    if not subscriptions:
+        print("No Web Push subscribers.")
+        return
+
+    try:
+        from pywebpush import webpush, WebPushException
+    except ImportError:
+        print("pywebpush not installed. Skipping Web Push digest.")
+        return
+
+    title = f"🎨 {len(ending)}項展覽即將結束"
+    top = ending[0]
+    body = f"{top['title']} 等展覽即將結束，點擊查看完整清單"
+    payload = json.dumps({"title": title, "body": body, "url": "https://taiwan-art-now.onrender.com/?filter=ending"})
+
+    alive = {}
+    sent = 0
+    for endpoint, info in subscriptions.items():
+        try:
+            webpush(
+                subscription_info=info,
+                data=payload,
+                vapid_private_key=vapid_private_key,
+                vapid_claims={"sub": vapid_claims_email},
+                timeout=10,
+            )
+            alive[endpoint] = info
+            sent += 1
+        except WebPushException as e:
+            status = getattr(e.response, "status_code", None)
+            if status in (404, 410):
+                print(f"  Dropping expired push subscription ({endpoint[:40]}...)")
+                continue
+            print(f"  Push failed for {endpoint[:40]}...: {e}")
+            alive[endpoint] = info
+        except Exception as e:
+            print(f"  Push failed for {endpoint[:40]}...: {e}")
+            alive[endpoint] = info
+
+    print(f"Web Push digest sent to {sent}/{len(subscriptions)} subscribers.")
+    if len(alive) != len(subscriptions):
+        save_push_subscribers_to_github({"subscriptions": alive})
+
+
 def send_message(sender_id, text, page_token):
     payload = json.dumps({
         "recipient": {"id": sender_id},
@@ -256,6 +356,8 @@ def run():
                         send_message(sender_id, alert_text, page_token)
 
     print(f"Weekly digest sent to {sent_count} subscribers.")
+
+    send_web_push_digest(ending)
 
 
 if __name__ == "__main__":

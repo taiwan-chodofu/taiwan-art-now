@@ -22,8 +22,14 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: pip install pywebpush
+
       - name: Send weekly digest
         env:
           MESSENGER_PAGE_TOKEN: ${{ secrets.MESSENGER_PAGE_TOKEN }}
           EXCLUDE_TODAY_CLOSING: ${{ github.event.inputs.exclude_today_closing }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_CLAIMS_EMAIL: ${{ secrets.VAPID_CLAIMS_EMAIL }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python send_weekly_digest.py
