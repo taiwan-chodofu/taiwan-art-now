@@ -1397,10 +1397,18 @@
 
   function _renderWebPushBlock() {
     var status = (typeof getPushStatus === 'function') ? getPushStatus() : 'unsupported';
+    var confirmed = false;
+    try { confirmed = !!JSON.parse(localStorage.getItem('taiwan_art_banner_v1_push') || '{}').subscribed; } catch (e) {}
     var label = '🔔 {% if current_lang == "zh" %}瀏覽器推播通知{% elif current_lang == "ja" %}ブラウザ通知{% else %}Browser push notifications{% endif %}';
     var body;
-    if (status === 'granted') {
-      body = '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ {% if current_lang == "zh" %}已開啟{% elif current_lang == "ja" %}有効になっています{% else %}Enabled{% endif %}</div>';
+    // NOTE: Notification.permission === 'granted' only means the OS-level
+    // prompt was accepted — it does NOT mean pushManager.subscribe() ever
+    // succeeded (e.g. iOS silently rejects it outside an installed
+    // home-screen app). Only trust our own localStorage flag, set after a
+    // confirmed round-trip to /api/push/subscribe, to show "Enabled".
+    if (confirmed) {
+      body = '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ {% if current_lang == "zh" %}已開啟{% elif current_lang == "ja" %}有効になっています{% else %}Enabled{% endif %}</div>'
+        + '<a href="#" onclick="_toggleWebPush();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:2px;display:inline-block;">{% if current_lang == "zh" %}重新註冊{% elif current_lang == "ja" %}再登録{% else %}Re-register{% endif %}</a>';
     } else if (status === 'denied') {
       body = '<div style="font-size:0.7rem;color:var(--text-light);padding:4px 0;">{% if current_lang == "zh" %}已被封鎖，請在系統設定中開啟通知權限{% elif current_lang == "ja" %}ブロックされています。設定アプリの通知権限を確認してください{% else %}Blocked — enable notifications in device Settings{% endif %}</div>';
     } else if (status === 'unsupported') {
