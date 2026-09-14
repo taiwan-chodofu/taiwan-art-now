@@ -1,11 +1,3 @@
 {
-  "subscriptions": {
-    "https://fcm.example.com/livecheck": {
-      "endpoint": "https://fcm.example.com/livecheck",
-      "keys": {
-        "p256dh": "testkey",
-        "auth": "testauth"
-      }
-    }
-  }
+  "subscriptions": {}
 }
