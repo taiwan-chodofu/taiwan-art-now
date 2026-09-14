@@ -5,7 +5,34 @@
       "keys": {
         "p256dh": "BH2j5Cgpy-02Bu9S_hVYlPwtxP8LDTp8M9URZYrfbJ47Xh6luXxUvIyyaeIfcn8OInHnKurtLfOn7t5kkzYwlIE",
         "auth": "rpm3XBr6iElC3YuYIJ7dhw"
-      }
+      },
+      "favs": {
+        "honggah__誰的遊戲_胡鈞荃個展": {
+          "title": "誰的遊戲－胡鈞荃個展",
+          "museum": "honggah",
+          "dates": "2026.09.15 – 2026.11.15",
+          "url": "/exhibition/honggah/0?lang=zh",
+          "region": "taipei",
+          "event": ""
+        },
+        "ntcart__民間_攝影_紀實影像的敘事生成": {
+          "title": "民間／攝影：紀實影像的敘事生成",
+          "museum": "ntcart",
+          "dates": "2026.07.18 – 2026.11.15",
+          "url": "/exhibition/ntcart/0?lang=zh",
+          "region": "new_taipei",
+          "event": ""
+        },
+        "ntcart__冥王星在天蠍座": {
+          "title": "冥王星在天蠍座",
+          "museum": "ntcart",
+          "dates": "2026.08.29 – 2026.11.22",
+          "url": "/exhibition/ntcart/1?lang=zh",
+          "region": "new_taipei",
+          "event": ""
+        }
+      },
+      "visited": {}
     }
   }
 }
