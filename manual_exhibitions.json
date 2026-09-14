@@ -2,6 +2,21 @@
   "generated": "2026-06-05T12:00:00",
   "exhibitions": [
     {
+      "museum": "mumugallery",
+      "title_zh": "早安，晚安：劉恩霖個展",
+      "title_en": "Good Morning, Good Night: Solo Exhibition by Liew En-Lin",
+      "title_ja": "",
+      "dates": "2026.09.05 – 2026.10.10",
+      "artists": [
+        "劉恩霖"
+      ],
+      "link": "https://www.mumugallery.com/exhibition53",
+      "status": "current",
+      "description": "《早安，晚安》源自劉恩霖與海外友人Jessie持續兩年、相差六小時時差的日常書信往來。對劉恩霖而言，畫畫的過程就像沿著一條路在畫面裡行走，線條與顏色也在行走的過程中不斷改變。他習慣在看手錶的時候把時間減六，想像大洋另一端窗外的風景，將這份跨越時差的思念與日常，轉化為畫布上流動的路徑與色彩。劉恩霖1998年生，現居彰化，畢業於國立臺南藝術大學造形藝術研究所。",
+      "description_en": "Good Morning, Good Night grows out of a two-year-long daily correspondence between Liew En-Lin and his overseas friend Jessie, separated by a six-hour time difference. For Liew, the act of painting is like walking a path across the canvas, with lines and colors continually shifting along the way. He makes a habit of subtracting six hours whenever he checks his watch, imagining the view outside her window on the other side of the ocean — translating this trans-time-zone longing and daily rhythm into flowing paths and colors on canvas. Born in 1998 and based in Changhua, Liew is a graduate of the Graduate Institute of Plastic Arts at Tainan National University of the Arts.",
+      "description_ja": "《早安，晚安（おはよう、おやすみ）》は、劉恩霖と海外在住の友人ジェシーとの間で2年間続いた、6時間の時差を挟んだ日々の書簡のやり取りから生まれた。劉恩霖にとって絵を描く過程は、画面の中の一本の道を歩くようなものであり、線と色彩もその歩みの中で絶えず変化していく。彼は時計を見るたびに6時間を引き、大洋の向こう側の窓の外の風景を想像することを習慣としており、こうした時差を越えた思いと日常を、キャンバス上を流れる道筋と色彩へと変換している。劉恩霖は1998年生まれ、彰化在住。國立臺南藝術大學造形藝術研究所修了。"
+    },
+    {
       "museum": "ttam",
       "title_zh": "2026泛太平洋國際駐村交流展",
       "title_en": "Pan-Pacific Triennial: Archipelagic Encounters",
@@ -575,20 +590,57 @@
     {
       "museum": "ncpi",
       "title_zh": "黯像：看見不見-無視之覺",
-      "title_en": "Obscured Portraits: Seen and Unseen",
-      "dates": "2026.04.18 – 2026.09.14",
+      "title_en": "Obscured Portraits: Seen and Unseen — Perception Beyond Sight",
+      "dates": "2026.05.22 – 2026.10.11",
+      "curator": "趙欣怡",
       "artists": [
         "張照堂",
         "張乾琦",
         "周慶輝",
         "鄧南光",
-        "侯淑姿"
+        "侯淑姿",
+        "江昱呈",
+        "柯錫杰",
+        "林柏樑",
+        "劉振祥",
+        "牛俊強",
+        "湯思泮",
+        "王永安",
+        "余如季"
       ],
-      "link": "https://ncpi.ntmofa.gov.tw/News_OnlineExhibitionPic_str.aspx?n=6535&sms=11476&s=44287",
+      "link": "https://ncpi.ntmofa.gov.tw/News_Content_OnlineExhibitionPic.aspx?n=8006&s=254387",
       "status": "current",
-      "description": "本展由趙欣怡策劃，集結來自台灣、斯洛維尼亞、墨西哥、日本與韓國共27位藝術家，以「非視覺」的觀點探討攝影是否能超越視覺經驗、延伸至其他感官領域。展覽借用國家攝影文化中心典藏與蓋提博物館開放資源，分為三個子題：「誰看不見？」以鄧南光、劉振祥、周慶輝等紀實攝影作品呈現視障者的生命經驗；「障礙社會」透過張照堂、張乾琦、侯淑姿的作品，反思「障礙」是否僅是生理缺損，抑或是社會結構所建構；「觸覺信號」則呈現以觸覺為核心的當代創作，包括牛俊強以點字呈現於皮革上的自畫像，以及江昱呈關於視障按摩勞動的裝置。展覽期望透過通用設計與觸感圖像、口述影像等方式，達到「全人友善」的展示體驗。",
-      "description_en": "Curated by Chao Hsin-Yi, this exhibition brings together 27 artists from Taiwan, Slovenia, Mexico, Japan, and Korea to explore whether photography — typically understood as an extension of sight — can expand into non-visual sensory territory. Drawing on the collection of the National Center of Photography and Images and the Getty Museum's Open Content Program, the show unfolds through three sub-themes: \"Who Cannot See?\", featuring documentary works by Teng Nan-Kuang, Liu Chen-Hsiang, and Chou Ching-Hui that portray the lived experience of visually impaired individuals; \"A Disabled Society,\" with works by Chang Chao-Tang, Chang Chien-Chi, and Hou Shu-Tzu questioning whether \"disability\" is purely physiological or also socially constructed; and \"Tactile Signals,\" presenting contemporary works centered on touch, including a braille self-portrait on leather by Niu Jun-Chiang and an installation by Chiang Yu-Cheng addressing the labor of visually impaired massage practitioners. Through universal design, tactile imagery, and audio description, the exhibition aims to create an inclusive viewing experience for all.",
-      "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展には、台湾、スロベニア、メキシコ、日本、韓国から27名のアーティストが参加し、視覚の延長として捉えられがちな写真が、非視覚的な感覚領域へと拡張できるかを問う。国家攝影文化中心の所蔵作品とゲティ美術館のオープンコンテンツ・プログラムの資料を用い、3つのサブテーマで構成される。「誰が見えないのか？」では鄧南光、劉振祥、周慶輝らのドキュメンタリー作品を通じて視覚障害者の生活経験を描き、「障害のある社会」では張照堂、張乾琦、侯淑姿の作品によって「障害」が単なる生理的な欠損なのか、社会的に構築されたものなのかを問い直す。「触覚信号」では、牛俊強が点字を革に刻んだ自画像や、江昱呈による視覚障害者のマッサージ労働をテーマにしたインスタレーションなど、触覚を核とした現代作品を紹介する。ユニバーサルデザインや触知画像、音声解説を通じて、誰もが体験できる展示を目指す。"
+      "description": "本展由趙欣怡策劃，為《黯像：看見不見》系列中聚焦「無視之覺」的展區，集結張照堂、張乾琦、周慶輝、鄧南光、侯淑姿、江昱呈、柯錫杰、林柏樑、劉振祥、牛俊強、湯思泮、王永安、余如季等13位台灣攝影家與當代藝術家。展覽從「被觀看的盲人」轉向「被忽視的社會感知」，以觸覺、聽覺與社會結構批判取代視覺中心主義，分為三個子題：「誰看不見？」以鄧南光、劉振祥、周慶輝等紀實攝影，記錄視障者作為那卡西樂師、按摩勞動者與社會運動參與者的生命經驗，同時反思影像是否再生產了悲情化的刻板印象；「障礙社會」透過張乾琦《鍊》系列與侯淑姿的作品，檢視台灣社會從「慈善模式」到「醫療模式」、「社會模式」的變遷，以及盲人按摩業與法制度之間的糾葛；「觸覺信號」則呈現牛俊強將點字刻於牛皮之上的自畫像、江昱呈重構視障按摩勞動現場的大型裝置，以及王永安結合神經科學與AI運算、探討觸覺作為數位時代「幽靈變數」的創作。",
+      "description_en": "Curated by Chao Hsin-Yi, this exhibition is the \"Perception Beyond Sight\" wing of the Obscured Portraits: Seen and Unseen series, bringing together 13 Taiwanese photographers and contemporary artists — Chang Chao-Tang, Chang Chien-Chi, Chou Ching-Hui, Teng Nan-Kuang, Hou Shu-Tzu, Chiang Yu-Cheng, Ko Si-Chi, Lin Bor-Liang, Liu Chen-Hsiang, Niu Jun-Chiang, Tang Szu-Pan, Wang Yung-An, and Yu Ru-Chi. Shifting from \"the blind as observed\" to \"socially neglected perception,\" the show replaces visual primacy with touch, sound, and structural critique across three sub-themes: \"Who Cannot See?\" presents documentary photography by Teng Nan-Kuang, Liu Chen-Hsiang, and Chou Ching-Hui portraying visually impaired individuals as nakasi musicians, masseurs, and social activists, while questioning whether such images reproduce sentimentalized stereotypes; \"A Disabled Society\" draws on Chang Chien-Chi's Chain series and Hou Shu-Tzu's work to trace Taiwan's shift from a charity model to medical and social models of disability, and the entanglement of blind massage labor with legal regulation; \"Tactile Signals\" features Niu Jun-Chiang's braille self-portrait embossed on leather, Chiang Yu-Cheng's large-scale installation reconstructing the labor of visually impaired masseurs, and Wang Yung-An's work combining neuroscience and AI to explore touch as a \"ghost variable\" overlooked in the digital age.",
+      "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展は、《黯像：看見不見》シリーズのうち「無視之覺」をテーマとする展区で、張照堂、張乾琦、周慶輝、鄧南光、侯淑姿、江昱呈、柯錫杰、林柏樑、劉振祥、牛俊強、湯思泮、王永安、余如季ら台湾の写真家・現代アーティスト13名が参加する。「観られる盲人」から「見過ごされる社会的感知」へと視点を転換し、視覚中心主義に代えて触覚・聴覚・社会構造批判を軸に、3つの子題で構成される。「誰が見えないのか？」では鄧南光、劉振祥、周慶輝らのドキュメンタリー写真を通じ、那卡西の楽師やマッサージ労働者、社会運動の参加者としての視覚障害者の生を記録しつつ、そうしたイメージが悲情的なステレオタイプを再生産していないかを問う。「障害のある社会」では張乾琦の《鍊》シリーズや侯淑姿の作品を通じ、台湾社会が「慈善モデル」から「医療モデル」「社会モデル」へと移行してきた過程や、盲人マッサージ業と法制度の絡み合いを検証する。「触覚信号」では、牛俊強が点字を牛革に刻んだ自画像、江昱呈による視覚障害者マッサージの労働現場を再構成した大型インスタレーション、そして王永安が神経科学とAI演算を組み合わせ、デジタル時代に見過ごされた「幽霊変数」としての触覚を探る作品を紹介する。"
+    },
+    {
+      "museum": "ncpi",
+      "title_zh": "黯像：看見不見-凝視之界",
+      "title_en": "Obscured Portraits: Seen and Unseen — Boundaries of the Gaze",
+      "dates": "2026.06.11 – 2026.10.26",
+      "curator": "趙欣怡",
+      "artists": [
+        "葉烏根．巴烏查爾（Evgen Bavčar）",
+        "廣瀨浩二郎",
+        "鄭然斗（Jung Yeon-Doo）",
+        "赫拉多．尼亨達（Gerardo Nigenda）",
+        "汪正翔",
+        "鄭桑溪",
+        "許淵富",
+        "李鳴鵰",
+        "翁庭華",
+        "張允鐘",
+        "聶莉欣",
+        "王靖勳",
+        "吳晶晶",
+        "朱浚溢"
+      ],
+      "link": "https://ncpi.ntmofa.gov.tw/News_Content_OnlineExhibitionPic.aspx?n=8006&s=254627",
+      "status": "current",
+      "description": "本展由趙欣怡策劃，為《黯像：看見不見》系列中聚焦「凝視之界」的展區，集結來自台灣、斯洛維尼亞、墨西哥、日本與韓國的14位藝術家，包括葉烏根．巴烏查爾（Evgen Bavčar）、廣瀨浩二郎、鄭然斗、赫拉多．尼亨達（Gerardo Nigenda）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶及朱浚溢，藉「視覺」與「非視覺」的交織，回應攝影史中「觀看」與「被觀看」的本質議題。展覽分為三個子題：「誰看不見？」借展美國蓋提博物館（J. Paul Getty Museum）典藏的盲人肖像經典影像，並展出保羅．史川德（Paul Strand）等作品，呈現19世紀以降盲人作為街頭乞討者、音樂家被攝影凝視、視為「社會他者」的歷史軌跡；「視覺以外」匯集斯洛維尼亞、墨西哥、日本、台灣與韓國視障攝影家的創作，其中葉烏根．巴烏查爾提出「第三隻眼」的概念，展現點字書寫影像、非視覺感知成像、以聲音與身體感知構圖等挑戰視覺中心主義的創作方法；「黑箱作業」則打造一處全黑的暗室體驗空間，結合5位台灣視障青年的作品與館藏，運用UV印刷技術與AI輔助口述影像，讓觀眾在黑暗中透過觸覺與聽覺重新體驗影像。",
+      "description_en": "Curated by Chao Hsin-Yi, this exhibition is the \"Boundaries of the Gaze\" wing of the Obscured Portraits: Seen and Unseen series, bringing together 14 artists from Taiwan, Slovenia, Mexico, Japan, and Korea — including Evgen Bavčar, Hirose Kojiro, Jung Yeon-Doo, Gerardo Nigenda, Wang Cheng-Hsiang, Cheng Sang-Hsi, Hsu Yuan-Fu, Lee Ming-Tiao, Weng Ting-Hua, Chang Yun-Chung, Nieh Li-Hsin, Wang Ching-Hsun, Wu Ching-Ching, and Chu Chun-I. Weaving together the \"visual\" and \"non-visual,\" the show addresses photography history's core questions of seeing and being seen through three sub-themes: \"Who Cannot See?\" draws on the J. Paul Getty Museum's collection of classic blind-portrait imagery alongside works by Paul Strand, tracing how, since the 19th century, blind street beggars and musicians have been photographed and cast as \"social others\"; \"Beyond Sight\" gathers works by visually impaired photographers from Slovenia, Mexico, Japan, Taiwan, and Korea — Evgen Bavčar's concept of a \"third eye\" among them — presenting braille-inscribed images, non-visually perceived imagery, and compositions guided by sound and bodily sensation that challenge visual primacy; \"The Black Box\" transforms a room into a completely dark experiential space, pairing works by five visually impaired Taiwanese youths with the museum's collection through UV printing and AI-assisted audio description, inviting visitors to re-experience images through touch and hearing in darkness.",
+      "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展は、《黯像：看見不見》シリーズのうち「凝視之界」をテーマとする展区で、台湾・スロベニア・メキシコ・日本・韓国から14名のアーティストが参加する。葉烏根．巴烏查爾（エヴゲン・バフチャル）、廣瀨浩二郎、鄭然斗（ジョン・ヨンドゥ）、赫拉多．尼亨達（ヘラルド・ニヘンダ）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶、朱浚溢らが名を連ね、「視覚」と「非視覚」を織り合わせながら、写真史における「見る」と「見られる」という本質的な問いに応答する。展覧会は3つの子題で構成される。「誰が見えないのか？」ではJ.ポール・ゲティ美術館所蔵の盲人肖像の名作やポール・ストランドの作品を展示し、19世紀以降、路上で物乞いをする盲人や盲目の音楽家が撮影の対象となり「社会的他者」として見なされてきた歴史的痕跡を提示する。「視覚以外」ではスロベニア、メキシコ、日本、台湾、韓国の視覚障害を持つ写真家の作品を集め、葉烏根．巴烏查爾が提唱する「第三の眼」という概念のもと、点字による記述や非視覚的知覚によるイメージ生成、音や身体感覚に基づく構図など、視覚中心主義に挑む創作を紹介する。「黑箱作業」では完全に暗い体験空間を設け、5名の台湾の視覚障害を持つ青年の作品と館蔵作品を組み合わせ、UV印刷技術とAI補助による音声解説を通じて、観客が暗闇の中で触覚と聴覚によってイメージを再体験できる企画とする。"
     },
     {
       "museum": "moca",

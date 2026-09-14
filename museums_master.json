@@ -444,6 +444,36 @@
       ]
     },
     {
+      "id": "mumugallery",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "MUMU GALLERY",
+        "ja": "木木藝術",
+        "zh": "木木藝術"
+      },
+      "address": {
+        "en": "No.50, Ln.90, Minde Rd., North Dist., Tainan 704",
+        "ja": "台南市北區民德路90巷50號",
+        "zh": "台南市北區民德路90巷50號"
+      },
+      "url": "https://www.mumugallery.com/",
+      "hours": {
+        "en": "Wed–Sat 13:00–18:00 | Closed Sun–Tue",
+        "ja": "水〜土 13:00–18:00｜日月火休",
+        "zh": "週三至週六 13:00–18:00｜週日一二休"
+      },
+      "closed_day": null,
+      "scraper": null,
+      "lat": 23.0044650,
+      "lng": 120.2038715,
+      "closed_days": [
+        0,
+        1,
+        6
+      ]
+    },
+    {
       "id": "tnam",
       "category": "public",
       "region": "tainan",
