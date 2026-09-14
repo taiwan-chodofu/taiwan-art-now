@@ -1958,6 +1958,7 @@ def webhook_receive():
     from datetime import datetime, timezone, timedelta
 
     body = request.get_json(silent=True) or {}
+    channel = "Instagram" if body.get("object") == "instagram" else "Messenger"
     entries = body.get("entry", [])
     for entry in entries:
         for event in entry.get("messaging", []):
@@ -2047,7 +2048,7 @@ def webhook_receive():
             # Auto-subscribe anyone who messages the page
             _add_subscriber(sender_id)
 
-            body_parts = [f"**From Messenger:** sender_id={sender_id}"]
+            body_parts = [f"**From {channel}:** sender_id={sender_id}"]
             if text:
                 body_parts.append(f"**Message:** {text}")
             for img in image_urls:
@@ -2057,7 +2058,7 @@ def webhook_receive():
 
             issue_body = "\n\n".join(body_parts)
             issue_data = json.dumps({
-                "title": f"[Messenger] {text[:50] or 'Image submission'}",
+                "title": f"[{channel}] {text[:50] or 'Image submission'}",
                 "body": issue_body,
                 "labels": ["user-request"],
             }).encode()
