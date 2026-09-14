@@ -1,0 +1,27 @@
+name: Daily want-to-go closing reminder (Web Push)
+
+on:
+  schedule:
+    # 毎日 台湾時間12:00 (UTC 04:00)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pywebpush
+
+      - name: Send 10-day closing reminders
+        env:
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_CLAIMS_EMAIL: ${{ secrets.VAPID_CLAIMS_EMAIL }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python send_push_reminders.py
