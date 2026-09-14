@@ -1056,7 +1056,13 @@ def api_push_subscribe():
     if not endpoint or not keys.get("p256dh") or not keys.get("auth"):
         return {"error": "invalid subscription"}, 400
     subs = _load_push_subscribers()
-    subs["subscriptions"][endpoint] = {"endpoint": endpoint, "keys": keys}
+    existing = subs["subscriptions"].get(endpoint, {})
+    subs["subscriptions"][endpoint] = {
+        "endpoint": endpoint,
+        "keys": keys,
+        "favs": existing.get("favs", {}),
+        "visited": existing.get("visited", {}),
+    }
     _save_push_subscribers(subs)
     return {"status": "subscribed"}
 
@@ -1070,6 +1076,24 @@ def api_push_unsubscribe():
         del subs["subscriptions"][endpoint]
         _save_push_subscribers(subs)
     return {"status": "unsubscribed"}
+
+
+@app.route("/api/push/sync-favs", methods=["POST"])
+def api_push_sync_favs():
+    """Mirror /api/subscribers/sync for Web Push subscribers: lets a daily
+    reminder job check 'want-to-go, not visited, closing in N days' without
+    requiring the browser to also be linked to Messenger."""
+    data = request.get_json(silent=True) or {}
+    endpoint = data.get("endpoint", "")
+    if not endpoint:
+        return {"error": "endpoint required"}, 400
+    subs = _load_push_subscribers()
+    if endpoint not in subs["subscriptions"]:
+        return {"error": "not subscribed"}, 404
+    subs["subscriptions"][endpoint]["favs"] = data.get("favs", {})
+    subs["subscriptions"][endpoint]["visited"] = data.get("visited", {})
+    _save_push_subscribers(subs)
+    return {"status": "synced"}
 
 
 @app.route("/api/archive")

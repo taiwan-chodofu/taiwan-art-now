@@ -233,62 +233,6 @@ def save_push_subscribers_to_github(data):
         pass
 
 
-def send_web_push_digest(ending):
-    """Broadcast a short Web Push notification summarizing exhibitions ending
-    soon to every subscribed browser. Best-effort: a missing pywebpush install
-    or unset VAPID key simply skips this (Messenger digest is unaffected)."""
-    vapid_private_key = os.environ.get("VAPID_PRIVATE_KEY", "")
-    vapid_claims_email = os.environ.get("VAPID_CLAIMS_EMAIL", "mailto:contact@taiwan-art-now.onrender.com")
-    if not vapid_private_key:
-        print("VAPID_PRIVATE_KEY not set. Skipping Web Push digest.")
-        return
-
-    subs = load_push_subscribers()
-    subscriptions = subs.get("subscriptions", {})
-    if not subscriptions:
-        print("No Web Push subscribers.")
-        return
-
-    try:
-        from pywebpush import webpush, WebPushException
-    except ImportError:
-        print("pywebpush not installed. Skipping Web Push digest.")
-        return
-
-    title = f"🎨 {len(ending)}項展覽即將結束"
-    top = ending[0]
-    body = f"{top['title']} 等展覽即將結束，點擊查看完整清單"
-    payload = json.dumps({"title": title, "body": body, "url": "https://taiwan-art-now.onrender.com/?filter=ending"})
-
-    alive = {}
-    sent = 0
-    for endpoint, info in subscriptions.items():
-        try:
-            webpush(
-                subscription_info=info,
-                data=payload,
-                vapid_private_key=vapid_private_key,
-                vapid_claims={"sub": vapid_claims_email},
-                timeout=10,
-            )
-            alive[endpoint] = info
-            sent += 1
-        except WebPushException as e:
-            status = getattr(e.response, "status_code", None)
-            if status in (404, 410):
-                print(f"  Dropping expired push subscription ({endpoint[:40]}...)")
-                continue
-            print(f"  Push failed for {endpoint[:40]}...: {e}")
-            alive[endpoint] = info
-        except Exception as e:
-            print(f"  Push failed for {endpoint[:40]}...: {e}")
-            alive[endpoint] = info
-
-    print(f"Web Push digest sent to {sent}/{len(subscriptions)} subscribers.")
-    if len(alive) != len(subscriptions):
-        save_push_subscribers_to_github({"subscriptions": alive})
-
-
 def send_message(sender_id, text, page_token):
     payload = json.dumps({
         "recipient": {"id": sender_id},
@@ -356,8 +300,6 @@ def run():
                         send_message(sender_id, alert_text, page_token)
 
     print(f"Weekly digest sent to {sent_count} subscribers.")
-
-    send_web_push_digest(ending)
 
 
 if __name__ == "__main__":
