@@ -1432,7 +1432,7 @@
     if (confirmed) {
       body = '<div style="font-size:0.75rem;color:var(--text);padding:4px 0;">✓ {% if current_lang == "zh" %}已開啟{% elif current_lang == "ja" %}有効になっています{% else %}Enabled{% endif %}</div>'
         + '<div style="font-size:0.65rem;color:var(--text-light);">{% if current_lang == "zh" %}僅適用於此瀏覽器/裝置{% elif current_lang == "ja" %}このブラウザ・端末のみ有効です{% else %}Applies only to this browser/device{% endif %}</div>'
-        + '<a href="#" onclick="_toggleWebPush();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:2px;display:inline-block;">{% if current_lang == "zh" %}重新註冊{% elif current_lang == "ja" %}再登録{% else %}Re-register{% endif %}</a>';
+        + '<div id="webPushToggleWrap"><a href="#" onclick="_toggleWebPush();return false;" style="font-size:0.65rem;color:var(--text-light);margin-top:2px;display:inline-block;">{% if current_lang == "zh" %}重新註冊{% elif current_lang == "ja" %}再登録{% else %}Re-register{% endif %}</a></div>';
     } else if (status === 'denied') {
       body = sub + '<div style="font-size:0.7rem;color:var(--text-light);padding:4px 0;">{% if current_lang == "zh" %}已被封鎖，請在系統設定中開啟通知權限{% elif current_lang == "ja" %}ブロックされています。設定アプリの通知権限を確認してください{% else %}Blocked — enable notifications in device Settings{% endif %}</div>';
     } else if (status === 'unsupported') {
@@ -1450,7 +1450,12 @@
     var wrap = document.getElementById('webPushToggleWrap');
     if (wrap) wrap.innerHTML = '<div style="font-size:0.7rem;color:var(--text-light);">…</div>';
     requestPushSubscription(function(result) {
-      if (result === 'granted') { renderMylist(); return; }
+      if (result === 'granted') {
+        var w2 = document.getElementById('webPushToggleWrap');
+        if (w2) w2.innerHTML = '<div style="font-size:0.7rem;color:#16a34a;">✓ {% if current_lang == "zh" %}已重新註冊{% elif current_lang == "ja" %}再登録しました{% else %}Re-registered{% endif %}</div>';
+        setTimeout(renderMylist, 2000);
+        return;
+      }
       var msg = result === 'timeout'
         ? '{% if current_lang == "zh" %}逾時，請再試一次{% elif current_lang == "ja" %}タイムアウトしました。もう一度お試しください{% else %}Timed out — please try again{% endif %}'
         : '{% if current_lang == "zh" %}發生錯誤，請再試一次{% elif current_lang == "ja" %}エラーが発生しました。もう一度お試しください{% else %}Something went wrong — please try again{% endif %}';
