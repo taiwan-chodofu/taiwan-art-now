@@ -568,3 +568,8 @@
 --- Validation 2026-09-14 13:56 ---
 [SHARED LINK] 2 exhibitions share: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
 
+
+--- Validation 2026-09-14 14:27 ---
+[SHARED LINK] 2 exhibitions share link: https://www.nmtl.gov.tw/News_actives.aspx?n=3821&sms=13367
+[NO DESCRIPTION AT ALL] ntmofa: '115年全國美術展' has no description in any language
+[NO DESCRIPTION AT ALL] ntmofa: '中華民國第二十二屆國際版畫雙年展' has no description in any language
