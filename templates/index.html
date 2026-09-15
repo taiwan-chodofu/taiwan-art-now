@@ -125,10 +125,10 @@
 
   <!-- IN-APP BROWSER WARNING BANNER (Instagram/Facebook/LINE) -->
   <div id="inAppBrowserBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:#fff5f5;border-bottom:1px solid #feb2b2;font-size:0.72rem;color:#822727;align-items:center;justify-content:space-between;gap:8px;">
-    <span style="flex:1;">⚠️
-      {% if current_lang == 'zh' %}你正在App內建瀏覽器中，♡想去／☑已看的資料不會保存下來。
-      {% elif current_lang == 'ja' %}アプリ内ブラウザで表示中です。♡行きたい／☑観たの記録は保存されません。
-      {% else %}You're in an in-app browser. ♡/☑ saves won't persist.
+    <span style="flex:1;">📲
+      {% if current_lang == 'zh' %}加入主畫面就能收到展覽通知、♡清單也不會不見！你正在App內建瀏覽器中，資料無法保存，請先用瀏覽器打開。
+      {% elif current_lang == 'ja' %}ホーム画面に追加すると通知も届き、♡リストも消えません！今はアプリ内ブラウザのため保存されないので、まずブラウザで開いてください。
+      {% else %}Add to Home Screen to get notifications and keep your ♡ list! You're in an in-app browser right now, so nothing saves — open in your browser first.
       {% endif %}
     </span>
     <button id="inAppBrowserActionBtn" onclick="tryOpenInBrowser()" style="border:1px solid #822727;background:none;border-radius:12px;font-size:0.68rem;font-weight:600;cursor:pointer;padding:4px 10px;color:#822727;flex-shrink:0;white-space:nowrap;">
@@ -211,7 +211,7 @@
   <!-- ADD TO HOME SCREEN BANNER -->
   <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#f3f4f6,#e8eaed);border-bottom:1px solid #d1d5db;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;">
     <span onclick="if(typeof showPWAInstall==='function')showPWAInstall()" style="cursor:pointer;flex:1;">
-      📲 {% if current_lang == 'zh' %}加入主畫面，展覽資訊隨身帶著走{% elif current_lang == 'ja' %}ホーム画面に追加して、展示情報をいつでも手元に{% else %}Add to Home Screen — art info at your fingertips{% endif %}
+      📲 {% if current_lang == 'zh' %}加入主畫面，收到展覽通知、♡清單不會不見{% elif current_lang == 'ja' %}ホーム画面に追加すると、通知が届いて♡リストも消えません{% else %}Add to Home Screen for notifications and a ♡ list that never disappears{% endif %}
     </span>
     <button onclick="dismissBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#6b7280;">✕</button>
   </div>
@@ -1391,7 +1391,7 @@
   function _renderPwaCTA() {
     if (window.matchMedia('(display-mode: standalone)').matches || localStorage.getItem('taiwan_art_pwa_dismissed')) return '';
     return '<div style="margin-top:12px;padding:10px;border:1px solid var(--border);border-radius:8px;background:var(--tag-bg);font-size:0.7rem;color:var(--text-sub);cursor:pointer;text-align:center;" onclick="if(typeof showPWAInstall===\'function\')showPWAInstall()">'
-      + '📲 {% if current_lang == "zh" %}加入主畫面，隨時查看你的清單{% elif current_lang == "ja" %}ホーム画面に追加していつでもリストを確認{% else %}Add to Home Screen to access your list anytime{% endif %}'
+      + '📲 {% if current_lang == "zh" %}加入主畫面，清單不會不見，還能收到通知{% elif current_lang == "ja" %}ホーム画面に追加すると、リストが消えず通知も届きます{% else %}Add to Home Screen so your list stays safe and you get notified{% endif %}'
       + '</div>';
   }
 
@@ -2200,7 +2200,7 @@
         // of showing steps that won't work here.
         var popup2 = document.createElement('div');
         popup2.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 100px);left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
-        popup2.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>{% if current_lang == "zh" %}用瀏覽器開啟後，就能加入主畫面，也能保存♡想去的紀錄。點右上角「⋯」選擇「在瀏覽器中開啟」即可。{% elif current_lang == "ja" %}ブラウザで開くと、ホーム画面に追加できて、♡の記録も保存されます。右上の「…」から「ブラウザで開く」を選んでください。{% else %}Open in your browser to add this to your home screen and keep your ♡ saves. Tap "⋯" (top right) and choose "Open in Browser."{% endif %}</div><button onclick="this.parentElement.remove()" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
+        popup2.innerHTML = '<div style="font-weight:600;margin-bottom:8px;">📲 {% if current_lang == "zh" %}加入主畫面{% elif current_lang == "ja" %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</div><div>{% if current_lang == "zh" %}加入主畫面後可以收到展覽通知，♡想去的紀錄也不會不見。用瀏覽器開啟後即可加入主畫面。點右上角「⋯」選擇「在瀏覽器中開啟」即可。{% elif current_lang == "ja" %}ホーム画面に追加すると展示の通知が届き、♡の記録も消えません。ブラウザで開くとホーム画面に追加できます。右上の「…」から「ブラウザで開く」を選んでください。{% else %}Adding to your Home Screen means you get exhibition notifications and your ♡ saves never disappear. Open in your browser to add it. Tap "⋯" (top right) and choose "Open in Browser."{% endif %}</div><button onclick="this.parentElement.remove()" style="margin-top:10px;border:none;background:none;color:var(--text-light);font-size:0.7rem;cursor:pointer;">{% if current_lang == "zh" %}知道了{% elif current_lang == "ja" %}閉じる{% else %}Got it{% endif %}</button>';
         document.body.appendChild(popup2);
         if (typeof gtag === 'function') gtag('event', 'pwa_prompt_shown_inapp', {});
         return;
@@ -2218,9 +2218,10 @@
       } else {
         // iOS / other: show manual instruction
         var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-        var msg = isIOS
+        var benefit = '{% if current_lang == "zh" %}加入主畫面後可以收到展覽即將結束的通知，♡想去清單也不會不見。{% elif current_lang == "ja" %}ホーム画面に追加すると、展示の終了通知が届き、♡リストも消えません。{% else %}Adding to your Home Screen gets you closing-soon notifications and keeps your ♡ list safe.{% endif %}';
+        var msg = benefit + '<br><br>' + (isIOS
           ? '{% if current_lang == "zh" %}點選下方「分享」按鈕 ⬆️ → 選擇「加入主畫面」{% elif current_lang == "ja" %}下の「共有」ボタン ⬆️ → 「ホーム画面に追加」{% else %}Tap Share ⬆️ below → "Add to Home Screen"{% endif %}'
-          : '{% if current_lang == "zh" %}點選瀏覽器選單 ⋮ → 選擇「加入主畫面」{% elif current_lang == "ja" %}ブラウザメニュー ⋮ →「ホーム画面に追加」{% else %}Tap browser menu ⋮ → "Add to Home Screen"{% endif %}';
+          : '{% if current_lang == "zh" %}點選瀏覽器選單 ⋮ → 選擇「加入主畫面」{% elif current_lang == "ja" %}ブラウザメニュー ⋮ →「ホーム画面に追加」{% else %}Tap browser menu ⋮ → "Add to Home Screen"{% endif %}');
         // Show instruction popup
         var popup = document.createElement('div');
         popup.style.cssText = 'position:fixed;bottom:calc(var(--bn-h) + 100px);left:16px;right:16px;max-width:340px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:9999;font-size:0.8rem;color:var(--text);';
