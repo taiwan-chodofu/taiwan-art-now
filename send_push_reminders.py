@@ -1,5 +1,9 @@
-"""毎日、♡行きたいで✓観たにしていない展示が残り10日になったらWeb Pushで個別通知するスクリプト。
-GitHub Actionsで実行。VAPID_PRIVATE_KEY環境変数が必要。"""
+"""毎日、♡行きたいで✓観たにしていない展示が残り10日/3日になったらWeb Pushで通知するスクリプト。
+GitHub Actionsで実行。VAPID_PRIVATE_KEY環境変数が必要。
+
+2段階にしているのは、10日前は「心の準備」程度で流されがちなため —
+本当に見逃しを防ぐには締切直前（3日前）のもう一押しが必要という判断。
+"""
 
 import json
 import os
@@ -7,7 +11,12 @@ import re
 
 from send_weekly_digest import get_ending_soon, load_exhibitions, load_push_subscribers, save_push_subscribers_to_github
 
-REMINDER_DAYS = 10
+REMINDER_TIERS = [10, 3]
+MYLIST_URL = "https://taiwan-art-now.onrender.com/?open=mylist"
+
+
+def _truncate(text, n):
+    return text if len(text) <= n else text[: n - 1] + "…"
 
 
 def send_web_push(subscription_info, title, body, url, vapid_private_key, vapid_claims_email):
@@ -36,6 +45,25 @@ def send_web_push(subscription_info, title, body, url, vapid_private_key, vapid_
         return True
 
 
+def _build_notification(matches, days_left):
+    """One exhibition: name it directly in the title so it's glanceable
+    without expanding. Multiple: naming all of them risks an unreadably
+    long body, so lead with one representative title + a count instead,
+    and send people to their ♡ list (via MYLIST_URL) for the rest."""
+    if len(matches) == 1:
+        ex = matches[0]
+        title = _truncate(ex["title"], 40)
+        artist_prefix = f"{ex['artists']} — " if ex.get("artists") else ""
+        body = f"{artist_prefix}還有{days_left}天，記得安排時間去看看！"
+        url = ex.get("detail_url", MYLIST_URL)
+    else:
+        first = _truncate(matches[0]["title"], 24)
+        title = f"♡ {len(matches)}個你想去的展覽剩{days_left}天了"
+        body = f"《{first}》等{len(matches)}個展覽即將結束，記得安排時間去看看！"
+        url = MYLIST_URL
+    return title, body, url
+
+
 def run():
     vapid_private_key = os.environ.get("VAPID_PRIVATE_KEY", "")
     vapid_claims_email = os.environ.get("VAPID_CLAIMS_EMAIL", "mailto:contact@taiwan-art-now.onrender.com")
@@ -44,10 +72,12 @@ def run():
         return
 
     exhibitions = load_exhibitions()
-    ending = get_ending_soon(exhibitions, days=REMINDER_DAYS)
-    due = [ex for ex in ending if ex["days_left"] == REMINDER_DAYS]
-    print(f"Exhibitions hitting the {REMINDER_DAYS}-day mark today: {len(due)}")
-    if not due:
+    due_by_tier = {}
+    for days in REMINDER_TIERS:
+        ending = get_ending_soon(exhibitions, days=days)
+        due_by_tier[days] = [ex for ex in ending if ex["days_left"] == days]
+        print(f"Exhibitions hitting the {days}-day mark today: {len(due_by_tier[days])}")
+    if not any(due_by_tier.values()):
         return
 
     subs = load_push_subscribers()
@@ -58,15 +88,18 @@ def run():
         favs = info.get("favs", {})
         visited = info.get("visited", {})
         keep = True
-        for ex in due:
-            norm_key = re.sub(r"[^a-zA-Z0-9一-鿿㐀-䶿]", "_", ex["key"])
-            if norm_key not in favs or norm_key in visited:
+        for days, due in due_by_tier.items():
+            matches = []
+            for ex in due:
+                norm_key = re.sub(r"[^a-zA-Z0-9一-鿿㐀-䶿]", "_", ex["key"])
+                if norm_key in favs and norm_key not in visited:
+                    matches.append(ex)
+            if not matches:
                 continue
-            title = "♡ 你想去的展覽剩10天了"
-            body = f"{ex['title']} — 記得安排時間去看看！"
+            title, body, url = _build_notification(matches, days)
             ok = send_web_push(
                 {"endpoint": endpoint, "keys": info["keys"]},
-                title, body, ex.get("detail_url", "https://taiwan-art-now.onrender.com/"),
+                title, body, url,
                 vapid_private_key, vapid_claims_email,
             )
             if ok:

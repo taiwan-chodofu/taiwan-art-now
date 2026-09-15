@@ -243,6 +243,21 @@
   });
   </script>
 
+  <!-- AUTO-OPEN MYLIST: lets a push notification (e.g. the batched
+       "N exhibitions closing soon" reminder) link straight to the ♡ list
+       instead of just the homepage. -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('open') !== 'mylist') return;
+    var modal = document.getElementById('favsModal');
+    if (!modal) return;
+    modal.style.display = 'block';
+    if (typeof renderMylist === 'function') renderMylist();
+    if (typeof gtag === 'function') gtag('event', 'mylist_open', { event_category: 'engagement', source: 'push_link' });
+  });
+  </script>
+
   <!-- ADD TO HOME SCREEN BANNER -->
   <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#f3f4f6,#e8eaed);border-bottom:1px solid #d1d5db;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;">
     <span onclick="if(typeof showPWAInstall==='function')showPWAInstall()" style="cursor:pointer;flex:1;">
