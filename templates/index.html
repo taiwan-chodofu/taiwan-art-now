@@ -166,8 +166,18 @@
     if (banner) banner.style.display = 'flex';
     if (typeof gtag === 'function') gtag('event', 'inapp_browser_detected', {});
 
+    // Tag the escaped-to URL so that once it's opened in a real browser, we
+    // can recognize "just escaped an in-app browser" and immediately follow
+    // up with the Add to Home Screen pitch — instead of relying on the same
+    // generic banner to eventually catch their attention on its own.
+    function taggedEscapeUrl() {
+      var u = new URL(window.location.href);
+      u.searchParams.set('from', 'inapp_escape');
+      return u.toString();
+    }
+
     function copyLink() {
-      var url = window.location.href;
+      var url = taggedEscapeUrl();
       var copied = document.getElementById('inAppBrowserCopied');
       function showCopied() { if (copied) copied.style.display = 'block'; }
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -188,7 +198,7 @@
 
     window.tryOpenInBrowser = function() {
       if (typeof gtag === 'function') gtag('event', 'inapp_browser_escape_attempt', {});
-      var url = window.location.href;
+      var url = taggedEscapeUrl();
       var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       // iOS: x-safari-https:// is undocumented and increasingly blocked by
       // Instagram, so don't bet on it — go straight to the always-reliable
@@ -208,6 +218,31 @@
   })();
   </script>
 
+  <!-- IN-APP BROWSER ESCAPE FOLLOW-UP: closes the loop after tryOpenInBrowser()
+       lands the visitor in a real browser, instead of leaving it to the same
+       generic banners to eventually catch their attention. Deferred to
+       DOMContentLoaded so _showRetentionPrompt (defined further down the
+       page) is guaranteed to exist by the time this runs. -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('from') !== 'inapp_escape') return;
+    params.delete('from');
+    var clean = window.location.pathname + (params.toString() ? '?' + params.toString() : '') + window.location.hash;
+    history.replaceState(null, '', clean);
+    if (window.matchMedia('(display-mode: standalone)').matches) return;
+    if (typeof gtag === 'function') gtag('event', 'inapp_escape_return_detected', {});
+    setTimeout(function() {
+      if (typeof _showRetentionPrompt !== 'function') return;
+      _showRetentionPrompt(
+        '📲',
+        '{% if current_lang == "zh" %}成功打開瀏覽器了！加入主畫面才能收到通知 →{% elif current_lang == "ja" %}ブラウザで開けました！ホーム画面に追加して通知を受け取ろう →{% else %}You made it to your browser! Add to Home Screen to get notified →{% endif %}',
+        function() { window.location.href = '/add-to-home?lang={{ current_lang }}'; }
+      );
+    }, 800);
+  });
+  </script>
+
   <!-- ADD TO HOME SCREEN BANNER -->
   <div id="featureBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#f3f4f6,#e8eaed);border-bottom:1px solid #d1d5db;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;">
     <span onclick="if(typeof showPWAInstall==='function')showPWAInstall()" style="cursor:pointer;flex:1;">
@@ -220,12 +255,20 @@
     var bannerKey = 'taiwan_art_banner_v3_pwa';
     var state = {};
     try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
+    var today = new Date().toISOString().slice(0, 10);
+    // NOTE: this used to increment on every single page load, so a single
+    // multi-page browsing session could burn through the whole 5-impression
+    // budget in minutes, permanently hiding the banner before the visitor
+    // had any real chance to notice it. Cap increments to once per day.
     if (state.dismissed || window.matchMedia('(display-mode: standalone)').matches || (state.seen || 0) >= 5) return;
     var banner = document.getElementById('featureBanner');
     if (banner) {
       banner.style.display = 'flex';
-      state.seen = (state.seen || 0) + 1;
-      localStorage.setItem(bannerKey, JSON.stringify(state));
+      if (state.lastSeenDate !== today) {
+        state.seen = (state.seen || 0) + 1;
+        state.lastSeenDate = today;
+        localStorage.setItem(bannerKey, JSON.stringify(state));
+      }
     }
     window.dismissBanner = function() {
       banner.style.display = 'none';
