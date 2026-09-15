@@ -75,6 +75,14 @@ def _region_rank(region):
 def get_ending_soon(exhibitions, days=7):
     today = datetime.now(TW_TZ).date()
     museum_regions = load_museum_regions()
+    # Each exhibition's position within its own museum's list, matching
+    # app.py's /exhibition/<museum_id>/<idx> route ordering — needed so
+    # detail_url points at the actual closing exhibition instead of always
+    # index 0 (a real bug: 23 museums currently have 2+ concurrent shows).
+    museum_order = {}
+    for ex in exhibitions:
+        museum_order.setdefault(ex.get("museum", ""), []).append(ex)
+
     ending = []
     for ex in exhibitions:
         dates = ex.get("dates", "")
@@ -92,6 +100,7 @@ def get_ending_soon(exhibitions, days=7):
                         artist_str += f" 等{len(artists)}人"
                     museum_id = ex.get("museum", "")
                     region = museum_regions.get(museum_id, "other")
+                    idx = museum_order.get(museum_id, []).index(ex)
                     ending.append({
                         "title": ex.get("title_zh", "") or ex.get("title_en", ""),
                         "museum": museum_id,
@@ -100,7 +109,7 @@ def get_ending_soon(exhibitions, days=7):
                         "artists": artist_str,
                         "days_left": days_left,
                         "end_date": end_date.strftime("%m/%d"),
-                        "detail_url": f"https://taiwan-art-now.onrender.com/exhibition/{museum_id}/0?lang=zh",
+                        "detail_url": f"https://taiwan-art-now.onrender.com/exhibition/{museum_id}/{idx}?lang=zh",
                         "key": museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "")),
                     })
             except ValueError:
