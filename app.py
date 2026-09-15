@@ -1707,6 +1707,12 @@ def privacy():
     return render_template("privacy.html")
 
 
+@app.route("/add-to-home")
+def add_to_home():
+    lang = request.args.get("lang", "zh")
+    return render_template("add_to_home.html", current_lang=lang)
+
+
 @app.route("/api/weather")
 def weather_api():
     """CWA 36hr forecast proxy."""

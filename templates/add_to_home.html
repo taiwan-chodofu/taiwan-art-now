@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  if (new URLSearchParams(window.location.search).has('_exclude_ga')) localStorage.setItem('taiwan_art_ga_exclude','1');
+  if (!localStorage.getItem('taiwan_art_ga_exclude')) {
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');
+  } else { function gtag(){} }
+  </script>
+  <title>{% if current_lang == 'zh' %}加入主畫面{% elif current_lang == 'ja' %}ホーム画面に追加{% else %}Add to Home Screen{% endif %} — Taiwan Art Now</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff; --text: #111; --text-sub: #555; --text-light: #888;
+      --border: #e8e8e8; --tag-bg: #f5f5f3;
+      --blue: #2563eb; --red: #dc2626; --accent: #111;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a; --text: #e8e8e8; --text-sub: #bbb; --text-light: #777;
+        --border: #333; --tag-bg: #2a2a2a;
+        --blue: #60a5fa; --red: #f87171; --accent: #e8e8e8;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: {% if current_lang == 'ja' %}"Noto Sans JP", {% endif %}"Noto Sans TC", -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 15px;
+    }
+    .container { max-width: 480px; margin: 0 auto; padding: 1.2rem 1rem 3rem; }
+    .back-link {
+      font-size: 0.8rem; color: var(--text-light); text-decoration: none;
+      display: inline-block; padding: 4px 0; margin-bottom: 1rem;
+    }
+    .back-link:active { color: var(--text); }
+    h1 { font-size: 1.3rem; margin-bottom: 8px; }
+    .benefit {
+      font-size: 0.85rem; color: var(--text-sub);
+      background: var(--tag-bg); border-radius: 10px;
+      padding: 12px 14px; margin-bottom: 1.5rem;
+    }
+    .platform-section { display: none; margin-bottom: 1.5rem; }
+    .platform-section.active { display: block; }
+    .platform-title {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .step {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .inapp-notice {
+      font-size: 0.8rem; color: var(--red);
+      background: var(--tag-bg); border-radius: 10px;
+      padding: 12px 14px; margin-bottom: 1.2rem;
+    }
+    .copy-btn {
+      margin-top: 8px; border: 1px solid var(--red); background: none;
+      color: var(--red); border-radius: 20px; padding: 6px 14px;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+    }
+    .toggle-others {
+      font-size: 0.75rem; color: var(--text-light);
+      text-decoration: underline; cursor: pointer; display: inline-block;
+      margin-top: 4px;
+    }
+    .copied-msg { font-size: 0.75rem; color: #16a34a; margin-top: 6px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/?lang={{ current_lang }}" class="back-link">← {% if current_lang == 'zh' %}回到首頁{% elif current_lang == 'ja' %}ホームに戻る{% else %}Back to Home{% endif %}</a>
+
+    <h1>📲 {% if current_lang == 'zh' %}加入主畫面{% elif current_lang == 'ja' %}ホーム画面に追加{% else %}Add to Home Screen{% endif %}</h1>
+    <div class="benefit">
+      {% if current_lang == 'zh' %}加入主畫面後，就能收到展覽即將結束的通知，♡想去清單也不會不見 — 就像一個小App一樣留在手機上。
+      {% elif current_lang == 'ja' %}ホーム画面に追加すると、展示が終了間近になったら通知が届き、♡行きたいリストも消えません。小さなアプリのようにスマホに残ります。
+      {% else %}Once it's on your Home Screen, you'll get notified when exhibitions you've saved are about to close, and your ♡ list never disappears — it stays on your phone like a small app.
+      {% endif %}
+    </div>
+
+    <div id="inappNotice" class="inapp-notice" style="display:none;">
+      {% if current_lang == 'zh' %}你目前在App內建瀏覽器中（Instagram / Facebook / LINE），無法直接加入主畫面。請先用下方按鈕複製網址，貼到Safari或Chrome打開。
+      {% elif current_lang == 'ja' %}今はInstagram / Facebook / LINEなどのアプリ内ブラウザで開いているため、直接ホーム画面に追加できません。下のボタンでURLをコピーし、SafariやChromeに貼り付けて開いてください。
+      {% else %}You're currently in an in-app browser (Instagram/Facebook/LINE), so you can't add this to your Home Screen directly. Copy the link below and open it in Safari or Chrome first.
+      {% endif %}
+      <br>
+      <button class="copy-btn" onclick="copyPageLink()">
+        {% if current_lang == 'zh' %}複製網址{% elif current_lang == 'ja' %}URLをコピー{% else %}Copy Link{% endif %}
+      </button>
+      <div class="copied-msg" id="copiedMsg">
+        ✓ {% if current_lang == 'zh' %}已複製！請貼到瀏覽器打開。{% elif current_lang == 'ja' %}コピーしました！ブラウザに貼り付けて開いてください。{% else %}Copied! Paste it into your browser.{% endif %}
+      </div>
+    </div>
+
+    <div class="platform-section" id="section-ios">
+      <div class="platform-title"> {% if current_lang == 'zh' %}iPhone / iPad（Safari）{% elif current_lang == 'ja' %}iPhone / iPad（Safari）{% else %}iPhone / iPad (Safari){% endif %}</div>
+      <div class="step"><div class="step-num">1</div><div>{% if current_lang == 'zh' %}點下方工具列的「分享」按鈕 ⬆️{% elif current_lang == 'ja' %}下部の「共有」ボタン ⬆️ をタップ{% else %}Tap the Share button ⬆️ at the bottom{% endif %}</div></div>
+      <div class="step"><div class="step-num">2</div><div>{% if current_lang == 'zh' %}向下滑動，選擇「加入主畫面」{% elif current_lang == 'ja' %}下にスクロールして「ホーム画面に追加」を選択{% else %}Scroll down and tap "Add to Home Screen"{% endif %}</div></div>
+      <div class="step"><div class="step-num">3</div><div>{% if current_lang == 'zh' %}點右上角「新增」完成{% elif current_lang == 'ja' %}右上の「追加」をタップして完了{% else %}Tap "Add" in the top right to finish{% endif %}</div></div>
+    </div>
+
+    <div class="platform-section" id="section-android">
+      <div class="platform-title">{% if current_lang == 'zh' %}Android（Chrome）{% elif current_lang == 'ja' %}Android（Chrome）{% else %}Android (Chrome){% endif %}</div>
+      <div class="step"><div class="step-num">1</div><div>{% if current_lang == 'zh' %}點右上角選單「⋮」{% elif current_lang == 'ja' %}右上のメニュー「⋮」をタップ{% else %}Tap the "⋮" menu in the top right{% endif %}</div></div>
+      <div class="step"><div class="step-num">2</div><div>{% if current_lang == 'zh' %}選擇「加入主畫面」或「安裝應用程式」{% elif current_lang == 'ja' %}「ホーム画面に追加」または「アプリをインストール」を選択{% else %}Choose "Add to Home Screen" or "Install app"{% endif %}</div></div>
+      <div class="step"><div class="step-num">3</div><div>{% if current_lang == 'zh' %}點「新增」或「安裝」完成{% elif current_lang == 'ja' %}「追加」または「インストール」をタップして完了{% else %}Tap "Add" or "Install" to finish{% endif %}</div></div>
+    </div>
+
+    <div class="platform-section" id="section-desktop">
+      <div class="platform-title">💻 {% if current_lang == 'zh' %}電腦{% elif current_lang == 'ja' %}パソコン{% else %}Desktop{% endif %}</div>
+      <div class="step"><div class="step-num">1</div><div>{% if current_lang == 'zh' %}Chrome：點網址列右側的「安裝」圖示（或選單 ⋮ →「安裝Taiwan Art Now」）{% elif current_lang == 'ja' %}Chrome：アドレスバー右側の「インストール」アイコン（またはメニュー ⋮ →「Taiwan Art Nowをインストール」）{% else %}Chrome: click the install icon in the address bar (or menu ⋮ → "Install Taiwan Art Now"){% endif %}</div></div>
+    </div>
+
+    <a href="#" class="toggle-others" onclick="showAllSections();return false;" id="toggleLink">
+      {% if current_lang == 'zh' %}顯示其他裝置的步驟{% elif current_lang == 'ja' %}他の端末の手順を見る{% else %}Show steps for other devices{% endif %}
+    </a>
+  </div>
+
+  <script>
+  (function() {
+    var ua = navigator.userAgent || '';
+    var isInApp = /Instagram|FB[\w_]+\//i.test(ua) || /Line\//.test(ua);
+    var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/i.test(ua);
+
+    if (isInApp) {
+      document.getElementById('inappNotice').style.display = 'block';
+    }
+
+    var primary = isIOS ? 'section-ios' : (isAndroid ? 'section-android' : 'section-desktop');
+    document.getElementById(primary).classList.add('active');
+
+    window.showAllSections = function() {
+      ['section-ios', 'section-android', 'section-desktop'].forEach(function(id) {
+        document.getElementById(id).classList.add('active');
+      });
+      document.getElementById('toggleLink').style.display = 'none';
+    };
+
+    window.copyPageLink = function() {
+      var url = 'https://taiwan-art-now.onrender.com/?lang={{ current_lang }}';
+      function showCopied() { document.getElementById('copiedMsg').style.display = 'block'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(showCopied, showCopied);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        showCopied();
+      }
+      if (typeof gtag === 'function') gtag('event', 'add_to_home_page_copy_link', {});
+    };
+
+    if (typeof gtag === 'function') gtag('event', 'add_to_home_page_view', { in_app: isInApp, platform: primary });
+  })();
+  </script>
+</body>
+</html>
