@@ -164,6 +164,13 @@
     sessionStorage.setItem('taiwan_art_inapp_banner_seen', '1');
     var banner = document.getElementById('inAppBrowserBanner');
     if (banner) banner.style.display = 'flex';
+    // This banner already carries the full "add to Home Screen for
+    // notifications + a ♡ list that survives" pitch (plus the extra
+    // in-app-specific context) — showing featureBanner/discoverBanner/
+    // pushBanner/messengerBanner on top of it just repeats the same ask
+    // and piles up 3-4 banners on a single pageload. Claim the shared
+    // slot so none of them show alongside this one.
+    window._growthBannerShown = true;
     if (typeof gtag === 'function') gtag('event', 'inapp_browser_detected', {});
 
     // Tag the escaped-to URL so that once it's opened in a real browser, we
@@ -267,6 +274,12 @@
   </div>
   <script>
   (function() {
+    // Shared slot: only one of featureBanner/discoverBanner/pushBanner/
+    // messengerBanner (or inAppBrowserBanner, which covers this same pitch
+    // already) shows per pageload, regardless of each one's own dismiss/
+    // impression history — otherwise a new visitor could see all four
+    // stacked at once on their very first load.
+    if (window._growthBannerShown) return;
     var bannerKey = 'taiwan_art_banner_v3_pwa';
     var state = {};
     try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
@@ -279,6 +292,7 @@
     var banner = document.getElementById('featureBanner');
     if (banner) {
       banner.style.display = 'flex';
+      window._growthBannerShown = true;
       if (state.lastSeenDate !== today) {
         state.seen = (state.seen || 0) + 1;
         state.lastSeenDate = today;
@@ -362,15 +376,21 @@
   </div>
   <script>
   (function() {
+    if (window._growthBannerShown) return;
     var bannerKey = 'taiwan_art_banner_v1_discover';
     var state = {};
     try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
+    var today = new Date().toISOString().slice(0, 10);
     if (state.dismissed || (state.seen || 0) >= 5) return;
     var banner = document.getElementById('discoverBanner');
     if (banner) {
       banner.style.display = 'flex';
-      state.seen = (state.seen || 0) + 1;
-      localStorage.setItem(bannerKey, JSON.stringify(state));
+      window._growthBannerShown = true;
+      if (state.lastSeenDate !== today) {
+        state.seen = (state.seen || 0) + 1;
+        state.lastSeenDate = today;
+        localStorage.setItem(bannerKey, JSON.stringify(state));
+      }
     }
     window.dismissDiscoverBanner = function() {
       banner.style.display = 'none';
@@ -481,15 +501,21 @@
       var state = getState(); state.dismissed = true; setState(state);
     };
 
+    if (window._growthBannerShown) return;
     if (!('Notification' in window) || !('serviceWorker' in navigator) || !('PushManager' in window)) return;
     if (Notification.permission !== 'default') return; // already granted or denied — nothing to ask
     var state = getState();
+    var today = new Date().toISOString().slice(0, 10);
     if (state.dismissed || (state.seen || 0) >= 5) return;
     var banner = document.getElementById('pushBanner');
     if (banner) {
       banner.style.display = 'flex';
-      state.seen = (state.seen || 0) + 1;
-      setState(state);
+      window._growthBannerShown = true;
+      if (state.lastSeenDate !== today) {
+        state.seen = (state.seen || 0) + 1;
+        state.lastSeenDate = today;
+        setState(state);
+      }
     }
   })();
   </script>
@@ -503,6 +529,7 @@
   </div>
   <script>
   (function() {
+    if (window._growthBannerShown) return;
     var bannerKey = 'taiwan_art_banner_v1_messenger';
     var state = {};
     try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
@@ -511,6 +538,7 @@
     var banner = document.getElementById('messengerBanner');
     if (banner) {
       banner.style.display = 'flex';
+      window._growthBannerShown = true;
       if (state.lastSeenDate !== today) {
         state.seen = (state.seen || 0) + 1;
         state.lastSeenDate = today;
