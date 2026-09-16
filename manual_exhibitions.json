@@ -1235,7 +1235,21 @@
       "description": "《雲在兩千米》改編自吳明益的同名短篇小說，由公視企劃、陳芯宜執導，講述一位律師在妻子驟逝後發現她未完成的小說手稿，內容關於瀕危的臺灣雲豹與魯凱族的神聖傳說，主角因而踏上一段現實與神話交錯的追尋之旅。這部VR作品曾獲2025年第82屆威尼斯影展沉浸式內容競賽單元「最佳體驗大獎」。北師美術館此次展覽融合VR體驗與實體展場，透過光影、聲音、氣味與物件，將文學、當代藝術與VR科技交會呈現，地下室與三樓化身為VR電影院,二樓展場則延展小說與影像的互文世界，並邀請學者洪廣冀與雲豹研究者姜博仁參與展示內容。",
       "description_en": "Cloud at 2000 Meters is a VR film adapted from Wu Ming-Yi's short story of the same name, produced by Taiwan Public Television and directed by Chen Singing. It follows a lawyer who, after his wife's sudden death, discovers her unfinished novel manuscript about the endangered Formosan clouded leopard and a sacred Rukai legend, setting him on a journey where reality and myth intertwine. The VR work won the Best Experience Award in the Venice Immersive competition at the 82nd Venice International Film Festival in 2025. For this exhibition, the Museum of National Taipei University of Education combines VR experience with a physical installation—using light, sound, scent, and objects to bring literature, contemporary art, and VR technology together—transforming its basement and third floor into a VR cinema, while the second floor extends the intertextual world of the novel and film, with contributions from scholar Hong Kuang-Chi and clouded leopard researcher Chiang Po-Jen.",
       "description_ja": "「雲は二千メートルに」は、呉明益（ウー・ミンイー）の同名短編小説を原作としたVR映像作品で、台湾公共テレビが企画し、陳芯宜（チェン・シンイー）が監督を務めた。妻を突然亡くした弁護士が、彼女が書き残した未完の小説原稿を発見する物語で、そこには絶滅危惧種の台湾雲豹と魯凱族の聖なる伝説が描かれており、主人公は現実と神話が交錯する探求の旅に出る。本作は2025年第82回ヴェネチア国際映画祭のイマーシブコンテンツ部門で「最優秀体験賞」を受賞した。北師美術館での本展では、VR体験と実空間の展示を融合させ、光と影、音、匂い、物によって文学・現代美術・VR技術を交差させる構成となっており、地下と3階はVRシネマに、2階の展示室では小説と映像の相互テキスト世界が展開される。学者の洪廣冀（ホン・グアンジー）や雲豹研究者の姜博仁（ジャン・ボーレン）も内容協力として参加している。",
-      "added_at": "2026-07-08T21:48:12+08:00"
+      "added_at": "2026-07-08T21:48:12+08:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "time": "14:00-16:00",
+          "title_zh": "專家講座｜怎麼閱讀地圖上的空白",
+          "title_en": "Expert Talk: How to Read the Blanks on the Map",
+          "title_ja": "専門家講座｜地図の空白をどう読むか",
+          "note_zh": "邀請臺大地理系副教授洪廣冀，從地圖測繪與林業開發的脈絡，思考山林認識的形成。免費報名參加。",
+          "note_en": "A talk by Hong Guang-Ji (Associate Professor, NTU Department of Geography) on how map-making and forestry history shaped our understanding of Taiwan's mountains. Free, registration required.",
+          "note_ja": "台湾大学地理学科の洪廣冀准教授による講座。地図測量と林業開発の歴史から、山林への認識がどう形成されたかを考える。無料、事前申込制。",
+          "source_url": "https://www.facebook.com/MoNTUE2011/posts/pfbid0h5W1jnuFjQUR2hcg6D5a9RLVgiBJ6oZP6dbBsBSSuNSmGbByHXTer6H5Dp9YikRol"
+        }
+      ]
     },
     {
       "museum": "nunufineart",
@@ -1415,7 +1429,21 @@
       "link": "https://jam.jutfoundation.org.tw/exhibition/5639",
       "added_at": "2026-07-29",
       "description_en": "The inaugural exhibition marking the 10th anniversary of the JUT Art Museum's opening, inviting Japanese architect Sou Fujimoto for a solo show. His architectural works embody a mutual dependence and permeability between nature and architecture, while also carrying visions and imaginings for the city of the future. Surveying Fujimoto's activities over the past three decades, this is also the largest solo exhibition of his career to date. Co-organized by JUT Art Museum and Mori Art Museum, Tokyo. Curated by Kondo Kenichi. Early-bird tickets NT$180 (July 27–August 14), regular admission NT$250.",
-      "description_ja": "忠泰美術館（JUT Art Museum）開館10周年を記念する最初の展覧会として、日本の建築家・藤本壯介の個展を開催。その建築作品は、自然と建築が互いに依存し合い、浸透し合う共生性を持つだけでなく、未来都市への構想やイメージも内包している。藤本壯介のこれまで30年にわたる活動を概観するものであり、彼にとって過去最大規模の個展でもある。共同主催：忠泰美術館、東京・森美術館。キュレーター：近藤健一。早割前売り7/27〜8/14（180元）、会期中の当日券250元。"
+      "description_ja": "忠泰美術館（JUT Art Museum）開館10周年を記念する最初の展覧会として、日本の建築家・藤本壯介の個展を開催。その建築作品は、自然と建築が互いに依存し合い、浸透し合う共生性を持つだけでなく、未来都市への構想やイメージも内包している。藤本壯介のこれまで30年にわたる活動を概観するものであり、彼にとって過去最大規模の個展でもある。共同主催：忠泰美術館、東京・森美術館。キュレーター：近藤健一。早割前売り7/27〜8/14（180元）、会期中の当日券250元。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "date_end": "2026/10/17",
+          "title_zh": "系列專家導覽",
+          "title_en": "Expert-Led Guided Tour Series",
+          "title_ja": "専門家ガイドツアー・シリーズ",
+          "note_zh": "邀請跨領域專家帶領觀眾賞析展覽。9/19（六）15:00 謝宗哲（建築學者）、10/17（六）15:00 林凱洛（企劃總監）。免費參加，需線上報名。",
+          "note_en": "Cross-disciplinary experts lead guided tours of the exhibition. Sept 19 (Sat) 15:00 with architecture scholar Hsieh Tsung-Che; Oct 17 (Sat) 15:00 with planning director Lin Kai-Luo. Free, online registration required.",
+          "note_ja": "異分野の専門家が展覧会をガイド。9/19（土）15:00 謝宗哲（建築学者）、10/17（土）15:00 林凱洛（企画ディレクター）。無料、オンライン事前申込制。",
+          "source_url": "https://www.facebook.com/JUTARTMUSEUM/posts/pfbid0BVovSeNmCprHQbGqG48W6eFTAiwczegrChJtfzDZfTQxwxoGJAy87gYiy2Yo3dpXl"
+        }
+      ]
     },
     {
       "museum": "projectfulfill",
@@ -1485,7 +1513,21 @@
       "link": "https://www.chinigallery.com/load_page/get_exhibition_content/207",
       "added_at": "2026-07-29",
       "description_en": "Solo exhibition by TSAI Meng-Chang (b. 1984). The works draw on the artist's hometown sentiment and everyday fragments, blending life experience into pigment to depict sharp light and shadow, weathered and crumbling corners, and rust—rekindling nostalgia for the past and a process of self-exploration. On view are the \"Factory B\" series, depicting factory landscapes in Yongkang, Nanzi, Guantian, Mailiao, and elsewhere, and the \"Metropolis Without Railway\" series, depicting railway scenes at Sandiaoling, Chiayi Station, Taipei Station, and elsewhere.",
-      "description_ja": "蔡孟閶（ツァイ・モンチャン、1984年生）による個展。作品は作家の故郷への想いと日常の断片に着想を得て、生活の記憶を顔料に溶け込ませながら、鮮明な光と影、崩れかけた角、錆びついた質感を描き出し、過去への追憶と自己探求を新たに呼び起こす。「工廠乙」シリーズ（永康、楠梓、官田、麥寮などの工場風景）と「都會沒有鐵路」シリーズ（三貂嶺、嘉義駅、台北駅などの鉄道駅風景）を展示する。"
+      "description_ja": "蔡孟閶（ツァイ・モンチャン、1984年生）による個展。作品は作家の故郷への想いと日常の断片に着想を得て、生活の記憶を顔料に溶け込ませながら、鮮明な光と影、崩れかけた角、錆びついた質感を描き出し、過去への追憶と自己探求を新たに呼び起こす。「工廠乙」シリーズ（永康、楠梓、官田、麥寮などの工場風景）と「都會沒有鐵路」シリーズ（三貂嶺、嘉義駅、台北駅などの鉄道駅風景）を展示する。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "time": "15:00-16:30",
+          "title_zh": "藝術講座｜嚮往與距離",
+          "title_en": "Artist Talk: Longing and Distance",
+          "title_ja": "アートトーク｜嚮往與距離",
+          "note_zh": "展覽相關藝術講座，深入探討作品主題與創作脈絡。",
+          "note_en": "An artist talk exploring the exhibition's themes and the artists' creative process.",
+          "note_ja": "展覧会に関連するアートトーク。作品のテーマと制作背景を深く掘り下げる。",
+          "source_url": "https://www.facebook.com/chinigallery/posts/pfbid038AweuXMYgQJuxim4A3fVjjC1qQhNgguVX3W8H4CX4qTbbKC1KwepXTGYYCceT5NEl"
+        }
+      ]
     },
     {
       "museum": "mezzoart",
@@ -1601,7 +1643,33 @@
       "description": "作為2026年台灣設計展衛星展，以「形意變奏」「文字相映」「書象演譯」三項子題，匯聚台、港、澳、中、日、韓不同世代的藝術家與設計師，展開書法與設計交會的當代語境探討。策展人：游明龍。",
       "link": "https://tmofa.tycg.gov.tw/ch/exhibitions/upcoming-exhibitions/158",
       "description_en": "A satellite exhibition of the 2026 Taiwan Design Expo, organized around three sub-themes—\"Variations of Form and Meaning,\" \"Reflections of Text,\" and \"Interpretations of Calligraphic Imagery\"—bringing together artists and designers of different generations from Taiwan, Hong Kong, Macau, China, Japan, and Korea to explore the contemporary context where calligraphy and design intersect. Curator: You Ming-Long.",
-      "description_ja": "「2026台湾デザイン展」のサテライト展として、「形意変奏」「文字相映」「書象演繹」の三つのサブテーマのもと、台湾・香港・マカオ・中国・日本・韓国の異なる世代のアーティストとデザイナーが集結し、書法とデザインが交わる現代的な文脈を探求する。キュレーター：游明龍（ユー・ミンロン）。"
+      "description_ja": "「2026台湾デザイン展」のサテライト展として、「形意変奏」「文字相映」「書象演繹」の三つのサブテーマのもと、台湾・香港・マカオ・中国・日本・韓国の異なる世代のアーティストとデザイナーが集結し、書法とデザインが交わる現代的な文脈を探求する。キュレーター：游明龍（ユー・ミンロン）。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/03",
+          "time": "14:00-16:00",
+          "title_zh": "字體創作工作坊｜一樣都是字，造形大不同",
+          "title_en": "Type Design Workshop: Same Character, Different Forms",
+          "title_ja": "文字デザインワークショップ｜同じ文字でも形はさまざま",
+          "note_zh": "由justfont帶領，從生活中的文字觀察出發，實際嘗試不同書寫工具，創作個人風格文字作品。橫山書法藝術館B棟1樓，限15人，免費需另購門票入場。",
+          "note_en": "Led by justfont: observe everyday lettering, experiment with different writing tools, and create a personal-style text artwork. Hengshan Calligraphy Art Center, Building B 1F. Limited to 15 people, free but requires an exhibition ticket.",
+          "note_ja": "justfontによるワークショップ。日常の文字を観察し、様々な筆記具を試して個性的な文字作品を制作する。横山書法芸術館B棟1階。15名限定、無料（展覧会チケットが必要）。",
+          "source_url": "https://www.facebook.com/tmofa.hcac/posts/pfbid02WLg68kkPomCQW56h7B75S1whGcyoawPjHkLNMmBTzM9RQn2D1zWufchXhEmWN4WSl"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/04",
+          "time": "14:00-16:00",
+          "title_zh": "跨域對談｜書法與設計",
+          "title_en": "Cross-Disciplinary Talk: Calligraphy and Design",
+          "title_ja": "異分野対談｜書法とデザイン",
+          "note_zh": "策展人游明龍與參展創作者靳埭強、安尚秀、於同生對談，從策展、設計與書法創作經驗出發。橫山書法藝術館書藝講堂，限75人，免費入場需報名。",
+          "note_en": "A conversation between curator You Ming-Long and participating artists Kan Tai-Keung, Ahn Sang-soo, and Yu Tong-sheng on curating, design, and calligraphy. Hengshan Calligraphy Art Center Lecture Hall. Limited to 75 people, free, registration required.",
+          "note_ja": "キュレーターの游明龍と参加作家（靳埭強、安尚秀、於同生）による対談。キュレーション・デザイン・書法創作の視点から語る。横山書法芸術館・書藝講堂。75名限定、無料・事前申込制。",
+          "source_url": "https://www.facebook.com/tmofa.hcac/posts/pfbid02WLg68kkPomCQW56h7B75S1whGcyoawPjHkLNMmBTzM9RQn2D1zWufchXhEmWN4WSl"
+        }
+      ]
     },
     {
       "museum": "hcfam",
