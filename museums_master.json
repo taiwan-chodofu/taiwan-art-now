@@ -465,7 +465,7 @@
       },
       "closed_day": null,
       "scraper": null,
-      "lat": 23.0044650,
+      "lat": 23.004465,
       "lng": 120.2038715,
       "closed_days": [
         0,
@@ -4218,6 +4218,92 @@
       ],
       "lat": 25.0381985,
       "lng": 121.5462191
+    },
+    {
+      "id": "yipingbookroom",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Yi Ping Book Room",
+        "ja": "一坪書室",
+        "zh": "一坪書室"
+      },
+      "address": {
+        "en": "No. 213-15, Xinle St., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區新樂街213-15號",
+        "zh": "高雄市鹽埕區新樂街213-15號"
+      },
+      "url": "https://www.instagram.com/3.3058m2book/",
+      "hours": {
+        "en": "24 hours (self-service, open access)",
+        "ja": "24時間開放（セルフサービス）",
+        "zh": "24小時開放，自由書寫"
+      },
+      "closed_day": null,
+      "closed_days": [],
+      "hours_uncertain": true,
+      "lat": 22.6235,
+      "lng": 120.2884
+    },
+    {
+      "id": "placeo",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "PLACE O",
+        "ja": "PLACE O",
+        "zh": "PLACE O"
+      },
+      "address": {
+        "en": "No. 3, Ln. 136, Wenchang St., Taipei",
+        "ja": "台北市文昌街136巷3號",
+        "zh": "台北市文昌街136巷3號"
+      },
+      "url": "https://www.instagram.com/the.place.o/",
+      "hours": {
+        "en": "Fri-Sun 14:00-19:00 during exhibitions",
+        "ja": "展覧会期間中 金土日 14:00–19:00",
+        "zh": "展期中 週五六日 14:00–19:00"
+      },
+      "closed_day": null,
+      "closed_days": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "hours_uncertain": true,
+      "lat": 25.0323275,
+      "lng": 121.5530815
+    },
+    {
+      "id": "zegallery",
+      "category": "alternative",
+      "region": "hsinchu",
+      "name": {
+        "en": "ZE Gallery (NTHU Dept. of Arts & Design)",
+        "ja": "澤-藝術空間（國立清華大學藝術與設計學系）",
+        "zh": "澤-藝術空間（國立清華大學藝術與設計學系）"
+      },
+      "address": {
+        "en": "Dept. of Arts & Design, NTHU, No. 521, Nanda Rd., East Dist., Hsinchu",
+        "ja": "新竹市東區南大路521號（國立清華大學藝術與設計學系）",
+        "zh": "新竹市東區南大路521號（國立清華大學藝術與設計學系）"
+      },
+      "url": "https://www.instagram.com/nhcue_artspace/",
+      "hours": {
+        "en": "Mon-Fri 10:00-20:00 during exhibitions",
+        "ja": "展覧会期間中 月〜金 10:00–20:00",
+        "zh": "展期中 週一至週五 10:00–20:00"
+      },
+      "closed_day": null,
+      "closed_days": [
+        5,
+        6
+      ],
+      "hours_uncertain": true,
+      "lat": 24.7916987,
+      "lng": 120.9924295
     }
   ]
 }
