@@ -15,7 +15,21 @@
       "description": "《早安，晚安》源自劉恩霖與海外友人Jessie持續兩年、相差六小時時差的日常書信往來。對劉恩霖而言，畫畫的過程就像沿著一條路在畫面裡行走，線條與顏色也在行走的過程中不斷改變。他習慣在看手錶的時候把時間減六，想像大洋另一端窗外的風景，將這份跨越時差的思念與日常，轉化為畫布上流動的路徑與色彩。劉恩霖1998年生，現居彰化，畢業於國立臺南藝術大學造形藝術研究所。",
       "description_en": "Good Morning, Good Night grows out of a two-year-long daily correspondence between Liew En-Lin and his overseas friend Jessie, separated by a six-hour time difference. For Liew, the act of painting is like walking a path across the canvas, with lines and colors continually shifting along the way. He makes a habit of subtracting six hours whenever he checks his watch, imagining the view outside her window on the other side of the ocean — translating this trans-time-zone longing and daily rhythm into flowing paths and colors on canvas. Born in 1998 and based in Changhua, Liew is a graduate of the Graduate Institute of Plastic Arts at Tainan National University of the Arts.",
       "description_ja": "《早安，晚安（おはよう、おやすみ）》は、劉恩霖と海外在住の友人ジェシーとの間で2年間続いた、6時間の時差を挟んだ日々の書簡のやり取りから生まれた。劉恩霖にとって絵を描く過程は、画面の中の一本の道を歩くようなものであり、線と色彩もその歩みの中で絶えず変化していく。彼は時計を見るたびに6時間を引き、大洋の向こう側の窓の外の風景を想像することを習慣としており、こうした時差を越えた思いと日常を、キャンバス上を流れる道筋と色彩へと変換している。劉恩霖は1998年生まれ、彰化在住。國立臺南藝術大學造形藝術研究所修了。",
-      "added_at": "2026-09-14T14:57:52+09:00"
+      "added_at": "2026-09-14T14:57:52+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/05",
+          "date_end": "2026/10/10",
+          "title_zh": "FIRST COLLECTION 參與活動",
+          "title_en": "FIRST COLLECTION Participation Campaign",
+          "title_ja": "FIRST COLLECTION 参加企画",
+          "note_zh": "展覽期間參與FIRST COLLECTION活動，有機會獲得展出作品一件（詳見Instagram精選動態）。",
+          "note_en": "Take part in the FIRST COLLECTION campaign during the exhibition for a chance to receive one of the exhibited works (see Instagram highlights for details).",
+          "note_ja": "会期中にFIRST COLLECTION企画に参加すると、展示作品を1点受け取れるチャンスがある（詳細はInstagramのハイライト参照）。",
+          "source_url": "https://www.instagram.com/mumugallery/p/DdRTTmhCNJo/"
+        }
+      ]
     },
     {
       "museum": "ttam",
@@ -1338,20 +1352,6 @@
       "description_ja": "蔡孟閶（ツァイ・モンチャン、1984年生）による個展。作品は作家の故郷への想いと日常の断片に着想を得て、生活の記憶を顔料に溶け込ませながら、鮮明な光と影、崩れかけた角、錆びついた質感を描き出し、過去への追憶と自己探求を新たに呼び起こす。「工廠乙」シリーズ（永康、楠梓、官田、麥寮などの工場風景）と「都會沒有鐵路」シリーズ（三貂嶺、嘉義駅、台北駅などの鉄道駅風景）を展示する。"
     },
     {
-      "museum": "sinpink",
-      "title_zh": "自來生長",
-      "title_en": "",
-      "dates": "2026.08.22 – 2026.09.16",
-      "artists": [
-        "王午"
-      ],
-      "description": "王午個展。創作與發表，對藝術家來說是學習的整理，呈現在不同藝術體系之間游移並持續挖掘養分的過程。研究民間藝術使其多次走進田野，領受並讚嘆農民藝人手筆的潑辣與淳樸之美，在木刻版畫上大量加筆並增加剪紙拼貼。基於對傳統書畫的文化認同，視刀法為筆墨的延伸，以臨字為日課，發展出書法與版畫的結合。近年學習南管，〈自來生長〉是作者最喜愛的指套，期許自己的創作也能如此曲般綿長而變化無窮。贊助：國藝會。",
-      "link": "https://sinpink.com/2026/07/29/自來生長/",
-      "added_at": "2026-07-29",
-      "description_en": "Solo exhibition by Wang Wu. For the artist, creating and presenting work is a way of organizing what he has learned, revealing a process of moving between different artistic systems while continually seeking nourishment. His research into folk art has taken him into the field many times, where he has come to admire the bold yet unpretentious beauty of farmer-artisans' brushwork, leading him to add extensive brushwork and paper-cut collage onto his woodblock prints. Rooted in a cultural affinity for traditional calligraphy and painting, he treats the carving knife as an extension of the brush, practicing calligraphy daily and developing a fusion of calligraphy and printmaking. In recent years he has studied Nanguan (southern Fujian music); \"Zilai Shengzhang\" (Growing Naturally) is his favorite zhitao (finger-suite) piece, and he hopes his own work can likewise unfold as long and endlessly varied as this music. Sponsored by the National Culture and Arts Foundation.",
-      "description_ja": "王午（ワン・ウー）による個展。作家にとって創作と発表は、学びを整理する行為であり、異なる芸術体系の間を行き来しながら養分を掘り続けていく過程を示すものである。民間芸術の研究のために度々フィールドに赴き、農民芸術家の筆致に宿る大胆さと素朴な美しさに感銘を受け、木版画に大量の筆描きと切り紙のコラージュを加えるようになった。伝統書画への文化的な帰属意識を基盤に、刀技を筆墨の延長とみなし、日々の臨書を習慣とすることで、書法と版画を融合させる独自の表現を発展させてきた。近年は南管音楽を学んでおり、〈自來生長〉は作者が最も愛する指套（南管の器楽曲）で、自身の創作もこの曲のように綿々と続き、変化に富んだものであることを願っている。協賛：国家文化芸術基金会（国芸会）。"
-    },
-    {
       "museum": "mezzoart",
       "title_zh": "虛線",
       "title_en": "Dotted Line",
@@ -1829,21 +1829,6 @@
       "description": "池上穀倉藝術館為台灣第一座由穀倉改建而成的藝術館，2017年由台灣好基金會於台東縣池上鄉創立，已成為當地居民共同的記憶與新地標。特展《我們 台灣》由台灣好基金會首度攜手國立台灣美術館、國家攝影文化中心，由策展人黃建亮精選張才、柯錫杰、鄭桑溪等29位攝影師共54件典藏作品，引領觀者透過鏡頭重新看見20世紀台灣的模樣。",
       "description_en": "The Chishang Rice Barn Art Museum, opened in 2017 by the Taiwan Homegrown Foundation in Chishang Township, Taitung, was Taiwan's first art museum converted from a rice granary and has become both a cherished memory and a new landmark for the local community. The special exhibition \"We, Taiwan\" marks the foundation's first collaboration with the National Taiwan Museum of Fine Arts and the National Center of Photography and Imaging Arts. Curated by Huang Chien-Liang, it features 54 works by 29 photographers — including Chang Tsai, Jack Ke Chao-Chieh, and Cheng Sang-Hsi — offering a lens-based look back at 20th-century Taiwan.",
       "description_ja": "池上穀倉藝術館は台湾初の穀物倉庫を改装した美術館で、2017年に台灣好基金會によって台東県池上郷に開設され、地元住民にとって思い出深い場所であり新たなランドマークとなっています。特別展「我們 台灣（私たち・台湾）」は、同基金会が国立台湾美術館および国家撮影文化センターと初めて協力した企画展で、キュレーターの黄建亮が張才、柯錫杰、鄭桑溪ら29名の写真家による54点の収蔵作品を厳選し、レンズを通して20世紀台湾の姿を見つめ直します。",
-      "added_at": "2026-08-26"
-    },
-    {
-      "museum": "daxiagallery",
-      "title_zh": "森芯樹光─在絕望深谷尋找森林曙光：樹木肖像師的山林凝視與生命復癒行旅",
-      "title_en": "Luminance at the Inmost Heart of the Forests",
-      "title_ja": "",
-      "dates": "2026.09.04 – 2026.09.16",
-      "link": "https://cacc.sce.pccu.edu.tw/exhibitions/1938",
-      "artists": [
-        "徐仕璿（自然名「山艾」）"
-      ],
-      "description": "大夏藝廊為中國文化大學推廣教育部藝術文創中心所設立的展覽空間，位於台北市大安區建國南路二段231號大夏館一樓。個展《森芯樹光》由「樹木肖像師」徐仕璿（自然名「山艾」，台大森林研究所畢業、現服務於國家林業部門）展出，他走入臺灣山林逾十年，以鏡頭凝視古老樹木的生命姿態，透過四段主題、逾百幅山林影像詩，引領觀者從生命低谷走向森林曙光，展開一場生命復癒之旅。",
-      "description_en": "Daxia Gallery is an exhibition space run by the Art & Cultural Creativity Center of Chinese Culture University's School of Continuing Education, located on the 1st floor of the Daxia Building at No. 231, Sec. 2, Jianguo South Rd., Da'an District, Taipei. The solo exhibition \"Luminance at the Inmost Heart of the Forests\" features \"tree portraitist\" Hsu Shih-Hsuan (nature name \"Shan Ai\"; a National Taiwan University Forestry graduate now working in Taiwan's forestry administration), who has spent over a decade wandering Taiwan's forests photographing the life and presence of ancient trees. Through four thematic chapters and over 100 forest-image poems, the show guides viewers from despair toward the light found in the forest, on a journey of healing.",
-      "description_ja": "大夏ギャラリーは中国文化大学推広教育部・芸術文創センターが運営する展示スペースで、台北市大安区建国南路二段231号「大夏館」1階に位置しています。個展「森芯樹光」では「樹木ポートレイティスト」の徐仕璿（自然名「山艾」、台湾大学森林研究所卒、現在は国の林業部門に勤務）が、10年以上にわたり台湾の山々を歩き、古木の生命の姿をレンズで見つめ続けてきた作品を展示。4つのテーマと100点を超える山林写真詩を通じて、絶望の谷から森の曙光へと観客を導く、生命の回復の旅を描きます。",
       "added_at": "2026-08-26"
     },
     {
