@@ -197,6 +197,18 @@
           "note_zh": "需自備T-shirt或帆布包｜300元",
           "note_en": "Bring your own T-shirt/tote | NTD 300",
           "link": ""
+        },
+        {
+          "type": "activity",
+          "date": "2026/09/27",
+          "time": "14:00",
+          "title_zh": "《Re: 戰鬥之城》專家導覽",
+          "title_en": "\"Re: Battle City\" Expert-Guided Tour",
+          "title_ja": "《Re: 戦闘之城》専門家によるガイドツアー",
+          "note_zh": "展場專家導覽活動，地點：內惟藝術中心（馬卡道路329號）。",
+          "note_en": "A guided tour of the exhibition led by an expert, held on-site at Neiwei Arts Center (No. 329 Makadao Rd.).",
+          "note_ja": "内惟藝術中心（馬卡道路329号）で開催される専門家によるガイドツアー。",
+          "source_url": "https://www.facebook.com/NeiweiArtsCenter"
         }
       ],
       "description_ja": "「Re」には再起動、再び戻るという意味がある。本展はアーティスト張立人が14年をかけて完成させた《戰鬥之城》シリーズを中心に、アニメーション映像、漫画、コンテ原稿、ジオラマ模型、キャラクター、撮影道具を通じて、《戰鬥之城》の中で構築された「世界観」を提示し、遡ることと更新することの間で、現実世界との多重的な対照関係を形づくる。",
@@ -322,7 +334,21 @@
       ],
       "description_en": "Drawn from agnès b.'s own forty-year personal collection, the exhibition traces graffiti art's encounter with fashion back to 1976, when it first appeared inside her debut Paris boutique. Following earlier presentations in Roubaix, France and Tokyo, Japan, this heartfelt collection travels to Tainan for the first time, where, set against the historic architecture of the Tainan Art Museum, it invites visitors into a sensory dialogue between fashion, art and everyday life—embodying the spirit of \"Art for All.\"",
       "description_ja": "本展は agnès b. 氏自身による40年にわたるコレクションに基づき、1976年、彼女がパリに初のブティックを開いた際にグラフィティとファッションが自由に出会った瞬間まで遡る。フランス・ルーベと日本・東京での巡回展に続き、この心温まるコレクションが初めて台南を訪れ、台南市美術館の歴史的建築とその重みの中で、ファッション・アート・生活をめぐる感性的な対話へと観客を誘う。「Art for All（アート・フォー・オール）」という理念を体現した展覧会である。",
-      "added_at": "2026-06-25T17:14:39+09:00"
+      "added_at": "2026-06-25T17:14:39+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/06/25",
+          "date_end": "2026/09/20",
+          "title_zh": "跨時空對話：從巴黎街頭到府城巷弄（現場創作展演計畫）",
+          "title_en": "Cross-Time Dialogue: From Paris Streets to Fucheng Alleys (Live Creation Program)",
+          "title_ja": "跨時空對話：パリの街角から府城の路地へ（ライブ制作プログラム）",
+          "note_zh": "為呼應展覽精神推出的現場創作展演計畫，集結四位臺灣藝術家在導覽室現場創作塗鴉牆面，暑假期間亦邀請小朋友一同參與留下創作痕跡。",
+          "note_en": "A live-creation program echoing the exhibition's spirit: four Taiwanese artists created a graffiti wall in the guided tour room on-site, and during summer children were also invited to add their own marks to the wall.",
+          "note_ja": "展覧会の精神に応える形で企画されたライブ制作プログラム。台湾の4人のアーティストが案内室の壁面でグラフィティを制作し、夏休み期間には子どもたちも参加して壁に自分の跡を残した。",
+          "source_url": "https://www.facebook.com/TainanArtMuseum/"
+        }
+      ]
     },
     {
       "museum": "tnam",
@@ -639,7 +665,33 @@
       "description": "本展由傅達仁與洪瑋翎共同策劃，邀請艾立森、紀凱淵、葛瑞芬、劉芸怡、鄭亭亭及菲律賓在台社群參與。展覽跳脫以島嶼為中心的台灣敘事，轉而透過對外的地緣網絡回望台灣，策展人稱此為「離岸回眸」，讓國族與主權的符號暫時懸置，使土地得以「在情感流動中重新顯影」。展覽提出「何謂此地？何謂家？」的核心提問，並以三條主題線索展開：島嶼遷移與記憶的裂縫、海外情感聯繫的建立與回歸、以及多重身分的疊層，分別透過金門、澎湖、菲律賓移工社群與巴黎移民女性等視角，探討記憶、身分與歸屬感的流動狀態。",
       "description_en": "Co-curated by Fu Da-Ren and Hong Wei-Ling, this exhibition brings together artists Allison, Chi Kai-Yuan, Griffin (Compuesto), Liu Yun-Yi, and Cheng Ting-Ting, along with the Filipino community in Taiwan. Departing from island-centered narratives of Taiwan, the show instead looks back at Taiwan through its external geopolitical networks — described by the curators as \"looking back from offshore\" — suspending symbols of nationhood and sovereignty so the land can \"re-emerge through flows of emotion.\" Centered on the question \"What is this place? What is home?\", the exhibition unfolds through three threads: fissures of memory in island migration, the building and return of emotional ties abroad, and the layering of multiple identities — explored through the lenses of Kinmen, Penghu, Filipino migrant communities, and Paris-based immigrant women.",
       "description_ja": "傅達仁と洪瑋翎の共同キュレーションによる本展には、艾立森(アリソン)、紀凱淵、葛瑞芬(グリフィン/コンプエスト)、劉芸怡、鄭亭亭、そして台湾在住フィリピン人コミュニティが参加する。島を中心とした従来の台湾像から離れ、対外的な地政学的ネットワークを通して台湾を見つめ直す試みで、キュレーターはこれを「オフショアからの回顧」と呼ぶ。国家や主権の象徴を一時的に宙づりにすることで、土地が「感情の流れの中で再び姿を現す」ことを目指す。「この場所とは何か、家とは何か」という問いを軸に、島の移動と記憶の断裂、海外での感情的なつながりの構築と帰還、多層的なアイデンティティという3つのテーマ軸から、金門、澎湖、フィリピン人移民労働者コミュニティ、パリの移民女性たちの視点を通じて展開される。",
-      "added_at": "2026-06-29T17:49:44+09:00"
+      "added_at": "2026-06-29T17:49:44+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "time": "13:30-15:30",
+          "title_zh": "策展人講座｜在這時代我們如何重談離散與歸屬？",
+          "title_en": "Curatorial Talk: How Do We Reconsider Diaspora and Belonging in Our Time?",
+          "title_ja": "キュレーター・トーク：この時代に離散と帰属をどう語り直すか",
+          "note_zh": "主持人：蔡明君（亞洲大學附屬現代美術館副館長）｜講者：洪瑋翎、傅達仁。地點：關渡美術館2F展覽廳。",
+          "note_en": "Moderated by Tsai Ming-Chun (Deputy Director, ASIAMOMA); speakers Hong Wei-Ling and Fu Da-Ren. Held at KdMoFA, 2F Gallery.",
+          "note_ja": "モデレーター：蔡明君（亞洲大學附屬現代美術館副館長）、講師：洪瑋翎・傅達仁。関渡美術館2階展示室にて開催。",
+          "source_url": "https://www.facebook.com/TNUA.KdMoFA/"
+        },
+        {
+          "type": "activity",
+          "date": "2026/09/20",
+          "time": "11:00-16:30",
+          "title_zh": "電影播映《由島至島》",
+          "title_en": "Film Screening: \"From Island to Island\"",
+          "title_ja": "映画上映『島から島へ』",
+          "note_zh": "馬來西亞導演廖克發執導，片長約4小時50分（中場休息一次）。地點：關渡美術館2F展覽廳，播映期間觀眾可自由進出。",
+          "note_en": "Directed by Malaysian filmmaker Lau Kek Huat, running approx. 4h50m with one intermission. Held at KdMoFA, 2F Gallery; audience may enter/exit freely during the screening.",
+          "note_ja": "マレーシア人監督ラウ・ケーファーによる作品。上映時間約4時間50分（休憩1回）。関渡美術館2階展示室にて上映、上映中は自由に入退場可能。",
+          "source_url": "https://www.facebook.com/TNUA.KdMoFA/"
+        }
+      ]
     },
     {
       "museum": "ncpi",
@@ -665,6 +717,20 @@
       "link": "https://ncpi.ntmofa.gov.tw/News_Content_OnlineExhibitionPic.aspx?n=8006&s=254387",
       "status": "current",
       "description": "本展由趙欣怡策劃，為《黯像：看見不見》系列中聚焦「無視之覺」的展區，集結張照堂、張乾琦、周慶輝、鄧南光、侯淑姿、江昱呈、柯錫杰、林柏樑、劉振祥、牛俊強、湯思泮、王永安、余如季等13位台灣攝影家與當代藝術家。展覽從「被觀看的盲人」轉向「被忽視的社會感知」，以觸覺、聽覺與社會結構批判取代視覺中心主義，分為三個子題：「誰看不見？」以鄧南光、劉振祥、周慶輝等紀實攝影，記錄視障者作為那卡西樂師、按摩勞動者與社會運動參與者的生命經驗，同時反思影像是否再生產了悲情化的刻板印象；「障礙社會」透過張乾琦《鍊》系列與侯淑姿的作品，檢視台灣社會從「慈善模式」到「醫療模式」、「社會模式」的變遷，以及盲人按摩業與法制度之間的糾葛；「觸覺信號」則呈現牛俊強將點字刻於牛皮之上的自畫像、江昱呈重構視障按摩勞動現場的大型裝置，以及王永安結合神經科學與AI運算、探討觸覺作為數位時代「幽靈變數」的創作。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/08/01",
+          "date_end": "2026/09/30",
+          "title_zh": "限定活動｜氣味收藏所",
+          "title_en": "Limited-Time Activity: Scent Collection Booth",
+          "title_ja": "期間限定企画｜香り収集所",
+          "note_zh": "觀展後挑選一款最貼近記憶的氣味，噴灑於展覽限定明信片並帶走。費用：新臺幣50元或文化幣50點，明信片數量有限，售完為止。",
+          "note_en": "After viewing the exhibition, choose a scent closest to your memory and spray it onto a limited-edition postcard to take home. Cost: NT$50 or 50 Culture Points; postcards are limited and while supplies last.",
+          "note_ja": "観覧後、記憶に最も近い香りを1つ選び、限定ポストカードに吹きかけて持ち帰ることができる。費用：新台湾ドル50元または文化ポイント50点。ポストカードは数量限定、なくなり次第終了。",
+          "source_url": "https://www.facebook.com/NCPITaiwan"
+        }
+      ],
       "description_en": "Curated by Chao Hsin-Yi, this exhibition is the \"Perception Beyond Sight\" wing of the Obscured Portraits: Seen and Unseen series, bringing together 13 Taiwanese photographers and contemporary artists — Chang Chao-Tang, Chang Chien-Chi, Chou Ching-Hui, Teng Nan-Kuang, Hou Shu-Tzu, Chiang Yu-Cheng, Ko Si-Chi, Lin Bor-Liang, Liu Chen-Hsiang, Niu Jun-Chiang, Tang Szu-Pan, Wang Yung-An, and Yu Ru-Chi. Shifting from \"the blind as observed\" to \"socially neglected perception,\" the show replaces visual primacy with touch, sound, and structural critique across three sub-themes: \"Who Cannot See?\" presents documentary photography by Teng Nan-Kuang, Liu Chen-Hsiang, and Chou Ching-Hui portraying visually impaired individuals as nakasi musicians, masseurs, and social activists, while questioning whether such images reproduce sentimentalized stereotypes; \"A Disabled Society\" draws on Chang Chien-Chi's Chain series and Hou Shu-Tzu's work to trace Taiwan's shift from a charity model to medical and social models of disability, and the entanglement of blind massage labor with legal regulation; \"Tactile Signals\" features Niu Jun-Chiang's braille self-portrait embossed on leather, Chiang Yu-Cheng's large-scale installation reconstructing the labor of visually impaired masseurs, and Wang Yung-An's work combining neuroscience and AI to explore touch as a \"ghost variable\" overlooked in the digital age.",
       "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展は、《黯像：看見不見》シリーズのうち「無視之覺」をテーマとする展区で、張照堂、張乾琦、周慶輝、鄧南光、侯淑姿、江昱呈、柯錫杰、林柏樑、劉振祥、牛俊強、湯思泮、王永安、余如季ら台湾の写真家・現代アーティスト13名が参加する。「観られる盲人」から「見過ごされる社会的感知」へと視点を転換し、視覚中心主義に代えて触覚・聴覚・社会構造批判を軸に、3つの子題で構成される。「誰が見えないのか？」では鄧南光、劉振祥、周慶輝らのドキュメンタリー写真を通じ、那卡西の楽師やマッサージ労働者、社会運動の参加者としての視覚障害者の生を記録しつつ、そうしたイメージが悲情的なステレオタイプを再生産していないかを問う。「障害のある社会」では張乾琦の《鍊》シリーズや侯淑姿の作品を通じ、台湾社会が「慈善モデル」から「医療モデル」「社会モデル」へと移行してきた過程や、盲人マッサージ業と法制度の絡み合いを検証する。「触覚信号」では、牛俊強が点字を牛革に刻んだ自画像、江昱呈による視覚障害者マッサージの労働現場を再構成した大型インスタレーション、そして王永安が神経科学とAI演算を組み合わせ、デジタル時代に見過ごされた「幽霊変数」としての触覚を探る作品を紹介する。",
       "added_at": "2026-06-29T17:49:44+09:00"
@@ -694,6 +760,20 @@
       "link": "https://ncpi.ntmofa.gov.tw/News_Content_OnlineExhibitionPic.aspx?n=8006&s=254627",
       "status": "current",
       "description": "本展由趙欣怡策劃，為《黯像：看見不見》系列中聚焦「凝視之界」的展區，集結來自台灣、斯洛維尼亞、墨西哥、日本與韓國的14位藝術家，包括葉烏根．巴烏查爾（Evgen Bavčar）、廣瀨浩二郎、鄭然斗、赫拉多．尼亨達（Gerardo Nigenda）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶及朱浚溢，藉「視覺」與「非視覺」的交織，回應攝影史中「觀看」與「被觀看」的本質議題。展覽分為三個子題：「誰看不見？」借展美國蓋提博物館（J. Paul Getty Museum）典藏的盲人肖像經典影像，並展出保羅．史川德（Paul Strand）等作品，呈現19世紀以降盲人作為街頭乞討者、音樂家被攝影凝視、視為「社會他者」的歷史軌跡；「視覺以外」匯集斯洛維尼亞、墨西哥、日本、台灣與韓國視障攝影家的創作，其中葉烏根．巴烏查爾提出「第三隻眼」的概念，展現點字書寫影像、非視覺感知成像、以聲音與身體感知構圖等挑戰視覺中心主義的創作方法；「黑箱作業」則打造一處全黑的暗室體驗空間，結合5位台灣視障青年的作品與館藏，運用UV印刷技術與AI輔助口述影像，讓觀眾在黑暗中透過觸覺與聽覺重新體驗影像。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/08/01",
+          "date_end": "2026/09/30",
+          "title_zh": "限定活動｜氣味收藏所",
+          "title_en": "Limited-Time Activity: Scent Collection Booth",
+          "title_ja": "期間限定企画｜香り収集所",
+          "note_zh": "觀展後挑選一款最貼近記憶的氣味，噴灑於展覽限定明信片並帶走。費用：新臺幣50元或文化幣50點，明信片數量有限，售完為止。",
+          "note_en": "After viewing the exhibition, choose a scent closest to your memory and spray it onto a limited-edition postcard to take home. Cost: NT$50 or 50 Culture Points; postcards are limited and while supplies last.",
+          "note_ja": "観覧後、記憶に最も近い香りを1つ選び、限定ポストカードに吹きかけて持ち帰ることができる。費用：新台湾ドル50元または文化ポイント50点。ポストカードは数量限定、なくなり次第終了。",
+          "source_url": "https://www.facebook.com/NCPITaiwan"
+        }
+      ],
       "description_en": "Curated by Chao Hsin-Yi, this exhibition is the \"Boundaries of the Gaze\" wing of the Obscured Portraits: Seen and Unseen series, bringing together 14 artists from Taiwan, Slovenia, Mexico, Japan, and Korea — including Evgen Bavčar, Hirose Kojiro, Jung Yeon-Doo, Gerardo Nigenda, Wang Cheng-Hsiang, Cheng Sang-Hsi, Hsu Yuan-Fu, Lee Ming-Tiao, Weng Ting-Hua, Chang Yun-Chung, Nieh Li-Hsin, Wang Ching-Hsun, Wu Ching-Ching, and Chu Chun-I. Weaving together the \"visual\" and \"non-visual,\" the show addresses photography history's core questions of seeing and being seen through three sub-themes: \"Who Cannot See?\" draws on the J. Paul Getty Museum's collection of classic blind-portrait imagery alongside works by Paul Strand, tracing how, since the 19th century, blind street beggars and musicians have been photographed and cast as \"social others\"; \"Beyond Sight\" gathers works by visually impaired photographers from Slovenia, Mexico, Japan, Taiwan, and Korea — Evgen Bavčar's concept of a \"third eye\" among them — presenting braille-inscribed images, non-visually perceived imagery, and compositions guided by sound and bodily sensation that challenge visual primacy; \"The Black Box\" transforms a room into a completely dark experiential space, pairing works by five visually impaired Taiwanese youths with the museum's collection through UV printing and AI-assisted audio description, inviting visitors to re-experience images through touch and hearing in darkness.",
       "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展は、《黯像：看見不見》シリーズのうち「凝視之界」をテーマとする展区で、台湾・スロベニア・メキシコ・日本・韓国から14名のアーティストが参加する。葉烏根．巴烏查爾（エヴゲン・バフチャル）、廣瀨浩二郎、鄭然斗（ジョン・ヨンドゥ）、赫拉多．尼亨達（ヘラルド・ニヘンダ）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶、朱浚溢らが名を連ね、「視覚」と「非視覚」を織り合わせながら、写真史における「見る」と「見られる」という本質的な問いに応答する。展覧会は3つの子題で構成される。「誰が見えないのか？」ではJ.ポール・ゲティ美術館所蔵の盲人肖像の名作やポール・ストランドの作品を展示し、19世紀以降、路上で物乞いをする盲人や盲目の音楽家が撮影の対象となり「社会的他者」として見なされてきた歴史的痕跡を提示する。「視覚以外」ではスロベニア、メキシコ、日本、台湾、韓国の視覚障害を持つ写真家の作品を集め、葉烏根．巴烏查爾が提唱する「第三の眼」という概念のもと、点字による記述や非視覚的知覚によるイメージ生成、音や身体感覚に基づく構図など、視覚中心主義に挑む創作を紹介する。「黑箱作業」では完全に暗い体験空間を設け、5名の台湾の視覚障害を持つ青年の作品と館蔵作品を組み合わせ、UV印刷技術とAI補助による音声解説を通じて、観客が暗闇の中で触覚と聴覚によってイメージを再体験できる企画とする。",
       "added_at": "2026-09-14T14:57:52+09:00"
@@ -1154,7 +1234,21 @@
       "description": "《公共視域：嘉義當代藝術場景1996-2006》以1996至2006年這十年為斷代,捕捉嘉義當代藝術中一段充滿動能、想像力與擴張意識的歷史。展覽回顧嘉義早年以「畫都」聞名，前輩藝術家私人畫室作為戰後藝術傳承搖籃的脈絡，進而促成1995年臺灣第一個當代藝術團體「新觸角藝術群」的成立；並呈現1996年「雕塑嘉義」行動與隔年「大地．城市．交響──臺灣裝置藝術展」等重要事件，以及嘉義鐵道倉庫轉型為「另類空間」、2002年起「北回歸線環境藝術行動」等發展軌跡。展覽以「雕塑／反雕塑」、「從畫室到倉庫」、「內省與外視」、「現地精神」與「眾人的創造」五個主題架構全展,呈現解嚴後臺灣藝術中一段當代性湧現的歷史摺痕。",
       "description_en": "Public Vision: Chiayi Contemporary Art Scene 1996–2006 captures a decade of dynamism, imagination, and expanding consciousness in Chiayi's contemporary art history. The exhibition traces how Chiayi, once known as a \"city of painting,\" saw senior artists' private studios serve as postwar cradles for artistic transmission, eventually leading to the founding of Taiwan's first contemporary art collective, the \"New Path Art Group,\" in 1995. It presents key milestones such as the 1996 \"Sculpting Chiayi\" action and the following year's \"Earth, City, Symphony: Taiwan Installation Art Exhibition,\" as well as the transformation of Chiayi's railway warehouses into an experimental \"alternative space\" and the \"Tropic of Cancer Environmental Art Action\" launched in 2002. Structured around five themes—\"Sculpture/Anti-Sculpture,\" \"From Studio to Warehouse,\" \"Introspection and Outward Vision,\" \"Site-Specific Spirit,\" and \"Collective Creation\"—the exhibition presents a historical fold in which a distinct sense of contemporaneity emerged in post-martial-law Taiwanese art.",
       "description_ja": "「公共視域：嘉義現代美術シーン1996-2006」は、1996年から2006年までの10年間を切り取り、嘉義における現代美術の躍動感、想像力、そして拡張していく意識に満ちた歴史を捉えた展覧会である。かつて「絵の都」として知られた嘉義では、先輩アーティストの個人アトリエが戦後の芸術継承の揺籃となり、それが1995年の台湾初の現代美術団体「新触角芸術群」の結成につながった経緯を紐解く。また1996年の「彫刻嘉義」アクションや翌年の「大地・都市・交響――台湾インスタレーション美術展」といった重要な出来事、嘉義の鉄道倉庫が実験的な「オルタナティブ・スペース」へ転身した経緯、2002年から始まった「北回帰線環境芸術行動」などの展開も紹介する。展覧会は「彫刻／反彫刻」「アトリエから倉庫へ」「内省と外への視線」「現地性の精神」「人々の創造」という5つのテーマで構成され、戒厳令解除後の台湾美術における現代性が立ち現れた歴史の折り目を提示している。",
-      "added_at": "2026-07-13T17:56:44+08:00"
+      "added_at": "2026-07-13T17:56:44+08:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/07/10",
+          "date_end": "2026/10/25",
+          "title_zh": "隱藏導覽員語音導覽（參展藝術家親自導覽）",
+          "title_en": "\"Hidden Guide\" Audio Tour (Narrated by Participating Artists)",
+          "title_ja": "「隠れガイド」音声ガイド（参加アーティストによる解説）",
+          "note_zh": "邀請參展藝術家王德合、鄭建昌擔任隱藏導覽員，分享創作方法與幕後故事，線上語音導覽全展期開放收聽。",
+          "note_en": "Participating artists Wang De-He and Cheng Chien-Chang serve as \"hidden guides,\" sharing their creative process and behind-the-scenes stories; the online audio guide is available throughout the exhibition run.",
+          "note_ja": "参加アーティストの王德合、鄭建昌が「隠れガイド」として創作方法や制作の背景を語る。オンライン音声ガイドは会期中いつでも聴取可能。",
+          "source_url": "https://www.facebook.com/Chiayi.Art.Museum"
+        }
+      ]
     },
     {
       "museum": "tnam",
