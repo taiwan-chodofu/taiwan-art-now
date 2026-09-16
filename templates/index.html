@@ -494,6 +494,37 @@
   })();
   </script>
 
+  <!-- MESSENGER SUBSCRIBE BANNER (replaces the old circular 🔔 FAB) -->
+  <div id="messengerBanner" style="display:none;max-width:720px;margin:0 auto;padding:8px 1rem;background:linear-gradient(135deg,#e0f2ff,#cfe8ff);border-bottom:1px solid #93c5fd;font-size:0.75rem;color:#374151;align-items:center;justify-content:space-between;gap:8px;">
+    <a href="https://m.me/61591281572640" target="_blank" rel="noopener" onclick="localStorage.setItem('taiwan_art_messenger_connected','1');if(typeof gtag==='function')gtag('event','messenger_banner_click',{})" style="flex:1;color:inherit;text-decoration:none;">
+      🔔 {% if current_lang == 'zh' %}用Messenger訂閱通知，展覽即將結束時提醒你{% elif current_lang == 'ja' %}Messengerで通知登録すると、展示終了前にお知らせします{% else %}Subscribe via Messenger to get notified before exhibitions end{% endif %}
+    </a>
+    <button onclick="dismissMessengerBanner()" style="border:none;background:none;font-size:1rem;cursor:pointer;padding:0 4px;color:#6b7280;">✕</button>
+  </div>
+  <script>
+  (function() {
+    var bannerKey = 'taiwan_art_banner_v1_messenger';
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(bannerKey) || '{}'); } catch(e) {}
+    var today = new Date().toISOString().slice(0, 10);
+    if (state.dismissed || localStorage.getItem('taiwan_art_messenger_connected') || (state.seen || 0) >= 5) return;
+    var banner = document.getElementById('messengerBanner');
+    if (banner) {
+      banner.style.display = 'flex';
+      if (state.lastSeenDate !== today) {
+        state.seen = (state.seen || 0) + 1;
+        state.lastSeenDate = today;
+        localStorage.setItem(bannerKey, JSON.stringify(state));
+      }
+    }
+    window.dismissMessengerBanner = function() {
+      banner.style.display = 'none';
+      state.dismissed = true;
+      localStorage.setItem(bannerKey, JSON.stringify(state));
+    };
+  })();
+  </script>
+
   <!-- Secondary nav (Taishin/Featured/Artists/Archive/Search/Lang) moved into
        the bottom-nav "More" sheet — see BOTTOM NAV near end of body. -->
   <style>
@@ -1178,20 +1209,28 @@
       var lat = pos.coords.latitude;
       var lng = pos.coords.longitude;
       var results = [];
-
-      for (var id in museumCoords) {
-        var m = museumCoords[id];
-        if (m.lat === 0 || m.closed) continue;
-        var dist = haversine(lat, lng, m.lat, m.lng);
-        if (dist <= 10) { // 10km以内
-          results.push({ id: id, name: m.name, dist: dist, hours: m.hours, exhibitions: m.exhibitions || [] });
+      // Outside the Taipei/Taichung/Kaohsiung museum clusters, 10km often
+      // finds nothing at all — expand the search instead of dead-ending on
+      // "not found" (25km, then 60km, before giving up).
+      var radiusUsed = 10;
+      [10, 25, 60].some(function(radius) {
+        results = [];
+        for (var id in museumCoords) {
+          var m = museumCoords[id];
+          if (m.lat === 0 || m.closed) continue;
+          var dist = haversine(lat, lng, m.lat, m.lng);
+          if (dist <= radius) {
+            results.push({ id: id, name: m.name, dist: dist, hours: m.hours, exhibitions: m.exhibitions || [] });
+          }
         }
-      }
+        radiusUsed = radius;
+        return results.length > 0;
+      });
 
       results.sort(function(a, b) { return a.dist - b.dist; });
 
       if (results.length === 0) {
-        content.innerHTML = '<p>No open exhibitions found within 10km.</p>';
+        content.innerHTML = '<p>No open exhibitions found within 60km.</p>';
         return;
       }
 
@@ -1223,7 +1262,7 @@
 
       var visited = _getVisited();
       var favs = _getFavs();
-      html += '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">{% if current_lang == "zh" %}10km 以內開館中{% elif current_lang == "ja" %}10km以内の開館施設{% else %}Open within 10km{% endif %}:</div>';
+      html += '<div style="margin-bottom:8px;font-size:0.65rem;color:var(--text-light);">' + radiusUsed + 'km {% if current_lang == "zh" %}以內開館中{% elif current_lang == "ja" %}以内の開館施設{% else %}Open within{% endif %}:</div>';
       results.slice(0, 8).forEach(function(r) {
         var mapsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(r.name) + '&travelmode=transit';
         html += '<div style="padding:10px 0; border-bottom:1px solid var(--border);">';
@@ -2139,24 +2178,29 @@
     });
   })();
   </script>
-  <!-- FLOATING POST BUTTON + MODAL -->
+  <!-- FLOATING NEAR-ME BUTTON -->
+  <!-- The old circular 🔔 Messenger FAB was removed in favor of the
+       messengerBanner below — it duplicated entry points already in the
+       mylist panel and other banners, and stacking two unlabeled circular
+       icons here made both harder to understand at a glance. -->
   <style>
-    .fab {
+    .fab-labeled {
       position: fixed; bottom: calc(var(--bn-h) + 24px + env(safe-area-inset-bottom, 0px)); right: 20px; z-index: 900;
-      width: 52px; height: 52px; border-radius: 50%;
-      background: #0084FF; color: #fff;
-      border: none; font-size: 1.5rem; font-weight: 300;
+      height: 44px; border-radius: 24px; padding: 0 16px 0 14px;
+      background: #1a1a1a; color: #fff;
+      border: none; font-size: 0.78rem; font-weight: 600;
       box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; display: flex; align-items: center; gap: 6px;
       -webkit-tap-highlight-color: transparent;
-      text-decoration: none;
+      text-decoration: none; white-space: nowrap;
     }
-    .fab:active { transform: scale(0.92); }
+    .fab-labeled:active { transform: scale(0.96); }
+    .fab-labeled .fab-icon { font-size: 1.1rem; }
     .fab-tooltip {
-      display: none; position: fixed; bottom: calc(var(--bn-h) + 84px + env(safe-area-inset-bottom, 0px)); right: 16px; z-index: 901;
+      display: none; position: fixed; bottom: calc(var(--bn-h) + 76px + env(safe-area-inset-bottom, 0px)); right: 16px; z-index: 901;
       background: var(--text); color: var(--bg);
       font-size: 0.75rem; padding: 8px 14px; border-radius: 8px;
-      max-width: 200px; line-height: 1.4;
+      max-width: 220px; line-height: 1.4;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       animation: fadeInUp 0.3s ease;
     }
@@ -2171,22 +2215,23 @@
     }
   </style>
 
-  <a class="fab" id="nearYouFab" style="bottom:calc(var(--bn-h) + 84px + env(safe-area-inset-bottom, 0px));background:#1a1a1a;" onclick="showNearMe(event)" href="#">📍</a>
-  <a class="fab" id="fabBtn" href="https://m.me/61591281572640" target="_blank" rel="noopener" aria-label="Subscribe" onclick="localStorage.setItem('taiwan_art_messenger_connected','1')">🔔</a>
+  <a class="fab-labeled" id="nearYouFab" onclick="showNearMe(event)" href="#">
+    <span class="fab-icon">📍</span><span>{% if current_lang == 'zh' %}附近展覽{% elif current_lang == 'ja' %}近くの展示{% else %}Nearby{% endif %}</span>
+  </a>
   <div class="fab-tooltip" id="fabTooltip">
-    {% if current_lang == 'zh' %}訂閱通知 / 傳送展覽資訊
-    {% elif current_lang == 'ja' %}通知登録 / 展示情報を送る
-    {% else %}Subscribe / Send exhibition info{% endif %}
+    {% if current_lang == 'zh' %}還能幫你規劃附近展覽的路線
+    {% elif current_lang == 'ja' %}近くの展示を巡るルートも提案します
+    {% else %}Also suggests a walking route between nearby exhibitions{% endif %}
   </div>
-
 
   <script>
   (function() {
-    var fab = document.getElementById('fabBtn');
+    var fab = document.getElementById('nearYouFab');
     var tooltip = document.getElementById('fabTooltip');
     var todayKey = 'fab_tooltip_' + new Date().toISOString().slice(0,10);
 
-    // 1日1回だけツールチップを表示（3秒後に出て、5秒間表示）
+    // 1日1回だけツールチップを表示（3秒後に出て、5秒間表示）— ボタン自体の
+    // ラベルは常時表示なので、このツールチップはルート提案機能の補足のみ。
     if (!sessionStorage.getItem(todayKey)) {
       setTimeout(function() {
         tooltip.style.display = 'block';
@@ -2197,7 +2242,6 @@
 
     fab.addEventListener('click', function() {
       tooltip.style.display = 'none';
-      gtag('event', 'messenger_open', { event_category: 'engagement' });
     });
   })();
   </script>
