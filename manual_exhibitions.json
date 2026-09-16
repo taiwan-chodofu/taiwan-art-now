@@ -2568,7 +2568,21 @@
         "陳艾琳",
         "侯思齊"
       ],
-      "added_at": "2026-09-11T17:40:40+09:00"
+      "added_at": "2026-09-11T17:40:40+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/27",
+          "time": "15:00-16:30",
+          "title_zh": "座談會（與談人：洪鈞元）",
+          "title_en": "Artist Talk (with Hung Chun-Yuan)",
+          "title_ja": "アーティストトーク（対談：洪鈞元）",
+          "note_zh": "2026新樂園第7屆媒體影像展「訊號世界 [ REC ]」台中場座談會，於852藝術空間展區舉行。",
+          "note_en": "Artist talk for the Taichung leg of the 7th Sinlaku Media Art Festival, \"SignalWorld [ REC ]\", held at 852 Art Space.",
+          "note_ja": "新樂園メディアアート影像展第7回「訊號世界 [ REC ]」台中会場（852藝術空間）でのアーティストトーク。",
+          "source_url": "https://www.facebook.com/profile.php?id=61574023807656"
+        }
+      ]
     },
     {
       "museum": "joyfulart",
@@ -2616,7 +2630,20 @@
       "artists": [
         "李宗仁"
       ],
-      "added_at": "2026-09-11T17:40:40+09:00"
+      "added_at": "2026-09-11T17:40:40+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "title_zh": "開幕邀請",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "note_zh": "「致虛．守靜．觀自然：李宗仁的風景繪畫」正式開幕。",
+          "note_en": "Official opening of \"Toward Emptiness, Stillness, and Nature: The Landscape Paintings of Lee Tsung-Jen.\"",
+          "note_ja": "「致虚・守静・観自然：李宗仁の風景画」の正式なオープニング。",
+          "source_url": "https://www.facebook.com/EverHarvestArtGallery/posts/pfbid0Q6XxnhJnviQBnL38fE3a5Mm5RNZauLqyFUMgjvUU64Mvx35rAwHsCMDQhkbSN4Gol"
+        }
+      ]
     },
     {
       "museum": "fotoaura",
