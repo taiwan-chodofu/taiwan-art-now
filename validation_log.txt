@@ -591,3 +591,6 @@
 
 --- Validation 2026-09-16 15:26 ---
 [MIXED LANGUAGE IN ZH] sleepark: '南音風潟No.8：ゆっくり走れ × 羅浮宮的帽子' description field contains Japanese kana
+
+--- Validation 2026-09-16 16:16 ---
+[MIXED LANGUAGE IN ZH] sleepark: '南音風潟No.8：ゆっくり走れ × 羅浮宮的帽子' description field contains Japanese kana
