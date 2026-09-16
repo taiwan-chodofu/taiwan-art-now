@@ -118,6 +118,19 @@
       .notice-box { background: #3a2a0a; border-color: #78350f; color: #fcd34d; }
     }
 
+    /* Activities (openings, talks, workshops, participatory campaigns) */
+    .activity-box {
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 14px; margin-top: 0.4rem;
+    }
+    .activity-date { font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
+    .activity-title { font-size: 0.85rem; color: var(--text); margin-top: 2px; }
+    .activity-note { font-size: 0.78rem; color: var(--text-sub); margin-top: 3px; }
+    .activity-source {
+      font-size: 0.72rem; color: var(--text-light); text-decoration: none;
+      display: inline-block; margin-top: 4px;
+    }
+
     /* Subtitle (zh alt title) */
     .alt-title {
       font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1.2rem;
@@ -348,6 +361,22 @@
       {% if notice.note %}<div class="notice-note">{{ notice.note }}</div>{% endif %}
     </div>
     {% endfor %}
+
+    {% if exhibition.activities %}
+    <div class="section-label">
+      {% if current_lang == 'zh' %}活動{% elif current_lang == 'ja' %}イベント{% else %}Events{% endif %}
+    </div>
+    {% for activity in exhibition.activities %}
+    <div class="activity-box">
+      <div class="activity-date">
+        {{ activity.date }}{% if activity.date_end and activity.date_end != activity.date %} – {{ activity.date_end }}{% endif %}{% if activity.time %} {{ activity.time }}{% endif %}
+      </div>
+      <div class="activity-title">{{ activity.title }}</div>
+      {% if activity.note %}<div class="activity-note">{{ activity.note }}</div>{% endif %}
+      {% if activity.source_url %}<a href="{{ activity.source_url }}" target="_blank" rel="noopener" class="activity-source">{% if current_lang == 'zh' %}來源{% elif current_lang == 'ja' %}出典{% else %}Source{% endif %} →</a>{% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
 
     {% if exhibition.title_zh and exhibition.title != exhibition.title_zh %}
     <div class="alt-title">{{ exhibition.title_zh }}</div>
