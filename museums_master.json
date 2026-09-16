@@ -4304,6 +4304,56 @@
       "hours_uncertain": true,
       "lat": 24.7916987,
       "lng": 120.9924295
+    },
+    {
+      "id": "pier2",
+      "category": "public",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Pier-2 Art Center",
+        "ja": "駁二藝術特區",
+        "zh": "駁二藝術特區"
+      },
+      "address": {
+        "en": "No.1, Dayong Rd., Yancheng Dist., Kaohsiung",
+        "ja": "高雄市鹽埕區大勇路1號",
+        "zh": "高雄市鹽埕區大勇路1號"
+      },
+      "url": "https://pier2.org/",
+      "hours": {
+        "en": "Outdoor area 24h; indoor galleries Tue-Sun 10:00-18:00",
+        "ja": "屋外エリアは24時間、屋内展示は火〜日10:00-18:00",
+        "zh": "戶外全天開放，室內展場週二至週日10:00-18:00"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 22.6208627,
+      "lng": 120.2783832
+    },
+    {
+      "id": "artweekchiayi",
+      "category": "public",
+      "region": "chiayi",
+      "name": {
+        "en": "Chiayi City Cultural Affairs Bureau (Art Week Chiayi organizer)",
+        "ja": "嘉義市政府文化局（嘉義藝術日常 主催）",
+        "zh": "嘉義市政府文化局（嘉義藝術日常主辦單位）"
+      },
+      "address": {
+        "en": "Zhongxiao Rd., East Dist., Chiayi City",
+        "ja": "嘉義市東區忠孝路",
+        "zh": "嘉義市東區忠孝路"
+      },
+      "url": "https://www.instagram.com/artweekchiayi2026/",
+      "hours": {
+        "en": "Varies by venue during the festival",
+        "ja": "会期中は各会場により異なる",
+        "zh": "活動期間各基地開放時間不同"
+      },
+      "closed_days": [],
+      "lat": 23.4876187,
+      "lng": 120.4520582
     }
   ]
 }
