@@ -2222,7 +2222,33 @@
       "artists": [
         "胡鈞荃"
       ],
-      "added_at": "2026-09-11T17:40:40+09:00"
+      "added_at": "2026-09-11T17:40:40+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "time": "15:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングイベント",
+          "note_zh": "《誰的遊戲－胡鈞荃個展》開幕活動。",
+          "note_en": "Opening reception for \"Whose Game — Hu Ching-Chuan Solo Exhibition.\"",
+          "note_ja": "「誰の遊戲－胡鈞荃個展」のオープニングイベント。",
+          "source_url": "https://www.facebook.com/honggahmuseum.tw/posts/pfbid02VkAVAiFcSWhcRdguuhGCXNvjXkkQjSqV8N1mRWTZkFeCuMGvkhHdyZwwD1iK4EBwl"
+        },
+        {
+          "type": "activity",
+          "date": "2026/09/26",
+          "time": "14:30-16:30",
+          "title_zh": "藝術家座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note_zh": "藝術家：胡鈞荃　與談人：徐詩雨（獨立策展人、文字工作者）。",
+          "note_en": "Artist: Hu Ching-Chuan. Guest speaker: Hsu Shih-Yu (independent curator and writer).",
+          "note_ja": "アーティスト：胡鈞荃。ゲスト：徐詩雨（独立キュレーター・文筆家）。",
+          "source_url": "https://www.facebook.com/honggahmuseum.tw/posts/pfbid02VkAVAiFcSWhcRdguuhGCXNvjXkkQjSqV8N1mRWTZkFeCuMGvkhHdyZwwD1iK4EBwl"
+        }
+      ]
     },
     {
       "museum": "moon",
