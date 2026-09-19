@@ -3477,6 +3477,64 @@
       "description_en": "The 8th edition of Sleepark's ongoing music series \"Nan-yin Feng-xi,\" featuring Tokyo punk trio Yukkuri Hashire on the second Tainan stop of their Taiwan tour, co-performing with local Tainan rock band Louvre's Hat. The two bands first connected this past spring at the ODDLAND DIY&FREE FEST music festival in Okinawa. An open jam session follows the performance. Sept 18 (Fri): doors 18:30, show starts 19:00, NT50 admission (includes one drink).",
       "description_ja": "睡公園音畫書廊の音楽シリーズ「南音風潟」第8回。東京のパンクバンド「ゆっくり走れ」の台湾ツアー台南公演（2回目）で、台南の地元ロックバンド「羅浮宮の帽子」と共演する。両バンドは今年春、沖縄の音楽祭ODDLAND DIY&FREE FESTで出会い、今回の海を越えた交流公演が実現した。公演後にはOpen Jamでの自由な交流の場も設けられる。9/18（金）18:30開場、19:00開演、入場料350元（ドリンク1杯付き）。",
       "added_at": "2026-09-16T14:02:31.716111+09:00"
+    },
+    {
+      "museum": "tinakeng",
+      "title_zh": "立體詩",
+      "title_en": "Sculptural Poems",
+      "title_ja": "",
+      "dates": "2026.07.18 – 2026.09.19",
+      "location": "耿畫廊 (台北市內湖區瑞光路548巷15號1樓)",
+      "link": "https://www.tinakenggallery.com/exhibitions/260/",
+      "artists": [
+        "郭思敏"
+      ],
+      "events": [
+        {
+          "date": "2026/07/18",
+          "time": "16:30",
+          "title_zh": "開幕",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "type": "opening"
+        }
+      ],
+      "description": "在當代藝術的脈絡中，雕塑早已不再只是對形體的塑造，逐漸成為探討空間、感知與物質關係的重要媒介。對郭思敏而言，雕塑並非是對建築形式的縮影或再現，她始終關注作品與光、影及空間之間的相互生成，以及人如何透過身體的移動，察覺空間的存在。本次展覽「立體詩」所呈現的系列作品，延續其長期以來的創作探索，以鐵與不鏽鋼為主要媒材，藉由幾何構成、結構秩序、留白處理與光影穿透，建立一種介於雕塑與建築之間的語彙，使雕塑從單純的物質形體轉化為一種可被感知、被穿越、被經驗的空間場域。她關注的並非量體的堆疊，而是虛空如何在結構之間生成，呼應建築學中的「負空間」概念——那些由形體圍塑出的「空」看似缺席，卻始終是關係得以發生之處，使觀看、移動與光線得以介入並參與其中。展出作品包括《奕奕》、《暫佇》、《內照空間》、《冉冉》、《虛實間》、《共生》系列等。",
+      "description_en": "In contemporary art, sculpture has long ceased to be merely the shaping of form, evolving instead into a medium for exploring the relationships between space, perception, and materiality. For Kuo Szu-Min, sculpture is not a miniature reproduction of architectural form; she remains focused on how her works generate light, shadow, and space in relation to one another, and how the body's movement reveals the presence of space. This exhibition, Sculptural Poems, continues her long-standing practice in iron and stainless steel, using geometric composition, structural order, negative space, and the play of light to build a vocabulary between sculpture and architecture — transforming sculpture from pure physical form into a spatial field that can be perceived, traversed, and experienced. Rather than the accumulation of mass, she is concerned with how voids are generated between structures, echoing the architectural concept of \"negative space\": the emptiness enclosed by form appears absent yet is where relationships take place, allowing viewing, movement, and light to enter and participate. Featured works include the series Yi Yi, Temporarily Resting, Inner-Lit Space, Ran Ran, Between Reality and Illusion, and Symbiosis.",
+      "description_ja": "現代美術の文脈において、彫刻はもはや単に形を作ることではなく、空間・知覚・物質の関係を探る重要なメディアとなっている。郭思敏にとって彫刻は建築形式の縮図や再現ではなく、作品と光・影・空間がどのように相互に生成し合うか、そして人が身体の移動を通じてどのように空間の存在を察知するかに一貫して関心を向けている。本展「立體詩」は、長年の創作探求を継続するもので、鉄とステンレスを主素材に、幾何学的構成・構造の秩序・余白の処理・光と影の透過を通して、彫刻と建築の間の語彙を築き、彫刻を単なる物質的形体から知覚・通過・体験されうる空間の場へと転化させる。作家が注目するのは量の積み重ねではなく、構造の間にどのように虚空が生成されるかであり、これは建築学における「負の空間」の概念と響き合う――形によって囲われた「空」は不在に見えて、実は関係が生起する場所であり、観る・動く・光が介入し参与することを可能にする。出品作には《奕奕》《暫佇》《内照空間》《冉冉》《虛實間》《共生》シリーズなどが含まれる。",
+      "added_at": "2026-07-06T14:08:39+08:00",
+      "status": "ended"
+    },
+    {
+      "museum": "projectfulfill",
+      "title_zh": "構思的構思",
+      "title_en": "The Frame",
+      "dates": "2026.08.01 – 2026.09.19",
+      "artists": [
+        "王璽安"
+      ],
+      "description": "王璽安（Wang Sean）個展。手機螢幕、社群媒體的方形貼文、電腦的視窗、相機鏡頭裁切出的取景框……現代人的日常幾乎都是透過「框」觀看世界。本展中，藝術家將此概念延伸至繪畫，在畫布上讓框中之框層層疊加：先在構圖中建立一個框，再重新框取已被框住的畫面，使「框」本身成為作品的核心主題。開幕8/1 14:00，藝術家對談9/12 15:00-17:00（對談人：王品驊）。",
+      "link": "https://projectfulfill.com/the-frame-sean-wang-2026",
+      "added_at": "2026-07-29",
+      "description_en": "Solo exhibition by Sean Wang (王璽安). Phone screens, square social-media posts, computer windows, camera viewfinders — modern daily life is experienced almost entirely through 'frames.' In this exhibition Wang extends that idea into painting, layering frames within frames on the canvas: he establishes a frame inside the composition, then reframes what has already been framed, turning the frame itself into the work's central subject. The opening is on August 1 at 14:00, followed by an artist talk on September 12, 15:00–17:00, in conversation with Wang Pin-Hua.",
+      "description_ja": "王璽安（ワン・シーアン）個展。スマートフォンの画面、SNSの正方形の投稿、パソコンのウィンドウ、カメラのファインダーが切り出す構図……現代人の日常はほとんど「フレーム」を通して世界を見ている。本展では、キャンバス上でフレームの中にさらにフレームを重ねるという独自の絵画技法を展開し、フレームそのものを作品の主題として扱う。開幕は8月1日14:00、アーティストトークは9月12日15:00〜17:00（対談：王品驊）。",
+      "status": "ended"
+    },
+    {
+      "museum": "capitalart",
+      "title_zh": "微光日常——劉漢文個展",
+      "title_en": "Everyday Glow — Liu Han-Wen Solo Exhibition",
+      "title_ja": "",
+      "dates": "2026.08.21 – 2026.09.19",
+      "link": "https://capitalart.com.tw/exhibitions/157.html",
+      "artists": [
+        "劉漢文"
+      ],
+      "description": "首都藝術中心成立於1984年，位於台北市大安區仁愛路，長期經紀代理劉其偉、楊英風、劉國松、李錫奇等台灣重要藝術家，並多次參與台北、北京、上海、首爾等地藝博會，致力推廣華人當代藝術，是台灣歷史悠久的經典畫廊之一。本次個展「微光日常」呈現藝術家劉漢文的作品，以細膩溫潤的筆觸與層層交疊的色彩，描繪光、水與生命交會的瞬間，展期為2026年8月21日至9月19日，8月22日舉行開幕茶會，8月29日另辦音樂活動，免費入場。",
+      "description_en": "Capital Art Center, founded in 1984 in Taipei's Da'an District, has long represented prominent Taiwanese artists such as Liu Chi-Wei, Yang Ying-Feng, Liu Kuo-Sung and Lee Shi-Chi, and has participated in numerous art fairs in Taipei, Beijing, Shanghai and Seoul, making it one of Taiwan's classic, long-established galleries. This solo exhibition, \"Everyday Glow,\" presents works by artist Liu Han-Wen using delicate, warm brushstrokes and layered colors to capture moments where light, water and life intersect. The show runs August 21 – September 19, 2026, with an opening reception on August 22 and a related music event on August 29; admission is free.",
+      "description_ja": "首都藝術中心は1984年創設、台北市大安區仁愛路に位置し、劉其偉、楊英風、劉國松、李錫奇など台湾を代表する芸術家を長年経紀・代理し、台北・北京・上海・ソウルなど各地のアートフェアにも多数参加してきた、台湾の老舗ギャラリーの一つである。本展「微光日常」ではアーティスト劉漢文の作品を展示し、繊細で温かみのある筆致と重なり合う色彩で、光と水と生命が交わる瞬間を描く。会期は2026年8月21日〜9月19日、8月22日にオープニングレセプション、8月29日に関連音楽イベントを開催、入場無料。",
+      "added_at": "2026-08-26",
+      "status": "ended"
     }
   ]
 }
