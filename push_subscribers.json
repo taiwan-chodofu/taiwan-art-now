@@ -54,6 +54,22 @@
           "url": "/exhibition/kdmofa/1?lang=ja",
           "region": "台北",
           "event": ""
+        },
+        "tfam__王雅慧_旅行者": {
+          "title": "王雅慧：旅行者",
+          "museum": "臺北市立美術館",
+          "dates": "2026.09.12 – 2027.01.03",
+          "url": "/exhibition/tfam/1?lang=zh",
+          "region": "台北",
+          "event": ""
+        },
+        "tkgplus__專業局外人": {
+          "title": "專業局外人",
+          "museum": "TKG+",
+          "dates": "2026.08.22 – 2026.10.31",
+          "url": "/exhibition/tkgplus/0?lang=zh",
+          "region": "台北",
+          "event": ""
         }
       },
       "visited": {}
