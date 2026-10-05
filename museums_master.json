@@ -4299,6 +4299,35 @@
       "closed_days": [],
       "lat": 23.4876187,
       "lng": 120.4520582
+    },
+    {
+      "id": "panyu",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "Panyu Lifestyle Aesthetics Culture & Arts Foundation (Panyu Reception Hall)",
+        "ja": "磐鈺生活美學文化藝術基金會（磐鈺接待會館）",
+        "zh": "磐鈺生活美學文化藝術基金會（磐鈺接待會館）"
+      },
+      "address": {
+        "en": "No. 266, Dadun 12th St., Nantun Dist., Taichung City, Taiwan",
+        "ja": "台中市南屯區大墩十二街266號",
+        "zh": "台中市南屯區大墩十二街266號"
+      },
+      "url": "https://www.facebook.com/goldenjade.tw",
+      "hours": {
+        "en": "By reservation only; closed Mon-Tue (varies by exhibition)",
+        "ja": "予約制、月火休（展覧会により異なる）",
+        "zh": "預約制，週一二公休（依展覽而異）"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 24.1500359,
+      "lng": 120.6488411,
+      "hours_uncertain": true,
+      "closed_day": null
     }
   ]
 }

@@ -1792,7 +1792,21 @@
       "artists": [
         "楊芙"
       ],
-      "added_at": "2026-09-11T17:40:40+09:00"
+      "added_at": "2026-09-11T17:40:40+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/31",
+          "time": "14:00",
+          "title_zh": "何謂尿液？尿液蒸餾工作坊",
+          "title_en": "What Is Urine? A Urine Distillation Workshop",
+          "title_ja": "尿とは何か？尿の蒸留ワークショップ",
+          "note_zh": "講師：洪舜凱（國立臺北科技大學碩士研究生）。材料費100元新台幣，現場收費。",
+          "note_en": "Led by Hung Shun-Kai (graduate student, National Taipei University of Technology). Materials fee NT$100, paid on-site.",
+          "note_ja": "講師：洪舜凱（国立台北科技大学大学院生）。材料費100台湾ドル、当日支払い。",
+          "source_url": "https://www.facebook.com/events/4575885142738923/"
+        }
+      ]
     },
     {
       "museum": "ajian",
@@ -1827,7 +1841,7 @@
       "added_at": "2026-09-11T17:40:40+09:00"
     },
     {
-      "museum": "taishinart",
+      "museum": "panyu",
       "title_zh": "【相織相續 Interwoven Traces】金玲雕刻個展",
       "title_en": "Interwoven Traces - Kim Ryung Solo Exhibition",
       "title_ja": "",
