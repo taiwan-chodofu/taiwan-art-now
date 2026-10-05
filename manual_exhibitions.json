@@ -2282,7 +2282,33 @@
       "description_en": "Themed \"Proof of Presence,\" Art Week Chiayi 2026 responds to how the city changes and accumulates over time. Organized by the Chiayi City Cultural Affairs Bureau, the festival brings artist creations into 7 sites across Chiayi City (Experimental Wood Studio, Showa 18/J18, MUGN, SWAY TEA, Yongchang Hang, Pocket Party, and the Changrong Street block), with 7 selected artists/collectives. Programming runs from art installations (11/1-15) to artist talks (11/9-13) and a weekend art market (11/14-15).",
       "description_ja": "「嘉義藝術日常 Art Week Chiayi 2026」は「在場証明」をテーマに、時間の流れの中で変化し積み重なっていく都市に応答する。嘉義市政府文化局が主催し、市内7つの拠点（実験木場、昭和十八J18、木更MUGN、起風SWAY TEA、永昌行、口袋派對、長榮街區）にアーティストの創作が入居、7組のアーティスト／アートチームが参加する。11/1-15の作品展示、11/9-13のアーティストトーク、11/14-15のアートマーケットで構成される。",
       "type": "artfestival",
-      "added_at": "2026-09-16T16:04:47.636416+09:00"
+      "added_at": "2026-09-16T16:04:47.636416+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/11/09",
+          "date_end": "2026/11/13",
+          "title_zh": "藝術導讀 Artist Talk",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note_zh": "駐點各基地的藝術家於展期中段進行作品導讀與對話。",
+          "note_en": "Artist-led talks at the festival's participating sites during this stretch of the exhibition period.",
+          "note_ja": "各会場に滞在するアーティストによる作品解説・対話イベント。",
+          "source_url": "https://www.instagram.com/artweekchiayi2026/p/DanGKyPEnuE/"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/14",
+          "date_end": "2026/11/15",
+          "title_zh": "週末藝術市集 Art Weekend Market",
+          "title_en": "Art Weekend Market",
+          "title_ja": "ウィークエンド・アートマーケット",
+          "note_zh": "展期最終週末於各基地舉辦的藝術市集。",
+          "note_en": "A weekend art market held at the festival's participating sites during the final weekend.",
+          "note_ja": "会期最終週末に各会場で開催されるアートマーケット。",
+          "source_url": "https://www.instagram.com/artweekchiayi2026/p/DanGKyPEnuE/"
+        }
+      ]
     },
     {
       "museum": "tav",
@@ -2314,7 +2340,33 @@
       "description_en": "This is Huang Kai-Hsin's 15th solo exhibition, continuing her practice of naming shows after her sketchbook \"Notes.\" The show presents large-format oil paintings (mostly 80-hao canvases) alongside new contemporary ink works, including the series \"The Evolution of View\" and \"Humble Bee.\" Her abstract paintings pursue a fluid, non-linear visual language, treating each work as an independent case study rather than part of a repetitive series.",
       "description_ja": "黄楷馨の15回目の個展で、「筆記（ノート）」と名付けるシリーズを継続している。大判油彩（主に80号キャンバス）と新作の現代水墨画を展示し、「山の進化史」シリーズと「謙虚な蜂」シリーズを含む。流動的で非線形な視覚言語を追求する抽象絵画で、各作品を連続生産ではなく独立した個別研究として位置づけている。",
       "status": "current",
-      "added_at": "2026-10-05T19:48:53+09:00"
+      "added_at": "2026-10-05T19:48:53+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/17",
+          "time": "13:00",
+          "title_zh": "展覽導覽（私人團體）",
+          "title_en": "Guided Tour (Private Group)",
+          "title_ja": "展覧会ガイドツアー（団体予約）",
+          "note_zh": "",
+          "note_en": "A private group guided tour of the exhibition.",
+          "note_ja": "団体予約制の展覧会ガイドツアー。",
+          "source_url": "https://99dac.com/exhibition-detail.php?id=255"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/17",
+          "time": "15:00",
+          "title_zh": "NOTE15 開幕",
+          "title_en": "NOTE15 Opening Reception",
+          "title_ja": "NOTE15 オープニング",
+          "note_zh": "",
+          "note_en": "Opening reception for the exhibition.",
+          "note_ja": "展覧会のオープニングレセプション。",
+          "source_url": "https://99dac.com/exhibition-detail.php?id=255"
+        }
+      ]
     },
     {
       "museum": "artemin",
