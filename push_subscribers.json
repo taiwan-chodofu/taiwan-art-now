@@ -59,8 +59,32 @@
           "title": "專業局外人",
           "museum": "TKG+",
           "dates": "2026.08.22 – 2026.10.31",
-          "url": "/exhibition/tkgplus/0?lang=zh",
+          "url": "/exhibition/tkgplus/0?lang=ja",
           "region": "台北",
+          "event": ""
+        },
+        "ntmofa__中華民國第二十二屆國際版畫雙年展": {
+          "title": "2026 Taiwan International Print Biennial — 中華民國第二十二屆國際版畫雙年展",
+          "museum": "國立臺灣美術館",
+          "dates": "2026.07.11 – 2026.10.18",
+          "url": "/exhibition/ntmofa/2?lang=ja",
+          "region": "台中",
+          "event": ""
+        },
+        "ntmofa__2026亞洲藝術雙年展_Mrahul_Tminun_共織_Co_Weaving": {
+          "title": "2026 Asian Art Biennial: Mrahul Tminun / Co-Weaving — 2026亞洲藝術雙年展：Mrahul Tminun・共織・Co-Weaving",
+          "museum": "國立臺灣美術館",
+          "dates": "2026.11.07 – 2027.02.28",
+          "url": "/exhibition/ntmofa/3?lang=ja",
+          "region": "台中",
+          "event": ""
+        },
+        "yitobia___鄧堯鴻_當代藝術_擇木而棲_": {
+          "title": "Deng Yao-Hung: Perch of Choice — 【鄧堯鴻 當代藝術 擇木而棲】",
+          "museum": "藝托邦藝文空間",
+          "dates": "2026.09.12 – 2026.10.25",
+          "url": "/exhibition/yitobia/0?lang=ja",
+          "region": "花蓮",
           "event": ""
         }
       },
