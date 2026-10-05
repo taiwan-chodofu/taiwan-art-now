@@ -2472,7 +2472,20 @@
       "description_en": "Double Square Gallery presents \"The Morphology of Thought,\" a contemporary sculpture group exhibition featuring twelve active Taiwanese artists. Centered on \"form,\" the exhibition considers sculpture as a physical manifestation arising from the collision of mind and matter, focusing on a micro-scale dimension where abstract thought gains clear, concrete boundaries within confined physical space. Participants include Chan Shih-Tai, who responds to stone's nature through a restrained \"cleansing\" gesture; Chiow Liang-Cherng, who converts iron formwork into clay's tectonic basis; Wu Wei-Ting, who captures everyday psychological release through marble and light; and Lin Yu Sheng, who builds dense layers of acrylic paint — alongside Hung Sheng-Hsiung, Tsai Zung-Lung, Hsu Jui-Chien, Chiu Chao-Tsai, Hsu Ting, Agi Chen Yi-Chieh, Ni Hsiang, and Tsui Kuang-Yu, each exploring sculpture's intersection with concept through their own material logic.",
       "description_ja": "双方藝廊（ダブルスクエア・ギャラリー）は、台湾で活躍する12名の現代アーティストによる彫刻グループ展「思惟の形」を開催する。展覧会は「形」を核心に、彫刻を精神と物質の衝突から生まれる物理的な現れとして捉え、抽象的な思考が限られた物理空間の中で明確な実体的境界を得る微細なスケールに焦点を当てる。石の本質に「清める」という抑制された所作で応える詹士泰、鉄型を陶土の構造的基盤に転換する邱梁城、大理石と光で日常的な心理的解放を捉える吳瑋庭、アクリル絵具を幾重にも積層する林育聖のほか、洪聖雄、蔡宗隆、徐瑞謙、邱昭財、徐婷、陳怡潔、倪祥、崔廣宇がそれぞれ独自の素材の論理で彫刻と観念の交差を探求する。",
       "status": "current",
-      "added_at": "2026-10-05T19:48:53+09:00"
+      "added_at": "2026-10-05T19:48:53+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/10",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "note_zh": "展覽開幕當日茶會。",
+          "note_en": "Opening reception on the exhibition's first day.",
+          "note_ja": "展覧会初日のオープニングレセプション。",
+          "source_url": "https://www.doublesquare.com.tw/en/exhibition/the-morphology-of-thought-sculpture-group-exhibition"
+        }
+      ]
     },
     {
       "museum": "852art",
@@ -2540,7 +2553,33 @@
       "description_en": "Born in Taipei in 1988, Li Chen-An received the 2026 Tainan Emerging Art Award among other honors, and currently serves as an assistant professor in the Department of Architecture at Chung Yuan Christian University. Working primarily with computer algorithms and digital fabrication, he probes the subtle boundary between perception and form through installation, image, and space. This exhibition takes the \"body\" as its central theme, exploring how people continually assign meaning to the body — a vessel for self-expectation as well as a repository for the pursuit of perfection and transcendence. BODY! BODY! BODY! calls out: the body we have, the body we try to change, and the body we worship. In the course of chasing an ideal, people are unknowingly reshaped by that very ideal. Formally, the works emerge from repeated algorithmic computation and generative derivation. Hovering between the abstract and the figurative, complex forms resembling the human body gradually surface — hardness imitating softness, transparency bearing weight, cold shapes and materials pulling against one another — creating a tension between nature and artifice, stability and collapse, and reassembling profound traces of the body and of life. \"Perhaps we return to the body again and again only because it always holds a version of ourselves we have yet to reach.\" Drawing on his background in architecture and computation, Li Chen-An reveals the body as a site where spirit and form meet, inviting viewers into this profound dialogue on the body, worship, and reinvention.",
       "description_ja": "1988年台北生まれの李宸安（リー・チェンアン）は、2026年台南新藝賞などを受賞し、現在は中原大學建築学科の専任助理教授を務める。長年コンピュータ・アルゴリズムとデジタル製造を創作の核心的な媒材とし、インスタレーション・映像・空間を通して知覚と形態の微妙な境界を掘り下げてきた。本展は「身体」を核心的な切り口とし、人がどのように身体へさまざまな意味を与え続けているかを探る——身体は自己への期待を担うと同時に、完璧さや超越への欲求を託される場でもある。《BODY! BODY! BODY!》は、私たちが持つ身体、変えようとする身体、そして崇拝する身体を呼びかける。理想を追い求める過程で、人は知らぬ間にその理想によって作り直されていく。表現の面では、作品はアルゴリズムの反復計算と生成的な派生から生まれる。抽象と具象のあいだで、人体に近い複雑な形姿が徐々に浮かび上がる——硬さが柔らかさを模倣し、透明さが重さを受け止め、冷たい造形と素材が互いに引き合い、自然と人工、安定と制御不能のあいだの緊張を生み出し、身体と生命についての深い痕跡を再び組み立てていく。「私たちが何度も身体に立ち返るのは、そこにまだ到達していない自分がいつも存在しているからかもしれない。」李宸安は建築とアルゴリズムの背景を結びつけ、精神と形式が交わる場としての身体の無限の可能性を示し、観客を身体・崇拝・再構築についての深い対話へと誘う。",
       "status": "upcoming",
-      "added_at": "2026-10-05T20:30:49.270929+09:00"
+      "added_at": "2026-10-05T20:30:49.270929+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/16",
+          "time": "14:00",
+          "title_zh": "VIP／媒體預展",
+          "title_en": "VIP / Press Preview",
+          "title_ja": "VIP・プレス向けプレビュー",
+          "note_zh": "開幕前のVIP・メディア向け内覧会。14:00-16:00。",
+          "note_en": "VIP and press preview before the public opening, 14:00-16:00.",
+          "note_ja": "一般開幕前のVIP・メディア向け内覧会。14:00-16:00。",
+          "source_url": "https://www.instagram.com/axisgallery.tw/p/DeGcCNrKqes/"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/17",
+          "time": "14:00",
+          "title_zh": "公眾開幕茶會",
+          "title_en": "Public Opening Reception",
+          "title_ja": "一般公開オープニングレセプション",
+          "note_zh": "一般公眾開幕茶會。14:00-16:00。",
+          "note_en": "Public opening reception, 14:00-16:00.",
+          "note_ja": "一般向けオープニングレセプション。14:00-16:00。",
+          "source_url": "https://www.instagram.com/axisgallery.tw/p/DeGcCNrKqes/"
+        }
+      ]
     },
     {
       "museum": "eachmodern",
@@ -2585,7 +2624,21 @@
       "description_en": "I have never been someone who falls asleep easily. When I was very young, my mother would gently pat me to sleep, and more often than not, she would fall asleep before I did. As the rhythm of her patting gradually slowed with her drowsiness, I would make a muffled little sound, almost playfully, asking her to continue. But in this video, I choose to let my mother, who has always struggled with insomnia, fall asleep freely. The work consists of multiple looping images — less like loops than an experience of swaying continuously at different speeds: a drowsy hand, a flying shadow, a zipper gently touched, a spider web floating in the air. I want to try to quietly leave behind those drowsy gestures of care. Artist talk: Oct 9 (Fri) 19:00, with guest So Yo Hen.",
       "description_ja": "私はもともと寝つきの良い人間ではない。幼い頃、母はそっと背中を叩いて私を寝かしつけてくれたが、たいてい母の方が先に眠ってしまっていた。叩くリズムが眠気とともに緩やかになっていくと、私はぐずるようにうめき声をあげ、続けてとせがんだ。しかし今回の映像では、いつも不眠に悩む母を自由に眠らせることを選んだ。作品は複数のループ映像から構成され、ループというよりも、異なる速度で揺れ続ける体験のようなものである。眠たげな手、飛ぶ影、そっと触れるジッパー、浮かぶ蜘蛛の巣……それぞれが音を消したメトロノームのように、まばらなリズムが視界の中で止まっている。そうした眠たげな気遣いを、そっと留めておきたいと思う。アーティストトーク：10/9（金）19:00、ゲスト：蘇育賢。",
       "status": "current",
-      "added_at": "2026-10-05T20:46:27.085561+09:00"
+      "added_at": "2026-10-05T20:46:27.085561+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/09",
+          "time": "19:00",
+          "title_zh": "藝術家座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note_zh": "藝術家許芸瑄與蘇育賢對談。",
+          "note_en": "Artist talk between Hsu Yun-Hsuan and guest So Yo Hen.",
+          "note_ja": "作家・許芸瑄とゲストの蘇育賢によるアーティストトーク。",
+          "source_url": "https://www.facebook.com/ffffffblank/"
+        }
+      ]
     },
     {
       "museum": "fishart",
