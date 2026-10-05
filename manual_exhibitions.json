@@ -131,7 +131,45 @@
       ],
       "status": "upcoming",
       "description_ja": "本展は台湾写真史の研究視点に立ち、「民間」が異なる世代の写真家たちにとって、見つめ、対話し、論じ続けてきた重要な場としてどう機能してきたかを再考する。台湾と東アジアの歴史的文脈において、「民間」は単なる民俗風情ではなく、公的領域と非公式な領域の間に位置する動態的な社会空間である。展覧会は松山虔三・張才・黃則修・張照堂・黃永松・姚孟嘉・梁正居・林柏樑ら写真家たちに焦点を当てる。",
-      "added_at": "2026-06-23T22:45:14+09:00"
+      "added_at": "2026-06-23T22:45:14+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "14:00",
+          "title_zh": "新北市美術館 × Lomography 拍立得重複曝光工作坊",
+          "title_en": "NTCAM x Lomography Instant Film Double-Exposure Workshop",
+          "title_ja": "新北市美術館×Lomography インスタント写真二重露光ワークショップ",
+          "note_zh": "Lomo即影即有相機を使った多重露光ワークショップ。開始前に展覧会を見学し、創作のインスピレーションを得る。",
+          "note_en": "A double-exposure instant film workshop using Lomo'Instant cameras, preceded by a guided look at the exhibition for creative inspiration.",
+          "note_ja": "Lomo'Instantカメラを使った多重露光ワークショップ。開始前に展覧会を見学し創作のヒントを得る。",
+          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/25",
+          "time": "14:30",
+          "title_zh": "紀錄片放映｜〈傳統小鎮─美濃〉",
+          "title_en": "Documentary Screening: \"Traditional Town — Meinong\"",
+          "title_ja": "ドキュメンタリー上映『伝統の町－美濃』",
+          "note_zh": "1980年、謝佳雄監督、25分。客家の町・美濃を記録した短編ドキュメンタリー。無料・申込不要。",
+          "note_en": "1980 documentary (25 min) by director Hsieh Chia-Hsiung, recording the Hakka town of Meinong. Free, no registration required.",
+          "note_ja": "1980年、謝佳雄監督による25分のドキュメンタリー。客家の町・美濃を記録。無料・申込不要。",
+          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/31",
+          "time": "14:00",
+          "title_zh": "策展人導覽",
+          "title_en": "Curator-Led Tour",
+          "title_ja": "キュレーターツアー",
+          "note_zh": "策展人張世倫による展覧会ガイドツアー。要事前予約（10/5正午より受付）。",
+          "note_en": "Guided tour led by curator Chang Shih-Lun. Advance online registration required (opens 10/5 noon).",
+          "note_ja": "キュレーター張世倫によるガイドツアー。事前のオンライン予約が必要（10/5正午受付開始）。",
+          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
+        }
+      ]
     },
     {
       "museum": "nwac",
