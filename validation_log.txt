@@ -606,3 +606,15 @@
 
 --- Validation 2026-10-05 20:10 ---
 [SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+
+--- Validation 2026-10-05 20:28 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+
+--- Validation 2026-10-05 20:28 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+
+--- Validation 2026-10-05 20:32 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
