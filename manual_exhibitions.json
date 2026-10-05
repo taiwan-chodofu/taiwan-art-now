@@ -3191,6 +3191,51 @@
       "description_ja": "本展「行旅」は、作家の旅とその行き先を出発点とし、個人的な感覚・観察・まなざしを通じて、道中の風景と感情を一枚一枚の膠彩画へと転化していく。本展は膠彩によって風景を描写・再現するだけでなく、素材そのものから出発して膠彩の表現における異なる可能性を探り、絵画の労働性と創作過程そのものを作品に組み込みながら、風景・素材・創作行為の関係を考察する。",
       "status": "upcoming",
       "added_at": "2026-10-05T22:17:46.521737+09:00"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "2026年第七屆唐獎榮耀展",
+      "title_en": "7th Tang Prize Honor Exhibition 2026",
+      "title_ja": "2026年第7回唐奨栄誉展",
+      "dates": "2026.09.01 – 2026.10.30",
+      "location": "中央通廊",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=61004",
+      "artists": [],
+      "description": "2026年第七屆「唐獎榮耀展」以「以智慧為光 點亮全球」為核心概念，結合科技與藝術，帶領大眾認識唐獎得主在永續發展、生技醫藥、漢學及法治四大領域的卓越成就，並首度打造數位「唐獎智庫」，傳達得主貢獻所匯集的智慧能量，透過參觀與互動，進而激盪出實踐美好未來的積極行動力。",
+      "description_en": "The 7th Tang Prize Honor Exhibition (2026), themed \"Illuminating the World with Wisdom,\" combines technology and art to introduce the public to the outstanding achievements of Tang Prize laureates across four fields — sustainable development, biopharmaceutical science, sinology, and rule of law. For the first time, the exhibition builds a digital \"Tang Prize Think Tank,\" conveying the collective wisdom of the laureates' contributions and, through hands-on interaction, inspiring visitors to take positive action toward a better future.",
+      "description_ja": "2026年第7回「唐奨栄誉展」は「智慧の光で世界を照らす」をコンセプトに、テクノロジーとアートを組み合わせ、持続可能な発展・生物医薬・漢学・法の支配という4分野における唐奨受賞者の優れた功績を紹介する。初めてデジタル「唐奨シンクタンク」を構築し、受賞者たちの貢献から集まった知恵のエネルギーを伝え、見学と体験を通して、より良い未来を実践する積極的な行動力を喚起する。",
+      "status": "current",
+      "added_at": "2026-10-05T22:23:37.896585+09:00"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "星耀寰宇—亞洲國際藝術協會世界菁英會員邀請展",
+      "title_en": "Stars Across the World – Asia International Art Association World Elite Members Invitational Exhibition",
+      "title_ja": "星耀寰宇－アジア国際芸術協会世界菁英会員招待展",
+      "dates": "2026.10.01 – 2026.10.13",
+      "location": "3展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=61022",
+      "artists": [],
+      "description": "本展匯聚台灣、中國大陸、美國、日本及越南等地創作者，以跨區域的藝術思維，同時展現台灣書畫藝術的蓬勃生命力以及書畫在各地發展出的豐富面貌。展出內容涵蓋山水、花鳥、人物、佛畫及書法等題材，近100件作品，特別納入大尺幅作品與連屏創作，呈現水墨山水之磅礡氣勢與書法線條之律動美感，帶給觀者兼具傳統底蘊與當代視覺衝擊的藝術饗宴。",
+      "description_en": "This exhibition brings together artists from Taiwan, mainland China, the United States, Japan, and Vietnam, presenting a cross-regional artistic vision that showcases both the vitality of Taiwanese ink-and-calligraphy art and the rich diversity of ink painting and calligraphy as practiced in different regions. The nearly 100 works on view span landscape, flower-and-bird, figure, Buddhist, and calligraphic subjects, with a special selection of large-format works and multi-panel compositions that convey the grandeur of landscape ink painting and the rhythmic beauty of calligraphic line — offering viewers a feast for the eyes that is at once rooted in tradition and visually striking in a contemporary sense.",
+      "description_ja": "本展は台湾、中国大陸、アメリカ、日本、ベトナムなど各地の作家が集結し、地域を越えた芸術的視点から、台湾の書画芸術の力強い生命力と、各地で発展してきた書画の豊かな様相を同時に示す。展示内容は山水、花鳥、人物、仏画、書法など多岐にわたり、約100点の作品を展示。大型作品や連屏（複数パネル）作品を特別に取り入れ、水墨山水の壮大な気勢と書法の線が持つリズムの美しさを表現し、伝統的な深みと現代的な視覚的インパクトを兼ね備えた芸術の饗宴を観る者に届ける。",
+      "status": "current",
+      "added_at": "2026-10-05T22:23:37.896585+09:00"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "2026年中國美術協會會員聯展",
+      "title_en": "2026 Chinese Fine Arts Association Members Joint Exhibition",
+      "title_ja": "2026年中国美術協会会員連展",
+      "dates": "2026.10.01 – 2026.10.12",
+      "location": "三樓藝廊 4展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=61019",
+      "artists": [],
+      "description": "中國美術協會1931年創立於上海，1949年遷台後，持續推動社會美育與藝術交流。此次展覽匯聚了284位會員共數百件精采作品，包括傳統水墨、膠彩、工筆、彩墨、彩瓷、油畫、水彩、壓克力畫、版畫、素描及銅雕等多元複合媒材創作，風格橫跨東西方藝術多重領域，呈現台灣現代美術發展的豐沛樣貌。",
+      "description_en": "The Chinese Fine Arts Association was founded in Shanghai in 1931 and relocated to Taiwan in 1949, where it has continued to promote public art education and artistic exchange ever since. This exhibition brings together several hundred outstanding works by 284 members, spanning traditional ink painting, gouache, meticulous brushwork (gongbi), color ink, enamel painting, oil painting, watercolor, acrylic, printmaking, sketching, and bronze sculpture — a wide range of mixed media crossing both Eastern and Western artistic traditions, presenting the rich and varied development of modern art in Taiwan.",
+      "description_ja": "中國美術協會（Chinese Fine Arts Association）は1931年に上海で創立され、1949年の台湾移転後も社会における美術教育と芸術交流の推進を続けてきた。本展は284名の会員による数百点の優れた作品を集め、伝統水墨、膠彩、工筆、彩墨、彩瓷、油彩、水彩、アクリル画、版画、素描、ブロンズ彫刻など多様な複合メディアによる創作を展示し、東西の芸術領域を横断するスタイルを通じて、台湾における近現代美術の豊かな発展の姿を示す。",
+      "status": "current",
+      "added_at": "2026-10-05T22:23:37.896585+09:00"
     }
   ]
 }
