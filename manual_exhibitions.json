@@ -3261,7 +3261,21 @@
       "description_en": "Endlessly Evolving is the fourth chapter in an ongoing ceramic series exploring the geological lineage of Taiwan. Following past exhibitions—Becoming Earth (2022), Glacial moraine, Lava (2023), and Wrinkled Imprints of Deep Time (2024)—this body of work elevates its perspective beyond Earth into cosmic space. Observing the solar system from a spacecraft's viewpoint, the exhibition captures how planets revolve in precise gravitational balance, maintaining a state of dynamic, unmoving change. Descending back to a human scale, the focus turns to sedimentary rocks. By splicing clays from diverse environments, the works recreate rich landscape textures—interweaving fine soil and coarse quartz sand to celebrate the ever-changing foundation of our living planet.",
       "description_ja": "《不動的變動》は、林明玉（リン・ミンユー）が2020年から続けている、陶土を書く媒材として台湾という島の地質的な来歴を探り、想像するシリーズの第四部にあたる。本展では、地球の重力を振り切り大気圏を突き抜ける宇宙船の視点まで観察の距離を引き上げ、太陽系で唯一人が住める星と、異なる軌道を回る他の天体を見つめる——それぞれの星は異なる速度で自転・公転し、互いの重力が作用し合いながら、見かけ上は動かないように見える「変動」の関係を保っている。宇宙から再び、身体で測れる尺度へと降りてくると、視線はもっとも馴染みのある堆積岩へと向かう。異なる地質環境から採れた陶土を、色彩豊かな織物のような地層の文様としてつなぎ合わせ、私たちが暮らす星の基礎である岩石の、変化に富んだ姿を表現している。",
       "status": "current",
-      "added_at": "2026-10-05T21:27:46.733193+09:00"
+      "added_at": "2026-10-05T21:27:46.733193+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/10",
+          "time": "14:00",
+          "title_zh": "開幕暨茶會座談",
+          "title_en": "Opening Reception & Talk",
+          "title_ja": "オープニング茶会トーク",
+          "note_zh": "與談人：陳冠彰（獨立研究者）",
+          "note_en": "With discussant Chen Kuan-Chang (independent researcher).",
+          "note_ja": "対談：陳冠彰（独立研究者）",
+          "source_url": "https://www.facebook.com/events/1436035698420768/"
+        }
+      ]
     },
     {
       "museum": "ponding",
@@ -3278,7 +3292,21 @@
       "description_en": "May more people come to love the world you already love. The first time I truly stepped into the work of Japanese artist Uchida Masayasu — the mountains, trees, rivers, snowfields, sunset skies and villages, and the people living within them — I felt a quiet gratitude simply for being alive. A gust of wind. Light slipping through the trees. A still pond. A wisp of smoke from a chimney. Winter snow, and the first green of spring. \"The moment you step outside your door, there is already so much that gives you the strength to keep living.\" After nearly sixty years of creative work, Uchida Masayasu's art leaves Japan for the very first time to come to Taiwan. A Poem of Life carries forward the spirit at the heart of his practice: that even an ordinary day of simply being alive can be a poem. Uchida Masayasu (1922–2019) was a graphic designer and a pioneer of torn-paper collage. At 36 he began experimenting with the technique, and over the nearly sixty years that followed, he continued to capture the moments that make us feel glad to be alive. He kept creating into his nineties. Curated by Kazanobana. In cooperation with the Uchida Masayasu Harie Museum.",
       "description_ja": "あなたが愛する、この世界をもっと多くの人に愛してもらえたら。日本の作家・内田正泰の作品に初めて本当に向き合ったとき、山や木々、川、雪、夕焼け、村、そしてそこに暮らす人々の姿から、ただ「生きていること」への静かな感謝の気持ちが自然と湧き上がってきた。一陣の風。木々の間からこぼれる光。一つの水たまり。一筋の煙。冬の雪、春に出たばかりの新緑。「家の外に一歩出るだけで、生きていく力を与えてくれるものがたくさんある。」およそ60年にわたる創作人生を経て、内田正泰の作品が初めて日本を離れ、台湾へやってくる。《人の詩》は、内田が創作の中で大切にしてきた思いを引き継ぐ——ありふれた一日を生きることも、一つの「人の詩」になりうるということ。内田正泰（1922–2019）はグラフィックデザイナーであり、洋紙の破り絵（ちぎり絵）作家。36歳のときに破り絵を試み始め、約10年の模索を経て独自の技法を確立し、その後およそ60年、「生きていてよかった」と感じられる瞬間を作品に留め続けた。90歳を超えても制作を続けた。キュレーション｜火山野花。協力｜内田正泰はり絵美術館。",
       "status": "upcoming",
-      "added_at": "2026-10-05T21:27:46.733193+09:00"
+      "added_at": "2026-10-05T21:27:46.733193+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "14:30",
+          "title_zh": "開幕導覽",
+          "title_en": "Opening Tour",
+          "title_ja": "オープニングツアー",
+          "note_zh": "由內田正泰之子內田光與策展人火山野花（陳寶淇）導覽。",
+          "note_en": "Guided tour led by Uchida Masayasu's son Uchida Ko and curator Kazanobana (Chen Pao-Chi).",
+          "note_ja": "内田正泰氏の息子・内田光氏とキュレーターの火山野花（陳寶淇）によるガイドツアー。",
+          "source_url": "https://www.instagram.com/pondingspace/p/DdyzUCWk8vi/"
+        }
+      ]
     },
     {
       "museum": "pier2",
@@ -3311,7 +3339,21 @@
       "description_en": "Huang Shun-Ting's solo exhibition \"Best Best Wishes\" examines how everyday plants and ceramic pots from flower markets become charged with \"wealth,\" \"luck,\" and \"blessing\" symbolism, which he reworks through photography, image editing, and painting. The centerpiece series \"(Blank) 053.v3\" presents the same image across four canvases of increasing scale — titled \"Minor Fortune,\" \"Moderate Fortune,\" \"Great Fortune,\" and \"Supreme Fortune\" — asking whether enlarging an image also enlarges its auspicious meaning. Another series, \"(Blank) 051, 052, 059 (Stack the Luck, Pool the Cash),\" layers wealth-symbolizing plant and butterfly motifs within custom three-tier frames. Ceramic lucky planters such as \"Golden Hen Lays Eggs\" and \"Golden Toad Brings Treasure\" are displayed on flower-market trolleys, blurring the line between gallery, market stall, and merchandise display. The work keeps circling back to one question: is this repetition merely a replication of form, or can it become a form of \"added quality\" and \"added value\"?",
       "description_ja": "黃舜廷（ホアン・シュンティン）の個展「上上芳 Best Best Wishes」は、花市で売られる植物や陶製の鉢といった「金運・開運・祝福」を象徴する日常の物を取り上げ、写真撮影・画像編集・絵画という手法で再構成する。中心となる作品「（空白）053.v3」は同じ図像を「小吉」「中吉」「大吉」「特大吉」という4枚のキャンバスに段階的に拡大して並べ、図像を拡大することが吉祥の意味そのものを拡大するのかを問いかける。もう一つのシリーズ「（空白）051、052、059（福疊財聚）」は、富を象徴する植物や蝶の図様をオーダーメイドの三層フレームに重ねて構成している。また「金鶏が卵を産む」「金蟾が宝を運ぶ」といった縁起物の陶製鉢植えが、花市で使われるようなカートに陳列され、画廊・市場・商品展示の境界を曖昧にする。作品は一貫して問い続ける——この反復は単なる「形式の複製」なのか、それとも「質の増加」や「価値の増加」へと転化しうるのか。",
       "status": "current",
-      "added_at": "2026-10-05T21:27:46.733193+09:00"
+      "added_at": "2026-10-05T21:27:46.733193+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "15:00",
+          "title_zh": "藝術家座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note_zh": "與談人：沈裕昌（國立臺北教育大學文化創意產業經營學系助理教授）",
+          "note_en": "With panelist Shen Yu-Chang, Assistant Professor, Dept. of Cultural and Creative Industries Management, National Taipei University of Education.",
+          "note_ja": "対談者：沈裕昌（国立台北教育大学文化創造産業経営学科助理教授）",
+          "source_url": "https://www.projectfulfill.com/best-best-wishes-huang-shun-ting-2026"
+        }
+      ]
     },
     {
       "museum": "redgold",
@@ -3450,7 +3492,21 @@
       "description_en": "TAO ART presents \"Liquid Dream,\" bringing together new paintings by British artist Benjamin Spiers (b. 1972) and Taiwanese artist Tseng Chien-Ying (b. 1987), exploring unexpected connections between two practices rooted in different painting traditions. In this surreal dialogue, unsettling beauty meets flamboyant grotesquerie; extreme contrasts generate the works' quiet tension and dreamlike mystery. Benjamin Spiers works in oil, vividly rendering fantastical, lifelike forms that are both alluring and intimate, yet laced with an elusive ambiguity. Taiwanese artist Tseng Chien-Ying works with ink, gouache, and mineral pigments on fine paper, using fluid brushwork and a highly stylized vocabulary of line to summon more ethereal forms. By reimagining Buddhist iconography, he creates bodily images charged with cultural and psychological meaning, keeping identity and desire fluid and undefined. Both artists' works are deeply sensory while rendering the familiar strange; they push recognizable human forms toward something more heterogeneous, creating vivid hybrid bodies that become sites of transformation and endless possibility. This exhibition marks Spiers' first showing in Taiwan, and also marks a renewed collaboration between TAO ART and the London gallery Saatchi Yates.",
       "description_ja": "TAO ARTは「Liquid Dream」展を開催し、イギリスのアーティスト、ベンジャミン・スパイアーズ（Benjamin Spiers、1972年生）と台湾のアーティスト、曾建穎（1987年生）の新作絵画を紹介する。それぞれ異なる絵画の伝統に根ざした二人の創作実践から出発し、その間に生まれる思いがけないつながりを探る。このシュルレアリスティックな対話の中で、不安を誘う美しさと誇張されたグロテスクさが交わり、極端な対比が作品に潜む微妙な緊張感と夢のような神秘性を生み出す。ベンジャミン・スパイアーズは油彩を用い、幻想的な形態を生き生きと描き出す——魅惑的で親密でありながら、どこか捉えがたい曖昧さをまとう。台湾のアーティスト曾建穎は、墨・膠彩・鉱物顔料を用いて繊細な紙に描き、流麗な筆致と高度に様式化された線の語彙によって、より空霊な形態を呼び起こす。仏教図像の再解釈を通じて、文化的・心理的な意味を帯びた身体像を生み出し、アイデンティティと欲望を流動的で未確定なまま保つ。二人のアーティストの作品はともに感覚的でありながら、見慣れたものを見知らぬものへと変える。彼らは認識可能な人体のイメージを、より異質な存在へと推し進め、生々しいハイブリッドな形体を生み出すことで、変容と無限の可能性の場とする。本展はスパイアーズの台湾初展示であり、同時にTAO ARTとロンドンのギャラリー、サーチ・イェイツ（Saatchi Yates）との再度のコラボレーションを示すものでもある。",
       "status": "upcoming",
-      "added_at": "2026-10-05T22:03:04.225354+09:00"
+      "added_at": "2026-10-05T22:03:04.225354+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "16:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "note_zh": "展覽開幕茶會，4:00–7:00 PM。",
+          "note_en": "Opening reception, 4:00–7:00 PM.",
+          "note_ja": "展覧会オープニングレセプション、16:00〜19:00。",
+          "source_url": "https://taoartspace.com/upcoming/"
+        }
+      ]
     },
     {
       "museum": "tartch",
