@@ -1265,7 +1265,33 @@
       "description": "西元1983年至1995年間，冥王星停留在天蠍座。這顆象徵著「毀滅與重生」的行星，與其守護星天蠍座所帶來的能量疊合，使這段期間出生的人們承受著時代的變革，幻象與靈性纏繞於權威與現實之中。當時世界開始邁向資本主義的極端發展，卻同時經歷了90年代的股市泡沫、臺海危機、移民潮與資金外移等動盪，整體的社會氛圍正朝著未知前進。這代人在現實與生存焦慮的夾縫中，轉而追求心靈自由的自我實踐，試圖在快速變革的社會現實裡，尋找能夠安放自身的位置。本次展覽由藝術家劉玗與吳思嶔共同創作，作品靈感源自於他們過去的旅行經驗——那些在移動中相遇的人、事、物。藉由記憶的回溯，藝術家將自己的經歷重新編輯、拼貼，並以影像生成工具來重現當時的環境與體感，在文字、雕塑與影像中展開全新的旅程。",
       "description_en": "Pluto was in Scorpio from 1983 to 1995. Combined with the energy of Scorpio—the sign it rules—this planet of destruction and rebirth shaped a generation defined by profound shifts, where illusions and spirituality intertwined with authority and reality. At that time, the world was moving toward extreme capitalism while experiencing the stock market bubble of the 1990s, the Taiwan Strait Crisis, and waves of emigration and capital flight. The exhibition \"Pluto in Scorpio\" is a collaboration between artists Liu Yu and Wu Sih-chin, inspired by their past travels, tracing the people, places, and moments they encountered along the way, re-edited and reassembled through text, sculpture, and video.",
       "description_ja": "1983年から1995年にかけて、冥王星は天蠍座に滞留していた。「破壊と再生」を象徴するこの星が、支配星である天蠍座のエネルギーと重なり合い、この時期に生まれた世代は時代の変革を強く受け、幻想と精神性が権威と現実の間で絡み合うこととなった。当時世界は資本主義の極端な発展へと向かいながらも、90年代の株式バブル、台湾海峡危機、移民の波や資本流出といった動乱を同時に経験しており、社会全体の空気は未知の方向へ進んでいた。本展はアーティストの劉玗と吳思嶔による共同制作で、二人の過去の旅の経験——移動の中で出会った人・物・出来事——に着想を得ている。記憶を遡ることで、自らの経験を再編集・コラージュし、生成系映像ツールを用いて当時の環境や身体感覚を再現し、文字・彫刻・映像を通して新たな旅を展開する。",
-      "link": "https://www.facebook.com/share/1CuFsDRR8F/"
+      "link": "https://www.facebook.com/share/1CuFsDRR8F/",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/10",
+          "time": "14:00",
+          "title_zh": "【專家導覽】吳紫莖",
+          "title_en": "Expert Tour: Wu Zi-Jing",
+          "title_ja": "専門家ガイドツアー：呉紫莖",
+          "note_zh": "舞台設計師吳紫莖從自身專業視角帶領觀眾遊歷「冥王星在天蠍座」，重新思考作品背後的空間裝置敘事。",
+          "note_en": "Stage designer Wu Zi-Jing leads a guided tour of \"Pluto in Scorpio\" from her professional perspective, revisiting the exhibition's spatial narrative.",
+          "note_ja": "舞台デザイナー呉紫莖が自身の専門的視点から「冥王星在天蠍座」をガイドし、作品の背景にある空間演出の語りを再考する。",
+          "source_url": "https://ntcart.museum/event_content.aspx?id=E2608003"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "14:00",
+          "title_zh": "星樂物語",
+          "title_en": "Starlight Serenade",
+          "title_ja": "星の音楽物語",
+          "note_zh": "小提琴、薩克斯風與打擊樂現場演出，呼應「冥王星在天蠍座」的意象。共兩場，14:00–14:30及16:00–16:30。",
+          "note_en": "Live performance for violin, saxophone, and percussion echoing the themes of \"Pluto in Scorpio.\" Two sessions: 14:00-14:30 and 16:00-16:30.",
+          "note_ja": "ヴァイオリン・サックス・パーカッションによるライブ演奏。「冥王星在天蠍座」のイメージに呼応する。14:00-14:30と16:00-16:30の2回公演。",
+          "source_url": "https://ntcart.museum/event_content.aspx?id=E2608003"
+        }
+      ]
     },
     {
       "museum": "cksmh",
