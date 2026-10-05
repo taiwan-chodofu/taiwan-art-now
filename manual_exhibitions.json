@@ -2958,7 +2958,93 @@
       "description_en": "Themed \"After the Museum,\" this exhibition marks the Museum of Contemporary Art Taipei's 25th anniversary as the institution enters a three-year restoration period, prompting a reflection on space, labor, and institutional logic. The \"after\" in the title points both to a temporal transition and a spatial extension. The show focuses on the labor experiences of museum workers and the dual identity of artist-as-worker, examining how evaluation systems and exhibition mechanisms shape the way visitors see — and extending that inquiry to the museum's role within the city and public space. The architectural renovation itself becomes a metaphor: walking the exhibition route mirrors walking through a structural \"cross-section\" of the museum. The museum's \"after\" does not begin when renovation is complete, but the moment its stakeholders choose to recognize and keep adjusting the systems that sustain it.",
       "description_ja": "本展は「美術館のあと（美術館之後）」をテーマに、台北当代芸術館（MoCA Taipei）の開館25周年を機に、館が3年間に及ぶ修復工事に入ることから、空間・労働・制度の論理を見つめ直す。タイトルの「あと」は時間的な移行を指すと同時に、空間的な広がりも意味している。本展は美術館で働く人々の労働経験と、アーティストでありながら労働者でもあるという二重の身分に焦点を当て、評価制度や展覧会の仕組みがいかに観客の見方を形づくっているかを問う。さらにこの問いを、都市や公共空間における美術館の役割にまで拡張する。建築の修復そのものが一つの比喩となり、観客が実際に展覧会の経路を歩くことは、美術館という構造の「断面」を歩くことに重なる。美術館の「あと」は、修復工事が完成した時点から始まるのではなく、関係者たちがその仕組みを支える制度を見つめ直し、調整を続けることを選んだ瞬間から始まるのだ。",
       "status": "current",
-      "added_at": "2026-10-05T21:09:49.192406+09:00"
+      "added_at": "2026-10-05T21:09:49.192406+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/09",
+          "time": "14:00",
+          "title_zh": "【藝術家面對面】你怎麼逛美術館？",
+          "title_en": "Artists Face to Face: How Do You Tour a Museum?",
+          "title_ja": "【アーティスト対談】あなたはどう美術館を見る？",
+          "note_zh": "當代館二樓205展間舉行的藝術家對談活動。",
+          "note_en": "Artist dialogue event held in Gallery 205, 2F.",
+          "note_ja": "当代館2階205展示室で行われるアーティスト対談。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/08",
+          "time": "14:00",
+          "title_zh": "【專家導覽】賴依欣",
+          "title_en": "Expert Tour: Lai Yi-Hsin",
+          "title_ja": "【専門家ガイドツアー】賴依欣",
+          "note_zh": "導覽人：賴依欣／臺中市立美術館館長。",
+          "note_en": "Led by Lai Yi-Hsin, Director of Taichung Museum of Fine Arts.",
+          "note_ja": "ガイド：賴依欣（台中市立美術館館長）。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/21",
+          "time": "14:00",
+          "title_zh": "【專家導覽】劉依盈",
+          "title_en": "Expert Tour: Liu Yi-Ying",
+          "title_ja": "【専門家ガイドツアー】劉依盈",
+          "note_zh": "獨立策展人劉依盈帶領的展覽導覽。",
+          "note_en": "Guided tour led by independent curator Liu Yi-Ying.",
+          "note_ja": "独立キュレーター劉依盈によるガイドツアー。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/12/12",
+          "time": "13:00",
+          "title_zh": "【藝術家面對面】「算不算？怎麼算？」系列一｜怎樣才算一檔好展覽？",
+          "title_en": "Artists Face to Face: What Counts? Series 1 — What Makes a Good Exhibition?",
+          "title_ja": "【アーティスト対談】「カウントするか？」シリーズ1｜良い展覧会とは？",
+          "note_zh": "當代館一樓活動大廳舉行的座談系列第一場。",
+          "note_en": "First talk in a series held in the museum's 1F event hall.",
+          "note_ja": "当代館1階イベントホールで行われるトークシリーズ第1回。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/12/12",
+          "time": "15:30",
+          "title_zh": "【藝術家面對面】「算不算？怎麼算？」系列二｜藝術家怎樣才算下班？",
+          "title_en": "Artists Face to Face: What Counts? Series 2 — When Does an Artist's Workday End?",
+          "title_ja": "【アーティスト対談】「カウントするか？」シリーズ2｜アーティストの終業とは？",
+          "note_zh": "座談系列第二場，同日接續第一場舉行。",
+          "note_en": "Second talk in the series, held the same day following the first.",
+          "note_ja": "トークシリーズ第2回。同日第1回に続いて開催。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/12/13",
+          "time": "14:00",
+          "title_zh": "【專家導覽】王若璇",
+          "title_en": "Expert Tour: Wang Jo-Hsuan",
+          "title_ja": "【専門家ガイドツアー】王若璇",
+          "note_zh": "王若璇帶領的展覽導覽。",
+          "note_en": "Guided tour led by Wang Jo-Hsuan.",
+          "note_ja": "王若璇によるガイドツアー。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/12/26",
+          "time": "14:00",
+          "title_zh": "【藝術家工作坊】畫一座想像中的當代館",
+          "title_en": "Artist Workshop: Drawing an Imagined MoCA",
+          "title_ja": "【アーティストワークショップ】想像の当代館を描く",
+          "note_zh": "於一樓活動大廳及主展區舉行的繪畫工作坊。",
+          "note_en": "A drawing workshop held in the 1F event hall and main gallery.",
+          "note_ja": "1階イベントホールおよびメイン展示室で行われる描画ワークショップ。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        }
+      ]
     },
     {
       "museum": "moca",
@@ -2983,7 +3069,45 @@
       "description_en": "Plants poke through cracks in walls, insects move through shadows, and animals leave barely visible traces of their passing — the city's small, quiet lives coexist with humans just outside our usual field of vision. Framed as a game of hide-and-seek, this exhibition invites visitors to rediscover these overlooked urban life forms through site-specific works scattered across the alleys, parks, and drains of Taipei's Zhongshan District. Curated by Lai Pei-Chun, the project also includes a school collaboration with all ninth-grade students of Jiancheng Junior High School and resident artist Tsui Kuang-Yu, as well as a community mural workshop involving local students and residents.",
       "description_ja": "壁の隙間から顔を出す植物、影の中を行き交う昆虫、気づかれないまま残された動物の足跡——都市に暮らす小さな生き物たちは、いつも人の視線の外側で、ひっそりと人間と共存している。本展は「かくれんぼ」をコンセプトに、台北市中山区の路地・公園・排水溝などに点在するアーティストの現地制作作品を通して、見過ごされがちな都市の生命を観客とともに再発見する試みである。キュレーターの賴佩君（ライ・ペイチュン）が企画し、建成国民中学の9年生全員とレジデンス・アーティスト崔廣宇（ツイ・コウウ）との協働による学校プロジェクト、また地域の学生・住民が参加するコミュニティ壁画ワークショップも併せて実施される。",
       "status": "current",
-      "added_at": "2026-10-05T21:09:49.192406+09:00"
+      "added_at": "2026-10-05T21:09:49.192406+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "14:00",
+          "title_zh": "【藝術家工作坊】物以地聚：城市感知",
+          "title_en": "Artist Workshop: Objects Gathered by Place — Urban Perception",
+          "title_ja": "【アーティストワークショップ】物は土地に集う：都市の感覚",
+          "note_zh": "街區藝術計畫「是誰躲起來了？」的工作坊活動。",
+          "note_en": "A workshop under the neighborhood art project \"Who's Hiding?\"",
+          "note_ja": "街区アートプロジェクト「誰が隠れているの？」のワークショップ。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/31",
+          "time": "13:00",
+          "title_zh": "【展覽座談】找到了！我在街區發現了…",
+          "title_en": "Exhibition Talk: Found It! What I Discovered in the Neighborhood...",
+          "title_ja": "【展覧会トーク】見つけた！街区で発見したもの…",
+          "note_zh": "街區藝術計畫的展覽座談。",
+          "note_en": "A talk tied to the neighborhood art project.",
+          "note_ja": "街区アートプロジェクトの展覧会トーク。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/07",
+          "time": "14:00",
+          "title_zh": "【藝術家工作坊】走走走，有樹有椅有首詩",
+          "title_en": "Artist Workshop: Let's Walk — Trees, Chairs, and a Poem",
+          "title_ja": "【アーティストワークショップ】歩こう、木と椅子と詩がある",
+          "note_zh": "街區藝術計畫的戶外工作坊。",
+          "note_en": "An outdoor workshop under the neighborhood art project.",
+          "note_ja": "街区アートプロジェクトの野外ワークショップ。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        }
+      ]
     },
     {
       "museum": "moca",
@@ -3006,7 +3130,45 @@
       "description_en": "'When the Future Is No Longer Commemorated' begins from the fact that both Taiwan and South Korea have entered super-aged societies, asking how life experience, caregiving networks, and collective memory are being reshaped as population structures shift. As the future population shrinks and the elderly become society's dominant demographic, how will a society confront its own continuity once the ways of carrying memory and passing on experience begin to change? The exhibition brings together six Taiwan-Korea artists approaching this question from different positions: Jeong Hyeonjun's field-documentation imagery contemplates the particular temporality of elderly life and the urban landscapes their gathering spaces create; Kim Deokhee draws on her own experience in caregiving work, bringing the spaces, objects, and traces of labor from the caregiving site into her work; Kuo Yu-Ping traces the migration experiences of transnational care workers, reflecting the labor mobility, family restructuring, and shifting intimacy shared across Asia's aging societies; Son Hyemin examines haenyeo (women-diver) culture across Taiwan, Japan, and Korea, asking how embodied skill and local knowledge persist across generations; Chiu Wei-Hsiang's large-scale paintings use wind as a metaphor for the passage of time; and Cheng Wan-Chien creates spaces where sound briefly lingers, is preserved, and reverberates. Through the dialogue between these works, the exhibition lets originally separate experiences reflect one another, gradually shaping an imagination of future survival.",
       "description_ja": "「未来がもはや記念されないとき」は、台湾と韓国がともに超高齢社会へと突入している現状を出発点に、人口構造の変化のもとで生命経験・介護のネットワーク・集団的記憶がいかに再構築されていくかを問う。未来の人口が次第に少なくなり、高齢者が社会の主要な構成員となっていくとき、記憶を担い、経験を伝える方法が変わった後、社会は自らの継続性にどう向き合うのか。本展は台湾・韓国の6組のアーティストの作品を集め、それぞれ異なる立場と社会的文脈から、現実の断面を未来への構想へと結びつけようとする。鄭鉉寯（チョン・ヒョンジュン）はフィールド観察的な映像採集によって、高齢者特有の時間性とその集う空間が形成する都市風景を見つめる。金德喜（キム・ドッキ）は自身の介護労働の経験をもとに、介護の現場の空間・物・労働の痕跡を作品に取り込む。郭俞平（グオ・ユーピン）は国境を越える介護労働者の移住経験をたどり、アジアの高齢社会が共通して抱える労働力の流動、家族構造、親密な関係の再編を映し出す。孫惠慜（ソン・ヘミン）は台湾・日本・韓国の海女文化を切り口に、身体の技と土地の知恵が世代交代の中でいかに継承されるかを探る。邱瑋祥（チウ・ウェイシャン）の大型絵画は、風を時間の流れの隠喩として用いる。鄭琬蒨（チェン・ワンチェン）は、音が短く留まり、保存され、響き合う空間を創出する。作品同士の対話を通じて、本展はもともと別々だった経験を互いに映し合わせ、未来の生存についての想像を徐々に形づくっていく。",
       "status": "current",
-      "added_at": "2026-10-05T21:09:49.192406+09:00"
+      "added_at": "2026-10-05T21:09:49.192406+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/07",
+          "time": "14:00",
+          "title_zh": "【展演座談】石花 手 海女",
+          "title_en": "Performance Talk: Agar, Hand, Haenyeo",
+          "title_ja": "【パフォーマンス対談】石花・手・海女",
+          "note_zh": "MoCA STUDIO展演計畫的座談活動。",
+          "note_en": "A talk tied to the MoCA STUDIO performance program.",
+          "note_ja": "MoCA STUDIOのパフォーマンス企画に関する対談。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/11",
+          "time": "08:30",
+          "title_zh": "【展演工作坊】石花 手 海女＿馬崗",
+          "title_en": "Performance Workshop: Agar, Hand, Haenyeo — Magang",
+          "title_ja": "【パフォーマンスワークショップ】石花・手・海女＿馬崗",
+          "note_zh": "馬崗漁村現地舉行的展演工作坊。",
+          "note_en": "A performance workshop held on-site in Magang fishing village.",
+          "note_ja": "馬崗漁村で現地開催されるパフォーマンスワークショップ。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/01",
+          "time": "15:00",
+          "title_zh": "【策展人導覽】黃羿瑄",
+          "title_en": "Curator Tour: Huang Yi-Hsuan",
+          "title_ja": "【キュレーターツアー】黄羿瑄",
+          "note_zh": "策展人黃羿瑄帶領的MoCA STUDIO展覽導覽。",
+          "note_en": "Guided tour of the MoCA STUDIO exhibition led by curator Huang Yi-Hsuan.",
+          "note_ja": "キュレーター黄羿瑄によるMoCA STUDIO展のガイドツアー。",
+          "source_url": "https://www.moca.taipei/tw/ExhibitionAndEvent/Events"
+        }
+      ]
     },
     {
       "museum": "moca",
