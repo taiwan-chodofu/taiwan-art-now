@@ -2865,6 +2865,40 @@
       "description_ja": "《林相へ歩み入る》展の作品はすべて、長毛の起毛布に電動刺繍で「引く」ように縫い込まれており、展示室に入ると小さな森の旅をしているような感覚になる。このシリーズは、通勤中に車窓から見える風景が、移動とともに色のブロックへと変わり、ぼやけ、断片化していく様子からインスピレーションを得ている。起毛布の質感と多色の刺繍糸が織り合わさることで、光の当たり方によって見え方が変化し、観る者は触れたい気持ちと触れずにいる気持ちの間で揺れ動く。",
       "status": "current",
       "added_at": "2026-10-05T21:27:46.733193+09:00"
+    },
+    {
+      "museum": "99dac",
+      "title_zh": "維度游移Ⅱ-張可昱創作個展",
+      "title_en": "Dimensional Drift II – Chang Ko-Yi Solo Exhibition",
+      "title_ja": "次元の漂流Ⅱ－張可昱個展",
+      "dates": "2026.08.08 – 2026.10.31",
+      "location": "",
+      "link": "https://99dac.com/exhibition-detail.php?id=252",
+      "artists": [
+        "張可昱"
+      ],
+      "description": "維度游移Ⅰ（2024）創作構思乃將三維的體「壓縮」為二維的面，或反之將面「解壓縮」為體的各種嘗試，並在扭曲翻轉中帶入四維（時間）的觀看意趣。此類議題在立體造形上，具有諸多表現面向，彼時展覽以詮釋「人」為主—一個熟悉不過卻同時又常產生質疑、反覆追尋的課題。維度游移Ⅱ（2026）作品，聚焦探討二維向度，以線勾勒物象範圍形成面，面從而翻折轉向三維的過程。造型圍繞動物來呈現，用象徵方式詮釋動物習性。例如熊、象、蝙蝠等形態呈現鏡射關係，在物種演化上，對稱構造簡潔有效率並兼具均衡美感，其中也隱含「中軸線」關係。拆解形態後簡化為塊面，透過裁剪、翻折將「面」立體化，例如外翻的象耳亦如大象的鼻孔、蝙蝠的展翼彷彿發出回聲定位的張口等等。另一類作品像是猿、牛、狗等形態，則試著移除對稱性，描摹動物的行為特性：猿猴歡快攀鈎本性、鬥牛場上公牛反轉動態（也似映對圓弧場域）去展現昂揚野性、或是狗狗嗅聞交友等等。",
+      "description_en": "Dimensional Drift I (2024) explored compressing a three-dimensional body into a two-dimensional plane, and conversely unfolding a plane back into a volume, bringing a fourth dimension (time) into the act of viewing through twisting and flipping. That exhibition focused on interpreting the human figure — a subject at once intensely familiar and perpetually questioned. Dimensional Drift II (2026) turns to the two-dimensional plane itself: lines outline the contours of a form, and that plane then folds and turns toward three dimensions. The works take animals as their subject, using symbolic forms to interpret animal behavior. Bears, elephants, and bats, for instance, appear in mirrored, symmetrical relationships — in evolutionary terms, symmetry is efficient and visually balanced, and implicitly carries a sense of a central axis. After being broken down into simplified planar blocks, these forms are made three-dimensional through cutting and folding — an elephant's flared ear doubling as its nostril, a bat's spread wings resembling an open mouth sending out echolocation calls. Another group of works, depicting apes, cattle, and dogs, deliberately abandons symmetry to trace behavioral traits instead: the playful swinging instinct of apes, the twisting, defiant motion of a bull in the ring (itself echoing the arena's curved form), or a dog sniffing to make acquaintance.",
+      "description_ja": "〈次元の漂流Ⅰ〉（2024）は、立体を二次元の面へと「圧縮」し、あるいは逆に面を立体へと「解凍」するさまざまな試みから構想され、ねじれや反転の中に第四次元（時間）という鑑賞の面白さを取り込んだ。当時の展覧会は主に「人間」の解釈に重点を置いていた——あまりにも身近でありながら、常に疑問を呼び、繰り返し探求される主題である。〈次元の漂流Ⅱ〉（2026）の作品群は二次元の方向性に焦点を当て、線で物の輪郭を描き面を形成し、その面が折り返されながら三次元へと転じていく過程を扱う。造形は動物を中心に展開され、象徴的な手法で動物の習性を解釈する。例えば熊、象、蝙蝠などの形態は鏡像の関係にあり、生物の進化において対称的な構造は効率的かつ均衡の美を備え、そこには「中軸線」の関係性も暗に示されている。形態を分解して単純な面に還元した後、切り込みと折り返しによって「面」を立体化していく——象の外側に反った耳は象の鼻孔のようでもあり、蝙蝠の広げた翼はエコーロケーションのために開いた口のようでもある。一方で猿、牛、犬などの形態を扱う作品群では、対称性をあえて取り除き、動物の行動特性を描き出す——猿が愉快にぶら下がる本能、闘牛場で反転する牛の動き（円弧状の場をも映し出す）が示す昂る野性、あるいは犬が匂いを嗅いで交友する様子など。",
+      "status": "current",
+      "added_at": "2026-10-05T21:32:38.449947+09:00"
+    },
+    {
+      "museum": "99dac",
+      "title_zh": "朴劭妍創作個展",
+      "title_en": "Park So-Yeon Solo Exhibition",
+      "title_ja": "朴劭妍個展",
+      "dates": "2026.08.08 – 2026.10.31",
+      "location": "",
+      "link": "https://99dac.com/exhibition-detail.php?id=253",
+      "artists": [
+        "朴劭妍"
+      ],
+      "description": "《夢遊石花園（Dreamlike Lithic Garden）》是「尋夢－大陸（Searching for Dreams – Continent）」系列中的作品，該系列將地球的形成過程與人類追尋夢想的旅程相互連結。埋藏於地下的塵土，在漫長歲月、壓力與變化的作用下逐漸轉化為岩石。這些石頭長久地存在於黑暗之中，等待著與光相遇的那一刻。這樣的過程映照著人類懷抱夢想、持續堅持，並最終在短暫卻意義深遠的瞬間實現夢想的生命經驗。本作品重新詮釋了遍布地球各地的地質構造所呈現出的紋理、圖案與地層樣貌，其創作起點來自藝術家試圖打造一幅「地球地質地圖」的想像。每一塊石頭都擁有獨特的形態與色彩，同時又作為更廣闊大陸的一部分，彼此有機地相互連結。作品中描繪的「石之花」象徵著從地表升起的結晶化形態，它們既代表時間與壓縮累積後的成果，也象徵夢想最終開花結果的瞬間。這些元素共同構成了《夢幻石之庭園》——一座存在於夢境與潛意識之中的想像石之樂園。「尋夢－大陸」系列自2024年開始創作，至今仍持續擴展。系列中的每件作品皆作為更大型結構的一部分彼此相連，最終將形成一幅廣闊而壯麗的行星景觀。作品不僅止於抽象表現，更是一張探索地球物質性、時間流逝以及人類追尋理想旅程的視覺地圖。",
+      "description_en": "\"Dreamlike Lithic Garden\" is part of the series \"Searching for Dreams – Continent,\" which links the Earth's geological formation to the human journey of pursuing dreams. Dust buried underground gradually transforms into rock over long ages of pressure and change. These stones exist for ages in darkness, waiting for the moment they meet the light — a process that mirrors the human experience of holding onto a dream, persisting, and finally realizing it in a brief but profound instant. The work reinterprets the textures, patterns, and strata found in geological formations across the globe; its starting point was the artist's attempt to imagine an \"Earth geological map.\" Each stone has its own unique form and color while also belonging, organically, to a larger continent. The \"stone flowers\" depicted in the work symbolize crystalline forms rising from the earth's surface — representing both the accumulated result of time and pressure, and the moment a dream finally blossoms. Together these elements form the \"Dreamlike Lithic Garden\" — an imagined paradise of stone existing within dreams and the subconscious. The \"Searching for Dreams – Continent\" series, begun in 2024, continues to expand; each work is part of a larger structure that will eventually form a vast and magnificent planetary landscape. The work is not merely abstract expression, but a visual map exploring the Earth's materiality, the passage of time, and the human pursuit of an ideal.",
+      "description_ja": "〈夢幻石の庭園（Dreamlike Lithic Garden）〉は、「夢を探す－大陸（Searching for Dreams – Continent）」シリーズの作品であり、地球の形成過程と人間が夢を追い求める旅路とを結びつける。地下に埋もれた塵は、長い時間と圧力・変化を経て、やがて岩石へと変わっていく。これらの石は長きにわたり闇の中に存在し、光と出会う瞬間を待ち続ける——このプロセスは、人間が夢を抱き、絶え間なく努力を続け、最終的に短く、しかし深い意味を持つ瞬間にその夢を実現するという生の経験を映し出している。本作は、地球各地に広がる地質構造が示す質感・模様・地層の姿を再解釈するものであり、その出発点はアーティストが「地球の地質地図」を描こうとした構想にある。それぞれの石は独自の形と色を持ちながら、同時により広大な大陸の一部としても存在し、互いに有機的につながっている。作品に描かれる「石の花」は、地表から立ち上がる結晶化した形を象徴し、時間と圧縮の積み重ねの成果であると同時に、夢がついに花開く瞬間をも象徴している。これらの要素が組み合わさり、〈夢幻石の庭園〉——夢と無意識の中に存在する、石でできた想像上の楽園——を構成している。「夢を探す－大陸」シリーズは2024年に始まり、現在も拡張を続けている。シリーズ内の各作品はより大きな構造の一部として互いに結びつき、最終的には広大で壮麗な惑星の風景を形作る。本作は単なる抽象表現にとどまらず、地球の物質性、時間の流れ、そして人間が理想を追い求める旅路を探る視覚的な地図でもある。",
+      "status": "current",
+      "added_at": "2026-10-05T21:32:38.449947+09:00"
     }
   ]
 }

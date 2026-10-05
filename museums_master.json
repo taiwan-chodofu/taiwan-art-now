@@ -3338,61 +3338,6 @@
       "lng": 121.5473673
     },
     {
-      "id": "s7artmuseum",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "S7 Art Museum",
-        "ja": "S7美術館",
-        "zh": "S7美術館"
-      },
-      "address": {
-        "en": "4F, No. 286, Sec. 7, Chengde Rd., Beitou Dist., Taipei",
-        "ja": "台北市北投區承德路7段286號4樓",
-        "zh": "台北市北投區承德路7段286號4樓"
-      },
-      "url": "https://www.facebook.com/S7artmuseum",
-      "hours": {
-        "en": "Tue-Sat 11:00-18:00 | Closed Sun-Mon",
-        "ja": "火〜土 11:00–18:00｜日月休",
-        "zh": "週二至週六 11:00–18:00｜週日一休"
-      },
-      "closed_day": null,
-      "closed_days": [
-        0,
-        6
-      ],
-      "hours_uncertain": false,
-      "lat": 25.1163521,
-      "lng": 121.505488
-    },
-    {
-      "id": "regentgalleria",
-      "category": "commercial",
-      "region": "taipei",
-      "name": {
-        "en": "Zhongshan Gallery, Regent Galleria (Regent Taipei B2)",
-        "ja": "中山藝廊（晶華酒店B2 麗晶精品）",
-        "zh": "中山藝廊（晶華酒店B2 麗晶精品）"
-      },
-      "address": {
-        "en": "B2, No. 3, Ln. 39, Sec. 2, Zhongshan N. Rd., Zhongshan Dist., Taipei",
-        "ja": "台北市中山區中山北路二段39巷3號B2",
-        "zh": "台北市中山區中山北路二段39巷3號B2"
-      },
-      "url": "https://www.instagram.com/regentgalleria/",
-      "hours": {
-        "en": "Daily 10:00-21:00 (follows Regent Galleria retail hours, free admission)",
-        "ja": "毎日 10:00–21:00（麗晶精品の営業時間に準拠、自由参観）",
-        "zh": "每日 10:00–21:00（配合麗晶精品營業時段，自由參觀）"
-      },
-      "closed_day": null,
-      "closed_days": [],
-      "hours_uncertain": false,
-      "lat": 25.054158,
-      "lng": 121.524288
-    },
-    {
       "id": "hcrailway",
       "category": "public",
       "region": "hsinchu",
