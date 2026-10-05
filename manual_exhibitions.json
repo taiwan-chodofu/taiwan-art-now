@@ -653,7 +653,57 @@
       "description": "本展是高雄市立美術館「映所」典藏詮釋計畫的沙龍策展系列，以「黑土」為主題，將黑色詮釋為超越色彩本身、承載集體文化記憶的容器質地。展覽採劇場式三幕結構，目前展出的第一幕「黑色書寫：關於『黑』的文化探析」，探討墨黑如何從大地被提取、製造，並逐漸承載多重文化象徵，展出倪再沁〈俯瞰大地〉、袁慧莉〈火墨，令人窒息的焚燒夏天〉、王信豐〈岩容〉等典藏作品。後續第二幕將聚焦高雄港口意象與黑色的關聯，第三幕則從心理學、藝術治療及攝影美學角度探討黑色的深層意涵。展覽由王信豐、林壽宇、洪根深等九位藝術家的典藏作品串連而成，並邀請洪根深為展名題字。",
       "description_en": "Part of the Kaohsiung Museum of Fine Arts' \"Resonance Hub\" collection-interpretation salon series, this exhibition takes \"Ebony Terra\" as its theme, framing black not merely as a color but as a dense, textured vessel carrying collective cultural memory. Structured as a theatrical three-act program, the currently running first act, \"Black Writing: A Cultural Exploration of 'Black,'\" examines how ink-black is extracted from the earth and gradually accrues layered cultural symbolism, featuring collection works such as Ni Tsai-chin's \"Overlooking the Earth\" and Yuan Hui-li's \"Fire Ink, Suffocating Summer of Burning.\" The subsequent acts will turn to the imagery of Kaohsiung's industrial harbor and, later, to the deeper meanings of black seen through psychology, art therapy, and photographic aesthetics. The exhibition draws on collection works by nine artists including Wang Shin-Feng, Lin Shou-yu, and Hung Ken-shen, with Hung Ken-shen contributing the calligraphy for the exhibition title.",
       "description_ja": "高雄市立美術館の収蔵品解釈プロジェクト「映所」による連続サロン企画で、「黑土（エボニー・テラ）」をテーマに、黒を単なる色彩ではなく集団的な文化的記憶を宿す質感豊かな器として読み解く展覧会である。劇場的な三幕構成をとり、現在開催中の第一幕「黒の書写―『黒』についての文化的探査」では、墨の黒が大地からどのように採取・製造され、多層的な文化的象徴を帯びていくかを考察し、倪再沁《大地を俯瞰する》や袁慧莉《火墨、息詰まる燃える夏》などの収蔵作品を展示している。続く第二幕では高雄の港湾という工業的イメージと黒の関わりを、第三幕では心理学・アートセラピー・写真美学の観点から黒の深層的な意味を掘り下げる予定である。本展は王信豐、林壽宇、洪根深ら9名の作家の収蔵作品によって構成され、展覧会名の題字は洪根深が手がけている。",
-      "added_at": "2026-06-29T20:53:43+09:00"
+      "added_at": "2026-06-29T20:53:43+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/24",
+          "time": "11:00",
+          "title_zh": "沙龍講座：線條的轉化——從南部廟口到當代藝術的白描實踐",
+          "title_en": "Salon Talk: The Transformation of Line — From Southern Temple Gates to Contemporary Line-Drawing Practice",
+          "title_ja": "サロン講座：線の転化——南部廟の門から当代アートの白描実践へ",
+          "note_zh": "與談人：李明則、黃志偉、陳坤毅。《黑土 Ebony Terra》沙龍系列第二幕。",
+          "note_en": "Panelists: Li Ming-Tse, Huang Chih-Wei, Chen Kun-Yi. Part of the \"Ebony Terra\" salon talk series.",
+          "note_ja": "パネリスト：李明則、黄志偉、陳坤毅。《黑土 Ebony Terra》サロン講座シリーズ第二幕。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=756c9abf-49b5-4cf9-8304-87e922fc698a"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/21",
+          "time": "11:00",
+          "title_zh": "沙龍講座：黑色的心靈風景──藝術治療與淺意識",
+          "title_en": "Salon Talk: The Mindscape of Black — Art Therapy and the Subconscious",
+          "title_ja": "サロン講座：黒の心の風景——アートセラピーと潜意識",
+          "note_zh": "與談人：劉素芬、鄭勝華、彭姝樺。《黑土 Ebony Terra》沙龍系列第三幕。",
+          "note_en": "Panelists: Liu Su-Fen, Cheng Sheng-Hua, Peng Shu-Hua. Part of the \"Ebony Terra\" salon talk series.",
+          "note_ja": "パネリスト：劉素芬、鄭勝華、彭姝樺。《黑土 Ebony Terra》サロン講座シリーズ第三幕。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=756c9abf-49b5-4cf9-8304-87e922fc698a"
+        },
+        {
+          "type": "activity",
+          "date": "2026/12/19",
+          "time": "11:00",
+          "title_zh": "沙龍講座：抽色以後──單色攝影的美學與靈魂",
+          "title_en": "Salon Talk: After Color Is Removed — The Aesthetics and Soul of Monochrome Photography",
+          "title_ja": "サロン講座：色を抽いた後——モノクロ写真の美学と魂",
+          "note_zh": "與談人：李旭彬、陳寬育、許遠達。《黑土 Ebony Terra》沙龍系列第三幕。",
+          "note_en": "Panelists: Li Hsu-Pin, Chen Kuan-Yu, Hsu Yuan-Ta. Part of the \"Ebony Terra\" salon talk series.",
+          "note_ja": "パネリスト：李旭彬、陳寬育、許遠達。《黑土 Ebony Terra》サロン講座シリーズ第三幕。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=756c9abf-49b5-4cf9-8304-87e922fc698a"
+        },
+        {
+          "type": "activity",
+          "date": "2027/01/09",
+          "time": "11:00",
+          "title_zh": "沙龍講座：黑與白的視覺辯證",
+          "title_en": "Salon Talk: The Visual Dialectics of Black and White",
+          "title_ja": "サロン講座：黒と白の視覚的弁証法",
+          "note_zh": "與談人：陳曉朋、徐婉禎。《黑土 Ebony Terra》沙龍系列第三幕最終場。",
+          "note_en": "Panelists: Chen Hsiao-Pen, Hsu Wan-Chen. Final session of the \"Ebony Terra\" salon talk series.",
+          "note_ja": "パネリスト：陳曉朋、徐婉禎。《黑土 Ebony Terra》サロン講座シリーズ第三幕最終回。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=756c9abf-49b5-4cf9-8304-87e922fc698a"
+        }
+      ]
     },
     {
       "museum": "kmfa",
@@ -668,7 +718,21 @@
       "description": "本展聚焦戰後台灣重要建築師王大閎（1917–2018）為自身三棟自宅所設計的家具復刻計畫。王大閎畢業於哈佛大學設計研究所，師從包浩斯創辦人葛羅培斯，其建築理念融合西方現代主義與中國傳統文化元素。策展人徐明松自2006年起研究王大閎，其後王大閎建築研究與保存學會於2013年啟動建國南路自宅異地重建計畫，過程中發現王大閎為建國南路自宅（1953）、虹廬（1964）及弘英別墅（1979）親自設計的近40件家具，因原件多已損毀或去向不明，學會自2019年起展開資料蒐集，2023年正式啟動1:1復刻工程。本次高美館展出16件復刻家具，加上重建自宅內精選的4件，共20件，呈現王大閎「建築是生活的外殼」的設計哲學。",
       "description_en": "This exhibition centers on the reconstruction of furniture that pioneering postwar Taiwanese architect Wang Da-Hong (1917–2018) designed for his own three residences. A graduate of Harvard's Graduate School of Design who studied under Bauhaus founder Walter Gropius, Wang developed an architectural philosophy blending Western modernism with traditional Chinese cultural elements. Curator Hsu Ming-sung has researched Wang since 2006; after the Wang Da Hong Architecture Research and Preservation Society launched a project in 2013 to relocate and rebuild his Jianguo South Road residence, researchers discovered nearly 40 pieces of furniture Wang had personally designed for that house (1953), Hong Lu (1964), and Hong Ying Villa (1979). As most original pieces were damaged or lost, the society began research in 2019 and launched full-scale 1:1 reproduction in 2023. This exhibition at KMFA presents 16 reproduced furniture pieces alongside 4 selected originals from the rebuilt residence, totaling 20 works that embody Wang's design philosophy that \"architecture is the shell of our lives.\"",
       "description_ja": "本展は戦後台湾を代表する建築家・王大閎（ワン・ダーホン、1917–2018）が自らの3つの住居のために設計した家具の復刻計画を紹介するものである。ハーバード大学デザイン大学院でバウハウス創設者ヴァルター・グロピウスに師事した王大閎は、西洋モダニズムと中国の伝統文化的要素を融合させた建築理念を確立した。キュレーターの徐明松は2006年から王大閎の研究に取り組み、その後「王大閎建築研究保存学会」が2013年に建国南路の自邸を移築・再建する計画を始動、その過程で建国南路自邸（1953年）、虹廬（1964年）、弘英別荘（1979年）のために王大閎自身が設計した約40点の家具の存在が判明した。原品の多くは破損あるいは所在不明であったため、学会は2019年から資料収集を進め、2023年に1:1スケールでの復刻製作を正式に開始した。本展では復刻家具16点と、再建された自邸に収められた厳選品4点の合計20点を展示し、「建築は生活の外殻である」という王大閎の設計哲学を伝える。",
-      "added_at": "2026-06-29T20:53:43+09:00"
+      "added_at": "2026-06-29T20:53:43+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/12/20",
+          "time": "14:00",
+          "title_zh": "策展人導覽",
+          "title_en": "Curator-Led Tour",
+          "title_ja": "キュレーターによるガイドツアー",
+          "note_zh": "導覽人：黃瑋庭策展人。地點：2F美哉高雄長廊。",
+          "note_en": "Led by curator Huang Wei-Ting. Location: 2F Beautiful Kaohsiung Corridor.",
+          "note_ja": "案内：黄瑋庭キュレーター。場所：2F美哉高雄長廊。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=177ccd4c-1c3a-4646-a903-a7f05b93efe4"
+        }
+      ]
     },
     {
       "museum": "kmfa",
@@ -708,7 +772,21 @@
       "description": "「漂流宴」由策展人吳尚霖與協同策展人伊娃・科瓦奇共同策劃，靈感源自疫情後人們對相聚的渴望，以及台灣人的好客精神與傳統「辦桌」文化，將這股精神轉化為跨地域的策展實踐。展覽核心概念圍繞「漂流」與「盛宴」兩個意象：漂流暗示受洋流、風向、時間與地緣政治推動的移動狀態，盛宴則喚起豐盛、相聚與儀式性的感受，同時也映照移民、離散社群、勞動者等社會邊緣個體的處境。此計畫過去兩年已於印尼日惹、法國巴黎、奧地利維也納巡迴展出，本次帶著交流成果回到高雄，集結台灣與奧地利、菲律賓、韓國等地共26位藝術家參展，並規劃國際交流講座及多語言導覽等系列活動。",
       "description_en": "\"Drifting Feast,\" curated by Wu Shang-Lin with co-curator Eva Kovač, draws on the post-pandemic longing for gathering and on Taiwan's tradition of hospitality and communal banquet culture (\"bandzo\"), transforming that spirit into a cross-regional curatorial practice. The exhibition revolves around two central images: \"drifting,\" which evokes movement propelled by ocean currents, winds, time, and geopolitics, and \"feast,\" which evokes abundance, gathering, and ritual—while also reflecting the situations of immigrants, diasporic communities, laborers, and other marginalized individuals who have long shaped culture and society. Having toured Yogyakarta (Indonesia), Paris, and Vienna over the past two years, the project now returns to Kaohsiung with the results of these exchanges, bringing together 26 artists from Taiwan, Austria, the Philippines, South Korea, and beyond, alongside a program of international exchange talks and multilingual guided tours.",
       "description_ja": "「漂流宴」はキュレーターの呉尚霖と共同キュレーターのエヴァ・コヴァチによる企画で、コロナ禍後に人々が抱いた「集うこと」への渇望と、台湾の人々のもてなしの精神、そして伝統的な「辦桌（バンドー）」という宴席文化からインスピレーションを得て、その精神を地域を越えたキュレーション実践へと転化したものである。展覧会の核心には「漂流」と「盛宴」という2つのイメージがあり、「漂流」は海流・風・時間・地政学によって動かされる移動の状態を、「盛宴」は豊かさ・集い・儀式性を喚起する一方、文化と社会構造に深く貢献してきた移民、ディアスポラのコミュニティ、労働者など、社会の周縁に置かれた人々の姿も映し出している。本プロジェクトは過去2年間、インドネシアのジョグジャカルタ、パリ、ウィーンを巡回し、今回その交流の成果を携えて高雄に戻り、台湾、オーストリア、フィリピン、韓国など26名の作家が参加、国際交流の共有講演会や多言語ガイドツアーなど関連プログラムも展開される。",
-      "added_at": "2026-06-29T20:53:43+09:00"
+      "added_at": "2026-06-29T20:53:43+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/17",
+          "time": "18:30",
+          "title_zh": "美術館夜行第25夜，今夜－去向未定",
+          "title_en": "Museum Night Walk #25: Tonight, Destination Unknown",
+          "title_ja": "美術館ナイトウォーク第25夜：今夜、行き先未定",
+          "note_zh": "夜間體驗型活動，揹上夜行任務包，透過提問、觀察與互動在作品之間循跡前行。",
+          "note_en": "An evening experiential program; participants carry a \"night mission bag\" and move through the exhibition via questions, observation, and interaction.",
+          "note_ja": "夜間の体験型プログラム。「夜行タスクバッグ」を背負い、問いかけ・観察・交流を通して作品の間を巡る。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=82584679-30b8-4376-992f-05f4991ae8fd"
+        }
+      ]
     },
     {
       "museum": "kmfa",
@@ -768,7 +846,33 @@
       "description": "本展慶祝高雄獎由高雄市立美術館承接30週年，策展人吳慧芳與崔綵珊自30年間128位得主中精選47位藝術家，以10年為維度劃分三個篇章呈現。展題中「未竟」意指藝術與制度所固有的開放性與未完成狀態，「再啟」則象徵在回顧之中重新出發。第一篇章「創形的年代」(1997–2006)聚焦地方感知與主體意識的生成，作品呈現強烈的物質感與手作性；第二篇章「流變的疆界」(2007–2016)探討技術介入、觀念轉向與跨域實踐，影像、裝置與新媒體成為重要語彙；第三篇章「未來的形貌」(2017–2026)關注社會感知、集體回應與文化永續的想像，藝術轉向參與式、研究型與行動導向的實踐。展覽並規劃一日論壇、微講座及專家導覽等推廣活動。",
       "description_en": "This exhibition marks the 30th anniversary of the Kaohsiung Award under the stewardship of the Kaohsiung Museum of Fine Arts. Curators Wu Hui-fang and Tsui Tsai-shan selected 47 artists from among the award's 128 laureates over three decades, organizing the exhibition into three chapters spanning ten years each. In the title, \"unfinished\" refers to the inherent openness and incompleteness of art and institutions, while \"re-launch\" signals a fresh departure through retrospection. The first chapter, \"The Era of Forming\" (1997–2006), focuses on the emergence of local perception and subjectivity, with works marked by strong materiality and handcraft; the second, \"Shifting Frontiers\" (2007–2016), explores technological intervention, conceptual turns, and cross-disciplinary practice, with image, installation, and new media becoming key vocabularies; the third, \"Forms of the Future\" (2017–2026), addresses social perception, collective response, and imaginings of cultural sustainability, as art turns toward participatory, research-based, and action-oriented practices. The exhibition is accompanied by a one-day forum, mini-lectures, and expert-led tours.",
       "description_ja": "本展は高雄市立美術館が「高雄獎」を引き継いで30周年を迎えたことを記念するもので、キュレーターの呉慧芳と崔綵珊が30年間の128名の受賞者の中から47名の作家を選出し、10年ごとに区切った3章構成で展示している。展題の「未竟（未完）」は芸術と制度に本来備わる開放性と未完成の状態を意味し、「再啟（再始動）」は回顧を通じて新たに出発することを象徴している。第一章「形を創る時代」（1997–2006）は地域の感覚と主体意識の形成に着目し、強い物質感と手作業性を帯びた作品群を紹介する。第二章「変容する境界」（2007–2016）は技術の介入・観念的転換・領域を越えた実践を探り、映像・インスタレーション・ニューメディアが重要な語彙となる。第三章「未来のかたち」（2017–2026）は社会的知覚・集団的応答・文化的持続可能性への想像力に着目し、参加型・研究型・行動志向の実践へと向かう芸術のあり方を示す。会期中は1日フォーラムやミニ講演会、専門家によるガイドツアーなどの関連プログラムも予定されている。",
-      "added_at": "2026-06-29T20:53:43+09:00"
+      "added_at": "2026-06-29T20:53:43+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/17",
+          "time": "10:30",
+          "title_zh": "專家導覽 場次5",
+          "title_en": "Expert Tour, Session 5",
+          "title_ja": "専門家ガイドツアー 第5回",
+          "note_zh": "導覽人：崔綵珊。",
+          "note_en": "Led by Tsui Tsai-Shan.",
+          "note_ja": "案内：崔綵珊。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=87910c7f-4ab4-412c-a417-5111fcd2d9a2"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/22",
+          "time": "15:00",
+          "title_zh": "專家導覽 場次6",
+          "title_en": "Expert Tour, Session 6",
+          "title_ja": "専門家ガイドツアー 第6回",
+          "note_zh": "導覽人：吳慧芳。",
+          "note_en": "Led by Wu Hui-Fang.",
+          "note_ja": "案内：吳慧芳。",
+          "source_url": "https://www.kmfa.gov.tw/ExhibitionDetailC001100.aspx?Cond=87910c7f-4ab4-412c-a417-5111fcd2d9a2"
+        }
+      ]
     },
     {
       "museum": "winsing",
@@ -808,7 +912,32 @@
       "description": "2026亞洲藝術雙年展《Mrahul Tminun・共織・Co-Weaving》由國立臺灣美術館主辦，將於2026年11月7日開展，由策展人呂佩怡策劃，以「共織」為核心概念探討亞洲各地創作者之間的協作關係。展覽匯聚Citra Sasmita、Gegerboyo、Gudskul、Hylozoic/Desires、呉夏枝、山中suplex、李繼忠與沈軍、林介文等來自亞洲不同地區的藝術家與集體，透過跨地域的共同創作實踐，延續雙年展一貫關注亞洲當代藝術網絡與多元文化交織的宗旨。",
       "description_en": "The 2026 Asian Art Biennial, titled 'Mrahul Tminun / Co-Weaving,' is organized by the National Taiwan Museum of Fine Arts and opens on November 7, 2026, curated by Lu Pei-yi. Taking 'co-weaving' as its central concept, the biennial explores collaborative relationships among artists across Asia. It brings together artists and collectives from diverse parts of the region — including Citra Sasmita, Gegerboyo, Gudskul, Hylozoic/Desires, OH Haji, Yamanaka Suplex, Lee Jih-jong & Shen Jun, and Labay Eyong — continuing the biennial's ongoing focus on Asia's contemporary art networks and cross-cultural interweaving.",
       "description_ja": "2026年アジア・アート・ビエンナーレ「Mrahul Tminun・共織・Co-Weaving」は国立台湾美術館の主催により2026年11月7日に開幕し、キュレーターの呂佩怡（リュ・ペイイ）が企画を手がける。「共に織る」を中心概念とし、アジア各地のアーティスト間の協働関係を考察する。Citra Sasmita、Gegerboyo、Gudskul、Hylozoic/Desires、呉夏枝、山中suplex、李繼忠＆沈軍、林介文（Labay Eyong）ら、アジア各地から集まったアーティストやコレクティブが参加し、本ビエンナーレが継続的に注目してきたアジア現代美術のネットワークと多文化の織り合わせをテーマとして展開する。",
-      "added_at": "2026-06-30T14:00:05+09:00"
+      "added_at": "2026-06-30T14:00:05+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/07",
+          "title_zh": "開幕式",
+          "title_en": "Opening Ceremony",
+          "title_ja": "オープニング",
+          "note_zh": "2026亞洲藝術雙年展正式開幕。",
+          "note_en": "Official opening of the 2026 Asian Art Biennial.",
+          "note_ja": "2026アジア・アート・ビエンナーレの開幕式。",
+          "source_url": "https://www.ntmofa.gov.tw"
+        },
+        {
+          "type": "activity",
+          "date": "2026/11/07",
+          "date_end": "2026/11/08",
+          "title_zh": "共織亞洲：集體、社群與共同－2026 亞洲藝術論壇",
+          "title_en": "Co-Weaving Asia: Collective, Community, and Commons — 2026 Asian Art Forum",
+          "title_ja": "共織アジア：集団・コミュニティ・共同性－2026アジア・アート・フォーラム",
+          "note_zh": "由策展人呂佩怡規劃，邀請韓國策展人崔彬娜、ruangrupa的Farid Rakun、東京藝術大學講師江上賢一郎等進行專題演講與圓桌討論，中英同步口譯。",
+          "note_en": "Curated by Lu Pei-Yi, featuring keynote talks and roundtables with Korean curator Binna Choi, ruangrupa's Farid Rakun, and Tokyo University of the Arts lecturer Kenichiro Egami. Simultaneous Chinese-English interpretation provided.",
+          "note_ja": "キュレーター呂佩怡の企画。韓国のキュレーター崔彬娜、ruangrupaのファリド・ラクン、東京藝術大学講師の江上賢一郎らによる講演とラウンドテーブル。中英同時通訳あり。",
+          "source_url": "https://event.culture.tw"
+        }
+      ]
     },
     {
       "museum": "tnam",
