@@ -1846,6 +1846,30 @@
           "note_en": "Live performance on opening day by Kaohsiung experimental musician Chen En-He and Qiz Band.",
           "note_ja": "オープニング当日、高雄の実験音楽家・何承恩と起子樂團によるライブ演奏が行われる。",
           "source_url": "https://www.facebook.com/fotoaura.tw/posts/pfbid0Qtx1v4i7KdJLnfUhhifjayn7vkSwRGnrJAWAcToa4UNZyNB8mEBB2RmHwcCTyVdSl"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/03",
+          "time": "19:30",
+          "title_zh": "（非）科幻電影研究社 第一場：陳亮璇",
+          "title_en": "(Non) Sci-Fi Film Study Club, Session 1: Chen Liang-Hsuan",
+          "title_ja": "（非）SF映画研究会 第1回：陳亮璇",
+          "note_zh": "邀集五組跨世代、跨媒材的創作者，藉由作品放映與創作者對談，探討科幻之於當代藝術與藝術家電影的詮釋意義。社長：王振愷。",
+          "note_en": "Five cross-generational, cross-media artists discuss sci-fi aesthetics in contemporary art and artist cinema through screenings and conversation. Hosted by Wang Chen-Kai.",
+          "note_ja": "世代やメディアを超えた5組の作家が、作品上映とトークを通して、現代アートやアーティスト映画における SF 的解釈の意味を探る。主宰：王振愷。",
+          "source_url": "https://www.facebook.com/fotoaura.tw"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/18",
+          "time": "20:00",
+          "title_zh": "FILL LAB 填充實驗室：災害對策避難用緊急座椅",
+          "title_en": "FILL LAB: Disaster-Response Emergency Cardboard Chair Workshop",
+          "title_ja": "FILL LAB：災害対策避難用緊急座椅ワークショップ",
+          "note_zh": "參考日本警視廳警備部災害對策課發布的紙箱椅製作方法，帶大家動手製作紙箱椅與可調節繩結背帶，一起學習防災手作技巧並交流防災準備心得。",
+          "note_en": "A hands-on workshop based on methods published by the Tokyo Metropolitan Police for making emergency cardboard chairs and adjustable carrying straps, paired with discussion of disaster preparedness.",
+          "note_ja": "東京警視庁警備部災害対策課が発表した紙箱椅子の作り方を参考に、紙箱椅子と調節可能な背負い紐を手作りするワークショップ。防災準備について語り合う。",
+          "source_url": "https://www.facebook.com/fotoaura.tw"
         }
       ],
       "added_at": "2026-09-11T18:08:09+09:00"
@@ -3236,6 +3260,38 @@
       "description_ja": "中國美術協會（Chinese Fine Arts Association）は1931年に上海で創立され、1949年の台湾移転後も社会における美術教育と芸術交流の推進を続けてきた。本展は284名の会員による数百点の優れた作品を集め、伝統水墨、膠彩、工筆、彩墨、彩瓷、油彩、水彩、アクリル画、版画、素描、ブロンズ彫刻など多様な複合メディアによる創作を展示し、東西の芸術領域を横断するスタイルを通じて、台湾における近現代美術の豊かな発展の姿を示す。",
       "status": "current",
       "added_at": "2026-10-05T22:23:37.896585+09:00"
+    },
+    {
+      "museum": "honggah",
+      "title_zh": "Overflow－2026鳳甲美術館秋季典藏精選",
+      "title_en": "Overflow – 2026 Hong-Gah Museum Collection Autumn Selection",
+      "title_ja": "Overflow－2026鳳甲美術館秋季コレクション選",
+      "dates": "2026.09.15 – 2026.11.15",
+      "location": "",
+      "link": "https://hong-gah.org.tw/hong-gah/overflow2026-ch",
+      "artists": [],
+      "description": "鳳甲美術館創辦人邱再興先生自1980年代開啟收藏之路，所收藏的媒材橫跨繪畫、雕塑、攝影、錄像，以及傳統工藝等範疇，數量高達上千件。1999年美術館成立之後，除了不定期舉辦主題性典藏大展，年間也以館內長廊的玻璃櫥窗，搭配該檔期主展場的特展，挑選作品呈現給觀眾。本次典藏作品的遴選，配合主展場「《誰的遊戲》胡鈞荃個展」探索的內容，討論人工智慧與演算系統的出現，在人類社會中對於親密關係、照護與存在的理解發生了什麼樣的位移與結構性變化？挑選了六位藝術家、共十件作品，進行回應。本次挑選作品以1980-2000年間所創作的作品為主，藝術家透過繪畫與雕塑，回應高度現代化、資本化的都會生活中，人與社會的抽離。面對台灣解嚴前後蓬勃的都市化浪潮，藝術家們敏感地捕捉到個體被水泥城市框限、噤聲與邊緣化的不安。畫中被包裹的軀體、懸空的孤獨形象與解剖式的醫學圖解，與今日 Alpha 世代將主體外置於虛擬介面後的抽離感跨越時空、產生共鳴。展覽主題「Overflow」包含滿溢、過載的意象，象徵在高度發達的文明樂園裡，我們早已習慣成為自身的旁觀者。",
+      "description_en": "Since the 1980s, Hong-Gah Museum founder Andrew Chew has built a collection spanning painting, sculpture, photography, video, and traditional craft — over a thousand works in total. Since the museum's founding in 1999, alongside periodic thematic collection exhibitions, selected works are also shown year-round in the corridor gallery, in dialogue with each season's feature exhibition. This selection responds to Whose Game? Hu Ching-Chuan Solo Exhibition exploring how AI and algorithmic systems have shifted our understanding of intimacy, care, and existence. Six artists, ten works, offer a counterpoint. Drawn mainly from 1980–2000, the works use painting and sculpture to respond to alienation amid rapid modernization and urbanization around Taiwan's martial-law transition — bodies confined, silenced, marginalized by concrete cities. Wrapped figures, suspended solitude, anatomical diagrams: these resonate across time with today's Generation Alpha, whose selves are externalized into virtual interfaces. Overflow evokes excess and saturation — in an advanced civilization's paradise, we've long since become spectators of ourselves.",
+      "description_ja": "鳳甲美術館の創設者である邱再興氏は1980年代から収集を開始し、収蔵作品は絵画、彫刻、写真、映像、伝統工藝などの分野に及び、総数は千件を超える。1999年の開館以来、不定期に主題別の大規模コレクション展を開催するほか、年間を通して館内回廊のガラスケースにも、その期の企画展と組み合わせて作品を選び展示している。今回のコレクション選定は、本展示場で開催中の「《誰のゲームか》胡鈞荃個展」が探る内容と連動し、人工知能とアルゴリズムシステムの出現が人間社会における親密さ・ケア・存在の理解にどのような位相的・構造的変化をもたらしたかを論じるため、6名の作家、計10作品を選び、その応答とした。選ばれた作品は主に1980〜2000年に制作されたもので、作家たちは絵画と彫刻を通じて、高度に現代化・資本化された都市生活における人と社会の疎隔を映し出している。台湾の戒厳令解除前後に沸き起こった都市化の波に向き合い、作家たちはコンクリートの都市に枠付けられ、沈黙させられ、周縁化される個の不安を敏感に捉えた。画中で包まれた身体、空中に浮かぶ孤独な姿、解剖図のような医学的図解——これらは、自己を仮想インターフェースへと外在化させた今日のアルファ世代の感覚と、時空を超えて共鳴する。展覧会のテーマ「Overflow（溢流）」は満溢・過載のイメージを含み、高度に発達した文明の楽園の中で、私たちはすでに自分自身を傍観する者になり果てていることを象徴している。",
+      "status": "current",
+      "added_at": "2026-10-05T22:31:09.230594+09:00"
+    },
+    {
+      "museum": "honggah",
+      "title_zh": "置空｜Tacet：郭秉恩個展",
+      "title_en": "Tacet: Kuo Ping-En Solo Exhibition",
+      "title_ja": "置空｜Tacet：郭秉恩個展",
+      "dates": "2026.09.15 – 2026.11.15",
+      "location": "",
+      "link": "https://hong-gah.org.tw/hong-gah/tacet-kuo-ping-solo-exhibition_ch",
+      "artists": [
+        "郭秉恩"
+      ],
+      "description": "繼去年《一加一：李明學個展》，鳳甲美術館很高興再次與北投在地畫廊「EQUAL = 等號TM ©︎」合作，推出《置空｜Tacet：郭秉恩個展》，郭秉恩出生於高雄，2025年畢業於臺南藝術大學造形研究所，其創作包含繪畫、書寫、聲音與雕塑裝置。郭秉恩以繪畫為核心方法，關注日常物件如何轉化為作品中承載意義的元素，其視角遊走於過去與當下之間，將經典圖像的歷史脈絡與當代意義並置對照。他擅長挪用大眾熟悉的文化符號，透過重新繪製與拆解，探討經典圖像在當代社會大量流通後，觀看方式所產生的變化。本展覽於「鳳甲美術館」與「EQUAL = 等號TM ©︎」兩個展場同時展開。在通透明亮的「EQUAL = 等號TM ©︎」，郭秉恩讓繪畫回到最基本的平面姿態：懸掛於牆面，供人凝視與閱讀。而在相對封閉、幽暗的鳳甲美術館，繪畫則卸下了這層「被展示」的姿態：原本用來包裹、運送畫作的紙箱等工具，被改造成能夠發聲的樂器，取代畫作本身，成為空間裡真正的主角。兩個展場因此呈現出繪畫的兩種不同狀態，像是拆解了繪畫作品在不同階段的兩個高光時刻：一邊是我們熟悉的視覺閱讀經驗，一邊則讓我們看見，繪畫其實也可以只是一件具有重量、體積與使用痕跡的物件。",
+      "description_en": "Following last year's 1+1: Lee Ming-Hsueh Solo Exhibition, Hong-Gah Museum is pleased to once again collaborate with EQUAL™©, a local Beitou gallery, to present Tacet: Kuo Ping-En Solo Exhibition. Kuo Ping-En was born in Kaohsiung and graduated from the Graduate Institute of Plastic Arts at Tainan National University of the Arts in 2025. His practice spans painting, writing, sound, and sculptural installation. Working primarily through painting, Kuo is concerned with how everyday objects are transformed into elements that carry meaning within a work, his perspective moving between past and present to juxtapose the historical context of canonical images with their contemporary significance. He is known for appropriating widely familiar cultural symbols, using repainting and deconstruction to examine how ways of seeing shift once such images have circulated extensively through contemporary society. The exhibition unfolds simultaneously across two venues: Hong-Gah Museum and EQUAL™©. At the bright, transparent EQUAL™©, Kuo returns painting to its most basic flat form — hung on the wall, offered up for viewing and contemplation. At the more enclosed, dimly lit Hong-Gah Museum, painting sheds this posture of being \"on display\": cardboard boxes and other materials once used to wrap and transport the paintings have been transformed into sound-producing instruments, displacing the paintings themselves to become the true protagonists of the space.",
+      "description_ja": "昨年の《一加一：李明學個展》に続き、鳳甲美術館は北投の地元ギャラリー「EQUAL = 等號™︎©」と再びコラボレーションし、《置空｜Tacet：郭秉恩個展》を開催する。郭秉恩は高雄出身で、2025年に國立臺南藝術大學造形研究所を卒業。絵画、文章、音、彫刻インスタレーションを含む創作活動を行う。郭秉恩は絵画を核心的な方法として、日常的な物がどのように作品の中で意味を担う要素へと変換されるかに注目し、その視点は過去と現在のあいだを往来しながら、典型的なイメージの歴史的文脈と現代的な意味を並置して対照させる。彼は大衆に馴染みのある文化的シンボルを引用することに長け、再描写と解体を通して、典型的なイメージが現代社会で大量に流通した後、見方がどのように変化するかを考察する。本展は「鳳甲美術館」と「EQUAL = 等號™︎©」の2つの会場で同時に展開される。開放的で明るい「EQUAL = 等號™︎©」では、郭秉恩は絵画を最も基本的な平面の姿へと戻す——壁に掛けられ、見つめられ、読まれるために。一方、より閉鎖的で薄暗い鳳甲美術館では、絵画は「展示される」という姿勢を脱ぎ去る——もともと絵画を包み、運ぶために使われていた紙箱などの道具が、音を発する楽器へと作り変えられ、絵画そのものに代わって空間の真の主役となる。",
+      "status": "current",
+      "added_at": "2026-10-05T22:31:09.230594+09:00"
     }
   ]
 }
