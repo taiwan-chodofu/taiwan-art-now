@@ -4328,6 +4328,147 @@
       "lng": 120.6488411,
       "hours_uncertain": true,
       "closed_day": null
+    },
+    {
+      "id": "vinegallery",
+      "category": "commercial",
+      "region": "hsinchu",
+      "name": {
+        "en": "Vine The Art Gallery",
+        "ja": "藤藝廊",
+        "zh": "藤藝廊"
+      },
+      "address": {
+        "en": "No. 382, Sec. 1, Shengli 7th St., Zhubei City, Hsinchu County, Taiwan",
+        "ja": "台湾新竹県竹北市勝利七街一段382號",
+        "zh": "新竹縣竹北市勝利七街一段382號"
+      },
+      "url": "https://www.instagram.com/vine_the_art_gallery/",
+      "hours": {
+        "en": "Mon-Wed, Fri-Sat 13:00-20:00, Sun 13:00-19:00 | Closed Thu",
+        "ja": "月〜水・金・土 13:00–20:00、日 13:00–19:00｜木休",
+        "zh": "週一至週三、週五至週六 下午1:00–8:00，週日 下午1:00–7:00｜週四休"
+      },
+      "closed_days": [
+        4
+      ],
+      "lat": 24.8238693,
+      "lng": 121.0301225,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "xinbangallery",
+      "category": "public",
+      "region": "new_taipei",
+      "name": {
+        "en": "Xinban Gallery",
+        "ja": "新板藝廊",
+        "zh": "新板藝廊"
+      },
+      "address": {
+        "en": "3F, No. 166, Hansheng E. Rd., Banqiao Dist., New Taipei City, Taiwan",
+        "ja": "台湾新北市板橋区漢生東路166號3樓",
+        "zh": "新北市板橋區漢生東路166號3樓（國鼎大樓）"
+      },
+      "url": "https://www.facebook.com/newtaipei.gallery/",
+      "hours": {
+        "en": "Daily 9:00-17:00 (closed 1st Mon of month & national holidays)",
+        "ja": "毎日 9:00–17:00（毎月第1月曜・祝日休館）",
+        "zh": "每日 09:00–17:00（每月第一個星期一及國定假日休館）"
+      },
+      "closed_days": [],
+      "lat": 25.01472,
+      "lng": 121.467015,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "chensart",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Chens Art Gallery",
+        "ja": "陳氏藝術",
+        "zh": "陳氏藝術"
+      },
+      "address": {
+        "en": "No. 200, Xiangyang Rd., Nangang Dist., Taipei City 115, Taiwan",
+        "ja": "台湾台北市南港区向陽路200號",
+        "zh": "台北市南港區向陽路200號"
+      },
+      "url": "https://www.chensart.com",
+      "hours": {
+        "en": "Tue-Sat 11:00-19:00 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.0567063,
+      "lng": 121.5937783,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "knowphotogallery",
+      "category": "alternative",
+      "region": "taichung",
+      "name": {
+        "en": "Know Photo Gallery",
+        "ja": "小影廊",
+        "zh": "小影廊"
+      },
+      "address": {
+        "en": "No. 146, Dongcheng 3rd St., North Dist., Taichung City, Taiwan",
+        "ja": "台湾台中市北区東成三街146號",
+        "zh": "台中市北區東成三街146號"
+      },
+      "url": "https://www.instagram.com/knowphotogallery/",
+      "hours": {
+        "en": "Fri-Mon 13:00-18:00, visits by reservation",
+        "ja": "金〜月 13:00–18:00、要予約",
+        "zh": "週五至週一 13:00–18:00，採預約制"
+      },
+      "closed_days": [
+        2,
+        3
+      ],
+      "lat": 24.1549898,
+      "lng": 120.7012845,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "apollogallery",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Apollo Art Gallery",
+        "ja": "阿波羅畫廊",
+        "zh": "阿波羅畫廊"
+      },
+      "address": {
+        "en": "2F, No. 218-6, Sec. 4, Zhongxiao E. Rd., Da'an Dist., Taipei City 106, Taiwan",
+        "ja": "台湾台北市大安区忠孝東路四段218-6號2樓（阿波羅大廈A棟）",
+        "zh": "台北市大安區忠孝東路四段218-6號2樓（阿波羅大廈A棟）"
+      },
+      "url": "https://www.instagram.com/apollo_art_gallery/",
+      "hours": {
+        "en": "Tue-Sat 11:00-19:00 | Closed Sun-Mon",
+        "ja": "火〜土 11:00–19:00｜日月休",
+        "zh": "週二至週六 11:00–19:00｜週日一休"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 25.0409832,
+      "lng": 121.5532467,
+      "hours_uncertain": false,
+      "closed_day": null
     }
   ]
 }
