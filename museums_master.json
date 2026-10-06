@@ -4469,6 +4469,141 @@
       "lng": 121.5532467,
       "hours_uncertain": false,
       "closed_day": null
+    },
+    {
+      "id": "guangdianart",
+      "category": "alternative",
+      "region": "new_taipei",
+      "name": {
+        "en": "Guangdian Art Center (at Yingge Light Spot Aesthetics Museum)",
+        "ja": "光點藝術中心（鶯歌光點美學館3F）",
+        "zh": "光點藝術中心（鶯歌光點美學館3F）"
+      },
+      "address": {
+        "en": "3F, No. 18, Taoci St., Yingge Dist., New Taipei City, Taiwan",
+        "ja": "台湾新北市鶯歌区陶瓷街18號3樓",
+        "zh": "新北市鶯歌區陶瓷街18號3樓"
+      },
+      "url": "https://www.facebook.com/yinggo18",
+      "hours": {
+        "en": "Daily 10:00-19:00 (closed 1st & 3rd Tue of month)",
+        "ja": "毎日 10:00–19:00（毎月第1・第3火曜休館）",
+        "zh": "每日 10:00–19:00（每月第一、三週二公休）"
+      },
+      "closed_days": [],
+      "lat": 24.9518724,
+      "lng": 121.3486135,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "banqiao435",
+      "category": "public",
+      "region": "new_taipei",
+      "name": {
+        "en": "Banqiao 435 Art Zone",
+        "ja": "板橋435藝文特區",
+        "zh": "板橋435藝文特區"
+      },
+      "address": {
+        "en": "No. 435, Zhongzheng Rd., Banqiao Dist., New Taipei City, Taiwan",
+        "ja": "台湾新北市板橋区中正路435號",
+        "zh": "新北市板橋區中正路435號"
+      },
+      "url": "https://www.435.culture.ntpc.gov.tw",
+      "hours": {
+        "en": "Indoor halls: weekdays 09:00-17:00, weekends/holidays 09:00-18:00 | Outdoor area daily 06:00-22:00",
+        "ja": "室内館：平日9:00–17:00、週末・祝日9:00–18:00｜屋外エリア 毎日6:00–22:00",
+        "zh": "室內場館：平日09:00–17:00，假日09:00–18:00｜戶外區域每日06:00–22:00"
+      },
+      "closed_days": [],
+      "lat": 25.0236151,
+      "lng": 121.4517504,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "galeriepierre",
+      "category": "commercial",
+      "region": "taichung",
+      "name": {
+        "en": "Galerie Pierre",
+        "ja": "臻品藝術中心",
+        "zh": "臻品藝術中心"
+      },
+      "address": {
+        "en": "No. 35, Zhongcheng St., West Dist., Taichung City, Taiwan",
+        "ja": "台湾台中市西区忠誠街35號",
+        "zh": "台中市西區忠誠街35號"
+      },
+      "url": "https://www.instagram.com/gp_group1990/",
+      "hours": {
+        "en": "Tue-Sat 09:30-18:30 | Closed Sun-Mon",
+        "ja": "火〜土 9:30–18:30｜日月休",
+        "zh": "週二至週六 09:30–18:30｜週日一休"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 24.1524936,
+      "lng": 120.6624007,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "songshanairportgallery",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Songshan Airport Culture Gallery",
+        "ja": "台北松山機場文化藝廊",
+        "zh": "台北松山機場文化藝廊"
+      },
+      "address": {
+        "en": "No. 340-9, Dunhua N. Rd., Songshan Dist., Taipei City, Taiwan (Taipei Songshan Airport, departure hall)",
+        "ja": "台湾台北市松山区敦化北路340-9號（台北松山空港・出境大廳内）",
+        "zh": "台北市松山區敦化北路340-9號（臺北松山機場出境大廳內）"
+      },
+      "url": "https://www.tsa.gov.tw",
+      "hours": {
+        "en": "Accessible only to departing passengers past security (airport departure hall)",
+        "ja": "搭乗客のみ入場可（出境手続き後のエリア内）",
+        "zh": "僅限出境旅客於安檢後進入參觀"
+      },
+      "closed_days": [],
+      "lat": 25.0675657,
+      "lng": 121.5526993,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "kingcarchengde",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "King Car Cultural & Art Center – Chengde Space",
+        "ja": "金車文藝中心 承德館",
+        "zh": "金車文藝中心 承德館"
+      },
+      "address": {
+        "en": "No. 131, Sec. 3, Chengde Rd., Datong Dist., Taipei City, Taiwan",
+        "ja": "台湾台北市大同区承德路三段131號",
+        "zh": "台北市大同區承德路三段131號"
+      },
+      "url": "https://www.kingcarart.org.tw",
+      "hours": {
+        "en": "Tue-Sun 11:00-18:00 | Closed Mon",
+        "ja": "火〜日 11:00–18:00｜月休",
+        "zh": "週二至週日 11:00–18:00｜週一休"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 25.0674454,
+      "lng": 121.5186697,
+      "hours_uncertain": false,
+      "closed_day": null
     }
   ]
 }
