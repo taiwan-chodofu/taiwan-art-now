@@ -4745,6 +4745,89 @@
       "lng": 121.2408765,
       "hours_uncertain": false,
       "closed_day": null
+    },
+    {
+      "id": "ntm",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "National Taiwan Museum",
+        "ja": "国立台湾博物館",
+        "zh": "國立臺灣博物館"
+      },
+      "address": {
+        "en": "No. 2, Xiangyang Rd., Zhongzheng Dist., Taipei City, Taiwan (inside 228 Peace Park)",
+        "ja": "台北市中正區襄陽路2號（二二八和平公園内）",
+        "zh": "臺北市中正區襄陽路2號（二二八和平公園內）"
+      },
+      "url": "https://www.ntm.gov.tw",
+      "hours": {
+        "en": "Tue-Sun 09:30-17:00 | Closed Mon",
+        "ja": "火〜日 9:30–17:00｜月休",
+        "zh": "週二至週日 09:30–17:00｜週一休"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 25.04275,
+      "lng": 121.51503,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "tpac",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Performing Arts Center",
+        "ja": "台北パフォーミングアーツセンター",
+        "zh": "臺北表演藝術中心"
+      },
+      "address": {
+        "en": "No. 1, Jiantan Rd., Shilin Dist., Taipei City, Taiwan",
+        "ja": "台北市士林區劍潭路1號",
+        "zh": "臺北市士林區劍潭路1號"
+      },
+      "url": "https://tpac.org.taipei",
+      "hours": {
+        "en": "Varies by program; outdoor installation visible nightly 20:00-01:00",
+        "ja": "プログラムにより異なる。屋外インスタレーションは毎晩20:00–01:00点灯",
+        "zh": "依節目而異；戶外裝置每日20:00–01:00點燈"
+      },
+      "closed_days": [],
+      "lat": 25.085,
+      "lng": 121.52417,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "sangallery",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "San Gallery",
+        "ja": "弎畫廊",
+        "zh": "弎畫廊"
+      },
+      "address": {
+        "en": "No. 21, Gongyuan S. Rd., North Dist., Tainan City, Taiwan (inside the former Tainan Kaikosha)",
+        "ja": "台南市北區公園南路21號（旧日本陸軍台南偕行社内）",
+        "zh": "臺南市北區公園南路21號（原日本陸軍台南偕行社內）"
+      },
+      "url": "https://www.san-gallery.com.tw",
+      "hours": {
+        "en": "Tue-Sat 10:00-19:00 | Closed Sun-Mon",
+        "ja": "火〜土 10:00–19:00｜日月休",
+        "zh": "週二至週六 10:00–19:00｜週日一休"
+      },
+      "closed_days": [
+        0,
+        1
+      ],
+      "lat": 22.9972,
+      "lng": 120.2057,
+      "hours_uncertain": false,
+      "closed_day": null
     }
   ]
 }
