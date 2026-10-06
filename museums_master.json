@@ -4604,6 +4604,147 @@
       "lng": 121.5186697,
       "hours_uncertain": false,
       "closed_day": null
+    },
+    {
+      "id": "asirartmuseum",
+      "category": "alternative",
+      "region": "tainan",
+      "name": {
+        "en": "Asir Art Museum",
+        "ja": "甘樂阿舍美術館",
+        "zh": "甘樂阿舍美術館"
+      },
+      "address": {
+        "en": "No. 139, Beizhong St., North Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市北区北忠街139號",
+        "zh": "704臺南市北區北忠街139號"
+      },
+      "url": "https://www.instagram.com/asirartmuseum/",
+      "hours": {
+        "en": "Wed-Sat 12:00-17:00 | Closed Sun-Tue",
+        "ja": "水〜土 12:00–17:00｜日月火休",
+        "zh": "週三至週六 12:00–17:00｜週日一二休"
+      },
+      "closed_days": [
+        0,
+        1,
+        2
+      ],
+      "lat": 22.9996261,
+      "lng": 120.2084579,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "gallerydesol",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Gallery de Sol",
+        "ja": "曜畫廊",
+        "zh": "曜畫廊"
+      },
+      "address": {
+        "en": "3F, The Arcade, No. 166, Dunhua N. Rd., Songshan Dist., Taipei City, Taiwan",
+        "ja": "台湾台北市松山区敦化北路166號3樓（文華精品Arcade）",
+        "zh": "105台北市松山區敦化北路166號3樓（文華精品Arcade內）"
+      },
+      "url": "https://gallerydesol.com",
+      "hours": {
+        "en": "Tue-Sat 13:00-21:00, Sun by appointment | Closed Mon",
+        "ja": "火〜土 13:00–21:00、日は要予約｜月休",
+        "zh": "週二至週六 13:00–21:00，週日採預約制｜週一休"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 25.0557416,
+      "lng": 121.5481485,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "alleyart",
+      "category": "alternative",
+      "region": "taipei",
+      "name": {
+        "en": "Alley Art Gallery",
+        "ja": "巷藝術",
+        "zh": "巷藝術"
+      },
+      "address": {
+        "en": "No. 1, Lane 68, Shida Rd., Da'an Dist., Taipei City, Taiwan",
+        "ja": "台湾台北市大安区師大路68巷1號1樓",
+        "zh": "106台北市大安區師大路68巷1號1樓"
+      },
+      "url": "https://www.instagram.com/alley_art_gallery/",
+      "hours": {
+        "en": "Hours vary, check Instagram",
+        "ja": "営業時間はInstagramで確認",
+        "zh": "營業時間請見Instagram公告"
+      },
+      "closed_days": [],
+      "lat": 25.024109,
+      "lng": 121.5281669,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "taiyu",
+      "category": "commercial",
+      "region": "chiayi",
+      "name": {
+        "en": "Taiyu Arts & Humanities",
+        "ja": "泰郁美學堂",
+        "zh": "泰郁美學堂"
+      },
+      "address": {
+        "en": "No. 452, Sec. 2, Daya Rd., Chiayi City, Taiwan",
+        "ja": "台湾嘉義市大雅路二段452號",
+        "zh": "600嘉義市大雅路二段452號"
+      },
+      "url": "https://www.instagram.com/taiyu.arts/",
+      "hours": {
+        "en": "Tue-Sun 11:00-19:00 | Closed Mon",
+        "ja": "火〜日 11:00–19:00｜月休",
+        "zh": "週二至週日 11:00–19:00｜週一休"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 23.4778751,
+      "lng": 120.4714525,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "rung",
+      "category": "commercial",
+      "region": "taoyuan",
+      "name": {
+        "en": "RUNG Ceramics",
+        "ja": "RUNG 戎器",
+        "zh": "RUNG 戎器"
+      },
+      "address": {
+        "en": "No. 233, Sec. 2, Zhongshan E. Rd., Zhongli Dist., Taoyuan City, Taiwan",
+        "ja": "台湾桃園市中壢区中山東路二段233號",
+        "zh": "320桃園市中壢區中山東路二段233號"
+      },
+      "url": "https://www.instagram.com/rung.ceramics/",
+      "hours": {
+        "en": "Wed-Sun 13:00-19:00 | Closed Mon-Tue",
+        "ja": "水〜日 13:00–19:00｜月火休",
+        "zh": "週三至週日 13:00–19:00｜週一二休"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 24.9513667,
+      "lng": 121.2408765,
+      "hours_uncertain": false,
+      "closed_day": null
     }
   ]
 }
