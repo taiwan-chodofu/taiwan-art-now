@@ -768,3 +768,14 @@
 [SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
 [SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
 [MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+
+--- Validation 2026-10-06 08:51 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://artemperor.tw/tidbits
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+
+--- Validation 2026-10-06 08:52 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
