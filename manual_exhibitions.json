@@ -4439,6 +4439,55 @@
       "description_ja": "本展は、アーティスト黄崧菀（ホアン・ソンワン）が2019年にベトナム・ハノイに滞在した経験から生まれた。ハノイでの滞在中、彼女は現地の人々が昼夜を問わず、湖と道路の間で休息したり、釣りをしたり、ピクニックをしたり、茶を飲んだりする様子を観察した——それは「水と共に生きる」という極めて自然な日常のあり方だった。本展はその旅を硬直的に固定しようとするのではなく、数年にわたり積み重ねた資料を作家自身が改めて読み直すことで、「河の内に、水の間に」という出発点から、観察と想像によって物語を書き直し、変化し続ける世界に応答しながら、自己と他者、異郷との関係を再考するものである。",
       "status": "current",
       "added_at": "2026-10-06T09:51:38.424343+09:00"
+    },
+    {
+      "museum": "ntm",
+      "title_zh": "氛圍地—影像建築",
+      "title_en": "Atmosphere — Image Architecture",
+      "title_ja": "氛圍地－映像建築",
+      "dates": "2025.12.19 – 2026.10.25",
+      "location": "",
+      "link": "https://event.culture.tw/mocweb/reg/NTM/Detail.init.ctr?actId=50154",
+      "artists": [],
+      "description": "本展與法國波爾多建築中心（Arc en Rêve Centre d'Architecture）合作策畫，並根據臺灣的影像文化脈絡與在地學者協力，從原始展覽中篩選影片並加入台灣作品對話。展覽以「影像作為建築的新語法」為開篇命題，探究建築、都市空間、影像與博物館之間個別且相互交錯的媒介性，回應近年建築與影像文化共同面臨的重要議題。三大主題將圍繞影像與建築的虛實對話為核心概念，分為多個單元，依展期輪換播映內容。展出地點為臺博館鐵道部園區二樓特展廳、橢圓廳及八角樓。",
+      "description_en": "Co-curated with the Arc en Rêve Centre d'Architecture in Bordeaux, France, in collaboration with Taiwanese scholars working within Taiwan's own image culture, this exhibition selects films from the original Bordeaux program and adds Taiwanese works into dialogue with them. Opening with the premise that \"image has become a new grammar of architecture,\" the exhibition explores the overlapping and distinct mediality of architecture, urban space, image, and the museum itself, responding to pressing issues shared by architectural and visual culture today. Organized around three themes exploring the dialogue between image and architecture, real and virtual, the program rotates its film selections across the run of the show. Held in the second-floor special exhibition hall, the oval hall, and the octagonal building of the Railway Department Park.",
+      "description_ja": "フランス・ボルドーのアーク・アン・レーヴ建築センター（Arc en Rêve Centre d'Architecture）と共同企画し、台湾の映像文化の文脈と地元研究者の協力のもと、元の展覧会から作品を選び直し、台湾の作品を対話させる構成とした展覧会。「映像は建築の新しい文法である」という命題から出発し、建築・都市空間・映像・博物館それぞれの、また相互に絡み合うメディア性を探る。三つの主要テーマを軸に、映像と建築、虚実の対話を中心概念とし、複数のユニットに分けて会期中に上映内容を入れ替える。会場は臺博館鐵道部園区2階特別展示室、楕円ホール、八角楼。",
+      "status": "current",
+      "added_at": "2026-10-06T09:58:45.950318+09:00"
+    },
+    {
+      "museum": "tpac",
+      "title_zh": "「親．建築」計畫：高德亮《晚風》",
+      "title_en": "Close Architecture Project: Kao Te-Liang, \"Evening Breeze\"",
+      "title_ja": "「親・建築」計画：高德亮《晚風（夜風）》",
+      "dates": "2025.07.24 – 2026.12.31",
+      "location": "",
+      "link": "https://tpac.org.taipei",
+      "artists": [
+        "高德亮"
+      ],
+      "description": "臺北表演藝術中心「親．建築」計畫首件大型戶外裝置作品，由藝術家高德亮創作，展出於北藝中心一樓正門廣場。作品以4萬2千條懸垂尼龍線與48組水平雷射光、動力模組構成，覆蓋約27 x 21至22公尺的大型空間量體，能感知現場人流、氣溫與濕度等環境變化。每日晚間20:00至次日凌晨01:00點燈：20:00–23:00交織室內白光與參觀回路的橘燈，呈現豐富視覺層次；23:00–01:00建築大燈關閉，僅留下微弱浪漫的紅色雷射光，化身為陪伴夜歸人的城市夜燈。策展人黃偉倫表示，本作品以幽微的紅色為基調，成為城市夜燈，提供人們放鬆、靠近建築的入口。",
+      "description_en": "The first large-scale outdoor installation in Taipei Performing Arts Center's \"Close Architecture\" project, created by artist Kao Te-Liang and installed in the plaza at the center's main entrance. The work is composed of 42,000 hanging nylon threads together with 48 horizontal laser units and motion modules, spanning a volume of roughly 27 x 21-22 meters, and is able to sense real-time changes in foot traffic, temperature, and humidity. It lights up nightly from 8pm to 1am: from 8-11pm, warm orange light interweaves with white interior light and visitors' circulation patterns to create layered visual effects; from 11pm-1am, the building's main lights go dark, leaving only a faint, romantic red laser glow that becomes a gentle night-light for those returning home late. Curator Huang Wei-Lun describes the piece's subtle red tone as a city night-light that invites people to pause and draw closer to the building's entrance.",
+      "description_ja": "台北パフォーミングアーツセンターの「親・建築（Close Architecture）」プロジェクトの第一作となる大型屋外インスタレーション。アーティスト高德亮（カオ・ダーリャン）が制作し、センター1階正面広場に展示されている。作品は4万2千本の垂れ下がるナイロン糸と48基の水平レーザー光・動力モジュールから構成され、約27×21〜22メートルの大きな空間量を覆い、人の流れ・気温・湿度などの環境変化を感知する機能を持つ。毎晩20:00から翌日1:00まで点灯し、20:00〜23:00は室内の白色光と観客の動きが織り交なるオレンジ色の光で豊かな視覚的層を見せ、23:00〜1:00は建築の大きな照明を消し、わずかでロマンチックな赤いレーザー光だけを残し、夜遅く帰る人々を見守る街の常夜灯となる。キュレーターの黄偉倫は、この作品の淡い赤を基調とした光が街の常夜灯となり、人々が建築の入口に近づき、くつろぐきっかけを与えると語る。",
+      "status": "current",
+      "added_at": "2026-10-06T09:58:45.950318+09:00"
+    },
+    {
+      "museum": "sangallery",
+      "title_zh": "花時－Viga個展",
+      "title_en": "Hanadoki — Viga Solo Exhibition",
+      "title_ja": "花時（はなどき）－Viga個展",
+      "dates": "2026.09.12 – 2026.10.24",
+      "location": "",
+      "link": "https://www.san-gallery.com.tw/archives/14432",
+      "artists": [
+        "Viga"
+      ],
+      "description": "展覽名稱｜花時（はなどき）。「花時」一詞在中文與日文中皆具有深厚的文學意涵。中文的「花時」出自古典詩詞，指百花齊放的時節，或是花苞綻放的瞬間，象徵青春、生命力，以及人生中最燦爛美好的季節。日文發音為「はなどき（Hanadoki）」，同樣代表花開的巔峰時刻，常見於文學、俳句與和歌之中，既捕捉自然盛放的景致，也隱喻生命中最燦爛豐盈的時光，以及一種短暫易逝之美。因此，「花時」不僅是一個季節用語，更是一種對時間的詩意凝視——它溫柔地提醒著我們，每一朶花都有屬於自己綻放的時刻，每個生命也都擁有一段屬於自己的「花時」。花從不會一次全開；唯有歷經四季循環、沐浴陽光雨露、經過長久而靜謐的等待，才終於抵達屬於自己的綻放時刻。藝術家Viga長年旅居京都創作，與故鄉台灣的距離讓她得以用全新的眼光重新看待台南——每一次返鄉都像翻開一本既熟悉又全新的書，曾經視為日常的街道、老屋、古蹟與老樹，隨著時間流轉而承載了更深的情感重量。本次展出除延續她對花草植物的描繪外，更將目光轉向她的故鄉台南本身。",
+      "description_en": "Exhibition Title: Hanadoki (花時). The term \"Hanadoki\" carries profound literary significance in both Chinese and Japanese. In Chinese, huashi (花時) originates from classical poetry, referring to the season of blooming blossoms, symbolizing youth, vitality, and life's most radiant seasons. In Japanese, pronounced Hanadoki, it likewise represents the peak flowering season, often appearing in literature, haiku, and waka, capturing both nature's flourishing scenery and life's most brilliant, abundant hours, as well as an ephemeral, transient beauty. \"Hanadoki\" is thus not merely a seasonal word but a poetic contemplation of time — a reminder that every blossom has its own moment to bloom, and every life possesses a cherished hanadoki of its own. A flower never opens all at once; only through the cycling of the four seasons, nourished by sunlight and dew and sustained through long, quiet patience, does it finally arrive at its own flowering moment. Having lived and created in Kyoto for many years away from Taiwan, artist Viga's physical distance from home has let her look at Tainan through new eyes — every return feels like opening a book both intimately familiar and entirely fresh, with the streets, aged houses, historic sites, and ancient trees she once took for granted acquiring deeper emotional weight over time. Alongside her continuing portrayals of flora and botanical life, this body of work turns its gaze toward her hometown of Tainan itself.",
+      "description_ja": "展覧会名｜花時（はなどき）。「花時」という言葉は、中国語と日本語の両方において深い文学的な意味を持つ。中国語の「花時」は古典詩に由来し、百花が咲き誇る季節、あるいは蕾が花開く一瞬を指し、青春や生命力、人生で最も輝かしく美しい季節を象徴する。日本語でも「花時（はなどき）」として同様に満開の盛りを表し、文学・俳句・和歌の中にしばしば登場し、自然の咲き誇る情景だけでなく、人生で最も輝き満ち溢れた時間、そしてはかなく移ろう美しさを比喩的に表す。したがって「花時」は単なる季節の言葉ではなく、時間についての詩的な省察でもある——すべての花にはそれぞれ咲くべき時があり、すべての命にもそれぞれの大切な「花時」があることを、静かに思い出させてくれる。花は一度にすべて開くことはない。四季の巡りを経て、陽光と露に養われ、長く静かな忍耐を重ねて、ようやく自分だけの花開く時に至る。アーティストのViga（ヴィガ）は長年台湾を離れ京都で暮らし創作を続けてきたが、その距離があったからこそ、故郷を新たな眼差しで見つめ直すことができたという。台南へ帰るたびに、親しみながらも全く新しい一冊の本を開くような感覚を抱く。かつて当たり前だった街並み、古い家屋、史跡、老樹は、時の流れとともに、より深い感情の重みを帯びるようになった。本展では、花や植物を描き続ける一方で、故郷である台南そのものへと眼差しを向けている。",
+      "status": "current",
+      "added_at": "2026-10-06T10:01:46.759969+09:00"
     }
   ]
 }
