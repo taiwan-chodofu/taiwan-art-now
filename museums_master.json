@@ -4828,6 +4828,148 @@
       "lng": 120.2057,
       "hours_uncertain": false,
       "closed_day": null
+    },
+    {
+      "id": "guirenculture",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Gueiren Cultural Center",
+        "ja": "歸仁文化中心",
+        "zh": "歸仁文化中心"
+      },
+      "address": {
+        "en": "No. 78, Xinyi S. Rd., Gueiren Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市歸仁區信義南路78號",
+        "zh": "711臺南市歸仁區信義南路78號"
+      },
+      "url": "https://gueirencultural.tainan.gov.tw",
+      "hours": {
+        "en": "Wed-Sun 09:00-17:00 | Closed Mon-Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 09:00–17:00｜週一二休"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 22.9640771,
+      "lng": 120.2980553,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "xinyingculture",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Xinying Cultural Center",
+        "ja": "新營文化中心",
+        "zh": "新營文化中心"
+      },
+      "address": {
+        "en": "No. 23, Zhongzheng Rd., Xinying Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市新營區中正路23號",
+        "zh": "730臺南市新營區中正路23號"
+      },
+      "url": "https://culture.tainan.gov.tw",
+      "hours": {
+        "en": "Wed-Sun 09:00-17:00 | Closed Mon-Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 09:00–17:00｜週一二休"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 23.3085546,
+      "lng": 120.3158922,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "tkcc",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Taikang Cultural Center",
+        "ja": "台江文化中心",
+        "zh": "台江文化中心"
+      },
+      "address": {
+        "en": "No. 207, Sec. 1, Anji Rd., Annan Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市安南區安吉路一段207號",
+        "zh": "709臺南市安南區安吉路一段207號"
+      },
+      "url": "https://tkcc.tnc.gov.tw",
+      "hours": {
+        "en": "Wed-Sun 09:00-17:00 | Closed Mon-Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 09:00–17:00｜週一二休"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 23.0458,
+      "lng": 120.1878,
+      "hours_uncertain": false,
+      "closed_day": null
+    },
+    {
+      "id": "xinhuaarthall",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Xinhua Performance Hall",
+        "ja": "新化演藝廳",
+        "zh": "新化演藝廳"
+      },
+      "address": {
+        "en": "No. 142-1, Xinyi Rd., Xinhua Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市新化區信義路142-1號",
+        "zh": "712臺南市新化區信義路142-1號"
+      },
+      "url": "https://xinhua.tmcc.gov.tw",
+      "hours": {
+        "en": "Opening hours vary with performance schedule",
+        "ja": "開館時間は公演予定に準じる",
+        "zh": "開館時間配合演出活動"
+      },
+      "closed_days": [],
+      "lat": 23.0363862,
+      "lng": 120.3115657,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "tyart",
+      "category": "public",
+      "region": "tainan",
+      "name": {
+        "en": "Tsungyeh Art and Culture Center",
+        "ja": "總爺藝文中心",
+        "zh": "總爺藝文中心"
+      },
+      "address": {
+        "en": "No. 5, Nanshi Li, Madou Dist., Tainan City, Taiwan",
+        "ja": "台湾台南市麻豆區南勢里總爺5號",
+        "zh": "721臺南市麻豆區南勢里總爺5號"
+      },
+      "url": "https://tyart.tnc.gov.tw",
+      "hours": {
+        "en": "Wed-Sun 09:00-17:00 | Closed Mon-Tue",
+        "ja": "水〜日 9:00–17:00｜月火休",
+        "zh": "週三至週日 09:00–17:00｜週一二休"
+      },
+      "closed_days": [
+        1,
+        2
+      ],
+      "lat": 23.1856526,
+      "lng": 120.2688856,
+      "hours_uncertain": false,
+      "closed_day": null
     }
   ]
 }
