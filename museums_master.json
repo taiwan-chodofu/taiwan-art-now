@@ -4970,6 +4970,62 @@
       "lng": 120.2688856,
       "hours_uncertain": false,
       "closed_day": null
+    },
+    {
+      "id": "woodworklab",
+      "category": "public",
+      "region": "chiayi",
+      "name": {
+        "en": "Chiayi Experimental Wood Workshop",
+        "ja": "實驗木場",
+        "zh": "實驗木場"
+      },
+      "address": {
+        "en": "No. 24, Ln. 134, Weixin Rd., East Dist., Chiayi City, Taiwan",
+        "ja": "台湾嘉義市東區維新路134巷24號",
+        "zh": "600嘉義市東區維新路134巷24號"
+      },
+      "url": "https://www.facebook.com/chiayiwoodlab",
+      "hours": {
+        "en": "Opening hours vary with exhibitions, generally closed Mon",
+        "ja": "展示により異なる、通常月休",
+        "zh": "依展覽異動，通常週一休"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 23.4852026,
+      "lng": 120.4591795,
+      "hours_uncertain": true,
+      "closed_day": null
+    },
+    {
+      "id": "khcc",
+      "category": "public",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Kaohsiung Cultural Center",
+        "ja": "高雄市文化中心",
+        "zh": "高雄市文化中心"
+      },
+      "address": {
+        "en": "No. 67, Wufu 1st Rd., Lingya Dist., Kaohsiung City, Taiwan",
+        "ja": "台湾高雄市苓雅區五福一路67號",
+        "zh": "802高雄市苓雅區五福一路67號"
+      },
+      "url": "https://khcc.kcg.gov.tw",
+      "hours": {
+        "en": "Varies by hall/exhibition, generally Tue-Sun 09:00-21:00",
+        "ja": "展示室により異なる、通常火〜日 9:00–21:00",
+        "zh": "依展覽廳異動，通常週二至週日 09:00–21:00"
+      },
+      "closed_days": [
+        1
+      ],
+      "lat": 22.6258281,
+      "lng": 120.3171599,
+      "hours_uncertain": true,
+      "closed_day": null
     }
   ]
 }

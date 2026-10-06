@@ -4571,6 +4571,53 @@
       "description_ja": "總爺藝文中心の紅磚工藝館（レンガ造り工芸館）では、日本・高知県の国指定伝統工芸品79点を展示する。内容は土佐和紙、土佐打刃物（刃物）、竹工芸（虎斑竹製品など）、漆器、尾戸焼の陶芸、さらに凧や祭りの旗など多岐にわたり、高知県の奥深い伝統工芸文化と台日文化交流の成果を示す。",
       "status": "current",
       "added_at": "2026-10-06T11:02:52.768662+09:00"
+    },
+    {
+      "museum": "woodworklab",
+      "title_zh": "木都日常｜好木作生活展",
+      "title_en": "Wood City Daily Life: Good Woodwork Living Exhibition",
+      "title_ja": "木都日常｜好木作生活展",
+      "dates": "2026.10.09 – 2026.11.15",
+      "location": "",
+      "link": "https://www.facebook.com/chiayiwoodlab",
+      "artists": [],
+      "description": "由嘉義市政府文化局推動的木製品認證計畫「優木良品」延伸而來，於嘉義實驗木場（南棟）舉辦的木工藝與生活主題展覽，集結10組木作創作者與品牌，從作品、材料與使用方式三個角度，重新思考木材如何走進日常生活。同期於實驗木場北棟舉辦「木都選物所」，展示並販售來自台灣各地木職人製作的餐具、家具與療癒小物等百餘件精選木製品；展期內周邊更規劃「木都生活市集」與「嘉義木造建築散步地圖」，串聯檜意森活村、北門驛等市內知名木造歷史建築。嘉義實驗木場本身座落於嘉義舊監獄宿舍群內，由老舊宿舍活化再造而成，曾獲2023年iF公共建築獎。",
+      "description_en": "Extending from the Chiayi City Government's wood-product certification program \"Chiayi Good Wood,\" this exhibition at the Chiayi Experimental Wood Workshop (South Building) brings together 10 woodworking creators and brands exploring how wood enters daily life through the lenses of the work itself, its materials, and its use. Concurrently, the workshop's North Building hosts \"Wood City Select Shop,\" displaying and selling over a hundred curated wooden items — tableware, furniture, and small comfort objects — made by artisans from across Taiwan. The surrounding program also includes a \"Wood City Living Market\" and a self-guided \"Chiayi Wooden Architecture Walking Map\" linking notable wooden historic buildings around the city, including Hinoki Village and Beimen Station. The Experimental Wood Workshop itself occupies the former dormitory complex of Chiayi's old prison, adaptively reused from aging housing stock, and received the 2023 iF Design Award for Public Architecture.",
+      "description_ja": "嘉義市政府文化局が推進する木製品認証プログラム「優木良品」から発展した展覧会で、嘉義実験木場（南棟）にて開催。木工作家・ブランド10組が集まり、作品・素材・用途という3つの視点から、木がどのように日常生活に入り込むかを再考する。同時期、実験木場北棟では「木都選物所」として、台湾各地の木職人が手がけた食器・家具・癒やし小物など100点以上の厳選木製品を展示・販売する。会期中は周辺で「木都生活市集」や、檜意森活村・北門駅など市内の有名な木造歴史建築を結ぶ「嘉義木造建築散歩地図」も企画されている。実験木場自体は嘉義旧監獄の宿舎群を活用して再生された施設で、2023年iF公共建築デザイン賞を受賞している。",
+      "status": "current",
+      "added_at": "2026-10-06T11:06:44.893999+09:00"
+    },
+    {
+      "museum": "khcc",
+      "title_zh": "新粉彩主義2026洪秀敏粉彩創作展",
+      "title_en": "New Pastelism 2026: Hung Hsiu-Min Pastel Exhibition",
+      "title_ja": "新パステル主義2026 洪秀敏パステル創作展",
+      "dates": "2026.10.02 – 2026.10.13",
+      "location": "",
+      "link": "https://khcc.kcg.gov.tw",
+      "artists": [
+        "洪秀敏"
+      ],
+      "description": "於高雄市文化中心至真堂二館展出，共呈現50件粉彩作品，包含藝術家洪秀敏「百號」系列（6件百號以上大作，含4件百號水晶靜物與2件複合媒材作品），以及40件主題豐富、內容繽紛之作，涵蓋山林海景、動物飛禽、人物肖像及生活靜物等系列，體現洪秀敏對日常所見所感與刻意追尋景物的粉彩繪畫詮釋。",
+      "description_en": "Presented at Zhizhen Hall 2 of the Kaohsiung Cultural Center, this exhibition features 50 pastel works, including artist Hung Hsiu-Min's \"Hundred-Hao\" series (six large-format works over 100 hao in size, among them four crystal-still-life pieces and two mixed-media works), alongside 40 further works spanning mountain-and-sea landscapes, birds and animals, portraits, and still life — reflecting Hung's pastel interpretation of everyday observed and deliberately sought-out scenes.",
+      "description_ja": "高雄市文化中心・至真堂二館で開催。パステル作品50点を展示し、作家洪秀敏の「百号」シリーズ（100号を超える大作6点、うち水晶静物4点・複合メディア2点を含む）に加え、山海の風景、鳥や動物、人物肖像、生活静物など内容豊かな40点を含む。洪秀敏が日常の中で見て感じたもの、また意図的に追い求めた風景をパステルで表現した成果である。",
+      "status": "current",
+      "added_at": "2026-10-06T11:11:13.581872+09:00"
+    },
+    {
+      "museum": "khcc",
+      "title_zh": "高雄市南濤人體畫會會員聯展",
+      "title_en": "Kaohsiung Nantao Figure Painting Association Member Exhibition",
+      "title_ja": "高雄市南濤人體畫會会員連展",
+      "dates": "2026.10.02 – 2026.10.13",
+      "location": "",
+      "link": "https://khcc.kcg.gov.tw",
+      "artists": [],
+      "description": "於高雄市文化中心至美軒展出。南濤人體畫會在高雄已有34年歷史，固定每週聘請模特兒進行人體寫生，本次會員聯展以人體為主要焦點，亦含部分寫生風景，從純藝術角度呈現人體繪畫之美，媒材與風格多元。",
+      "description_en": "Presented at Zhimei Hall of the Kaohsiung Cultural Center. The Nantao Figure Painting Association has a 34-year history in Kaohsiung, holding weekly life-drawing sessions with hired models. This member exhibition centers on the human figure, alongside some landscape studies, presenting the beauty of figure painting from a fine-art perspective across diverse media and styles.",
+      "description_ja": "高雄市文化中心・至美軒で開催。南濤人體畫會は高雄で34年の歴史を持ち、毎週モデルを雇って人体デッサンを行っている。本会員連展は人体を主な焦点としつつ、一部の風景写生も含み、純粋美術の視点から多様な素材と様式による人体絵画の美を提示する。",
+      "status": "current",
+      "added_at": "2026-10-06T11:11:13.581872+09:00"
     }
   ]
 }
