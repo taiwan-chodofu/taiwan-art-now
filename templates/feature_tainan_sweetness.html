@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  if (new URLSearchParams(window.location.search).has('_exclude_ga')) localStorage.setItem('taiwan_art_ga_exclude','1');
+  if (!localStorage.getItem('taiwan_art_ga_exclude')) {
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');
+  } else { function gtag(){} }
+  </script>
+  <title>台南はなぜ甘いのか — Taiwan Art Now</title>
+  <meta name="description" content="迴圈、保存、そして標本にされることについて。台南藝術雙年展と南方影展、2026年秋の台南から。">
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f2ea; --text: #211a14; --text-sub: #5c5248; --accent: #a9381f;
+      --sugar: #e8c468; --ash: #4a4440; --fire: #a9381f; --paper: #f7f2ea;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Noto Serif JP", "Noto Sans JP", serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.9; overflow-x: hidden;
+      transition: background 1.2s ease;
+    }
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+      width: 0%; z-index: 100; transition: width 0.1s linear;
+    }
+    .topnav {
+      position: fixed; top: 10px; right: 14px; z-index: 100;
+      font-family: "Noto Sans JP", sans-serif; font-size: 0.7rem;
+      color: var(--text-sub); text-decoration: none;
+      background: rgba(247,242,234,0.85); padding: 5px 10px; border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+    section {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding: 8vh 7vw; position: relative;
+      max-width: 760px; margin: 0 auto;
+    }
+    .cover { align-items: flex-start; justify-content: center; }
+    .kinetic { font-size: clamp(2.2rem, 9vw, 4.6rem); font-weight: 900; line-height: 1.25; }
+    .kinetic span {
+      display: inline-block; opacity: 0; filter: blur(6px);
+      transform: translateY(0.3em);
+      transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+    }
+    .kinetic.show span { opacity: 1; filter: blur(0); transform: translateY(0); }
+    .cover-sub {
+      font-family: "Noto Sans JP", sans-serif; font-size: 0.85rem; color: var(--text-sub);
+      margin-top: 2rem; letter-spacing: 0.05em; opacity: 0; transition: opacity 1.5s ease 1.2s;
+    }
+    .cover-sub.show { opacity: 1; }
+    .scroll-hint {
+      position: absolute; bottom: 6vh; left: 7vw; font-size: 0.7rem; color: var(--text-sub);
+      font-family: "Noto Sans JP", sans-serif; opacity: 0.6;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(6px);} }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    p.body-text { font-size: clamp(1.02rem, 2.6vw, 1.2rem); margin-bottom: 1.4rem; }
+    .lede { font-size: clamp(1.3rem, 3.6vw, 1.7rem); font-weight: 600; margin-bottom: 1.6rem; }
+
+    .pullquote {
+      font-size: clamp(1.6rem, 5.5vw, 2.6rem); font-weight: 700; line-height: 1.5;
+      margin: 2rem 0; color: var(--accent);
+    }
+    .label-tag {
+      font-family: "Noto Sans JP", sans-serif; font-size: 0.72rem; letter-spacing: 0.1em;
+      color: var(--text-sub); border: 1px solid currentColor; border-radius: 20px;
+      padding: 3px 12px; display: inline-block; margin-bottom: 1.2rem; opacity: 0.8;
+    }
+
+    .section-sugar { background: #f7f2ea; }
+    .section-circuit { background: #efe6d4; }
+    .section-fire { background: #2b1d16; color: #f1e6d8; }
+    .section-fire .text-sub, .section-fire .label-tag { color: #c9a98c; }
+    .section-fire .pullquote { color: var(--sugar); }
+    .section-ash { background: #3a3733; color: #ece7e0; }
+    .section-ash .pullquote { color: #d8c9a3; }
+    .section-return { background: #f7f2ea; }
+
+    .divider {
+      width: 100%; height: 1px; background: currentColor; opacity: 0.15; margin: 2.4rem 0;
+    }
+
+    .ring {
+      position: absolute; border: 1px solid currentColor; border-radius: 50%;
+      opacity: 0.08; pointer-events: none;
+    }
+    .ring.r1 { width: 420px; height: 420px; top: -120px; right: -140px; }
+    .ring.r2 { width: 220px; height: 220px; bottom: -60px; left: -80px; }
+
+    .drip {
+      position: absolute; width: 6px; height: 6px; border-radius: 50% 50% 50% 0;
+      background: var(--accent); opacity: 0; top: -10px; right: 12%;
+      animation: fall 3.2s ease-in infinite;
+    }
+    @keyframes fall {
+      0% { opacity: 0; transform: translateY(0) rotate(45deg); }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.5; }
+      100% { opacity: 0; transform: translateY(60vh) rotate(45deg); }
+    }
+
+    footer.infobox {
+      background: var(--text); color: var(--bg); padding: 10vh 7vw 6vh;
+    }
+    footer.infobox a { color: var(--sugar); }
+    .event-card {
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 10px;
+      padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;
+    }
+    .event-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; font-weight: 700; }
+    .event-card p { font-family: "Noto Sans JP", sans-serif; font-size: 0.82rem; opacity: 0.85; }
+    footer.infobox a.cta {
+      display: inline-block; margin-top: 1.6rem; background: var(--sugar); color: #211a14;
+      font-family: "Noto Sans JP", sans-serif; font-weight: 700; font-size: 0.85rem;
+      padding: 10px 22px; border-radius: 30px; text-decoration: none;
+    }
+    .credit { margin-top: 3rem; font-family: "Noto Sans JP", sans-serif; font-size: 0.7rem; opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <a class="topnav" href="/?lang=ja">← Taiwan Art Now</a>
+
+  <section class="cover section-sugar">
+    <div class="ring r1"></div>
+    <h1 class="kinetic" id="k1">
+      <span>台南は、</span><br><span>甘い。</span>
+    </h1>
+    <p class="cover-sub" id="sub1">迴圈、保存、そして標本にされることについて——2026年秋、台南藝術雙年展と南方影展から</p>
+    <div class="scroll-hint">↓ scroll</div>
+  </section>
+
+  <section class="section-sugar">
+    <div class="reveal">
+      <p class="label-tag">01 / 甘さという技術</p>
+      <p class="lede">台南に行くと、必ず誰かが言う。「台南は甘いよ」。</p>
+      <p class="body-text">麵も、湯も、お粥さえも、気づけば少し甘い。何度も繰り返されるこの話題は、ほとんど儀式のようなものだ——よそから来た人への、最初の挨拶。</p>
+      <p class="body-text">だがこの「甘さ」には、たいてい一つの説明が添えられる。高温多湿なこの土地では、冷蔵庫がなかった時代、糖は腐敗を防ぐための技術だった。台南はかつて製糖業の中心地でもあった。甘さは贅沢ではなく、実用だった——食べものを、もう少し長く、ここに留めておくための手段。</p>
+    </div>
+  </section>
+
+  <section class="section-circuit">
+    <div class="ring r2"></div>
+    <div class="reveal">
+      <p class="label-tag">02 / もうひとつの保存</p>
+      <p class="lede">2026年の秋、台南はもう一つの「消えないようにする技術」を試している。</p>
+      <p class="body-text">臺南市美術館が主催する第一屆臺南藝術雙年展のテーマは「迴圈．超展開（Unfolding Circuits）」。湯德章紀念公園の圓環——あの、七本の道が放射状に伸びるロータリー——をモチーフに、七人のキュレーターが七つの子題を立てた。</p>
+      <p class="body-text">子題のひとつ、「被消逝的迴圈」。日本統治時代、台湾を一度も訪れたことのないまま、台湾を題材にポスターや絵葉書を描いた日本の作家たちがいた。美術史からこぼれ落ちていたその記録を、本展は掘り直す。</p>
+      <p class="body-text">もうひとつ、「再生迴圈」。圓環と美術館の「前世と今生」——製造し、使い、回収し、また作り直す。物質の循環は、輪廻のメタファーのように語られる。</p>
+      <p class="pullquote">迴圈とは、要するに、<br>何かを消えさせないための構造だ。</p>
+      <p class="body-text">糖が食べものにするのと同じことを、台南は歴史に対してもやろうとしている。</p>
+    </div>
+  </section>
+
+  <section class="section-fire">
+    <div class="drip" style="animation-delay:0s;"></div>
+    <div class="drip" style="animation-delay:1.1s; right:30%;"></div>
+    <div class="drip" style="animation-delay:2.1s; right:55%;"></div>
+    <div class="reveal">
+      <p class="label-tag">03 / 標本にされた暮らし</p>
+      <p class="lede">同じ11月、台南にはもう一つの「保存」がある。</p>
+      <p class="body-text">南方影展——台北中心の映像資源の偏りに抗うために、23年前、臺南藝術大学から始まった独立映画祭。今年のテーマは「視線的重量（視線の重さ）」。見ることと見られることの、埋められない距離について。</p>
+      <p class="body-text">今年の最有力候補の一つ、ドキュメンタリー《翁丁》。中国雲南省、佤族最後の原始集落と呼ばれた村。「精準脫貧」政策のもと、村全体が——そのままの姿で——観光客に見せるための「生きた標本」に作り変えられた。10年、村長は立ち退きを拒み続けた。</p>
+      <p class="pullquote">保存されたのは、暮らしではなく、<br>暮らしの形だけだった。</p>
+      <p class="body-text">10年の抵抗の末、本物は、火災であっさり燃え尽きた。</p>
+    </div>
+  </section>
+
+  <section class="section-ash">
+    <div class="reveal">
+      <p class="label-tag">04 / 分かれ道</p>
+      <p class="lede">糖も、迴圈も、標本も——根は同じ衝動から生まれている。消えていくものを、消えさせたくない。</p>
+      <p class="body-text">だがそのやり方には、決定的な分かれ道がある。</p>
+      <p class="body-text">糖は、食べものの中に入り込んで、形を変えながら生き続けさせる。迴圈は、歴史を掘り直し、新しい文脈の中でもう一度動かす。どちらも、変化を許す保存だ。</p>
+      <p class="pullquote">標本は、動くことを止めて、<br>永遠にあの瞬間のままでいることを強いる。</p>
+      <p class="body-text">それは見る側のための保存であり、見られる側のための保存ではない。</p>
+    </div>
+  </section>
+
+  <section class="section-return">
+    <div class="reveal">
+      <p class="label-tag">05 / もう一度、動かす</p>
+      <p class="body-text">台湾にも、同じ問いに向き合う作品がある。南方影展のもう一つの注目作、《烤火房的一些夢》。祖父を亡くした泰雅族の家族が、祖先の倫理「Gaga」との断絶に向き合い、「帰る道」を探し続ける。</p>
+      <p class="lede">誰かに見せるためではなく、自分たちのために、記憶をもう一度動かそうとする試み。</p>
+      <p class="body-text">これは標本ではない。迴圈だ。</p>
+      <div class="divider"></div>
+      <p class="body-text">この秋、台南の路地を歩けば、甘い匂いのする店先と、迴圈をテーマにした展示が、同じ旧市街の中で重なり合う。どちらも、消えていくものに対する態度の表明だ。</p>
+      <p class="pullquote">もし台南で何かが「甘い」と感じたら、<br>少しだけ立ち止まってみてほしい。</p>
+      <p class="body-text">それは郷愁の味ではなく、ここに留まり続けるための、ひとつの技術の味かもしれない。</p>
+    </div>
+  </section>
+
+  <footer class="infobox">
+    <div class="event-card">
+      <h3>迴圈．超展開：第一屆臺南藝術雙年展</h3>
+      <p>2026.10.31 — 2027.3.1｜16核心會場＋16衛星會場（臺南市美術館ほか台南旧市街一帯）</p>
+    </div>
+    <div class="event-card">
+      <h3>第23屆南方影展</h3>
+      <p>2026.11.6 — 11.15｜臺南新光影城・海馬迴光畫館</p>
+    </div>
+    <a class="cta" href="/?lang=ja">台南の展示をもっと見る →</a>
+    <p class="credit">Taiwan Art Now — Feature / 2026.10</p>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // kinetic word-split reveal for cover
+    const k1 = document.getElementById('k1');
+    setTimeout(() => k1.classList.add('show'), 200);
+    setTimeout(() => document.getElementById('sub1').classList.add('show'), 300);
+
+    // scroll progress bar
+    const bar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = pct + '%';
+    });
+  </script>
+</body>
+</html>

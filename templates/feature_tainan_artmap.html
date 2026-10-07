@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>迴圈と標本の地図 — Taiwan Art Now</title>
+<meta name="description" content="台南藝術雙年展と南方影展、全アーティスト・全作品を結ぶ動的イメージマップ(試作)。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;900&family=Shippori+Mincho:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3efe3; --ink: #17130f; --soft: #5c5346;
+    --accent: #c23b1f; --jade: #2f6b52; --amber: #a8792a;
+    --invert-bg: #17130f; --invert-fg: #f3efe3;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:var(--paper); color:var(--ink); font-family:"Shippori Mincho",serif; overflow:hidden; height:100%; }
+  .heading { font-family:"Zen Old Mincho",serif; }
+  .mono { font-family:"Noto Sans JP",sans-serif; letter-spacing:0.08em; }
+
+  header { position:fixed; top:0; left:0; width:100%; padding:16px 20px; display:flex; justify-content:space-between; align-items:flex-start; z-index:50; pointer-events:none; }
+  header .title { pointer-events:auto; }
+  header a.back { pointer-events:auto; font-family:"Noto Sans JP",sans-serif; font-size:0.72rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:2px; }
+  h1.heading { font-size:1.05rem; margin-top:6px; }
+  .sub { font-family:"Noto Sans JP",sans-serif; font-size:0.68rem; color:var(--soft); max-width:260px; margin-top:4px; }
+
+  #canvas-wrap { position:fixed; inset:0; }
+  svg#graph { width:100%; height:100%; cursor:grab; }
+  svg#graph.panning { cursor:grabbing; }
+
+  .legend {
+    position:fixed; bottom:16px; left:16px; z-index:50; background:rgba(243,239,227,0.88);
+    border:1px solid rgba(23,19,15,0.18); padding:10px 14px; font-family:"Noto Sans JP",sans-serif; font-size:0.68rem;
+    max-width:230px; backdrop-filter:blur(3px);
+  }
+  .legend .row { display:flex; align-items:center; gap:6px; margin:3px 0; }
+  .legend .dot { width:9px; height:9px; border-radius:50%; display:inline-block; flex:none; }
+  .legend .note { margin-top:6px; color:var(--soft); font-size:0.63rem; line-height:1.5; }
+
+  .filters {
+    position:fixed; top:16px; right:16px; z-index:50; display:flex; flex-direction:column; gap:6px; align-items:flex-end;
+  }
+  .filters button {
+    font-family:"Noto Sans JP",sans-serif; font-size:0.68rem; letter-spacing:0.04em; background:rgba(243,239,227,0.88);
+    border:1px solid rgba(23,19,15,0.3); color:var(--ink); padding:5px 11px; cursor:pointer; transition:background .15s, color .15s;
+  }
+  .filters button.off { opacity:0.4; }
+  .filters button:hover { background:var(--ink); color:var(--paper); }
+
+  #panel {
+    position:fixed; top:0; right:0; height:100%; width:320px; max-width:86vw; background:var(--invert-bg); color:var(--invert-fg);
+    transform:translateX(100%); transition:transform .35s cubic-bezier(.2,1,.3,1); z-index:60; padding:22px 22px 30px;
+    overflow-y:auto; box-shadow:-8px 0 24px rgba(0,0,0,0.25);
+  }
+  #panel.show { transform:translateX(0); }
+  #panel .ptype { font-family:"Noto Sans JP",sans-serif; font-size:0.66rem; letter-spacing:0.12em; color:var(--accent); text-transform:uppercase; }
+  #panel h2 { font-family:"Zen Old Mincho",serif; font-size:1.3rem; margin:0.5rem 0 0.8rem; line-height:1.4; }
+  #panel .meta-line { font-family:"Noto Sans JP",sans-serif; font-size:0.76rem; color:#cbbfa8; margin-bottom:0.4rem; }
+  #panel p.body { font-size:0.95rem; line-height:1.85; margin-top:0.9rem; }
+  #panel .kwlist { margin-top:1rem; display:flex; flex-wrap:wrap; gap:6px; }
+  #panel .kwlist span { font-family:"Noto Sans JP",sans-serif; font-size:0.66rem; border:1px solid var(--accent); color:var(--accent); padding:2px 8px; }
+  #panel a.ext { display:inline-block; margin-top:1.2rem; font-family:"Noto Sans JP",sans-serif; font-size:0.78rem; color:var(--invert-fg); border-bottom:1px solid var(--accent); text-decoration:none; padding-bottom:2px; }
+  #panel .close { position:absolute; top:18px; right:18px; cursor:pointer; font-family:"Noto Sans JP",sans-serif; font-size:0.8rem; color:#cbbfa8; background:none; border:none; }
+  #panel .conn-list { margin-top:0.3rem; }
+  #panel .conn-list li { font-family:"Noto Sans JP",sans-serif; font-size:0.78rem; color:#cbbfa8; margin-bottom:0.3rem; cursor:pointer; }
+  #panel .conn-list li:hover { color:var(--accent); }
+
+  .hint { position:fixed; bottom:16px; right:16px; z-index:50; font-family:"Noto Sans JP",sans-serif; font-size:0.64rem; color:var(--soft); text-align:right; max-width:200px; }
+</style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <a class="back" href="/feature/tainan-sweetness-v2">← 本編「台南は、甘い。」</a>
+      <h1 class="heading">迴圈と標本の地図</h1>
+      <p class="sub">「迴圈．超展開：第一屆臺南藝術雙年展」と「第23屆南方影展」。全アーティスト・全作品を一枚につなぐ試作マップ。</p>
+    </div>
+  </header>
+
+  <div class="filters" id="filters">
+    <button data-f="biennale">雙年展</button>
+    <button data-f="festival">南方影展</button>
+    <button data-f="keyword">テーマ接続</button>
+  </div>
+
+  <div id="canvas-wrap"><svg id="graph"></svg></div>
+
+  <div class="legend">
+    <div class="row"><span class="dot" style="background:var(--jade);"></span>雙年展（子題・アーティスト）</div>
+    <div class="row"><span class="dot" style="background:var(--accent);"></span>南方影展（カテゴリ・作品・監督）</div>
+    <div class="row"><span class="dot" style="background:var(--amber); opacity:.8;"></span>テーマ接続（編集による分類）</div>
+    <div class="note">実線＝公式データに基づく接続。点線＝テーマ上の編集的な接続（解釈）。ノードをドラッグ、クリックで詳細表示。</div>
+  </div>
+
+  <div class="hint">スクロールでズーム／ドラッグでパン<br>ノードクリックで詳細・関連ハイライト</div>
+
+  <div id="panel">
+    <button class="close" id="panelClose">閉じる ×</button>
+    <div id="panelBody"></div>
+  </div>
+
+<script>
+/* ============================================================
+   DATA — biennale subset verified via tnam.museum official page;
+   festival full 56-work set verified via festival.south.org.tw
+   individual film pages. Keyword edges are editorial/thematic
+   tagging, not official data — kept visually distinct (dashed).
+   ============================================================ */
+
+const BIENNALE_SUBTHEMES = [
+  {id:'sub:被消逝的迴圈', label:'被消逝的迴圈', curator:'林磐聳(協同:姚村雄、李新富)'},
+  {id:'sub:環境迴圈', label:'環・境迴圈', curator:'謝宗哲'},
+  {id:'sub:歷史迴圈', label:'歷史迴圈', curator:'高俊宏'},
+  {id:'sub:集結迴圈', label:'集結迴圈', curator:'楊佳璇'},
+  {id:'sub:再生迴圈', label:'再生迴圈', curator:'柯春如'},
+  {id:'sub:風景迴圈', label:'風景迴圈', curator:'莊東橋'},
+  {id:'sub:移動迴圈', label:'移動迴圈', curator:'柯宜芸'},
+];
+
+const BIENNALE_ARTISTS = [
+  {name:'鹽月桃甫', sub:'sub:被消逝的迴圈', nat:'日本', bio:'日本統治時代、台湾で活動した画家。台展(臺灣美術展覽會)の審査員も務めた。戦後、「日本人画家」として台湾美術史の主流から除外された。'},
+  {name:'石川欽一郎', sub:'sub:被消逝的迴圈', nat:'日本', bio:'日本統治時代に台湾で水彩画を指導した画家。台北師範学校等で多くの台湾人画家を育てた、台湾近代美術の基礎を作った一人とされる。'},
+  {name:'木下靜涯', sub:'sub:被消逝的迴圈', nat:'日本', bio:'日本統治時代、淡水に長く暮らした膠彩画家。台展等で活動したが、戦後は台湾美術史の記述から長く外れていた。'},
+  {name:'安力．給怒', sub:'sub:環境迴圈', nat:'台湾(原住民族)', bio:'情報不可(確認できる詳細な経歴情報を見つけられなかった)。'},
+  {name:'梅志雄', sub:'sub:環境迴圈', nat:'マレーシア', bio:'情報不可(確認できる詳細な経歴情報を見つけられなかった)。'},
+  {name:'許丙丁', sub:'sub:歷史迴圈', nat:'台湾(台南)', bio:'台南出身の文学者。民謡「六月茉莉」の作詞者として知られ、台語文学・大衆文化に関わる仕事を残した。'},
+  {name:'葉石濤', sub:'sub:歷史迴圈', nat:'台湾(台南)', bio:'台南出身の作家・文学評論家。台湾文学史の記述に大きな功績を残した一人とされる。白色恐怖の時代に投獄された経験を持つ。'},
+  {name:'郭俞平', sub:'sub:歷史迴圈', nat:'台湾', bio:'現代アーティスト。自身の実家があった中興新村(台湾省政府の旧模範都市)の模型を作品化している。'},
+  {name:'楊淯緹', sub:'sub:歷史迴圈', nat:'台湾', bio:'情報不可(確認できる詳細な経歴情報を見つけられなかった)。'},
+  {name:'方偉文', sub:'sub:集結迴圈', nat:'台湾', bio:'情報不可。独立した経歴情報は確認できなかった。別人物「李昆霖」のWikipedia記事内に、2001年に黄歩青・林煌迪・方偉文らと台南市で「前鋒藝術工作室」を設立したとの間接言及があるのみ。'},
+  {name:'陳毅哲', sub:'sub:集結迴圈', nat:'台湾', bio:'情報不可。複数の検索経路で調査したが、独立した経歴情報は見つからなかった。'},
+  {name:'小事報團隊(龔義昭・洪淑青)', sub:'sub:集結迴圈', nat:'台湾', bio:'英語表記Small Thing News(Doch Gong & Selina Hung)。デュオの経歴・代表作に関する外部情報は確認できなかった。'},
+  {name:'太認真(郭柏俞・佘文瑛)', sub:'sub:集結迴圈', nat:'台湾', bio:'英語表記Working Hard(Kuo Po-yu & She Wen-ying)。デュオの経歴・代表作に関する外部情報は確認できなかった。'},
+  {name:'吳佩珊', sub:'sub:集結迴圈', nat:'台湾', bio:'情報不可。同名の別人物に関する検索結果以外、独立した経歴情報は見つからなかった。'},
+  {name:'Joshua Sofaer', sub:'sub:集結迴圈', nat:'英国', bio:'1972年ケンブリッジ生まれ。Central Saint Martinsで美術修士、Dartington College of Artsで博士号取得。現在は台湾・国立中山大学(高雄)准教授。Tate Modern『Scavengers』、ロンドン科学博物館『The Rubbish Collection』等、参加型パフォーマンス/インスタレーションで国際的に活動。2009年Bank of America CREATE Art Award受賞。'},
+  {name:'Jane Ingram Allen', sub:'sub:集結迴圈', nat:'米国', bio:'情報不可。公式サイトにアクセスできず、確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'拉黑子．達立夫(Rahic Talif)', sub:'sub:再生迴圈', nat:'台湾(阿美族)', bio:'1962年、花蓮県豊濱郷港口部落生まれの阿美族アーティスト。遠洋船員等を経て1991年に部落へ戻り、伝統文化調査と木彫創作を開始。漂流木・海洋廃棄物を用いた『颱風計畫』等のインスタレーション・地景藝術で知られる。'},
+  {name:'Wanapati Yunupiŋu', sub:'sub:再生迴圈', nat:'オーストラリア', bio:'捨てられた道路標識に祖先の文様をドリルで彫る作品で知られる。ゴミを再び意味のある物に戻す工程を作品化している。'},
+  {name:'武玉玲', sub:'sub:再生迴圈', nat:'台湾(原住民族)', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'Sharbendu De', sub:'sub:風景迴圈', nat:'インド', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'李若玫', sub:'sub:風景迴圈', nat:'台湾', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'吳耿禎', sub:'sub:風景迴圈', nat:'台湾(台南)', bio:'台湾の剪紙(切り紙)作家として知られる。経歴の詳細(生年・受賞歴等)は確認できなかった。'},
+  {name:'郭柏川', sub:'sub:風景迴圈', nat:'台湾(台南)', bio:'1901–1974年。東京美術学校で岡田三郎助に師事後、1937年満洲・北京へ。1939–43年、北京訪問中の梅原龍三郎の案内役・通訳を務めた(正規の師弟関係ではない)。1948年台南に戻り南美會を創設。'},
+  {name:'張炳堂', sub:'sub:風景迴圈', nat:'台湾(台南)', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'楊季涓', sub:'sub:風景迴圈', nat:'台湾', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'阮英俊', sub:'sub:移動迴圈', nat:'ベトナム', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+  {name:'杉原信幸・中村綾花', sub:'sub:移動迴圈', nat:'日本', bio:'情報不可。確認できる詳細な経歴情報を見つけられなかった。'},
+];
+
+const FESTIVAL_CATEGORIES = [
+  {id:'cat:劇情長片類', label:'劇情長片類'},
+  {id:'cat:劇情短片類', label:'劇情短片類'},
+  {id:'cat:紀錄長片類', label:'紀錄長片類'},
+  {id:'cat:紀錄短片類', label:'紀錄短片類'},
+  {id:'cat:實驗類', label:'實驗類'},
+  {id:'cat:動畫類', label:'動畫類'},
+  {id:'cat:人權關懷獎', label:'人權關懷獎'},
+  {id:'cat:台南影像獎', label:'台南影像獎'},
+  {id:'cat:黑金光獎', label:'黑金光獎'},
+];
+
+/* each work: title, director, country, categories[], synopsis, url, keywords[] (editorial) */
+const FESTIVAL_WORKS = [
+{title:'公園裏面沒有人',director:'詹亞魁',country:'香港',cats:['劇情長片類'],syn:'COVID-19下の夜の公園を舞台に、国家権力・道徳規律と欲望・恐怖の間で揺れる個人を描く。',url:'https://festival.south.org.tw/film/under-the-gaze-of-night',kw:[]},
+{title:'拜拜，拜拜',director:'葉謙',country:'マレーシア',cats:['劇情長片類'],syn:'20年寺を守った老婆が不幸に見舞われ、ついに神像を捨て神々と決別する寓話。',url:'https://festival.south.org.tw/film/gods-are-watching',kw:['保存']},
+{title:'老破車',director:'甘龍發',country:'シンガポール',cats:['劇情長片類'],syn:'古い車を手放し移住を控えた老人が、娘や旧友との過去に向き合う。',url:'https://festival.south.org.tw/film/the-old-man-and-his-car',kw:['記憶','離別']},
+{title:'陽光燦爛的地方',director:'藍燦昭',country:'中国・スイス・カナダ・マレーシア',cats:['劇情長片類'],syn:'留守児童の視点から、村の4人の子どもの日常に自身の成長を重ねる。',url:'https://festival.south.org.tw/film/30309-2',kw:[]},
+{title:'三隻小豬',director:'仲錦妮',country:'香港',cats:['劇情短片類'],syn:'豚の頭を盗む使命から始まる香港の夜の旅、不在の友への追悼。',url:'https://festival.south.org.tw/film/three-little-pigs',kw:['記憶']},
+{title:'伙房',director:'林宛蓁',country:'台湾',cats:['劇情短片類'],syn:'過疎化する客家集落「伙房」で静かに暮らし続ける高齢女性二人。',url:'https://festival.south.org.tw/film/through-the-dust-of-time',kw:['保存','土地']},
+{title:'公雞囡',director:'李景宇',country:'中国',cats:['劇情短片類'],syn:'厄除けの雄鶏が持ち込まれ崩れていく結婚式と、家族の滑稽さ。',url:'https://festival.south.org.tw/film/rooster-girl',kw:[]},
+{title:'掌上明珠',director:'任泓霖',country:'中国',cats:['劇情短片類'],syn:'底辺で暮らす単親の母と娘が社会への叫びを上げる物語。',url:'https://festival.south.org.tw/film/baby-girl',kw:[]},
+{title:'是公園',director:'李岩',country:'中国',cats:['劇情短片類'],syn:'都市に移った老人が公園での老人たちとの交流を通じ自身の偏見と向き合う。',url:'https://festival.south.org.tw/film/the-park-is-public',kw:['外部の視線']},
+{title:'浮游物',director:'薛文碩',country:'台湾',cats:['劇情短片類'],syn:'台湾南部の夜勤工場、警備員の日常と移民労働者との小さな関わり。',url:'https://festival.south.org.tw/film/the-foreigner',kw:['外部の視線']},
+{title:'綠湖',director:'朱臨惟',country:'中国',cats:['劇情短片類'],syn:'雲南の工場で働く男と、幼馴染に似た看護師との秘密をめぐる物語。',url:'https://festival.south.org.tw/film/green-lake',kw:['記憶']},
+{title:'貓與雞',director:'朱凱濙',country:'台湾',cats:['劇情短片類'],syn:'愛猫を見送るため、高雄の農村から市内まで火葬先を探す二人の女性。',url:'https://festival.south.org.tw/film/after-the-cat',kw:[]},
+{title:'鬣狗',director:'楊名',country:'アメリカ・中国',cats:['劇情短片類','黑金光獎'],syn:'受験のための施設が嵐で崩壊していく、中国の受験文化のトラウマを描く。',url:'https://festival.south.org.tw/film/hyena',kw:[]},
+{title:'離開即景',director:'陳淦熙',country:'台湾・香港',cats:['紀錄長片類'],syn:'香港動乱と留学、コロナ封鎖下での父娘のSkype通話を記録する。',url:'https://festival.south.org.tw/film/scenes-from-departure',kw:['離別','記憶']},
+{title:'翁丁',director:'劉春雨',country:'日本',cats:['紀錄長片類','人權關懷獎'],syn:'雲南省の原始部落「翁丁」を10年撮影。立ち退き抵抗の末、火災で村が失われる。',url:'https://festival.south.org.tw/film/the-last-tribe-in-china',kw:['標本','保存','外部の視線']},
+{title:'烤火房的一些夢',director:'莎韻西孟',country:'台湾',cats:['紀錄長片類'],syn:'タイヤル族の家族が祖父の死後、祖先の掟「Gaga」との断絶に向き合う10年。',url:'https://festival.south.org.tw/film/spi',kw:['原住民族','迴圈']},
+{title:'一顆痣的自白',director:'譚墨',country:'ポーランド・中国',cats:['紀錄長片類'],syn:'顔の痣の予言をきっかけに家族と病に向き合う自己省察的ドキュメンタリー。',url:'https://festival.south.org.tw/film/confessions-of-a-mole',kw:['記憶']},
+{title:'Compact Disc',director:'王樂堯',country:'香港',cats:['紀錄長片類'],syn:'投獄経験を持つ友人たちと、トラウマが日常に残り続ける様を見つめる。',url:'https://festival.south.org.tw/film/compact-disc-2',kw:['保存','政治暴力']},
+{title:'那裡魔神仔很多你還要回去',director:'簡嫚君',country:'台湾',cats:['紀錄短片類'],syn:'収用される実家に戻る監督と父の対話、消えゆく故郷の記憶。',url:'https://festival.south.org.tw/film/well-intentioned',kw:['記憶','土地']},
+{title:'記憶座標',director:'陳巧真',country:'香港',cats:['紀錄短片類'],syn:'香港の風景に残る痕跡から、去った者・留まった者の記憶を結ぶ。',url:'https://festival.south.org.tw/film/map-of-trace',kw:['記憶','迴圈']},
+{title:'氣旋',director:'MT',country:'香港・台湾',cats:['紀錄短片類'],syn:'香港主権移管25周年と台風襲来が重なった一日、国家安全法下の日常。',url:'https://festival.south.org.tw/film/cyclone',kw:['政治暴力']},
+{title:'月亮上的業餘者',director:'黃邦銓・林君昵',country:'台湾',cats:['紀錄短片類'],syn:'アマチュア映画の先駆者の未完成だったSF映画の夢を同規格フィルムで再現。',url:'https://festival.south.org.tw/film/amateur-in-the-moon',kw:['迴圈','記憶']},
+{title:'屋舍上的葉仔花',director:'葉治芳',country:'台湾',cats:['紀錄短片類'],syn:'祖父の植えた花と客家語を手がかりに自身のルーツを探る。',url:'https://festival.south.org.tw/film/the-paperflower-still-blooms',kw:['記憶','土地']},
+{title:'哥哥死後去了哪裡',director:'陳俊維',country:'台湾',cats:['紀錄短片類'],syn:'兄の死後の行き先について両親の信念の違いに向き合う。',url:'https://festival.south.org.tw/film/whered-my-brother-go',kw:['記憶']},
+{title:'夕日記',director:'朱祥生',country:'台湾',cats:['實驗類'],syn:'緑島での撮影が難航し途絶える、残像現象をテーマにした映像の手紙。',url:'https://festival.south.org.tw/film/film-about-palinopsia',kw:['記憶']},
+{title:'家庭公寓',director:'李新傑',country:'香港',cats:['實驗類'],syn:'30年暮らした香港の公共住宅を16mmフィルムで記録、全7章。',url:'https://festival.south.org.tw/film/old-slab',kw:['保存','離別']},
+{title:'掩眼法',director:'劉景愉',country:'マカオ',cats:['實驗類'],syn:'カジノから締め出された少年が神秘の木を発見する寓話的物語。',url:'https://festival.south.org.tw/film/dirty-eye',kw:[]},
+{title:'有空',director:'倪祥',country:'台湾',cats:['實驗類'],syn:'生死の重いテーマが日常の延長として現れる、ユーモラスな作品。',url:'https://festival.south.org.tw/film/im-free',kw:[]},
+{title:'水堤',director:'曾德源',country:'シンガポール・インドネシア・ドイツ',cats:['實驗類'],syn:'オランダ植民地史を背景に水辺に生きる3人を追う「幽霊」の映画。',url:'https://festival.south.org.tw/film/bendungan',kw:['政治暴力']},
+{title:'海妖們',director:'吳梓安',country:'台湾',cats:['實驗類'],syn:'水に沈んだ世界、蛤蠣が蜃気楼を吐く終末的SF。',url:'https://festival.south.org.tw/film/the-sirens',kw:[]},
+{title:'而後',director:'姚仲匡',country:'香港・英国',cats:['實驗類'],syn:'2014年雨傘運動と2019年、2つの時代の恋愛をAI生成映像で再構築。',url:'https://festival.south.org.tw/film/afterwards',kw:['政治暴力','記憶']},
+{title:'蒸發書簡',director:'張若涵・工藤雅',country:'台湾・日本',cats:['實驗類'],syn:'台北と東京の作家による往復書簡的映像、多様な技法の交換。',url:'https://festival.south.org.tw/film/jouhatsu-letters',kw:[]},
+{title:'迷途',director:'黄維鵬',country:'中国',cats:['實驗類'],syn:'不公正と混沌に満ちた世界で道を失う寓話。',url:'https://festival.south.org.tw/film/allegory-of-the-cave',kw:[]},
+{title:'今天是明天的昨天',director:'姜俊任',country:'英国・台湾・香港',cats:['動畫類'],syn:'オフィスに迷い込んだ毛虫が、忘れがちな本当の自分との再会を導く。',url:'https://festival.south.org.tw/film/ima-wa-ima',kw:[]},
+{title:'你不在這個蛋糕裡',director:'陳亭叡',country:'台湾',cats:['動畫類','黑金光獎'],syn:'恐同的な父親への復讐譚、ダークユーモアのアニメーション。',url:'https://festival.south.org.tw/film/you-are-not-part-of-the-cake',kw:[]},
+{title:'崩落',director:'陳君典',country:'台湾',cats:['實驗類'],syn:'旧友の市長から再開発を依頼された建築家が、理想の崩壊と向き合う。',url:'https://festival.south.org.tw/film/the-architect-who-built-his-own-collapse',kw:['土地']},
+{title:'忘川',director:'黄亮昕',country:'台湾・フランス',cats:['動畫類'],syn:'アルツハイマー病の彫刻家が忘却の河を渡り、娘との記憶を組み立て直す。',url:'https://festival.south.org.tw/film/lethe',kw:['記憶']},
+{title:'我朋友的故事',director:'林奕伶',country:'台湾',cats:['動畫類','黑金光獎'],syn:'自死した親友への怒りと後悔を手放し現実を受け入れる物語。',url:'https://festival.south.org.tw/film/stacy',kw:['記憶']},
+{title:'我的朋友陳看看',director:'張野姣・李蘄高',country:'中国',cats:['動畫類'],syn:'隣人を覗き見る日々から、抑圧された子供時代の秘密が浮かび上がる。',url:'https://festival.south.org.tw/film/dear-kankan',kw:[]},
+{title:'瘋狗童話',director:'陳鏹',country:'アメリカ',cats:['動畫類'],syn:'討たれたはずの義賊「瘋狗大俠」が愛犬と共に官兵と再び対峙する。',url:'https://festival.south.org.tw/film/bad-days-are-like-mad-dogs',kw:[]},
+{title:'落雺',director:'莊淯津',country:'台湾',cats:['動畫類'],syn:'濃霧の帰路、生と死・自然界の生命への崇敬を思う。',url:'https://festival.south.org.tw/film/falling-mist',kw:[]},
+{title:'這一次',director:'曾建翔',country:'台湾',cats:['動畫類'],syn:'遠くへ行きたい蝶と公園暮らしを望む毛虫、価値観の異なる二人の冒険。',url:'https://festival.south.org.tw/film/this-time',kw:[]},
+{title:'陌生人與他們的小孩',director:'劉吉雄',country:'台湾',cats:['人權關懷獎'],syn:'ベトナム難民が澎湖の非公開キャンプで出産した106人の子のルーツを追う。',url:'https://festival.south.org.tw/film/strangers-and-their-babies',kw:['政治暴力','外部の視線']},
+{title:'大風之島',director:'許雅婷',country:'台湾',cats:['人權關懷獎'],syn:'ハンセン病療養院の住民が立ち退きに20年抵抗した記録と土地との結びつき。',url:'https://festival.south.org.tw/film/island-of-the-winds',kw:['政治暴力','標本','土地']},
+{title:'阿北不見',director:'羅理龢',country:'台湾',cats:['人權關懷獎'],syn:'道端で倒れていた老人を助けた監督が、消えた老人を探し求める。',url:'https://festival.south.org.tw/film/abei-is-missing',kw:[]},
+{title:'未來考古學',director:'林仕杰・陳君典・盧彥中',country:'台湾',cats:['人權關懷獎'],syn:'佐藤春夫の文学に触発された台南の洋館での撮影、百年を超える記憶の探求。',url:'https://festival.south.org.tw/film/archaeology-of-the-future',kw:['記憶','迴圈']},
+{title:'撿骨',director:'蔡秉容',country:'台湾',cats:['台南影像獎'],syn:'骨を拾い、改葬するという台湾の古い儀礼そのものを見つめる。',url:'https://festival.south.org.tw/film/khioh-kut',kw:['標本','保存','迴圈']},
+{title:'巡塭',director:'黄柏淯',country:'台湾',cats:['台南影像獎'],syn:'台南七股の文蛤養殖、漁電共生政策下で変化する人と土地の関係。',url:'https://festival.south.org.tw/film/inspecting-the-ponds',kw:['土地']},
+{title:'夜迴',director:'李騁佺',country:'台湾',cats:['台南影像獎'],syn:'夜と日が交替する中、存在と沈黙を交換し合う詩的実験映像。',url:'https://festival.south.org.tw/film/%e5%a4%9c%e8%bf%b4',kw:['迴圈']},
+{title:'地平線的四草飼料行',director:'陳淑君',country:'台湾',cats:['台南影像獎'],syn:'60年続く家族経営の飼料店を軸に、四草の百年の農業・漁業の変遷を記録。',url:'https://festival.south.org.tw/film/sicaos-feed-store-on-the-horizon',kw:['土地','記憶']},
+{title:'一生二命',director:'陳冠君',country:'台湾',cats:['台南影像獎'],syn:'性別移行に向き合う4年間、家族の期待と異なる自分を選ぶ物語。',url:'https://festival.south.org.tw/film/second-round',kw:[]},
+{title:'末代殭屍',director:'游智傑',country:'台湾・中国・香港',cats:['黑金光獎'],syn:'「趕屍」術に由来する殭屍文化、現代に残る最後の殭屍との別れの旅。',url:'https://festival.south.org.tw/film/the-last-jiangshi',kw:['保存']},
+{title:'太開眼戒',director:'丁啟文',country:'台湾',cats:['黑金光獎'],syn:'流出した私的な通話映像が「記録」から「ポルノ」へ変わる境界の崩壊。',url:'https://festival.south.org.tw/film/eyes-wide-rape',kw:[]},
+{title:'月花',director:'宋嘉恩',country:'シンガポール',cats:['黑金光獎'],syn:'日食前夜、神経多様性を持つ少女が母の困難な妊娠を理解しようとする。',url:'https://festival.south.org.tw/film/hour-of-the-flower',kw:[]},
+{title:'虎爺',director:'何郁琦',country:'台湾',cats:['黑金光獎'],syn:'アミ族の精神世界と漢民族信仰の接点、抑圧された東部先住民信仰の歴史。',url:'https://festival.south.org.tw/film/tiger-god',kw:['原住民族','政治暴力']},
+{title:'海島熱夢',director:'潘律',country:'香港・韓国',cats:['黑金光獎'],syn:'社会主義時代の国営スタジオ映画15本を再構成、イデオロギーを解体する。',url:'https://festival.south.org.tw/film/island-fever',kw:['政治暴力','記憶']},
+];
+
+const KEYWORDS = ['迴圈','標本','保存','記憶','政治暴力','原住民族','外部の視線','土地','離別'];
+
+/* ============================================================
+   GRAPH ASSEMBLY
+   ============================================================ */
+const nodes = [];
+const links = [];
+const nodeById = {};
+function addNode(n) { nodeById[n.id] = n; nodes.push(n); }
+
+addNode({id:'root:biennale', label:'迴圈．超展開\n臺南藝術雙年展', type:'root', group:'biennale', r:34});
+addNode({id:'root:festival', label:'第23屆\n南方影展', type:'root', group:'festival', r:34});
+
+BIENNALE_SUBTHEMES.forEach(s => {
+  addNode({id:s.id, label:s.label, type:'subtheme', group:'biennale', r:16, curator:s.curator});
+  links.push({source:'root:biennale', target:s.id, kind:'official'});
+});
+BIENNALE_ARTISTS.forEach(a => {
+  const id = 'artist:'+a.name;
+  addNode({id, label:a.name, type:'artist', group:'biennale', r:9, nat:a.nat, bio:a.bio});
+  links.push({source:a.sub, target:id, kind:'official'});
+});
+
+FESTIVAL_CATEGORIES.forEach(c => {
+  addNode({id:c.id, label:c.label, type:'category', group:'festival', r:15});
+  links.push({source:'root:festival', target:c.id, kind:'official'});
+});
+FESTIVAL_WORKS.forEach(w => {
+  const wid = 'work:'+w.title;
+  addNode({id:wid, label:w.title, type:'work', group:'festival', r:8, director:w.director, country:w.country, syn:w.syn, url:w.url});
+  w.cats.forEach(c => links.push({source:'cat:'+c, target:wid, kind:'official'}));
+  const did = 'person:'+w.director;
+  if (!nodeById[did]) addNode({id:did, label:w.director, type:'director', group:'festival', r:6});
+  links.push({source:wid, target:did, kind:'official'});
+  (w.kw||[]).forEach(k => {
+    const kid = 'kw:'+k;
+    links.push({source:kid, target:wid, kind:'thematic'});
+  });
+});
+/* biennale side keyword hooks, hand-picked from already-established essay content */
+links.push({source:'kw:迴圈', target:'artist:Wanapati Yunupiŋu', kind:'thematic'});
+links.push({source:'kw:標本', target:'artist:郭俞平', kind:'thematic'});
+links.push({source:'kw:政治暴力', target:'sub:歷史迴圈', kind:'thematic'});
+links.push({source:'kw:原住民族', target:'artist:拉黑子．達立夫', kind:'thematic'});
+links.push({source:'kw:原住民族', target:'artist:武玉玲', kind:'thematic'});
+links.push({source:'kw:土地', target:'sub:風景迴圈', kind:'thematic'});
+
+KEYWORDS.forEach(k => {
+  const kid = 'kw:'+k;
+  if (!nodeById[kid]) addNode({id:kid, label:k, type:'keyword', group:'keyword', r:13});
+});
+
+/* resolve link endpoints to node refs */
+links.forEach(l => { l.s = nodeById[l.source]; l.t = nodeById[l.target]; });
+const validLinks = links.filter(l => l.s && l.t);
+
+/* ============================================================
+   FORCE SIMULATION (hand-rolled, no deps)
+   ============================================================ */
+const svg = document.getElementById('graph');
+const NS = 'http://www.w3.org/2000/svg';
+let W = window.innerWidth, H = window.innerHeight;
+
+nodes.forEach(n => {
+  let cx = W/2, cy = H/2, spread = 180;
+  if (n.type === 'root') spread = 0;
+  else if (n.group === 'biennale') { cx = W*0.3; }
+  else if (n.group === 'festival') { cx = W*0.7; }
+  else if (n.group === 'keyword') { cx = W*0.5; cy = H*0.15; }
+  n.x = cx + (Math.random()-0.5)*spread*2;
+  n.y = cy + (Math.random()-0.5)*spread*2;
+  n.vx = 0; n.vy = 0;
+});
+nodeById['root:biennale'].x = W*0.28; nodeById['root:biennale'].y = H*0.5;
+nodeById['root:festival'].x = W*0.72; nodeById['root:festival'].y = H*0.5;
+
+const linkedSet = {};
+validLinks.forEach(l => {
+  (linkedSet[l.s.id] = linkedSet[l.s.id]||[]).push(l.t.id);
+  (linkedSet[l.t.id] = linkedSet[l.t.id]||[]).push(l.s.id);
+});
+
+let camX=0, camY=0, camScale=1;
+const gLinks = document.createElementNS(NS,'g');
+const gNodes = document.createElementNS(NS,'g');
+svg.appendChild(gLinks); svg.appendChild(gNodes);
+
+const COLORS = { biennale: 'var(--jade)', festival: 'var(--accent)', keyword: 'var(--amber)' };
+function colorFor(n) {
+  if (n.type === 'root') return n.group === 'biennale' ? '#2f6b52' : '#c23b1f';
+  if (n.group === 'biennale') return '#2f6b52';
+  if (n.group === 'festival') return '#c23b1f';
+  return '#a8792a';
+}
+
+const linkEls = validLinks.map(l => {
+  const el = document.createElementNS(NS,'line');
+  el.setAttribute('stroke', l.kind==='thematic' ? '#a8792a' : 'rgba(23,19,15,0.28)');
+  el.setAttribute('stroke-width', l.kind==='thematic' ? '1' : '1.1');
+  if (l.kind==='thematic') el.setAttribute('stroke-dasharray','3,3');
+  el.dataset.kind = l.kind;
+  el.dataset.a = l.s.id; el.dataset.b = l.t.id;
+  gLinks.appendChild(el);
+  return el;
+});
+
+const nodeEls = nodes.map(n => {
+  const g = document.createElementNS(NS,'g');
+  g.setAttribute('class','node');
+  g.dataset.id = n.id; g.dataset.group = n.group; g.dataset.type = n.type;
+  const c = document.createElementNS(NS,'circle');
+  c.setAttribute('r', n.r);
+  c.setAttribute('fill', n.type==='root' ? colorFor(n) : (n.group==='keyword' ? 'none' : '#f3efe3'));
+  c.setAttribute('stroke', colorFor(n));
+  c.setAttribute('stroke-width', n.type==='root' ? 0 : 1.6);
+  g.appendChild(c);
+  const t = document.createElementNS(NS,'text');
+  t.setAttribute('text-anchor','middle');
+  t.setAttribute('font-family', n.type==='root' ? "'Zen Old Mincho',serif" : "'Noto Sans JP',sans-serif");
+  t.setAttribute('font-size', n.type==='root' ? 12 : (n.type==='subtheme'||n.type==='category' ? 9.5 : 8.2));
+  t.setAttribute('fill', n.type==='root' ? '#f3efe3' : '#17130f');
+  t.setAttribute('pointer-events','none');
+  if (n.type==='root') {
+    n.label.split('\n').forEach((line,i) => {
+      const ts = document.createElementNS(NS,'tspan');
+      ts.setAttribute('x',0); ts.setAttribute('dy', i===0?0:12);
+      ts.textContent = line;
+      t.appendChild(ts);
+    });
+    t.setAttribute('y', -2);
+  } else {
+    t.setAttribute('y', n.r + 11);
+    t.textContent = n.label.length > 11 ? n.label.slice(0,10)+'…' : n.label;
+  }
+  g.appendChild(t);
+  g.style.cursor = 'pointer';
+  gNodes.appendChild(g);
+  return g;
+});
+
+function tick() {
+  const alpha = 0.08;
+  for (let i=0;i<nodes.length;i++) {
+    const a = nodes[i];
+    let fx=0, fy=0;
+    for (let j=0;j<nodes.length;j++) {
+      if (i===j) continue;
+      const b = nodes[j];
+      let dx = a.x-b.x, dy = a.y-b.y;
+      let d2 = dx*dx+dy*dy; if (d2<100) d2=100;
+      const rep = Math.min(140 / d2, 0.6);
+      fx += dx*rep; fy += dy*rep;
+    }
+    const cx = a.group==='biennale'? W*0.3 : a.group==='festival'? W*0.7 : W*0.5;
+    const cy = a.group==='keyword'? H*0.15 : H*0.5;
+    fx += (cx-a.x)*0.01; fy += (cy-a.y)*0.01;
+    a.fx = fx; a.fy = fy;
+  }
+  validLinks.forEach(l => {
+    const dx=l.t.x-l.s.x, dy=l.t.y-l.s.y;
+    const dist = Math.sqrt(dx*dx+dy*dy)||1;
+    const target = l.kind==='thematic' ? 150 : 65;
+    const k = l.kind==='thematic' ? 0.02 : 0.06;
+    const f = (dist-target)*k;
+    const fx = dx/dist*f, fy = dy/dist*f;
+    l.s.fx += fx; l.s.fy += fy;
+    l.t.fx -= fx; l.t.fy -= fy;
+  });
+  nodes.forEach(n => {
+    if (n.dragging) return;
+    n.vx = (n.vx + n.fx*alpha) * 0.78;
+    n.vy = (n.vy + n.fy*alpha) * 0.78;
+    const sp = Math.sqrt(n.vx*n.vx+n.vy*n.vy);
+    const maxSp = 14;
+    if (sp > maxSp) { n.vx = n.vx/sp*maxSp; n.vy = n.vy/sp*maxSp; }
+    n.x += n.vx; n.y += n.vy;
+  });
+
+  linkEls.forEach(el => {
+    const a = nodeById[el.dataset.a], b = nodeById[el.dataset.b];
+    el.setAttribute('x1',a.x); el.setAttribute('y1',a.y);
+    el.setAttribute('x2',b.x); el.setAttribute('y2',b.y);
+  });
+  nodeEls.forEach(g => {
+    const n = nodeById[g.dataset.id];
+    g.setAttribute('transform', `translate(${n.x},${n.y})`);
+  });
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+function fitToView() {
+  const xs = nodes.map(n=>n.x), ys = nodes.map(n=>n.y);
+  const minx=Math.min(...xs), maxx=Math.max(...xs), miny=Math.min(...ys), maxy=Math.max(...ys);
+  const pad = 80;
+  const scaleX = W / (maxx-minx+pad*2), scaleY = H / (maxy-miny+pad*2);
+  camScale = Math.max(0.25, Math.min(1, Math.min(scaleX, scaleY)));
+  camX = W/2 - (minx+maxx)/2*camScale;
+  camY = H/2 - (miny+maxy)/2*camScale;
+  applyCamera();
+}
+setTimeout(fitToView, 2600);
+
+function applyCamera() {
+  gLinks.setAttribute('transform', `translate(${camX},${camY}) scale(${camScale})`);
+  gNodes.setAttribute('transform', `translate(${camX},${camY}) scale(${camScale})`);
+}
+applyCamera();
+
+/* pan + zoom */
+let panning=false, panStart={x:0,y:0}, camStart={x:0,y:0};
+svg.addEventListener('mousedown', e => {
+  if (e.target.closest('.node')) return;
+  panning=true; svg.classList.add('panning');
+  panStart={x:e.clientX,y:e.clientY}; camStart={x:camX,y:camY};
+});
+window.addEventListener('mousemove', e => {
+  if (!panning) return;
+  camX = camStart.x + (e.clientX-panStart.x);
+  camY = camStart.y + (e.clientY-panStart.y);
+  applyCamera();
+});
+window.addEventListener('mouseup', () => { panning=false; svg.classList.remove('panning'); });
+svg.addEventListener('wheel', e => {
+  e.preventDefault();
+  const prev = camScale;
+  camScale = Math.max(0.3, Math.min(2.5, camScale * (e.deltaY<0?1.08:0.92)));
+  const r = prev ? camScale/prev : 1;
+  camX = e.clientX - (e.clientX-camX)*r;
+  camY = e.clientY - (e.clientY-camY)*r;
+  applyCamera();
+}, {passive:false});
+
+/* node drag */
+nodeEls.forEach(g => {
+  g.addEventListener('mousedown', e => {
+    e.stopPropagation();
+    const n = nodeById[g.dataset.id];
+    n.dragging = true;
+    const move = ev => {
+      n.x = (ev.clientX - camX)/camScale;
+      n.y = (ev.clientY - camY)/camScale;
+    };
+    const up = () => { n.dragging=false; window.removeEventListener('mousemove',move); window.removeEventListener('mouseup',up); };
+    window.addEventListener('mousemove',move);
+    window.addEventListener('mouseup',up);
+  });
+  g.addEventListener('click', e => {
+    e.stopPropagation();
+    showPanel(nodeById[g.dataset.id]);
+    highlight(g.dataset.id);
+  });
+});
+
+function highlight(id) {
+  nodeEls.forEach(g => g.style.opacity = (g.dataset.id===id || (linkedSet[id]||[]).includes(g.dataset.id)) ? 1 : 0.22);
+  linkEls.forEach(el => el.style.opacity = (el.dataset.a===id || el.dataset.b===id) ? 1 : 0.08);
+}
+svg.addEventListener('dblclick', () => {
+  nodeEls.forEach(g => g.style.opacity = 1);
+  linkEls.forEach(el => el.style.opacity = 1);
+  panel.classList.remove('show');
+});
+
+/* side panel */
+const panel = document.getElementById('panel');
+const panelBody = document.getElementById('panelBody');
+document.getElementById('panelClose').addEventListener('click', () => panel.classList.remove('show'));
+
+function showPanel(n) {
+  const typeLabel = {root:'特集ページ', subtheme:'雙年展・子題', artist:'雙年展・アーティスト', category:'南方影展・カテゴリ', work:'南方影展・作品', director:'南方影展・監督', keyword:'テーマ接続（編集的分類）'}[n.type] || n.type;
+  let html = `<p class="ptype mono">${typeLabel}</p><h2 class="heading">${n.label.replace(/\n/g,' ')}</h2>`;
+  if (n.curator) html += `<p class="meta-line">キュレーター：${n.curator}</p>`;
+  if (n.nat) html += `<p class="meta-line">${n.nat}</p>`;
+  if (n.director) html += `<p class="meta-line">監督：${n.director}${n.country?' ／ '+n.country:''}</p>`;
+  if (n.bio) html += `<p class="body">${n.bio}</p>`;
+  if (n.syn) html += `<p class="body">${n.syn}</p>`;
+  const conns = (linkedSet[n.id]||[]).map(id => nodeById[id]).filter(Boolean);
+  if (conns.length) {
+    html += `<p class="meta-line" style="margin-top:1rem;">つながり（${conns.length}）</p><ul class="conn-list">`;
+    conns.slice(0,24).forEach(c => { html += `<li data-go="${c.id}">${c.label.replace(/\n/g,' ')}</li>`; });
+    html += `</ul>`;
+  }
+  if (n.url) html += `<a class="ext" href="${n.url}" target="_blank" rel="noopener">公式サイトで見る →</a>`;
+  panelBody.innerHTML = html;
+  panel.classList.add('show');
+  panelBody.querySelectorAll('[data-go]').forEach(li => {
+    li.addEventListener('click', () => { showPanel(nodeById[li.dataset.go]); highlight(li.dataset.go); });
+  });
+}
+
+/* filters */
+const filterState = { biennale:true, festival:true, keyword:true };
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('button'); if (!btn) return;
+  const f = btn.dataset.f;
+  filterState[f] = !filterState[f];
+  btn.classList.toggle('off', !filterState[f]);
+  nodeEls.forEach(g => {
+    const grp = g.dataset.group;
+    g.style.display = filterState[grp] !== false ? '' : 'none';
+  });
+  linkEls.forEach(el => {
+    const a = nodeById[el.dataset.a], b = nodeById[el.dataset.b];
+    const vis = filterState[a.group]!==false && filterState[b.group]!==false;
+    el.style.display = vis ? '' : 'none';
+  });
+});
+
+window.addEventListener('resize', () => { W=window.innerWidth; H=window.innerHeight; });
+</script>
+</body>
+</html>
