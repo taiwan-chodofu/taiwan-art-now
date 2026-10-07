@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="{{ html_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+  if (new URLSearchParams(window.location.search).has('_exclude_ga')) localStorage.setItem('taiwan_art_ga_exclude','1');
+  if (!localStorage.getItem('taiwan_art_ga_exclude')) {
+    var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-ZHBVKMZCWG';document.head.appendChild(s);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZHBVKMZCWG');
+  } else { function gtag(){} }
+  </script>
+  <title>{{ t.meta_title }}</title>
+  <meta name="description" content="{{ t.meta_desc }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;900&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f3efe3; --ink: #17130f; --soft: #5c5346;
+      --accent: #c23b1f; --rule: rgba(23,19,15,0.22);
+      --invert-bg: #17130f; --invert-fg: #f3efe3; --invert-soft: #b7a996; --invert-rule: rgba(243,239,227,0.22);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Shippori Mincho", serif; background: var(--paper); color: var(--ink); line-height: 1.95; overflow-x: hidden; }
+    .heading { font-family: "Zen Old Mincho", serif; }
+    .mono { font-family: "Noto Sans JP", sans-serif; letter-spacing: 0.14em; text-transform: uppercase; }
+
+    .progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); width: 0%; z-index: 200; }
+    .topnav {
+      position: fixed; top: 24px; left: 6vw; z-index: 200; font-family: "Noto Sans JP", sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.08em; color: #fff; text-decoration: none;
+      border-bottom: 1px solid #fff; padding-bottom: 2px; mix-blend-mode: difference;
+    }
+    .langswitch {
+      position: fixed; top: 24px; right: 6vw; z-index: 200; font-size: 0.72rem;
+      display: flex; gap: 10px; mix-blend-mode: difference;
+    }
+    .langswitch a { color: #fff; text-decoration: none; opacity: 0.55; }
+    .langswitch a.active { opacity: 1; border-bottom: 1px solid #fff; padding-bottom: 2px; }
+
+    section { position: relative; padding: 15vh 7vw; overflow: hidden; }
+    .wrap { max-width: 600px; margin: 0 auto; position: relative; z-index: 3; }
+    section.invert { background: var(--invert-bg); color: var(--invert-fg); }
+    .soft { color: var(--soft); font-size: 0.92rem; }
+    .soft a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
+    section.invert .soft { color: var(--invert-soft); }
+    section.invert .soft a { color: var(--accent); border-color: var(--accent); }
+
+    .ghost-num {
+      position: absolute; top: 5vh; right: 4vw; font-family: "Zen Old Mincho", serif; font-weight: 900;
+      font-size: clamp(6rem, 22vw, 13rem); line-height: 1; color: var(--ink); opacity: 0;
+      z-index: 1; pointer-events: none; user-select: none; transition: opacity 1.4s ease;
+    }
+    .ghost-num.show { opacity: 0.07; }
+    section.invert .ghost-num { color: var(--invert-fg); }
+    section.invert .ghost-num.show { opacity: 0.09; }
+
+    /* --- the ring: a literal circle that completes as you read through
+         a 迴圈 (biennale) section — the cycle finishes exactly when the
+         section does. ambient drift keeps it alive at rest. --- */
+    .ring-wrap { position: absolute; top: 50%; right: -20vw; width: 58vw; height: 58vw; margin-top: -29vw; z-index: 1; pointer-events: none; animation: ringDrift 140s linear infinite; }
+    .ring-wrap svg { width: 100%; height: 100%; }
+    @keyframes ringDrift { to { transform: rotate(360deg); } }
+    .ring-track { opacity: 0.3; }
+    section.invert .ring-track { stroke: var(--invert-fg); }
+
+    /* --- the scrubber: a film-timecode line for 南方影展 sections —
+         ticks + a travelling playhead, same completes-on-read logic. --- */
+    .scrubber { position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: var(--rule); z-index: 1; }
+    .scrub-ticks { position: absolute; top: 0; left: 0; width: 100%; height: 9px; display: flex; justify-content: space-between; z-index: 1; }
+    .scrub-ticks span { width: 1px; height: 9px; background: var(--rule); }
+    .scrub-head { position: absolute; top: -3px; left: 0%; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); z-index: 2; }
+    section.invert .scrubber, section.invert .scrub-ticks span { background: var(--invert-rule); }
+
+    /* --- cover --- */
+    .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+    .cover-kicker { font-size: 0.72rem; margin-bottom: 1.6rem; color: var(--soft); }
+    .rule { width: 0; height: 1px; background: var(--ink); transition: width 1.3s cubic-bezier(.2,1,.3,1); }
+    .rule.show { width: 100%; }
+    .cover h1 {
+      font-weight: 900; font-size: clamp(2.9rem, 10.5vw, 6rem); line-height: 1.22; margin: 1.5rem 0;
+      opacity: 0; transform: translateY(16px); transition: opacity 1.1s ease .25s, transform 1.1s ease .25s;
+    }
+    .cover h1.show { opacity: 1; transform: translateY(0); }
+    .cover-sub { font-family: "Noto Sans JP", sans-serif; font-size: 0.92rem; color: var(--soft); max-width: 420px; opacity: 0; transition: opacity 1.2s ease .95s; }
+    .cover-sub.show { opacity: 1; }
+    .scroll-hint { position: absolute; bottom: 6vh; left: 6vw; font-size: 0.68rem; color: var(--soft); }
+
+    /* --- the chat pair: a sketchy line-art of two people mid-gossip,
+         living only in 01. arms wiggle with scroll — not ambient time —
+         so they feel like they're yakking exactly as fast as you read. --- */
+    .chat-pair { position: absolute; right: 3vw; bottom: 2vh; width: 140px; z-index: 1; pointer-events: none; transform-origin: 50% 85%; }
+    .chat-pair img { width: 100%; height: auto; display: block; opacity: 0.8; }
+
+    /* --- type --- */
+    .tag-label { display: block; font-size: 0.74rem; margin-bottom: 1.6rem; color: var(--accent); }
+    p.lede { font-weight: 500; font-size: clamp(1.22rem, 3vw, 1.5rem); margin-bottom: 1.3rem; line-height: 1.65; }
+    p.body-text {
+      font-family: "Shippori Mincho", serif; font-size: clamp(1rem, 2.2vw, 1.08rem); margin-bottom: 1.2rem; max-width: 560px;
+      opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease;
+    }
+    p.body-text.show, p.lede.show { opacity: 1; transform: translateY(0); }
+    p.lede { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
+    .pullquote {
+      font-size: clamp(1.55rem, 4.2vw, 2.2rem); line-height: 1.55; margin: 2.3rem 0;
+      opacity: 0; letter-spacing: 0.3em; transition: opacity 1.1s ease, letter-spacing 1.1s ease;
+    }
+    .pullquote.show { opacity: 1; letter-spacing: 0.01em; }
+    .pullquote.sharp { letter-spacing: 0.6em; color: var(--accent); }
+    .pullquote.sharp.show { letter-spacing: 0.01em; }
+
+    footer.infobox { background: var(--invert-bg); color: var(--invert-fg); padding: 15vh 7vw 8vh; }
+    .footer-kicker { font-size: 1.5rem; margin-bottom: 2.4rem; }
+    .evt { border-top: 1px solid var(--invert-rule); padding: 1.7rem 0; }
+    .evt:last-of-type { border-bottom: 1px solid var(--invert-rule); }
+    .evt h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .evt .meta { font-family: "Noto Sans JP", sans-serif; font-size: 0.76rem; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.6rem; }
+    .evt p { font-family: "Noto Sans JP", sans-serif; font-size: 0.82rem; color: var(--invert-soft); margin-bottom: 0.5rem; }
+    .evt ul { font-family: "Noto Sans JP", sans-serif; font-size: 0.78rem; color: var(--invert-soft); margin: 0.5rem 0 0 1.1rem; }
+    .evt li { margin-bottom: 0.3rem; }
+    .evt-link {
+      display: inline-block; margin-top: 0.9rem; font-family: "Noto Sans JP", sans-serif; font-size: 0.74rem;
+      letter-spacing: 0.06em; color: var(--invert-soft); border-bottom: 1px solid var(--invert-rule); padding-bottom: 2px; text-decoration: none;
+    }
+    .evt-link:hover { color: var(--accent); border-color: var(--accent); }
+    a.cta {
+      display: inline-block; margin-top: 2.2rem; font-family: "Noto Sans JP", sans-serif; font-size: 0.85rem;
+      letter-spacing: 0.08em; color: var(--invert-fg); border-bottom: 1px solid var(--accent); padding-bottom: 3px; text-decoration: none;
+    }
+    .credit { margin-top: 3.2rem; font-family: "Noto Sans JP", sans-serif; font-size: 0.68rem; opacity: 0.5; }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <a class="topnav" href="/?lang={{ lang }}">← Taiwan Art Now</a>
+  <div class="langswitch mono">
+    <a href="?lang=zh{{ preview_qs }}" {% if lang == 'zh' %}class="active"{% endif %}>中文</a>
+    <a href="?lang=ja{{ preview_qs }}" {% if lang == 'ja' %}class="active"{% endif %}>日本語</a>
+  </div>
+
+  <!-- COVER -->
+  <section class="cover">
+    <div class="wrap">
+      <div class="rule" id="rule1"></div>
+      <h1 class="heading" id="k1">{{ t.cover_title_1 }}{% if t.cover_title_2 %}<br>{{ t.cover_title_2 }}{% endif %}</h1>
+      <p class="cover-sub">{{ t.cover_sub }}</p>
+    </div>
+    <div class="scroll-hint mono">{{ t.scroll_hint }}</div>
+  </section>
+
+  <!-- 01 甘さという技術 -->
+  <section data-sec>
+    <div class="ghost-num" data-ghost>01</div>
+    <div class="chat-pair" data-chat>
+      <img src="/static/chat-pair.png" alt="" />
+    </div>
+    <div class="wrap">
+      <span class="tag-label mono">{{ t.tag01 }}</span>
+      <p class="lede">{{ t.s01_lede }}</p>
+      <p class="body-text">{{ t.s01_b1 }}</p>
+      <p class="body-text">{{ t.s01_b2 }}</p>
+      <p class="body-text">{{ t.s01_b3 }}</p>
+      <p class="body-text">{{ t.s01_b4 }}</p>
+      <p class="body-text">{{ t.s01_b5 }}</p>
+    </div>
+  </section>
+
+  <!-- 02 迴圈（ビエンナーレ：リング） -->
+  <section data-sec data-ring-section>
+    <div class="ring-wrap" data-ring>
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle class="ring-track" cx="100" cy="100" r="98" stroke="var(--ink)" stroke-width="0.6"/>
+        <circle data-ring-progress cx="100" cy="100" r="98" stroke="var(--accent)" stroke-width="1.4"
+          stroke-dasharray="615.75" stroke-dashoffset="615.75" transform="rotate(-90 100 100)"/>
+      </svg>
+    </div>
+    <div class="ghost-num" data-ghost>02</div>
+    <div class="wrap">
+      <span class="tag-label mono">{{ t.tag02 }}</span>
+      <p class="lede">{{ t.s02_lede }}</p>
+      <p class="body-text">{{ t.s02_b1 }}</p>
+      <p class="body-text">{{ t.s02_b2 }}</p>
+      <p class="pullquote">{{ t.s02_pq | safe }}</p>
+      <p class="body-text">{{ t.s02_b3 }}</p>
+      <p class="body-text">{{ t.s02_b4 }}</p>
+      <p class="body-text">{{ t.s02_b5 }}</p>
+      <p class="body-text">{{ t.s02_b6 }}</p>
+      <p class="body-text">{{ t.s02_b7 }}</p>
+      <p class="body-text soft">{{ t.s02_link_pre }}<a href="https://www.tnam.museum/exhibition/detail/726" target="_blank" rel="noopener">{{ t.s02_link_text }}</a>{{ t.s02_link_post }}</p>
+    </div>
+  </section>
+
+  <!-- 03 標本（映画祭：スクラバー＋反転） -->
+  <section class="invert" data-sec data-scrub-section>
+    <div class="scrubber"></div>
+    <div class="scrub-ticks" data-scrub-ticks></div>
+    <div class="scrub-head" data-scrub-head></div>
+    <div class="ghost-num" data-ghost>03</div>
+    <div class="wrap">
+      <span class="tag-label mono">{{ t.tag03 }}</span>
+      <p class="body-text">{{ t.s03_intro }}</p>
+      <p class="lede">{{ t.s03_lede }}</p>
+      <p class="body-text">{{ t.s03_b1 }}</p>
+      <p class="body-text">{{ t.s03_b2 }}</p>
+      <p class="pullquote sharp" id="pq1">{{ t.s03_pq | safe }}</p>
+      <p class="body-text">{{ t.s03_b3 }}</p>
+      <p class="body-text soft">{{ t.s03_b4 }}</p>
+    </div>
+  </section>
+
+  <!-- 04 分かれ道、もう一度（両方の痕跡が残る） -->
+  <section data-sec data-ring-section data-scrub-section>
+    <div class="ring-wrap" style="opacity:.5; width:40vw; height:40vw; right:-14vw; margin-top:-20vw;" data-ring>
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle class="ring-track" cx="100" cy="100" r="98" stroke="var(--ink)" stroke-width="0.6"/>
+        <circle data-ring-progress cx="100" cy="100" r="98" stroke="var(--accent)" stroke-width="1.4"
+          stroke-dasharray="615.75" stroke-dashoffset="615.75" transform="rotate(-90 100 100)"/>
+      </svg>
+    </div>
+    <div class="scrubber"></div>
+    <div class="scrub-ticks" data-scrub-ticks></div>
+    <div class="scrub-head" data-scrub-head></div>
+    <div class="ghost-num" data-ghost>04</div>
+    <div class="wrap">
+      <span class="tag-label mono">{{ t.tag04 }}</span>
+      <p class="body-text">{{ t.s04_b1 }}</p>
+      <p class="body-text">{{ t.s04_b2 }}</p>
+      <p class="lede">{{ t.s04_lede }}</p>
+      <p class="body-text">{{ t.s04_b3 }}</p>
+      <p class="body-text">{{ t.s04_b4 }}</p>
+      <p class="body-text">{{ t.s04_b5 }}</p>
+      <p class="body-text">{{ t.s04_b6 }}</p>
+      <p class="pullquote">{{ t.s04_pq | safe }}</p>
+      <p class="body-text">{{ t.s04_b7 }}</p>
+      <p class="body-text">{{ t.s04_b8 }}</p>
+    </div>
+  </section>
+
+  <footer class="infobox">
+    <div class="wrap">
+      <div class="evt">
+        <h3 class="heading">{{ t.evt1_title }}</h3>
+        <p class="meta mono">{{ t.evt1_meta }}</p>
+        <p class="venue">{{ t.evt1_venue }}</p>
+        <a class="evt-link" href="https://tainanbiennial.org/" target="_blank" rel="noopener">{{ t.evt1_link }}</a>
+      </div>
+
+      <div class="evt">
+        <h3 class="heading">{{ t.evt2_title }}</h3>
+        <p class="meta mono">{{ t.evt2_meta }}</p>
+        <p class="venue">{{ t.evt2_venue }}</p>
+        <a class="evt-link" href="https://festival.south.org.tw/anniversary/nomination-2026" target="_blank" rel="noopener">{{ t.evt2_link }}</a>
+      </div>
+
+      <a class="cta" href="/?lang={{ lang }}">{{ t.cta_text }}</a>
+      <p class="credit">{{ t.credit }}</p>
+    </div>
+  </footer>
+
+  <script>
+    // cover reveal
+    requestAnimationFrame(() => {
+      document.getElementById('rule1').classList.add('show');
+      document.getElementById('k1').classList.add('show');
+    });
+    setTimeout(() => document.querySelector('.cover-sub').classList.add('show'), 650);
+
+    // card-free paragraph + pullquote fade-in, staggered
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const els = e.target.matches('.body-text, .lede, .pullquote') ? [e.target] : [];
+        els.forEach((p, i) => setTimeout(() => p.classList.add('show'), i * 90));
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.body-text, .lede, .pullquote').forEach(el => io.observe(el));
+
+    // ghost numerals fade in once per section
+    const ioGhost = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-ghost]').forEach(el => ioGhost.observe(el));
+
+    // ring progress + scrubber playhead: cache each section's static
+    // offsetTop/height ONCE, then every scroll frame compute how far
+    // through that section we are. never read a transformed element's
+    // rect back into the calculation (that's what caused the runaway
+    // drift bug in the previous version).
+    const ringEls = Array.from(document.querySelectorAll('[data-ring-section]')).map(sec => ({
+      sec, top: sec.offsetTop, height: sec.offsetHeight,
+      arc: sec.querySelector('[data-ring-progress]')
+    }));
+    const scrubEls = Array.from(document.querySelectorAll('[data-scrub-section]')).map(sec => {
+      const ticks = sec.querySelector('[data-scrub-ticks]');
+      if (ticks && !ticks.children.length) {
+        for (let i = 0; i < 28; i++) ticks.appendChild(document.createElement('span'));
+      }
+      return { sec, top: sec.offsetTop, height: sec.offsetHeight, head: sec.querySelector('[data-scrub-head]') };
+    });
+    const CIRC = 615.75;
+    const bar = document.getElementById('progress');
+    const chatPair = document.querySelector('[data-chat]');
+
+    function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+
+    function onScroll() {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+
+      if (chatPair) {
+        const rock = Math.sin(y / 30) * 4;
+        const bob = Math.abs(Math.sin(y / 15)) * 6;
+        chatPair.style.transform = `rotate(${rock.toFixed(1)}deg) translateY(${(-bob).toFixed(1)}px)`;
+      }
+
+      ringEls.forEach(({ top, height, arc }) => {
+        if (!arc) return;
+        const frac = clamp01((y + vh * 0.6 - top) / height);
+        arc.setAttribute('stroke-dashoffset', (CIRC * (1 - frac)).toFixed(1));
+      });
+      scrubEls.forEach(({ top, height, head }) => {
+        if (!head) return;
+        const frac = clamp01((y + vh * 0.6 - top) / height);
+        head.style.left = (frac * 100).toFixed(1) + '%';
+      });
+
+      const h = document.documentElement;
+      bar.style.width = ((h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100) + '%';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
