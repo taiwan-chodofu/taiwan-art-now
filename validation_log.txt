@@ -850,3 +850,10 @@
 [SHARED LINK] 2 exhibitions share link: https://khcc.kcg.gov.tw
 [MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
 [MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
+--- Validation 2026-10-10 05:23 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://khcc.kcg.gov.tw
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
