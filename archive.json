@@ -5193,6 +5193,53 @@
       "description_ja": "中國美術協會（Chinese Fine Arts Association）は1931年に上海で創立され、1949年の台湾移転後も社会における美術教育と芸術交流の推進を続けてきた。本展は284名の会員による数百点の優れた作品を集め、伝統水墨、膠彩、工筆、彩墨、彩瓷、油彩、水彩、アクリル画、版画、素描、ブロンズ彫刻など多様な複合メディアによる創作を展示し、東西の芸術領域を横断するスタイルを通じて、台湾における近現代美術の豊かな発展の姿を示す。",
       "status": "ended",
       "added_at": "2026-10-05T22:23:37.896585+09:00"
+    },
+    {
+      "museum": "cksmh",
+      "title_zh": "星耀寰宇—亞洲國際藝術協會世界菁英會員邀請展",
+      "title_en": "Stars Across the World – Asia International Art Association World Elite Members Invitational Exhibition",
+      "title_ja": "星耀寰宇－アジア国際芸術協会世界菁英会員招待展",
+      "dates": "2026.10.01 – 2026.10.13",
+      "location": "3展廳",
+      "link": "https://event.culture.tw/mocweb/reg/CKSMH/Detail.init.ctr?actId=61022",
+      "artists": [],
+      "description": "本展匯聚台灣、中國大陸、美國、日本及越南等地創作者，以跨區域的藝術思維，同時展現台灣書畫藝術的蓬勃生命力以及書畫在各地發展出的豐富面貌。展出內容涵蓋山水、花鳥、人物、佛畫及書法等題材，近100件作品，特別納入大尺幅作品與連屏創作，呈現水墨山水之磅礡氣勢與書法線條之律動美感，帶給觀者兼具傳統底蘊與當代視覺衝擊的藝術饗宴。",
+      "description_en": "This exhibition brings together artists from Taiwan, mainland China, the United States, Japan, and Vietnam, presenting a cross-regional artistic vision that showcases both the vitality of Taiwanese ink-and-calligraphy art and the rich diversity of ink painting and calligraphy as practiced in different regions. The nearly 100 works on view span landscape, flower-and-bird, figure, Buddhist, and calligraphic subjects, with a special selection of large-format works and multi-panel compositions that convey the grandeur of landscape ink painting and the rhythmic beauty of calligraphic line — offering viewers a feast for the eyes that is at once rooted in tradition and visually striking in a contemporary sense.",
+      "description_ja": "本展は台湾、中国大陸、アメリカ、日本、ベトナムなど各地の作家が集結し、地域を越えた芸術的視点から、台湾の書画芸術の力強い生命力と、各地で発展してきた書画の豊かな様相を同時に示す。展示内容は山水、花鳥、人物、仏画、書法など多岐にわたり、約100点の作品を展示。大型作品や連屏（複数パネル）作品を特別に取り入れ、水墨山水の壮大な気勢と書法の線が持つリズムの美しさを表現し、伝統的な深みと現代的な視覚的インパクトを兼ね備えた芸術の饗宴を観る者に届ける。",
+      "status": "ended",
+      "added_at": "2026-10-05T22:23:37.896585+09:00"
+    },
+    {
+      "museum": "khcc",
+      "title_zh": "新粉彩主義2026洪秀敏粉彩創作展",
+      "title_en": "New Pastelism 2026: Hung Hsiu-Min Pastel Exhibition",
+      "title_ja": "新パステル主義2026 洪秀敏パステル創作展",
+      "dates": "2026.10.02 – 2026.10.13",
+      "location": "",
+      "link": "https://khcc.kcg.gov.tw",
+      "artists": [
+        "洪秀敏"
+      ],
+      "description": "於高雄市文化中心至真堂二館展出，共呈現50件粉彩作品，包含藝術家洪秀敏「百號」系列（6件百號以上大作，含4件百號水晶靜物與2件複合媒材作品），以及40件主題豐富、內容繽紛之作，涵蓋山林海景、動物飛禽、人物肖像及生活靜物等系列，體現洪秀敏對日常所見所感與刻意追尋景物的粉彩繪畫詮釋。",
+      "description_en": "Presented at Zhizhen Hall 2 of the Kaohsiung Cultural Center, this exhibition features 50 pastel works, including artist Hung Hsiu-Min's \"Hundred-Hao\" series (six large-format works over 100 hao in size, among them four crystal-still-life pieces and two mixed-media works), alongside 40 further works spanning mountain-and-sea landscapes, birds and animals, portraits, and still life — reflecting Hung's pastel interpretation of everyday observed and deliberately sought-out scenes.",
+      "description_ja": "高雄市文化中心・至真堂二館で開催。パステル作品50点を展示し、作家洪秀敏の「百号」シリーズ（100号を超える大作6点、うち水晶静物4点・複合メディア2点を含む）に加え、山海の風景、鳥や動物、人物肖像、生活静物など内容豊かな40点を含む。洪秀敏が日常の中で見て感じたもの、また意図的に追い求めた風景をパステルで表現した成果である。",
+      "status": "ended",
+      "added_at": "2026-10-06T11:11:13.581872+09:00"
+    },
+    {
+      "museum": "khcc",
+      "title_zh": "高雄市南濤人體畫會會員聯展",
+      "title_en": "Kaohsiung Nantao Figure Painting Association Member Exhibition",
+      "title_ja": "高雄市南濤人體畫會会員連展",
+      "dates": "2026.10.02 – 2026.10.13",
+      "location": "",
+      "link": "https://khcc.kcg.gov.tw",
+      "artists": [],
+      "description": "於高雄市文化中心至美軒展出。南濤人體畫會在高雄已有34年歷史，固定每週聘請模特兒進行人體寫生，本次會員聯展以人體為主要焦點，亦含部分寫生風景，從純藝術角度呈現人體繪畫之美，媒材與風格多元。",
+      "description_en": "Presented at Zhimei Hall of the Kaohsiung Cultural Center. The Nantao Figure Painting Association has a 34-year history in Kaohsiung, holding weekly life-drawing sessions with hired models. This member exhibition centers on the human figure, alongside some landscape studies, presenting the beauty of figure painting from a fine-art perspective across diverse media and styles.",
+      "description_ja": "高雄市文化中心・至美軒で開催。南濤人體畫會は高雄で34年の歴史を持ち、毎週モデルを雇って人体デッサンを行っている。本会員連展は人体を主な焦点としつつ、一部の風景写生も含み、純粋美術の視点から多様な素材と様式による人体絵画の美を提示する。",
+      "status": "ended",
+      "added_at": "2026-10-06T11:11:13.581872+09:00"
     }
   ]
 }
