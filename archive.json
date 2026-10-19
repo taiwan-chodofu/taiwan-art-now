@@ -5548,6 +5548,37 @@
       "description_ja": "台南市政府文化局と財団法人台南市文化基金会が主催する「南瀛賞」は、1987年の創設以来28回を数え、現代美術の創作を奨励し、全市民の美術教育を推進するために設けられた。本年度の公募は平面創作、空間・複合メディア、映像・ニューメディアの3部門にわたり、総賞金は新台湾ドル232万元にのぼる。「2026南瀛賞受賞作品展」は新營文化中心の全館（意象ホール、第一～第三ギャラリー、文物陳列室、雅藝館）で、入選・受賞作品37件を展示する。本年度の南瀛賞は李婷歡《離地與交錯的線》、余柏霆《軟著陸：七號》、周柏慶《等待棲居之聲》の3名の作家が受賞した。",
       "status": "ended",
       "added_at": "2026-10-06T11:02:52.768662+09:00"
+    },
+    {
+      "museum": "fubon",
+      "title_zh": "古典光影大師: 林布蘭到哥雅─托雷多美術館珍藏展",
+      "title_en": "Old Masters from Rembrandt to Goya: Treasures from the Toledo Museum of Art",
+      "dates": "2026/07/18 - 2026/10/19",
+      "location": "富邦美術館 1樓水景展廳",
+      "link": "https://www.fubonartmuseum.org/exhibitions#old-masters",
+      "artists": [],
+      "description": "「古典光影大師：林布蘭到哥雅─托雷多美術館珍藏展 I」精選美國托雷多美術館典藏中，超過五十件橫跨十六至十九世紀的大師之作，涵蓋肖像、宗教與神話題材。展覽分為六個主題單元，探討繪畫在歷史上如何傳遞權力、身份、信仰與文化記憶，展出藝術家包括林布蘭、哈爾斯、福拉哥納爾、透納與大衛等。本展也是富邦美術館2026年度「藝術四百年的發展」系列的首發，與托雷多美術館及時藝多媒體合作策劃。",
+      "description_en": "\"Old Masters from Rembrandt to Goya: Treasures from the Toledo Museum of Art I\" brings together more than fifty masterworks spanning the 16th to 19th centuries from the collection of the Toledo Museum of Art, including portraits and religious and mythological subjects. Organized into six thematic sections, the exhibition examines how painting has historically conveyed power, identity, faith, and cultural memory, featuring artists such as Rembrandt, Frans Hals, Fragonard, Turner, and Jacques-Louis David. The show opens Fubon Art Museum's 2026 program on \"four centuries of art,\" presented in partnership with the Toledo Museum of Art and Cloud Gate Multimedia (時藝多媒體).",
+      "description_ja": "「古典光影の巨匠たち：レンブラントからゴヤへ－トレド美術館秘蔵展 I」は、米国トレド美術館の所蔵品より16世紀から19世紀にわたる巨匠の名作50点以上を精選し、肖像画や宗教・神話を題材とした作品を紹介する。展覧会は6つのテーマで構成され、絵画が歴史の中で権力・身分・信仰・文化的記憶をどのように伝えてきたかを探る。出展作家にはレンブラント、フランス・ハルス、フラゴナール、ターナー、ジャック=ルイ・ダヴィッドらが含まれる。本展は富邦美術館の2026年度シリーズ「芸術四百年の発展」の幕開けを飾るもので、トレド美術館および時藝多媒体との共同企画である。",
+      "added_at": "2026-06-25T17:16:48+09:00",
+      "status": "ended"
+    },
+    {
+      "museum": "huashan",
+      "title_zh": "《台灣光華雜誌》50週年攝影展──照見台灣",
+      "title_en": "Taiwan Panorama 50 Through Photography—Taiwan in Focus",
+      "title_ja": "『台灣光華雜誌』創刊50周年記念写真展──台湾を見つめて",
+      "dates": "2026.10.09 – 2026.10.19",
+      "location": "",
+      "link": "https://www.huashan1914.com/exhibition/《台灣光華雜誌》50 週年攝影展──照見台灣",
+      "artists": [
+        "《台灣光華雜誌》"
+      ],
+      "description": "《台灣光華雜誌》創刊五十年，以鏡頭穿梭於城鄉、山海與街巷，記錄了台灣的歲月流轉、民主脈動與社會變遷。本次攝影展分為四大主題：日常生活的溫潤光影、社會發展與時代韌性、民主自由的推進，以及台灣走向世界的精彩足跡。每一張照片，既是一次回眸，也是一份寫給台灣的情書。",
+      "description_en": "To mark fifty years of Taiwan Panorama magazine, this exhibition traces the publication's camera lens across cities, countryside, mountains, coastlines, and alleyways, documenting Taiwan's changing landscapes, democratic journey, and social transformation. The show unfolds across four themes: everyday life, public infrastructure and resilience, democracy and freedom, and Taiwan's presence on the world stage. Each photograph is both a look back and a love letter to Taiwan.",
+      "description_ja": "創刊50周年を迎えた『台灣光華雜誌（Taiwan Panorama）』は、都市と地方、山と海、街角のすみずみまでカメラを携えて歩き、台湾の時代の変遷、民主化の歩み、社会の変容を記録してきた。本写真展は「日常生活の温かな光と影」「社会の発展と時代の強靭さ」「民主と自由の歩み」「世界へ広がる台湾の足跡」という4つのテーマで構成される。一枚一枚の写真は、過去を振り返るまなざしであると同時に、台湾へ宛てた一通のラブレターでもある。",
+      "status": "ended",
+      "added_at": "2026-10-05T21:09:49.192406+09:00"
     }
   ]
 }
