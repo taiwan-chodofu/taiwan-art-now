@@ -879,6 +879,43 @@
 [MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
 [MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
 
+--- Validation 2026-10-06 13:17 ---
+[SHARED LINK] 2 exhibitions share: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY/
+[SHARED LINK] 2 exhibitions share: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share: https://khcc.kcg.gov.tw
+
+--- Validation 2026-10-13 13:30 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://khcc.kcg.gov.tw
+[SHARED LINK] 2 exhibitions share link: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
+--- Validation 2026-10-13 14:14 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://khcc.kcg.gov.tw
+[SHARED LINK] 2 exhibitions share link: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
+--- Validation 2026-10-13 14:16 ---
+[SHARED LINK] 2 exhibitions share: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY/
+[SHARED LINK] 2 exhibitions share: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share: https://kdmofa.tnua.edu.tw
+
+--- Validation 2026-10-13 15:25 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
 --- Validation 2026-10-14 05:38 ---
 [SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
 [SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
@@ -918,5 +955,27 @@
 --- Validation 2026-10-20 05:17 ---
 [SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
 [SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
+--- Validation 2026-10-20 11:13 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
+[MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
+[MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana
+
+--- Validation 2026-10-20 11:14 ---
+[SHARED LINK] 2 exhibitions share: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY/
+[SHARED LINK] 2 exhibitions share: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share: https://kdmofa.tnua.edu.tw
+
+--- Validation 2026-10-20 11:27 ---
+[SHARED LINK] 2 exhibitions share link: https://www.instagram.com/the_middle_art_space/p/Dd5xtF0mmwY
+[SHARED LINK] 2 exhibitions share link: https://www.yinggo.com.tw/blogs
+[SHARED LINK] 2 exhibitions share link: https://youth.ntpc.gov.tw/
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
 [MIXED LANGUAGE IN ZH] ponding: '人の詩' description field contains Japanese kana
 [MIXED LANGUAGE IN ZH] sangallery: '花時－Viga個展' description field contains Japanese kana

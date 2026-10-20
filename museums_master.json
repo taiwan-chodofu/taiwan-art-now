@@ -69,6 +69,11 @@
       "en": "Pingtung",
       "ja": "屏東",
       "zh": "屏東"
+    },
+    "penghu": {
+      "en": "Penghu",
+      "ja": "澎湖",
+      "zh": "澎湖"
     }
   },
   "categories": {
@@ -1362,19 +1367,19 @@
         "zh": "異雲書屋"
       },
       "address": {
-        "en": "No.1-1, Ln.75, Yongkang St., Taipei",
-        "ja": "台北市大安區永康街75巷1-1號",
-        "zh": "臺北市大安區永康街75巷1-1號"
+        "en": "No.23, Ln.12, Qingtian St., Taipei",
+        "ja": "台北市大安區青田街12巷23號1樓（青田館）",
+        "zh": "臺北市大安區青田街12巷23號1樓（青田館）"
       },
-      "url": "https://www.facebook.com/yiyunart",
+      "url": "https://www.yiyun-art.com",
       "hours": {
         "en": "Tue-Sat 12:00-18:00 (hours may vary by exhibition) | Closed Sun-Mon",
         "ja": "火〜土 12:00–18:00（展覧会により変動あり）｜日月休",
         "zh": "週二至週六 12:00–18:00（依展期可能調整）｜週日一休"
       },
       "scraper": null,
-      "lat": 25.032464,
-      "lng": 121.52973,
+      "lat": 25.0273301,
+      "lng": 121.5305905,
       "closed_days": [
         0,
         6
@@ -5026,6 +5031,421 @@
       "lng": 120.3171599,
       "hours_uncertain": true,
       "closed_day": null
+    },
+    {
+      "id": "yinart",
+      "category": "commercial",
+      "region": "taoyuan",
+      "name": {
+        "en": "Yin Art Space",
+        "ja": "隱藝術",
+        "zh": "隱藝術"
+      },
+      "address": {
+        "en": "No.48, Daren Rd., Dayuan Dist., Taoyuan City",
+        "ja": "桃園市大園區大仁路48號",
+        "zh": "桃園市大園區大仁路48號"
+      },
+      "url": "https://www.yinartspace.org",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0218477,
+      "lng": 121.219744,
+      "closed_days": []
+    },
+    {
+      "id": "livinglab",
+      "category": "commercial",
+      "region": "taoyuan",
+      "name": {
+        "en": "Living Lab Gallery",
+        "ja": "藍瓦藝術空間 Living Lab",
+        "zh": "藍瓦藝術空間 Living Lab"
+      },
+      "address": {
+        "en": "1F, No.58, Zhicheng Rd., Dayuan Dist., Taoyuan City",
+        "ja": "桃園市大園區致成路58號1樓",
+        "zh": "桃園市大園區致成路58號1樓"
+      },
+      "url": "https://livinglabgallery.wixsite.com/livinglabgallery",
+      "hours": {
+        "en": "Tue-Sun 12:00-18:00",
+        "ja": "火〜日 12:00–18:00",
+        "zh": "週二至週日 12:00–18:00"
+      },
+      "closed_day": 1,
+      "lat": 25.0066769,
+      "lng": 121.2117162,
+      "closed_days": [
+        1
+      ]
+    },
+    {
+      "id": "showartgallery",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "SHOW Art Gallery",
+        "ja": "三宅一秀藝術中心",
+        "zh": "三宅一秀藝術中心"
+      },
+      "address": {
+        "en": "No.22, Aly. 13, Ln. 248, Sec. 3, Zhongxiao E. Rd., Da'an Dist., Taipei",
+        "ja": "台北市大安區忠孝東路三段248巷13弄22號",
+        "zh": "臺北市大安區忠孝東路三段248巷13弄22號"
+      },
+      "url": "https://www.facebook.com/show.art.gallery/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0405524,
+      "lng": 121.5401254,
+      "closed_days": []
+    },
+    {
+      "id": "ontheroad",
+      "category": "commercial",
+      "region": "kaohsiung",
+      "name": {
+        "en": "On The Road Art Space",
+        "ja": "On The Road藝術空間",
+        "zh": "On The Road藝術空間"
+      },
+      "address": {
+        "en": "3F, No.64, Dayong Rd., Yancheng Dist., Kaohsiung City",
+        "ja": "高雄市鹽埕區大勇路64號3樓",
+        "zh": "高雄市鹽埕區大勇路64號3樓"
+      },
+      "url": "",
+      "hours": {
+        "en": "Wed-Fri 13:30-19:00, Sat-Sun 11:30-19:00, closed Mon-Tue",
+        "ja": "水〜金 13:30–19:00、土日 11:30–19:00、月火休",
+        "zh": "週三至週五 13:30–19:00、週六日 11:30–19:00、週一二休"
+      },
+      "closed_day": 1,
+      "lat": 22.6228748,
+      "lng": 120.2835084,
+      "closed_days": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "poma",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "POMA",
+        "ja": "POMA",
+        "zh": "POMA"
+      },
+      "address": {
+        "en": "2F, No.6, Ln. 64, Sec. 2, Zhongxiao E. Rd., Taipei",
+        "ja": "台北市忠孝東路二段64巷6號2樓",
+        "zh": "台北市忠孝東路二段64巷6號2樓"
+      },
+      "url": "https://www.instagram.com/pomaproject/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0429973,
+      "lng": 121.5286123,
+      "closed_days": []
+    },
+    {
+      "id": "iartgallery",
+      "category": "commercial",
+      "region": "hsinchu",
+      "name": {
+        "en": "iart Gallery",
+        "ja": "iart 愛上藝廊",
+        "zh": "iart 愛上藝廊"
+      },
+      "address": {
+        "en": "1F, No.80, Zhongxiao Rd., East Dist., Hsinchu City (enter via Songziniao Clinic)",
+        "ja": "新竹市東區忠孝路80號1樓（送子鳥診所より入館）",
+        "zh": "新竹市東區忠孝路80號1F（由送子鳥診所進入）"
+      },
+      "url": "https://www.instagram.com/iart_gallery/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 24.8028854,
+      "lng": 120.9914429,
+      "closed_days": []
+    },
+    {
+      "id": "onestation",
+      "category": "alternative",
+      "region": "hsinchu",
+      "name": {
+        "en": "One Station",
+        "ja": "藝站 One Station",
+        "zh": "藝站 One Station"
+      },
+      "address": {
+        "en": "In front of Xiangshan Station, Hsinchu City",
+        "ja": "新竹市香山車站前側",
+        "zh": "新竹市香山車站前側"
+      },
+      "url": "https://www.facebook.com/onewetland",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 24.763127,
+      "lng": 120.913874,
+      "closed_days": []
+    },
+    {
+      "id": "kcmaa",
+      "category": "alternative",
+      "region": "kaohsiung",
+      "name": {
+        "en": "Kaohsiung Modern Painting Association",
+        "ja": "高雄市現代畫學會",
+        "zh": "高雄市現代畫學會"
+      },
+      "address": {
+        "en": "2F, No.1-1, Ln. 35, Dazhi Rd., Yancheng Dist., Kaohsiung City",
+        "ja": "高雄市鹽埕區大智路35巷1-1號2樓",
+        "zh": "高雄市鹽埕區大智路35巷1-1號2樓"
+      },
+      "url": "https://www.facebook.com/maak1987/",
+      "hours": {
+        "en": "Fri-Sun 13:00-18:00",
+        "ja": "金〜日 13:00–18:00",
+        "zh": "週五至週日 13:00–18:00"
+      },
+      "closed_day": 1,
+      "lat": 22.6202036,
+      "lng": 120.2845272,
+      "closed_days": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "ruomu",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Ruomu Gallery",
+        "ja": "若木藝廊",
+        "zh": "若木藝廊"
+      },
+      "address": {
+        "en": "No.29, Sec.2, Hangzhou S. Rd., Da'an Dist., Taipei City",
+        "ja": "台北市大安區杭州南路二段29號",
+        "zh": "台北市大安區杭州南路二段29號"
+      },
+      "url": "https://www.ruomugallery.com/",
+      "hours": {
+        "en": "11:00-19:00 (closed Mon)",
+        "ja": "11:00-19:00（月休）",
+        "zh": "11:00-19:00（週一休館）"
+      },
+      "closed_day": 1,
+      "lat": 25.0336788,
+      "lng": 121.5209117,
+      "closed_days": [
+        1
+      ]
+    },
+    {
+      "id": "shape-art",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Shape Art",
+        "ja": "形狀藝術 SHAPE ART",
+        "zh": "形狀藝術 SHAPE ART"
+      },
+      "address": {
+        "en": "No.17, Ln. 20, Dazhi St., Zhongshan Dist., Taipei City",
+        "ja": "台北市中山區大直街20巷17號",
+        "zh": "台北市中山區大直街20巷17號"
+      },
+      "url": "https://www.shape-art.com/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0813059,
+      "lng": 121.545302,
+      "closed_days": []
+    },
+    {
+      "id": "insian",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Insian Gallery",
+        "ja": "印象畫廊",
+        "zh": "印象畫廊"
+      },
+      "address": {
+        "en": "No.46, Sec.4, Ren'ai Rd., Da'an Dist., Taipei City",
+        "ja": "台北市大安區仁愛路四段46號",
+        "zh": "台北市大安區仁愛路四段46號"
+      },
+      "url": "https://www.insiangallery.com/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0376251,
+      "lng": 121.5444261,
+      "closed_days": []
+    },
+    {
+      "id": "linartprojects",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "LIN ART PROJECTS",
+        "ja": "LIN ART PROJECTS 潮時藝術",
+        "zh": "LIN ART PROJECTS 潮時藝術"
+      },
+      "address": {
+        "en": "No.25, Huangxi St., Shilin Dist., Taipei City",
+        "ja": "台北市士林區磺溪街25號",
+        "zh": "台北市士林區磺溪街25號"
+      },
+      "url": "https://www.instagram.com/linartprojects.tw/",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.1061951,
+      "lng": 121.5228065,
+      "closed_days": []
+    },
+    {
+      "id": "honggenshen-penghu",
+      "category": "public",
+      "region": "penghu",
+      "name": {
+        "en": "Hung Ken-Shen Art Museum (Penghu)",
+        "ja": "澎湖県政府文化局 洪根深美術館",
+        "zh": "澎湖縣政府文化局洪根深美術館"
+      },
+      "address": {
+        "en": "No.15-1, Minzu Rd., Magong City, Penghu County",
+        "ja": "澎湖縣馬公市民族路15-1號",
+        "zh": "澎湖縣馬公市民族路15-1號"
+      },
+      "url": "https://www.phhcc.gov.tw/",
+      "hours": {
+        "en": "Thu-Mon 09:00-12:00, 14:00-17:00 (closed Tue, Wed & national holidays)",
+        "ja": "木〜月 9:00-12:00、14:00-17:00（火水・祝日休）",
+        "zh": "週四至週一 上午9:00-12:00、下午2:00-5:00（週二、週三及國定假日休館）"
+      },
+      "closed_day": 2,
+      "lat": 23.5644069,
+      "lng": 119.5637547,
+      "closed_days": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "neverland",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Neverland Gallery",
+        "ja": "Neverland Gallery",
+        "zh": "Neverland Gallery"
+      },
+      "address": {
+        "en": "No.56, Ln. 164, Hulin St., Xinyi Dist., Taipei City",
+        "ja": "台北市信義區虎林街164巷56號",
+        "zh": "台北市信義區虎林街164巷56號"
+      },
+      "url": "https://www.instagram.com/neverland.gallery/",
+      "hours": {
+        "en": "By appointment (LINE)",
+        "ja": "予約制（LINE）",
+        "zh": "預約觀展（LINE）"
+      },
+      "closed_day": null,
+      "lat": 25.0380983,
+      "lng": 121.5750122,
+      "closed_days": []
+    },
+    {
+      "id": "mengjiao",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Mengjiao Gallery",
+        "ja": "孟焦畫坊",
+        "zh": "孟焦畫坊"
+      },
+      "address": {
+        "en": "1F, No.17-2, Yunong Rd., Shilin Dist., Taipei City",
+        "ja": "臺北市士林區雨農路17之2號1樓",
+        "zh": "臺北市士林區雨農路17之2號1樓"
+      },
+      "url": "https://www.mengjiaogallery.com/",
+      "hours": {
+        "en": "11:00-19:00 (closed Mon)",
+        "ja": "11:00-19:00（月休）",
+        "zh": "AM11:00-PM19:00（週一休館）"
+      },
+      "closed_day": 1,
+      "lat": 25.0977867,
+      "lng": 121.5318919,
+      "closed_days": [
+        1
+      ]
+    },
+    {
+      "id": "nccu-art",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "NCCU Art Center",
+        "ja": "国立政治大学藝文中心",
+        "zh": "國立政治大學藝文中心"
+      },
+      "address": {
+        "en": "No.64, Sec.2, Zhinan Rd., Wenshan Dist., Taipei City",
+        "ja": "台北市文山區指南路二段64號",
+        "zh": "台北市文山區指南路二段64號"
+      },
+      "url": "https://artist.nccu.edu.tw",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 24.982066,
+      "lng": 121.572512,
+      "closed_days": []
     }
   ]
 }

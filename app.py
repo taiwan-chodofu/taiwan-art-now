@@ -372,7 +372,7 @@ MUSEUM_ORDER = ["honggah", "moca", "tfam", "clab", "thecube", "kdmofa", "ntcart"
 REGION_ORDER = [
     "taipei", "new_taipei", "taoyuan", "hsinchu", "yilan", "keelung",
     "taichung", "nantou", "chiayi", "tainan", "kaohsiung", "pingtung",
-    "hualien", "taitung",
+    "hualien", "taitung", "penghu",
 ]
 
 
