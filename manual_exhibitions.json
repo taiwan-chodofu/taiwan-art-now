@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-05T12:00:00",
+  "generated": "2026-10-20T12:26:31.227102+09:00",
   "exhibitions": [
     {
       "museum": "lym",
@@ -3557,6 +3557,778 @@
       "description_ja": "嘉義市政府文化局が推進する木製品認証プログラム「優木良品」から発展した展覧会で、嘉義実験木場（南棟）にて開催。木工作家・ブランド10組が集まり、作品・素材・用途という3つの視点から、木がどのように日常生活に入り込むかを再考する。同時期、実験木場北棟では「木都選物所」として、台湾各地の木職人が手がけた食器・家具・癒やし小物など100点以上の厳選木製品を展示・販売する。会期中は周辺で「木都生活市集」や、檜意森活村・北門駅など市内の有名な木造歴史建築を結ぶ「嘉義木造建築散歩地図」も企画されている。実験木場自体は嘉義旧監獄の宿舎群を活用して再生された施設で、2023年iF公共建築デザイン賞を受賞している。",
       "status": "current",
       "added_at": "2026-10-06T11:06:44.893999+09:00"
+    },
+    {
+      "museum": "tkgplus",
+      "title_zh": "【丘之粼粼】黃麗音 個展",
+      "title_en": "Olive Ripples: Huang Li-Yin Solo Exhibition",
+      "title_ja": "丘の煌めき：黃麗音個展",
+      "dates": "2026.09.19 – 2026.11.14",
+      "location": "",
+      "link": "https://www.tkgplus.com/exhibitions/151/",
+      "description": "黃麗音長期關注食物在全球化經濟中的生產、流通與消費，創作從市場與貿易路線、英國漁業與生產勞動，延伸至消費、包裝與剩餘物的重新組構。此次展覽〈丘之粼粼〉將視線推向食品生產鏈的上游，從橄欖園到工業流水線，追問一瓶橄欖油如何在自然、勞動與資本的交織之中成為我們熟悉的形式。藝術家透過田野調查走入西班牙南部的橄欖園，反向追溯其成為日常食物之前所經歷的土地、時間與身體勞動，並將田野影像轉化為覆蓋展牆的壁紙，使生產現場的痕跡重新進入觀看。",
+      "description_en": "Huang Li-Yin's work engages with how food is produced, circulated and consumed within the global economy, moving from markets and trade routes to the reconfiguration of consumption, packaging and waste. This exhibition traces an olive oil bottle back upstream through its production chain, from Spanish olive groves to industrial processing lines, examining how nature, labour and capital intertwine to produce something as familiar as a bottle of oil. Field footage from olive groves in southern Spain is transformed into wallpaper covering the gallery walls, bringing the traces of the production site back into view.",
+      "description_ja": "黃麗音は、グローバル経済の中で食べものがどう生産・流通・消費されるかに長年関心を向け、市場や貿易路線、漁業と生産労働から、消費・包装・残余物の再構成まで作品化してきた。本展〈丘の煌めき〉は食品生産チェーンの上流――スペイン南部のオリーブ畑から工業ラインまで――に視線を向け、一本のオリーブオイルが自然・労働・資本の絡み合いの中でどのように「見慣れた形」になるのかを問う。フィールドワークで撮影された映像は展示壁を覆う壁紙に転化され、生産現場の痕跡を再び観客の視界に呼び戻す。",
+      "artists": [
+        "黃麗音"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00"
+    },
+    {
+      "museum": "joyfulart",
+      "title_zh": "【物．我｜林宇軒個展】",
+      "title_en": "The Self in Things: Lin Yu-Shuan Solo Exhibition",
+      "title_ja": "物・我｜林宇軒個展",
+      "dates": "2026.10.16 – 2026.11.08",
+      "location": "",
+      "link": "https://www.instagram.com/joyfulart_gallery/",
+      "description": "《物．我｜林宇軒個展》展現藝術家在當代水墨語境中對日常物件與自我狀態的細緻察覺。林宇軒將關注點放在身邊長久相對的案頭器物、奇石與生活小物，透過寫實而推敲的筆墨，記錄時間在物件上留下的質地、光影與痕跡。他將觀物時的專注凝視轉化為對自身心境的審視，在「物」與「我」的對照之間，體悟主客一體的寧靜和諧。同時將傳統書畫特有的「落款」融入畫面，使圖像留住物件可見的形體，文字則記錄無形的心念。",
+      "description_en": "“The Self in Things” reveals Lin Yu-Shuan's nuanced observation of everyday objects and his inner state within the context of contemporary ink art. Turning his attention to scholars' rocks, ancient vessels and ordinary items placed around his workspace, Lin employs refined, thoughtful brushwork to record the textures, light and traces left by time, transforming the attentive gaze upon objects into an examination of his own mind.",
+      "description_ja": "《物・我｜林宇軒個展》は、現代水墨の文脈において、身の回りの日常の物とその物を見る自分自身の心境を、丁寧に見つめ直した個展。文人机上の器物や奇石、生活小物を対象に、写実的でありながら思索的な筆致で、時間が物に残した質感・光影・痕跡を描く。物を見る集中した眼差しを、自身の心の在り方への問いへと転じ、「物」と「我」が一つに溶け合う静かな調和を見出す。",
+      "artists": [
+        "林宇軒"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/17",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングティーパーティー",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.instagram.com/joyfulart_gallery/"
+        }
+      ]
+    },
+    {
+      "museum": "artshubbq",
+      "title_zh": "【剛剛好的存在】Faina mei 個展",
+      "title_en": "Just Right: Faina mei Solo Exhibition",
+      "title_ja": "ちょうどいい存在：Faina mei個展",
+      "dates": "2026.10.07 – 2026.10.30",
+      "location": "新北青創板橋藝術基地8號展間",
+      "link": "https://youth.ntpc.gov.tw/",
+      "description": "椅子與情緒交織，成為本次展覽的主要創作意象。以熟悉的日常物件為起點，帶領觀者探討人與空間、位置、距離及存在之間的關係。一張空著的椅子、一張被使用過的椅子，各自呈現著不同的空間狀態。藝術家 Faina 希望觀者在展覽空間中，看見的不只是單純的椅子，而是那些我們曾經坐過、等待過、離開過，或仍在尋找的位置。「剛剛好」並非單一標準，而是每個人在不同空間與身體經驗中，所感受到的合適狀態。",
+      "description_en": "Chairs and emotion intertwine as the central image of this exhibition. Starting from a familiar everyday object, the artist invites viewers to consider the relationships between people, space, position, distance and existence. An empty chair and a used chair each present a different state of space. For Faina, “just right” is not a single fixed standard, but the sense of fit each of us feels within our own body and surroundings.",
+      "description_ja": "椅子と感情が絡み合うことが、本展の中心的なイメージとなる。見慣れた日常の物を出発点に、人と空間、位置、距離、そして存在の間の関係を観客とともに考える。空の椅子と、使われた跡のある椅子は、それぞれ異なる空間の状態を示す。「ちょうどいい」とは単一の基準ではなく、それぞれの人が異なる空間と身体の経験の中で感じ取る、ふさわしい状態なのだと作家Fainaは語る。",
+      "artists": [
+        "Faina mei 賴粲云"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00"
+    },
+    {
+      "museum": "artshubbq",
+      "title_zh": "【「空/間 The Space Between」】Sinic Choy 個展",
+      "title_en": "The Space Between: Sinic Choy Solo Exhibition",
+      "title_ja": "空／間 The Space Between：Sinic Choy個展",
+      "dates": "2026.10.07 – 2026.10.30",
+      "location": "新北青創板橋藝術基地6號展間",
+      "link": "https://youth.ntpc.gov.tw/",
+      "description": "《空／間》以「空」為起點，將書法中的筆劃拆解、延伸，從原本的紙面轉向繪畫、浮雕與空間，探索文字在不同媒材與觀看方式中的變化。展覽的核心裝置《空》，將「空」字的筆劃拆解後懸浮於空間之中，觀者從不同位置觀看，分散的筆劃會產生不同的視覺關係，只有在特定角度下，才能重新辨識出完整的「空」字。藝術家 Sinic Choy 蔡嘉鰲為香港城市文化與街頭藝術策劃人，長期以亞洲高密度城市的視覺經驗為基礎發展個人語言。",
+      "description_en": "“The Space Between” takes the Chinese character for “emptiness” (空) as its starting point, dismantling and extending calligraphic strokes from paper into painting, relief and space. The exhibition's core installation suspends the disassembled strokes of the character in mid-air; viewed from different positions, the scattered strokes form different visual relationships, resolving into the complete character only from certain angles. Artist Sinic Choy is a Hong Kong urban-culture and street-art curator and practitioner.",
+      "description_ja": "《空／間》は「空」という漢字を起点に、書の筆画を分解・拡張し、紙面から絵画・浮彫・空間へと展開することで、文字が異なる媒体や見方の中でどう変化するかを探る。中心となる作品《空》は、「空」の字の筆画を分解して空間に浮かせたインスタレーションで、見る位置によって筆画同士の見え方が変わり、特定の角度からのみ完全な文字として認識できる。作家Sinic Choy（蔡嘉鰲）は香港の都市文化・ストリートアートのキュレーター兼実践者。",
+      "artists": [
+        "Sinic Choy 蔡嘉鰲"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00"
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "【共同的註腳－二二八事件教育工作坊成果展】",
+      "title_en": "Shared Footnotes: 228 Incident Education Workshop Exhibition",
+      "title_ja": "共同の註脚――二二八事件教育ワークショップ成果展",
+      "dates": "2026.10.16 – 2027.01.10",
+      "location": "關渡美術館402展廳",
+      "link": "https://kdmofa.tnua.edu.tw",
+      "description": "當歷史成為過去，未曾親身經歷的世代，該如何理解與回應？《共同的註腳》以台灣不同地方的二二八事件人物故事為起點，結合歷史講述、肢體引導與版畫創作，邀請年輕世代透過不同方式接近歷史。學員從史料認識人物與事件，經由身體探索歷史情境，再將個人的理解與感受轉化為版畫作品。參與學校：國立中山大學、國立中央大學、國立中正大學、國立中興大學、國立成功大學、國立宜蘭大學、國立屏東大學、國立臺東大學、國立臺北藝術大學。",
+      "description_en": "When history becomes the past, how can generations who never lived through it understand and respond to it? Taking stories of individuals from the 228 Incident across different parts of Taiwan as its starting point, this exhibition combines historical narration, embodied guidance and printmaking to invite younger generations to approach history through different means, transforming personal understanding into printed works.",
+      "description_ja": "歴史が過去になったとき、それを直接経験していない世代は、どのようにそれを理解し応答できるのか。《共同の註脚》は台湾各地の二二八事件に関わった人々の物語を出発点に、歴史の語り・身体を通したワークショップ・版画制作を組み合わせ、若い世代が様々な方法で歴史に近づくことを促す企画展。",
+      "artists": [],
+      "added_at": "2026-10-13T14:29:49.989979+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/16",
+          "time": "10:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://kdmofa.tnua.edu.tw"
+        }
+      ]
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "【機制校園生活】",
+      "title_en": "Institutional Campus Life",
+      "title_ja": "機制・キャンパス生活",
+      "dates": "2026.10.16 – 2027.01.10",
+      "location": "關渡美術館401、501展覽廳",
+      "link": "https://kdmofa.tnua.edu.tw",
+      "description": "在今天的校園，自由發言、參與社團、討論公共議題，是我們再自然不過的日常。然而，這一切並非向來如此。《機制校園生活》以二二八事件中的校園相關史料為起點，透過文件、物件與參與式體驗，帶領觀眾回到1940年代末的校園。展覽以「倡議、抵抗、支援、捲入、見證」五種角色，呈現青年學子在事件中的不同處境，並透過觀看位置的轉換，探問制度如何介入日常、形塑思想與規範行為。",
+      "description_en": "Free speech, student clubs and public debate feel like an ordinary part of campus life today — but this was not always the case. Taking campus-related archival material from the 228 Incident as its starting point, this exhibition uses documents, objects and participatory experience to bring visitors back to a university campus in the late 1940s, presenting five roles — advocacy, resistance, support, entanglement, witness — through which young students lived through the Incident.",
+      "description_ja": "自由な発言、サークル活動への参加、公共の議題についての議論――今日のキャンパスでは当たり前の日常だが、かつてはそうではなかった。《機制・キャンパス生活》は二二八事件に関わるキャンパス史料を起点に、文書・物・参加型の体験を通じて観客を1940年代末のキャンパスへと導く。「提唱・抵抗・支援・関与・証言」という5つの役割を通して、当時の青年学生たちが置かれた立場を描く。",
+      "artists": [],
+      "added_at": "2026-10-13T14:29:49.989979+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/16",
+          "time": "10:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://kdmofa.tnua.edu.tw"
+        }
+      ]
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "【《版知道自然與人類的備忘史》】",
+      "title_en": "Prints Would Know: A Mnemonic History of Nature and Humanity",
+      "title_ja": "版は知っている：自然と人類の備忘史",
+      "dates": "2026.10.16 – 2027.01.10",
+      "location": "關渡美術館1F／2F",
+      "link": "https://kdmofa.tnua.edu.tw",
+      "description": "2026年適逢關渡美術館開館滿20週年，本館推出以「版畫」為策展主題的計畫。「版」作為某種印象，將事物落定成為形象，並透過便於複製與傳播的特性，在圖像史中扮演著舉足輕重的角色。本展梳理關渡美術館典藏中之版畫作品，劃分為「自然史博物館」與「人類史博物館」兩大對照軸線，前者側重自然現象如何被轉化為可被理解的圖譜，後者聚焦文明造物痕跡與感性記憶。展出藝術家包括中林忠良、池田良二、吳昊、周瑛、姚瑞中、倪再沁、梅丁衍、廖修平、謝里法等。",
+      "description_en": "Marking the 20th anniversary of KdMoFA, this exhibition surveys the museum's print collection along two axes — a “museum of natural history” examining how natural phenomena are translated into legible images, and a “museum of human history” focused on the traces left by civilisation's made objects — positioning printmaking as a technique of memory connecting art, science and cultural record.",
+      "description_ja": "関渡美術館開館20周年を記念し、版画をテーマにした企画展。美術館の版画コレクションを「自然史博物館」（自然現象をいかに読み取れる図像へ変換するかを問う）と「人類史博物館」（文明が作り出した物の痕跡と感性的記憶に焦点を当てる）という二つの軸で読み直し、版画を芸術・科学・文化的記憶を繋ぐ「記憶の技術」として位置づける。",
+      "artists": [
+        "中林忠良",
+        "方寅姬",
+        "朴永根",
+        "池田良二",
+        "吳昊",
+        "周瑛",
+        "林仁信",
+        "林采玄",
+        "姚瑞中",
+        "倪再沁",
+        "孫文雄",
+        "張家瑀",
+        "梅丁衍",
+        "部米．賢坤",
+        "喬漢娜．樂芙",
+        "楊明迭",
+        "楊炯杕",
+        "廖修平",
+        "謝里法",
+        "蘇．瑞茲"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/16",
+          "time": "17:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://kdmofa.tnua.edu.tw"
+        }
+      ]
+    },
+    {
+      "museum": "kdmofa",
+      "title_zh": "【《當代主義狗：李兆起個展》】",
+      "title_en": "Contemporarist Dog: Li Jhao-Ci Solo Exhibition",
+      "title_ja": "当代主義狗：李兆起個展",
+      "dates": "2026.10.16 – 2027.01.10",
+      "location": "關渡美術館104展間",
+      "link": "https://kdmofa.tnua.edu.tw",
+      "description": "《當代主義狗：李兆起個展》源於藝術家近十年來對植物生長的細致觀察與創作轉化，透過仙人掌嫁接多肉植物、結合現成物、平面繪畫、影像播放及實驗性書寫計畫，建構出以「植物傷口」為名的虛構劇場。藝術家將不適應台灣潮濕氣候的外來仙人掌品種反覆割裂、強行移植並嫁接，植物因外力傷口不斷癒合與組織重組，繁衍出型態奇異而扭曲的變形群落，回應全球化脈絡下複雜的歷史書寫與「外來者」、「入侵」、「嫁接／移植」的象徵。",
+      "description_en": "Drawing on nearly a decade of close observation of plant growth, this solo exhibition grafts cacti and succulents onto found objects, paintings and experimental writing to build a fictional theatre named after “plant wounds.” The artist repeatedly cuts and forcibly grafts cactus species unsuited to Taiwan's humid climate, producing strange, warped colonies through the plants' own wound-healing and tissue reorganisation — a tense ecological performance that reflects on “the outsider,” invasion and grafting/transplantation within globalisation.",
+      "description_ja": "近十年にわたる植物の成長への細やかな観察を転化した個展。サボテンと多肉植物を接ぎ木し、拾い物・平面絵画・映像・実験的な書き物を組み合わせ、「植物の傷」と名づけた虚構の劇場を構築する。台湾の湿った気候に適応できない外来種のサボテンを繰り返し切り裂き、強制的に接ぎ木することで、植物自身の傷の癒合と組織の再編成から奇妙に歪んだ群落が増殖していく様は、「外来者」「侵入」「接ぎ木／移植」というグローバル化の中の歴史叙述を象徴する。",
+      "artists": [
+        "李兆起"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/16",
+          "time": "17:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://kdmofa.tnua.edu.tw"
+        }
+      ]
+    },
+    {
+      "museum": "yiyun",
+      "title_zh": "【失敗的戀愛 —— 翁榛羚 個展】",
+      "title_en": "Failed Romances: Weng Jhen-Ling Solo Exhibition",
+      "title_ja": "失敗した恋愛――翁榛羚個展",
+      "dates": "2026.10.22 – 2026.11.21",
+      "location": "異雲書屋・青田館",
+      "link": "https://www.yiyun-art.com/exhibition/2026-11",
+      "description": "此次展覽以「失敗的戀愛」為題，源自於藝術家從大學至今的感情經驗。那些曾經轟轟烈烈、渴望每分每秒都黏在一起的戀愛，彷彿都受到某種無形的魔咒牽引，幾乎在三個月左右便開始瓦解。藝術家開始思考，「失敗」究竟代表什麼？是一段戀情的結束，是分手後的痛哭，還是在一段關係中逐漸失去自己，才是真正的失敗？",
+      "description_en": "The title of this exhibition comes from the artist's experiences with love since university — relationships that began with great intensity, yet seemed to fall apart around the three-month mark as if under some invisible spell. The artist began to ask what “failure” really means: the end of a relationship, the tears that follow a breakup, or gradually losing oneself within a relationship.",
+      "description_ja": "本展のタイトル「失敗した恋愛」は、作家が大学時代から経験してきた恋愛に由来する。激しく始まり、常に一緒にいたいと願った関係が、まるで見えない呪いのように、三か月ほどで崩れ始める。作家は「失敗」とは何かを問い直す――恋の終わりなのか、別れた後に泣くことなのか、それとも関係の中で次第に自分を失っていくことこそが、本当の失敗なのか。",
+      "artists": [
+        "翁榛羚"
+      ],
+      "added_at": "2026-10-13T14:29:49.989979+09:00"
+    },
+    {
+      "museum": "aki",
+      "title_zh": "【《她與她》Between Two】劉昕穎Hsin-Ying LIU",
+      "title_en": "Between Two: Liu Hsin-Ying",
+      "title_ja": "彼女と彼女：劉昕穎個展",
+      "dates": "2026.10.17 – 2026.11.14",
+      "location": "",
+      "link": "https://galleryaki.com",
+      "description": "劉昕穎個展《她與她》以繪畫與陶瓷呈現身體如何步入風景，以及兩個生命於彼此靠近時生成的場域。展覽以並肩生長、互相交疊卻各朝己向延展的兩棵樹為主軸，「她」可指兩具身體、昨日與今日的自己、自我與他者，或身體與自然。藝術家不急於給出答案，而是沿途記下濕氣、氣溫、地勢與視野的更迭，化為畫面層次，邀請觀者在畫中遊走駐足。",
+      "description_en": "In \"Between Two,\" Liu Hsin-Ying uses painting and ceramics to show how the body moves into landscape, and the field that forms when two lives draw close to one another. The exhibition centres on two trees growing side by side, overlapping yet each reaching in its own direction — \"she\" may refer to two bodies, past and present selves, self and other, or body and nature.",
+      "description_ja": "劉昕穎の個展《彼女と彼女》は、絵画と陶芸を通して、身体がどのように風景の中へ入っていくか、そして二つの生が互いに近づくときに生まれる場を描く。並んで育ち、重なり合いながらもそれぞれの方向へ伸びていく二本の木を軸に、「彼女」は二つの身体、昨日と今日の自分、自己と他者、あるいは身体と自然を指し示す。",
+      "artists": [
+        "劉昕穎"
+      ],
+      "added_at": "2026-10-13T14:51:41.687533+09:00"
+    },
+    {
+      "museum": "kingcarchengde",
+      "title_zh": "【陳寬睿 創作個展：落地之前】Chen Kuang-Jui Solo Exhibition: Before It Lands",
+      "title_en": "Before It Lands: Chen Kuang-Jui Solo Exhibition",
+      "title_ja": "落地の前に：陳寬睿個展",
+      "dates": "2026.10.23 – 2026.12.06",
+      "location": "KCCA 承德館",
+      "link": "https://www.kingcarart.org.tw",
+      "description": "《落地之前》從兩山之間的一抹河流出發，擷取可控變因，穿越不同的地質與地貌，攜帶泥沙與礦物，在兩岸之間交融、沉積、侵蝕，持續改變展場中的一切。展覽是一個持續的狀態：物質仍在反應，時間仍在持續。所見的一刻並非最終的結果，而是事物在生成與消逝之間，短暫存在的瞬間。",
+      "description_en": "\"Before It Lands\" takes a river running between two mountains as its starting point, carrying sediment and minerals that mix, settle and erode along its banks, continually altering everything in the gallery. The exhibition is a state of continuous process — matter still reacting, time still passing — where what is seen is never a final result but a brief moment between formation and dissolution.",
+      "description_ja": "《落地の前に》は、二つの山の間を流れる一筋の川から出発する。土砂や鉱物を運びながら両岸の間で混ざり合い、沈積し、侵食し、展示空間の中のすべてを絶えず変化させ続ける。展覧会そのものが継続する状態であり、物質は反応し続け、時間は流れ続けている。",
+      "artists": [
+        "陳寬睿"
+      ],
+      "added_at": "2026-10-13T14:51:41.687533+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/24",
+          "time": "14:30",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.kingcarart.org.tw"
+        }
+      ]
+    },
+    {
+      "museum": "kingcarchengde",
+      "title_zh": "【蔡尚孚 創作個展：疊．加｛幕｝】Tsai Shang-Fu Solo Exhibition: Déjà｛Move｝",
+      "title_en": "Déjà{Move}: Tsai Shang-Fu Solo Exhibition",
+      "title_ja": "疊．加｛幕｝：蔡尚孚個展",
+      "dates": "2026.10.23 – 2026.12.06",
+      "location": "KCCA 承德館",
+      "link": "https://www.kingcarart.org.tw/exhibitions-detail/266",
+      "description": "蔡尚孚作品多透過改裝現成物合併機械動力裝置，展開由各種現象併置而成的微劇場。此次個展以「疊加」作為「Déjà vu」的空耳式翻譯，對應諧音雙關的「幕／Move」，透過實體物件的動態視覺，擬像慾望投射，在自嘲與孤寂之間游離，以擬造與戲仿回應影像氾濫的當代觀看經驗。",
+      "description_en": "Tsai Shang-Fu reassembles found objects with mechanical kinetic devices to stage a miniature theatre of juxtaposed phenomena. This solo exhibition plays on the phonetic resemblance between the Chinese rendering of \"déjà vu\" and the pun \"stage/move,\" using the kinetic motion of physical objects as a simulacrum of projected desire, drifting between self-mockery and solitude.",
+      "description_ja": "蔡尚孚は既製品を改造し、機械的な動力装置と組み合わせることで、様々な現象を並置した小さな劇場を展開する。本展は「デジャヴ」の音を当て字的に「疊加（重ね合わせ）」と訳し、「幕／Move」という語呂合わせに結びつけ、物体の動的な視覚を欲望の投影の擬像として扱う。",
+      "artists": [
+        "蔡尚孚"
+      ],
+      "added_at": "2026-10-13T14:51:41.687533+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/24",
+          "time": "",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.kingcarart.org.tw/exhibitions-detail/266"
+        }
+      ]
+    },
+    {
+      "museum": "yinart",
+      "title_zh": "【《盛夏．飛越》】海南寫生采風創作展",
+      "title_en": "Summer Flight: Hainan Sketching Journey Exhibition",
+      "title_ja": "盛夏の飛越：海南スケッチ旅創作展",
+      "dates": "2026.10.21 – 2026.11.08",
+      "location": "",
+      "link": "https://www.yinartspace.org/1",
+      "description": "《盛夏．飛越》匯集呂坤和、吳亭萱、林益進、范姜明華、胡毓正、康台生、陳美鳳、陳俊卿、許進風、程代勒、傅彥熹、傅鈺、湯双進、謝萬鋐、簡來喜等多位畫家，將飛越千里後所見的陽光、海風與色彩，沉澱為一幅幅動人的詩篇。即便盛夏已遠，那個屬於瓊島（海南）的夏天，仍在畫布上、色彩之間，以及每一次落筆與凝望之中延續。",
+      "description_en": "\"Summer Flight\" brings together a group of painters recording what they saw after flying a thousand miles — sunlight, sea breeze and colour settling into memory and onto canvas. Though summer has passed, the Hainan island summer lives on in brushwork and gaze.",
+      "description_ja": "《盛夏．飛越》は、呂坤和、吳亭萱、林益進ら複数の画家による、千里を飛び越えた先で見た陽光・海風・色彩を記憶の中に沈め、絵筆に託した作品展。盛夏が過ぎ去っても、海南島の夏は画布の上、色彩の間、そして見つめる眼差しの中に生き続ける。",
+      "artists": [
+        "呂坤和",
+        "吳亭萱",
+        "林益進",
+        "范姜明華",
+        "胡毓正",
+        "康台生",
+        "陳美鳳",
+        "陳俊卿",
+        "許進風",
+        "程代勒",
+        "傅彥熹",
+        "傅鈺",
+        "湯双進",
+        "謝萬鋐",
+        "簡來喜"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00"
+    },
+    {
+      "museum": "livinglab",
+      "title_zh": "【漫途中Chemins de pensée】沈榮 個展",
+      "title_en": "Chemins de pensée: Shen Jung Solo Exhibition",
+      "title_ja": "漫途中 Chemins de pensée：沈榮個展",
+      "dates": "2026.10.31 – 2026.12.05",
+      "location": "",
+      "link": "https://livinglabgallery.wixsite.com/livinglabgallery",
+      "description": "沈榮將生活中的自然與日常景象，轉化為一種介於具象與抽象之間的觀看方式。從速寫到對山水與大地肌理的描繪，景物不再只是對現實的記錄，而隨著心境與時間產生變化。墨色、線條、碎片與畫面經由裱貼、暈染、撕裂與堆疊重構，在控制與偶然之間形成新的關係，關注風景如何在時間與觀看之間被重新感知。",
+      "description_en": "Shen Jung transforms everyday natural scenery into a way of seeing between the figurative and the abstract. From quick sketches to renderings of mountains, water and land texture, his landscapes are reconstructed through mounting, bleeding ink, tearing and layering, forming new relationships between control and chance.",
+      "description_ja": "沈榮は、日常の自然や風景を、具象と抽象の間を行き来する見方へと変換する。速写から山水や大地の質感の描写まで、墨の色・線・断片・画面を裱貼・暈染・引き裂き・重ね合わせによって再構成し、制御と偶然の間に新しい関係を結ぶ。時間と観看の間で風景がどう再び感知されるかに関心を向ける。",
+      "artists": [
+        "沈榮"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/08",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Tea Reception",
+          "title_ja": "オープニングティーパーティー",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://livinglabgallery.wixsite.com/livinglabgallery"
+        }
+      ]
+    },
+    {
+      "museum": "showartgallery",
+      "title_zh": "【記憶與夢土--周成樑 蕭北辰聯展】",
+      "title_en": "Memory and Dreamland: Chou Cheng-Liang & Hsiao Pei-Chen",
+      "title_ja": "記憶と夢の土地：周成樑・蕭北辰二人展",
+      "dates": "2026.09.26 – 2026.10.23",
+      "location": "",
+      "link": "https://www.facebook.com/show.art.gallery/",
+      "description": "繪畫與圖像是世界上人、記憶和物體的交集。蕭北辰與周成樑描繪的對象來到觀者面前時，宣示了事物的離開和重入——前者在平面上凝縮了曖昧拉扯的距離，將旅行及日常移動中感知的地點抽空了時間標記；後者則在畫面上佈署可辨識的遠觀近觀事物，同時預示著精神性的寄託。",
+      "description_en": "Painting and imagery are where people, memory and objects intersect. Hsiao Pei-Chen condenses an ambiguous distance of travel and daily movement, emptied of its time markers, while Chou Cheng-Liang arranges recognisable near and far objects that simultaneously point toward a spiritual anchoring.",
+      "description_ja": "絵画とイメージは、人、記憶、物が交わる場所である。蕭北辰は旅や日常の移動の中で感知した場所から時間の標識を抜き去り、曖昧な距離感を画面に凝縮する。一方、周成樑は遠景と近景の認識できる事物を配置しながら、同時に精神的な拠り所を暗示する。",
+      "artists": [
+        "周成樑",
+        "蕭北辰"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00"
+    },
+    {
+      "museum": "ontheroad",
+      "title_zh": "【另類顯影在路上】Alternative Photography On the Road",
+      "title_en": "Alternative Photography On the Road",
+      "title_ja": "オルタナティブ・フォトグラフィー・オン・ザ・ロード",
+      "dates": "2026.10.03 – 2026.11.01",
+      "location": "On the Road藝術空間",
+      "link": "https://www.facebook.com/photo/?fbid=1725348052928714&set=a.461668745963324",
+      "description": "曾建元與洪文俊的古典印相工藝聯展，展出鉑鈀印相(Platinum/palladium print)、鐵銀印相(Kallitype print)、膠彩印相(Gum print)、藍曬法(Cyanotype)、明膠銀鹽(Gelatin silver print)等多種另類攝影手工印相工藝作品。",
+      "description_en": "A joint exhibition by Tseng Chien-Yuan and Hung Wen-Chun exploring alternative hand-printing photographic processes, including platinum/palladium print, kallitype, gum print, cyanotype and gelatin silver print.",
+      "description_ja": "曾建元と洪文俊による、オルタナティブ・フォトグラフィーの手焼き印画技法を扱う二人展。プラチナ・パラジウムプリント、鉄銀プリント(カリタイプ)、ガムプリント、サイアノタイプ、ゼラチンシルバープリントなど複数の技法による作品を展示。",
+      "artists": [
+        "曾建元",
+        "洪文俊"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/10/10",
+          "time": "14:00",
+          "title_zh": "導覽茶會",
+          "title_en": "Guided Tour Tea Gathering",
+          "title_ja": "ギャラリーツアー茶会",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.facebook.com/photo/?fbid=1725348052928714&set=a.461668745963324"
+        }
+      ]
+    },
+    {
+      "museum": "poma",
+      "title_zh": "【碎片裡，封存的時間】李宜亞 個展",
+      "title_en": "Time Held Within Fragments: Yi-Ya Lee Solo Exhibition",
+      "title_ja": "断片の中に、封じられた時間：李宜亞個展",
+      "dates": "2026.10.09 – 2026.11.01",
+      "location": "",
+      "link": "https://www.instagram.com/pomaproject/",
+      "description": "作品取材自私人相簿與舊書雜誌，將圖像如牆上的便利貼般隨性排列：削皮的蘋果、喝剩的飲料杯、掌心上的迴紋針，或是路邊棄置的舊床墊——這些日常微物與藝術史中的古典名畫元素相互碰撞，交織出兼具省思、敘事與超現實想像的畫面。藝術家自2018年起以油性粉彩為主要創作媒材，透過反覆塗抹、堆疊與刮擦展現立體觸感。",
+      "description_en": "Drawing on personal photo albums and old magazines, Yi-Ya Lee arranges images as casually as sticky notes on a wall — a peeled apple, a leftover drink, a paperclip, an abandoned mattress — colliding everyday fragments with elements from classical art history. Since 2018 she has worked primarily in oil pastel, building sculptural texture through repeated layering and scraping.",
+      "description_ja": "個人の写真アルバムや古い雑誌から取材し、剥いたリンゴ、飲み残しのカップ、紙クリップ、路上に捨てられたマットレスといった日常の微細な物を、壁の付箋のように無造作に配置する。これらは美術史上の古典的名画の要素と衝突し、省察と語り、シュルレアルな想像力を織り交ぜた画面を生み出す。2018年よりオイルパステルを主たる媒材とし、重ね塗りと削りによって立体的な質感を作り出す。",
+      "artists": [
+        "李宜亞"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00"
+    },
+    {
+      "museum": "iartgallery",
+      "title_zh": "【浮生 Floating Realities：小澤香奈子個展】",
+      "title_en": "Floating Realities: Kanako Ozawa Solo Exhibition",
+      "title_ja": "浮生 Floating Realities：小澤香奈子個展",
+      "dates": "2026.09.19 – 2026.11.28",
+      "location": "",
+      "link": "https://www.instagram.com/iart_gallery/",
+      "description": "日本當代藝術家小澤香奈子以「浮生」為題，表達無論是否覺察，都悄然存在於生活之中的種種，呼應她一貫想透過作品傳遞的「日常生活的微小觸動」與「舊物及記憶細膩的感知」。小澤畢業於東京工藝大學媒體藝術學系，擅長將顏料、黏土、沙土、漆等多元媒材結合至平面及立體作品中。",
+      "description_en": "Japanese contemporary artist Kanako Ozawa takes \"Floating Realities\" as her title, pointing to all that quietly exists within our lives whether or not we notice it — echoing her ongoing interest in small everyday sensations and the delicate perception of old objects and memory. A graduate of Tokyo Polytechnic University's media arts department, she combines paint, clay, sand and lacquer across flat and three-dimensional works.",
+      "description_ja": "日本の現代アーティスト小澤香奈子は「浮生」というタイトルで、気づくかどうかに関わらず生活の中に静かに存在するものごとを表現する。日常の微細な感動や、古い物や記憶への繊細な感知を作品に込める、作家の一貫したテーマが響く。東京工芸大学メディアアート学科卒業後、顔料・黏土・砂・漆など多様な素材を組み合わせた平面・立体作品を手がける。",
+      "artists": [
+        "小澤香奈子 Kanako Ozawa"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00"
+    },
+    {
+      "museum": "onestation",
+      "title_zh": "【燒痕 Burn Scar】塔拉·霍農 Tara Hornnung",
+      "title_en": "Burn Scar: Tara Hornnung",
+      "title_ja": "燒痕 Burn Scar：タラ・ホルナング",
+      "dates": "2026.10.20 – 2026.11.14",
+      "location": "藝站 One Station（香山車站前側）",
+      "link": "https://www.facebook.com/onewetland",
+      "description": "「燒痕」是一個記錄美國西南部野火後土地恢復過程的個人計畫。2022年4月，赫米特峰－卡夫峽谷大火肆虐成為新墨西哥州史上規模最大的野火，藝術家以Holga 120底片相機記錄焦土過後僅留下黑痕的土地，柔焦、漏光與暗角效果營造出繪畫般的質感，與自然災難的殘酷現實形成對比，探討災後重建的意涵。",
+      "description_en": "\"Burn Scar\" is a personal project documenting land recovery after wildfires in the American Southwest, following the Hermit's Peak-Calf Canyon Fire, New Mexico's largest wildfire on record. Shot on a Holga 120 film camera, the soft focus and light leaks lend a painterly texture that contrasts with the harsh reality of the disaster, examining what rebuilding means for a resilient landscape.",
+      "description_ja": "「燒痕（火傷の跡）」は、アメリカ南西部の野火後の土地回復を記録した個人的プロジェクト。ニューメキシコ州史上最大規模となったハーミッツ・ピーク＝カーフ・キャニオン火災の跡を、Holga 120フィルムカメラで撮影。柔らかいピントや光漏れが絵画的な質感を生み、自然災害の過酷な現実と対照をなしながら、再生の意味を問う。",
+      "artists": [
+        "塔拉·霍農 Tara Hornnung"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/20",
+          "time": "16:00",
+          "title_zh": "開幕座談會",
+          "title_en": "Opening Talk",
+          "title_ja": "オープニングトーク",
+          "note_zh": "藝術家塔拉·霍農、策展人萬一ㄧ出席座談。",
+          "note_en": "With artist Tara Hornnung and curator YiYi Wan.",
+          "note_ja": "アーティストのタラ・ホルナングとキュレーターの萬一ㄧが参加。",
+          "source_url": "https://www.facebook.com/onewetland"
+        }
+      ]
+    },
+    {
+      "museum": "kcmaa",
+      "title_zh": "【《柔軟棲居》】——溫柔視角中的城市過渡與繁衍",
+      "title_en": "Soft Dwelling: Urban Transition and Proliferation in a Tender Gaze",
+      "title_ja": "柔らかな棲まい：優しい視点で見る都市の過渡と繁殖",
+      "dates": "2026.11.06 – 2026.12.27",
+      "location": "高雄市現代畫學會基地",
+      "link": "https://www.facebook.com/maak1987/",
+      "description": "策展人張裴舫邀集何佳真、張裴舫、莊彩琴、鄭雅芬、陳艷淑五位藝術家，以溫柔而細膩的觀看視角，關注城市、自然與人之間交織共存的關係，探討當代都市中多層次的棲居樣貌。展覽呈現高速移動視野中的都市建築景觀、城市邊界與自然環境之間的滲透交會，以及日常生活中細微而真實的感知經驗。",
+      "description_en": "Curator Chang Pei-Fang brings together five artists to look tenderly at the interwoven coexistence of city, nature and people, exploring the layered ways we dwell in the contemporary metropolis — from fast-moving urban landscapes to the quiet, porous meeting points between urban edges and the natural environment.",
+      "description_ja": "キュレーター張裴舫が5人の作家を集め、優しく繊細な視点から都市・自然・人が織り合う共存関係に目を向け、現代都市における多層的な「棲まい」の姿を探る展覧会。高速で移動する視野の中の都市建築景観や、都市の境界と自然環境が浸透し合う様子、日常の微細で確かな感知経験を提示する。",
+      "artists": [
+        "何佳真",
+        "張裴舫",
+        "莊彩琴",
+        "鄭雅芬",
+        "陳艷淑"
+      ],
+      "added_at": "2026-10-13T15:14:03.957351+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/07",
+          "time": "14:30",
+          "title_zh": "開幕座談會",
+          "title_en": "Opening Panel Talk",
+          "title_ja": "オープニング・トークセッション",
+          "note_zh": "與談人：蔡佩桂（國立高雄師範大學跨領域藝術研究所副教授、策展人）、張金玉（藝術家、策展人）。",
+          "note_en": "Panelists: Tsai Pei-Kuei (Associate Professor, Graduate Institute of Interdisciplinary Arts, NKNU) and Chang Chin-Yu (artist, curator).",
+          "note_ja": "対談者：蔡佩桂（国立高雄師範大学 異分野芸術研究所准教授、キュレーター）、張金玉（アーティスト、キュレーター）。",
+          "source_url": "https://www.facebook.com/maak1987/"
+        }
+      ]
+    },
+    {
+      "museum": "ruomu",
+      "title_zh": "【燦燦－曾霆羽個展】",
+      "title_en": "Brilliance: Tseng Ting-Yu Solo Exhibition",
+      "title_ja": "燦燦－曾霆羽個展",
+      "dates": "2026.10.17 – 2026.11.29",
+      "location": "",
+      "link": "https://www.ruomugallery.com/",
+      "description": "曾霆羽以故鄉山間的荔枝樹、鳳梨田與海邊木麻黃等童年風景為線索，結合古典圖像的閱讀與臨摹，運用彩箔呈現光影流轉，將深藏於土地與生命故事中的片刻化為畫裡閃爍的光。本展是他返回母校師大美術系任教後的首次個展。",
+      "description_en": "Tseng Ting-Yu draws on childhood landscapes from his hometown — lychee trees, pineapple fields, windswept coastal trees — combined with readings of classical imagery, using metallic foil to capture shifting light. His first solo show since returning to teach at his alma mater, NTNU's Department of Fine Arts.",
+      "description_ja": "曾霆羽は故郷の荔枝の木やパイナップル畑、海辺の木麻黄といった幼少期の風景を手がかりに、古典図像の読解と模写を重ね、彩箔を用いて光の移ろいを描く。恩師の母校・師範大学美術系に教員として戻った後の初個展。",
+      "artists": [
+        "曾霆羽"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/17",
+          "time": "15:00",
+          "title_zh": "開幕式",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20548"
+        },
+        {
+          "type": "talk",
+          "date": "2026/10/24",
+          "time": "14:00-15:00",
+          "title_zh": "藝術家座談",
+          "title_en": "Artist Talk",
+          "title_ja": "アーティストトーク",
+          "note_zh": "與談人：曾霆羽＆柯良志。",
+          "note_en": "Speakers: Tseng Ting-Yu & Ko Liang-Chih.",
+          "note_ja": "対談者：曾霆羽＆柯良志。",
+          "source_url": "https://artemperor.tw/tidbits/20548"
+        }
+      ]
+    },
+    {
+      "museum": "shape-art",
+      "title_zh": "【常新—創作之後】",
+      "title_en": "Ever Renewed: After Creation",
+      "title_ja": "常新－創作の後に",
+      "dates": "2026.10.10 – 2026.12.26",
+      "location": "",
+      "link": "https://www.shape-art.com/",
+      "description": "展覽並置陳庭詩、楊英風與朱銘三位不同世代藝術家的作品，聚焦他們如何在持續的「試」之中不斷調整、轉化，回應所處時代的提問，映照戰後臺灣藝術在多重文化與時代條件中不斷突破自身的軌跡。",
+      "description_en": "The exhibition juxtaposes works by three generations of artists — Chen Ting-Shih, Yuyu Yang and Ju Ming — focusing on how each continually adjusted and transformed through ongoing experimentation, reflecting postwar Taiwanese art's drive to keep breaking new ground.",
+      "description_ja": "陳庭詩、楊英風、朱銘という三世代の作家の作品を並置し、それぞれが「試み」を通じて絶えず調整・転化してきた軌跡に着目。戦後台湾美術が時代や文化の中で自己を更新し続けてきた様相を映す。",
+      "artists": [
+        "楊英風",
+        "陳庭詩",
+        "朱銘"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00"
+    },
+    {
+      "museum": "insian",
+      "title_zh": "【擁抱黑暗 喚醒光芒】",
+      "title_en": "Embracing Darkness, Awaken the Light: Lena Young Solo Exhibition",
+      "title_ja": "擁抱黑暗 喚醒光芒－楊元寧個展",
+      "dates": "2026.10.17 – 2026.11.15",
+      "location": "",
+      "link": "https://www.insiangallery.com/",
+      "description": "楊元寧（Lena Young）繼2021年台灣首展《回到家》後，睽違五年的回歸之作。畫面中的筆觸、動勢與強烈色彩超越單純視覺再現，呈現主體追尋與創傷轉化的歷程，讓生命彷彿破繭而出，引領觀者直抵靈魂昇華。",
+      "description_en": "Lena Young's return exhibition, five years after her 2021 Taiwan debut \"Coming Home.\" Her brushwork, gesture and intense color move beyond mere visual representation, tracing a journey of self-pursuit and the transformation of trauma into light.",
+      "description_ja": "2021年の台湾初個展「回到家（Coming Home）」から5年ぶりとなる楊元寧（Lena Young）の帰還作。筆触や勢い、強烈な色彩は単なる視覚的再現を超え、主体の探求とトラウマの転化の過程を描き出す。",
+      "artists": [
+        "楊元寧 Lena Young"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00"
+    },
+    {
+      "museum": "linartprojects",
+      "title_zh": "【崔永嬿｜小獸漫步】",
+      "title_en": "TSUI Yung-Yen: Along the Edge",
+      "title_ja": "崔永嬿｜小獣漫歩",
+      "dates": "2026.10.24 – 2026.11.14",
+      "location": "",
+      "link": "https://www.instagram.com/linartprojects.tw/",
+      "description": "崔永嬿成為母親後轉以陶土創作雕塑，將孩子的塗鴉複製成陶質小件，並置象徵自身的微型雕塑，隱喻她近年被童年包圍的世界。展名呼應她漫步於人與獸、成人與童年、文明與自然之間模糊地帶的姿態。",
+      "description_en": "Since becoming a mother, Tsui Yung-Yen has turned to ceramic sculpture, replicating her child's doodles as small clay pieces alongside miniature figures representing herself — a metaphor for a world now surrounded by childhood. The title echoes her wandering stance along the blurred edges between human and beast, adult and child, civilization and nature.",
+      "description_ja": "母になってから陶による彫刻に転じた崔永嬿は、子どもの落書きを陶の小片として複製し、自身を象徴する小さな彫刻と並べることで、幼児期に包まれた世界を暗示する。タイトルは人と獣、大人と子ども、文明と自然の境界を漫歩する姿勢を映す。",
+      "artists": [
+        "崔永嬿"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/25",
+          "time": "15:00",
+          "title_zh": "開幕式",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20543"
+        }
+      ]
+    },
+    {
+      "museum": "honggenshen-penghu",
+      "title_zh": "【墨行其間－當代國際版印性藝術展】",
+      "title_en": "Amid Ink and Print: Contemporary International Print-Based Art Exhibition",
+      "title_ja": "墨行其間－当代国際版印性藝術展",
+      "dates": "2026.10.17 – 2027.03.29",
+      "location": "洪根深美術館特展室",
+      "link": "https://www.phhcc.gov.tw/",
+      "description": "由高嘉宏策展，邀集日本、韓國、泰國、馬來西亞、芬蘭及臺灣藝術家參展，以「墨」為觀看起點，透過版畫、複合媒材與空間裝置，探討版畫如何從傳統製版延伸至身體感知、文化記憶與跨媒介實踐。",
+      "description_en": "Curated by Kao Chia-Hung, this exhibition brings together artists from Japan, Korea, Thailand, Malaysia, Finland and Taiwan. Starting from \"ink\" as a point of departure, it explores how printmaking extends from traditional techniques into bodily perception, cultural memory and cross-media installation.",
+      "description_ja": "高嘉宏のキュレーションにより、日本・韓国・タイ・マレーシア・フィンランド・台湾の作家が参加。「墨」を起点に、版画が身体感覚や文化的記憶、異分野実践へと拡張する様相を複合メディアと空間インスタレーションで探る。",
+      "artists": [
+        "宮山廣明",
+        "安河内裕也",
+        "關口聖火子",
+        "金孝",
+        "Jakkee Kongkaew",
+        "Praween Piangchompu",
+        "李迪權",
+        "Harriina Räinä",
+        "黃郁生",
+        "楊明迭",
+        "陳奕伶",
+        "林宜炫",
+        "高嘉宏",
+        "林姿吟",
+        "魯彥豪",
+        "蔡佩真",
+        "朱芳瑩",
+        "陳平"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/17",
+          "time": "14:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "note_zh": "開幕當日全館免費參觀。",
+          "note_en": "Free admission on opening day.",
+          "note_ja": "開幕当日は全館無料観覧。",
+          "source_url": "https://artemperor.tw/tidbits/20550"
+        },
+        {
+          "type": "talk",
+          "date": "2026/10/17",
+          "time": "15:00",
+          "title_zh": "專題講座",
+          "title_en": "Artist Talk",
+          "title_ja": "専題講座",
+          "note_zh": "馬來西亞藝術家李迪權分享當代版印藝術的創作實踐。",
+          "note_en": "Malaysian artist Lee Teck Kuan on contemporary print-based art practice.",
+          "note_ja": "マレーシアの作家、李迪權による当代版印藝術の実践についての講演。",
+          "source_url": "https://artemperor.tw/tidbits/20550"
+        }
+      ]
+    },
+    {
+      "museum": "neverland",
+      "title_zh": "【面孔遊行｜Persona Parade】韓國藝術家聯展",
+      "title_en": "Persona Parade: Korean Artists Group Exhibition",
+      "title_ja": "面孔遊行｜Persona Parade：韓国作家グループ展",
+      "dates": "2026.10.24 – 2026.11.15",
+      "location": "預約觀展（LINE）",
+      "link": "https://www.instagram.com/neverland.gallery/",
+      "description": "Neverland Gallery 與首爾 Gallery Aile 攜手呈現，邀集韓勝勳、朴妮娜、梁恩峰與羽佳四位韓國藝術家。四人皆以極具辨識度的角色形象創作，看似可愛、溫柔、天真的臉孔，各自承載著當代人難以言說的情緒，展開一場關於表面與內在的遊行。※需透過LINE預約觀展。",
+      "description_en": "Presented with Seoul's Gallery Aile, bringing together four Korean artists — Han Seunghun, Park Nina, Yang Eunbong and YUJA — whose distinctive, endearing character imagery each carries emotions rarely shown. Viewing by appointment via LINE.",
+      "description_ja": "ソウルのGallery Aileと共同で、韓勝勳、朴妮娜、梁恩峰、羽佳の4人の韓国作家を紹介。愛らしく親しみやすいキャラクターの姿に、現代人が言葉にしにくい感情を託す。観覧はLINEによる予約制。",
+      "artists": [
+        "韓勝勳 Han Seunghun",
+        "朴妮娜 Park Nina",
+        "梁恩峰 Yang Eunbong",
+        "羽佳 YUJA"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/24",
+          "time": "15:00-18:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20546"
+        }
+      ]
+    },
+    {
+      "museum": "mengjiao",
+      "title_zh": "【天空〜一期一会・愛之器】張義明陶展",
+      "title_en": "Sky ~ Ichigo Ichie, Vessels of Love: Chang Yi-Ming Ceramics Exhibition",
+      "title_ja": "天空～一期一会・愛の器：張義明陶芸展",
+      "dates": "2026.11.17 – 2026.11.29",
+      "location": "",
+      "link": "https://www.mengjiaogallery.com/",
+      "description": "旅居京都的台灣陶藝家張義明（明心陶房 緣窯主）個展，展期內舉辦茶會活動。",
+      "description_en": "Solo exhibition by Taiwanese ceramic artist Chang Yi-Ming, based in Kyoto and owner of the Enyo Kiln. A tea gathering is held during the show.",
+      "description_ja": "京都在住の台湾出身の陶芸家、張義明（明心陶房 縁窯主）の個展。会期中に茶会を開催。",
+      "artists": [
+        "張義明"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00",
+      "events": [
+        {
+          "type": "other",
+          "date": "2026/11/21",
+          "time": "15:00",
+          "title_zh": "茶會",
+          "title_en": "Tea Gathering",
+          "title_ja": "茶会",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20544"
+        }
+      ]
+    },
+    {
+      "museum": "nccu-art",
+      "title_zh": "【遲滯】倪灝個展",
+      "title_en": "Hysteresis: Ni Hao Solo Exhibition",
+      "title_ja": "遅滞－倪灝個展",
+      "dates": "2026.09.23 – 2026.12.23",
+      "location": "政大藝文中心五樓 藝態空間",
+      "link": "https://artist.nccu.edu.tw",
+      "description": "作品以透過線上戀物市集取得的曾被穿著衣物為材料，經硬化、塑形後組入由家具、工業零件等現成物構成的結構。曾於2025台北雙年展展出的六件襪子作品，本次以重新構思的承載結構與空間配置呈現，觀眾可透過QR碼閱讀每件作品背後的私人對話紀錄。",
+      "description_en": "Ni Hao's works use previously worn clothing sourced through online fetish markets, hardened and set into structures built from furniture, industrial parts and other found objects. Six sock sculptures previously shown at the 2025 Taipei Biennial are presented here with newly conceived supports; QR codes let viewers read the private exchanges behind each piece.",
+      "description_ja": "オンラインのフェティッシュマーケットで入手した着用済みの衣類を素材に、硬化・造形して家具や工業部品などの既製品による構造に組み込む。2025年台北ビエンナーレで展示された靴下の彫刻6点を、新たに考案された支持構造と空間配置で再構成。QRコードから各作品の背景にある個人間の対話を読むことができる。",
+      "artists": [
+        "倪灝"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00"
+    },
+    {
+      "museum": "donnaart",
+      "title_zh": "【風景正在發生-台灣藝術家五人聯展】",
+      "title_en": "Landscape in the Making: Group Exhibition of Taiwanese Artists",
+      "title_ja": "風景は今起きている－台湾作家五人展",
+      "dates": "2026.10.21 – 2026.12.27",
+      "location": "華山1914文化創意產業園區 紅磚區西7-2（台北市中正區八德路一段1號）",
+      "link": "https://artemperor.tw/tidbits/20525",
+      "description": "多納藝術於華山1914文創園區推出的聯展，集結周政緯、傅浩軒、王挺宇與堉泉四位藝術家作品，涵蓋城市地景、人物與日常情境、花卉及植物意象，呈現藝術家如何從熟悉的生活環境出發，重新觀看並描繪正在形成中的風景。※展場位於華山1914文創園區，非多納藝術本址。",
+      "description_en": "A group show by Donna Art held at Huashan 1914 Creative Park, bringing together Chou Cheng-Wei, Fu Hao-Hsuan, Wang Ting-Yu and Yu Chuan, spanning cityscapes, figures and everyday scenes, and floral imagery. Note: held at Huashan 1914, not the gallery's main address.",
+      "description_ja": "多納藝術が華山1914文創園区で開催するグループ展。周政緯、傅浩軒、王挺宇、堉泉の4作家による都市風景、人物と日常、花や植物のイメージを通じ、形成されつつある風景を描く。※会場は華山1914文創園区内で、画廊の本拠地ではない。",
+      "artists": [
+        "周政緯",
+        "傅浩軒",
+        "王挺宇",
+        "堉泉"
+      ],
+      "added_at": "2026-10-20T12:13:20.648278+09:00"
     }
   ]
 }
