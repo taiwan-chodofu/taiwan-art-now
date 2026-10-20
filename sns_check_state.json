@@ -1,0 +1,588 @@
+{
+  "venues": [
+    {
+      "id": "fotoaura",
+      "name_zh": "海馬迴光畫館",
+      "name_en": "Fotoaura Institute of Photography",
+      "url": "https://www.facebook.com/fotoaura.tw",
+      "region": "tainan",
+      "last_checked": "2026-10-20T13:09:21.337070+09:00"
+    },
+    {
+      "id": "ttam",
+      "name_zh": "臺東美術館",
+      "name_en": "Taitung Art Museum",
+      "url": "https://www.facebook.com/taitungartmuseum",
+      "region": "taitung",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "frees",
+      "name_zh": "福利社",
+      "name_en": "FreeS Art Space",
+      "url": "https://www.facebook.com/freesartspace",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "ponding",
+      "name_zh": "朋丁",
+      "name_en": "Pon Ding",
+      "url": "https://www.instagram.com/pondingspace/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:09:21.337070+09:00"
+    },
+    {
+      "id": "art182",
+      "name_zh": "182 art space",
+      "name_en": "182 Art Space",
+      "url": "https://www.facebook.com/182artspace",
+      "region": "tainan",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "soka",
+      "name_zh": "索卡藝術．台南",
+      "name_en": "Soka Art Tainan",
+      "url": "https://www.facebook.com/soka.tainan/",
+      "region": "tainan",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "g333",
+      "name_zh": "333 Gallery",
+      "name_en": "333 Gallery",
+      "url": "https://www.facebook.com/333gallery",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "moon",
+      "name_zh": "月臨畫廊",
+      "name_en": "Moon Gallery",
+      "url": "https://www.facebook.com/MoonGallery.Taichung/",
+      "region": "taichung",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "daxin",
+      "name_zh": "大新美術館",
+      "name_en": "Da Xin Art Museum",
+      "url": "https://www.facebook.com/DaXinArtMuseum/",
+      "region": "tainan",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "sssart",
+      "name_zh": "ss space space",
+      "name_en": "ss space space (SSS Art Space)",
+      "url": "https://www.facebook.com/ssspacespace",
+      "region": "new_taipei",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "simpleobject",
+      "name_zh": "純Object",
+      "name_en": "Simple Object",
+      "url": "https://www.facebook.com/simpleobjectofficial/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "glitch",
+      "name_zh": "毛刺 Glitch",
+      "name_en": "Glitch",
+      "url": "https://www.facebook.com/profile.php?id=61556692779891",
+      "region": "taichung",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "soka_taipei",
+      "name_zh": "索卡藝術．台北",
+      "name_en": "Soka Art Taipei",
+      "url": "https://www.facebook.com/SokaTaipei/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:15:50.901121+09:00"
+    },
+    {
+      "id": "hakkapark",
+      "name_zh": "臺北市客家文化公園",
+      "name_en": "Taipei Hakka Cultural Park",
+      "url": "https://www.facebook.com/TaipeiHakkaPark/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "taiwanbooks",
+      "name_zh": "台灣圖書室",
+      "name_en": "Taiwan Reading Room",
+      "url": "https://www.instagram.com/taiwanlib/",
+      "region": "chiayi",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "absence",
+      "name_zh": "不存在劇場",
+      "name_en": "Absence Space",
+      "url": "https://www.facebook.com/AbsenceSpace",
+      "region": "tainan",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "ffffff",
+      "name_zh": "正白 #FFFFFF",
+      "name_en": "#FFFFFF",
+      "url": "https://www.facebook.com/ffffffblank/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "ajian",
+      "name_zh": "一菅空間",
+      "name_en": "A Jian Space",
+      "url": "https://www.facebook.com/p/A-jian-space-%E4%B8%80%E8%8F%85%E7%A9%BA%E9%96%93-61572469571593/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "winsing",
+      "name_zh": "文心藝所 Winsing Art Place",
+      "name_en": "Winsing Art Place",
+      "url": "https://www.facebook.com/winsing19",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "orogeny",
+      "name_zh": "噪山藝術空間",
+      "name_en": "Orogeny Art Space",
+      "url": "https://www.facebook.com/orogeny.art",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "asiamoma",
+      "name_zh": "亞洲大學附屬現代美術館",
+      "name_en": "Asia University Museum of Modern Art",
+      "url": "https://www.facebook.com/ASIAMOMA/",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:18:05.791913+09:00"
+    },
+    {
+      "id": "carp",
+      "name_zh": "鯉魚藝廊",
+      "name_en": "Carp Gallery",
+      "url": "https://www.facebook.com/p/%E9%AF%89%E9%AD%9ACarp-Gallery-100070045041049/",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "sleepark",
+      "name_zh": "睡公園音畫書廊",
+      "name_en": "Sleepark M&M Book Gallery",
+      "url": "https://www.facebook.com/sleeparkbook",
+      "region": "tainan",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "yao",
+      "name_zh": "窯座",
+      "name_en": "Yáo",
+      "url": "https://www.facebook.com/story.php?story_fbid=122320940372225287&id=61556758625583",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "moolah",
+      "name_zh": "暮拉多元藝術空間",
+      "name_en": "The Moolah Multi-Art Space",
+      "url": "https://www.facebook.com/themoolahart",
+      "region": "tainan",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "852art",
+      "name_zh": "852藝術空間",
+      "name_en": "852 Art Space",
+      "url": "https://www.facebook.com/photo.php?fbid=122182914674800793&set=pb.61574023807656.-2207520000&type=3",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "fugui",
+      "name_zh": "鶯歌富貴美術館",
+      "name_en": "Fugui Museum of Art",
+      "url": "https://www.facebook.com/FugueiArtCulture",
+      "region": "new_taipei",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "sinpink",
+      "name_zh": "新浜碼頭藝術空間",
+      "name_en": "Sin Pin Pier Art Space",
+      "url": "https://www.facebook.com/sinpinpier",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "elevenart",
+      "name_zh": "桃園十一份美術館",
+      "name_en": "Eleven Art Gallery",
+      "url": "https://www.facebook.com/11ElevenArtGallery/",
+      "region": "taoyuan",
+      "last_checked": "2026-10-20T14:26:31.860960+09:00"
+    },
+    {
+      "id": "guanglongxing",
+      "name_zh": "光隆行",
+      "name_en": "Guang Long Xing",
+      "url": "https://www.facebook.com/p/光隆行Hamasen-61583270716729/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "grassland",
+      "name_zh": "雜草町",
+      "name_en": "Grassland",
+      "url": "https://www.instagram.com/grassland_tw/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "openwide",
+      "name_zh": "掀牆",
+      "name_en": "Open Wide",
+      "url": "https://www.facebook.com/OPENWIDE55",
+      "region": "new_taipei",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "slyartspace",
+      "name_zh": "新樂園藝術空間",
+      "name_en": "Shin Leh Yuan Art Space",
+      "url": "https://www.instagram.com/slyartspace/",
+      "region": "taoyuan",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "gallery80a",
+      "name_zh": "軟輪畫廊",
+      "name_en": "Gallery 80A",
+      "url": "https://instagram.com/gallery80a",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "zitdim",
+      "name_zh": "節點藝術空間",
+      "name_en": "Zit-Dim Art Space",
+      "url": "https://www.facebook.com/Zit.Dim.Art.space/",
+      "region": "tainan",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "ocac",
+      "name_zh": "打開-當代藝術工作站",
+      "name_en": "Open Contemporary Art Center (OCAC)",
+      "url": "https://www.facebook.com/opencontemporary",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "piecetw",
+      "name_zh": "Pièce",
+      "name_en": "Pièce",
+      "url": "https://www.instagram.com/piece.tw/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:34:05.200196+09:00"
+    },
+    {
+      "id": "pttspace",
+      "name_zh": "PTT Space",
+      "name_en": "PTT Space",
+      "url": "https://www.instagram.com/ptt_space/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:39:51.311161+09:00"
+    },
+    {
+      "id": "hcrailway",
+      "name_zh": "新竹市鐵道藝術村",
+      "name_en": "Hsinchu Railway Art Site",
+      "url": "https://www.facebook.com/Hsinchuwarehouse",
+      "region": "hsinchu",
+      "last_checked": "2026-10-20T14:39:51.311161+09:00"
+    },
+    {
+      "id": "waleyart",
+      "name_zh": "水谷藝術",
+      "name_en": "Waley Art",
+      "url": "https://www.facebook.com/WaleyArt",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:39:51.311161+09:00"
+    },
+    {
+      "id": "vpzoneart",
+      "name_zh": "众藝術",
+      "name_en": "Zone Art",
+      "url": "https://www.instagram.com/vpzoneart/",
+      "region": "taoyuan",
+      "last_checked": "2026-10-20T14:39:51.311161+09:00"
+    },
+    {
+      "id": "weimingming",
+      "name_zh": "未命名 Wei Ming Ming",
+      "name_en": "Wei Ming Ming",
+      "url": "https://www.facebook.com/weimingmingwmm",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:39:51.311161+09:00"
+    },
+    {
+      "id": "axisgallery",
+      "name_zh": "Axis Gallery",
+      "name_en": "Axis Gallery",
+      "url": "https://www.instagram.com/axisgallery.tw/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:43:18.578698+09:00"
+    },
+    {
+      "id": "middleart",
+      "name_zh": "米豆藝術空間",
+      "name_en": "The Middle Art Space",
+      "url": "https://www.instagram.com/the_middle_art_space/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:43:18.578698+09:00"
+    },
+    {
+      "id": "harvestart",
+      "name_zh": "宏藝術",
+      "name_en": "Harvest Art Gallery",
+      "url": "https://www.facebook.com/HarvestTW/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:43:18.578698+09:00"
+    },
+    {
+      "id": "sunwayart",
+      "name_zh": "Sunway Art Space 藝術空間",
+      "name_en": "Sunway Art Space",
+      "url": "https://www.facebook.com/profile.php?id=100083413963501",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:43:18.578698+09:00"
+    },
+    {
+      "id": "keepingart",
+      "name_zh": "不斷藝術 Keeping Art",
+      "name_en": "Keeping Art",
+      "url": "https://www.instagram.com/keepingart/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:43:18.578698+09:00"
+    },
+    {
+      "id": "vaikuntha",
+      "name_zh": "外琨塔 Vaikuntha 藝術生活中心",
+      "name_en": "Vaikuntha Art Living Center",
+      "url": "https://www.instagram.com/vaikunthakala/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:46:43.759275+09:00"
+    },
+    {
+      "id": "gatherart",
+      "name_zh": "序藝術 Gather Art",
+      "name_en": "Gather Art",
+      "url": "https://www.instagram.com/gatherartkhh/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:46:43.759275+09:00"
+    },
+    {
+      "id": "joyfulart",
+      "name_zh": "琂樂堂藝文空間",
+      "name_en": "Joyful Art Gallery",
+      "url": "https://www.instagram.com/joyfulart_gallery/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:46:43.759275+09:00"
+    },
+    {
+      "id": "yipingbookroom",
+      "name_zh": "一坪書室",
+      "name_en": "Yi Ping Book Room",
+      "url": "https://www.instagram.com/3.3058m2book/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T14:46:43.759275+09:00"
+    },
+    {
+      "id": "placeo",
+      "name_zh": "PLACE O",
+      "name_en": "PLACE O",
+      "url": "https://www.instagram.com/the.place.o/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:50:37.636983+09:00"
+    },
+    {
+      "id": "zegallery",
+      "name_zh": "澤-藝術空間（國立清華大學藝術與設計學系）",
+      "name_en": "ZE Gallery (NTHU Dept. of Arts & Design)",
+      "url": "https://www.instagram.com/nhcue_artspace/",
+      "region": "hsinchu",
+      "last_checked": "2026-10-20T14:50:37.636983+09:00"
+    },
+    {
+      "id": "artweekchiayi",
+      "name_zh": "嘉義市政府文化局（嘉義藝術日常主辦單位）",
+      "name_en": "Chiayi City Cultural Affairs Bureau (Art Week Chiayi organizer)",
+      "url": "https://www.instagram.com/artweekchiayi2026/",
+      "region": "chiayi",
+      "last_checked": "2026-10-20T14:50:37.636983+09:00"
+    },
+    {
+      "id": "panyu",
+      "name_zh": "磐鈺生活美學文化藝術基金會（磐鈺接待會館）",
+      "name_en": "Panyu Lifestyle Aesthetics Culture & Arts Foundation (Panyu Reception Hall)",
+      "url": "https://www.facebook.com/goldenjade.tw",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:50:37.636983+09:00"
+    },
+    {
+      "id": "vinegallery",
+      "name_zh": "藤藝廊",
+      "name_en": "Vine The Art Gallery",
+      "url": "https://www.instagram.com/vine_the_art_gallery/",
+      "region": "hsinchu",
+      "last_checked": "2026-10-20T14:50:37.636983+09:00"
+    },
+    {
+      "id": "xinbangallery",
+      "name_zh": "新板藝廊",
+      "name_en": "Xinban Gallery",
+      "url": "https://www.facebook.com/newtaipei.gallery/",
+      "region": "new_taipei",
+      "last_checked": "2026-10-20T14:58:20.147222+09:00"
+    },
+    {
+      "id": "knowphotogallery",
+      "name_zh": "小影廊",
+      "name_en": "Know Photo Gallery",
+      "url": "https://www.instagram.com/knowphotogallery/",
+      "region": "taichung",
+      "last_checked": "2026-10-20T14:58:20.147222+09:00"
+    },
+    {
+      "id": "apollogallery",
+      "name_zh": "阿波羅畫廊",
+      "name_en": "Apollo Art Gallery",
+      "url": "https://www.instagram.com/apollo_art_gallery/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T14:58:20.147222+09:00"
+    },
+    {
+      "id": "guangdianart",
+      "name_zh": "光點藝術中心（鶯歌光點美學館3F）",
+      "name_en": "Guangdian Art Center (at Yingge Light Spot Aesthetics Museum)",
+      "url": "https://www.facebook.com/yinggo18",
+      "region": "new_taipei",
+      "last_checked": "2026-10-20T14:58:20.147222+09:00"
+    },
+    {
+      "id": "galeriepierre",
+      "name_zh": "臻品藝術中心",
+      "name_en": "Galerie Pierre",
+      "url": "https://www.instagram.com/gp_group1990/",
+      "region": "taichung",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "asirartmuseum",
+      "name_zh": "甘樂阿舍美術館",
+      "name_en": "Asir Art Museum",
+      "url": "https://www.instagram.com/asirartmuseum/",
+      "region": "tainan",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "alleyart",
+      "name_zh": "巷藝術",
+      "name_en": "Alley Art Gallery",
+      "url": "https://www.instagram.com/alley_art_gallery/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "taiyu",
+      "name_zh": "泰郁美學堂",
+      "name_en": "Taiyu Arts & Humanities",
+      "url": "https://www.instagram.com/taiyu.arts/",
+      "region": "chiayi",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "rung",
+      "name_zh": "RUNG 戎器",
+      "name_en": "RUNG Ceramics",
+      "url": "https://www.instagram.com/rung.ceramics/",
+      "region": "taoyuan",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "woodworklab",
+      "name_zh": "實驗木場",
+      "name_en": "Chiayi Experimental Wood Workshop",
+      "url": "https://www.facebook.com/chiayiwoodlab",
+      "region": "chiayi",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "showartgallery",
+      "name_zh": "三宅一秀藝術中心",
+      "name_en": "SHOW Art Gallery",
+      "url": "https://www.facebook.com/show.art.gallery/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "poma",
+      "name_zh": "POMA",
+      "name_en": "POMA",
+      "url": "https://www.instagram.com/pomaproject/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "iartgallery",
+      "name_zh": "iart 愛上藝廊",
+      "name_en": "iart Gallery",
+      "url": "https://www.instagram.com/iart_gallery/",
+      "region": "hsinchu",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "onestation",
+      "name_zh": "藝站 One Station",
+      "name_en": "One Station",
+      "url": "https://www.facebook.com/onewetland",
+      "region": "hsinchu",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "kcmaa",
+      "name_zh": "高雄市現代畫學會",
+      "name_en": "Kaohsiung Modern Painting Association",
+      "url": "https://www.facebook.com/maak1987/",
+      "region": "kaohsiung",
+      "last_checked": "2026-10-20T15:06:38.119131+09:00"
+    },
+    {
+      "id": "linartprojects",
+      "name_zh": "LIN ART PROJECTS 潮時藝術",
+      "name_en": "LIN ART PROJECTS",
+      "url": "https://www.instagram.com/linartprojects.tw/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:09:21.337070+09:00"
+    },
+    {
+      "id": "neverland",
+      "name_zh": "Neverland Gallery",
+      "name_en": "Neverland Gallery",
+      "url": "https://www.instagram.com/neverland.gallery/",
+      "region": "taipei",
+      "last_checked": "2026-10-20T13:09:21.337070+09:00"
+    }
+  ]
+}
