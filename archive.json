@@ -5579,6 +5579,92 @@
       "description_ja": "創刊50周年を迎えた『台灣光華雜誌（Taiwan Panorama）』は、都市と地方、山と海、街角のすみずみまでカメラを携えて歩き、台湾の時代の変遷、民主化の歩み、社会の変容を記録してきた。本写真展は「日常生活の温かな光と影」「社会の発展と時代の強靭さ」「民主と自由の歩み」「世界へ広がる台湾の足跡」という4つのテーマで構成される。一枚一枚の写真は、過去を振り返るまなざしであると同時に、台湾へ宛てた一通のラブレターでもある。",
       "status": "ended",
       "added_at": "2026-10-05T21:09:49.192406+09:00"
+    },
+    {
+      "museum": "ntmofa",
+      "title_zh": "群島邊疆／群島未來：2026國美進駐",
+      "title_en": "Archipelagic Frontiers / Archipelagic Futures: 2026 NTMoFA Residency",
+      "title_ja": "群島邊疆／群島未來：2026年國美進駐",
+      "dates": "2026.09.19 – 2026.10.21",
+      "artists": [
+        "卡洛斯·基洪 Carlos Quijon, Jr."
+      ],
+      "link": "https://event.culture.tw/mocweb/reg/NTMOFA/Detail.init.ctr?actId=60151",
+      "status": "ended",
+      "description": "第二屆「國美進駐」邀請菲律賓當代藝術館（CCP Contemporary Art Museum of the Philippines）總策展人卡洛斯·基洪（Carlos Quijon, Jr.）進駐國立臺灣美術館，研究主題為「群島邊疆／群島未來」。他將進入國美典藏庫房、走入在地島嶼踏查，以「群島思維」打破以陸地為中心的既定想像，並舉辦三場思辨踏查活動：09/19（六）14:00–16:00工作坊1「什麼是『群島未來主義』？」；10/07（三）14:00–16:00工作坊2「國美典藏再閱讀：藝術作品裡的群島思維」；10/21（三）14:00–16:00成果發表會「群島的回聲：駐館研究成果分享」。地點皆於國美館2F駐館工作室，席次有限，需事先報名。",
+      "description_en": "The second edition of the \"NTMoFA Residency\" program hosts Carlos Quijon, Jr., Chief Curator of the CCP Contemporary Art Museum of the Philippines, in a residency at the National Taiwan Museum of Fine Arts under the research theme \"Archipelagic Frontiers / Archipelagic Futures.\" He will explore the museum's collection storage and conduct on-site island research, using \"archipelagic thinking\" to break from land-centric assumptions, culminating in three public research sessions: Sept 19 (Sat) 14:00-16:00, Workshop 1 \"What is Archipelagic Futurism?\"; Oct 7 (Wed) 14:00-16:00, Workshop 2 \"Re-reading the NTMoFA Collection: Archipelagic Thinking in Artworks\"; Oct 21 (Wed) 14:00-16:00, Sharing Session \"Echoes of the Archipelago: Residency Research Outcomes.\" All sessions take place at the museum's 2F residency studio; registration required, limited seats.",
+      "description_ja": "第2回「國美進駐」では、フィリピン現代美術館（CCP Contemporary Art Museum of the Philippines）チーフキュレーターのカルロス・キホン・ジュニア（Carlos Quijon, Jr.）を国立台湾美術館に招き、研究テーマ「群島邊疆／群島未來」のもとレジデンスを実施する。館内の収蔵庫を訪ね、現地の島々を実地調査し、「群島的思考」によって陸地中心の既存の想像力を打ち破る。3回の公開研究会を開催：09/19（土）14:00–16:00 ワークショップ1「『群島フューチャリズム』とは何か？」；10/07（水）14:00–16:00 ワークショップ2「国美収蔵の再読：作品に見る群島的思考」；10/21（水）14:00–16:00 成果発表会「群島のこだま：レジデンス研究成果報告」。会場はいずれも国美館2F駐館工作室、事前申込制・席数限定。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/09/19",
+          "time": "14:00",
+          "title_zh": "工作坊1｜什麼是「群島未來主義」？",
+          "title_en": "Workshop 1: What is \"Archipelagic Futurism\"?",
+          "title_ja": "ワークショップ1：「群島フューチャリズム」とは何か？",
+          "note_zh": "打破陸地中心主義，重構未來的策展想像。",
+          "note_en": "Breaking from land-centrism to reimagine future curatorial practice.",
+          "note_ja": "陸地中心主義を打ち破り、未来のキュレーション的想像力を再構築する。",
+          "source_url": "https://www.instagram.com/ntmofa_tw/p/Dc3H4LbAcPj/"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/07",
+          "time": "14:00",
+          "title_zh": "工作坊2｜國美典藏再閱讀：藝術作品裡的群島思維",
+          "title_en": "Workshop 2: Re-reading the NTMoFA Collection",
+          "title_ja": "ワークショップ2：国美収蔵の再読",
+          "note_zh": "重新閱讀國美典藏，打撈台灣與海洋的記憶共鳴。",
+          "note_en": "Re-reading the museum collection to surface memories resonant with Taiwan and the ocean.",
+          "note_ja": "国美収蔵を再読し、台湾と海の記憶の共鳴を掘り起こす。",
+          "source_url": "https://www.instagram.com/ntmofa_tw/p/Dc3H4LbAcPj/"
+        },
+        {
+          "type": "activity",
+          "date": "2026/10/21",
+          "time": "14:00",
+          "title_zh": "成果發表會｜群島的回聲",
+          "title_en": "Sharing Session: Echoes of the Archipelago",
+          "title_ja": "成果発表会：群島のこだま",
+          "note_zh": "駐館研究成果分享。",
+          "note_en": "Sharing the outcomes of the residency research.",
+          "note_ja": "レジデンス研究の成果報告。",
+          "source_url": "https://www.instagram.com/ntmofa_tw/p/Dc3H4LbAcPj/"
+        }
+      ],
+      "added_at": "2026-09-16T15:35:52.233136+09:00"
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "轉。體。譯。人－2026 康卉芳繪畫個展",
+      "title_en": "Transfigure, Body, Translate, Person – 2026 Kang Hui-Fang Solo Painting Exhibition",
+      "title_ja": "転・体・訳・人－2026 康卉芳絵画個展",
+      "dates": "2026.09.24 – 2026.10.21",
+      "location": "",
+      "link": "https://sinpink.com/2026/08/19/%e8%bd%89%e3%80%82%e9%ab%94%e3%80%82%e8%ad%af%e3%80%82%e4%ba%ba%ef%bc%8d2026-%e5%ba%b7%e5%8d%89%e8%8a%b3%e7%b9%aa%e7%95%ab%e5%80%8b%e5%b1%95/",
+      "artists": [
+        "康卉芳"
+      ],
+      "description": "人類常透過腦中的濾鏡，以自身視角去超譯解讀外在世界的發生，使之成為內在認定的「真實」。而這個「真實」，很大程度是基於人的欲求、進而自我擴張的一種扭曲、虛構與延伸再造。對人類這種「扭曲天性」的觀察與認領，啟發了藝術家康卉芳的繪畫創作，而她也試圖在創作中，實驗並拓展各種人體意象的變形、虛構、轉譯與多重敘事的可能性。此次個展將展出2024-2026年間藝術家的階段性實驗與繪畫探索，作品中那些不受物質性與邏輯性限制的虛構人體意象，是心靈意識的具現化魂魄，也是七情六慾的載體。藝術家企圖透過擺盪在各種虛實「姿勢（gesture）」與「姿態（posture）」間的多重敘事可能，折射出某種流動、怪異、衝突卻又互為表裡的人性本質與生活百態。",
+      "description_en": "Humans often perceive the world through filters in their own minds, over-translating what happens outside into an inner \"reality.\" This \"reality\" is largely a distortion, fiction, and self-expanding extension rooted in human desire. Observing and claiming this \"distorting nature\" of humanity inspired artist Kang Hui-Fang's painting practice, in which she experiments with and expands the deformation, fiction, translation, and multiple narrative possibilities of the human body image. This solo exhibition presents the artist's staged experiments and painterly explorations from 2024 to 2026. The fictional body images in her work, unconstrained by physicality or logic, are embodied souls of consciousness as well as vessels of human emotion and desire. Through multiple narrative possibilities oscillating between various real and unreal \"gestures\" and \"postures,\" the artist reflects a fluid, strange, conflicting yet mutually implicated human nature and everyday life.",
+      "description_ja": "人間はしばしば脳内のフィルターを通して、自分自身の視点で外界の出来事を過剰に翻訳し、それを内的に認定された「真実」としてしまう。この「真実」は、多くの場合、人間の欲求に基づく、自己拡張的な歪曲・虚構・延伸された再構築である。この人間の「歪める性質」への観察と受容が、作家・康卉芳（カン・フイファン）の絵画創作のきっかけとなった。彼女は創作の中で、人体イメージの変形・虚構・翻訳、そして多重的な語りの可能性を実験し拡張しようとしている。本個展では、2024年から2026年にかけての作家の段階的な実験と絵画的探求が展示される。物質性や論理性に縛られない虚構の人体イメージは、意識の具現化された魂であり、また喜怒哀楽や欲望の器でもある。作家は、虚実のあいだを揺れ動くさまざまな「ジェスチャー（gesture）」と「ポスチャー（posture）」の多重的な語りの可能性を通して、流動的で奇妙、矛盾しながらも表裏一体の人間性と生活の諸相を映し出そうとしている。",
+      "status": "ended",
+      "added_at": "2026-10-06T02:19:44.635107+09:00"
+    },
+    {
+      "museum": "zegallery",
+      "title_zh": "《悄悄醒》春之清華藝術學院學士班第七屆系展",
+      "title_en": "Quietly Awakening: Spring NTHU Arts College 7th Undergraduate Department Exhibition",
+      "title_ja": "《静かに目覚める》春の清華大学藝術学院学士課程第7期学科展",
+      "dates": "2026.10.12 – 2026.10.21",
+      "location": "竹師藝術空間二館",
+      "link": "https://www.instagram.com/nhcue_artspace/p/DeQsFdav2L3/",
+      "description": "「悄悄」是在雜訊和沉寂裡默默蓄力的狀態，「醒」則是理念跨越邊界終至被感知的瞬間。展覽聚焦在「不可見」轉為「可感」的時刻，藝術家將平時無法被看見、聽見或訴說的想像，透過裝置、聲響與畫面轉譯成具象化的體驗。",
+      "description_en": "\"Quiet\" is a state of gathering force amid noise and stillness; \"awakening\" is the moment an idea crosses a threshold and finally becomes perceptible. The exhibition focuses on the transition from the invisible to the sensible, translating imaginings that are usually unseen, unheard or unspoken into tangible experiences through installation, sound and image.",
+      "description_ja": "「静か」とは雑音と静寂の中で密かに力を蓄える状態であり、「目覚め」とは理念が境界を越えて感知される瞬間である。本展は「見えないもの」が「感じられるもの」へと変わる瞬間に焦点を当て、通常は見えず、聞こえず、語られない想像を、インスタレーションや音響、映像によって具象化する。",
+      "artists": [],
+      "added_at": "2026-10-20T14:48:16.906286+09:00",
+      "status": "ended"
     }
   ]
 }
