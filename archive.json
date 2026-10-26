@@ -6176,6 +6176,148 @@
       ],
       "added_at": "2026-10-20T14:33:54.013827+09:00",
       "status": "ended"
+    },
+    {
+      "museum": "nwac",
+      "title_zh": "Re：戰鬥之城",
+      "title_en": "Re: Battle City",
+      "title_ja": "",
+      "dates": "2026/06/06 - 2026/10/26",
+      "location": "內惟藝術中心",
+      "link": "https://www.nwac.org.tw/tw/art-content/311902c82362",
+      "description": "「Re」有重啟、再次回返之意。本展聚焦藝術家張立人歷時十四年完成的《戰鬥之城》系列，透過動畫影像、漫畫、分鏡手稿、場景模型、人物角色及拍攝道具，呈現藝術家於《戰鬥之城》建構的「世界觀」，在回溯與翻新之間，形構與現實世界的多重對照。",
+      "description_en": "\"Re\" speaks to the act of restarting and returning. This exhibition centers on Chang Li-Ren's fourteen-year Battle City series. Through animation, comics, storyboards, scene models, characters and filming props, it presents the worldview constructed within Battle City, tracing the interplay between retrospection and renewal.",
+      "artists": [
+        "張立人"
+      ],
+      "events": [
+        {
+          "date": "2026/06/21",
+          "time": "14:00",
+          "title_zh": "「一起來刷看看」絹印工作坊",
+          "title_en": "Screen Printing Workshop",
+          "title_ja": "シルクスクリーンWS",
+          "type": "event",
+          "note_zh": "需自備T-shirt或帆布包｜300元",
+          "note_en": "Bring your own T-shirt/tote | NTD 300",
+          "link": ""
+        },
+        {
+          "type": "activity",
+          "date": "2026/09/27",
+          "time": "14:00",
+          "title_zh": "《Re: 戰鬥之城》專家導覽",
+          "title_en": "\"Re: Battle City\" Expert-Guided Tour",
+          "title_ja": "《Re: 戦闘之城》専門家によるガイドツアー",
+          "note_zh": "展場專家導覽活動，地點：內惟藝術中心（馬卡道路329號）。",
+          "note_en": "A guided tour of the exhibition led by an expert, held on-site at Neiwei Arts Center (No. 329 Makadao Rd.).",
+          "note_ja": "内惟藝術中心（馬卡道路329号）で開催される専門家によるガイドツアー。",
+          "source_url": "https://www.facebook.com/NeiweiArtsCenter"
+        }
+      ],
+      "description_ja": "「Re」には再起動、再び戻るという意味がある。本展はアーティスト張立人が14年をかけて完成させた《戰鬥之城》シリーズを中心に、アニメーション映像、漫画、コンテ原稿、ジオラマ模型、キャラクター、撮影道具を通じて、《戰鬥之城》の中で構築された「世界観」を提示し、遡ることと更新することの間で、現実世界との多重的な対照関係を形づくる。",
+      "added_at": "2026-06-23T23:16:58+09:00",
+      "status": "ended"
+    },
+    {
+      "museum": "pingtung",
+      "title_zh": "Calrisi－承為自然",
+      "title_en": "",
+      "dates": "2026.05.01 – 2026.10.26",
+      "location": "屏東縣立美術館",
+      "link": "https://www.cultural.pthg.gov.tw/pt1936/Exhibition6",
+      "artists": [],
+      "description": "由屏東縣政府原住民處策劃的《Calrisi－承為自然》，是一場跨館、跨國聯展，由屏東原民館領軍，攜手泰武、來義、霧臺文物館，並跨海連結帛琉國家博物館（BNM）共同合作辦理，集結排灣、魯凱及帛琉的工藝師與傳唱者。「Calisi／Calrisi」在排灣與魯凱族語中意為「線」，展覽以雕刻、織紋、古謠為線索，將海洋視為聯繫彼此的水路而非邊界，透過具象文物引領觀者踏上一段串連太平洋兩端南島文化記憶的旅程。",
+      "description_en": "Curated by the Pingtung County Government's Indigenous Peoples Affairs Department, \"Calrisi — Becoming Nature\" is a cross-museum, international collaboration led by the Pingtung Indigenous Peoples Museum together with the Taiwu, Laiyi, and Wutai cultural museums, and partnering across the ocean with the Belau National Museum (BNM). It brings together Paiwan, Rukai, and Palauan craftspeople and oral tradition-bearers. \"Calisi/Calrisi\" means \"thread\" or \"line\" in the Paiwan and Rukai languages; using carving, weaving patterns, and ancient chants as its guiding threads, the exhibition reimagines the ocean not as a dividing border but as a waterway connecting communities, inviting visitors on a journey — through tangible artifacts — that stitches together Austronesian memories from opposite shores of the Pacific.",
+      "description_ja": "屏東県政府原住民処が企画した《Calrisi－承為自然》は、屏東原住民族文物館が主導し、泰武・来義・霧台の文物館、さらに海を越えてパラオ国立博物館(BNM)と連携する館際・国際共同展である。パイワン族、ルカイ族、パラオの工芸家や口承伝承者が集結する。「Calisi／Calrisi」はパイワン語・ルカイ語で「糸(線)」を意味し、彫刻・織り紋・古謡を糸口として、海を隔てる境界ではなく人々をつなぐ水路として捉え直す。具体的な文物を通じて、太平洋の両岸に散らばるオーストロネシアの記憶を縫い合わせるような旅へと観客を導く。",
+      "added_at": "2026-06-26T12:58:17+09:00",
+      "status": "ended"
+    },
+    {
+      "museum": "ncpi",
+      "title_zh": "黯像：看見不見-凝視之界",
+      "title_en": "Obscured Portraits: Seen and Unseen — Boundaries of the Gaze",
+      "dates": "2026.06.11 – 2026.10.26",
+      "curator": "趙欣怡",
+      "artists": [
+        "葉烏根．巴烏查爾（Evgen Bavčar）",
+        "廣瀨浩二郎",
+        "鄭然斗（Jung Yeon-Doo）",
+        "赫拉多．尼亨達（Gerardo Nigenda）",
+        "汪正翔",
+        "鄭桑溪",
+        "許淵富",
+        "李鳴鵰",
+        "翁庭華",
+        "張允鐘",
+        "聶莉欣",
+        "王靖勳",
+        "吳晶晶",
+        "朱浚溢"
+      ],
+      "link": "https://ncpi.ntmofa.gov.tw/News_Content_OnlineExhibitionPic.aspx?n=8006&s=254627",
+      "status": "ended",
+      "description": "本展由趙欣怡策劃，為《黯像：看見不見》系列中聚焦「凝視之界」的展區，集結來自台灣、斯洛維尼亞、墨西哥、日本與韓國的14位藝術家，包括葉烏根．巴烏查爾（Evgen Bavčar）、廣瀨浩二郎、鄭然斗、赫拉多．尼亨達（Gerardo Nigenda）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶及朱浚溢，藉「視覺」與「非視覺」的交織，回應攝影史中「觀看」與「被觀看」的本質議題。展覽分為三個子題：「誰看不見？」借展美國蓋提博物館（J. Paul Getty Museum）典藏的盲人肖像經典影像，並展出保羅．史川德（Paul Strand）等作品，呈現19世紀以降盲人作為街頭乞討者、音樂家被攝影凝視、視為「社會他者」的歷史軌跡；「視覺以外」匯集斯洛維尼亞、墨西哥、日本、台灣與韓國視障攝影家的創作，其中葉烏根．巴烏查爾提出「第三隻眼」的概念，展現點字書寫影像、非視覺感知成像、以聲音與身體感知構圖等挑戰視覺中心主義的創作方法；「黑箱作業」則打造一處全黑的暗室體驗空間，結合5位台灣視障青年的作品與館藏，運用UV印刷技術與AI輔助口述影像，讓觀眾在黑暗中透過觸覺與聽覺重新體驗影像。",
+      "events": [
+        {
+          "type": "activity",
+          "date": "2026/08/01",
+          "date_end": "2026/09/30",
+          "title_zh": "限定活動｜氣味收藏所",
+          "title_en": "Limited-Time Activity: Scent Collection Booth",
+          "title_ja": "期間限定企画｜香り収集所",
+          "note_zh": "觀展後挑選一款最貼近記憶的氣味，噴灑於展覽限定明信片並帶走。費用：新臺幣50元或文化幣50點，明信片數量有限，售完為止。",
+          "note_en": "After viewing the exhibition, choose a scent closest to your memory and spray it onto a limited-edition postcard to take home. Cost: NT$50 or 50 Culture Points; postcards are limited and while supplies last.",
+          "note_ja": "観覧後、記憶に最も近い香りを1つ選び、限定ポストカードに吹きかけて持ち帰ることができる。費用：新台湾ドル50元または文化ポイント50点。ポストカードは数量限定、なくなり次第終了。",
+          "source_url": "https://www.facebook.com/NCPITaiwan"
+        }
+      ],
+      "description_en": "Curated by Chao Hsin-Yi, this exhibition is the \"Boundaries of the Gaze\" wing of the Obscured Portraits: Seen and Unseen series, bringing together 14 artists from Taiwan, Slovenia, Mexico, Japan, and Korea — including Evgen Bavčar, Hirose Kojiro, Jung Yeon-Doo, Gerardo Nigenda, Wang Cheng-Hsiang, Cheng Sang-Hsi, Hsu Yuan-Fu, Lee Ming-Tiao, Weng Ting-Hua, Chang Yun-Chung, Nieh Li-Hsin, Wang Ching-Hsun, Wu Ching-Ching, and Chu Chun-I. Weaving together the \"visual\" and \"non-visual,\" the show addresses photography history's core questions of seeing and being seen through three sub-themes: \"Who Cannot See?\" draws on the J. Paul Getty Museum's collection of classic blind-portrait imagery alongside works by Paul Strand, tracing how, since the 19th century, blind street beggars and musicians have been photographed and cast as \"social others\"; \"Beyond Sight\" gathers works by visually impaired photographers from Slovenia, Mexico, Japan, Taiwan, and Korea — Evgen Bavčar's concept of a \"third eye\" among them — presenting braille-inscribed images, non-visually perceived imagery, and compositions guided by sound and bodily sensation that challenge visual primacy; \"The Black Box\" transforms a room into a completely dark experiential space, pairing works by five visually impaired Taiwanese youths with the museum's collection through UV printing and AI-assisted audio description, inviting visitors to re-experience images through touch and hearing in darkness.",
+      "description_ja": "趙欣怡(チャオ・シンイー)のキュレーションによる本展は、《黯像：看見不見》シリーズのうち「凝視之界」をテーマとする展区で、台湾・スロベニア・メキシコ・日本・韓国から14名のアーティストが参加する。葉烏根．巴烏查爾（エヴゲン・バフチャル）、廣瀨浩二郎、鄭然斗（ジョン・ヨンドゥ）、赫拉多．尼亨達（ヘラルド・ニヘンダ）、汪正翔、鄭桑溪、許淵富、李鳴鵰、翁庭華、張允鐘、聶莉欣、王靖勳、吳晶晶、朱浚溢らが名を連ね、「視覚」と「非視覚」を織り合わせながら、写真史における「見る」と「見られる」という本質的な問いに応答する。展覧会は3つの子題で構成される。「誰が見えないのか？」ではJ.ポール・ゲティ美術館所蔵の盲人肖像の名作やポール・ストランドの作品を展示し、19世紀以降、路上で物乞いをする盲人や盲目の音楽家が撮影の対象となり「社会的他者」として見なされてきた歴史的痕跡を提示する。「視覚以外」ではスロベニア、メキシコ、日本、台湾、韓国の視覚障害を持つ写真家の作品を集め、葉烏根．巴烏查爾が提唱する「第三の眼」という概念のもと、点字による記述や非視覚的知覚によるイメージ生成、音や身体感覚に基づく構図など、視覚中心主義に挑む創作を紹介する。「黑箱作業」では完全に暗い体験空間を設け、5名の台湾の視覚障害を持つ青年の作品と館蔵作品を組み合わせ、UV印刷技術とAI補助による音声解説を通じて、観客が暗闇の中で触覚と聴覚によってイメージを再体験できる企画とする。",
+      "added_at": "2026-09-14T14:57:52+09:00"
+    },
+    {
+      "museum": "mingshan",
+      "title_zh": "【鄭月妹：迴 ECHO─當代水墨的風土凝視】",
+      "title_en": "Cheng Yueh-Mei: Echo - A Contemporary Ink Gaze on the Land",
+      "title_ja": "",
+      "dates": "2026.09.12 – 2026.10.26",
+      "location": "",
+      "link": "https://www.mingshanart.com/",
+      "description": "鄭月妹的創作涉及對自然、生命、環境、文化和跨文化的關照。師從江兆申、楚戈、吳學讓、歐豪年諸位水墨大家，及文化大學美術系水墨組首席畢業的佳績，奠定深厚的水墨底蘊。於美國進修、執教20餘年，長年浸染於西方藝術思潮下，讓鄭月妹以融貫東西無可取代的視覺語彙，形塑風格鮮明且飽含生命溫度的新水墨面貌。鄭月妹筆下的山谷幽境，顯現於礦彩大器潑灑間，既有造化使人敬畏的磅礡氣勢，亦似幽微的雲嵐恣意遊走在天地間。她並以擅長之筆墨，細筆描摹屬於台灣的山石、花草、蔬果，凝聚著大地、陽光、水與生命相互相依的串聯。藉由科技，鄭月妹大舉拓展水墨的表現疆域，具互動性的科技媒介融入水墨，自畫幅延伸至具感知性的沉浸體驗。最新個展「迴」，藉水墨媒材探討台灣土地的農作、大地山川在時空迭變後，自然與生命循環往復的軌跡。展期｜2026.9.12–10.26（每日10:00–18:30）。開幕茶會｜2026.9.13(日)下午3點。地點｜名山藝術台北館（台北市仁愛路二段48-6號，近捷運東門站）。",
+      "description_en": "Cheng Yueh-Mei's work engages with nature, life, environment, culture, and cross-cultural concerns. Trained under ink masters Chiang Chao-Shen, Chu Ko, Wu Hsueh-Jang, and Ou Hao-Nien, and a top graduate of the ink painting division at Chinese Culture University's Fine Arts Department, she built a deep foundation in ink. Having studied and taught in the United States for over twenty years, long immersed in Western artistic currents, Cheng fuses East and West into an irreplaceable visual vocabulary, shaping a distinctive new ink style imbued with the warmth of life. Her secluded mountain valleys emerge through bold splashes of mineral pigment, at once possessing an awe-inspiring, sweeping force of creation and the faint drift of clouds and mist wandering freely between heaven and earth. With her skilled brushwork, she also renders in fine detail Taiwan's own rocks, flowers, and produce, gathering together the interdependence of earth, sunlight, water, and life. Through technology, Cheng has greatly expanded the expressive territory of ink, incorporating interactive technological media into ink painting, extending from the picture plane into perceptual, immersive experience. Her latest solo exhibition, Echo, uses ink to explore the trajectories of Taiwan's agricultural land and mountains and rivers as they cycle through the changes of time and space. Exhibition dates: Sept 12-Oct 26, 2026, daily 10:00-18:30. Opening reception: Sept 13 (Sun), 15:00. Venue: Mingsheng Art (Taipei), No. 48-6, Sec. 2, Ren'ai Rd., near MRT Dongmen Station.",
+      "description_ja": "鄭月妹の創作は、自然・生命・環境・文化、そして異文化への関心にわたる。江兆申・楚戈・吳學讓・歐豪年ら水墨の巨匠に師事し、中国文化大学美術学系水墨組を首席で卒業した実績が、深い水墨の素養を築いた。アメリカで20年以上学び、教鞭を執り、長く西洋の芸術思潮に浸ってきたことで、鄭月妹は東西を融合した唯一無二の視覚言語を持ち、鮮明な個性と生命の温度に富んだ新しい水墨の姿を形づくった。鄭月妹が描く山谷の幽境は、鉱物顔料の大胆な飛び散りの中に現れ、自然の造化がもたらす畏敬すべき壮大さと、天地を自在に漂う雲や霞のかすかな気配とを併せ持つ。また得意の筆墨によって、台湾ならではの山石・草花・野菜果物を細やかに描き、大地・陽光・水・生命が互いに依存し合う繋がりを凝縮させる。テクノロジーの活用により、鄭月妹は水墨の表現領域を大きく拡張し、インタラクティブな技術媒体を水墨に取り込み、画面から感知性を伴う体験へと拡げていった。最新個展「迴」では、水墨という媒材を通して、台湾の大地の農作、山川が時空の変化を経て繰り返す自然と生命の循環の軌跡を探る。会期｜2026年9月12日～10月26日（毎日10:00～18:30）。オープニングティーパーティー｜2026年9月13日(日)午後3時。会場｜名山藝術台北館（台北市仁愛路二段48-6號、MRT東門駅付近）。",
+      "artists": [
+        "鄭月妹"
+      ],
+      "added_at": "2026-09-11T17:40:40+09:00",
+      "status": "ended"
+    },
+    {
+      "museum": "xinbangallery",
+      "title_zh": "Prism14+ 我們所見之處：台日韓藝術交流展",
+      "title_en": "Prism14+ Where We See: Taiwan-Japan-Korea Art Exchange",
+      "title_ja": "Prism14+ 私たちが見る場所：台日韓アート交流展",
+      "dates": "2026.10.03 – 2026.10.26",
+      "location": "",
+      "link": "https://www.facebook.com/newtaipei.gallery/posts/pfbid0q8vx26AB95F8d4HCseDXrCejEGBAbHjEbG6mYXbBcQYvBrUwzDeSa9Kd6q5J85XXl",
+      "artists": [
+        "邱掇",
+        "李俐燕",
+        "陳薈茗",
+        "津田沙織",
+        "長谷部滿莉愛",
+        "齊藤光",
+        "中野陽菜",
+        "成仁製",
+        "朴淑民",
+        "崔少艾"
+      ],
+      "description": "由台日韓藝術團體PRISM首度與新北市政府文化局合作展出，匯聚台灣、日本、韓國三地藝術家作品於同一空間。本次展覽中，藝術家透過繪畫、影像與多元媒材，從日常、自然、記憶、夢境與生命經驗出發，將各自感知世界的方式轉化為作品。當來自台灣、日本與韓國的創作並置於同一空間，差異並未被消除，而是在彼此觀看與交流之中，形成新的關係與視野。參展藝術家：台灣—邱掇、李俐燕、陳薈茗；日本—津田沙織、長谷部滿莉愛、齊藤光、中野陽菜；韓國—成仁製、朴淑民、崔少艾。",
+      "description_en": "This exhibition marks the first collaboration between the Taiwan-Japan-Korea art collective PRISM and the New Taipei City Department of Cultural Affairs, bringing together artists from Taiwan, Japan, and Korea in a single space. Through painting, moving image, and mixed media, the artists draw on daily life, nature, memory, dreams, and lived experience, translating their individual ways of perceiving the world into their work. When creations from Taiwan, Japan, and Korea are placed side by side, their differences are not erased but instead generate new relationships and perspectives through mutual looking and exchange. Participating artists: Taiwan — Chiu Cho, Li Li-Yen, Chen Hui-Ming; Japan — Tsuda Saori, Hasebe Maria, Saito Hikaru, Nakano Haruna; Korea — Sung In-Je, Park Suk-Min, Choi So-Ae.",
+      "description_ja": "台日韓のアート団体PRISMが新北市政府文化局と初めて協働し、台湾・日本・韓国3地域の作家の作品を同じ空間に集めた展覧会。本展では、絵画・映像・多様な素材を通じて、日常・自然・記憶・夢・生命経験から出発し、それぞれが世界を感じ取る方法を作品へと転化している。台湾・日本・韓国からの創作が同じ空間に並ぶとき、その違いは消し去られるのではなく、互いに見つめ合い交流するなかで新たな関係とまなざしを生み出していく。参加作家：台湾—邱掇、李俐燕、陳薈茗／日本—津田沙織、長谷部満莉愛、齊藤光、中野陽菜／韓国—成仁製、朴淑民、崔少艾。",
+      "status": "ended",
+      "added_at": "2026-10-06T02:41:21.301972+09:00"
     }
   ]
 }
