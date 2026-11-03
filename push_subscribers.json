@@ -48,10 +48,10 @@
           "event": ""
         },
         "tfam__王雅慧_旅行者": {
-          "title": "王雅慧：旅行者",
-          "museum": "臺北市立美術館",
+          "title": "Wang Ya-Hui: The Traveler — 王雅慧：旅行者",
+          "museum": "台北市立美術館",
           "dates": "2026.09.12 – 2027.01.03",
-          "url": "/exhibition/tfam/1?lang=zh",
+          "url": "/exhibition/tfam/0?lang=ja",
           "region": "台北",
           "event": ""
         },
@@ -85,6 +85,46 @@
           "dates": "2026.09.12 – 2026.10.25",
           "url": "/exhibition/yitobia/0?lang=ja",
           "region": "花蓮",
+          "event": ""
+        },
+        "artweekchiayi___在場證明_嘉義藝術日常_Art_Week_Chiayi_2026": {
+          "title": "Proof of Presence: Art Week Chiayi 2026 — ［在場證明］嘉義藝術日常 Art Week Chiayi 2026",
+          "museum": "嘉義市政府文化局（嘉義藝術日常 主催）",
+          "dates": "2026.11.01 – 2026.11.15",
+          "url": "/exhibition/artweekchiayi/1?lang=ja",
+          "region": "嘉義",
+          "event": ""
+        },
+        "alien__存在的手勢": {
+          "title": "The Gesture of Being — 存在的手勢",
+          "museum": "金馬賓館當代美術館",
+          "dates": "2026.09.12 – 2027.08.29",
+          "url": "/exhibition/alien/2?lang=ja",
+          "region": "高雄",
+          "event": ""
+        },
+        "ajian__偏移_錯節的______Sujin_Moon": {
+          "title": "Off-Line/Node-Fold===== | Sujin Moon — 偏移／錯節的=====｜Sujin Moon",
+          "museum": "一菅空間",
+          "dates": "2026.10.23 – 2026.11.23",
+          "url": "/exhibition/ajian/1?lang=ja",
+          "region": "高雄",
+          "event": ""
+        },
+        "pingtung__大湧崁岸_Tu___ng_Kh_m_Hu_n_": {
+          "title": "大湧崁岸（Tuā-íng Khàm Huān）",
+          "museum": "屏東縣立美術館",
+          "dates": "2026.03.28 – 2027.11.28",
+          "url": "/exhibition/pingtung/0?lang=ja",
+          "region": "屏東",
+          "event": ""
+        },
+        "tinakeng__另闢蹊徑_陳浚豪個展": {
+          "title": "Taking an Alternative Path – Chen Chun-Hao Solo Exhibition — 另闢蹊徑：陳浚豪個展",
+          "museum": "耿畫廊",
+          "dates": "2026.10.03 – 2026.11.21",
+          "url": "/exhibition/tinakeng/0?lang=ja",
+          "region": "台北",
           "event": ""
         }
       },
