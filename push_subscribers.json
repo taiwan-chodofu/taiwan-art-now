@@ -126,6 +126,46 @@
           "url": "/exhibition/tinakeng/0?lang=ja",
           "region": "台北",
           "event": ""
+        },
+        "lightbox__拉央的風箏已遠去__卓杜信個展": {
+          "title": "Layang-Layang's Kite Has Flown Far Away: Zhuo Du-Xin Solo Exhibition — 拉央的風箏已遠去――卓杜信個展",
+          "museum": "Lightbox 攝影圖書室",
+          "dates": "2026.10.17 – 2026.11.28",
+          "url": "/exhibition/lightbox/0?lang=ja",
+          "region": "台北",
+          "event": ""
+        },
+        "tfam__北美館開放網絡計畫_TFAM_Net_Open_消失的反動": {
+          "title": "TFAM Net.Open: The Vanishing Reaction — 北美館開放網絡計畫 TFAM Net.Open｜消失的反動",
+          "museum": "台北市立美術館",
+          "dates": "2025.09.19 – 2026.12.31",
+          "url": "/exhibition/tfam/4?lang=ja",
+          "region": "台北",
+          "event": ""
+        },
+        "moca__叢靈開始_黃怡嘉個展": {
+          "title": "Where the Spirits Begin: Huang Yi-Chia Solo Exhibition — 叢靈開始—黃怡嘉個展",
+          "museum": "台北當代藝術館",
+          "dates": "2026.09.12 – 2026.11.08",
+          "url": "/exhibition/moca/3?lang=ja",
+          "region": "台北",
+          "event": ""
+        },
+        "tkgplus___丘之粼粼_黃麗音_個展": {
+          "title": "Olive Ripples: Huang Li-Yin Solo Exhibition — 【丘之粼粼】黃麗音 個展",
+          "museum": "TKG+",
+          "dates": "2026.09.19 – 2026.11.14",
+          "url": "/exhibition/tkgplus/0?lang=ja",
+          "region": "台北",
+          "event": ""
+        },
+        "tnam__搜查記_警察異能館": {
+          "title": "Investigation Chronicles: The Police Expo — 搜查記：警察異能館",
+          "museum": "台南市美術館",
+          "dates": "2026.06.30 – 2027.01.10",
+          "url": "/exhibition/tnam/0?lang=ja",
+          "region": "台南",
+          "event": ""
         }
       },
       "visited": {}
