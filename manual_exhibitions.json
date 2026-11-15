@@ -28,19 +28,6 @@
       "added_at": "2026-06-23T22:01:05+09:00"
     },
     {
-      "museum": "nmtl",
-      "title_zh": "玩家登入：兒童文學特展",
-      "title_en": "Player Login: Children's Literature Special Exhibition",
-      "title_ja": "",
-      "dates": "2026.04.01 – 2026.11.15",
-      "location": "國立臺灣文學館",
-      "link": "https://event.culture.tw/mocweb/reg/NMTL/Detail.init.ctr?actId=60084",
-      "description": "臺灣兒童文學萌芽於百年前的日治時期，想像力的種子在當時便已悄悄埋入這片土地。從早期的口傳兒歌、童詩，演變至當代的少年小說與精美繪本，每一段文字都是島嶼生長的記憶，展現兒童文學從純文字創作到結合插畫繪本的獨特說故事技巧。",
-      "description_en": "Taiwanese children's literature took root a century ago during the Japanese colonial era, when seeds of imagination were quietly planted on this island. From early oral nursery rhymes and children's poems to contemporary YA novels and picture books, each text is a memory of the island's growth, tracing storytelling from pure text to illustrated picture books.",
-      "description_ja": "台湾の児童文学は100年前の日本統治時代に萌芽し、想像力の種がひそかに島に埋め込まれた。初期の口承童謡・童詩から、現代のヤングアダルト小説や絵本まで、一つ一つの文章が島の成長の記憶であり、純粋な文章表現から挿絵と結びついた絵本創作へと物語る技法の変遷を示す。",
-      "added_at": "2026-06-30T16:23:55+09:00"
-    },
-    {
       "museum": "ntnuart",
       "title_zh": "時光逆旅：文物修護的美學與實踐",
       "title_en": "Journey Through Time: The Aesthetics and Practice of Art Conservation",
@@ -65,68 +52,6 @@
       "description_en": "Based at the Jing-Mei White Terror Memorial Park and the Green Island Memorial Park, the National Human Rights Museum preserves the historical memory of Taiwan's authoritarian era. Through permanent exhibitions, human rights education, and art programs, it promotes transitional justice and human rights awareness.",
       "description_ja": "国家人権博物館は、白色恐怖景美紀念園區と緑島紀念園區を拠点とし、台湾の権威主義統治時代の歴史的記憶を保存している。常設展、人権教育、芸術活動を通じて、移行期正義（トランジショナル・ジャスティス）と人権意識の向上を推進している。",
       "added_at": "2026-06-23T22:37:43+09:00"
-    },
-    {
-      "museum": "ntcart",
-      "title_zh": "民間／攝影：紀實影像的敘事生成",
-      "title_en": "Minjian / Photography: Documentary Vision and Its Realist Inflection",
-      "title_ja": "",
-      "dates": "2026.07.18 – 2026.11.15",
-      "location": "新北市美術館 3A、3B、4B展覽室",
-      "link": "https://ntcart.museum/exhibition_content.aspx?id=H2606003",
-      "description": "本展立足於臺灣攝影史的研究視角，重新探討「民間」如何成為不同世代攝影家持續凝視、對話與辯證的重要場域。在臺灣與東亞的歷史脈絡中，「民間」不只是單純的民俗風情，更是一個介於官方與非官方之間的動態社會空間。展覽核心聚焦於松山虔三、張才、黃則修、張照堂、黃永松、姚孟嘉、梁正居與林柏樑等攝影家。",
-      "description_en": "This exhibition reexamines how \"minjian\" (the folk/civil sphere) has served as a crucial site of engagement for photographers across generations in Taiwan. In the historical context of Taiwan and East Asia, minjian is not merely folklore but a dynamic social space between official and unofficial realms, where local networks, everyday practices, religious beliefs and photographic media intertwine.",
-      "artists": [
-        "松山虔三",
-        "張才",
-        "黃則修",
-        "黃永松",
-        "姚孟嘉",
-        "張照堂",
-        "梁正居",
-        "林柏樑"
-      ],
-      "status": "upcoming",
-      "description_ja": "本展は台湾写真史の研究視点に立ち、「民間」が異なる世代の写真家たちにとって、見つめ、対話し、論じ続けてきた重要な場としてどう機能してきたかを再考する。台湾と東アジアの歴史的文脈において、「民間」は単なる民俗風情ではなく、公的領域と非公式な領域の間に位置する動態的な社会空間である。展覧会は松山虔三・張才・黃則修・張照堂・黃永松・姚孟嘉・梁正居・林柏樑ら写真家たちに焦点を当てる。",
-      "added_at": "2026-06-23T22:45:14+09:00",
-      "events": [
-        {
-          "type": "activity",
-          "date": "2026/10/24",
-          "time": "14:00",
-          "title_zh": "新北市美術館 × Lomography 拍立得重複曝光工作坊",
-          "title_en": "NTCAM x Lomography Instant Film Double-Exposure Workshop",
-          "title_ja": "新北市美術館×Lomography インスタント写真二重露光ワークショップ",
-          "note_zh": "Lomo即影即有相機を使った多重露光ワークショップ。開始前に展覧会を見学し、創作のインスピレーションを得る。",
-          "note_en": "A double-exposure instant film workshop using Lomo'Instant cameras, preceded by a guided look at the exhibition for creative inspiration.",
-          "note_ja": "Lomo'Instantカメラを使った多重露光ワークショップ。開始前に展覧会を見学し創作のヒントを得る。",
-          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
-        },
-        {
-          "type": "activity",
-          "date": "2026/10/25",
-          "time": "14:30",
-          "title_zh": "紀錄片放映｜〈傳統小鎮─美濃〉",
-          "title_en": "Documentary Screening: \"Traditional Town — Meinong\"",
-          "title_ja": "ドキュメンタリー上映『伝統の町－美濃』",
-          "note_zh": "1980年、謝佳雄監督、25分。客家の町・美濃を記録した短編ドキュメンタリー。無料・申込不要。",
-          "note_en": "1980 documentary (25 min) by director Hsieh Chia-Hsiung, recording the Hakka town of Meinong. Free, no registration required.",
-          "note_ja": "1980年、謝佳雄監督による25分のドキュメンタリー。客家の町・美濃を記録。無料・申込不要。",
-          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
-        },
-        {
-          "type": "activity",
-          "date": "2026/10/31",
-          "time": "14:00",
-          "title_zh": "策展人導覽",
-          "title_en": "Curator-Led Tour",
-          "title_ja": "キュレーターツアー",
-          "note_zh": "策展人張世倫による展覧会ガイドツアー。要事前予約（10/5正午より受付）。",
-          "note_en": "Guided tour led by curator Chang Shih-Lun. Advance online registration required (opens 10/5 noon).",
-          "note_ja": "キュレーター張世倫によるガイドツアー。事前のオンライン予約が必要（10/5正午受付開始）。",
-          "source_url": "https://ntcart.museum/event_content.aspx?id=E2606013"
-        }
-      ]
     },
     {
       "museum": "juming",
@@ -872,22 +797,6 @@
       "added_at": "2026-08-26"
     },
     {
-      "museum": "elevenart",
-      "title_zh": "FLOW 心流—藝術與海洋的對話",
-      "title_en": "FLOW: A Dialogue Between Art and the Ocean",
-      "title_ja": "",
-      "dates": "2026.09.26 – 2026.11.15",
-      "link": "https://artemperor.tw/tidbits/20346",
-      "artists": [
-        "郭家秀",
-        "趙書巧"
-      ],
-      "description": "《FLOW 心流—藝術與海洋的對話》為郭家秀與趙書巧的巡迴聯展，繼2025年起於全台多地（含高雄新浜碼頭藝術空間、成美藝廊等）展出後，本次巡迴至桃園十一份美術館。策展論述以詩化語言展開：「在心中找到平靜安穩，用色彩喚醒守護力量。」文中說明「心流」是一種自發性的流動，也是人與自然和諧的最佳狀態，並以海洋意象總結創作理念：「每一顆心靈如同每一滴色彩，每一滴色彩如同每一滴海水」，強調微小個體匯聚後能創造如海洋般的無窮生命力。",
-      "description_en": "\"FLOW: A Dialogue Between Art and the Ocean\" is a touring joint exhibition by Kuo Chia-Hsiu and Chao Shu-Chiao. Having toured multiple venues across Taiwan since 2025 (including Sin-Ben Wharf Art Space in Kaohsiung and Cheng Mei Gallery), this leg of the tour arrives at Taoyuan's Eleven Art Gallery. The curatorial text opens poetically: \"Find calm and stability within your heart, and use color to awaken a protective strength.\" It explains that \"flow\" is a spontaneous state and the ideal harmony between people and nature, closing with an ocean metaphor: \"every soul is like a drop of color, every drop of color like a drop of seawater,\" emphasizing how small individual forces, once gathered, can create a vitality as boundless as the ocean.",
-      "description_ja": "《FLOW 心流—藝術與海洋的對話》は郭家秀と趙書巧による巡回二人展。2025年より台湾各地（高雄・新浜碼頭藝術空間、成美藝廊など）を巡回してきた本展は、今回桃園十一份美術館へと巡回する。キュレーション文は詩的に始まる。「心の中に静けさと安定を見出し、色彩でその守護の力を呼び覚ます。」続けて「心流（フロー）」とは自発的な流動であり、人と自然が調和する最良の状態であると説明し、最後に海のイメージで創作理念をまとめる。「一つひとつの心は一滴の色彩のようであり、一滴の色彩は一滴の海水のようである」——小さな個が集まることで、海のような無限の生命力を生み出せることを強調している。",
-      "added_at": "2026-08-26"
-    },
-    {
       "museum": "tfam",
       "title_zh": "王雅慧：旅行者",
       "title_en": "Wang Ya-Hui: The Traveler",
@@ -902,48 +811,6 @@
         "王雅慧"
       ],
       "added_at": "2026-09-11T17:40:40+09:00"
-    },
-    {
-      "museum": "honggah",
-      "title_zh": "誰的遊戲－胡鈞荃個展",
-      "title_en": "Whose Game? Hu Ching-Chuan Solo Exhibition",
-      "title_ja": "",
-      "dates": "2026.09.15 – 2026.11.15",
-      "location": "",
-      "link": "https://hong-gah.org.tw/hong-gah/whose-game_ch",
-      "description": "鳳甲美術館年度青年錄像藝術家個展，呈現胡鈞荃「誰的遊戲」創作計畫。展覽關注人工智慧與演算系統悄然滲入日常之後，人與人之間的關係、照護與存在如何被重新定義。當情感逐漸成為可被優化的工具，親密也從私密經驗轉為可被調度的狀態，展覽便從這些細微而持續的「失真」出發，思考科技如何改變情感被感知與安放的方式。本展包含四件作品。〈兒戲〉以孩童在網路上與陌生人玩「扮家家酒」為切面，探討虛擬陪伴如何被編碼為一套可運行的格式。〈樂園〉以3D掃描記錄孩童日常空間，靜止影像與嬉戲聲響彼此錯位，提問身體共在如何被科技延遲、抽離。〈它〉以似人非人的透明孕體，呈現生育從身體經驗轉為資料化流程的過程。〈你的故事〉為多聲道聲音裝置，邀請AI資料標記者、內容審查員與安心專線接線人員錄製聲音，交織成一首異質搖籃曲。四件作品分別從童年、生育與內在情感切入，共同指向同一提問：在事物都傾向被系統承接的時代，仍有某些「真實」只能透過感知與承擔來確認。展覽邀請觀者重新感知，自己如何選擇在關係之中「在場」。",
-      "description_en": "Hong-gah Museum's annual young video artist solo exhibition presents Hu Ching-Chuan's project 'Whose Game?'. As artificial intelligence and algorithmic systems quietly infiltrate daily life, the exhibition examines how relationships, care, and existence between people are being redefined. As emotion increasingly becomes a tool to be optimized, and intimacy shifts from private experience to a dispatchable state, the exhibition begins from these subtle, ongoing 'distortions' to consider how technology changes the way feeling is perceived and held. The show comprises four works: Childhood Play, which looks at children role-playing 'house' with strangers online to ask how virtual companionship is coded into a runnable format; Playground, which uses 3D scans of children's everyday spaces where still images and the sounds of play fall out of sync, questioning how bodily co-presence is delayed and detached by technology; It, a translucent, quasi-human gestational body that presents childbirth as it shifts from bodily experience to a data-driven process; and Your Story, a multichannel sound installation weaving together voices recorded by AI data labelers, content moderators, and crisis-line operators into a heterogeneous lullaby. Moving through childhood, childbirth, and inner feeling, the four works point to the same question: in an age when everything tends to be absorbed by systems, some form of 'truth' can only be confirmed through perception and the willingness to bear it. The exhibition invites viewers to reconsider how they choose to be 'present' within relationships.",
-      "description_ja": "鳳甲美術館の年間青年映像作家個展として、胡鈞荃の「誰の遊戲」創作プロジェクトを紹介する。AIと演算システムが日常に静かに浸透した後、人と人との関係・ケア・存在がどのように再定義されるかに注目する。感情が最適化可能な道具となり、親密さが私的な経験から運用可能な状態へと変わっていく中、展覧会はこうした微細で持続的な「歪み」から出発し、テクノロジーが感情の知覚と受け止め方をどう変えるかを考える。本展は4作品から構成される。〈兒戲〉は子どもがネット上で他人と「おままごと」を行う様子から、仮想的な寄り添いがどのように運用可能な形式へとコード化されるかを問う。〈樂園〉は子どもの日常空間を3Dスキャンで記録し、静止画像と遊びの音がずれることで、身体の共在がテクノロジーによってどう遅延・切り離されるかを問いかける。〈它〉は人のようで人でない透明な妊体で、出産が身体的経験からデータ化されたプロセスへ変わる過程を提示する。〈你的故事〉は多チャンネルの音響インスタレーションで、AIデータラベラー・コンテンツ審査員・相談ホットラインの受け手に声を録音してもらい、異質な子守唄として織り上げる。4作品は幼少期・出産・内面の感情それぞれから出発しながら、同じ問いを共有する——すべてがシステムに受け止められがちな時代にも、感知と引き受けを通してしか確認できない「真実」がある、ということだ。展覧会は観客に、関係の中でどのように「在る」ことを選ぶかを、改めて感知することを促す。",
-      "artists": [
-        "胡鈞荃"
-      ],
-      "added_at": "2026-09-11T17:40:40+09:00",
-      "events": [
-        {
-          "type": "activity",
-          "date": "2026/09/19",
-          "time": "15:00",
-          "title_zh": "開幕活動",
-          "title_en": "Opening Reception",
-          "title_ja": "オープニングイベント",
-          "note_zh": "《誰的遊戲－胡鈞荃個展》開幕活動。",
-          "note_en": "Opening reception for \"Whose Game — Hu Ching-Chuan Solo Exhibition.\"",
-          "note_ja": "「誰の遊戲－胡鈞荃個展」のオープニングイベント。",
-          "source_url": "https://www.facebook.com/honggahmuseum.tw/posts/pfbid02VkAVAiFcSWhcRdguuhGCXNvjXkkQjSqV8N1mRWTZkFeCuMGvkhHdyZwwD1iK4EBwl"
-        },
-        {
-          "type": "activity",
-          "date": "2026/09/26",
-          "time": "14:30-16:30",
-          "title_zh": "藝術家座談",
-          "title_en": "Artist Talk",
-          "title_ja": "アーティストトーク",
-          "note_zh": "藝術家：胡鈞荃　與談人：徐詩雨（獨立策展人、文字工作者）。",
-          "note_en": "Artist: Hu Ching-Chuan. Guest speaker: Hsu Shih-Yu (independent curator and writer).",
-          "note_ja": "アーティスト：胡鈞荃。ゲスト：徐詩雨（独立キュレーター・文筆家）。",
-          "source_url": "https://www.facebook.com/honggahmuseum.tw/posts/pfbid02VkAVAiFcSWhcRdguuhGCXNvjXkkQjSqV8N1mRWTZkFeCuMGvkhHdyZwwD1iK4EBwl"
-        }
-      ]
     },
     {
       "museum": "ajian",
@@ -992,47 +859,6 @@
         "陳肇彤 Chao Tung Chen"
       ],
       "added_at": "2026-09-11T17:40:40+09:00"
-    },
-    {
-      "museum": "artweekchiayi",
-      "title_zh": "嘉義藝術日常 Art Week Chiayi 2026：在場證明",
-      "title_en": "Art Week Chiayi 2026: Proof of Presence",
-      "title_ja": "嘉義藝術日常 Art Week Chiayi 2026：在場証明",
-      "dates": "2026.11.01 – 2026.11.15",
-      "artists": [],
-      "link": "https://www.instagram.com/artweekchiayi2026/p/DanGKyPEnuE/",
-      "status": "upcoming",
-      "description": "「嘉義藝術日常 Art Week Chiayi 2026」以「在場證明」為主題，回應城市在時間流動中的變化與累積。由嘉義市政府文化局主辦，藝術創作進駐嘉義市內7處基地（實驗木場、昭和十八J18、木更MUGN、起風SWAY TEA、永昌行、口袋派對、長榮街區），共7組藝術家／藝術團隊參與。活動包含11/1-15藝術策展、11/9-13藝術家導讀、11/14-15藝術市集。",
-      "description_en": "Themed \"Proof of Presence,\" Art Week Chiayi 2026 responds to how the city changes and accumulates over time. Organized by the Chiayi City Cultural Affairs Bureau, the festival brings artist creations into 7 sites across Chiayi City (Experimental Wood Studio, Showa 18/J18, MUGN, SWAY TEA, Yongchang Hang, Pocket Party, and the Changrong Street block), with 7 selected artists/collectives. Programming runs from art installations (11/1-15) to artist talks (11/9-13) and a weekend art market (11/14-15).",
-      "description_ja": "「嘉義藝術日常 Art Week Chiayi 2026」は「在場証明」をテーマに、時間の流れの中で変化し積み重なっていく都市に応答する。嘉義市政府文化局が主催し、市内7つの拠点（実験木場、昭和十八J18、木更MUGN、起風SWAY TEA、永昌行、口袋派對、長榮街區）にアーティストの創作が入居、7組のアーティスト／アートチームが参加する。11/1-15の作品展示、11/9-13のアーティストトーク、11/14-15のアートマーケットで構成される。",
-      "type": "artfestival",
-      "added_at": "2026-09-16T16:04:47.636416+09:00",
-      "events": [
-        {
-          "type": "activity",
-          "date": "2026/11/09",
-          "date_end": "2026/11/13",
-          "title_zh": "藝術導讀 Artist Talk",
-          "title_en": "Artist Talk",
-          "title_ja": "アーティストトーク",
-          "note_zh": "駐點各基地的藝術家於展期中段進行作品導讀與對話。",
-          "note_en": "Artist-led talks at the festival's participating sites during this stretch of the exhibition period.",
-          "note_ja": "各会場に滞在するアーティストによる作品解説・対話イベント。",
-          "source_url": "https://www.instagram.com/artweekchiayi2026/p/DanGKyPEnuE/"
-        },
-        {
-          "type": "activity",
-          "date": "2026/11/14",
-          "date_end": "2026/11/15",
-          "title_zh": "週末藝術市集 Art Weekend Market",
-          "title_en": "Art Weekend Market",
-          "title_ja": "ウィークエンド・アートマーケット",
-          "note_zh": "展期最終週末於各基地舉辦的藝術市集。",
-          "note_en": "A weekend art market held at the festival's participating sites during the final weekend.",
-          "note_ja": "会期最終週末に各会場で開催されるアートマーケット。",
-          "source_url": "https://www.instagram.com/artweekchiayi2026/p/DanGKyPEnuE/"
-        }
-      ]
     },
     {
       "museum": "artemin",
@@ -1584,37 +1410,6 @@
       "added_at": "2026-10-05T21:09:49.192406+09:00"
     },
     {
-      "museum": "orogeny",
-      "title_zh": "《不動的變動》—林明玉創作展",
-      "title_en": "Endlessly Evolving — Lin Ming-Yu Solo Exhibition",
-      "title_ja": "《不動的變動》林明玉個展",
-      "dates": "2026.10.01 – 2026.11.15",
-      "location": "",
-      "link": "https://www.facebook.com/events/1436035698420768/",
-      "artists": [
-        "林明玉"
-      ],
-      "description": "《不動的變動》創作展是林明玉從2020年開始持續進行，以陶土為書寫媒材，探究與想像台灣島嶼地質身世的系列第四部曲。本次展覽將觀看距離拉昇至地球之外，以掙脫地球引力、衝破大氣層的太空船視角，凝視太陽系唯一適合人居的星球，以及在不同軌道運行的其他星體——星球各自以不同速度轉動、繞行，彼此引力相互作用，維持看似不動的變動關係。從太空落地，回到以身體丈量的尺度，將目光望向岩石中最常見而熟悉的沉積岩，將來自不同地質環境的陶土拼接成彩色織帶般的地景紋理，呈現岩石多變的風貌——岩石正是構成我們棲居星球的基礎。",
-      "description_en": "Endlessly Evolving is the fourth chapter in an ongoing ceramic series exploring the geological lineage of Taiwan. Following past exhibitions—Becoming Earth (2022), Glacial moraine, Lava (2023), and Wrinkled Imprints of Deep Time (2024)—this body of work elevates its perspective beyond Earth into cosmic space. Observing the solar system from a spacecraft's viewpoint, the exhibition captures how planets revolve in precise gravitational balance, maintaining a state of dynamic, unmoving change. Descending back to a human scale, the focus turns to sedimentary rocks. By splicing clays from diverse environments, the works recreate rich landscape textures—interweaving fine soil and coarse quartz sand to celebrate the ever-changing foundation of our living planet.",
-      "description_ja": "《不動的變動》は、林明玉（リン・ミンユー）が2020年から続けている、陶土を書く媒材として台湾という島の地質的な来歴を探り、想像するシリーズの第四部にあたる。本展では、地球の重力を振り切り大気圏を突き抜ける宇宙船の視点まで観察の距離を引き上げ、太陽系で唯一人が住める星と、異なる軌道を回る他の天体を見つめる——それぞれの星は異なる速度で自転・公転し、互いの重力が作用し合いながら、見かけ上は動かないように見える「変動」の関係を保っている。宇宙から再び、身体で測れる尺度へと降りてくると、視線はもっとも馴染みのある堆積岩へと向かう。異なる地質環境から採れた陶土を、色彩豊かな織物のような地層の文様としてつなぎ合わせ、私たちが暮らす星の基礎である岩石の、変化に富んだ姿を表現している。",
-      "status": "current",
-      "added_at": "2026-10-05T21:27:46.733193+09:00",
-      "events": [
-        {
-          "type": "activity",
-          "date": "2026/10/10",
-          "time": "14:00",
-          "title_zh": "開幕暨茶會座談",
-          "title_en": "Opening Reception & Talk",
-          "title_ja": "オープニング茶会トーク",
-          "note_zh": "與談人：陳冠彰（獨立研究者）",
-          "note_en": "With discussant Chen Kuan-Chang (independent researcher).",
-          "note_ja": "対談：陳冠彰（独立研究者）",
-          "source_url": "https://www.facebook.com/events/1436035698420768/"
-        }
-      ]
-    },
-    {
       "museum": "ponding",
       "title_zh": "人の詩",
       "title_en": "A Poem of Life — First Overseas Exhibition of Uchida Masayasu's 60-Year Career",
@@ -1725,28 +1520,6 @@
       ]
     },
     {
-      "museum": "thecube",
-      "title_zh": "2026聲波薩滿音樂祭",
-      "title_en": "2026 Sonic Shaman Music Festival",
-      "title_ja": "2026 ソニック・シャーマン音楽祭",
-      "dates": "2026.11.14 – 2026.11.15",
-      "location": "台北（場地未公布）／瑞士琉森 Out in the Loop 藝術祭 跨國連線",
-      "link": "https://thecubespace.com/project/sonic-shaman-2026-crowdfunding/",
-      "artists": [
-        "林強",
-        "李漢強",
-        "蘇育賢",
-        "李傑",
-        "賴志盛",
-        "Superflex"
-      ],
-      "description": "由立方計劃空間策劃主辦的《聲波薩滿》音樂祭將於2026年11月14日至15日在台北舉行，第四屆首次與瑞士琉森Out in the Loop藝術祭合作，透過蘇黎世藝術大學開發的遠距共演系統，進行連續30小時的跨國（台北—琉森）即時連線共演，融合電子音樂、實驗音樂、舞蹈與行為藝術演出。音樂祭自2022年創辦以來持續打破「音樂祭」既有框架，2026年曾受邀至新加坡藝術週演出並獲國際觀眾好評，《海峽時報》將其列為該屆藝術週三大亮點之一。",
-      "description_en": "Curated and presented by TheCube Project Space, the Sonic Shaman music festival returns to Taipei on November 14–15, 2026. For its fourth edition, the festival partners for the first time with the Out in the Loop arts festival in Lucerne, Switzerland, using a telematic performance system developed by Zurich University of the Arts to stage an unbroken 30-hour transnational live link-up between Taipei and Lucerne, blending electronic music, experimental sound, dance, and performance art. Founded in 2022, Sonic Shaman has consistently pushed beyond the conventional \"music festival\" format; its 2026 edition was invited to perform at Singapore Art Week to strong international acclaim, with The Straits Times naming it one of that edition's three highlights.",
-      "description_ja": "立方計劃空間（TheCube Project Space）が企画・主催する音楽祭「ソニック・シャーマン」が、2026年11月14日・15日に台北で開催される。第4回となる今回は、スイス・ルツェルンの「Out in the Loop」アートフェスティバルと初めて提携し、チューリッヒ芸術大学が開発した遠隔共演システムを用いて、台北とルツェルンを結ぶ30時間連続の国際ライブ共演を行う。エレクトロニック・ミュージック、実験音楽、ダンス、パフォーマンスアートが組み合わされる。2022年創設以来、既存の「音楽祭」の枠組みを常に打ち破ってきた本イベントは、2026年にはシンガポール・アートウィークにも招かれ、国際的な観客から高い評価を得て、「ストレーツ・タイムズ」紙は同フェスティバルの三大ハイライトの一つに挙げた。",
-      "status": "upcoming",
-      "added_at": "2026-10-05T22:03:04.225354+09:00"
-    },
-    {
       "museum": "tinakeng",
       "title_zh": "另闢蹊徑：陳浚豪個展",
       "title_en": "Taking an Alternative Path – Chen Chun-Hao Solo Exhibition",
@@ -1762,38 +1535,6 @@
       "description_ja": "昨年、エディンバラ大学の美術教授ヤン・ジアリンがロンドンで企画した《リリカル・バイオレンス：ロンドン現代台湾アート展》に参加し、大英博物館に作品が収蔵された陳浚豪（チェン・チュンハオ）が、今年10月、キュレーターの張禮豪とともに耿畫廊で新作個展《另闢蹊徑（別の道を切り開く）》を開催する。2020年の《仙路迢迢》、2024年の《大千我門》に続き、本展では陳浚豪が宋代以降の古典的な文人山水から目を転じ、台湾の「百岳」へと視線を移し、台湾の実際の地形と向き合う。雪山（シュエシャン）やその他の名峰に自ら登り、現代のテクノロジーを取材手段として用いることで、歴史的テキストから実際の大地の体感へと至る新たな章を完成させた。本展の主要作品《雪山南壁No.1-3》、《品田山褶》、《大霸遶雲》などは、作家が「蚊釘（モスキートネイル）」の高低密度の配列と光の反射を利用し、画面を4〜5段階の色調に分割することで、圏谷の深さ、稜線の鋭さ、岩壁の荒々しい質感を描き出している。陳浚豪は1971年南投生まれ、現在は台北を拠点とする。1997年より工業用「押しピン」を創作媒材として用い、2009年からは「蚊釘」で古画を模写する手法を展開。2025年には作品《臨摹宋范寬〈秋林飛瀑圖〉》が大英博物館の永久収蔵品となった。",
       "status": "current",
       "added_at": "2026-10-05T22:03:04.225354+09:00"
-    },
-    {
-      "museum": "honggah",
-      "title_zh": "Overflow－2026鳳甲美術館秋季典藏精選",
-      "title_en": "Overflow – 2026 Hong-Gah Museum Collection Autumn Selection",
-      "title_ja": "Overflow－2026鳳甲美術館秋季コレクション選",
-      "dates": "2026.09.15 – 2026.11.15",
-      "location": "",
-      "link": "https://hong-gah.org.tw/hong-gah/overflow2026-ch",
-      "artists": [],
-      "description": "鳳甲美術館創辦人邱再興先生自1980年代開啟收藏之路，所收藏的媒材橫跨繪畫、雕塑、攝影、錄像，以及傳統工藝等範疇，數量高達上千件。1999年美術館成立之後，除了不定期舉辦主題性典藏大展，年間也以館內長廊的玻璃櫥窗，搭配該檔期主展場的特展，挑選作品呈現給觀眾。本次典藏作品的遴選，配合主展場「《誰的遊戲》胡鈞荃個展」探索的內容，討論人工智慧與演算系統的出現，在人類社會中對於親密關係、照護與存在的理解發生了什麼樣的位移與結構性變化？挑選了六位藝術家、共十件作品，進行回應。本次挑選作品以1980-2000年間所創作的作品為主，藝術家透過繪畫與雕塑，回應高度現代化、資本化的都會生活中，人與社會的抽離。面對台灣解嚴前後蓬勃的都市化浪潮，藝術家們敏感地捕捉到個體被水泥城市框限、噤聲與邊緣化的不安。畫中被包裹的軀體、懸空的孤獨形象與解剖式的醫學圖解，與今日 Alpha 世代將主體外置於虛擬介面後的抽離感跨越時空、產生共鳴。展覽主題「Overflow」包含滿溢、過載的意象，象徵在高度發達的文明樂園裡，我們早已習慣成為自身的旁觀者。",
-      "description_en": "Since the 1980s, Hong-Gah Museum founder Andrew Chew has built a collection spanning painting, sculpture, photography, video, and traditional craft — over a thousand works in total. Since the museum's founding in 1999, alongside periodic thematic collection exhibitions, selected works are also shown year-round in the corridor gallery, in dialogue with each season's feature exhibition. This selection responds to Whose Game? Hu Ching-Chuan Solo Exhibition exploring how AI and algorithmic systems have shifted our understanding of intimacy, care, and existence. Six artists, ten works, offer a counterpoint. Drawn mainly from 1980–2000, the works use painting and sculpture to respond to alienation amid rapid modernization and urbanization around Taiwan's martial-law transition — bodies confined, silenced, marginalized by concrete cities. Wrapped figures, suspended solitude, anatomical diagrams: these resonate across time with today's Generation Alpha, whose selves are externalized into virtual interfaces. Overflow evokes excess and saturation — in an advanced civilization's paradise, we've long since become spectators of ourselves.",
-      "description_ja": "鳳甲美術館の創設者である邱再興氏は1980年代から収集を開始し、収蔵作品は絵画、彫刻、写真、映像、伝統工藝などの分野に及び、総数は千件を超える。1999年の開館以来、不定期に主題別の大規模コレクション展を開催するほか、年間を通して館内回廊のガラスケースにも、その期の企画展と組み合わせて作品を選び展示している。今回のコレクション選定は、本展示場で開催中の「《誰のゲームか》胡鈞荃個展」が探る内容と連動し、人工知能とアルゴリズムシステムの出現が人間社会における親密さ・ケア・存在の理解にどのような位相的・構造的変化をもたらしたかを論じるため、6名の作家、計10作品を選び、その応答とした。選ばれた作品は主に1980〜2000年に制作されたもので、作家たちは絵画と彫刻を通じて、高度に現代化・資本化された都市生活における人と社会の疎隔を映し出している。台湾の戒厳令解除前後に沸き起こった都市化の波に向き合い、作家たちはコンクリートの都市に枠付けられ、沈黙させられ、周縁化される個の不安を敏感に捉えた。画中で包まれた身体、空中に浮かぶ孤独な姿、解剖図のような医学的図解——これらは、自己を仮想インターフェースへと外在化させた今日のアルファ世代の感覚と、時空を超えて共鳴する。展覧会のテーマ「Overflow（溢流）」は満溢・過載のイメージを含み、高度に発達した文明の楽園の中で、私たちはすでに自分自身を傍観する者になり果てていることを象徴している。",
-      "status": "current",
-      "added_at": "2026-10-05T22:31:09.230594+09:00"
-    },
-    {
-      "museum": "honggah",
-      "title_zh": "置空｜Tacet：郭秉恩個展",
-      "title_en": "Tacet: Kuo Ping-En Solo Exhibition",
-      "title_ja": "置空｜Tacet：郭秉恩個展",
-      "dates": "2026.09.15 – 2026.11.15",
-      "location": "",
-      "link": "https://hong-gah.org.tw/hong-gah/tacet-kuo-ping-solo-exhibition_ch",
-      "artists": [
-        "郭秉恩"
-      ],
-      "description": "繼去年《一加一：李明學個展》，鳳甲美術館很高興再次與北投在地畫廊「EQUAL = 等號TM ©︎」合作，推出《置空｜Tacet：郭秉恩個展》，郭秉恩出生於高雄，2025年畢業於臺南藝術大學造形研究所，其創作包含繪畫、書寫、聲音與雕塑裝置。郭秉恩以繪畫為核心方法，關注日常物件如何轉化為作品中承載意義的元素，其視角遊走於過去與當下之間，將經典圖像的歷史脈絡與當代意義並置對照。他擅長挪用大眾熟悉的文化符號，透過重新繪製與拆解，探討經典圖像在當代社會大量流通後，觀看方式所產生的變化。本展覽於「鳳甲美術館」與「EQUAL = 等號TM ©︎」兩個展場同時展開。在通透明亮的「EQUAL = 等號TM ©︎」，郭秉恩讓繪畫回到最基本的平面姿態：懸掛於牆面，供人凝視與閱讀。而在相對封閉、幽暗的鳳甲美術館，繪畫則卸下了這層「被展示」的姿態：原本用來包裹、運送畫作的紙箱等工具，被改造成能夠發聲的樂器，取代畫作本身，成為空間裡真正的主角。兩個展場因此呈現出繪畫的兩種不同狀態，像是拆解了繪畫作品在不同階段的兩個高光時刻：一邊是我們熟悉的視覺閱讀經驗，一邊則讓我們看見，繪畫其實也可以只是一件具有重量、體積與使用痕跡的物件。",
-      "description_en": "Following last year's 1+1: Lee Ming-Hsueh Solo Exhibition, Hong-Gah Museum is pleased to once again collaborate with EQUAL™©, a local Beitou gallery, to present Tacet: Kuo Ping-En Solo Exhibition. Kuo Ping-En was born in Kaohsiung and graduated from the Graduate Institute of Plastic Arts at Tainan National University of the Arts in 2025. His practice spans painting, writing, sound, and sculptural installation. Working primarily through painting, Kuo is concerned with how everyday objects are transformed into elements that carry meaning within a work, his perspective moving between past and present to juxtapose the historical context of canonical images with their contemporary significance. He is known for appropriating widely familiar cultural symbols, using repainting and deconstruction to examine how ways of seeing shift once such images have circulated extensively through contemporary society. The exhibition unfolds simultaneously across two venues: Hong-Gah Museum and EQUAL™©. At the bright, transparent EQUAL™©, Kuo returns painting to its most basic flat form — hung on the wall, offered up for viewing and contemplation. At the more enclosed, dimly lit Hong-Gah Museum, painting sheds this posture of being \"on display\": cardboard boxes and other materials once used to wrap and transport the paintings have been transformed into sound-producing instruments, displacing the paintings themselves to become the true protagonists of the space.",
-      "description_ja": "昨年の《一加一：李明學個展》に続き、鳳甲美術館は北投の地元ギャラリー「EQUAL = 等號™︎©」と再びコラボレーションし、《置空｜Tacet：郭秉恩個展》を開催する。郭秉恩は高雄出身で、2025年に國立臺南藝術大學造形研究所を卒業。絵画、文章、音、彫刻インスタレーションを含む創作活動を行う。郭秉恩は絵画を核心的な方法として、日常的な物がどのように作品の中で意味を担う要素へと変換されるかに注目し、その視点は過去と現在のあいだを往来しながら、典型的なイメージの歴史的文脈と現代的な意味を並置して対照させる。彼は大衆に馴染みのある文化的シンボルを引用することに長け、再描写と解体を通して、典型的なイメージが現代社会で大量に流通した後、見方がどのように変化するかを考察する。本展は「鳳甲美術館」と「EQUAL = 等號™︎©」の2つの会場で同時に展開される。開放的で明るい「EQUAL = 等號™︎©」では、郭秉恩は絵画を最も基本的な平面の姿へと戻す——壁に掛けられ、見つめられ、読まれるために。一方、より閉鎖的で薄暗い鳳甲美術館では、絵画は「展示される」という姿勢を脱ぎ去る——もともと絵画を包み、運ぶために使われていた紙箱などの道具が、音を発する楽器へと作り変えられ、絵画そのものに代わって空間の真の主役となる。",
-      "status": "current",
-      "added_at": "2026-10-05T22:31:09.230594+09:00"
     },
     {
       "museum": "kmfa",
@@ -2115,21 +1856,6 @@
       "description_ja": "總爺藝文中心の紅磚工藝館（レンガ造り工芸館）では、日本・高知県の国指定伝統工芸品79点を展示する。内容は土佐和紙、土佐打刃物（刃物）、竹工芸（虎斑竹製品など）、漆器、尾戸焼の陶芸、さらに凧や祭りの旗など多岐にわたり、高知県の奥深い伝統工芸文化と台日文化交流の成果を示す。",
       "status": "current",
       "added_at": "2026-10-06T11:02:52.768662+09:00"
-    },
-    {
-      "museum": "woodworklab",
-      "title_zh": "木都日常｜好木作生活展",
-      "title_en": "Wood City Daily Life: Good Woodwork Living Exhibition",
-      "title_ja": "木都日常｜好木作生活展",
-      "dates": "2026.10.09 – 2026.11.15",
-      "location": "",
-      "link": "https://www.facebook.com/chiayiwoodlab",
-      "artists": [],
-      "description": "由嘉義市政府文化局推動的木製品認證計畫「優木良品」延伸而來，於嘉義實驗木場（南棟）舉辦的木工藝與生活主題展覽，集結10組木作創作者與品牌，從作品、材料與使用方式三個角度，重新思考木材如何走進日常生活。同期於實驗木場北棟舉辦「木都選物所」，展示並販售來自台灣各地木職人製作的餐具、家具與療癒小物等百餘件精選木製品；展期內周邊更規劃「木都生活市集」與「嘉義木造建築散步地圖」，串聯檜意森活村、北門驛等市內知名木造歷史建築。嘉義實驗木場本身座落於嘉義舊監獄宿舍群內，由老舊宿舍活化再造而成，曾獲2023年iF公共建築獎。",
-      "description_en": "Extending from the Chiayi City Government's wood-product certification program \"Chiayi Good Wood,\" this exhibition at the Chiayi Experimental Wood Workshop (South Building) brings together 10 woodworking creators and brands exploring how wood enters daily life through the lenses of the work itself, its materials, and its use. Concurrently, the workshop's North Building hosts \"Wood City Select Shop,\" displaying and selling over a hundred curated wooden items — tableware, furniture, and small comfort objects — made by artisans from across Taiwan. The surrounding program also includes a \"Wood City Living Market\" and a self-guided \"Chiayi Wooden Architecture Walking Map\" linking notable wooden historic buildings around the city, including Hinoki Village and Beimen Station. The Experimental Wood Workshop itself occupies the former dormitory complex of Chiayi's old prison, adaptively reused from aging housing stock, and received the 2023 iF Design Award for Public Architecture.",
-      "description_ja": "嘉義市政府文化局が推進する木製品認証プログラム「優木良品」から発展した展覧会で、嘉義実験木場（南棟）にて開催。木工作家・ブランド10組が集まり、作品・素材・用途という3つの視点から、木がどのように日常生活に入り込むかを再考する。同時期、実験木場北棟では「木都選物所」として、台湾各地の木職人が手がけた食器・家具・癒やし小物など100点以上の厳選木製品を展示・販売する。会期中は周辺で「木都生活市集」や、檜意森活村・北門駅など市内の有名な木造歴史建築を結ぶ「嘉義木造建築散歩地図」も企画されている。実験木場自体は嘉義旧監獄の宿舎群を活用して再生された施設で、2023年iF公共建築デザイン賞を受賞している。",
-      "status": "current",
-      "added_at": "2026-10-06T11:06:44.893999+09:00"
     },
     {
       "museum": "kdmofa",
@@ -2483,22 +2209,6 @@
       "added_at": "2026-10-20T12:13:20.648278+09:00"
     },
     {
-      "museum": "insian",
-      "title_zh": "【擁抱黑暗 喚醒光芒】",
-      "title_en": "Embracing Darkness, Awaken the Light: Lena Young Solo Exhibition",
-      "title_ja": "擁抱黑暗 喚醒光芒－楊元寧個展",
-      "dates": "2026.10.17 – 2026.11.15",
-      "location": "",
-      "link": "https://www.insiangallery.com/",
-      "description": "楊元寧（Lena Young）繼2021年台灣首展《回到家》後，睽違五年的回歸之作。畫面中的筆觸、動勢與強烈色彩超越單純視覺再現，呈現主體追尋與創傷轉化的歷程，讓生命彷彿破繭而出，引領觀者直抵靈魂昇華。",
-      "description_en": "Lena Young's return exhibition, five years after her 2021 Taiwan debut \"Coming Home.\" Her brushwork, gesture and intense color move beyond mere visual representation, tracing a journey of self-pursuit and the transformation of trauma into light.",
-      "description_ja": "2021年の台湾初個展「回到家（Coming Home）」から5年ぶりとなる楊元寧（Lena Young）の帰還作。筆触や勢い、強烈な色彩は単なる視覚的再現を超え、主体の探求とトラウマの転化の過程を描き出す。",
-      "artists": [
-        "楊元寧 Lena Young"
-      ],
-      "added_at": "2026-10-20T12:13:20.648278+09:00"
-    },
-    {
       "museum": "honggenshen-penghu",
       "title_zh": "【墨行其間－當代國際版印性藝術展】",
       "title_en": "Amid Ink and Print: Contemporary International Print-Based Art Exhibition",
@@ -2554,39 +2264,6 @@
           "note_en": "Malaysian artist Lee Teck Kuan on contemporary print-based art practice.",
           "note_ja": "マレーシアの作家、李迪權による当代版印藝術の実践についての講演。",
           "source_url": "https://artemperor.tw/tidbits/20550"
-        }
-      ]
-    },
-    {
-      "museum": "neverland",
-      "title_zh": "【面孔遊行｜Persona Parade】韓國藝術家聯展",
-      "title_en": "Persona Parade: Korean Artists Group Exhibition",
-      "title_ja": "面孔遊行｜Persona Parade：韓国作家グループ展",
-      "dates": "2026.10.24 – 2026.11.15",
-      "location": "預約觀展（LINE）",
-      "link": "https://www.instagram.com/neverland.gallery/",
-      "description": "Neverland Gallery 與首爾 Gallery Aile 攜手呈現，邀集韓勝勳、朴妮娜、梁恩峰與羽佳四位韓國藝術家。四人皆以極具辨識度的角色形象創作，看似可愛、溫柔、天真的臉孔，各自承載著當代人難以言說的情緒，展開一場關於表面與內在的遊行。※需透過LINE預約觀展。",
-      "description_en": "Presented with Seoul's Gallery Aile, bringing together four Korean artists — Han Seunghun, Park Nina, Yang Eunbong and YUJA — whose distinctive, endearing character imagery each carries emotions rarely shown. Viewing by appointment via LINE.",
-      "description_ja": "ソウルのGallery Aileと共同で、韓勝勳、朴妮娜、梁恩峰、羽佳の4人の韓国作家を紹介。愛らしく親しみやすいキャラクターの姿に、現代人が言葉にしにくい感情を託す。観覧はLINEによる予約制。",
-      "artists": [
-        "韓勝勳 Han Seunghun",
-        "朴妮娜 Park Nina",
-        "梁恩峰 Yang Eunbong",
-        "羽佳 YUJA"
-      ],
-      "added_at": "2026-10-20T12:13:20.648278+09:00",
-      "events": [
-        {
-          "type": "opening",
-          "date": "2026/10/24",
-          "time": "15:00-18:00",
-          "title_zh": "開幕活動",
-          "title_en": "Opening Reception",
-          "title_ja": "オープニング",
-          "note_zh": "",
-          "note_en": "",
-          "note_ja": "",
-          "source_url": "https://artemperor.tw/tidbits/20546"
         }
       ]
     },
@@ -2801,37 +2478,6 @@
       "added_at": "2026-10-20T14:24:29.859693+09:00"
     },
     {
-      "museum": "elevenart",
-      "title_zh": "《FLOW 心流—藝術與海洋的對話》巡迴聯展第六回",
-      "title_en": "FLOW: A Dialogue Between Art and the Ocean (Touring Exhibition, Stop 6)",
-      "title_ja": "《FLOW 心流－芸術と海の対話》巡回展 第6回",
-      "dates": "2026.09.26 – 2026.11.15",
-      "location": "",
-      "link": "https://www.11fun-ty.com.tw",
-      "description": "藝術家郭家秀與趙書巧共同策畫的巡迴展，自2025年3月開始巡演，陸續於不同城市與展覽場地展出，本次為第六回展。展覽以色彩喚醒心中的平靜與守護力量，呈現「心流」作為一種自發性流動的狀態。",
-      "description_en": "A touring exhibition co-organized by artists Chia-Hsiu Kuo and Su-Chiao Chao, on the road since March 2025 and now at its sixth stop. The show uses color to awaken calm and a sense of protective strength within, presenting \"flow\" as a spontaneous state of being.",
-      "description_ja": "芸術家の郭家秀と趙書巧が共同企画する巡回展。2025年3月から巡回を続け、本展はその第6回。色彩によって心の中の静けさと守護の力を呼び覚まし、「フロー」という自発的な流れの状態を提示する。",
-      "artists": [
-        "郭家秀 Chia-Hsiu Kuo",
-        "趙書巧 Su-Chiao Chao"
-      ],
-      "added_at": "2026-10-20T14:26:17.723415+09:00",
-      "events": [
-        {
-          "type": "other",
-          "date": "2026/09/26",
-          "time": "13:00",
-          "title_zh": "心流音樂會",
-          "title_en": "Flow Concert",
-          "title_ja": "心流音楽会",
-          "note_zh": "",
-          "note_en": "",
-          "note_ja": "",
-          "source_url": "https://www.facebook.com/11ElevenArtGallery/"
-        }
-      ]
-    },
-    {
       "museum": "pttspace",
       "title_zh": "Paintings at Rest 那須佐和子個展",
       "title_en": "Paintings at Rest: Sawako Nasu Solo Exhibition",
@@ -2922,20 +2568,6 @@
           "source_url": "https://www.instagram.com/keepingart/p/DeYivvViY9D/"
         }
       ]
-    },
-    {
-      "museum": "artweekchiayi",
-      "title_zh": "［在場證明］嘉義藝術日常 Art Week Chiayi 2026",
-      "title_en": "Proof of Presence: Art Week Chiayi 2026",
-      "title_ja": "［在場証明］嘉義藝術日常 Art Week Chiayi 2026",
-      "dates": "2026.11.01 – 2026.11.15",
-      "location": "",
-      "link": "https://www.instagram.com/artweekchiayi2026/",
-      "description": "嘉義市多處藝術基地共同參與的城市藝術週活動，涵蓋藝術策展、藝術家導讀講座與藝術週末市集等多項活動。",
-      "description_en": "A citywide art week in Chiayi involving multiple art bases around the city, encompassing curated exhibitions, artist talks and a weekend art market.",
-      "description_ja": "嘉義市内の複数のアート拠点が参加する都市型アートウィーク。キュレーション展示、アーティストトーク、週末アートマーケットなどのプログラムを含む。",
-      "artists": [],
-      "added_at": "2026-10-20T14:49:02.310967+09:00"
     },
     {
       "museum": "vinegallery",
