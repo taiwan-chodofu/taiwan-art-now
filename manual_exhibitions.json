@@ -3958,6 +3958,99 @@
         "雷紫玲"
       ],
       "added_at": "2026-11-17T17:53:58.114632+09:00"
+    },
+    {
+      "museum": "soka",
+      "title_zh": "Familiar：日本藝術家聯展",
+      "title_en": "Familiar: Japanese Artists Group Exhibition",
+      "title_ja": "Familiar：日本藝術家グループ展",
+      "dates": "2026.10.24 – 2026.12.05",
+      "location": "索卡藝術．台南（台南市安平區慶平路446號）",
+      "link": "https://www.soka-art.com/cn/exhibition/works/12738",
+      "description": "集結中西瑛理香、增田洋一郎、門倉太久斗、村松辰之介四位日本藝術家，他們從動物、自然到城市風景，以各自獨特的創作，讓日常熟悉的景象展現全新面貌。我們總是透過既有的經驗與認知觀看世界，當某個形象、物件或場景映入眼簾時，往往會直覺地產生熟悉感，並賦予其既定的印象，而藝術家們從各自的生活經驗與感知出發，透過形象變形、媒材轉換與個人化的創作語彙，使原本熟悉的事物呈現出不同於既定認知的樣貌。",
+      "description_en": "Bringing together four Japanese artists — Erika Nakanishi, Yoichiro Masuda, Takuto Kadokura and Shinnosuke Muramatsu — this exhibition presents familiar everyday sights in new guises, drawn from animals, nature and the cityscape. We tend to view the world through existing experience and perception, so that when an image, object or scene comes into view, a sense of familiarity and a fixed impression often follow instinctively. Starting from their own experiences and perceptions, the artists use transformation of form, shifts in medium and personal visual vocabularies to make the familiar appear otherwise than expected.",
+      "description_ja": "中西瑛理香、增田洋一郎、門倉太久斗、村松辰之介という4名の日本人作家による展覧会。動物、自然から都市の風景まで、各自の独自の表現によって、日常の見慣れた光景に新たな様相を与える。私たちは既存の経験と認知を通して世界を見ており、ある形象や物、場面が目に入ると、直感的に親しみを感じ、既定の印象を抱いてしまう。作家たちはそれぞれの生活経験と感覚から出発し、形象の変形、素材の転換、個人的な創作言語を通じて、見慣れたはずのものを既定の認知とは異なる姿として提示する。",
+      "artists": [
+        "中西瑛理香 Erika Nakanishi",
+        "增田洋一郎 Yoichiro Masuda",
+        "門倉太久斗 Takuto Kadokura",
+        "村松辰之介 Shinnosuke Muramatsu"
+      ],
+      "added_at": "2026-11-17T18:18:11.490540+09:00"
+    },
+    {
+      "museum": "soka",
+      "title_zh": "宇宙家族：橫坂竜也個展",
+      "title_en": "SPACE FAMILY: Tatsuya Yokosaka Solo Exhibition",
+      "title_ja": "宇宙家族：横坂龍也個展",
+      "dates": "2026.11.29 – 2027.02.22",
+      "location": "堅山仰岄（高雄市立美術館周邊、堅山建設合作展場）",
+      "link": "https://www.soka-art.com/cn/exhibition",
+      "description": "索卡藝術攜手長期推動生活美學的高雄「堅山建設」合作，呈現日本人氣藝術家橫坂竜也（Tatsuya Yokosaka）在高雄的首次個展《宇宙家族 SPACE FAMILY》。本展精選藝術家最經典的「Porsche保時捷模型盒」系列，以及具有強大視覺張力的「爆炸」系列作品，於高雄美術館周邊的全新地標「堅山仰岄」展出。",
+      "description_en": "Soka Art partners with Kaohsiung's Chien Shan Construction, a long-time advocate of lifestyle aesthetics, to present Japanese artist Tatsuya Yokosaka's first solo exhibition in Kaohsiung, \"SPACE FAMILY.\" The exhibition features the artist's signature \"Porsche model box\" series alongside his visually explosive \"Explosion\" series, staged at Chien Shan Yang-Ao, a new landmark near the Kaohsiung Museum of Fine Arts.",
+      "description_ja": "索卡藝術が、生活美学を長年推進する高雄の「堅山建設」と協力し、日本の人気作家、横坂龍也（Tatsuya Yokosaka）の高雄初個展《宇宙家族 SPACE FAMILY》を開催する。作家の代表作である「ポルシェ模型箱」シリーズと、強い視覚的インパクトを持つ「爆発」シリーズを厳選し、高雄市立美術館周辺の新たなランドマーク「堅山仰岄」にて展示する。",
+      "artists": [
+        "橫坂竜也 Tatsuya Yokosaka"
+      ],
+      "added_at": "2026-11-17T18:18:11.490540+09:00"
+    },
+    {
+      "museum": "soka_taipei",
+      "title_zh": "下一章",
+      "title_en": "Next Chapter",
+      "title_ja": "下一章（次の章）",
+      "dates": "2026.10.24 – 2026.12.05",
+      "location": "索卡藝術．台北（台北市中山區堤頂大道二段350號）",
+      "link": "https://www.soka-art.com/cn/exhibition/details/12836",
+      "description": "《下一章》呈現李西西在創作與生活中的新出發。隨著她重返美國深造，筆下熟悉的人物也逐漸有了不同的樣貌，在調皮、好奇之外，流露更細微而複雜的心情。透過色彩、筆觸與夢境般風景的探索，她讓人物隨著自己一同成長，也邀請觀眾從熟悉之中發現變化，在畫中找到某個時刻的自己。",
+      "description_en": "\"Next Chapter\" presents a new beginning in Li Xixi's practice and life. As she returns to the United States for further study, the familiar figures in her paintings take on different appearances — alongside their mischief and curiosity, subtler and more complex feelings now surface. Through color, brushwork and dreamlike landscapes, she lets her figures grow alongside herself, inviting viewers to discover change within the familiar and find a version of themselves at a particular moment within the paintings.",
+      "description_ja": "《下一章（次の章）》は、李西西の創作と生活における新たな出発を示す展覧会。彼女が再びアメリカへ渡り学びを深める中で、画面に描かれる見慣れた人物像にも少しずつ異なる表情が生まれ、やんちゃさや好奇心の奥に、より微細で複雑な心情がにじみ出る。色彩、筆致、夢のような風景の探求を通じて、人物像を自身の成長とともに描き、観る者には見慣れたものの中にある変化を発見し、画中のある瞬間に自分自身を見出すことを促す。",
+      "artists": [
+        "李西西"
+      ],
+      "added_at": "2026-11-17T18:18:11.490540+09:00"
+    },
+    {
+      "museum": "moon",
+      "title_zh": "森境中的精靈絮語——林秀娘個展",
+      "title_en": "Whispers of Spirits in the Forest Realm: Lin Hsiu-Niang Solo Exhibition",
+      "title_ja": "森の境における精霊の囁き——林秀娘個展",
+      "dates": "2026.11.14 – 2026.12.26",
+      "location": "月臨畫廊一、二館（台中市西區英才路589巷6號1F）",
+      "link": "https://www.moongallery.com.tw/gallery_detail.asp?st=2",
+      "description": "策展人廖仁義策劃。林秀娘的陶瓷藝術作品，彷彿從現實世界走進非現實世界，又從中發現不為人知的秘境，她想方設法把秘境帶回現實世界，將原本不屬於或不完全屬於視覺領域的景物放進我們的視覺領域之中。策展文章透過藝術史式的造型分析，將藝術家的創作區分為數個時期：秀娘在人生不同的時間段，從外至內地追索不同造型語彙，每段時間作品的表現與造型雖不同，但都未曾拋卻對身體的關懷，並恆定在她的創作當中。本展為藝術家從心所欲之年的集大成創作個展。",
+      "description_en": "Curated by Liao Jen-I. Lin Hsiu-Niang's ceramic works seem to walk from the real world into the unreal, discovering hidden realms within it and finding ways to bring those realms back into reality, placing scenes that do not entirely belong to the visual field into our field of vision. The curatorial essay, through an art-historical analysis of form, divides the artist's practice into several periods: across different stages of her life, Lin has pursued different formal vocabularies from the outside inward, and although the expression and form of her works differ from period to period, a constant concern for the body has never been abandoned. This exhibition is a culminating solo show from the artist's mature years.",
+      "description_ja": "キュレーター：廖仁義。林秀娘の陶芸作品は、現実の世界から非現実の世界へ歩み入るかのようで、その中からまだ知られていない秘境を発見し、その秘境を現実の世界へ持ち帰ろうと試み、本来視覚の領域に完全には属さない風景を私たちの視覚の中へ置き入れる。キュレーションの文章では、美術史的な造形分析を通じて、作家の創作を複数の時期に区分している。秀娘は人生の異なる時期において、外から内へと異なる造形言語を追求してきたが、各時期の表現と造形は異なるものの、身体への関心を一度も手放すことなく、その創作の中に一貫して存在している。本展は、思うがままに生きる境地に至った年齢における作家の集大成となる個展である。",
+      "artists": [
+        "林秀娘"
+      ],
+      "added_at": "2026-11-17T18:19:56.694590+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/14",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.moongallery.com.tw/gallery_detail.asp?st=2"
+        },
+        {
+          "type": "talk",
+          "date": "2026/11/14",
+          "time": "16:00",
+          "title_zh": "展覽對談",
+          "title_en": "Exhibition Dialogue",
+          "title_ja": "展覧会対談",
+          "note_zh": "廖仁義 × 林秀娘",
+          "note_en": "Liao Jen-I × Lin Hsiu-Niang",
+          "note_ja": "廖仁義 × 林秀娘",
+          "source_url": "https://www.moongallery.com.tw/gallery_detail.asp?st=2"
+        }
+      ]
     }
   ]
 }
