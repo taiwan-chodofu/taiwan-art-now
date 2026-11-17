@@ -5623,6 +5623,109 @@
       "closed_days": [
         1
       ]
+    },
+    {
+      "id": "tongli",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "Maison Temps-Rêves",
+        "ja": "童里絵本洋行",
+        "zh": "童里繪本洋行"
+      },
+      "address": {
+        "en": "No.15, Chaozhou St., Da'an Dist., Taipei City",
+        "ja": "台北市潮州街15號",
+        "zh": "台北市潮州街15號"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0296105,
+      "lng": 121.5225945,
+      "closed_days": []
+    },
+    {
+      "id": "wocultural",
+      "category": "alternative",
+      "region": "hsinchu",
+      "name": {
+        "en": "+wò Cultural Practice",
+        "ja": "加沃文行 +wò Cultural Practice",
+        "zh": "加沃文行 +wò Cultural Practice"
+      },
+      "address": {
+        "en": "No.258, Ximen St., North Dist., Hsinchu City",
+        "ja": "新竹市北區西門街258號",
+        "zh": "新竹市北區西門街258號"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 24.799504,
+      "lng": 120.960001,
+      "closed_days": []
+    },
+    {
+      "id": "yingcai",
+      "category": "public",
+      "region": "taichung",
+      "name": {
+        "en": "Ying Cai Foundation Global Art Center",
+        "ja": "財団法人英才文教基金会 全球藝術中心",
+        "zh": "財團法人英才文教基金會全球藝術中心"
+      },
+      "address": {
+        "en": "4F, No.179, Fuhui Yuandao, Xitun Dist., Taichung City",
+        "ja": "台中市西屯區府會園道179號4樓",
+        "zh": "台中市西屯區府會園道179號4樓"
+      },
+      "url": "",
+      "hours": {
+        "en": "Mon-Fri 9:00-12:00, 13:30-17:00 (closed weekends/holidays)",
+        "ja": "月〜金 9:00-12:00、13:30-17:00（土日祝休）",
+        "zh": "週一至週五 AM9:00-PM12:00、PM13:30-PM17:00（例假日休館）"
+      },
+      "closed_day": 6,
+      "lat": 24.1613797,
+      "lng": 120.6456709,
+      "closed_days": [
+        0,
+        6
+      ]
+    },
+    {
+      "id": "inriver",
+      "category": "commercial",
+      "region": "taipei",
+      "name": {
+        "en": "In River Gallery",
+        "ja": "穎川畫廊",
+        "zh": "穎川畫廊"
+      },
+      "address": {
+        "en": "2F, No.45, Sec.1, Ren'ai Rd., Taipei City",
+        "ja": "台北市仁愛路一段45號2F",
+        "zh": "台北市仁愛路一段45號2F"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0387817,
+      "lng": 121.5240645,
+      "closed_days": []
     }
   ]
 }
