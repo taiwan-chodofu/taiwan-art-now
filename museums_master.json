@@ -5446,6 +5446,31 @@
       "lat": 24.982066,
       "lng": 121.572512,
       "closed_days": []
+    },
+    {
+      "id": "qidustation",
+      "category": "public",
+      "region": "keelung",
+      "name": {
+        "en": "Qidu Station (West Exit Hall)",
+        "ja": "台鉄七堵駅（西出口ホール）",
+        "zh": "台鐵七堵站（西出口大廳）"
+      },
+      "address": {
+        "en": "No.2-1, Dongxin St., Qidu Dist., Keelung City",
+        "ja": "基隆市七堵區東新街2之1號",
+        "zh": "基隆市七堵區東新街2之1號"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0929389,
+      "lng": 121.71415,
+      "closed_days": []
     }
   ]
 }

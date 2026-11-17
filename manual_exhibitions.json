@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T12:26:31.227102+09:00",
+  "generated": "2026-11-17T16:07:37.908340+09:00",
   "exhibitions": [
     {
       "museum": "lym",
@@ -2679,6 +2679,20 @@
         "三井悠華 Yuka Mitsui"
       ],
       "added_at": "2026-10-20T14:59:42.690469+09:00"
+    },
+    {
+      "museum": "qidustation",
+      "title_zh": "潮起、潮湧、潮未來：基隆四百特展",
+      "title_en": "Where Tides Meet: Keelung 400 Special Exhibition",
+      "title_ja": "潮起・潮湧・潮未来：基隆四百特別展",
+      "dates": "2026.10.22 – 2026.11.26",
+      "location": "台鐵七堵站光明路側（西出口）大廳",
+      "link": "",
+      "description": "基隆四百年來站在時代浪潮交會的第一線，學習山的韌性、貫徹海的包容，將衝擊化為養分，把衝突轉為信任。多元文化在這片歷史沃土上共生，展覽邀請觀者走進文化潮間帶，沿著自己的路徑回溯過去、想像未來，透過物件及背後的故事，從不同角度重新認識基隆。",
+      "description_en": "For four hundred years Keelung has stood at the front line where tides of history converge, learning the resilience of mountains and the tolerance of the sea, turning impact into nourishment and conflict into trust. The exhibition invites visitors into this cultural tidal zone to trace the past and imagine the future through objects and the stories behind them, reconsidering Keelung from different angles.",
+      "description_ja": "四百年にわたり時代の潮流が交わる最前線に立ってきた基隆。山の忍耐と海の包容力を学び、衝突を信頼へと変えてきた。本展は観客をこの文化の潮間帯へと招き、物とその背景にある物語を通じて、それぞれの道をたどりながら過去を振り返り、未来を想像し、基隆を異なる視点から再発見する。",
+      "artists": [],
+      "added_at": "2026-11-13T13:24:10.982538+09:00"
     }
   ]
 }

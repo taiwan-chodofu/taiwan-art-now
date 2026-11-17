@@ -20,7 +20,7 @@ ARCHIVE_FILE = BASE_DIR / "archive.json"
 
 TW_TZ = timezone(timedelta(hours=8))
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
-NOTIFY_RECIPIENT_ID = "27481470654840665"  # 管理者(admin)のsender_id
+NOTIFY_RECIPIENT_ID = "27481470654840665"  # 管理者のsender_id
 
 DATE_RE = re.compile(r"(\d{4})[./\-](\d{1,2})[./\-](\d{1,2})")
 
