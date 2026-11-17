@@ -2991,6 +2991,58 @@
         "陳士雄"
       ],
       "added_at": "2026-11-17T16:45:50.748845+09:00"
+    },
+    {
+      "museum": "wakaoplot",
+      "title_zh": "成為皇民之前－李佳泓個展",
+      "title_en": "Before Becoming Imperial Subjects: Lee Chia-Hung Solo Exhibition",
+      "title_ja": "皇民になる前に－李佳泓個展",
+      "dates": "2026.11.15 – 2027.01.15",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20676",
+      "description": "以1935年台灣博覽會為線索，透過版畫、木板、日本時期和戰後的報紙、過去的演出照片，呈現戰爭來臨前與戰後初期充滿活力與各種可能性的時代氛圍。",
+      "description_en": "Taking the 1935 Taiwan Exposition as a point of departure, the exhibition uses prints, wood panels, newspapers from the Japanese colonial and postwar periods, and archival performance photographs to evoke an era of vitality and open possibility just before the war and in its immediate aftermath.",
+      "description_ja": "1935年の台湾博覧会を手がかりに、版画や木板、日本統治時代および戦後の新聞、過去の上演写真を通じて、戦争前夜と戦後初期の活気と可能性に満ちた時代の雰囲気を提示する。",
+      "artists": [
+        "李佳泓 Lee Chia-Hung"
+      ],
+      "added_at": "2026-11-17T16:48:05.673258+09:00"
+    },
+    {
+      "museum": "nowcoffee",
+      "title_zh": "What We Had to Lose 我們失去而活著",
+      "title_en": "What We Had to Lose",
+      "title_ja": "What We Had to Lose 私たちは失いながら生きる",
+      "dates": "2026.11.09 – 2027.01.03",
+      "location": "鬧咖啡 2F書架",
+      "link": "https://artemperor.tw/tidbits/20675",
+      "description": "以戰爭為核心主題的選書展，分為當前或歷史戰爭下的平民生活紀錄，以及因政治、社會運動或生活壓迫而產生的各種「失去」兩部分。選書由「慢工文化」總編輯挑選，多為圖像小說，並邀請「假的藝術書展」協辦選入海外獨立出版品。",
+      "description_en": "A curated book exhibition centered on war, divided into documentation of civilian life under current or historical conflicts and accounts of loss caused by politics, social movements or the pressures of daily life. The selection, largely graphic novels, was curated by the editor-in-chief of Slowork Publishing, with The Fake Art Book Fair co-curating a selection of overseas independent publications.",
+      "description_ja": "戦争をテーマにした選書展。現在または歴史上の戦争下における市民生活の記録と、政治・社会運動や生活の圧迫による様々な「失い」という二つのテーマで構成される。選書は「慢工文化」編集長が担当し、グラフィックノベルを中心に、「假的藝術書展」が協力して海外の独立出版物を選定した。",
+      "artists": [
+        "慢工文化 Slowork Publishing",
+        "假的藝術書展 The Fake Art Book Fair"
+      ],
+      "added_at": "2026-11-17T16:48:05.673258+09:00"
+    },
+    {
+      "museum": "ctwm",
+      "title_zh": "「禪心．鄉情」李轂摩、蔡友、林隆達、林榮森四家書畫聯展",
+      "title_en": "Zen Mind, Homeland Sentiment: A Four-Artist Calligraphy and Painting Exhibition",
+      "title_ja": "「禅心・郷情」李轂摩・蔡友・林隆達・林榮森四家書画連展",
+      "dates": "2026.12.29 – 2027.02.28",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20672",
+      "description": "邀請四位深耕台灣藝文的當代名家，以筆墨為媒介、以日常為道場，將佛教哲思與鄉土情懷轉化為書畫萬象。李轂摩融通水墨精神與民俗逸趣；蔡友融貫古法筆意與現代結構；林隆達精研法書碑帖與泥金佛經小楷；林榮森書法兼蓄碑帖風骨與當代氣度。",
+      "description_en": "Four contemporary masters deeply rooted in Taiwanese art and culture use brush and ink, grounded in everyday life, to translate Buddhist philosophy and homeland sentiment into calligraphy and painting. Li Ku-Mo blends the spirit of ink painting with folk charm; Tsai You fuses classical brushwork with modern structure; Lin Lung-Ta is versed in classical scripts and gold-ink sutra calligraphy; Lin Jung-Sen's calligraphy combines the bones of classical steles with contemporary bearing.",
+      "description_ja": "台湾の芸文に深く根を張る四人の現代の名匠が、筆墨を媒介に、日常を道場として、仏教の哲学と郷土への思いを書画の多彩な表現へと転化する。李轂摩は水墨の精神と民俗の趣を融合し、蔡友は古法の筆意と現代的構成を融合し、林隆達は法書碑帖と泥金佛経の小楷を究め、林榮森の書法は碑帖の風骨と当代の気風を兼ね備える。",
+      "artists": [
+        "李轂摩",
+        "蔡友",
+        "林隆達",
+        "林榮森"
+      ],
+      "added_at": "2026-11-17T16:49:50.359955+09:00"
     }
   ]
 }
