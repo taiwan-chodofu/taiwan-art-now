@@ -4126,6 +4126,80 @@
           "source_url": "https://www.facebook.com/profile.php?id=61556758625583"
         }
       ]
+    },
+    {
+      "museum": "simpleobject",
+      "title_zh": "MODERN KEMONO：藤本秀個展",
+      "title_en": "MODERN KEMONO: Shu Fujimoto Solo Exhibition",
+      "title_ja": "MODERN KEMONO：藤本秀個展",
+      "dates": "2026.11.06 – 2026.11.22",
+      "location": "純Object（台北市大安區敦化南路二段63巷21弄27號1樓）",
+      "link": "https://www.simple-object.com/",
+      "description": "日本信樂燒傳統工藝士藤本秀全新陶藝個展，展出積累近兩年的侘寂風格美學新作，包含日常杯碗、花器與家飾掛件。藝術家特別來台舉辦開幕座談與工作坊，由台灣陶瓷藝術家林怡芬擔任翻譯，分享源自信樂山林的創作哲學，邀請觀眾一同品味土地與火的自然共鳴。",
+      "description_en": "A new solo ceramics exhibition by Shu Fujimoto, a traditional Shigaraki-ware craftsman from Japan, presenting works accumulated over nearly two years in a wabi-sabi aesthetic — everyday cups and bowls, vases and wall-hanging home objects. The artist traveled to Taiwan specially for an opening talk and workshop, with Taiwanese ceramic artist Lin Yi-Fen serving as interpreter, sharing a creative philosophy rooted in the mountains and forests of Shigaraki and inviting visitors to savor the natural resonance of earth and fire together.",
+      "description_ja": "日本の信楽焼の伝統工芸士、藤本秀による新作陶芸個展。約2年間積み重ねてきた侘寂（わび・さび）の美学による新作を展示し、日常使いの器や花器、インテリア掛け物を含む。作家は特別に台湾を訪れ、オープニングトークとワークショップを開催し、台湾の陶芸作家・林怡芬が通訳を務めながら、信楽の山林に根ざした創作哲学を語り、観客とともに土と火が生み出す自然な響き合いを味わう機会を設けた。",
+      "artists": [
+        "藤本秀"
+      ],
+      "added_at": "2026-11-17T18:26:57.832680+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/11/06",
+          "time": "14:30-15:30",
+          "title_zh": "開幕座談",
+          "title_en": "Opening Talk",
+          "title_ja": "オープニングトーク",
+          "note_zh": "台灣陶瓷藝術家林怡芬擔任翻譯",
+          "note_en": "Taiwanese ceramic artist Lin Yi-Fen as interpreter",
+          "note_ja": "台湾の陶芸作家・林怡芬が通訳",
+          "source_url": "https://www.facebook.com/simpleobjectofficial/"
+        },
+        {
+          "type": "workshop",
+          "date": "2026/11/08",
+          "time": "14:30-17:00",
+          "title_zh": "藝術家工作坊",
+          "title_en": "Artist Workshop",
+          "title_ja": "アーティスト・ワークショップ",
+          "note_zh": "另加開09:30-12:00場次",
+          "note_en": "Additional session added at 09:30-12:00",
+          "note_ja": "09:30-12:00の追加回あり",
+          "source_url": "https://www.facebook.com/simpleobjectofficial/"
+        }
+      ]
+    },
+    {
+      "museum": "852art",
+      "title_zh": "《限制中的延展》王崧合個展",
+      "title_en": "Extension Within Constraint: Wang Sung-Ho Solo Exhibition",
+      "title_ja": "《制約の中の延展》王崧合個展",
+      "dates": "2026.11.13 – 2026.11.19",
+      "location": "852藝術空間（台中市龍井區藝術街38巷11號）",
+      "link": "https://www.facebook.com/profile.php?id=61574023807656",
+      "description": "藝術家王崧合個展，於852藝術空間展出。",
+      "description_en": "A solo exhibition by artist Wang Sung-Ho, presented at 852 Art Space.",
+      "description_ja": "藝術家、王崧合による個展で、852藝術空間にて開催される。",
+      "artists": [
+        "王崧合"
+      ],
+      "added_at": "2026-11-17T18:28:08.675781+09:00"
+    },
+    {
+      "museum": "sinpink",
+      "title_zh": "數位擱淺",
+      "title_en": "Digital Stranding",
+      "title_ja": "デジタル座礁",
+      "dates": "2026.11.14 – 2026.11.22",
+      "location": "新浜碼頭藝術空間 2樓",
+      "link": "https://www.facebook.com/sinpinpier",
+      "description": "陽春麵研究舍（陳姿尹、莊向峰）以網路上已經「消失」的資料作為創作素材，像是無法開啟的網頁、已經關閉的網站，或是再也找不到的數位內容。藝術家將這些資料列印成一張張A4紙，再層層堆疊，組合成一隻擱淺在沙地上的巨大鯨魚。展覽一開始，鯨魚的形體是完整的，觀眾可以自由拿走其中任何一張紙。隨著展覽進行，紙張逐漸減少，鯨魚也慢慢塌陷、散開，最後只剩下散落一地的紙張和痕跡，運用「鯨落」的概念，讓死亡不只是結束，也可能成為另一種新生命的開始。尤其在AI時代，網路上的大量資料不斷被擷取、重新組合，甚至轉化成新的內容，讓人思考資料究竟何時才算真正死亡，所謂的消失又是不是另一種形式的再生。",
+      "description_en": "Yang Chun Mian Yan Jiu She (Chen Tzu-Yin and Chuang Hsiang-Feng) use data that has already \"disappeared\" from the internet as their material — pages that no longer open, websites that have shut down, digital content that can no longer be found. The artists print these data as sheets of A4 paper and stack them layer by layer into the form of a giant whale stranded on sand. At the opening, the whale is whole, and visitors are free to take any sheet of paper from it. As the exhibition continues, the sheets dwindle and the whale gradually collapses and scatters, until only paper and traces remain scattered on the floor — drawing on the concept of a \"whale fall,\" in which death is not only an ending but can also become the beginning of new life. Especially in the age of AI, vast amounts of online data are constantly scraped, recombined and transformed into new content, prompting the question of when data can truly be said to have died, and whether disappearance is itself another form of rebirth.",
+      "description_ja": "陽春麵研究舍（陳姿尹、莊向峰）は、インターネット上で既に「消失」したデータ――開けなくなったウェブページ、閉鎖されたサイト、もはや見つけられないデジタルコンテンツ――を創作素材とする。作家たちはこれらのデータをA4用紙に印刷し、層状に積み重ねて、砂地に座礁した巨大なクジラの形を作り上げる。展覧会開始時、クジラの姿は完全な形をしているが、観客は自由にその用紙を一枚持ち帰ることができる。展覧会が進むにつれて紙は減っていき、クジラは徐々に崩れ、散らばっていき、最後には散乱した紙とその痕跡だけが残る。「鯨骨生物群集（鯨落）」の概念を用いて、死は単なる終わりではなく、別の新しい生命の始まりにもなり得ることを示す。特にAI時代においては、インターネット上の膨大なデータが絶えず取得・再構成され、新たなコンテンツへと変換されており、本作はデータが本当に「死んだ」と言えるのはいつなのか、そして「消失」自体が別の形の再生ではないのかを問いかける。",
+      "artists": [
+        "陽春麵研究舍（陳姿尹、莊向峰）"
+      ],
+      "added_at": "2026-11-17T18:29:00.191388+09:00"
     }
   ]
 }
