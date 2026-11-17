@@ -2693,6 +2693,304 @@
       "description_ja": "四百年にわたり時代の潮流が交わる最前線に立ってきた基隆。山の忍耐と海の包容力を学び、衝突を信頼へと変えてきた。本展は観客をこの文化の潮間帯へと招き、物とその背景にある物語を通じて、それぞれの道をたどりながら過去を振り返り、未来を想像し、基隆を異なる視点から再発見する。",
       "artists": [],
       "added_at": "2026-11-13T13:24:10.982538+09:00"
+    },
+    {
+      "museum": "fotoaura",
+      "title_zh": "100歲 One hundred years old｜賴志盛、蘇育賢",
+      "title_en": "One Hundred Years Old: Lai Chih-Sheng, Su Yu-Hsien",
+      "title_ja": "100歳 One hundred years old－賴志盛、蘇育賢",
+      "dates": "2026.11.20 – 2026.12.13",
+      "location": "",
+      "link": "https://www.facebook.com/events/1464742292528914/",
+      "description": "賴志盛與蘇育賢二人展「100歲」。",
+      "description_en": "A two-person exhibition, \"One Hundred Years Old,\" by Lai Chih-Sheng and Su Yu-Hsien.",
+      "description_ja": "賴志盛と蘇育賢による二人展「100歳」。",
+      "artists": [
+        "賴志盛 Lai Chih-Sheng",
+        "蘇育賢 Su Yu-Hsien"
+      ],
+      "added_at": "2026-11-17T16:34:06.709116+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/20",
+          "time": "17:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Tea Reception",
+          "title_ja": "オープニング茶会",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.facebook.com/events/1464742292528914/"
+        }
+      ]
+    },
+    {
+      "museum": "daxiagallery",
+      "title_zh": "初心最美 感恩藝術季",
+      "title_en": "The Beauty of First Intent: Gratitude Art Festival",
+      "title_ja": "初心最美 感謝芸術フェスティバル",
+      "dates": "2026.11.19 – 2026.12.01",
+      "location": "大夏藝廊特展區",
+      "link": "https://artemperor.tw/tidbits/20679",
+      "description": "本場展覽集結第二屆心生活盃身心障礙才藝獎獲選者，及多位青年藝術家，共同展出充滿溫暖、正向與創造力的作品，透過創作傳遞對生命的熱愛與感恩。",
+      "description_en": "The exhibition brings together winners of the 2nd Heart & Life Cup Talent Award for people with disabilities and a number of young artists, presenting works filled with warmth, positivity and creativity that convey a love of life and gratitude.",
+      "description_ja": "本展は第2回「心生活カップ」障害者才能賞の受賞者と複数の青年作家が共同で参加し、温かさとポジティブさ、創造性にあふれた作品を通じて生命への愛と感謝の思いを伝える。",
+      "artists": [
+        "王詠薇",
+        "吳承翰",
+        "周凡迪",
+        "林家弘",
+        "林庭萱",
+        "姚秉勳",
+        "倪宇呈",
+        "倪宇萱",
+        "高霈妍",
+        "張敏宜",
+        "張琳琳",
+        "莊毓晨",
+        "陳愷育",
+        "黃佳瑩",
+        "蔡逸昕",
+        "鄭國佑",
+        "劉晉文",
+        "謝明勳"
+      ],
+      "added_at": "2026-11-17T16:35:47.841281+09:00"
+    },
+    {
+      "museum": "daxiagallery",
+      "title_zh": "茶馬古道紀實攝影展",
+      "title_en": "The Ancient Tea Horse Road: A Documentary Photography Exhibition",
+      "title_ja": "茶馬古道記録写真展",
+      "dates": "2026.11.11 – 2026.11.17",
+      "location": "大夏藝廊特展區",
+      "link": "https://artemperor.tw/tidbits/20649",
+      "description": "「茶馬古道紀實攝影展」循著滇藏沿線的歷史足跡，深入山川城鎮，將攝影視野延伸至川藏與西藏地區，記錄高原壯麗的自然景觀、沿途居民的生活樣貌，以及世代傳承的人文信仰。",
+      "description_en": "This documentary photography exhibition follows the historic route along Yunnan and Tibet, venturing deep into mountain towns and extending to the Sichuan-Tibet and Tibetan regions, recording the plateau's majestic landscapes, the lives of local residents, and faith traditions passed down through generations.",
+      "description_ja": "本写真展は雲南・チベット沿いの歴史的な道をたどり、山間の町々へと分け入り、川蔵・チベット地域まで撮影の視野を広げ、高原の壮大な自然景観や沿道の人々の暮らし、世代を超えて受け継がれる信仰を記録する。",
+      "artists": [],
+      "added_at": "2026-11-17T16:36:36.105724+09:00"
+    },
+    {
+      "museum": "maisonacme",
+      "title_zh": "忘形",
+      "title_en": "Amorphuse",
+      "title_ja": "忘形 Amorphuse",
+      "dates": "2026.11.14 – 2026.11.22",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20674",
+      "description": "台灣景觀設計品牌「感官花子」主理人何豐旭，與東京花道工作室「Gontadou」主理人曾顯豪共同呈獻展覽。一人從景觀出發，觀看植物隨時間展開；一人從花道出發，觀看植物的一瞬之美，皆從植物出發探索其與空間和人之間的關係。展覽以攝影及立體作品展開兩種以植物為本的創作視角。",
+      "description_en": "Presented jointly by Frank He, founder of Taiwanese landscape design studio HUAZi STUDIO, and Benedict Tsang, Tokyo-based ikebana artist and founder of Gontadou Studio. One approaches from landscape architecture, observing plants unfold over time; the other from ikebana, capturing their fleeting beauty in a single moment — both exploring, through photography and three-dimensional work, the relationship between plants, space and people.",
+      "description_ja": "台湾の景観設計ブランド「感官花子」代表の何豐旭と、東京を拠点とする花道スタジオ「Gontadou」代表の曾顯豪が共同で発表する展覧会。一人は景観から、時間とともに展開する植物を見つめ、もう一人は花道から、植物の一瞬の美を捉える。写真と立体作品を通じて、植物・空間・人の関係を探る二つの創作的視点を展開する。",
+      "artists": [
+        "何豐旭 Frank He",
+        "曾顯豪 Benedict Tsang"
+      ],
+      "added_at": "2026-11-17T16:37:10.437601+09:00"
+    },
+    {
+      "museum": "mingshan",
+      "title_zh": "【名山藝術】萌獸呢喃：翁明哲2026創作展",
+      "title_en": "Whispers of the Cute Beasts: Weng Ming-Che 2026 Exhibition",
+      "title_ja": "萌獣のささやき－翁明哲2026創作展",
+      "dates": "2026.11.21 – 2026.12.27",
+      "location": "名山藝術台北館",
+      "link": "https://artemperor.tw/tidbits/20659",
+      "description": "翁明哲以強烈的身體性創作，肢體動勢帶領顏料飛揚，揮灑、甩動與拋擲間色彩於畫布上凝聚成純真、俏皮的動物面容。「萌獸呢喃」呈現其「微笑的獸」系列作品，近觀是抽象色彩與線條的層層交錯，隨欣賞距離拉遠，動物的輪廓與神情逐漸浮現。",
+      "description_en": "Weng Ming-Che paints with intense physicality, letting the momentum of his body fling pigment across the canvas — flicking, swinging and throwing color that coalesces into innocent, playful animal faces. \"Whispers of the Cute Beasts\" presents his \"Smiling Beasts\" series: up close, abstract color and line interweave; as one steps back, the contours and expressions of the animals gradually emerge.",
+      "description_ja": "翁明哲は強い身体性を伴う制作を行い、身体の動きに導かれて顔料を画面に飛ばし、振り、投げることで、純粋で愛らしい動物の表情を画布に結晶させる。「萌獣のささやき」は彼の「微笑む獣」シリーズを展示し、近くで見ると抽象的な色と線が層をなして交錯し、距離を置くと動物の輪郭と表情が徐々に浮かび上がる。",
+      "artists": [
+        "翁明哲"
+      ],
+      "added_at": "2026-11-17T16:38:12.423950+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/21",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Tea Reception",
+          "title_ja": "オープニング茶会",
+          "note_zh": "藝術家將親臨現場。",
+          "note_en": "The artist will be present.",
+          "note_ja": "作家本人が来場予定。",
+          "source_url": "https://artemperor.tw/tidbits/20659"
+        }
+      ]
+    },
+    {
+      "museum": "knowphotogallery",
+      "title_zh": "the trapped stone is still on its way 高穎琳個展",
+      "title_en": "The Trapped Stone Is Still on Its Way: Kobe Ko Solo Exhibition",
+      "title_ja": "the trapped stone is still on its way－高穎琳個展",
+      "dates": "2026.11.20 – 2026.12.13",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20650",
+      "description": "高穎琳以旅人的視角，記錄城市痕跡與偶然相遇的瞬間——被水溝蓋卡住的石頭、劃過天空的飛機雲、燃盡的仙女棒殘影。展覽以詩意的影像語言，捕捉旅途中短暫的停歇與持續前行之間的狀態。",
+      "description_en": "Kobe Ko records, from a traveler's perspective, traces of the city and chance encounters — a stone caught in a drain grate, a jet trail crossing the sky, the afterglow of a spent sparkler. The exhibition captures, in poetic images, the state between a brief pause and the journey's continuation.",
+      "description_ja": "高穎琳は旅人の視点で、都市の痕跡と偶然の出会いの瞬間を記録する——溝蓋に引っかかった石、空を横切る飛行機雲、燃え尽きた線香花火の残像。詩的な映像言語を通じて、旅の中の短い休止と続く道程の間にある状態を捉える。",
+      "artists": [
+        "高穎琳 Kobe Ko"
+      ],
+      "added_at": "2026-11-17T16:38:47.179402+09:00"
+    },
+    {
+      "museum": "poma",
+      "title_zh": "觀看的懸置：化石風景 林希羽個展",
+      "title_en": "Suspending the Gaze: Fossil Landscapes — Lin His-Yu Solo Exhibition",
+      "title_ja": "視線の懸置：化石の風景－林希羽個展",
+      "dates": "2026.11.19 – 2026.12.20",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20648",
+      "description": "關於一次在夏天裡的南方化石之旅。尋找化石的過程是一種介於觀看與辨認之間的感知經驗，化石藏於河流沖刷的岩石夾層中，處於半顯現的狀態，觀看在尋找中被暫時懸置。藝術家藉由反覆搜尋、辨認與辨認挫敗的過程，體驗「看」與「看見」之間的擺盪。",
+      "description_en": "Based on a summer journey in search of fossils in the south. The process of finding fossils is a perceptual experience caught between seeing and recognizing — fossils hidden within river-worn rock, half-revealed, where looking is suspended in the search. Through repeated searching, identification and misidentification, the artist experiences the oscillation between \"seeing\" and \"recognizing.\"",
+      "description_ja": "夏に南部で化石を探した旅についての展覧会。化石を探す過程は「見る」ことと「認識する」ことの間にある知覚的な経験であり、河川に浸食された岩の層に半ば現れた状態で隠れている化石を前に、観察は探索の中で一時的に保留される。繰り返す探索と識別、識別の失敗を通じて、作家は「見る」と「見える」の間の揺らぎを体験する。",
+      "artists": [
+        "林希羽 Lin His-Yu"
+      ],
+      "added_at": "2026-11-17T16:39:35.460133+09:00"
+    },
+    {
+      "museum": "chensart",
+      "title_zh": "萬物感應 賈恩卡洛・東諾尼個展",
+      "title_en": "Risonanza Universale: Giancarlo Tognoni Solo Exhibition",
+      "title_ja": "万物感応－ジャンカルロ・トニョーニ個展",
+      "dates": "2026.11.21 – 2027.01.30",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20664",
+      "description": "義大利藝術家賈恩卡洛・東諾尼（1932-2020）在戰後的精神荒蕪中將目光投向大自然，探尋萬物的關聯與宇宙的原始生命力。承襲義大利「不定形藝術」對創作自由性、自發性與直覺的追求，早期借鑑畢卡索立體派與義大利未來主義，從多重空間、視角探討物質、文化與人之間的關係。",
+      "description_en": "Italian artist Giancarlo Tognoni (1932–2020) turned his gaze toward nature amid the postwar spiritual desolation, seeking the connections among all things and the primal vitality of the universe. Inheriting Arte Informale's pursuit of creative freedom, spontaneity and intuition, his early work drew on Picasso's cubism and Italian Futurism, exploring the relationships among matter, culture and humanity through multiple spaces and perspectives.",
+      "description_ja": "イタリアの作家ジャンカルロ・トニョーニ（1932–2020）は、戦後の精神的な荒廃の中で自然へと目を向け、万物の関連性と宇宙の原初的な生命力を探求した。イタリアの「アルテ・インフォルメ」が追求した創作の自由さ、自発性、直観を受け継ぎ、初期にはピカソのキュビズムやイタリア未来派の影響を受けながら、複数の空間と視点から物質・文化・人間の関係を探った。",
+      "artists": [
+        "賈恩卡洛・東諾尼 Giancarlo Tognoni"
+      ],
+      "added_at": "2026-11-17T16:40:16.951913+09:00"
+    },
+    {
+      "museum": "tartch",
+      "title_zh": "《日日生花｜State of Crumbs》Johanna Flammer",
+      "title_en": "State of Crumbs: Johanna Flammer",
+      "title_ja": "《日々生花｜State of Crumbs》ヨハンナ・フラマー",
+      "dates": "2026.11.21 – 2026.12.19",
+      "location": "",
+      "link": "https://www.instagram.com/tartch.gallery/",
+      "description": "德國藝術家Johanna Flammer從食物、髮絲、塑膠小物以及剪裁下來的文字與圖案中擷取靈感，透過拼貼、重組與層層堆疊，讓熟悉的事物逐漸脫離既定形貌，在畫布上生長出介於現實與想像之間的奇異風景。鮮明的色彩與自由生長的有機形態構成其獨特而充滿生命力的視覺語言。",
+      "description_en": "German artist Johanna Flammer draws inspiration from food, strands of hair, small plastic objects and cut-out text and patterns, using collage, recombination and layering to let familiar things drift from their fixed forms into strange landscapes between reality and imagination. Vivid color and freely growing organic forms make up her distinctive, vital visual language.",
+      "description_ja": "ドイツの作家ヨハンナ・フラマーは、食べ物や髪の毛、小さなプラスチック製品、切り取られた文字や図案からインスピレーションを得て、コラージュと再構成、重ね合わせによって、見慣れたものを既定の形から徐々に離脱させ、現実と想像の間にある奇妙な風景を画布上に育てる。鮮やかな色彩と自由に成長する有機的な形態が、彼女独自の生命力ある視覚言語を構成する。",
+      "artists": [
+        "Johanna Flammer"
+      ],
+      "added_at": "2026-11-17T16:40:54.078053+09:00"
+    },
+    {
+      "museum": "99dac",
+      "title_zh": "2026陶瓷雙人展－林振龍、黃玉英",
+      "title_en": "2026 Ceramics Duo Exhibition: Lin Chen-Lung, Huang Yu-Ying",
+      "title_ja": "2026陶磁器二人展－林振龍、黄玉英",
+      "dates": "2026.11.14 – 2026.12.19",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20682",
+      "description": "林振龍與黃玉英的陶瓷雙人展，呈現兩位陶藝家各具特色的空間釉彩與燻燒作品。",
+      "description_en": "A ceramics duo exhibition by Lin Chen-Lung and Huang Yu-Ying, presenting each artist's distinctive glazed-space and smoke-fired works.",
+      "description_ja": "林振龍と黄玉英による陶磁器の二人展。空間釉彩と燻焼作品など、それぞれの特色ある作品を展示する。",
+      "artists": [
+        "林振龍",
+        "黃玉英"
+      ],
+      "added_at": "2026-11-17T16:41:36.160465+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/14",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20682"
+        }
+      ]
+    },
+    {
+      "museum": "elevenart",
+      "title_zh": "異托邦的風景：十一種共時的空間想像創作聯展",
+      "title_en": "Heterotopian Landscapes: Eleven Concurrent Spatial Imaginations",
+      "title_ja": "異托邦の風景：十一の同時的な空間想像の創作連展",
+      "dates": "2026.11.21 – 2027.01.03",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20615",
+      "description": "由國立臺灣師範大學美術學系侯忠穎副教授與趙可卿助理教授共同策劃，集結十一位新生代藝術家，透過繪畫、攝影及複合媒材等多元創作媒材，思考如何從物質性、賦權與記憶中開啟另一種存在可能的異托邦風景。",
+      "description_en": "Co-curated by Associate Professor Hou Chung-Ying and Assistant Professor Chao Ke-Ching of National Taiwan Normal University's Department of Fine Arts, bringing together eleven emerging artists working across painting, photography and mixed media to explore heterotopian landscapes — alternative modes of existence grounded in materiality, empowerment and memory.",
+      "description_ja": "国立台湾師範大学美術学系の侯忠穎准教授と趙可卿助理教授が共同で企画し、11人の新世代作家が絵画、写真、複合素材など多様な手法を通じて、物質性やエンパワーメント、記憶から別の存在の可能性を開く異托邦の風景を探る。",
+      "artists": [
+        "李艾臻",
+        "沈若柔",
+        "莊大緯",
+        "張立欣",
+        "陳頤安",
+        "簡彥旭",
+        "黃思喆",
+        "邱太平",
+        "王亭云",
+        "許品婕",
+        "羅珈羽"
+      ],
+      "added_at": "2026-11-17T16:42:12.144107+09:00"
+    },
+    {
+      "museum": "pu-artcenter",
+      "title_zh": "注視之程－李檬個展",
+      "title_en": "The Journey of Gazing: Lee Meng Solo Exhibition",
+      "title_ja": "注視の道程－李檬個展",
+      "dates": "2026.11.06 – 2026.12.30",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20583",
+      "description": "《注視之程》以「我站在這裡」、「我停留的片刻」與「我再次抵達的當下」三個段落展開，分別以「位置」、「關係」與「臨身」作為三種觀看狀態的關鍵詞，探討身體在世界中落定站位、與世界之間的距離感知，以及臨身其中成就純然「我在」的觀看歷程。",
+      "description_en": "\"The Journey of Gazing\" unfolds in three sections — Where I Stand, The Interval, and Into Presence — keyed respectively to position, relation and embodiment. It explores how a body settles into a standpoint in the world, perceives the subtle distance between self and world, and ultimately arrives at a pure state of \"being here\" through full bodily presence.",
+      "description_ja": "《注視の道程》は「私はここに立っている」「私が留まる瞬間」「私が再び到達する現在」という三つの段落で展開し、それぞれ「位置」「関係」「臨在」を観看の状態を示すキーワードとする。身体が世界の中で立ち位置を定め、世界との間に生じる距離をどう感知し理解するか、そして全身で臨在することで純然たる「私がいる」という状態に至る過程を探る。",
+      "artists": [
+        "李檬"
+      ],
+      "added_at": "2026-11-17T16:43:54.317807+09:00"
+    },
+    {
+      "museum": "space102",
+      "title_zh": "黃郁生版畫個展－彩排，在人生的舞台上！",
+      "title_en": "Rehearsal of Life on the Stage: Hwang Yue-Sheng Solo Printmaking Exhibition",
+      "title_ja": "黄郁生版画個展－リハーサル、人生の舞台の上で！",
+      "dates": "2026.11.18 – 2027.01.16",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20673",
+      "description": "黃郁生長年致力於版畫創作與研究，以凹版一版多色、美柔汀等技法，探索生活景物、空間、記憶與自我存在之間的關係。本次個展以「彩排」為題，展出不同時期的版畫創作，涵蓋時間流轉、光影變化、情緒起伏及日常空間等題材。",
+      "description_en": "Hwang Yue-Sheng has long devoted himself to printmaking research, using multi-color intaglio and mezzotint techniques to explore the relationship between everyday scenes, space, memory and self. This exhibition, themed \"Rehearsal,\" presents works from different periods spanning the passage of time, shifts of light and shadow, emotional flux and everyday space.",
+      "description_ja": "黄郁生は長年版画の創作と研究に取り組み、一版多色の凹版やメゾチントなどの技法で、日常の風景・空間・記憶と自己の存在との関係を探ってきた。本個展は「リハーサル」をテーマに、時間の流れや光と影の変化、感情の起伏、日常の空間などを題材とした異なる時期の版画作品を展示する。",
+      "artists": [
+        "黃郁生"
+      ],
+      "added_at": "2026-11-17T16:44:50.293245+09:00"
+    },
+    {
+      "museum": "ssairport",
+      "title_zh": "療癒停靠站",
+      "title_en": "Healing Stopover",
+      "title_ja": "癒しの停留所",
+      "dates": "2026.11.01 – 2027.01.31",
+      "location": "松山機場國際線2F出境大廳展區",
+      "link": "https://artemperor.tw/tidbits/20683",
+      "description": "由右岱藝術策劃，於臺北松山機場展出，以「AI時代裡的手感溫度」為核心，邀集林羿足、蕭季箴、羅正惠Eva、張仲禹及陳士雄五位藝術創作者，以銅雕、繪畫、陶瓷及平面視覺等多元媒材，呈現童心、陪伴、安定、柔軟與自我照顧等療癒意象，為往來旅人打造一處溫柔而富有情感的心靈停靠站。",
+      "description_en": "Curated by Youdai Art and presented at Taipei Songshan Airport, this exhibition centers on \"the warmth of the handmade in the AI age,\" bringing together five artists — Lin Yi-Tsu, Hsiao Chi-Chin, Luo Cheng-Hui (Eva), Chang Chung-Yu and Chen Shih-Hsiung — working in bronze sculpture, painting, ceramics and graphic media to present healing imagery of innocence, companionship, stability, softness and self-care for travelers passing through.",
+      "description_ja": "右岱藝術の企画により台北松山機場で開催される本展は、「AI時代における手仕事のぬくもり」を核に、林羿足、蕭季箴、羅正惠（エヴァ）、張仲禹、陳士雄の5名の作家を集め、銅彫刻・絵画・陶磁・平面ビジュアルなど多様な素材で、童心、寄り添い、安定、柔らかさ、セルフケアといった癒しのイメージを提示し、行き交う旅人に心の安らぎの停留所を作る。",
+      "artists": [
+        "林羿足",
+        "蕭季箴",
+        "羅正惠 Eva",
+        "張仲禹",
+        "陳士雄"
+      ],
+      "added_at": "2026-11-17T16:45:50.748845+09:00"
     }
   ]
 }

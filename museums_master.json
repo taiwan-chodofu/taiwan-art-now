@@ -5471,6 +5471,81 @@
       "lat": 25.0929389,
       "lng": 121.71415,
       "closed_days": []
+    },
+    {
+      "id": "pu-artcenter",
+      "category": "public",
+      "region": "taichung",
+      "name": {
+        "en": "Art Center of Providence University",
+        "ja": "静宜大学芸術センター",
+        "zh": "靜宜大學藝術中心"
+      },
+      "address": {
+        "en": "1F, Renyuan Bldg., No.200, Sec.7, Taiwan Blvd., Shalu Dist., Taichung City",
+        "ja": "台中市沙鹿區台灣大道七段200號（任垣樓1F）",
+        "zh": "台中市沙鹿區台灣大道七段200號（任垣樓1F）"
+      },
+      "url": "https://art.pu.edu.tw",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 24.226634,
+      "lng": 120.580003,
+      "closed_days": []
+    },
+    {
+      "id": "space102",
+      "category": "commercial",
+      "region": "tainan",
+      "name": {
+        "en": "102 Contemporary Art Space",
+        "ja": "102当代芸術空間",
+        "zh": "102當代藝術空間"
+      },
+      "address": {
+        "en": "No.102, Chenggong 3rd St., Rende Dist., Tainan City",
+        "ja": "台南市仁德區成功三街102號",
+        "zh": "台南市仁德區成功三街102號"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 22.9575659,
+      "lng": 120.2312232,
+      "closed_days": []
+    },
+    {
+      "id": "ssairport",
+      "category": "public",
+      "region": "taipei",
+      "name": {
+        "en": "Taipei Songshan Airport (International Terminal, Departure Hall 2F)",
+        "ja": "台北松山空港（国際線出国ロビー2F）",
+        "zh": "臺北松山機場（國際線2F出境大廳）"
+      },
+      "address": {
+        "en": "No.340-9, Dunhua N. Rd., Songshan Dist., Taipei City",
+        "ja": "台北市松山區敦化北路340-9號",
+        "zh": "台北市松山區敦化北路340之9號"
+      },
+      "url": "",
+      "hours": {
+        "en": "",
+        "ja": "",
+        "zh": ""
+      },
+      "closed_day": null,
+      "lat": 25.0675657,
+      "lng": 121.5526993,
+      "closed_days": []
     }
   ]
 }
