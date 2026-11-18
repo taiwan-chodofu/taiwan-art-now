@@ -4972,6 +4972,96 @@
       "description_ja": "国立台南藝術大学材質創作與設計系（マテリアル・アート学科）による展覧会で、同学科が歩んできた20年の歴史と積み重ねを振り返る。南藝大キャンパスと地域の文脈の中で、教員と学生が日々素材と触れ合い、対話し、技を積み重ねてきた創作の軌跡を提示し、世代ごとのマテリアル創作の様相を観客とともに振り返る。",
       "artists": [],
       "added_at": "2026-11-18T15:42:41.125115+09:00"
+    },
+    {
+      "museum": "guirenculture",
+      "title_zh": "第63屆國風書畫展",
+      "title_en": "The 63rd Guofeng Calligraphy and Painting Exhibition",
+      "title_ja": "第63回 國風書画展",
+      "dates": "2026.10.30 – 2026.11.22",
+      "location": "歸仁文化中心",
+      "link": "https://gueirencultural.tainan.gov.tw",
+      "description": "第63屆國風書畫展，展出水墨、膠彩與書法作品。",
+      "description_en": "The 63rd Guofeng Calligraphy and Painting Exhibition, featuring ink wash painting, gouache and calligraphy works.",
+      "description_ja": "第63回國風書画展。水墨、膠彩、書作品を展示する。",
+      "artists": [],
+      "added_at": "2026-11-18T15:43:49.332478+09:00"
+    },
+    {
+      "museum": "guirenculture",
+      "title_zh": "影像背後的真相－高雄市影之路攝影藝術學會會員聯展",
+      "title_en": "The Truth Behind the Image: Kaohsiung Yingzhilu Photographic Art Society Member Group Exhibition",
+      "title_ja": "映像の背後にある真実－高雄市影之路写真藝術学会会員連展",
+      "dates": "2026.11.27 – 2026.12.20",
+      "location": "歸仁文化中心第一畫廊",
+      "link": "https://gueirencultural.tainan.gov.tw",
+      "description": "高雄市影之路攝影藝術學會會員聯展，展出攝影作品。",
+      "description_en": "A group exhibition of members of the Kaohsiung Yingzhilu Photographic Art Society, presenting photographic works.",
+      "description_ja": "高雄市影之路写真藝術学会会員による連展で、写真作品を展示する。",
+      "artists": [],
+      "added_at": "2026-11-18T15:43:49.332478+09:00"
+    },
+    {
+      "museum": "xinyingculture",
+      "title_zh": "南風映象－2026台南市師美學會聯展",
+      "title_en": "South Wind Image: 2026 Tainan Teachers' Art Society Group Exhibition",
+      "title_ja": "南風映象－2026台南市教師美学会連展",
+      "dates": "2026.10.30 – 2026.11.22",
+      "location": "新營文化中心第二畫廊",
+      "link": "https://xinying-culture.tainan.gov.tw",
+      "description": "台南市師美學會會員聯展，展出多元媒材創作。",
+      "description_en": "A group exhibition by members of the Tainan Teachers' Art Society, featuring works across a range of media.",
+      "description_ja": "台南市教師美学会会員による連展で、多様な素材による創作を展示する。",
+      "artists": [],
+      "added_at": "2026-11-18T15:45:17.822732+09:00"
+    },
+    {
+      "museum": "xinyingculture",
+      "title_zh": "《古墨驪風》古風書藝學會會員聯展",
+      "title_en": "\"Ancient Ink, Spirited Style\": Guofeng Calligraphy Society Member Group Exhibition",
+      "title_ja": "《古墨驪風》古風書藝学会会員連展",
+      "dates": "2026.10.30 – 2026.11.22",
+      "location": "新營文化中心第三畫廊",
+      "link": "https://xinying-culture.tainan.gov.tw",
+      "description": "古風書藝學會會員聯展，展出書法作品，包括王靖淇《清平樂．紅箋小字》、林翠華《㝬鐘(宗周鐘)》、蘇梓靖《臺南甜甜蜜蜜》自撰聯句等。",
+      "description_en": "A group exhibition by members of the Guofeng Calligraphy Society, presenting calligraphic works including Wang Jing-Qi's \"Qing Ping Yue: Small Characters on Red Paper,\" Lin Tsui-Hua's \"Hu Bell (Zongzhou Bell)\" and Su Tzu-Ching's self-composed couplet \"Tainan, Sweet as Honey.\"",
+      "description_ja": "古風書藝学会会員による連展で、王靖淇《清平楽・紅箋小字》、林翠華《㝬鐘（宗周鐘）》、蘇梓靖の自作聯句《台南甜甜蜜蜜》などの書作品を展示する。",
+      "artists": [
+        "王靖淇",
+        "林翠華",
+        "蘇梓靖"
+      ],
+      "added_at": "2026-11-18T15:45:17.822732+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/07",
+          "time": "10:30",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://xinying-culture.tainan.gov.tw"
+        }
+      ]
+    },
+    {
+      "museum": "xinyingculture",
+      "title_zh": "吳讓農教授陶藝教學與世代對話（師道與薪傳）",
+      "title_en": "Professor Wu Jang-Nung's Ceramics Teaching and Intergenerational Dialogue",
+      "title_ja": "呉讓農教授 陶芸教育と世代間対話（師道と継承）",
+      "dates": "2026.10.30 – 2026.11.22",
+      "location": "新營文化中心2F文物陳列室",
+      "link": "https://xinying-culture.tainan.gov.tw",
+      "description": "回顧陶藝家吳讓農教授的教學歷程，呈現師道傳承與世代對話。",
+      "description_en": "A retrospective on the teaching career of ceramicist Professor Wu Jang-Nung, presenting a dialogue between mentorship and generational continuity.",
+      "description_ja": "陶芸家、呉讓農教授の教育の歩みを振り返り、師弟の継承と世代間の対話を提示する。",
+      "artists": [
+        "吳讓農"
+      ],
+      "added_at": "2026-11-18T15:45:17.822732+09:00"
     }
   ]
 }
