@@ -4596,6 +4596,108 @@
       "description_ja": "20名以上の作家が参加する急遽企画されたグループ展で、ドーナツの中心にある穴を発想の出発点とする。",
       "artists": [],
       "added_at": "2026-11-18T14:58:00.912629+09:00"
+    },
+    {
+      "museum": "clab",
+      "title_zh": "繞一下：2026 CREATORS 年度展覽",
+      "title_en": "Taking the Long Way: 2026 CREATORS Annual Exhibition",
+      "title_ja": "繞一下（道を迂回して）：2026 CREATORS年度展覧会",
+      "dates": "2026.11.28 – 2026.12.20",
+      "location": "空總國家文化基地 C7通信分隊展演空間、通信分隊前貨櫃屋",
+      "link": "https://clab.org.tw/events",
+      "description": "集結8組「CREATORS 創作／研發支持計畫」及2組「CREATORS PLUS 支持計畫」團隊的階段性成果，探討當代秩序、歷史記憶、家庭與身體實踐，包含張剛華無人劇場《母親樹》等作品。主線活動包括專家導覽，由周伶芝（台北藝術大學劇場設計系與舞蹈系兼任助理教授）帶領，從「身體性」與「媒介與身體的關係」切入，介紹藝術團隊在計畫中的行動與身體實踐。",
+      "description_en": "Bringing together the staged outcomes of 8 teams from the \"CREATORS\" creative/R&D support program and 2 teams from \"CREATORS PLUS,\" the exhibition explores contemporary order, historical memory, family and embodied practice, including Chang Kang-Hua's unmanned theater piece \"Mother Tree.\" The main program includes a guided tour led by Chou Ling-Chih, adjunct assistant professor in the Department of Theatre Design and Technology and Department of Dance at Taipei National University of the Arts, approaching the works through \"embodiment\" and the relationship between medium and body to introduce the artist teams' actions and embodied practices within the program.",
+      "description_ja": "「CREATORS創作／研究開発支援計画」8チームと「CREATORS PLUS支援計画」2チームによる段階的な成果を集めた展示で、現代の秩序、歴史的記憶、家族、身体実践を探求する。張剛華による無人劇場作品《母親樹（母の木）》なども含まれる。主な関連企画として、台北藝術大学劇場デザイン学科・舞踏学科の兼任助教授である周伶芝が案内するガイドツアーがあり、「身体性」と「メディアと身体の関係」という視点から、各チームの計画内での活動と身体的実践を紹介する。",
+      "artists": [
+        "張剛華"
+      ],
+      "added_at": "2026-11-18T15:10:43.869509+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/11/29",
+          "time": "14:00-15:00",
+          "title_zh": "專家導覽",
+          "title_en": "Expert Guided Tour",
+          "title_ja": "専門家によるガイドツアー",
+          "note_zh": "由周伶芝老師帶領",
+          "note_en": "Led by Chou Ling-Chih",
+          "note_ja": "周伶芝氏による案内",
+          "source_url": "https://clab.org.tw/events"
+        }
+      ]
+    },
+    {
+      "museum": "ttam",
+      "title_zh": "2026泛太平洋國際駐村交流展－Moana：從海而來，向島而歸",
+      "title_en": "2026 Pan-Pacific Arts Residency Exchange: Moana — Across the Ocean, From the Sea We Come, To the Islands We Return",
+      "title_ja": "2026汎太平洋国際レジデンス交流展－Moana：海より来て、島へ帰る",
+      "dates": "2026.10.16 – 2027.02.28",
+      "location": "國立臺灣史前文化博物館 第三特展室（臺東縣臺東市豐田里博物館路1號，臺東美術館主辦）",
+      "link": "https://culture.taitung.gov.tw",
+      "description": "由臺東美術館主辦，臺東美術館本館目前整修休館，本展第二階段於國立臺灣史前文化博物館第三特展室完整展出。展覽攜手7位國內外策展人，匯集近40位來自臺灣、日本、大洋洲、東南亞、紐澳與夏威夷等地的駐村藝術家。以「Moana」（海洋）為核心，延續斐濟學者浩鷗法（Epeli Hau'Ofa）的「眾島之洋」概念，將海洋視為連結彼此的道路，而非分隔島嶼的邊界。展覽圍繞四大主軸：氣候變遷與海洋危機、原住民族權利與文化主體性、全球移民與跨島社群、多語性與文化融合的空間實踐。",
+      "description_en": "Hosted by the Taitung Art Museum — whose own building is currently closed for renovation — this second phase of the exhibition is presented in full at Gallery 3 of the National Museum of Prehistory. Co-curated by 7 curators from Taiwan and abroad, it brings together nearly 40 resident artists from Taiwan, Japan, Oceania, Southeast Asia, Australia, New Zealand and Hawaii. Centered on \"Moana\" (ocean), the exhibition extends Fijian scholar Epeli Hau'ofa's concept of a \"sea of islands,\" treating the ocean as a pathway connecting people rather than a boundary dividing islands. It is organized around four themes: climate change and ocean crisis, Indigenous rights and cultural agency, global migration and cross-island communities, and spatial practices of multilingualism and cultural fusion.",
+      "description_ja": "臺東美術館（現在本館は改修のため休館中）主催。本展第二段階は国立台湾史前文化博物館第三特別展示室で完全な形で開催される。国内外7名のキュレーターが共同で企画し、台湾、日本、オセアニア、東南アジア、ニュージーランド・オーストラリア、ハワイなど各地から約40名のレジデンス藝術家が参加する。「Moana（海）」を中心に、フィジーの学者エペリ・ハウオファの「島々の海」という概念を引き継ぎ、海を島々を隔てる境界ではなく、人々をつなぐ道として捉える。展覧会は「気候変動と海洋の危機」「先住民族の権利と文化的主体性」「グローバルな移民と島を越えたコミュニティ」「多言語性と文化融合の空間実践」という四つの軸で構成される。",
+      "artists": [],
+      "added_at": "2026-11-18T15:13:26.246724+09:00",
+      "events": [
+        {
+          "type": "symposium",
+          "date": "2026/10/17",
+          "time": "",
+          "title_zh": "國際藝術論壇",
+          "title_en": "International Art Forum",
+          "title_ja": "国際アートフォーラム",
+          "note_zh": "邀請太平洋各地國際學者、策展人及藝術家展開跨越島嶼的深度對話",
+          "note_en": "International scholars, curators and artists from across the Pacific in dialogue across islands",
+          "note_ja": "太平洋各地の国際学者、キュレーター、藝術家による島を越えた対話",
+          "source_url": "https://culture.taitung.gov.tw"
+        }
+      ]
+    },
+    {
+      "museum": "ttam",
+      "title_zh": "城鄉記憶｜劉茂德水彩個展",
+      "title_en": "Urban-Rural Memory: Liu Mao-Te Watercolor Solo Exhibition",
+      "title_ja": "城郷の記憶｜劉茂德 水彩個展",
+      "dates": "2026.11.03 – 2026.11.22",
+      "location": "臺東美術館",
+      "link": "https://tm.ccl.ttct.edu.tw",
+      "description": "藝術家劉茂德水彩個展，描繪城市與鄉村的記憶景觀。",
+      "description_en": "A solo watercolor exhibition by Liu Mao-Te, depicting memories of urban and rural landscapes.",
+      "description_ja": "劉茂德による水彩個展。都市と農村の記憶の風景を描く。",
+      "artists": [
+        "劉茂德"
+      ],
+      "added_at": "2026-11-18T15:13:26.246724+09:00"
+    },
+    {
+      "museum": "ttam",
+      "title_zh": "美哉臺東｜臺東縣美術教育學會聯展",
+      "title_en": "Beautiful Taitung: Taitung County Art Education Association Group Exhibition",
+      "title_ja": "美しき台東｜台東県美術教育学会連展",
+      "dates": "2026.11.03 – 2026.11.22",
+      "location": "臺東美術館",
+      "link": "https://tm.ccl.ttct.edu.tw",
+      "description": "臺東縣美術教育學會會員聯展，呈現以臺東風土為題的創作。",
+      "description_en": "A group exhibition by members of the Taitung County Art Education Association, presenting works themed on the land and culture of Taitung.",
+      "description_ja": "台東県美術教育学会会員による連展で、台東の風土をテーマとした作品を展示する。",
+      "artists": [],
+      "added_at": "2026-11-18T15:13:26.246724+09:00"
+    },
+    {
+      "museum": "ttam",
+      "title_zh": "臺東夜間美術館：《齊心傳唱和諧天籟》",
+      "title_en": "Taitung Night Art Museum: Singing Together in Harmony",
+      "title_ja": "台東夜間美術館：《心を合わせて歌う調和の天籟》",
+      "dates": "2026.10.27 – 2026.12.26",
+      "location": "臺東美術館",
+      "link": "https://tm.ccl.ttct.edu.tw",
+      "description": "臺東美術館夜間開放特別企劃《齊心傳唱和諧天籟》，以音樂與聲音為主題的展演活動。",
+      "description_en": "A special nighttime program at Taitung Art Museum, \"Singing Together in Harmony,\" a presentation themed around music and sound.",
+      "description_ja": "臺東美術館の夜間開館特別企画《心を合わせて歌う調和の天籟》。音楽と音をテーマとした展示・上演企画。",
+      "artists": [],
+      "added_at": "2026-11-18T15:13:26.246724+09:00"
     }
   ]
 }
