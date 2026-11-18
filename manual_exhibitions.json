@@ -4746,6 +4746,38 @@
           "source_url": "https://artemperor.tw/tidbits"
         }
       ]
+    },
+    {
+      "museum": "art182",
+      "title_zh": "寶貝，拜託！ 劉耀中個展",
+      "title_en": "Baby C'mon! Liu Yao-Chung Solo Exhibition",
+      "title_ja": "ベイビー、頼むよ！ 劉耀中個展",
+      "dates": "2026.10.26 – 2026.11.30",
+      "location": "182artspace（台南市中西區新美街182號）",
+      "link": "https://www.facebook.com/182artspace",
+      "description": "藝術家劉耀中個展「寶貝，拜託！」，於182artspace展出。",
+      "description_en": "A solo exhibition by artist Liu Yao-Chung, \"Baby C'mon!\", presented at 182artspace.",
+      "description_ja": "藝術家劉耀中による個展「ベイビー、頼むよ！」。182artspaceにて開催。",
+      "artists": [
+        "劉耀中"
+      ],
+      "added_at": "2026-11-18T15:17:56.347406+09:00"
+    },
+    {
+      "museum": "linlin",
+      "title_zh": "申亮｜回春丹",
+      "title_en": "Shen Liang: A Cure for Time",
+      "title_ja": "申亮｜回春丹（若返りの丹）",
+      "dates": "2026.11.07 – 2027.01.02",
+      "location": "大未來林舍畫廊（台北市大安區東豐街16號1樓）",
+      "link": "https://www.linlingallery.com",
+      "description": "中國藝術家申亮個展，展出藝術家近期的繪畫作品及獨立項目「回春丹」。「回春丹」一詞，原指道家煉丹術中求取生機、重返青春的靈丹妙藥，申亮透過將藝術史的經典符號、歷史圖像與流行文化元素重新解構，這些隨處可見、被過度消費的既有圖像，在藝術家筆下重新獲得觀看的可能，如「回春」般喚起人們視覺上的想像力。",
+      "description_en": "A solo exhibition by Chinese artist Shen Liang, featuring the artist's recent paintings and an independent project, \"Rejuvenation Pill.\" The term originally refers to the elixir sought in Taoist alchemy to restore vitality and return to youth. By deconstructing classic symbols from art history, historical imagery and pop culture elements, these common, overconsumed images regain the possibility of being seen again in his painting, awakening visual imagination as if \"rejuvenated.\"",
+      "description_ja": "中国の藝術家、申亮による個展で、作家の近作絵画と独立プロジェクト「回春丹」を展示する。「回春丹」とは、道教の煉丹術において生気を求め若さを取り戻すとされる霊薬を指す言葉で、申亮は美術史の典型的な図像、歴史的なイメージ、ポップカルチャーの要素を再構築することで、ありふれて過剰に消費された既存の図像に、再び見られる可能性を与え、「回春」のように視覚的な想像力を呼び起こす。",
+      "artists": [
+        "申亮 Shen Liang"
+      ],
+      "added_at": "2026-11-18T15:19:22.849555+09:00"
     }
   ]
 }
