@@ -4698,6 +4698,54 @@
       "description_ja": "臺東美術館の夜間開館特別企画《心を合わせて歌う調和の天籟》。音楽と音をテーマとした展示・上演企画。",
       "artists": [],
       "added_at": "2026-11-18T15:13:26.246724+09:00"
+    },
+    {
+      "museum": "hcfam",
+      "title_zh": "靈魂的回聲：慈悲的符號",
+      "title_en": "Soul Echoes: Signs of Compassion",
+      "title_ja": "魂の響き：慈悲の記号",
+      "dates": "2026.11.10 – 2027.01.24",
+      "location": "新竹市美術館（新竹市東區中央路116號）",
+      "link": "https://artemperor.tw/tidbits",
+      "description": "新竹市政府主辦，策展人楊素敏策劃的跨台美文化交流、跨媒材創作與倫理思辨聯展。展覽以美國詩人艾米莉．狄金森的名作詩句「If I can stop one heart from breaking」為靈感，探討同理心、關懷與人際連結。曾於紐約聯合國總部展出的「慈悲的符號」系列作品首度移師新竹，包括Miggs Burroughs運用光柵影像技術呈現隨觀看角度變換的手語影像，以及Mark Yurkiw將點字融入祈願輪雕塑，邀請觀眾透過觸覺感知。呼應美術館年度主題「日常的未來」，展覽劃分「感知轉位」、「內在回聲」及「共存實踐」三大脈絡，結合雕塑、音樂、鏡像、光影、繪畫、木雕及纖維藝術，並有莊志輝等台灣藝術家與擁有160多年歷史的新竹詩社共同參與。2樓設有《在指間，創造連結》互動裝置及多感官閱讀空間《詩的回聲》，並串聯天主教仁愛基金會等在地公益團體，讓視障、聽障等不同感官需求的族群也能一同參與。",
+      "description_en": "Organized by the Hsinchu City Government and curated by Yang Su-Min, this is a cross-cultural Taiwan–US exhibition exploring multimedia creation and ethical reflection. Taking inspiration from the line \"If I can stop one heart from breaking\" by American poet Emily Dickinson, the show explores empathy, care and human connection. Works from the \"Signs of Compassion\" series, previously shown at the United Nations headquarters in New York, make their Hsinchu debut, including Miggs Burroughs' lenticular images of sign language that shift with viewing angle, and Mark Yurkiw's prayer-wheel sculptures incorporating Braille for visitors to perceive by touch. Echoing the museum's annual theme \"The Future of the Everyday,\" the exhibition is organized around three threads — \"Shift in Perception,\" \"Inner Echo\" and \"Practices of Coexistence\" — combining sculpture, music, mirrors, light and shadow, painting, woodcarving and fiber art, with participation from Taiwanese artists including Chuang Chih-Hui and the 160-year-old Hsinchu Poetry Society. The second floor features the interactive installation \"Creating Connection, Between the Fingers\" and the multi-sensory reading space \"Echoes of Poetry,\" working with local charities such as the Catholic Charity Foundation so that visitors who are blind, deaf or have other sensory needs can also take part.",
+      "description_ja": "新竹市政府主催、キュレーター楊素敏による、台湾とアメリカの文化交流、異種メディア創作、倫理的思索をテーマとする合同展。アメリカの詩人エミリー・ディキンソンの詩句「If I can stop one heart from breaking」にインスピレーションを得て、共感、ケア、人と人のつながりを探求する。ニューヨークの国連本部で展示された「慈悲の記号」シリーズが初めて新竹に登場し、Miggs Burroughsはレンチキュラー映像技術で見る角度によって変化する手話の映像を、Mark Yurkiwは点字を取り入れた祈願輪の彫刻を制作し、観客が触覚で感じ取れるよう促す。美術館の年間テーマ「日常の未来」に応え、展覧会は「知覚の転位」「内なる響き」「共存の実践」の三つの軸で構成され、彫刻、音楽、鏡、光と影、絵画、木彫、繊維藝術を組み合わせ、莊志輝など台湾の藝術家や160年以上の歴史を持つ新竹詩社も参加する。2階には《指先の間に、つながりを創る》インタラクティブ・インスタレーションと多感覚の読書空間《詩の響き》が設けられ、カトリック仁愛基金会など地元の公益団体と連携し、視覚障害者や聴覚障害者など異なる感覚ニーズを持つ人々も参加できるよう配慮されている。",
+      "artists": [
+        "Miggs Burroughs",
+        "Mark Yurkiw",
+        "莊志輝"
+      ],
+      "added_at": "2026-11-18T15:15:43.366929+09:00"
+    },
+    {
+      "museum": "goodug",
+      "title_zh": "美女的練習 Practicing Beauty — 周芳伃個展",
+      "title_en": "Practicing Beauty: Chou Fang-Yu Solo Exhibition",
+      "title_ja": "美女の練習 Practicing Beauty — 周芳伃個展",
+      "dates": "2026.11.14 – 2026.12.14",
+      "location": "好地下藝術空間（花蓮市節約街37號B1）",
+      "link": "https://artemperor.tw/tidbits",
+      "description": "以姊妹關係、1980年代女性影像檔案與自拍練習為核心，探討不同世代在社會目光中的身體定義與凝視關係。",
+      "description_en": "Centered on sisterhood, 1980s archival images of women and the practice of self-portraiture, the exhibition explores how the body is defined and gazed upon across different generations under the social eye.",
+      "description_ja": "姉妹関係、1980年代の女性のイメージアーカイブ、自己撮影の練習を核に、異なる世代が社会的な視線の中でどのように身体を定義し、見られる関係を結んできたかを探る。",
+      "artists": [
+        "周芳伃"
+      ],
+      "added_at": "2026-11-18T15:17:09.246665+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/12/05",
+          "time": "",
+          "title_zh": "展覽座談",
+          "title_en": "Exhibition Talk",
+          "title_ja": "展覧会トーク",
+          "note_zh": "與談人：劉星佑、周芳伃",
+          "note_en": "Speakers: Liu Hsing-Yu, Chou Fang-Yu",
+          "note_ja": "対談者：劉星佑、周芳伃",
+          "source_url": "https://artemperor.tw/tidbits"
+        }
+      ]
     }
   ]
 }
