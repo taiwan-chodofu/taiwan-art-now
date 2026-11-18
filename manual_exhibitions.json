@@ -5108,6 +5108,88 @@
           "source_url": "https://hirohiroartspace.com"
         }
       ]
+    },
+    {
+      "museum": "yitobia",
+      "title_zh": "曹小容油畫個展《時間的沈積》",
+      "title_en": "Sediment of Time: Tsao Hsiao-Jung Oil Painting Solo Exhibition",
+      "title_ja": "曹小容 油絵個展《時間の沈積》",
+      "dates": "2026.11.13 – 2026.12.13",
+      "location": "藝托邦藝文空間（花蓮市博愛街156之5號）",
+      "link": "https://www.facebook.com/people/%E8%97%9D%E6%89%98%E9%82%A6-Artopia/",
+      "description": "適逢曹小容移居花蓮30週年，展覽一樓呈現早期的抽象表現作品，二樓則展示近年具象風景創作（涵蓋荷花、農田、山景以及首張以七星潭為主角的作品）與私家速寫，呈現其創作風格與心境的轉變軌跡。",
+      "description_en": "Marking the 30th anniversary of Tsao Hsiao-Jung's move to Hualien, the first floor of the exhibition presents her early abstract expressionist works, while the second floor shows her more recent figurative landscapes — lotus ponds, farmland, mountain views and her first work centered on Qixingtan — alongside personal sketches, tracing the arc of her stylistic and emotional transformation.",
+      "description_ja": "曹小容が花蓮に移り住んで30周年を記念し、展示の1階では初期の抽象表現作品を、2階では近年の具象的な風景創作（蓮池、農地、山の風景、そして七星潭を主役とした初めての作品）と私的なスケッチを展示し、その創作スタイルと心境の変化の軌跡を示す。",
+      "artists": [
+        "曹小容"
+      ],
+      "added_at": "2026-11-18T15:50:32.324239+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/11/14",
+          "time": "14:00",
+          "title_zh": "開幕活動",
+          "title_en": "Opening Event",
+          "title_ja": "オープニングイベント",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.facebook.com/people/%E8%97%9D%E6%89%98%E9%82%A6-Artopia/"
+        }
+      ]
+    },
+    {
+      "museum": "songshanairportgallery",
+      "title_zh": "療癒停靠站",
+      "title_en": "Healing Stopover",
+      "title_ja": "療癒ストップオーバー",
+      "dates": "2026.11.01 – 2027.01.31",
+      "location": "台北松山機場國際線2F出境大廳展區",
+      "link": "https://artemperor.tw/",
+      "description": "由右岱藝術策劃的群展，以「AI時代裡的手感溫度」為核心概念，集結林羿足、蕭季箴、羅正惠Eva、張仲禹、陳士雄等藝術家，透過銅雕、繪畫、陶瓷及平面視覺等多元媒材，呈現童心、陪伴與柔軟的療癒意象，為往來旅客提供片刻的心靈停靠。",
+      "description_en": "Curated by Youdai Art, this group exhibition explores \"the warmth of handmade craft in the AI era,\" bringing together artists Lin Yi-Tsu, Hsiao Chi-Chen, Luo Cheng-Hui Eva, Chang Chung-Yu, and Chen Shih-Hsiung. Through bronze sculpture, painting, ceramics, and graphic visuals, the show evokes childlike wonder, companionship, and gentle healing for travelers passing through the airport.",
+      "description_ja": "右岱藝術がキュレーションしたグループ展で、「AI時代における手仕事のぬくもり」をテーマに、林羿足、蕭季箴、羅正惠Eva、張仲禹、陳士雄ら作家が参加。銅彫刻、絵画、陶芸、グラフィックビジュアルなど多様な素材を通じて、童心や寄り添い、柔らかな癒しのイメージを表現し、行き交う旅行者にひとときの心の休息を提供する。",
+      "artists": [
+        "林羿足",
+        "蕭季箴",
+        "羅正惠Eva",
+        "張仲禹",
+        "陳士雄"
+      ],
+      "added_at": "2026-11-18T15:56:34.046275+09:00"
+    },
+    {
+      "museum": "ontheroad",
+      "title_zh": "同質的風景：畢業紀念的空間編排｜周黃冠穎攝影個展",
+      "title_en": "Uniform Landscape: Spatial Choreography of Graduation Portraits",
+      "title_ja": "同質の風景：卒業記念写真の空間構成｜周黃冠穎 写真個展",
+      "dates": "2026.11.07 – 2026.12.06",
+      "location": "On the Road 影像空間（高雄市鹽埕區大勇路64號3樓）",
+      "link": "https://artemperor.tw/tidbits",
+      "description": "攝影創作者周黃冠穎的首場個展，源自其大學四年級拍攝畢業照的經驗，使用PENTAX 6×7中片幅底片拍攝，並受濱田英明、植田正治等日本攝影師風格啟發，探討集體儀式中的空間編排與個人詮釋之間的張力。",
+      "description_en": "The first solo exhibition by photographer Guan-Ying Chou-Huang, inspired by his experience photographing graduation portraits in his senior year of university. Shot on a PENTAX 6x7 medium-format film camera and influenced by Japanese photographers such as Hideaki Hamada and Shoji Ueda, the work explores the tension between collective ritual and individual interpretation in spatial arrangement.",
+      "description_ja": "写真家・周黃冠穎による初の個展。大学4年時に卒業写真を撮影した経験から生まれた作品群で、PENTAX 6×7の中判フィルムカメラを使用し、濱田英明や植田正治といった日本の写真家の作風に影響を受けている。集団的儀礼における空間構成と個人的解釈の間の緊張関係を探求する。",
+      "artists": [
+        "周黃冠穎"
+      ],
+      "added_at": "2026-11-18T15:58:31.926436+09:00"
+    },
+    {
+      "museum": "grassland",
+      "title_zh": "我所 MYTH vol.1",
+      "title_en": "MYTH vol.1",
+      "title_ja": "我所 MYTH vol.1",
+      "dates": "2026.11.06 – 2026.11.29",
+      "location": "雜草町 Grassland（台北市大同區延平北路三段52號）",
+      "link": "https://www.facebook.com/planter.planp",
+      "description": "由頌缽師與創作者chen22chun發起的展覽，是一趟透過創作持續探索與重新理解自我的旅程。藝術家從日常生活中的身體感受與經驗，到薩滿冥想中對內在世界的探索，追溯自身習性與信念的來源，在與大自然、神佛及力量動物的相遇與交流中，重新回返觀看自身，思考內在感知與生活經驗如何交織，形塑對自己的認識與認同。",
+      "description_en": "Organized by sound-bowl practitioner and artist chen22chun, this exhibition is a journey of ongoing self-exploration and re-understanding through creative practice. Moving from everyday bodily sensations to shamanic meditation on the inner world, the artist traces the origins of personal habits and beliefs, encountering nature, deities, and power animals to reflect on how inner perception and lived experience shape one's sense of self.",
+      "description_ja": "音霊師（頌缽師）であり作家でもあるchen22chunが手がける展覧会で、創作を通して自己を探求し、再理解し続ける旅を描く。日常の身体感覚からシャーマニックな瞑想による内的世界の探索まで、自身の習性や信念の起源をたどり、自然や神仏、パワーアニマルとの出会いと交流の中で、内なる感覚と生活経験がどのように絡み合い、自己認識を形作るかを問いかける。",
+      "artists": [
+        "chen22chun"
+      ],
+      "added_at": "2026-11-18T16:00:37.012519+09:00"
     }
   ]
 }
