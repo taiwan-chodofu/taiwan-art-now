@@ -4461,6 +4461,97 @@
           "source_url": "https://www.instagram.com/asirartmuseum/"
         }
       ]
+    },
+    {
+      "museum": "rung",
+      "title_zh": "張淳雅個展《散步路徑 Walking Path》",
+      "title_en": "Chang Chun-Ya: Walking Path",
+      "title_ja": "張淳雅個展《散歩の道 Walking Path》",
+      "dates": "2026.11.07 – 2026.12.27",
+      "location": "RUNG 戎器（桃園市中壢區中山東路二段233號）",
+      "link": "https://www.instagram.com/rung.ceramics/",
+      "description": "張淳雅2021年創立electricdoggie，以刺青、掛毯與羊毛氈為創作媒材。靈感多來自愛犬與生活日常，將相處過程中的觀察與情感，轉化為充滿童趣與幽默的圖像。作品延續刺青俐落的輪廓，結合纖維柔軟的質地，呈現生動而親密的生活片段。開幕當日限定推出KODOMO Coffee Pop-up，邀請觀眾前來觀展、喝杯咖啡，一同沿著作品輕鬆漫步。",
+      "description_en": "Chang Chun-Ya founded electricdoggie in 2021, working across tattoo, tapestry and felted wool. Drawing inspiration from her beloved dog and everyday life, she transforms observations and feelings from their time together into playful, humorous imagery. The work carries over the crisp outlines of tattoo art while combining them with the soft texture of fiber, presenting lively, intimate glimpses of daily life. A one-day-only KODOMO Coffee Pop-up on the opening day invited visitors to view the exhibition and stroll leisurely alongside the works over a cup of coffee.",
+      "description_ja": "張淳雅は2021年にelectricdoggieを設立し、タトゥー、タペストリー、フェルトを創作素材とする。愛犬との生活や日常からインスピレーションを得て、ともに過ごす中での観察や感情を、子供らしくユーモアに満ちたイメージへと変換する。作品はタトゥーの明快な輪郭を継承しつつ、繊維の柔らかな質感と組み合わせ、生き生きとした親密な生活の断片を提示する。開幕当日限定でKODOMO Coffee Pop-upを開催し、観客を展示鑑賞とコーヒーを片手に作品に沿って散歩するひとときへと誘った。",
+      "artists": [
+        "張淳雅"
+      ],
+      "added_at": "2026-11-18T14:52:54.255869+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/07",
+          "time": "14:00-19:00",
+          "title_zh": "KODOMO Coffee Pop-up",
+          "title_en": "KODOMO Coffee Pop-up",
+          "title_ja": "KODOMO Coffee Pop-up",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.instagram.com/rung.ceramics/"
+        }
+      ]
+    },
+    {
+      "museum": "yinart",
+      "title_zh": "存在 江明哲個展",
+      "title_en": "Existence: Chiang Ming-Che Solo Exhibition",
+      "title_ja": "存在 江明哲個展",
+      "dates": "2026.11.11 – 2026.12.06",
+      "location": "隱藝術（桃園市大園區大仁路48號）",
+      "link": "https://www.yinartspace.org/1",
+      "description": "策展人：傅鈺。江明哲長期以來，擅於運用多元材質的轉換與光影的變化，探索時間如何在生命中留下記憶與痕跡。作品中明暗交錯，構築出多層次的視覺表情與情感，那些斑駁的肌理、交錯的線條，以及光影流轉所形成的形體，彷彿時間留下的吉光片羽，有時清晰，有時隱晦，如同記憶在生命中不斷顯現與沉澱。光與影因此有了超越視覺的意義——它們是時間的刻度、生命的映照，也是記憶深處無法完全言說的感受。本展作品從《十日談》延續至隱藝術，展覽空間轉換，作品也有了新的延伸。",
+      "description_en": "Curated by Fu Yu. Chiang Ming-Che has long been adept at transforming diverse materials and shifting light and shadow to explore how time leaves memory and trace within life. The interplay of light and dark in his work builds layered visual expressions and emotion; the weathered textures, interwoven lines and forms shaped by the play of light seem like fleeting glimpses left by time — sometimes clear, sometimes obscure, as memory continually surfaces and settles within life. Light and shadow thus take on a meaning beyond the visual: they are measures of time, reflections of life, and feelings from the depths of memory that cannot be fully put into words. This exhibition carries work forward from \"Decameron\" into Yin Artspace, the works finding new extensions as the exhibition space changes.",
+      "description_ja": "キュレーター：傅鈺。江明哲は長年、多様な素材の転換と光と影の変化を用いて、時間がいかに生命の中に記憶と痕跡を残すかを探求してきた。作品の中では明暗が交錯し、重層的な視覚表現と感情を構築する。斑に剥落した質感、交錯する線、光と影の移ろいによって形成される形は、時間が残したわずかな光のようであり、時に明瞭に、時に不明瞭に、記憶が生命の中で絶えず現れ、沈んでいく様を映す。光と影はこうして視覚を超えた意味を持つ――それらは時間の目盛りであり、生命の映し鏡であり、記憶の深くに潜む言い尽くせない感覚でもある。本展の作品は《十日談》から隱藝術へと続いており、展示空間が変わることで、作品にも新たな広がりが生まれている。",
+      "artists": [
+        "江明哲"
+      ],
+      "added_at": "2026-11-18T14:53:56.263983+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/15",
+          "time": "14:30",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.yinartspace.org/1"
+        }
+      ]
+    },
+    {
+      "museum": "showartgallery",
+      "title_zh": "周成樑、蕭北辰雙人展",
+      "title_en": "Chou Cheng-Liang & Hsiao Pei-Chen Dual Exhibition",
+      "title_ja": "周成樑、蕭北辰 二人展",
+      "dates": "2026.11.14 – 2026.12.14",
+      "location": "三宅一秀藝術中心（台北市大安區忠孝東路三段248巷13弄22號）",
+      "link": "https://showartgal.com/",
+      "description": "藝術家周成樑、蕭北辰分別透過不同的創作視角與表現方式，呈現對花草植物、空間及日常景觀的觀察與詮釋。",
+      "description_en": "Artists Chou Cheng-Liang and Hsiao Pei-Chen each present observations and interpretations of flora, space and everyday landscapes through distinct creative perspectives and modes of expression.",
+      "description_ja": "藝術家の周成樑と蕭北辰は、それぞれ異なる創作の視点と表現方法を通じて、草花や空間、日常の風景に対する観察と解釈を提示する。",
+      "artists": [
+        "周成樑",
+        "蕭北辰"
+      ],
+      "added_at": "2026-11-18T14:54:57.843056+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/12/05",
+          "time": "15:00",
+          "title_zh": "酒會",
+          "title_en": "Reception",
+          "title_ja": "レセプション",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.facebook.com/show.art.gallery/"
+        }
+      ]
     }
   ]
 }
