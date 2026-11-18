@@ -5289,6 +5289,38 @@
       "description_ja": "LumiFloraeと層層之間という二つの創作チームによる合同展。会期中はダウンコットンのマフラー、立体折り構造のトートバッグ、ベジタブルタンニンレザーのファスナーポーチなど、手作りワークショップも開催され、作品鑑賞と合わせて制作体験ができる。",
       "artists": [],
       "added_at": "2026-11-18T16:07:07.194757+09:00"
+    },
+    {
+      "museum": "frees",
+      "title_zh": "蜷山路－高登輝個展",
+      "title_en": "Winding Mountain Path: Deng-Huei Kao Solo Exhibition",
+      "title_ja": "蜷山路－高登輝 個展",
+      "dates": "2026.11.21 – 2026.12.19",
+      "location": "福利社 FreeS Art Space（台北市中山區新生北路三段82號B1）",
+      "link": "https://www.instagram.com/freesartspace/",
+      "description": "由策展人陳非策劃的高登輝個展，將於福利社展出，開幕當日並舉行座談活動，與談人為林宏璋。",
+      "description_en": "A solo exhibition by artist Deng-Huei Kao, curated by Chen Fei, presented at FreeS Art Space. An artist talk with guest Hongjohn Lin takes place during the exhibition run.",
+      "description_ja": "キュレーター陳非が企画する高登輝の個展。福利社で開催され、会期中には林宏璋をゲストに迎えたアーティストトークも行われる。",
+      "artists": [
+        "高登輝"
+      ],
+      "added_at": "2026-11-18T16:35:59.392216+09:00"
+    },
+    {
+      "museum": "absence",
+      "title_zh": "なまりまがりくねた少しCLazy Box 工作所",
+      "title_en": "A Little Winding Lazy Box Workshop",
+      "title_ja": "なまりまがりくねた少しCLazy Box 工作所",
+      "dates": "2026.11.12 – 2026.11.20",
+      "location": "不存在劇場 Absence Space（台南市北區正覺街33巷14號）",
+      "link": "https://www.instagram.com/absence_space0810/",
+      "description": "藝術家Jong Min Go在不存在劇場進行的展覽與駐站創作，展覽期間藝術家將在展場內生活、過夜，並持續進行創作與呈現，原訂展期因反應熱烈而延長。",
+      "description_en": "An exhibition and live-in residency project by artist Jong Min Go at Absence Space. Throughout the exhibition, the artist lives and sleeps on site, continuing to create and present new work; the run was extended due to strong response.",
+      "description_ja": "アーティストJong Min Goが不存在劇場で行うインスタレーション兼滞在制作プロジェクト。会期中、作家は会場内で生活・宿泊しながら制作と発表を続け、好評により会期が延長された。",
+      "artists": [
+        "Jong Min Go"
+      ],
+      "added_at": "2026-11-18T16:41:37.617497+09:00"
     }
   ]
 }
