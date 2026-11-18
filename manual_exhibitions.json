@@ -5062,6 +5062,52 @@
         "吳讓農"
       ],
       "added_at": "2026-11-18T15:45:17.822732+09:00"
+    },
+    {
+      "museum": "harvestart",
+      "title_zh": "【磅礡山水】沈東榮個展",
+      "title_en": "Grandeur of Landscape: Shen Tung-Jung Solo Exhibition",
+      "title_ja": "【磅礴たる山水】沈東榮個展",
+      "dates": "2026.11.16 – 2026.12.31",
+      "location": "宏藝術 1、2樓（台北市大安區安和路二段197號1、2樓）",
+      "link": "https://www.facebook.com/HarvestTW/",
+      "description": "藝術家沈東榮個展，展出以氣勢磅礡的山水為題的創作。",
+      "description_en": "A solo exhibition by artist Shen Tung-Jung, presenting works centered on sweeping, grandiose landscapes.",
+      "description_ja": "藝術家、沈東榮による個展で、雄大で迫力ある山水を主題とした作品を展示する。",
+      "artists": [
+        "沈東榮"
+      ],
+      "added_at": "2026-11-18T15:47:02.698093+09:00"
+    },
+    {
+      "museum": "hirohiro",
+      "title_zh": "靉嘔版畫展：380–780nm",
+      "title_en": "AY-O: 380–780nm",
+      "title_ja": "靉嘔 版画展：380–780nm",
+      "dates": "2026.11.14 – 2026.12.19",
+      "location": "Hiro Hiro Art Space",
+      "link": "https://hirohiroartspace.com",
+      "description": "日本藝術家靉嘔（AY-O）版畫展，展出20餘件絹印版畫。展名取自人眼可見光的波長範圍：從約380奈米的紫到約780奈米的紅。",
+      "description_en": "A print exhibition by Japanese artist AY-O, presenting over 20 silkscreen prints. The title is drawn from the wavelength range of visible light to the human eye — from roughly 380 nanometers of violet to roughly 780 nanometers of red.",
+      "description_ja": "日本の藝術家、靉嘔（AY-O）による版画展で、20点余りのシルクスクリーン版画を展示する。展覧会名は、人の目に見える光の波長域——およそ380ナノメートルの紫から約780ナノメートルの赤まで——から取られている。",
+      "artists": [
+        "靉嘔 AY-O"
+      ],
+      "added_at": "2026-11-18T15:49:31.989540+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/11/14",
+          "time": "15:00-17:00",
+          "title_zh": "開幕講座",
+          "title_en": "Opening Dialogue",
+          "title_ja": "オープニング対話",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://hirohiroartspace.com"
+        }
+      ]
     }
   ]
 }
