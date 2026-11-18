@@ -5321,6 +5321,76 @@
         "Jong Min Go"
       ],
       "added_at": "2026-11-18T16:41:37.617497+09:00"
+    },
+    {
+      "museum": "winsing",
+      "title_zh": "Matthew Barney 個展",
+      "title_en": "Matthew Barney",
+      "title_ja": "マシュー・バーニー 個展",
+      "dates": "2026.10.31 – 2027.03.01",
+      "location": "文心藝所 Winsing Art Place（台北市內湖區民權東路六段180巷10弄6號1樓）",
+      "link": "https://www.instagram.com/winsingartplace/",
+      "description": "美國藝術家馬修．巴尼（Matthew Barney）於文心藝所舉辦的個展，延續其2018年電影《Redoubt》的敘事脈絡，透過電鍍銅作品、紙本石墨素描（如《Yellow Diana》）、雕塑與跨媒材裝置，展開神話與地景交織的故事。",
+      "description_en": "A solo exhibition by American artist Matthew Barney at Winsing Art Place, continuing the narrative thread of his 2018 film \"Redoubt.\" Through electroplated copper works, graphite drawings on paper (such as \"Yellow Diana\"), sculpture, and mixed-media installation, the exhibition unfolds a story woven from myth and landscape.",
+      "description_ja": "アメリカの作家マシュー・バーニーによる文心藝所での個展。2018年の映画『Redoubt』の物語の系譜を引き継ぎ、電気銅メッキ作品、紙に鉛筆のドローイング（《Yellow Diana》など）、彫刻、複合メディアのインスタレーションを通して、神話と風景が織り込まれた物語を展開する。",
+      "artists": [
+        "Matthew Barney"
+      ],
+      "added_at": "2026-11-18T16:42:47.113283+09:00"
+    },
+    {
+      "museum": "yistar",
+      "title_zh": "兩個世界 盧俊翰2026個展",
+      "title_en": "Between Two Realms: Lu Jyun-Han Solo Exhibition",
+      "title_ja": "二つの世界 盧俊翰 2026個展",
+      "dates": "2026.10.16 – 2026.12.20",
+      "location": "藝星藝術中心（台北市大安區敦化南路二段63巷53弄9號）",
+      "link": "https://artemperor.tw/tidbits",
+      "description": "藝術家盧俊翰的個展，描繪他生活在兩個世界之間：一個是現實生活裡探索與感受的世界，另一個則是畫布風景裡由想像、記憶與感悟構成的夢幻世界，兩者看似分離卻始終彼此交錯。",
+      "description_en": "A solo exhibition by artist Lu Jyun-Han depicting his life between two worlds: one of real-life exploration and sensation, the other a dreamlike landscape on canvas woven from imagination, memory, and reflection — two realms that seem separate yet constantly intertwine.",
+      "description_ja": "画家・盧俊翰による個展で、現実の中で探求し感じる世界と、想像・記憶・感悟から成るキャンバス上の夢のような風景という、二つの世界の間を生きる姿を描く。両者は分かれているようでありながら、常に絡み合っている。",
+      "artists": [
+        "盧俊翰"
+      ],
+      "added_at": "2026-11-18T16:44:00.731383+09:00"
+    },
+    {
+      "museum": "waleyart",
+      "title_zh": "(我愛你是) 一輩子的事",
+      "title_en": "(I Love You) a Life Time Event",
+      "title_ja": "（愛しているということは）一生の出来事",
+      "dates": "2026.11.07 – 2026.12.06",
+      "location": "水谷藝術（臺北市萬華區萬大路322巷6號）",
+      "link": "https://www.instagram.com/waleyart/",
+      "description": "四位藝術家黃亭茹、洪安旭、鄭伊婷、蘇子誠從各自的生命經驗與記憶出發，邀請四位演員組成一個虛構的「家庭」，透過錄像、攝影、裝置與影像處理等形式，將各自的家庭經驗與記憶轉移至演員、影像與物件之中，作品如記憶的碎片散落各處，探討記憶與虛構之間的交疊。",
+      "description_en": "Four artists — Huang Ting-Ju, Hung An-Hsu, Cheng Yi-Ting, and Susu — draw on their own lived experiences and memories, inviting four actors to form a fictional \"family.\" Through video, photography, installation, and image processing, each artist's family memories are transferred onto actors, images, and objects, scattering like fragments of memory across the space and exploring the overlap between memory and fiction.",
+      "description_ja": "黃亭茹、洪安旭、鄭伊婷、蘇子誠の4人の作家が、それぞれの人生経験と記憶を出発点に、4人の俳優を招いて架空の「家族」を構成する。映像、写真、インスタレーション、画像処理などの手法を通じて、各自の家族の経験と記憶を俳優・映像・物に移し替え、記憶の断片のように散りばめられた作品群を通して、記憶とフィクションの重なりを探求する。",
+      "artists": [
+        "黃亭茹",
+        "洪安旭",
+        "鄭伊婷",
+        "蘇子誠"
+      ],
+      "added_at": "2026-11-18T16:46:18.499487+09:00"
+    },
+    {
+      "museum": "unionart",
+      "title_zh": "凝視與存在：新銳寫實藝術家聯展",
+      "title_en": "Gaze and Being: New Realist Artists Group Exhibition",
+      "title_ja": "凝視と存在：新進写実派作家グループ展",
+      "dates": "2026.11.03 – 2027.01.03",
+      "location": "聯邦藝術中心（台北市大安區忠孝東路四段219號）",
+      "link": "https://artemperor.tw/tidbits",
+      "description": "由新銳寫實藝術家陳皇佑、張家豪、許庭皓、古東玄共同展出的聯展，四位藝術家從各自的創作視角，重新思考「寫實」與「真實」之間的關係，探討觀看一件作品時，究竟是在觀看眼前的世界，還是在觀看藝術家心中的世界。",
+      "description_en": "A group exhibition by emerging realist artists Chen Huang-Yu, Chang Chia-Hao, Hsu Ting-Hao, and Gu Dong-Xuan, each reconsidering the relationship between \"realism\" and \"reality\" from their own creative perspective, questioning whether viewing a work means seeing the world before us or the world within the artist's mind.",
+      "description_ja": "新進の写実派作家、陳皇佑、張家豪、許庭皓、古東玄による合同展。4人の作家がそれぞれの創作視点から「写実」と「現実」の関係を再考し、作品を見るとき、私たちは目の前の世界を見ているのか、それとも作家の心の中の世界を見ているのかを問いかける。",
+      "artists": [
+        "陳皇佑",
+        "張家豪",
+        "許庭皓",
+        "古東玄"
+      ],
+      "added_at": "2026-11-18T16:48:31.443963+09:00"
     }
   ]
 }
