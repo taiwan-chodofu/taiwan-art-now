@@ -4552,6 +4552,50 @@
           "source_url": "https://www.facebook.com/show.art.gallery/"
         }
       ]
+    },
+    {
+      "museum": "neverland",
+      "title_zh": "花開能折直接折，莫待無花空折汁：林昭緯個展",
+      "title_en": "Pluck It While It's Juicy: Pigo Lin Solo Exhibition",
+      "title_ja": "花開能折直接折，莫待無花空折汁：林昭緯（Pigo Lin）個展",
+      "dates": "2026.11.21 – 2026.12.05",
+      "location": "Neverland Gallery（台北市信義區虎林街164巷56號）",
+      "link": "https://neverland.gallery/pigo",
+      "description": "林昭緯（Pigo Lin）用彩色墨水在紙上描繪臉上噴出火山的少女、穿著瓢蟲裝凌空踢腿的少女，顏色濃烈，甜裡帶點辣。本展為藝術家在Neverland Gallery的個展，呈現在台北當代藝術圈少見的大膽畫面。開幕當天藝術家本人到場，一件一件向觀眾介紹每張畫的創作來由。",
+      "description_en": "Pigo Lin depicts, in colorful ink on paper, a girl with a volcano erupting from her face, a girl kicking mid-air in a ladybug costume — colors saturated, sweet with a bite of spice. This solo exhibition at Neverland Gallery presents imagery rarely seen in Taipei's contemporary art scene for its sheer boldness. The artist himself attends the opening, walking visitors through each work, piece by piece, explaining how it came to be.",
+      "description_ja": "林昭緯（Pigo Lin）は、顔から火山が噴き出す少女や、てんとう虫の衣装で空中で足を蹴り上げる少女を、紙にカラフルな墨で描く。色彩は濃密で、甘さの中に辛さをはらんでいる。本展はNeverland Galleryでの作家の個展で、台北の現代美術シーンではあまり見られないほど大胆な画面を提示する。オープニング当日は作家本人が来場し、一点一点、作品がどのように生まれたかを観客に語りかける。",
+      "artists": [
+        "林昭緯 Pigo Lin"
+      ],
+      "added_at": "2026-11-18T14:56:59.546249+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/21",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "藝術家本人到場導覽",
+          "note_en": "Artist present for walkthrough",
+          "note_ja": "作家本人によるギャラリートーク",
+          "source_url": "https://www.instagram.com/neverland.gallery/"
+        }
+      ]
+    },
+    {
+      "museum": "gallery80a",
+      "title_zh": "臨時企劃展《The Taste of the Holes in 100 Donuts》",
+      "title_en": "The Taste of the Holes in 100 Donuts",
+      "title_ja": "急遽企画展《The Taste of the Holes in 100 Donuts》",
+      "dates": "2026.11.27 – 2026.12.12",
+      "location": "軟輪畫廊（台北市中山北路六段192號3樓）",
+      "link": "https://www.instagram.com/gallery80a",
+      "description": "臨時企劃群展，由二十餘位創作者共同參與，以甜甜圈中空的洞為發想。",
+      "description_en": "An impromptu group exhibition bringing together over twenty creators, taking the hole at the center of a donut as its point of departure.",
+      "description_ja": "20名以上の作家が参加する急遽企画されたグループ展で、ドーナツの中心にある穴を発想の出発点とする。",
+      "artists": [],
+      "added_at": "2026-11-18T14:58:00.912629+09:00"
     }
   ]
 }
