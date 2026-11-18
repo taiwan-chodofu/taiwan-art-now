@@ -4928,6 +4928,36 @@
         "梅原真"
       ],
       "added_at": "2026-11-18T15:28:30.531256+09:00"
+    },
+    {
+      "museum": "carp",
+      "title_zh": "李傑（Lee Kit）個展",
+      "title_en": "Lee Kit Solo Exhibition",
+      "title_ja": "李傑（リー・キット）個展",
+      "dates": "2026.11.07 – 2026.12.20",
+      "location": "鯉魚藝廊 Carp Gallery（台中市西區公益路174巷194號）",
+      "link": "https://www.facebook.com/p/%E9%AF%89%E9%AD%9ACarp-Gallery-100070045041049/",
+      "description": "香港藝術家李傑個展，於鯉魚藝廊展出。本展同時為第10屆亞洲藝術雙年展「共織 Co-Weaving」串聯企劃參與空間之一，展覽從國立臺灣美術館延伸至台中在地藝文空間。",
+      "description_en": "A solo exhibition by Hong Kong artist Lee Kit, presented at Carp Gallery. The gallery is also a participating venue in the connected programming of the 10th Asian Art Biennial \"Co-Weaving,\" which extends the exhibition from the National Taiwan Museum of Fine Arts out into local art spaces across Taichung.",
+      "description_ja": "香港の藝術家、李傑（リー・キット）による個展で、鯉魚藝廊にて開催される。同ギャラリーは第10回アジア藝術ビエンナーレ「共織 Co-Weaving」の連携企画の参加会場の一つでもあり、展覧会は国立台湾美術館から台中の地元藝文空間へと広がっている。",
+      "artists": [
+        "李傑 Lee Kit"
+      ],
+      "added_at": "2026-11-18T15:30:32.975103+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/08",
+          "time": "15:00",
+          "title_zh": "開幕茶會",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニングレセプション",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://www.facebook.com/p/%E9%AF%89%E9%AD%9ACarp-Gallery-100070045041049/"
+        }
+      ]
     }
   ]
 }
