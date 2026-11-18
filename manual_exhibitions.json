@@ -4852,6 +4852,66 @@
       "description_ja": "台江流域学習物語展シリーズの第5回で、「環境の守護者」をテーマに、地域コミュニティや学校の教師・生徒による台江流域の環境問題への取り組みの学習成果と行動の物語を紹介する。",
       "artists": [],
       "added_at": "2026-11-18T15:25:31.072962+09:00"
+    },
+    {
+      "museum": "daxiangart",
+      "title_zh": "刻痕與聚光燈——李足新的微觀記憶劇場",
+      "title_en": "Scars and Spotlight: Lee Tzu-Hsin's Micro-Theater of Memory",
+      "title_ja": "刻痕と照明——李足新の微視的記憶劇場",
+      "dates": "2026.11.14 – 2027.01.30",
+      "location": "大象藝術空間館（台中市西屯區市政路386號13樓之5）",
+      "link": "https://daxiang.com.tw",
+      "description": "策展人：鍾經新。本展透過李足新的繪畫與紙上作品（如《偽裝1》、《最後的據點》、《老兵1》、《特快車》、《牆》等），探討個體在社會體制與歷史洪流中的生存困境，將寫實繪畫提升為具有當代意識與哲學思索的視覺劇場。",
+      "description_en": "Curated by Chung Ching-Hsin. Through Lee Tzu-Hsin's paintings and works on paper — including \"Camouflage 1,\" \"The Last Stronghold,\" \"Old Soldier 1,\" \"Express Train\" and \"Wall\" — this exhibition examines the individual's struggle for survival within social systems and the currents of history, elevating realist painting into a visual theater charged with contemporary awareness and philosophical reflection.",
+      "description_ja": "キュレーター：鍾經新。李足新の絵画や紙上作品（《偽裝1》《最後の拠点》《老兵1》《特急列車》《壁》など）を通じて、社会体制と歴史の流れの中で個人が置かれる生存の苦境を探り、写実絵画を現代的な意識と哲学的思索を帯びた視覚劇場へと昇華させる。",
+      "artists": [
+        "李足新"
+      ],
+      "added_at": "2026-11-18T15:26:22.601471+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/11/14",
+          "time": "15:00",
+          "title_zh": "開幕",
+          "title_en": "Opening",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://daxiang.com.tw"
+        }
+      ]
+    },
+    {
+      "museum": "1839cg",
+      "title_zh": "浮世物語：日本3.11－余偉建攝影展",
+      "title_en": "Tales of the Floating World: Japan 3.11 — Yu Wai-Kin Photography Exhibition",
+      "title_ja": "浮世物語：日本3.11－余偉建写真展",
+      "dates": "2026.10.17 – 2026.11.22",
+      "location": "1839當代藝廊（台北市大安區延吉街120號地下樓）",
+      "link": "https://event.moc.gov.tw",
+      "description": "策展人：Blues Wong（黃啟裕）。適逢日本3.11東日本大震災15週年，展出香港攝影記者余偉建超越百件的攝影作品、裝置與畫面紀錄。",
+      "description_en": "Curated by Blues Wong. Marking the 15th anniversary of Japan's March 11 Great East Japan Earthquake, the exhibition presents over a hundred works, installations and visual records by Hong Kong photojournalist Yu Wai-Kin.",
+      "description_ja": "キュレーター：Blues Wong（黃啟裕）。日本の東日本大震災（3.11）15周年を機に、香港の報道写真家、余偉建による100点を超える写真作品、インスタレーション、映像記録を展示する。",
+      "artists": [
+        "余偉建 Yu Wai-Kin"
+      ],
+      "added_at": "2026-11-18T15:26:59.540090+09:00",
+      "events": [
+        {
+          "type": "talk",
+          "date": "2026/11/22",
+          "time": "14:00",
+          "title_zh": "藝術家在廊日",
+          "title_en": "Artist in the Gallery",
+          "title_ja": "作家が画廊に在廊する日",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://event.moc.gov.tw"
+        }
+      ]
     }
   ]
 }
