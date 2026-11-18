@@ -4912,6 +4912,22 @@
           "source_url": "https://event.moc.gov.tw"
         }
       ]
+    },
+    {
+      "museum": "nwac",
+      "title_zh": "風土有光：台日地方設計展",
+      "title_en": "Light of the Land: A Taiwan-Japan Local Design Exhibition",
+      "title_ja": "風土有光：台日地方デザイン展",
+      "dates": "2026.11.14 – 2027.02.14",
+      "location": "內惟藝術中心（高雄市鼓山區馬卡道路329號）",
+      "link": "https://locallocal-taiwan.jp",
+      "description": "展覽分為兩大展區：日本展區「LOCAL LOCAL 敢真正攏無？」首度在台完整回顧日本「逆轉地方設計師」梅原真40多年來的18件代表作，如四萬十地栗、土佐一本釣稻草炙燒鰹魚等地方設計案例；高雄展區「做伙創作地方設計中！」集結21組高雄在地與全台地方設計案例。戶外裝置以日本高知縣黑潮町「砂濱美術館T-shirt藝術展」為靈感，於戶外園區懸掛千件台日T-shirt創作。",
+      "description_en": "The exhibition is organized into two zones. The Japan zone, \"LOCAL LOCAL, Is It Really Nothing?,\" presents Taiwan's first complete retrospective of Umebara Makoto — known as a pioneer who \"reverses\" regional design — showcasing 18 representative works from over 40 years of practice, including local design projects such as Shimanto Jiguri chestnuts and Tosa Ippon-zuri straw-seared bonito. The Kaohsiung zone, \"Creating Local Design Together!,\" brings together 21 local-design case studies from Kaohsiung and across Taiwan. An outdoor installation, inspired by the \"Sunabi\" (Beach Museum) T-shirt art exhibition in Kuroshio Town, Kochi Prefecture, hangs a thousand Taiwan-Japan T-shirt artworks across the outdoor grounds.",
+      "description_ja": "展覧会は二つの展示区で構成される。日本展区「LOCAL LOCAL 本当に何もないの？」は、地方デザインを「逆転」させた先駆者と称される梅原真の40年以上にわたる代表作18件を、台湾で初めて完全な形で回顧する。四万十の地栗や土佐の一本釣り藁焼きかつおなど、地方デザインの事例を紹介する。高雄展区「一緒に地方デザインを創っています！」は、高雄および台湾各地の地方デザイン事例21組を集める。屋外インスタレーションは、高知県黒潮町の「砂浜美術館Tシャツアート展」に着想を得て、屋外園区に台日の千点のTシャツ作品を掲げる。",
+      "artists": [
+        "梅原真"
+      ],
+      "added_at": "2026-11-18T15:28:30.531256+09:00"
     }
   ]
 }
