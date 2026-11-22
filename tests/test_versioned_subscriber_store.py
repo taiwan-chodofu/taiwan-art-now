@@ -1,6 +1,6 @@
 """Synthetic transactional CAS tests, no PostgreSQL connection."""
 import unittest
-from versioned_subscriber_store import update_for_verified_sender
+from versioned_subscriber_store import update_for_verified_sender, _REVIEWED_RESTORE_CAPABILITY
 from versioned_subscriber_sync import StaleRevision
 
 
@@ -106,6 +106,29 @@ class VersionedStoreTests(unittest.TestCase):
             update_for_verified_sender(
                 db, verified_sender_id="owner", base_revision=1, changes=changes())
         self.assertEqual(db.rollbacks, 1)
+
+    def test_generic_store_refuses_tombstone_restoration(self):
+        state = {"revision": 2, "favs": {"a": {
+            "value": None, "deleted": True, "revision": 2}}, "visited": {}}
+        db = FakeDB(state)
+        with self.assertRaises(StaleRevision):
+            update_for_verified_sender(
+                db, verified_sender_id="owner", base_revision=2,
+                changes={"favs": {"a": {"set": True}}, "visited": {}})
+        self.assertEqual(db.commits, 0)
+        self.assertEqual(db.rollbacks, 1)
+        self.assertFalse(any("UPDATE tan_private" in q for q in db.queries))
+
+    def test_internal_review_capability_allows_tombstone_restoration(self):
+        state = {"revision": 2, "favs": {"a": {
+            "value": None, "deleted": True, "revision": 2}}, "visited": {}}
+        db = FakeDB(state)
+        result = update_for_verified_sender(
+            db, verified_sender_id="owner", base_revision=2,
+            changes={"favs": {"a": {"set": True}}, "visited": {}},
+            _reviewed_restore_capability=_REVIEWED_RESTORE_CAPABILITY)
+        self.assertEqual(result["revision"], 3)
+        self.assertFalse(result["favs"]["a"]["deleted"])
 
     def test_missing_verified_sender_rejected(self):
         with self.assertRaises(ValueError):
