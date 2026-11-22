@@ -1505,10 +1505,46 @@ def exhibition_detail(museum_id, idx):
             "detail_url": f"/exhibition/{museum_id}/{i}?lang={lang}",
         })
 
+    display_title = _get_display_title(ex, lang)
+    description_text = _get_description(ex, lang)
+    museum_name = _get_localized(museum_info["name"], lang) if museum_info else museum_id
+    museum_address = _get_localized(museum_info.get("address", {}), lang) if museum_info else ""
+    museum_url = museum_info.get("url", "") if museum_info else ""
+    event_url = f"https://taiwan-art-now.onrender.com/exhibition/{museum_id}/{idx}?lang={lang}"
+    og_image_url = f"https://taiwan-art-now.onrender.com/og-image/exhibition/{museum_id}/{idx}"
+
+    performers = [{"@type": "Person", "name": a} for a in ex.get("artists", [])[:5]]
+    if not performers:
+        performers = [{"@type": "Organization", "name": museum_name}]
+
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": display_title,
+        "description": (description_text[:200] if description_text else f"{display_title}｜{museum_name}｜{normalized}"),
+        "startDate": start_dt.strftime("%Y-%m-%d") if start_dt else "",
+        "endDate": end_dt.strftime("%Y-%m-%d") if end_dt else "",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+            "@type": "Place",
+            "name": museum_name,
+            "address": museum_address,
+        },
+        "performer": performers,
+        "organizer": {
+            "@type": "Organization",
+            "name": museum_name,
+            "url": museum_url or event_url,
+        },
+        "image": [og_image_url],
+        "url": event_url,
+    }
+
     return render_template(
         "exhibition_detail_page.html",
         exhibition={
-            "title": _get_display_title(ex, lang),
+            "title": display_title,
             "title_zh": ex.get("title_zh", ""),
             "stable_key": stable_key,
             "dates": normalized,
@@ -1516,7 +1552,7 @@ def exhibition_detail(museum_id, idx):
             "days_until_start": _calc_days_until_start(start_dt),
             "artists": ex.get("artists", []),
             "curator": ex.get("curator", ""),
-            "description": _get_description(ex, lang),
+            "description": description_text,
             "link": ex.get("link", ""),
             "status": ex.get("status", "unknown"),
             "type": ex.get("type", ""),
@@ -1525,11 +1561,11 @@ def exhibition_detail(museum_id, idx):
         },
         museum={
             "id": museum_id,
-            "name": _get_localized(museum_info["name"], lang) if museum_info else museum_id,
-            "address": _get_localized(museum_info.get("address", {}), lang) if museum_info else "",
+            "name": museum_name,
+            "address": museum_address,
             "hours": _get_localized(museum_info.get("hours", {}), lang) if museum_info else "",
             "hours_uncertain": museum_info.get("hours_uncertain", False) if museum_info else False,
-            "url": museum_info.get("url", "") if museum_info else "",
+            "url": museum_url,
             "closed_today": _is_closed_today(museum_info.get("closed_day"), museum_info.get("closed_days"), museum_info.get("temp_closure_start"), museum_info.get("temp_closure_end"), museum_info.get("closed_monthly_weekday"), museum_info.get("closed_monthly_nth", 1)) if museum_info else False,
         },
         current_lang=lang,
@@ -1537,6 +1573,7 @@ def exhibition_detail(museum_id, idx):
         idx=idx,
         other_exhibitions=other_exs,
         has_coordinates=bool(museum_info and museum_info.get("lat")),
+        structured_data=structured_data,
     )
 
 

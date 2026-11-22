@@ -23,28 +23,7 @@
   <meta name="twitter:title" content="{{ exhibition.title }}">
   <meta name="twitter:description" content="{{ museum.name }} · {{ exhibition.dates }}">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "{{ exhibition.title }}",
-    "description": "{{ exhibition.description[:200]|replace('"', '\\"')|replace('\n', ' ') if exhibition.description else '' }}",
-    "startDate": "{{ exhibition.dates.split('–')[0].strip().replace('.', '-').replace('/', '-') if '–' in exhibition.dates else exhibition.dates.split(' - ')[0].strip().replace('.', '-').replace('/', '-') if ' - ' in exhibition.dates else '' }}",
-    "endDate": "{{ exhibition.dates.split('–')[1].strip().replace('.', '-').replace('/', '-') if '–' in exhibition.dates else exhibition.dates.split(' - ')[1].strip().replace('.', '-').replace('/', '-') if ' - ' in exhibition.dates else '' }}",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "{{ museum.name }}",
-      "address": "{{ museum.address }}"
-    }{% if exhibition.artists %},
-    "performer": [{% for artist in exhibition.artists[:5] %}{"@type": "Person", "name": "{{ artist }}"}{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %},
-    "organizer": {
-      "@type": "Organization",
-      "name": "{{ museum.name }}",
-      "url": "{{ museum.url }}"
-    },
-    "url": "https://taiwan-art-now.onrender.com/exhibition/{{ museum_id }}/{{ idx }}?lang={{ current_lang }}"
-  }
+  {{ structured_data | tojson }}
   </script>
   <link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png">
   <link rel="apple-touch-icon" href="/static/icon-192.png">
