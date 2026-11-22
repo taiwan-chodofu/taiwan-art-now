@@ -7,9 +7,11 @@ No subscriber rows are read. Only synthetic tokens and sender IDs are used.
 import concurrent.futures
 import os
 import sys
+from pathlib import Path
 from uuid import uuid4
 
 import psycopg
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from messenger_link_store import issue, consume
 
 
