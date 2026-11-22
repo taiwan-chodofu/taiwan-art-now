@@ -10,6 +10,8 @@ from versioned_subscriber_sync import apply_changes, empty_state, StaleRevision
 def update_for_verified_sender(conn, *, verified_sender_id, base_revision, changes):
     if not isinstance(verified_sender_id, str) or not verified_sender_id:
         raise ValueError("Verified sender required")
+    if getattr(conn, "autocommit", False):
+        raise ValueError("Transactional connection required")
     from psycopg.types.json import Jsonb
     try:
         with conn.cursor() as cur:
