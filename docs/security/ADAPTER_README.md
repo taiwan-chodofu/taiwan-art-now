@@ -24,3 +24,11 @@ Tests: `python -m unittest discover -s tests -p 'test_subscriber_mutations.py'`.
 Do **not** wire these into Flask routes yet. The existing API accepts client-controlled sender IDs, refs and endpoints; switching its persistence to the private DB without fixing authorization would carry the same IDOR vulnerability into the new store. Messenger identity needs verified platform-originated proof, and browser subscriptions need an authenticated ownership mechanism or a carefully designed possession-token scheme. Never treat endpoint strings or publicly guessable identifiers as sufficient authorization.
 
 No claim is made that the new transition tests have been executed in CI yet.
+
+## Meta webhook authentication — draft integration
+
+The draft now validates `X-Hub-Signature-256` against the exact raw request body with HMAC-SHA256 and constant-time comparison **before parsing events**. The verifier fails closed when `META_APP_SECRET` is absent. This protects the POST `/webhook` origin, but does **not** authenticate separate browser-facing subscriber APIs. Seven synthetic-only verifier tests were added in `tests/test_webhook_security.py`.
+
+**Release gate:** Set `META_APP_SECRET` to the correct Meta App Secret in Render's server-side environment, verify legitimate Meta webhook deliveries in a staging deployment, and only then merge/deploy. Never place the secret in GitHub, issues, PRs, logs, or the browser. Without this setup, all webhook POSTs will receive HTTP 403. GET verification remains a separate flow.
+
+The webhook still creates public GitHub issues containing sender IDs and messages after successful signature verification. **This is a separate privacy blocker** and must be replaced with private intake before production cutover. The public JSON persistence also remains unchanged.
