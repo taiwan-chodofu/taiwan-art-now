@@ -10,7 +10,6 @@ import sys
 from pathlib import Path
 from uuid import uuid4
 
-import psycopg
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from messenger_link_store import issue, consume
 
@@ -30,6 +29,7 @@ def verify_staging_identity(conn, expected_name):
 
 
 def main():
+    import psycopg
     url = os.environ.get("TAN_STAGING_DATABASE_URL")
     if not url:
         raise RuntimeError("TAN_STAGING_DATABASE_URL required")
