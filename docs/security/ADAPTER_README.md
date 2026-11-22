@@ -101,3 +101,13 @@ In a trusted shell with server-only `TAN_DATABASE_URL`, run `python scripts/chec
 `scripts/verify_private_backup.py` validates the Messenger and Push backup JSON shapes and computes streaming SHA-256 checksums without printing subscriber records or opening a database. Use `--expected-manifest /secure/separate-manifest.json` to compare with a manifest recorded **at backup creation time** and stored independently. Running without a manifest only creates an unverified baseline, **not** proof that the backup matches the original. A matching checksum does not establish that all live writes were captured.
 
 Example in an owner-controlled trusted environment: `python scripts/verify_private_backup.py --messenger /secure/messenger.json --push /secure/push.json --expected-manifest /secure/separate-manifest.json`. Never put real paths, manifests, credentials or JSON in GitHub Actions, PR comments or chat. These files must be encrypted at rest with separately held keys; this script does **not** encrypt, create, restore, or delete backups. Before cutover, perform an independent **actual restore test** into an isolated database, compare restored records and counts, then wipe only that disposable test database after approval. No such restore has been performed. Five synthetic file tests were added; verify CI status.
+
+## Offline source freeze drift gate
+
+After independently pausing **all** legacy writers and capturing two separately exported snapshots, run:
+
+`python scripts/check_source_freeze.py --before-messenger /secure/before-m.json --before-push /secure/before-p.json --after-messenger /secure/after-m.json --after-push /secure/after-p.json`
+
+This compares SHA-256 digests of both pairs and validates both JSON structures; exits code 2 if any bytes differ. It prints only counts and whether the snapshots match. The test is conservative: harmless JSON formatting changes count as drift. A match **does not prove** that live writers were stopped, no in-flight requests exist, or exports are complete; those require an operational maintenance gate and independent checks. Do not execute a production import merely because this script succeeds. Five synthetic tests cover unchanged data, Messenger changes, Push changes, formatting changes, and malformed snapshots.
+
+**Isolated database restore drill still not performed**. A safe drill requires a separately provisioned, disposable database, a trusted credential provisioned outside GitHub, a deliberate restore command targeting that database, record-level comparison, and explicit authorization. Never point a rehearsal at the production project.
