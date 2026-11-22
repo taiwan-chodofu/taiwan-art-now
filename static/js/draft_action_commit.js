@@ -30,7 +30,8 @@
             onFailure({ status: "uncertain_write" }, { kind, key, action });
             return { status: "uncertain_write" };
           }
-          onCommitted({ kind, key, action, value: present ? parsed[key] : undefined });
+          try { onCommitted({ kind, key, action, value: present ? parsed[key] : undefined }); }
+          catch (_) { return { status: "committed_callback_failed" }; }
         } else if (result.status !== "unchanged") {
           onFailure(result, { kind, key, action });
         }
