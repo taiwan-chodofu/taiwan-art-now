@@ -10,7 +10,8 @@ import json
 import secrets
 
 from reviewed_subscriber_intent import plan_reviewed_conflict
-from versioned_subscriber_store import read_for_verified_sender, update_for_verified_sender
+from versioned_subscriber_store import (read_for_verified_sender, update_for_verified_sender,
+                                        _REVIEWED_RESTORE_CAPABILITY)
 from versioned_subscriber_sync import StaleRevision
 
 TOKEN_BYTES = 32
@@ -110,7 +111,8 @@ def consume_keep_confirmation(conn, *, verified_sender_id, token, local_value):
         # and CAS therefore become visible together, never separately.
         return update_for_verified_sender(
             conn, verified_sender_id=verified_sender_id,
-            base_revision=proposal["base_revision"], changes=proposal["changes"])
+            base_revision=proposal["base_revision"], changes=proposal["changes"],
+            _reviewed_restore_capability=_REVIEWED_RESTORE_CAPABILITY)
     except Exception:
         conn.rollback()
         raise
