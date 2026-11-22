@@ -59,6 +59,10 @@ class MessengerHTTPTests(unittest.TestCase):
         self.assertNotIn("users", r.json)
         self.assertEqual(r.headers["Cache-Control"], "no-store")
 
+    def test_status_rejects_legacy_sender_query(self):
+        r = self.client.get("/api/private-subscribers/status?sender_id=victim")
+        self.assertEqual(r.status_code, 400)
+
     def test_sync_preserves_other_user(self):
         before = deepcopy(self.store.data["users"]["victim"])
         r = self.post("sync", {"favs": {"new": True}, "visited": {}})
