@@ -9,7 +9,7 @@ from browser_session import token_digest
 from versioned_subscriber_store import (
     update_for_verified_sender, read_for_verified_sender,
 )
-from versioned_subscriber_sync import StaleRevision
+from versioned_subscriber_sync import StaleRevision, validate_state
 
 versioned_blueprint = Blueprint("versioned_subscriber_draft", __name__)
 
@@ -60,6 +60,21 @@ def _respond(*, write):
                 conn.rollback()
                 return jsonify(error="forbidden"), 403
             if write:
+                # Generic browser mutations must never resurrect a tombstone.
+                # The explicit-keep endpoint is the only allowed restoration path.
+                current = read_for_verified_sender(conn, verified_sender_id=sender)
+                validate_state(current)
+                changes = payload["changes"]
+                if (not isinstance(changes, dict) or
+                        set(changes) != {"favs", "visited"} or
+                        any(not isinstance(changes.get(kind), dict)
+                            for kind in ("favs", "visited"))):
+                    raise ValueError("Invalid changes")
+                for kind in ("favs", "visited"):
+                    for key, operation in changes[kind].items():
+                        if (isinstance(operation, dict) and "set" in operation and
+                                key in current[kind] and current[kind][key]["deleted"]):
+                            raise StaleRevision("Explicit restoration confirmation required")
                 state = update_for_verified_sender(
                     conn, verified_sender_id=sender,
                     base_revision=payload["base_revision"],
