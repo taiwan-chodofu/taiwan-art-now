@@ -1,0 +1,27 @@
+# Frontend subscriber cutover plan — review only, NOT deployed
+
+## Verified current template callsites
+
+Inspected the draft branch versions of `templates/index.html`, `templates/nearby.html`, and `templates/exhibition_detail_page.html`. All three implement local-first favorites/visited state using `localStorage` keys `taiwan_art_favs` and `taiwan_art_visited`, and send ref-based sync to `/api/subscribers/sync` using `taiwan_art_ref`. The home template also calls `/api/subscribers/status?ref=...` and `/api/subscribers/unsubscribe`, and Web Push `/api/push/subscribe` and `/api/push/sync-favs`. `/api/push/vapid-public-key` is public key discovery, not a private subscriber mutation.
+
+`scripts/audit_frontend_subscriber_calls.py` inventories exact literal fetch callsites and fails the release gate while legacy calls remain. This is a limited static scan: dynamically constructed URLs, external scripts and other templates are NOT covered. It does not prove security. Run `python scripts/audit_frontend_subscriber_calls.py --report-only` for an inventory in CI, or without `--report-only` for a blocking check.
+
+## Migration contract
+
+1. **Do not discard local favorites/visited.** Continue using localStorage for anonymous browsing and offline/PWA behavior. Never automatically overwrite local favorites/visited with empty remote data on auth failure.
+2. **Do not treat `taiwan_art_ref` as identity.** Ref values in localStorage are legacy migration hints only. Do not submit them to new private routes.
+3. **After Meta-verified two-secret session establishment**, use `GET /api/private-subscribers/status` (no identity query) and `POST /api/private-subscribers/sync` with exactly `{favs, visited}`; server determines sender. Settings and unsubscribe likewise send no IDs.
+4. **Reconciliation is unresolved.** Local and remote may contain different items. Decide and test per-item merge precedence, removals/tombstones, conflicts across devices, schema validation and offline replay before switching on automatic sync. Current draft API status does not return remote favorites/visited, so it cannot perform safe two-way reconciliation yet.
+5. **Push is a separate identity domain.** A browser PushSubscription endpoint and its keys are not authorization by themselves. Design a verified endpoint possession and rotation protocol before replacing `/api/push/subscribe` and `/api/push/sync-favs`; preserve independent anonymous Push users.
+6. **Legacy unlink/ref operations** must be redesigned around verified Meta sender, not a browser-provided ref. Unsubscribe must not remove another subscriber's ref.
+7. **Cutover and rollback:** encrypt and verify owner-controlled backup, pause legacy writers, take final snapshot, atomically import into private PostgreSQL, verify counts/content without exposing subscriber data, migrate authenticated clients behind a controlled flag, keep public legacy endpoints closed to IDOR, and maintain a tested rollback strategy that does not silently lose writes. Remove GitHub-backed JSON and remediate public Git history only after safe backup and explicit owner approval.
+
+## Release blockers
+
+- Blueprint not registered; no real Meta-to-browser challenge completion or browser claim UI.
+- Real PostgreSQL integration, disposable staging concurrency, and session authorization transaction semantics untested.
+- Browser route ownership audit and frontend callsite audit still block release.
+- Ref-link and Push ownership missing.
+- Local/remote merge and offline conflict rules missing.
+- Existing production subscriber JSON in public GitHub history requires separate privacy remediation.
+- **No production schema, subscriber data, deployment, or branch merge changed by this plan.**
