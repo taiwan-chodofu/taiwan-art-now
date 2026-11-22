@@ -2108,7 +2108,8 @@ def webhook_verify():
     mode = request.args.get("hub.mode")
     token = request.args.get("hub.verify_token")
     challenge = request.args.get("hub.challenge")
-    if mode == "subscribe" and MESSENGER_VERIFY_TOKEN and token == MESSENGER_VERIFY_TOKEN:
+    if (mode == "subscribe" and MESSENGER_VERIFY_TOKEN
+            and token == MESSENGER_VERIFY_TOKEN and isinstance(challenge, str)):
         return challenge, 200
     return "Forbidden", 403
 
