@@ -75,3 +75,7 @@ The draft now adds AST-based regression checks for the actual Flask source: GET 
 ## Synthetic Flask HTTP request tests
 
 `tests/test_flask_webhook_http.py` extracts the actual `webhook_receive` function from `app.py` via Python AST and registers it on an isolated Flask test app, avoiding scraper startup, production subscriber JSON and live credentials. Tests cover unsigned 403, tampered 403, signed empty batch 200, signed message to a mocked private inbox, and private storage failure 503. This exercises Flask request parsing and signature verification, **but not the full application startup or live Meta/Supabase connectivity**. GitHub Actions installs pinned Flask for this test. Check the newest CI run; success was not yet available at the time of this commit.
+
+## Message replay side effects
+
+For ordinary inbound submissions, `store_inbound` returns False on duplicate `event_key`. The draft webhook now skips the subsequent auto-subscription write on duplicates; a synthetic Flask HTTP test checks this. This does **not** make the whole webhook idempotent: standalone referrals, postbacks, subscribe/unsubscribe keywords and outgoing replies still need transactional deduplication. A 503 after earlier events in a multi-event batch can replay those earlier side effects. Do not deploy before those flows are handled safely and verified in staging.
