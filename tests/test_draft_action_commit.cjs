@@ -6,7 +6,7 @@ function setup() {
   const data = { taiwan_art_favs: "{}", taiwan_art_visited: "{}" };
   const storage = { getItem: k => data[k] ?? null, setItem: (k,v) => { data[k] = v; } };
   let tail = Promise.resolve();
-  const locks = { request(_name, _opts, fn) => {
+  const locks = { request: (_name, _opts, fn) => {
     const p = tail.then(fn); tail = p.catch(() => {}); return p;
   }};
   const committed = [], failures = [], busy = [];
