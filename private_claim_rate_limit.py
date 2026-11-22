@@ -51,9 +51,9 @@ def allow_attempt(conn, *, kind, identifier, limit=5, window_seconds=600,
                 (key, window_seconds, window_seconds),
             )
             row = cur.fetchone()
-        conn.commit()
         if row is None:
             raise RuntimeError("Rate limit storage returned no row")
+        conn.commit()
         return row[0] <= limit
     except Exception:
         conn.rollback()
