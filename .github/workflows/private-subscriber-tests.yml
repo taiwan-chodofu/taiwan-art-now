@@ -70,6 +70,8 @@ on:
       - 'tests/test_draft_versioned_sync.cjs'
       - 'static/js/draft_legacy_snapshot.js'
       - 'tests/test_draft_legacy_snapshot.cjs'
+      - 'static/js/draft_migration_review.js'
+      - 'tests/test_draft_migration_review.cjs'
       - 'docs/security/VERSIONED_SUBSCRIBER_SCHEMA_DRAFT.sql'
       - 'docs/security/FRONTEND_SUBSCRIBER_CUTOVER.md'
       - 'docs/security/CLAIM_RATE_LIMIT_SCHEMA_DRAFT.sql'
@@ -136,4 +138,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run synthetic browser sync tests (Node built-in runner)
-        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs
+        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs
