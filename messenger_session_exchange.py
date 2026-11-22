@@ -1,4 +1,4 @@
-"""Draft atomic exchange of a VERIFIED Messenger challenge for a browser session.
+"""LEGACY REVIEW-ONLY direct exchange (superseded; DO NOT DEPLOY).
 
 This function MUST NOT be called from a public browser request with a
 browser-provided sender ID. The caller must independently verify the Meta
