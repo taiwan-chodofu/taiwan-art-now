@@ -7,7 +7,8 @@ This is **not production-integrated**. The new `private_subscriber_store.py` fun
 - Set `TAN_DATABASE_URL` to a server-side PostgreSQL connection string, using Supabase's supported IPv4-compatible pooler if Render's network requires it. Never commit or print credentials.
 - `scripts/import_private_subscribers.py` must be run with repository root on `PYTHONPATH`. Default is dry-run; `--execute` writes only if the destination is empty.
 - No production routes call this adapter yet. The legacy public GitHub writes remain in the deployed app.
-- The adapter's full-document read/modify/write model is **not concurrency-safe** across independent application requests. Advisory locks in the write phase alone cannot protect changes made between a read and write. Replace with transactional per-user/per-endpoint operations before enabling production writes.
+- The adapter now includes `mutate_messenger(callback)` and `mutate_push(callback)` which read and write under one PostgreSQL transaction and advisory lock, avoiding lost updates **when every writer uses these methods**. The original `load_*`/`save_*` functions are still unsafe as separate read-modify-write pairs; production routes are not yet migrated. Prefer per-row updates for long-term scalability.
 - Existing endpoints also have insufficient caller authorization; fix independently before cutover.
+- No live integration test has been run for the Python adapter; only an isolated SQL transaction smoke test using synthetic rows with ROLLBACK has passed.
 - Before running on live subscriber records, arrange encrypted backups, stop public writes, and verify no subscriber changes are lost during cutover.
 - No real subscriber records should be placed in PRs, logs, or tests.
