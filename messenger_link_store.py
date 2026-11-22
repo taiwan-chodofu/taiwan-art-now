@@ -1,4 +1,4 @@
-"""Draft PostgreSQL-backed one-time Messenger challenge store.
+"""LEGACY REVIEW-ONLY one-step Messenger challenge store (superseded).
 
 Not wired to app.py. The verified sender MUST come from a signature-verified
 Meta webhook; browser-provided sender IDs are never sufficient.
