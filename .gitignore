@@ -3,3 +3,12 @@ __pycache__/
 cache.json
 *.egg-info/
 .env
+
+# Private migration exports and database credentials (do not commit)
+private-backups/
+subscriber-backups/
+*.subscriber-backup.json
+*.push-backup.json
+*.pgpass
+.env.*
+!.env.example
