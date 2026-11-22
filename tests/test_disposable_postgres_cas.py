@@ -38,6 +38,12 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "(sender_id text primary key)")
                 cur.execute("INSERT INTO tan_private.messenger_subscribers "
                             "(sender_id) VALUES ('synthetic-owner')")
+                cur.execute("CREATE TABLE tan_private.subscriber_review_confirmations "
+                            "(token_hash bytea primary key, sender_id text not null, "
+                            "kind text not null, item_key text not null, "
+                            "base_revision bigint not null, item_revision bigint not null, "
+                            "choice text not null, value_hash bytea not null, "
+                            "expires_at timestamptz not null, used_at timestamptz)")
                 cur.execute("CREATE TABLE tan_private.subscriber_sync_states "
                             "(sender_id text primary key REFERENCES "
                             "tan_private.messenger_subscribers(sender_id), "
@@ -123,6 +129,72 @@ class DisposablePostgresCASTests(unittest.TestCase):
                     conn, verified_sender_id="synthetic-owner",
                     base_revision=0,
                     changes={"favs": {"unsafe": {"set": True}}, "visited": {}})
+
+
+    def test_review_token_single_use_and_owner_binding(self):
+        import psycopg
+        from subscriber_review_confirmation import (
+            issue_keep_confirmation, consume_keep_confirmation)
+        with psycopg.connect(self.url) as conn:
+            current = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            deleted = update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=current["revision"],
+                changes={"favs": {"token-exhibit": {"delete": True}}, "visited": {}})
+            token = issue_keep_confirmation(
+                conn, verified_sender_id="synthetic-owner", kind="favs",
+                key="token-exhibit", base_revision=deleted["revision"],
+                reviewed_item_revision=deleted["revision"],
+                local_value={"title": "Restored"})
+        with psycopg.connect(self.url) as conn:
+            with self.assertRaises(ValueError):
+                consume_keep_confirmation(
+                    conn, verified_sender_id="wrong-owner", token=token,
+                    local_value={"title": "Restored"})
+        with psycopg.connect(self.url) as conn:
+            restored = consume_keep_confirmation(
+                conn, verified_sender_id="synthetic-owner", token=token,
+                local_value={"title": "Restored"})
+            self.assertFalse(restored["favs"]["token-exhibit"]["deleted"])
+        with psycopg.connect(self.url) as conn:
+            with self.assertRaises(ValueError):
+                consume_keep_confirmation(
+                    conn, verified_sender_id="synthetic-owner", token=token,
+                    local_value={"title": "Restored"})
+            with conn.cursor() as cur:
+                cur.execute("SELECT count(*) FROM tan_private.subscriber_review_confirmations "
+                            "WHERE used_at IS NOT NULL")
+                self.assertEqual(cur.fetchone()[0], 1)
+
+    def test_review_token_stale_revision_preserves_unused_token(self):
+        import psycopg
+        from subscriber_review_confirmation import (
+            issue_keep_confirmation, consume_keep_confirmation, _digest)
+        with psycopg.connect(self.url) as conn:
+            before = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            deleted = update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=before["revision"],
+                changes={"favs": {"stale-token-exhibit": {"delete": True}},
+                         "visited": {}})
+            token = issue_keep_confirmation(
+                conn, verified_sender_id="synthetic-owner", kind="favs",
+                key="stale-token-exhibit", base_revision=deleted["revision"],
+                reviewed_item_revision=deleted["revision"],
+                local_value={"title": "Old"})
+            update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=deleted["revision"],
+                changes={"favs": {"newer-exhibit": {"set": True}}, "visited": {}})
+        with psycopg.connect(self.url) as conn:
+            with self.assertRaises(StaleRevision):
+                consume_keep_confirmation(
+                    conn, verified_sender_id="synthetic-owner", token=token,
+                    local_value={"title": "Old"})
+            with conn.cursor() as cur:
+                cur.execute("SELECT used_at FROM tan_private.subscriber_review_confirmations "
+                            "WHERE token_hash = %s", (_digest(token),))
+                self.assertIsNone(cur.fetchone()[0])
 
 
 if __name__ == "__main__":
