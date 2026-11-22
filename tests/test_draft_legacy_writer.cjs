@@ -70,3 +70,19 @@ test("legacy-tab write detected before setItem aborts without clobbering", async
   assert.equal(result.status, "stale_local");
   assert.deepEqual(Object.keys(JSON.parse(x.data.taiwan_art_favs)), ["a", "legacy"]);
 });
+
+test("reported successful write must be observable in storage", async () => {
+  const x = fixture();
+  const result = await mutate({ ...x, kind: "favs", key: "persisted",
+    action: "set", value: { ...fav, title: "Persisted" } });
+  assert.equal(result.status, "written_under_cooperative_lock");
+  assert.equal(JSON.parse(x.data.taiwan_art_favs).persisted.title, "Persisted");
+});
+test("failed setItem must never report success", async () => {
+  const x = fixture();
+  x.storage.setItem = () => { throw Error("quota"); };
+  const result = await mutate({ ...x, kind: "favs", key: "unwritten",
+    action: "set", value: fav });
+  assert.equal(result.status, "unavailable");
+  assert.equal(JSON.parse(x.data.taiwan_art_favs).unwritten, undefined);
+});
