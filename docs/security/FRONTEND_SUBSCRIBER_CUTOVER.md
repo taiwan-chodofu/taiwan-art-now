@@ -25,3 +25,7 @@ Inspected the draft branch versions of `templates/index.html`, `templates/nearby
 - Local/remote merge and offline conflict rules missing.
 - Existing production subscriber JSON in public GitHub history requires separate privacy remediation.
 - **No production schema, subscriber data, deployment, or branch merge changed by this plan.**
+
+## Conservative reconciliation prototype (NOT enabled)
+
+`subscriber_reconciliation.py` now provides a **pure, additive-only** local/remote merge for the two maps `favs` and `visited`. Keys found on either side are retained; identical keys with equal values are stable. A key with different values on two devices is a conflict and **blocks the entire merge** rather than silently overwriting either value. A metadata-only preview exposes counts, not private values. Thirteen synthetic tests cover union, conflicts, idempotent replay, preservation of remote/local records, invalid input, and no mutation of original snapshots. **This is not a complete conflict-resolution or deletion protocol**: absence cannot distinguish deliberate deletion from an out-of-date device, and false values or nested objects may carry semantics that need product review. Tombstones, per-item revisions, authoritative server versions, explicit user conflict choice, and a transaction-bound compare-and-swap are required before any automatic two-way sync. The existing `/api/private-subscribers/sync` currently replaces maps; it MUST NOT be exposed as a conflict-safe merge endpoint. No production data was accessed or modified.
