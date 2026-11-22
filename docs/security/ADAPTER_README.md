@@ -14,3 +14,13 @@ This is **not production-integrated**. The new `private_subscriber_store.py` fun
 - Import is atomic across both datasets, but requires a **quiesced source**: the public GitHub JSON can change while being exported, and importer cannot detect changes after snapshot. Obtain an owner-controlled encrypted backup and plan a maintenance window before real migration.
 - Before running on live subscriber records, arrange encrypted backups, stop public writes, and verify no subscriber changes are lost during cutover.
 - No real subscriber records should be placed in PRs, logs, or tests.
+
+## Transactional route migration building blocks
+
+`subscriber_mutations.py` now defines pure, testable operations for Messenger favorites/visited, ref linking, unsubscribe, notification settings, and Web Push subscribe/sync/unsubscribe. Call them **inside** `mutate_messenger(lambda state: ...)` or `mutate_push(lambda state: ...)` only **after** independent caller authorization. The pure functions are not an authorization system.
+
+Tests: `python -m unittest discover -s tests -p 'test_subscriber_mutations.py'`.
+
+Do **not** wire these into Flask routes yet. The existing API accepts client-controlled sender IDs, refs and endpoints; switching its persistence to the private DB without fixing authorization would carry the same IDOR vulnerability into the new store. Messenger identity needs verified platform-originated proof, and browser subscriptions need an authenticated ownership mechanism or a carefully designed possession-token scheme. Never treat endpoint strings or publicly guessable identifiers as sufficient authorization.
+
+No claim is made that the new transition tests have been executed in CI yet.
