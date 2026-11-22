@@ -74,6 +74,19 @@ class FlaskWebhookTests(unittest.TestCase):
         self.assertEqual(store.call_args.args[:3], ("Messenger", "synthetic-sender", "hello"))
         self.assertEqual(len(store.call_args.args[4]), 64)
 
+    def test_duplicate_message_does_not_resubscribe(self):
+        import private_inbox
+        payload = {"object": "page", "entry": [{"messaging": [
+            {"sender": {"id": "synthetic-sender"},
+             "message": {"mid": "synthetic-mid", "text": "hello"}}]}]}
+        body, headers = signed(payload)
+        subscriber_calls = []
+        with patch.object(private_inbox, "store_inbound", return_value=False):
+            with patch.dict(scope, {"_add_subscriber": lambda *a, **k: subscriber_calls.append(a)}):
+                result = self.client.post("/webhook", data=body, headers=headers)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(subscriber_calls, [])
+
     def test_storage_failure_is_retryable_and_no_public_fallback(self):
         import private_inbox
         payload = {"object": "instagram", "entry": [{"messaging": [
