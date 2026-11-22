@@ -69,6 +69,61 @@ class DisposablePostgresCASTests(unittest.TestCase):
         self.assertEqual(state["revision"], 1)
         self.assertEqual(state["favs"]["synthetic-exhibit"]["value"], True)
 
+    def test_stale_addition_cannot_resurrect_tombstone(self):
+        import psycopg
+        with psycopg.connect(self.url) as conn:
+            current = read_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner")
+            initial_revision = current["revision"]
+            update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=initial_revision,
+                changes={"favs": {"deleted-exhibit": {"set": {"title": "Synthetic"}}},
+                         "visited": {}})
+            updated = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=updated["revision"],
+                changes={"favs": {"deleted-exhibit": {"delete": True}}, "visited": {}})
+        with psycopg.connect(self.url) as conn:
+            with self.assertRaises(StaleRevision):
+                update_for_verified_sender(
+                    conn, verified_sender_id="synthetic-owner",
+                    base_revision=initial_revision,
+                    changes={"favs": {"deleted-exhibit": {"set": {"title": "Stale"}}},
+                             "visited": {}})
+            final = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            self.assertTrue(final["favs"]["deleted-exhibit"]["deleted"])
+            self.assertIsNone(final["favs"]["deleted-exhibit"]["value"])
+
+    def test_explicit_fresh_revision_can_restore_deleted_exhibit(self):
+        import psycopg
+        with psycopg.connect(self.url) as conn:
+            before = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=before["revision"],
+                changes={"favs": {"explicit-exhibit": {"delete": True}}, "visited": {}})
+            tombstone = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
+            self.assertTrue(tombstone["favs"]["explicit-exhibit"]["deleted"])
+            restored = update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=tombstone["revision"],
+                changes={"favs": {"explicit-exhibit": {"set": {"title": "Restored"}}},
+                         "visited": {}})
+            self.assertFalse(restored["favs"]["explicit-exhibit"]["deleted"])
+            self.assertEqual(restored["favs"]["explicit-exhibit"]["value"]["title"],
+                             "Restored")
+
+    def test_autocommit_connection_cannot_run_cas(self):
+        import psycopg
+        with psycopg.connect(self.url, autocommit=True) as conn:
+            with self.assertRaises(ValueError):
+                update_for_verified_sender(
+                    conn, verified_sender_id="synthetic-owner",
+                    base_revision=0,
+                    changes={"favs": {"unsafe": {"set": True}}, "visited": {}})
+
 
 if __name__ == "__main__":
     unittest.main()
