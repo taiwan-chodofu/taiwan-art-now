@@ -2308,12 +2308,36 @@ def webhook_receive():
     if not verify_meta_webhook(request.get_data(cache=True),
                                request.headers.get("X-Hub-Signature-256", "")):
         abort(403)
-    body = request.get_json(silent=True) or {}
-    channel = "Instagram" if body.get("object") == "instagram" else "Messenger"
+    body = request.get_json(silent=True)
+    if not isinstance(body, dict) or body.get("object") not in ("page", "instagram"):
+        return "Bad Request", 400
     entries = body.get("entry", [])
+    if not isinstance(entries, list):
+        return "Bad Request", 400
+    # Validate the entire batch before any subscription or message side effects.
+    for entry in entries:
+        if not isinstance(entry, dict) or not isinstance(entry.get("messaging", []), list):
+            return "Bad Request", 400
+        for event in entry.get("messaging", []):
+            if not isinstance(event, dict) or not isinstance(event.get("sender"), dict):
+                return "Bad Request", 400
+            if not isinstance(event["sender"].get("id"), str) or not event["sender"]["id"]:
+                return "Bad Request", 400
+            for field in ("message", "postback", "referral"):
+                if field in event and not isinstance(event[field], dict):
+                    return "Bad Request", 400
+            message = event.get("message", {})
+            if not isinstance(message.get("attachments", []), list):
+                return "Bad Request", 400
+            if not isinstance(message.get("text", ""), str):
+                return "Bad Request", 400
+            for attachment in message.get("attachments", []):
+                if not isinstance(attachment, dict) or not isinstance(attachment.get("payload", {}), dict):
+                    return "Bad Request", 400
+    channel = "Instagram" if body["object"] == "instagram" else "Messenger"
     for entry in entries:
         for event in entry.get("messaging", []):
-            sender_id = event.get("sender", {}).get("id", "")
+            sender_id = event["sender"]["id"]
 
             # Handle standalone referral (existing user clicks m.me?ref=xxx)
             referral = event.get("referral", {})
