@@ -2401,15 +2401,16 @@ def webhook_receive():
             # Failure returns 503 so Meta can retry delivery; no public fallback.
             from private_inbox import store_inbound, event_key_for
             try:
-                store_inbound(channel, sender_id, text, image_urls,
-                              event_key_for(channel, sender_id, event))
+                is_new_message = store_inbound(channel, sender_id, text, image_urls,
+                                               event_key_for(channel, sender_id, event))
             except Exception:
                 # Do not log exception details: database errors can contain private values.
                 app.logger.error("Private inbound message persistence failed")
                 return "Service Unavailable", 503
 
-            # Preserve legacy auto-subscribe behavior only after private persistence.
-            _add_subscriber(sender_id)
+            # A replay is already persisted: do not repeat subscription writes.
+            if is_new_message:
+                _add_subscriber(sender_id)
 
     return "OK", 200
 
