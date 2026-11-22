@@ -27,11 +27,27 @@
       if (!key || key.length > MAX_KEY || ["__proto__", "constructor", "prototype"].includes(key))
         throw new Error("Invalid exhibition key");
       if (kind === "visited") {
-        if (typeof item !== "string" || item.length > 128 ||
-            !Number.isFinite(Date.parse(item)) ||
-            !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d/.test(item))
-          throw new Error("Invalid visited timestamp");
-        result[key] = item;
+        if (typeof item === "string") {
+          if (item.length > 128 || !Number.isFinite(Date.parse(item)) ||
+              !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d/.test(item))
+            throw new Error("Invalid visited timestamp");
+          result[key] = item;
+        } else {
+          if (!plain(item) || Object.keys(item).some(field => !VISITED_FIELDS.includes(field)) ||
+              typeof item.date !== "string" || item.date.length > 128 ||
+              !Number.isFinite(Date.parse(item.date)) ||
+              !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d/.test(item.date))
+            throw new Error("Invalid visited record");
+          const normalized = Object.create(null);
+          for (const field of VISITED_FIELDS) {
+            if (own(item, field)) {
+              if (typeof item[field] !== "string" || item[field].length > MAX_FIELD)
+                throw new Error("Invalid visited field");
+              normalized[field] = item[field];
+            }
+          }
+          result[key] = normalized;
+        }
       } else {
         if (!plain(item) || Object.keys(item).some(field => !FAV_FIELDS.includes(field)))
           throw new Error("Invalid favorite item");
