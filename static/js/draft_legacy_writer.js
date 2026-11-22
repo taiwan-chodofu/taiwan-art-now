@@ -43,6 +43,11 @@
         if (storage.getItem(storageKey) !== raw)
           return { status: "stale_local" };
         storage.setItem(storageKey, JSON.stringify(next));
+        // setItem may be silently ignored by a broken storage adapter.
+        // Verify the complete map, not merely the selected key.
+        const persisted = storage.getItem(storageKey);
+        if (persisted !== JSON.stringify(next))
+          return { status: "uncertain_write" };
         return { status: "written_under_cooperative_lock" };
       });
     } catch (_) {
