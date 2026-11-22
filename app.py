@@ -2396,9 +2396,7 @@ def webhook_receive():
                     "取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
                 continue
 
-            # Auto-subscribe anyone who messages the page
-            _add_subscriber(sender_id)
-
+            # Persist user submission before changing subscriber state.
             # Private intake only. Never create public GitHub issues for user messages.
             # Failure returns 503 so Meta can retry delivery; no public fallback.
             from private_inbox import store_inbound, event_key_for
@@ -2409,6 +2407,9 @@ def webhook_receive():
                 # Do not log exception details: database errors can contain private values.
                 app.logger.error("Private inbound message persistence failed")
                 return "Service Unavailable", 503
+
+            # Preserve legacy auto-subscribe behavior only after private persistence.
+            _add_subscriber(sender_id)
 
     return "OK", 200
 
