@@ -61,6 +61,8 @@ on:
       - 'tests/test_subscriber_reconciliation.py'
       - 'versioned_subscriber_sync.py'
       - 'tests/test_versioned_subscriber_sync.py'
+      - 'static/js/draft_explicit_keep.js'
+      - 'tests/test_draft_explicit_keep.cjs'
       - 'subscriber_review_api_routes.py'
       - 'tests/test_subscriber_review_api_http.py'
       - 'subscriber_review_confirmation.py'
@@ -151,4 +153,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run synthetic browser sync tests (Node built-in runner)
-        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs tests/test_draft_conflict_review_ui.cjs tests/test_draft_decision_verifier.cjs tests/test_draft_additive_merge.cjs
+        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs tests/test_draft_conflict_review_ui.cjs tests/test_draft_decision_verifier.cjs tests/test_draft_additive_merge.cjs tests/test_draft_explicit_keep.cjs
