@@ -131,3 +131,7 @@ CI 45049623175 failed because the newly added visited-object timestamp regular e
 ## Full-map persistence verification before UI integration
 
 CI 45050557252 passed the previous UI adapter. The unmounted shared writer now re-reads the entire raw localStorage map after setItem and returns `uncertain_write` unless the bytes exactly match the intended result. New tests cover a silently ignored setItem and corruption of an unrelated exhibition during a write. The UI adapter does not invoke `onCommitted` on `uncertain_write`; a real UI must show an explicit failure/retry message without claiming synchronization. This detects but cannot repair silent storage corruption, and is **not** an atomic multi-tab or cross-device guarantee. No production templates or data changed.
+
+## Simulated page-flow integration checks (not a browser E2E test)
+
+CI 45050651429 passed. Added `tests/test_draft_page_flow.cjs`: injected fake localStorage, cooperative lock and UI callbacks model home/discover object-valued visited records, nearby/detail ISO-valued visited records, favorite metadata, add/remove, quota failure, and concurrent independent page instances. UI analytics/notification counters are fake callbacks, **not network calls**. This is a Node integration simulation, **not** an actual browser test or a claim that existing templates are wired. Real Playwright coverage, stale tab migration and server consent enforcement remain release blockers. No production changes.
