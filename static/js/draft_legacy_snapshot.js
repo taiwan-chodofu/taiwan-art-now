@@ -13,7 +13,8 @@
   const MAX_ITEMS = 10000;
   const MAX_KEY = 512;
   const MAX_FIELD = 4096;
-  const FAV_FIELDS = ["title", "museum", "dates", "url"];
+  const FAV_FIELDS = ["title", "museum", "dates", "url", "region", "event"];
+  const VISITED_FIELDS = ["date", "title", "museum", "dates", "url", "region"];
   const own = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
   const plain = (obj) => obj !== null && typeof obj === "object" &&
     !Array.isArray(obj) && (Object.getPrototypeOf(obj) === Object.prototype ||
