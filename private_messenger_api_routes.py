@@ -56,6 +56,8 @@ def _post(operation):
 
 @messenger_blueprint.get("/api/private-subscribers/status")
 def subscriber_status():
+    if request.args:
+        return jsonify(error="invalid_request"), 400
     return _execute(status)
 
 
