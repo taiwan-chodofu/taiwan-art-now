@@ -31,19 +31,19 @@ for (const choice of ["decide_later", "remove_from_list"]) {
   });
 }
 test("unrelated exhibition cannot use decision", async () => {
-  assert.equal((await execute(args({ conflict: { ...conflict, key: "b" } })).status),
+  assert.equal((await execute(args({ conflict: { ...conflict, key: "b" } }))).status,
     "not_authorized");
 });
 test("non-tombstone conflict cannot issue token", async () => {
   assert.equal((await execute(args({ conflict: { ...conflict,
-    reason: "metadata_diff_preserved" } })).status), "not_authorized");
+    reason: "metadata_diff_preserved" } }))).status, "not_authorized");
 });
 test("invalid item revision cannot issue token", async () => {
   assert.equal((await execute(args({ conflict: { ...conflict,
-    itemRevision: 7 } })).status), "not_authorized");
+    itemRevision: 7 } }))).status, "not_authorized");
 });
 test("missing saved value cannot issue token", async () => {
-  assert.equal((await execute(args({ localValue: null })).status), "not_authorized");
+  assert.equal((await execute(args({ localValue: null }))).status, "not_authorized");
 });
 test("failed issue never attempts consume", async () => {
   let count = 0;
