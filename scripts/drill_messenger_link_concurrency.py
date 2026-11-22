@@ -15,6 +15,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from messenger_link_store import issue, consume
 
 
+def verify_staging_identity(conn, expected_name):
+    if not expected_name or expected_name in ("postgres", "template1"):
+        raise RuntimeError("Dedicated TAN_STAGING_DB_NAME required")
+    with conn.cursor() as cur:
+        cur.execute("select current_database(), to_regclass('tan_private.staging_drill_guard')")
+        database_name, guard_table = cur.fetchone()
+        if database_name != expected_name or guard_table is None:
+            raise RuntimeError("Database identity or staging guard missing")
+        cur.execute("select marker from tan_private.staging_drill_guard limit 2")
+        if cur.fetchall() != [("disposable-isolated-database",)]:
+            raise RuntimeError("Invalid staging guard marker")
+
+
+
 def main():
     url = os.environ.get("TAN_STAGING_DATABASE_URL")
     if not url:
@@ -25,17 +39,8 @@ def main():
         raise RuntimeError("Staging URL must differ from TAN_DATABASE_URL")
     # Connection-string inequality alone does not prove isolation.
     expected_name = os.environ.get("TAN_STAGING_DB_NAME", "")
-    if not expected_name or expected_name in ("postgres", "template1"):
-        raise RuntimeError("Dedicated TAN_STAGING_DB_NAME required")
     with psycopg.connect(url, connect_timeout=10) as conn:
-        with conn.cursor() as cur:
-            cur.execute("select current_database(), to_regclass('tan_private.staging_drill_guard')")
-            database_name, guard_table = cur.fetchone()
-            if database_name != expected_name or guard_table is None:
-                raise RuntimeError("Database identity or staging guard missing")
-            cur.execute("select marker from tan_private.staging_drill_guard limit 2")
-            if cur.fetchall() != [("disposable-isolated-database",)]:
-                raise RuntimeError("Invalid staging guard marker")
+        verify_staging_identity(conn, expected_name)
         token = issue(conn, ttl_seconds=120)
     synthetic_sender = "synthetic-" + uuid4().hex
 
