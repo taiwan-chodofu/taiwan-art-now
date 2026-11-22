@@ -60,6 +60,26 @@ class FlaskWebhookTests(unittest.TestCase):
         result = self.client.post("/webhook", data=body, headers=headers)
         self.assertEqual(result.status_code, 200)
 
+    def test_signed_invalid_batch_rejected_before_side_effects(self):
+        import private_inbox
+        bad_batches = [
+            {"object": "page", "entry": {}},
+            {"object": "page", "entry": [{"messaging": [None]}]},
+            {"object": "page", "entry": [{"messaging": [{"sender": {"id": "synthetic"}, "message": {"text": 123}}]}]},
+            {"object": "page", "entry": [{"messaging": [{"sender": {"id": "synthetic"}, "message": {"attachments": [None]}}]}]},
+            {"object": "page", "entry": [
+                {"messaging": [{"sender": {"id": "synthetic"}, "message": {"text": "valid"}}]},
+                {"messaging": [{"sender": {"id": "synthetic"}, "message": {"text": 123}}]},
+            ]},
+        ]
+        with patch.object(private_inbox, "store_inbound") as store:
+            for payload in bad_batches:
+                with self.subTest(payload=payload):
+                    body, headers = signed(payload)
+                    result = self.client.post("/webhook", data=body, headers=headers)
+                    self.assertEqual(result.status_code, 400)
+            store.assert_not_called()
+
     def test_signed_message_is_written_to_private_inbox(self):
         import private_inbox
         payload = {"object": "page", "entry": [{"messaging": [
