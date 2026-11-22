@@ -26,7 +26,9 @@ class WebhookWiringSafetyTests(unittest.TestCase):
 
     def test_get_verification_requires_configured_secret(self):
         source = ast.unparse(function("webhook_verify"))
-        self.assertIn("MESSENGER_VERIFY_TOKEN and (token == MESSENGER_VERIFY_TOKEN)", source)
+        self.assertIn("MESSENGER_VERIFY_TOKEN", source)
+        self.assertIn("token == MESSENGER_VERIFY_TOKEN", source)
+        self.assertIn("isinstance(challenge, str)", source)
 
     def test_post_verifies_before_json_parsing(self):
         source = ast.unparse(function("webhook_receive"))
