@@ -79,3 +79,7 @@ The draft now adds AST-based regression checks for the actual Flask source: GET 
 ## Message replay side effects
 
 For ordinary inbound submissions, `store_inbound` returns False on duplicate `event_key`. The draft webhook now skips the subsequent auto-subscription write on duplicates; a synthetic Flask HTTP test checks this. This does **not** make the whole webhook idempotent: standalone referrals, postbacks, subscribe/unsubscribe keywords and outgoing replies still need transactional deduplication. A 503 after earlier events in a multi-event batch can replay those earlier side effects. Do not deploy before those flows are handled safely and verified in staging.
+
+## Signed batch prevalidation
+
+The draft now validates Meta's top-level object, entry and messaging arrays, sender IDs, message/postback/referral objects, text and attachment shapes **before processing any event in a batch**. Malformed signed payloads return 400 without private inbox or subscription writes. Synthetic Flask tests include a batch whose first event is valid and second is malformed, guarding against partial processing. This is structural validation, not an exhaustive Meta schema validator; limits and attachment URLs still need staging checks. This does not solve partial side effects caused by database errors in otherwise valid batches, nor replay of subscription commands and replies.
