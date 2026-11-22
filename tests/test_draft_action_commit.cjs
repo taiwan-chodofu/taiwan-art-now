@@ -60,3 +60,13 @@ test("invalid value cannot trigger success UI", async () => {
   assert.equal(result.status, "unavailable");
   assert.equal(x.committed.length, 0);
 });
+
+test("UI callback exception does not pretend storage failed", async () => {
+  const x = setup();
+  const adapter = create({ storage: x.storage, locks: x.locks,
+    onCommitted: () => { throw Error("render"); },
+    onFailure: () => { throw Error("should not run"); } });
+  const result = await adapter.commit({ kind: "favs", key: "a", action: "set", value: fav });
+  assert.equal(result.status, "committed_callback_failed");
+  assert.equal(JSON.parse(x.data.taiwan_art_favs).a.title, "A");
+});
