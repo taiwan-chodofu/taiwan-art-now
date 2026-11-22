@@ -2098,7 +2098,7 @@ def disaster_alerts_api():
     return json.dumps(result, ensure_ascii=False), 200, {"Content-Type": "application/json", "Cache-Control": "public, max-age=600"}
 
 
-MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
+MESSENGER_VERIFY_TOKEN = os.environ.get("MESSENGER_VERIFY_TOKEN", "")
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
 
 
@@ -2108,7 +2108,7 @@ def webhook_verify():
     mode = request.args.get("hub.mode")
     token = request.args.get("hub.verify_token")
     challenge = request.args.get("hub.challenge")
-    if mode == "subscribe" and token == MESSENGER_VERIFY_TOKEN:
+    if mode == "subscribe" and MESSENGER_VERIFY_TOKEN and token == MESSENGER_VERIFY_TOKEN:
         return challenge, 200
     return "Forbidden", 403
 
@@ -2298,7 +2298,7 @@ def _send_messenger_reply(sender_id, text):
 
 @app.route("/webhook", methods=["POST"])
 def webhook_receive():
-    """Receive messages from Messenger and create GitHub issues."""
+    """Receive signed Meta messages and persist private inbox submissions."""
     import urllib.request as urllib_req
     from datetime import datetime, timezone, timedelta
 
