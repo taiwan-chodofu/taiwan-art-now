@@ -83,3 +83,9 @@ For ordinary inbound submissions, `store_inbound` returns False on duplicate `ev
 ## Signed batch prevalidation
 
 The draft now validates Meta's top-level object, entry and messaging arrays, sender IDs, message/postback/referral objects, text and attachment shapes **before processing any event in a batch**. Malformed signed payloads return 400 without private inbox or subscription writes. Synthetic Flask tests include a batch whose first event is valid and second is malformed, guarding against partial processing. This is structural validation, not an exhaustive Meta schema validator; limits and attachment URLs still need staging checks. This does not solve partial side effects caused by database errors in otherwise valid batches, nor replay of subscription commands and replies.
+
+## Input hardening and unresolved command replay
+
+The draft validates inbox dedup keys as 64 lowercase hexadecimal characters, rejects non-object events/messages, and rejects whitespace in HTTPS image URLs. GET Meta verification now also requires a challenge string. Synthetic regression tests were added; check latest CI.
+
+**Do not treat subscriber commands as idempotent yet.** Referrals, postbacks, subscribe/unsubscribe keywords and outbound replies still mutate legacy public JSON and/or send replies without an atomic event-processing ledger. Reusing the inbound message inbox's unique key as a command ledger without a transactional claim/complete/retry design could lose commands after crashes. Before implementation, define a separate event state machine (pending/processing/completed with retry recovery) and coordinate its transaction with subscriber writes; do not deploy the partial draft.
