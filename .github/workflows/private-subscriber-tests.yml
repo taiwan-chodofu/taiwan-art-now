@@ -23,6 +23,8 @@ on:
       - 'tests/test_source_freeze.py'
       - 'scripts/audit_subscriber_ownership.py'
       - 'tests/test_subscriber_ownership_audit.py'
+      - 'messenger_link_challenge.py'
+      - 'tests/test_messenger_link_challenge.py'
       - '.github/workflows/private-subscriber-tests.yml'
   push:
     branches:
@@ -45,4 +47,4 @@ jobs:
       - name: Compile security modules
         run: python -m py_compile private_subscriber_store.py private_inbox.py private_inbox_admin.py subscriber_mutations.py webhook_security.py scripts/import_private_subscribers.py
       - name: Run synthetic-only unit tests
-        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v && python -m unittest discover -s tests -p 'test_webhook_wiring.py' -v && python -m unittest discover -s tests -p 'test_flask_webhook_http.py' -v && python -m unittest discover -s tests -p 'test_private_destination_preflight.py' -v && python -m unittest discover -s tests -p 'test_private_backup_verification.py' -v && python -m unittest discover -s tests -p 'test_source_freeze.py' -v && python -m unittest discover -s tests -p 'test_subscriber_ownership_audit.py' -v && python scripts/audit_subscriber_ownership.py --report-only
+        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v && python -m unittest discover -s tests -p 'test_webhook_wiring.py' -v && python -m unittest discover -s tests -p 'test_flask_webhook_http.py' -v && python -m unittest discover -s tests -p 'test_private_destination_preflight.py' -v && python -m unittest discover -s tests -p 'test_private_backup_verification.py' -v && python -m unittest discover -s tests -p 'test_source_freeze.py' -v && python -m unittest discover -s tests -p 'test_subscriber_ownership_audit.py' -v && python -m unittest discover -s tests -p 'test_messenger_link_challenge.py' -v && python scripts/audit_subscriber_ownership.py --report-only
