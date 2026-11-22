@@ -61,6 +61,13 @@ class VersionedHTTPTests(unittest.TestCase):
         self.payload = {"base_revision": 1,
                         "changes": {"favs": {"a": {"delete": True}}, "visited": {}}}
 
+    def test_autocommit_rejected_before_session_lookup(self):
+        self.db.autocommit = True
+        response = self.client.post("/api/private-subscribers/v2/changes",
+                                    json=self.payload, headers=self.headers)
+        self.assertEqual(response.status_code, 503)
+        self.assertIsNone(self.db.query)
+
     def test_stale_revision_is_409(self):
         with patch("versioned_subscriber_api_routes.update_for_verified_sender",
                    side_effect=StaleRevision("stale")):
