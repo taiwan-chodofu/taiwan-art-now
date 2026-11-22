@@ -86,3 +86,23 @@ test("failed setItem must never report success", async () => {
   assert.equal(result.status, "unavailable");
   assert.equal(JSON.parse(x.data.taiwan_art_favs).unwritten, undefined);
 });
+
+test("silently ignored setItem never reports success", async () => {
+  const x = fixture();
+  x.storage.setItem = () => {};
+  const result = await mutate({ ...x, kind: "favs", key: "ignored",
+    action: "set", value: fav });
+  assert.equal(result.status, "uncertain_write");
+  assert.equal(JSON.parse(x.data.taiwan_art_favs).ignored, undefined);
+});
+test("silent mutation of another exhibition cannot report success", async () => {
+  const x = fixture();
+  x.storage.setItem = (key, raw) => {
+    const altered = JSON.parse(raw);
+    altered.a.title = "Corrupted";
+    x.data[key] = JSON.stringify(altered);
+  };
+  const result = await mutate({ ...x, kind: "favs", key: "new",
+    action: "set", value: fav });
+  assert.equal(result.status, "uncertain_write");
+});
