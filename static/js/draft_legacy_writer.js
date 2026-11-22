@@ -1,0 +1,49 @@
+/* DRAFT ONLY. Shared per-item legacy write coordinator; NOT mounted.
+ * All tabs and pages must opt into the same Web Lock. Legacy tabs bypass it.
+ * No remote synchronization or tombstone inference is performed here.
+ */
+(function(root, factory) {
+  const api = factory(typeof module === "object" && module.exports
+    ? require("./draft_legacy_snapshot.js") : root.TanDraftLegacySnapshot);
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.TanDraftLegacyWriter = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function(legacy) {
+  "use strict";
+  const LOCK_NAME = "tan-subscriber-legacy-storage-v1";
+  const own = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
+  async function mutate({ storage, locks, kind, key, action, value }) {
+    if (!storage || typeof storage.getItem !== "function" ||
+        typeof storage.setItem !== "function" ||
+        !locks || typeof locks.request !== "function" ||
+        !["favs", "visited"].includes(kind) ||
+        typeof key !== "string" || !key ||
+        !["set", "remove"].includes(action))
+      return { status: "not_authorized" };
+    try {
+      return await locks.request(LOCK_NAME, { mode: "exclusive" }, async () => {
+        const current = legacy.read(storage);
+        if (current.status !== "ready") return { status: current.status };
+        const next = { ...current.snapshot[kind] };
+        if (action === "set") {
+          const validated = legacy.validateMap({ [key]: value }, kind);
+          next[key] = validated[key];
+        } else {
+          if (!own(next, key)) return { status: "unchanged" };
+          delete next[key];
+        }
+        const storageKey = legacy.KEYS[kind];
+        const raw = storage.getItem(storageKey);
+        // Re-read raw inside the lock, not a whole-map snapshot from the UI.
+        const previous = raw === null ? {} : JSON.parse(raw);
+        const verified = legacy.validateMap(previous, kind);
+        if (JSON.stringify(verified) !== JSON.stringify(current.snapshot[kind]))
+          return { status: "stale_local" };
+        storage.setItem(storageKey, JSON.stringify(next));
+        return { status: "written_under_cooperative_lock" };
+      });
+    } catch (_) {
+      return { status: "unavailable" };
+    }
+  }
+  return { mutate, LOCK_NAME };
+});
