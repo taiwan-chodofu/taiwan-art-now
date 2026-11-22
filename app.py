@@ -2399,37 +2399,14 @@ def webhook_receive():
             # Auto-subscribe anyone who messages the page
             _add_subscriber(sender_id)
 
-            body_parts = [f"**From {channel}:** sender_id={sender_id}"]
-            if text:
-                body_parts.append(f"**Message:** {text}")
-            for img in image_urls:
-                body_parts.append(f"**Image:** ![photo]({img})")
-            tw_now = datetime.now(timezone(timedelta(hours=8)))
-            body_parts.append(f"**Received:** {tw_now.isoformat()}")
-
-            issue_body = "\n\n".join(body_parts)
-            issue_data = json.dumps({
-                "title": f"[{channel}] {text[:50] or 'Image submission'}",
-                "body": issue_body,
-                "labels": ["user-request"],
-            }).encode()
-
-            gh_token = os.environ.get("GH_TOKEN", "")
-            if gh_token:
-                req = urllib_req.Request(
-                    "https://api.github.com/repos/taiwan-chodofu/taiwan-art-now/issues",
-                    data=issue_data,
-                    headers={
-                        "Authorization": f"token {gh_token}",
-                        "Content-Type": "application/json",
-                        "Accept": "application/vnd.github.v3+json",
-                    },
-                    method="POST",
-                )
-                try:
-                    urllib_req.urlopen(req, timeout=10)
-                except Exception:
-                    pass
+            # Private intake only. Never create public GitHub issues for user messages.
+            # Failure returns 503 so Meta can retry delivery; no public fallback.
+            from private_inbox import store_inbound
+            try:
+                store_inbound(channel, sender_id, text, image_urls)
+            except Exception:
+                app.logger.exception("Private inbound message persistence failed")
+                return "Service Unavailable", 503
 
     return "OK", 200
 
