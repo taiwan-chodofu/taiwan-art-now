@@ -17,6 +17,8 @@ on:
       - 'tests/test_flask_webhook_http.py'
       - 'scripts/check_private_destination.py'
       - 'tests/test_private_destination_preflight.py'
+      - 'scripts/verify_private_backup.py'
+      - 'tests/test_private_backup_verification.py'
       - '.github/workflows/private-subscriber-tests.yml'
   push:
     branches:
@@ -39,4 +41,4 @@ jobs:
       - name: Compile security modules
         run: python -m py_compile private_subscriber_store.py private_inbox.py private_inbox_admin.py subscriber_mutations.py webhook_security.py scripts/import_private_subscribers.py
       - name: Run synthetic-only unit tests
-        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v && python -m unittest discover -s tests -p 'test_webhook_wiring.py' -v && python -m unittest discover -s tests -p 'test_flask_webhook_http.py' -v && python -m unittest discover -s tests -p 'test_private_destination_preflight.py' -v
+        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v && python -m unittest discover -s tests -p 'test_webhook_wiring.py' -v && python -m unittest discover -s tests -p 'test_flask_webhook_http.py' -v && python -m unittest discover -s tests -p 'test_private_destination_preflight.py' -v && python -m unittest discover -s tests -p 'test_private_backup_verification.py' -v
