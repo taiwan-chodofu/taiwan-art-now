@@ -4,10 +4,15 @@ Requires review-only tan_private.subscriber_sync_states table in an isolated
 staging database. Caller must pass a sender resolved from an authenticated
 server session; never accept browser-supplied sender IDs. No production wiring.
 """
-from versioned_subscriber_sync import apply_changes, empty_state, StaleRevision
+from versioned_subscriber_sync import apply_changes, empty_state, StaleRevision, validate_state
+
+# Internal-only capability. Ordinary callers cannot authorize restoration by
+# passing a boolean or a browser-provided field.
+_REVIEWED_RESTORE_CAPABILITY = object()
 
 
-def update_for_verified_sender(conn, *, verified_sender_id, base_revision, changes):
+def update_for_verified_sender(conn, *, verified_sender_id, base_revision, changes,
+                               _reviewed_restore_capability=None):
     if not isinstance(verified_sender_id, str) or not verified_sender_id:
         raise ValueError("Verified sender required")
     if getattr(conn, "autocommit", False):
@@ -28,6 +33,14 @@ def update_for_verified_sender(conn, *, verified_sender_id, base_revision, chang
             )
             row = cur.fetchone()
             current = row[0] if row else empty_state()
+            validate_state(current)
+            if _reviewed_restore_capability is not _REVIEWED_RESTORE_CAPABILITY:
+                for kind in ("favs", "visited"):
+                    for key, operation in changes.get(kind, {}).items():
+                        existing = current[kind].get(key)
+                        if (existing and existing["deleted"] and
+                                isinstance(operation, dict) and "set" in operation):
+                            raise StaleRevision("Reviewed confirmation required for restoration")
             next_state = apply_changes(
                 current, base_revision=base_revision, changes=changes
             )
