@@ -31,12 +31,16 @@ class Connection:
     def __init__(self, row=None):
         self.cur = Cursor(row)
         self.commits = 0
+        self.rollbacks = 0
 
     def cursor(self):
         return self.cur
 
     def commit(self):
         self.commits += 1
+
+    def rollback(self):
+        self.rollbacks += 1
 
 
 class StoreTests(unittest.TestCase):
@@ -76,6 +80,27 @@ class StoreTests(unittest.TestCase):
             messenger_link_store.issue(conn, ttl_seconds=901)
         self.assertEqual(conn.commits, 0)
 
+
+    def test_issue_failure_rolls_back(self):
+        conn = Connection()
+        def fail(*_):
+            raise RuntimeError("synthetic database failure")
+        conn.cur.execute = fail
+        with self.assertRaises(RuntimeError):
+            messenger_link_store.issue(conn)
+        self.assertEqual(conn.rollbacks, 1)
+        self.assertEqual(conn.commits, 0)
+
+    def test_consume_failure_rolls_back(self):
+        conn = Connection()
+        def fail(*_):
+            raise RuntimeError("synthetic database failure")
+        conn.cur.execute = fail
+        with self.assertRaises(RuntimeError):
+            messenger_link_store.consume(
+                conn, token="synthetic", verified_sender_id="verified-meta")
+        self.assertEqual(conn.rollbacks, 1)
+        self.assertEqual(conn.commits, 0)
 
 if __name__ == "__main__":
     unittest.main()
