@@ -56,3 +56,17 @@ test("absent removal is no-op, not a tombstone", async () => {
   assert.equal((await mutate({ ...x, kind: "favs", key: "absent",
     action: "remove" })).status, "unchanged");
 });
+
+test("legacy-tab write detected before setItem aborts without clobbering", async () => {
+  const x = fixture();
+  let reads = 0;
+  const original = x.storage.getItem;
+  x.storage.getItem = key => {
+    reads++;
+    if (reads === 4) x.data.taiwan_art_favs = JSON.stringify({ a: fav, legacy: fav });
+    return original(key);
+  };
+  const result = await mutate({ ...x, kind: "favs", key: "new", action: "set", value: fav });
+  assert.equal(result.status, "stale_local");
+  assert.deepEqual(Object.keys(JSON.parse(x.data.taiwan_art_favs)), ["a", "legacy"]);
+});
