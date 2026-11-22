@@ -21,6 +21,7 @@ class ClaimHTTPTests(unittest.TestCase):
         self.app = Flask(__name__)
         self.app.config["TAN_CANONICAL_ORIGIN"] = ORIGIN
         self.app.config["TAN_PRIVATE_DB_CONNECT"] = lambda: FakeConn()
+        self.app.config["TAN_PRIVATE_CLAIM_LIMITER"] = lambda req: True
         self.app.register_blueprint(claim_blueprint)
         self.client = self.app.test_client()
 
@@ -79,6 +80,27 @@ class ClaimHTTPTests(unittest.TestCase):
         self.app.config.pop("TAN_PRIVATE_DB_CONNECT")
         result = self.post()
         self.assertEqual(result.status_code, 503)
+
+    def test_missing_limiter_fails_closed(self):
+        self.app.config.pop("TAN_PRIVATE_CLAIM_LIMITER")
+        result = self.post()
+        self.assertEqual(result.status_code, 503)
+        self.assertNotIn("Set-Cookie", result.headers)
+
+    def test_limiter_denies_before_claim(self):
+        self.app.config["TAN_PRIVATE_CLAIM_LIMITER"] = lambda req: False
+        with patch("private_browser_claim_routes.claim_browser_session") as claim:
+            result = self.post()
+        self.assertEqual(result.status_code, 429)
+        claim.assert_not_called()
+
+    def test_limiter_outage_fails_closed(self):
+        def outage(req):
+            raise RuntimeError("synthetic limiter outage")
+        self.app.config["TAN_PRIVATE_CLAIM_LIMITER"] = outage
+        result = self.post()
+        self.assertEqual(result.status_code, 503)
+        self.assertNotIn("Set-Cookie", result.headers)
 
     def test_non_json_rejected(self):
         result = self.client.post("/api/private-auth/claim",
