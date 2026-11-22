@@ -38,7 +38,7 @@
         const verified = legacy.validateMap(previous, kind);
         if (JSON.stringify(verified) !== JSON.stringify(current.snapshot[kind]))
           return { status: "stale_local" };
-        storage.setItem(storageKey, JSON.stringify(next));
+        // Detect an uncoordinated legacy-tab write immediately before saving.\n        // This narrows but cannot eliminate the race with old tabs.\n        if (storage.getItem(storageKey) !== raw)\n          return { status: "stale_local" };\n        storage.setItem(storageKey, JSON.stringify(next));
         return { status: "written_under_cooperative_lock" };
       });
     } catch (_) {
