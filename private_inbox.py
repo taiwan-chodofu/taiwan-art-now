@@ -1,6 +1,7 @@
 """Private inbound message storage with retry deduplication."""
 import hashlib
 import json
+import re
 from urllib.parse import urlsplit
 
 
@@ -10,7 +11,11 @@ def event_key_for(channel, sender_id, event):
     Message mid is preferred; otherwise hash the full signed event payload.
     A byte-identical event replay deduplicates; distinct timestamps remain distinct.
     """
+    if not isinstance(event, dict):
+        raise ValueError("Invalid event")
     message = event.get("message") or {}
+    if not isinstance(message, dict):
+        raise ValueError("Invalid event message")
     mid = message.get("mid")
     if isinstance(mid, str) and mid:
         payload = ["meta-mid", channel, sender_id, mid]
@@ -28,7 +33,7 @@ def validate_inbound(channel, sender_id, message_text, image_urls, event_key):
         raise ValueError("Invalid sender")
     if not isinstance(message_text, str) or len(message_text) > 20000:
         raise ValueError("Invalid message")
-    if not isinstance(event_key, str) or len(event_key) != 64:
+    if not isinstance(event_key, str) or re.fullmatch(r"[0-9a-f]{64}", event_key) is None:
         raise ValueError("Invalid event key")
     if not isinstance(image_urls, list) or len(image_urls) > 10:
         raise ValueError("Invalid images")
@@ -36,7 +41,8 @@ def validate_inbound(channel, sender_id, message_text, image_urls, event_key):
         if not isinstance(url, str) or len(url) > 4096:
             raise ValueError("Invalid image URL")
         parsed = urlsplit(url)
-        if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
+        if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
+                or any(c.isspace() for c in url)):
             raise ValueError("Image URL must be HTTPS")
     return channel, sender_id, message_text, image_urls, event_key
 
