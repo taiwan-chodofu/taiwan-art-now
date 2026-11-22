@@ -31,7 +31,7 @@ The draft now validates `X-Hub-Signature-256` against the exact raw request body
 
 **Release gate:** Set `META_APP_SECRET` to the correct Meta App Secret in Render's server-side environment, verify legitimate Meta webhook deliveries in a staging deployment, and only then merge/deploy. Never place the secret in GitHub, issues, PRs, logs, or the browser. Without this setup, all webhook POSTs will receive HTTP 403. GET verification remains a separate flow.
 
-The webhook still creates public GitHub issues containing sender IDs and messages after successful signature verification. **This is a separate privacy blocker** and must be replaced with private intake before production cutover. The public JSON persistence also remains unchanged.
+The **deployed** webhook still creates public GitHub issues containing sender IDs and messages; the **draft PR** replaces this with private intake. The deployed public JSON persistence also remains unchanged.
 
 ## Private inbound message inbox — draft integration
 
@@ -42,3 +42,16 @@ The draft Flask webhook now calls `private_inbox.store_inbound` instead of creat
 Ten synthetic-only inbox validation/dedup tests are present (execution not yet verified). The inbox now has a unique `event_key` index; `private_inbox.event_key_for` prefers Meta message `mid` and falls back to a hash of the complete event. Synthetic SQL duplicate-insert test passed (2 attempts -> 1 row, rolled back). Verify actual Messenger/Instagram event payload shapes in staging. **Only inbox insertion is deduplicated**: earlier subscription side effects and multi-event webhook batch retries are not fully idempotent. Define a private admin review workflow, retention policy, and redacted operational logging before cutover.
 
 **Deployment blockers:** Set `META_APP_SECRET` and `TAN_DATABASE_URL` securely in Render; verify database connectivity and Meta signature validation in staging; ensure no public GitHub message creation path remains; establish backup/restore; confirm privacy notice and retention; verify retries. Do not merge/deploy this PR as-is.
+
+## Owner inbox review (CLI only)
+
+`private_inbox_admin.py` offers metadata-only listing and status changes, with no new HTTP admin endpoint. Run only from a trusted owner environment with a server-side `TAN_DATABASE_URL`:
+
+```sh
+python private_inbox_admin.py list --status new --limit 20
+python private_inbox_admin.py mark 123 --status reviewed
+```
+
+The list deliberately excludes sender IDs, message text, image URLs, and event keys. The tool does not yet offer secure viewing of full message content; a separate authenticated private review interface or trusted console workflow is required. Avoid terminal transcripts, screenshots, or logging of subscriber data. Five synthetic-only argument validation tests are included in `tests/test_private_inbox_admin.py` (not yet executed). No production connection has been configured.
+
+Retention period and deletion automation still need owner approval; do not silently delete existing submissions.
