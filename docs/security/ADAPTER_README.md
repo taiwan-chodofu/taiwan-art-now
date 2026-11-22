@@ -58,6 +58,10 @@ Retention period and deletion automation still need owner approval; do not silen
 
 ## Automated checks and release blockers
 
-The draft adds `.github/workflows/private-subscriber-tests.yml` for syntax compilation and synthetic-only tests. The workflow requires no database credentials and must pass before merge. At the time of authoring, no workflow run was returned for the workflow-creation commit, so **CI success has not been verified**. Check the Actions tab and fix failures before release.
+The draft adds `.github/workflows/private-subscriber-tests.yml` for syntax compilation and synthetic-only tests. The workflow requires no database credentials and must pass before merge. GitHub Actions run 45024353595 completed successfully on the draft branch: 20 private tests + 9 mutation tests + 7 webhook signature tests = **36 synthetic unit tests passed**, and syntax compilation passed. This is not a live database, Flask request, or Meta webhook integration test.
 
 The draft also extends `.gitignore` for local private backup files. **Gitignore does not untrack existing committed `subscribers.json` or `push_subscribers.json`, nor erase Git history.** These remain separate urgent privacy remediation tasks. Never store plaintext backups in the repository.
+
+### Operational log privacy
+
+The draft webhook now logs only a fixed error message on private inbox persistence failure, rather than exception details that could contain personal data or SQL parameters. It still returns HTTP 503 to request retry. Audit other logging paths before deployment.
