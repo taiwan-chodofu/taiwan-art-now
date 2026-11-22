@@ -1,6 +1,5 @@
-/* Isolated conflict review UI. NOT loaded by production templates.
- * All decisions are a local draft, never persisted or sent to an API.
- * No record values or identities are included in DOM attributes.
+/* Exhibition-first deletion-conflict review, isolated draft.
+ * No DOM for ordinary additive merges; no writes or API calls.
  */
 (function(root, factory) {
   const api = factory();
@@ -8,71 +7,69 @@
   else root.TanDraftConflictUI = api;
 })(typeof globalThis !== "undefined" ? globalThis : this, function() {
   "use strict";
-  const choices = ["keep_local", "keep_remote", "decide_later"];
-  const statusLabels = {
-    same: "一致", local_only: "この端末のみ", remote_only: "サーバーのみ",
-    different: "内容が異なる", deleted_remotely: "サーバーで削除済み",
-    remote_tombstone: "削除履歴のみ"
-  };
+  const CHOICES = ["keep_saved", "remove_from_list", "decide_later"];
   function createReview(container, report, doc) {
     if (!container || !doc || typeof doc.createElement !== "function" ||
-        !report || report.status !== "ready" || !Array.isArray(report.rows))
-      throw new Error("Valid review report and DOM required");
+        !report || !["prepared", "needs_review"].includes(report.status) ||
+        !Array.isArray(report.review)) throw new Error("Invalid merge report");
+    const pending = report.review;
     const decisions = new Map();
-    const root = doc.createElement("section");
-    root.setAttribute("aria-label", "同期内容の確認");
+    // Ordinary sync must not create even a hidden or empty review screen.
+    if (pending.length === 0) return {
+      rendered: false, getDecisions: () => [], dispose: () => {}
+    };
+    const section = doc.createElement("section");
+    section.setAttribute("aria-label", "保存した展示の確認");
     const heading = doc.createElement("h2");
-    heading.textContent = "保存した展示の確認（試作）";
-    root.appendChild(heading);
+    heading.textContent = "保存した展示について確認";
+    section.appendChild(heading);
     const description = doc.createElement("p");
-    description.textContent = "ここでの選択は保存されません。現在の記録は変更されません。";
-    root.appendChild(description);
-    const pending = report.rows.filter(row =>
-      ["remote_only", "different", "deleted_remotely"].includes(row.status));
-    for (const row of pending) {
-      if (!["favs", "visited"].includes(row.kind) ||
-          typeof row.key !== "string" ||
-          !Object.prototype.hasOwnProperty.call(statusLabels, row.status))
-        throw new Error("Invalid review row");
-      const id = JSON.stringify([row.kind, row.key]);
-      const item = doc.createElement("div");
-      const label = doc.createElement("p");
-      // textContent prevents exhibition keys being interpreted as markup.
-      label.textContent = (row.kind === "favs" ? "観たい" : "観た") +
-        " / " + row.key + " — " + statusLabels[row.status];
-      item.appendChild(label);
+    description.textContent = "以前リストから外された展示が、現在の記録にも残っています。どうしますか？";
+    section.appendChild(description);
+    for (const item of pending) {
+      if (!item || !["favs", "visited"].includes(item.kind) ||
+          typeof item.key !== "string" || !item.key ||
+          item.reason !== "explicit_deletion_conflict")
+        throw new Error("Invalid deletion conflict");
+      const id = JSON.stringify([item.kind, item.key]);
+      if (decisions.has(id)) throw new Error("Duplicate conflict");
+      const wrapper = doc.createElement("div");
+      const prompt = doc.createElement("p");
+      prompt.textContent = item.key + (item.kind === "favs"
+        ? "を「観たい」リストに残しますか？"
+        : "の「観た」記録を残しますか？");
+      wrapper.appendChild(prompt);
       const select = doc.createElement("select");
-      select.setAttribute("aria-label", row.key + " の扱い");
-      for (const [value, caption] of [
+      select.setAttribute("aria-label", item.key + " の保存状態");
+      const options = [
         ["decide_later", "あとで決める"],
-        ["keep_local", "この端末の記録を優先（未実行）"],
-        ["keep_remote", "サーバーの記録を優先（未実行）"]
-      ]) {
+        ["keep_saved", item.kind === "favs" ? "「観たい」に残す" : "「観た」記録を残す"],
+        ["remove_from_list", item.kind === "favs" ? "「観たい」から外す" : "「観た」記録を外す"]
+      ];
+      for (const [value, label] of options) {
         const option = doc.createElement("option");
         option.value = value;
-        option.textContent = caption;
+        option.textContent = label;
         select.appendChild(option);
       }
       decisions.set(id, "decide_later");
       select.addEventListener("change", () => {
-        if (!choices.includes(select.value)) return;
-        decisions.set(id, select.value);
+        if (CHOICES.includes(select.value)) decisions.set(id, select.value);
       });
-      item.appendChild(select);
-      root.appendChild(item);
+      wrapper.appendChild(select);
+      section.appendChild(wrapper);
     }
     const note = doc.createElement("p");
-    note.textContent = pending.length
-      ? pending.length + "件の確認事項があります。選択しても同期は実行されません。"
-      : "確認が必要な競合はありません。同期は実行されません。";
-    root.appendChild(note);
-    container.appendChild(root);
+    note.textContent = "選択内容はまだ保存されません。記録も変更されません。";
+    section.appendChild(note);
+    container.appendChild(section);
     return {
+      rendered: true,
       getDecisions: () => Array.from(decisions, ([id, choice]) => {
         const [kind, key] = JSON.parse(id);
         return { kind, key, choice };
       }),
-      dispose: () => root.remove()
+      dispose: () => section.remove()
     };
   }
   return { createReview };
