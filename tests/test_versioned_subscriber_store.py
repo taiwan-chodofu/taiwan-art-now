@@ -54,6 +54,15 @@ def changes():
 
 
 class VersionedStoreTests(unittest.TestCase):
+    def test_autocommit_rejected_before_any_write(self):
+        db = FakeDB()
+        db.autocommit = True
+        with self.assertRaises(ValueError):
+            update_for_verified_sender(
+                db, verified_sender_id="owner", base_revision=0, changes=changes())
+        self.assertEqual(db.queries, [])
+        self.assertEqual(db.commits, 0)
+
     def test_bootstrap_uses_advisory_lock_and_insert(self):
         db = FakeDB()
         result = update_for_verified_sender(
