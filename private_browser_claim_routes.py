@@ -28,6 +28,16 @@ def claim():
         return jsonify(error="invalid_request"), 400
     if not code or not secret or len(code) > 256 or len(secret) > 256:
         return jsonify(error="invalid_request"), 400
+    limiter = current_app.config.get("TAN_PRIVATE_CLAIM_LIMITER")
+    if not callable(limiter):
+        return jsonify(error="unavailable"), 503
+    try:
+        permitted = limiter(request)
+    except Exception:
+        current_app.logger.warning("Private claim rate limiter unavailable")
+        return jsonify(error="unavailable"), 503
+    if permitted is not True:
+        return jsonify(error="rate_limited"), 429
     connector = current_app.config.get("TAN_PRIVATE_DB_CONNECT")
     if not callable(connector):
         return jsonify(error="unavailable"), 503
