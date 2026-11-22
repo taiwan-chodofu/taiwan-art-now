@@ -32,3 +32,13 @@ The draft now validates `X-Hub-Signature-256` against the exact raw request body
 **Release gate:** Set `META_APP_SECRET` to the correct Meta App Secret in Render's server-side environment, verify legitimate Meta webhook deliveries in a staging deployment, and only then merge/deploy. Never place the secret in GitHub, issues, PRs, logs, or the browser. Without this setup, all webhook POSTs will receive HTTP 403. GET verification remains a separate flow.
 
 The webhook still creates public GitHub issues containing sender IDs and messages after successful signature verification. **This is a separate privacy blocker** and must be replaced with private intake before production cutover. The public JSON persistence also remains unchanged.
+
+## Private inbound message inbox — draft integration
+
+Supabase now has `tan_private.inbound_messages` (RLS on, no anon/authenticated grants). An isolated SQL insert/read smoke test succeeded and was rolled back.
+
+The draft Flask webhook now calls `private_inbox.store_inbound` instead of creating a **public GitHub issue** containing sender ID, text, and images. On storage failure it returns HTTP 503 and does not fall back to public GitHub. This change is **not deployed**.
+
+Six synthetic-only inbox validation tests were added (execution not yet verified). Meta delivery retries are not yet idempotent: the inbox schema needs a stable event/message ID with a unique constraint before production release. Verify the exact Meta event ID behavior for Messenger and Instagram and handle retry duplicates. Define a private admin review workflow, retention policy, and redacted operational logging before cutover.
+
+**Deployment blockers:** Set `META_APP_SECRET` and `TAN_DATABASE_URL` securely in Render; verify database connectivity and Meta signature validation in staging; ensure no public GitHub message creation path remains; establish backup/restore; confirm privacy notice and retention; verify retries. Do not merge/deploy this PR as-is.
