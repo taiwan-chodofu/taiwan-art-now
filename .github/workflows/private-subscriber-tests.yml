@@ -1,0 +1,35 @@
+name: Private subscriber safety tests
+
+on:
+  pull_request:
+    paths:
+      - 'private_subscriber_store.py'
+      - 'private_inbox.py'
+      - 'private_inbox_admin.py'
+      - 'subscriber_mutations.py'
+      - 'webhook_security.py'
+      - 'scripts/import_private_subscribers.py'
+      - 'tests/test_private_*.py'
+      - 'tests/test_subscriber_mutations.py'
+      - 'tests/test_webhook_security.py'
+      - '.github/workflows/private-subscriber-tests.yml'
+  push:
+    branches:
+      - 'feat/private-subscriber-storage-adapter-83'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile security modules
+        run: python -m py_compile private_subscriber_store.py private_inbox.py private_inbox_admin.py subscriber_mutations.py webhook_security.py scripts/import_private_subscribers.py
+      - name: Run synthetic-only unit tests
+        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v
