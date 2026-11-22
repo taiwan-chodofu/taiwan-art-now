@@ -1,6 +1,6 @@
 /* Read-only adapter for existing Taiwan Art Now localStorage shapes.
  * DRAFT ONLY; does not write, remove or synchronize any browser data.
- * Existing maps: favs[key]={title,museum,dates,url}; visited[key]=ISO timestamp.
+ * Existing maps: favs[key] includes title/museum and optional metadata;\n * visited[key] may be an ISO string OR an object with date and metadata.
  * Legacy deletes remove keys, so absence is NOT a tombstone.
  */
 (function(root, factory) {
@@ -29,14 +29,14 @@
       if (kind === "visited") {
         if (typeof item === "string") {
           if (item.length > 128 || !Number.isFinite(Date.parse(item)) ||
-              !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d/.test(item))
+              !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d/.test(item))
             throw new Error("Invalid visited timestamp");
           result[key] = item;
         } else {
           if (!plain(item) || Object.keys(item).some(field => !VISITED_FIELDS.includes(field)) ||
               typeof item.date !== "string" || item.date.length > 128 ||
               !Number.isFinite(Date.parse(item.date)) ||
-              !/^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d/.test(item.date))
+              !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d/.test(item.date))
             throw new Error("Invalid visited record");
           const normalized = Object.create(null);
           for (const field of VISITED_FIELDS) {
