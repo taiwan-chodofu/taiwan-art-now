@@ -55,3 +55,9 @@ python private_inbox_admin.py mark 123 --status reviewed
 The list deliberately excludes sender IDs, message text, image URLs, and event keys. The tool does not yet offer secure viewing of full message content; a separate authenticated private review interface or trusted console workflow is required. Avoid terminal transcripts, screenshots, or logging of subscriber data. Five synthetic-only argument validation tests are included in `tests/test_private_inbox_admin.py` (not yet executed). No production connection has been configured.
 
 Retention period and deletion automation still need owner approval; do not silently delete existing submissions.
+
+## Automated checks and release blockers
+
+The draft adds `.github/workflows/private-subscriber-tests.yml` for syntax compilation and synthetic-only tests. The workflow requires no database credentials and must pass before merge. At the time of authoring, no workflow run was returned for the workflow-creation commit, so **CI success has not been verified**. Check the Actions tab and fix failures before release.
+
+The draft also extends `.gitignore` for local private backup files. **Gitignore does not untrack existing committed `subscribers.json` or `push_subscribers.json`, nor erase Git history.** These remain separate urgent privacy remediation tasks. Never store plaintext backups in the repository.
