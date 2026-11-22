@@ -45,6 +45,20 @@ class InboxValidationTests(unittest.TestCase):
         self.assertEqual(event_key_for("Instagram", "sender", event),
                          event_key_for("Instagram", "sender", event))
 
+    def test_nonhex_event_key_rejected(self):
+        with self.assertRaises(ValueError):
+            validate_inbound("Messenger", "sender", "hello", [], "z"*64)
+
+    def test_malformed_event_rejected(self):
+        for event in (None, [], {"message": "invalid"}):
+            with self.subTest(event=event), self.assertRaises(ValueError):
+                event_key_for("Messenger", "sender", event)
+
+    def test_whitespace_image_url_rejected(self):
+        with self.assertRaises(ValueError):
+            validate_inbound("Messenger", "sender", "hello",
+                             ["https://example.invalid/has space"], "a"*64)
+
     def test_missing_key_rejected(self):
         with self.assertRaises(ValueError):
             validate_inbound("Messenger", "sender", "hello", [], "")
