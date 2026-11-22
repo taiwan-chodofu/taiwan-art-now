@@ -2302,6 +2302,12 @@ def webhook_receive():
     import urllib.request as urllib_req
     from datetime import datetime, timezone, timedelta
 
+    # Verify the raw body before processing any user-controlled event.
+    # Configure META_APP_SECRET in Render before merging/deploying this change.
+    from webhook_security import verify_meta_webhook
+    if not verify_meta_webhook(request.get_data(cache=True),
+                               request.headers.get("X-Hub-Signature-256", "")):
+        abort(403)
     body = request.get_json(silent=True) or {}
     channel = "Instagram" if body.get("object") == "instagram" else "Messenger"
     entries = body.get("entry", [])
