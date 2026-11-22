@@ -29,7 +29,7 @@
       const keys = new Set([...Object.keys(local), ...Object.keys(remote)]);
       for (const key of keys) {
         const localPresent = own(local, key);
-        const record = remote[key];
+        const record = own(remote, key) ? remote[key] : undefined;
         const remotePresent = !!record && !record.deleted;
         let status;
         if (record && record.deleted && localPresent) status = "deleted_remotely";
