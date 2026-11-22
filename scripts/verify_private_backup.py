@@ -5,6 +5,7 @@ Keep the expected SHA-256 manifest separately from the backup files.
 """
 import argparse
 import hashlib
+import sys
 import json
 from pathlib import Path
 
@@ -33,6 +34,10 @@ def verify_files(messenger_path, push_path, expected=None):
             raise ValueError("Backup integrity mismatch")
     messenger = json.loads(messenger_path.read_text(encoding="utf-8"))
     push = json.loads(push_path.read_text(encoding="utf-8"))
+    # Work when imported by path from tests as well as run as a script.
+    scripts_dir = str(Path(__file__).resolve().parent)
+    if scripts_dir not in sys.path:
+        sys.path.insert(0, scripts_dir)
     from import_private_subscribers import validate_snapshot
     counts = validate_snapshot(messenger, push)
     return hashes, {"users": counts[0], "refs": counts[1], "push": counts[2]}
