@@ -18,6 +18,7 @@ class Cursor:
 
     def execute(self, sql, params):
         self.db.query = sql
+        self.db.queries.append(sql)
         self.db.params = params
 
     def fetchone(self):
@@ -32,6 +33,7 @@ class Connection:
         self.commits = 0
         self.rollbacks = 0
         self.query = None
+        self.queries = []
         self.state = None
 
     def __enter__(self):
@@ -108,7 +110,7 @@ class VersionedHTTPTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(update.call_args.kwargs["verified_sender_id"], "owner")
         self.assertEqual(response.headers["Cache-Control"], "no-store")
-        self.assertIn("FOR UPDATE", self.db.query)
+        self.assertTrue(any("FOR UPDATE" in query for query in self.db.queries))
 
     def test_browser_sender_id_rejected(self):
         payload = dict(self.payload, sender_id="victim")
