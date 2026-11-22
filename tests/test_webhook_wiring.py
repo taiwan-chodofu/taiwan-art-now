@@ -39,6 +39,13 @@ class WebhookWiringSafetyTests(unittest.TestCase):
         self.assertNotIn("api.github.com/repos", source)
         self.assertNotIn("issue_data", source)
 
+    def test_private_write_precedes_auto_subscribe(self):
+        source = ast.unparse(function("webhook_receive"))
+        # Inspect the source segment after the auto-subscribe comment, not other subscription flows.
+        tail = source.split("Preserve legacy auto-subscribe behavior only after private persistence.")[-1]
+        self.assertIn("_add_subscriber(sender_id)", tail)
+        self.assertLess(source.index("store_inbound("), source.rindex("_add_subscriber(sender_id)"))
+
     def test_post_private_write_error_is_redacted(self):
         source = ast.unparse(function("webhook_receive"))
         self.assertNotIn("logger.exception(", source)
