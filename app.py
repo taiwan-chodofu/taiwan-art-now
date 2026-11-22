@@ -2401,9 +2401,10 @@ def webhook_receive():
 
             # Private intake only. Never create public GitHub issues for user messages.
             # Failure returns 503 so Meta can retry delivery; no public fallback.
-            from private_inbox import store_inbound
+            from private_inbox import store_inbound, event_key_for
             try:
-                store_inbound(channel, sender_id, text, image_urls)
+                store_inbound(channel, sender_id, text, image_urls,
+                              event_key_for(channel, sender_id, event))
             except Exception:
                 app.logger.exception("Private inbound message persistence failed")
                 return "Service Unavailable", 503
