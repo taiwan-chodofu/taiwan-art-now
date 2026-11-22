@@ -4,13 +4,13 @@ Requires review-only tan_private.subscriber_sync_states table in an isolated
 staging database. Caller must pass a sender resolved from an authenticated
 server session; never accept browser-supplied sender IDs. No production wiring.
 """
-from psycopg.types.json import Jsonb
 from versioned_subscriber_sync import apply_changes, empty_state, StaleRevision
 
 
 def update_for_verified_sender(conn, *, verified_sender_id, base_revision, changes):
     if not isinstance(verified_sender_id, str) or not verified_sender_id:
         raise ValueError("Verified sender required")
+    from psycopg.types.json import Jsonb
     try:
         with conn.cursor() as cur:
             # Advisory lock serializes the absent-row bootstrap as well as
