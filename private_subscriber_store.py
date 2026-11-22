@@ -110,3 +110,52 @@ def mutate_push(mutator):
                            do update set subscription=excluded.subscription,updated_at=now()""",
                         (endpoint, Jsonb(subscription)))
         return result
+
+def import_snapshot_if_empty(messenger, push):
+    """Atomically import both snapshots, refusing a nonempty destination.
+
+    This is an initial import only. A live cutover still requires pausing
+    legacy writers, capturing a fresh snapshot, and verifying consistency.
+    """
+    from psycopg.types.json import Jsonb
+    users = messenger.get("users")
+    refs = messenger.get("refs", {})
+    subscriptions = push.get("subscriptions")
+    if not all(isinstance(x, dict) for x in (users, refs, subscriptions)):
+        raise ValueError("Invalid subscriber snapshot")
+    if any(not isinstance(sid, str) or not isinstance(profile, dict)
+           for sid, profile in users.items()):
+        raise ValueError("Invalid Messenger subscriber")
+    if any(not isinstance(ref, str) or sid not in users
+           for ref, sid in refs.items()):
+        raise ValueError("Invalid Messenger ref")
+    if any(not isinstance(endpoint, str) or not isinstance(info, dict)
+           or info.get("endpoint") != endpoint
+           for endpoint, info in subscriptions.items()):
+        raise ValueError("Invalid Web Push subscription")
+    with _connect() as conn, conn.cursor() as cur:
+        # Both locks in consistent order; check emptiness inside same transaction.
+        cur.execute("select pg_advisory_xact_lock(830083)")
+        cur.execute("select pg_advisory_xact_lock(830084)")
+        for table in ("messenger_subscribers", "messenger_refs", "web_push_subscriptions"):
+            cur.execute("select exists(select 1 from tan_private." + table + ")")
+            if cur.fetchone()[0]:
+                raise RuntimeError("Destination not empty; import refused")
+        for sid, profile in users.items():
+            cur.execute("insert into tan_private.messenger_subscribers(sender_id,profile) values (%s,%s)",
+                        (sid, Jsonb(profile)))
+        for ref, sid in refs.items():
+            cur.execute("insert into tan_private.messenger_refs(ref_code,sender_id) values (%s,%s)",
+                        (ref, sid))
+        for endpoint, info in subscriptions.items():
+            cur.execute("insert into tan_private.web_push_subscriptions(endpoint,subscription) values (%s,%s)",
+                        (endpoint, Jsonb(info)))
+        cur.execute("select sender_id,profile from tan_private.messenger_subscribers")
+        stored_users = dict(cur.fetchall())
+        cur.execute("select ref_code,sender_id from tan_private.messenger_refs")
+        stored_refs = dict(cur.fetchall())
+        cur.execute("select endpoint,subscription from tan_private.web_push_subscriptions")
+        stored_push = dict(cur.fetchall())
+        if stored_users != users or stored_refs != refs or stored_push != subscriptions:
+            raise RuntimeError("Round-trip verification failed; rolling back")
+    return {"users": len(users), "refs": len(refs), "push": len(subscriptions)}
