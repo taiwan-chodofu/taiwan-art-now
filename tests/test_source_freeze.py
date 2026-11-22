@@ -49,6 +49,10 @@ class SourceFreezeTests(unittest.TestCase):
         self.after_m.write_bytes(self.before_m.read_bytes() + b" ")
         self.assertFalse(self.compare()["unchanged"])
 
+    def test_same_snapshot_file_pair_rejected(self):
+        with self.assertRaises(ValueError):
+            module.compare_snapshots(self.before_m, self.before_m, self.after_m, self.after_p)
+
     def test_corrupt_snapshot_rejected(self):
         self.after_m.write_text("{")
         with self.assertRaises(json.JSONDecodeError):
