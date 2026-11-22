@@ -21,6 +21,8 @@ class Cursor:
         self.db.params = params
 
     def fetchone(self):
+        if "subscriber_sync_states" in self.db.query:
+            return (self.db.state,) if self.db.state is not None else None
         return (self.db.sender,) if self.db.sender else None
 
 
@@ -30,6 +32,7 @@ class Connection:
         self.commits = 0
         self.rollbacks = 0
         self.query = None
+        self.state = None
 
     def __enter__(self):
         return self
@@ -67,6 +70,27 @@ class VersionedHTTPTests(unittest.TestCase):
                                     json=self.payload, headers=self.headers)
         self.assertEqual(response.status_code, 503)
         self.assertIsNone(self.db.query)
+
+    def test_generic_api_cannot_resurrect_tombstone(self):
+        self.db.state = {"revision": 1, "favs": {"a": {
+            "value": None, "deleted": True, "revision": 1}}, "visited": {}}
+        payload = {"base_revision": 1, "changes": {
+            "favs": {"a": {"set": {"title": "Stale"}}}, "visited": {}}}
+        with patch("versioned_subscriber_api_routes.update_for_verified_sender") as update:
+            response = self.client.post("/api/private-subscribers/v2/changes",
+                                        json=payload, headers=self.headers)
+        self.assertEqual(response.status_code, 409)
+        update.assert_not_called()
+
+    def test_generic_api_allows_non_tombstone_addition(self):
+        payload = {"base_revision": 0, "changes": {
+            "favs": {"new": {"set": {"title": "New"}}}, "visited": {}}}
+        with patch("versioned_subscriber_api_routes.update_for_verified_sender",
+                   return_value={"revision": 1}) as update:
+            response = self.client.post("/api/private-subscribers/v2/changes",
+                                        json=payload, headers=self.headers)
+        self.assertEqual(response.status_code, 200)
+        update.assert_called_once()
 
     def test_stale_revision_is_409(self):
         with patch("versioned_subscriber_api_routes.update_for_verified_sender",
