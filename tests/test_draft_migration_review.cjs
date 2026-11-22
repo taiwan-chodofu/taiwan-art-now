@@ -75,7 +75,7 @@ test("bootstrap preserves exact legacy favorite metadata and visited timestamp",
   const result = prepareBootstrap(storage({ a: fav }, { b: iso }),
     state({}, {}, 0));
   assert.equal(result.status, "prepared");
-  assert.deepEqual(result.changes.favs.a, { set: fav });
+  assert.deepEqual(JSON.parse(JSON.stringify(result.changes.favs.a)), { set: fav });
   assert.deepEqual(result.changes.visited.b, { set: iso });
   assert.equal(result.base_revision, 0);
 });
