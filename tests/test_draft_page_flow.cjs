@@ -48,7 +48,9 @@ test("home/discover object visited and nearby/detail string visited both roundtr
   assert.equal(JSON.parse(x.data.taiwan_art_visited).nearby, visited.date);
   await x.adapter.commit({ kind: "visited", key: "home", action: "remove" });
   assert.equal(JSON.parse(x.data.taiwan_art_visited).nearby, visited.date);
-  assert.equal(x.ui.visited, true);
+  // UI callback reflects the last acted-on exhibition (home), now removed.
+  assert.equal(x.ui.visited, false);
+  assert.equal(Object.prototype.hasOwnProperty.call(JSON.parse(x.data.taiwan_art_visited), "nearby"), true);
 });
 test("quota failure leaves UI and notification/analytics unchanged", async () => {
   const x = harness(); x.block();
