@@ -9,7 +9,6 @@ from flask import current_app, jsonify, request
 from browser_cookie_security import COOKIE_NAME, require_same_origin
 from subscriber_ownership import (
     AuthorizationDenied, authenticated_messenger_sender,
-    require_messenger_owner, require_push_owner,
 )
 
 MESSENGER_ROUTES = frozenset({
@@ -46,12 +45,14 @@ def protected_subscriber_route(route):
                         if not isinstance(payload, dict) and request.method != "GET":
                             return jsonify(error="invalid_request"), 400
                         claimed = payload.get("sender_id") or ""
-                        if claimed:
-                            require_messenger_owner(conn, request.cookies.get(COOKIE_NAME),
-                                                    claimed)
-                        # A ref is not an identity proof; legacy ref-only
-                        # operations must be migrated to server-owned lookup.
-                        if payload.get("ref") and not claimed:
+                        if payload.get("ref"):
+                            # Legacy ref operations can select another user.
+                            # Reject until the route is rewritten to resolve
+                            # ref ownership against the authenticated sender.
+                            return jsonify(error="migration_required"), 403
+                        if claimed and claimed != sender:
+                            return jsonify(error="forbidden"), 403
+                        if not claimed:
                             return jsonify(error="migration_required"), 403
                         request.environ["tan.verified_sender"] = sender
                 except AuthorizationDenied:
