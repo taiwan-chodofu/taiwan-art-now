@@ -65,3 +65,9 @@ The draft also extends `.gitignore` for local private backup files. **Gitignore 
 ### Operational log privacy
 
 The draft webhook now logs only a fixed error message on private inbox persistence failure, rather than exception details that could contain personal data or SQL parameters. It still returns HTTP 503 to request retry. Audit other logging paths before deployment.
+
+## Meta GET verification token (security regression)
+
+The draft removes the hard-coded GET webhook verification token and reads `MESSENGER_VERIFY_TOKEN` from Render's server-side environment. When missing, GET verification returns 403. **Before deployment**, set both `MESSENGER_VERIFY_TOKEN` (the value configured in the Meta developer webhook settings) and `META_APP_SECRET` (the Meta app secret). The previously hard-coded token must be treated as exposed and rotated at Meta. Do not commit either secret.
+
+The draft now adds AST-based regression checks for the actual Flask source: GET token configuration, POST signature verification before JSON parsing, no public GitHub Issue writes in the webhook function, and redacted persistence failure logging. These are **static source checks**, not live Flask request tests. The CI workflow was updated to include them; verify the newest run before merge.
