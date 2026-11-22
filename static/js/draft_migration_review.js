@@ -55,5 +55,22 @@
       }, Object.create(null)),
       rows };
   }
-  return { preview };
+  function prepareBootstrap(storage, serverState) {
+    const report = preview(storage, serverState);
+    if (report.status !== "ready") return report;
+    // Migration may only be prepared against a genuinely empty, revision-0
+    // state. Existing server history must use explicit conflict review.
+    if (serverState.revision !== 0 ||
+        KINDS.some(kind => Object.keys(serverState[kind]).length !== 0))
+      return { status: "requires_review", counts: report.counts };
+    const parsed = legacy.read(storage);
+    if (parsed.status !== "ready") return { status: parsed.status, kind: parsed.kind };
+    const changes = { favs: Object.create(null), visited: Object.create(null) };
+    for (const kind of KINDS) {
+      for (const [key, value] of Object.entries(parsed.snapshot[kind]))
+        changes[kind][key] = { set: value };
+    }
+    return { status: "prepared", base_revision: 0, changes };
+  }
+  return { preview, prepareBootstrap };
 });
