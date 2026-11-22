@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { preview } = require("../static/js/draft_migration_review.js");
+const { preview, prepareBootstrap } = require("../static/js/draft_migration_review.js");
 const fav = { title: "Show", museum: "Museum", dates: "2026", url: "" };
 const iso = "2026-11-22T12:34:56.000Z";
 const entry = (value, deleted = false, revision = 1) => ({ value, deleted, revision });
@@ -69,4 +69,27 @@ test("two collections remain independent", () => {
   const result = preview(storage({ a: fav }, { a: iso }), state());
   assert.equal(result.rows.length, 2);
   assert.equal(result.counts.local_only, 2);
+});
+
+test("bootstrap preserves exact legacy favorite metadata and visited timestamp", () => {
+  const result = prepareBootstrap(storage({ a: fav }, { b: iso }),
+    state({}, {}, 0));
+  assert.equal(result.status, "prepared");
+  assert.deepEqual(result.changes.favs.a, { set: fav });
+  assert.deepEqual(result.changes.visited.b, { set: iso });
+  assert.equal(result.base_revision, 0);
+});
+test("bootstrap refuses populated server even if local matches", () => {
+  const result = prepareBootstrap(storage({ a: fav }, {}),
+    state({ a: entry(fav) }));
+  assert.equal(result.status, "requires_review");
+});
+test("bootstrap refuses nonzero revision even if server has no items", () => {
+  const result = prepareBootstrap(storage({}, {}), state({}, {}, 1));
+  assert.equal(result.status, "requires_review");
+});
+test("bootstrap refuses tombstoned server records", () => {
+  const result = prepareBootstrap(storage({ a: fav }, {}),
+    state({ a: entry(null, true) }));
+  assert.equal(result.status, "requires_review");
 });
