@@ -51,7 +51,11 @@ def _respond(*, write):
             return jsonify(error="invalid_request"), 400
     try:
         with connector() as conn:
-            # FOR UPDATE only protects session ownership when the entire\n            # lookup + CAS write share a real transaction.\n            if getattr(conn, "autocommit", False):\n                raise RuntimeError("Transactional connection required")\n            sender = _sender_in_transaction(conn, request.cookies.get(COOKIE_NAME))
+            # FOR UPDATE protects ownership only when lookup and CAS share
+            # a transaction; reject autocommit before the session lookup.
+            if getattr(conn, "autocommit", False):
+                raise RuntimeError("Transactional connection required")
+            sender = _sender_in_transaction(conn, request.cookies.get(COOKIE_NAME))
             if sender is None:
                 conn.rollback()
                 return jsonify(error="forbidden"), 403
