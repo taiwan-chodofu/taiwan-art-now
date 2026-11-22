@@ -25,3 +25,7 @@
 - [ ] Independent encrypted backup + isolated restore test + writer quiescence, and explicit production approval.
 
 This document is a design proposal, not a security implementation. Existing draft and production routes remain unsafe; no migration or deployment is authorized by this document.
+
+## Implemented isolated challenge primitives (NOT authentication yet)
+
+`messenger_link_challenge.py` now provides cryptographically random challenges, SHA-256 token hashing, bounded TTL (1–900 seconds; default 600), and a pure one-time consumption transition with optional pre-bound verified sender. Nine synthetic tests cover expiration, replay, wrong token, wrong sender, malformed records, and invalid TTL. **No persistent challenge table, atomic consume operation, Meta event binding, session issuance, route integration, or rate limiting exists yet.** In-memory/dict state is not suitable for multi-worker deployment. The `verified_sender_id` argument must only be supplied by a separately verified Meta webhook, never by a browser request. A signed webhook alone also does not prove that a browser initiating a challenge controls the Messenger account unless the full challenge flow binds them. Do not merge or deploy as an auth solution.
