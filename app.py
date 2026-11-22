@@ -2406,7 +2406,8 @@ def webhook_receive():
                 store_inbound(channel, sender_id, text, image_urls,
                               event_key_for(channel, sender_id, event))
             except Exception:
-                app.logger.exception("Private inbound message persistence failed")
+                # Do not log exception details: database errors can contain private values.
+                app.logger.error("Private inbound message persistence failed")
                 return "Service Unavailable", 503
 
     return "OK", 200
