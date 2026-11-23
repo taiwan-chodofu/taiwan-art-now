@@ -195,3 +195,7 @@ Added `test_two_verified_owners_are_strictly_isolated` to the disposable Postgre
 ## Synthetic cookie-to-owner HTTP isolation
 
 CI 45088904333 passed all four jobs including disposable PostgreSQL owner isolation. Extended `tests/test_versioned_subscriber_api_http.py` with two synthetic session cookies mapping to distinct verified owners. A mocked Flask route read returns only the respective owner's exhibition state; an unknown cookie receives 403. The test uses a synthetic session cursor and mocked store, so it is **not** a full PostgreSQL-backed HTTP integration test. Session revocation concurrency and actual authentication issuance remain unverified. No production route registration or subscriber data changes.
+
+## Flask + disposable PostgreSQL cookie isolation (draft CI)
+
+Added an end-to-end **server-side** test in `tests/test_disposable_postgres_cas.py`: two synthetic owners, two hashed browser-session tokens, real PostgreSQL session rows, real versioned state rows, and a locally registered Flask draft blueprint in the test process. Each cookie can read only its own favorites; revoking owner A's token yields 403 while owner B continues to read its own data; unknown tokens yield 403. This does **not** register the blueprint in production. The test exercises revocation **after** the first read, not concurrent revocation while an HTTP request is in flight; it does not validate real identity issuance or external infrastructure. New CI pending.
