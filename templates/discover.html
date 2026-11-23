@@ -240,6 +240,7 @@
     <button class="got-it-btn" id="tutorialGotIt">{{ labels.tutorial_got_it }}</button>
   </div>
 
+  <div id="discoverModePicker" style="max-width:36rem;margin:8px auto;padding:0 16px;"></div>
   <div class="stage" id="stage">
     <div class="empty-state" id="emptyState" style="display:none;">
       <p>{{ labels.empty }}</p>
@@ -260,6 +261,9 @@
   <script src="/static/js/draft_page_action.js"></script>
   <script src="/static/js/draft_page_controller.js"></script>
   <script src="/static/js/draft_discover_flow.js"></script>
+  <script src="/static/js/draft_exhibition_filters.js"></script>
+  <script src="/static/js/draft_discover_selection.js"></script>
+  <script src="/static/js/draft_discover_mode_picker.js"></script>
   <script>
     var ALL_CARDS = {{ cards | tojson }};
     var LABELS = {{ labels | tojson }};
@@ -642,6 +646,37 @@
       renderCard();
     });
 
+    // DRAFT ONLY: mode switching is a deliberate fresh browse session.
+    // Do not switch during writes or animation; clear stale undo history.
+    var discoverMode = 'browse';
+    var discoverSourceOrder = deck.concat(ALL_CARDS.filter(function(card) {
+      return !deck.some(function(existing) {
+        return _normalizeKey(existing.stable_key) === _normalizeKey(card.stable_key);
+      });
+    }));
+    var discoverModePicker = TanDraftDiscoverModePicker.mount({
+      container: document.getElementById('discoverModePicker'),
+      document: document,
+      lang: LANG,
+      mode: discoverMode,
+      onChange: function(nextMode) {
+        if (discoverBusy || discoverAnimating) return false;
+        var result = TanDraftDiscoverSelection.select({
+          cards: discoverSourceOrder,
+          bookmarks: {favs:_getFavs(),visited:_getVisited()},
+          normalizeKey:_normalizeKey,
+          mode:nextMode
+        });
+        if (result.status !== 'ready') return false;
+        if (discoverFlow.clearHistory().status !== 'cleared') return false;
+        clearDiscoverError();
+        discoverMode = nextMode;
+        deck = result.cards;
+        saveDeckOrder();
+        renderCard();
+        return true;
+      }
+    });
     renderCard();
 
     var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
