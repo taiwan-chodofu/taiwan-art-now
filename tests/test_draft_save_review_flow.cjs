@@ -96,7 +96,21 @@ test("server record deleted after save never receives calm verified-success copy
  assert.equal(output.result.serverSaved,true);
  assert.equal(output.verification.status,"server_records_need_review");
  assert.equal(output.verification.unresolved[0].reason,"deleted_on_server");
- assert.equal(output.displayResult.status,"saved_server_record_changed");
+ assert.equal(output.displayResult.status,"saved_server_record_deleted");
  assert.equal(posts,1);
  assert.equal(gets,2);
+});
+
+test("changed server value gives specific explanation rather than generic warning",async()=>{
+ const local=storage();let gets=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ const changed={revision:2,favs:{a:{value:{...fav,title:"Updated"},revision:2,deleted:false}},visited:{}};
+ const output=await run({storage:local,fetchImpl:async(path,options)=>{
+  if(options.method==="GET"){gets++;return response(gets===1?
+   {revision:0,favs:{},visited:{}}:changed);}
+  local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+  return response(saved);
+ }});
+ assert.equal(output.verification.unresolved[0].reason,"different_server_value");
+ assert.equal(output.displayResult.status,"saved_server_record_different");
 });
