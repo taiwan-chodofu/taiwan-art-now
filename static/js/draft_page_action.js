@@ -15,6 +15,24 @@
      return {status:"invalid_request"};
    const result=await writer.mutate({storage,locks,kind,key,action,value});
    if(result.status==="written_under_cooperative_lock"){
+     // Revalidate the exact committed item before announcing UI success.
+     // Cached tabs may write outside the cooperative lock after writer readback.
+     try{
+       const raw=storage.getItem(kind==="favs"?"taiwan_art_favs":"taiwan_art_visited");
+       const map=JSON.parse(raw===null?"{}":raw);
+       const present=Object.prototype.hasOwnProperty.call(map,key);
+       if(!map||typeof map!=="object"||Array.isArray(map)||
+          (result.action==="set"&&(!present||JSON.stringify(map[key])!==JSON.stringify(value)))||
+          (result.action==="remove"&&present)){
+         const uncertain={status:"uncertain_write"};
+         if(typeof onFailure==="function")try{onFailure(uncertain);}catch(_){}
+         return uncertain;
+       }
+     }catch(_){
+       const uncertain={status:"uncertain_write"};
+       if(typeof onFailure==="function")try{onFailure(uncertain);}catch(_){}
+       return uncertain;
+     }
      if(typeof onCommitted==="function"){
        try{onCommitted({kind,key,action:result.action});}
        catch(_){return {status:"committed_callback_failed",action:result.action};}
