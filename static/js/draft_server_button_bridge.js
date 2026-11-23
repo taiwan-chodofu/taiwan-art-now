@@ -50,7 +50,9 @@
           const stateApi=typeof module==='object'&&module.exports
             ?require('./draft_authenticated_state.js'):globalThis.TanDraftAuthenticatedState;
           const latest=await stateApi.read({fetchImpl});
-          if(!disposed&&latest.status==='ready')await onRefresh(latest.state);
+          if(!disposed&&latest.status==='ready'&&
+             Number.isSafeInteger(latest.state?.revision)&&
+             latest.state.revision>=result.revision)await onRefresh(latest.state);
           else if(!disposed)show(locale.fallback);
         }catch(_){if(!disposed)show(locale.fallback);}
       }
