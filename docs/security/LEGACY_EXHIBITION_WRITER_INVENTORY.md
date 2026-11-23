@@ -29,3 +29,7 @@ Source: the four current templates on `feat/private-subscriber-storage-adapter-8
 ## Current draft status
 
 The shared per-item Web Lock writer, persistence-first UI adapter, and isolated Chromium tests exist, but **none of the four real templates are wired**. Browser tests on a synthetic page are not production template E2E coverage. Old-tab bypass, legacy `migrateStore`, and remote sync remain blockers.
+
+## Draft release gate update (2026-11-23)
+
+CI 45094588186 succeeded for the two-device Chromium mock-CAS and explicit tombstone stop tests. The E2E suite still **intentionally reproduces loss** when a cached legacy tab bypasses Web Locks and overwrites the whole localStorage map. Therefore, successful CI does not prove old-tab safety. All four templates retain independent legacy writers, including the main-page one-time migration; none is mounted to the new adapter. The next safe rollout must coordinate or retire every writer and define a controlled stale-client strategy, rather than treating Web Locks as sufficient protection. The draft UI action adapter also now handles exceptions from busy-state callbacks without stranding its pending slot or reporting a completed write as failed; regression tests added, CI pending. No production changes.
