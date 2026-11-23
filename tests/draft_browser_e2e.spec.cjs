@@ -397,9 +397,11 @@ test('real Chromium: cached legacy tab overwrites local map but cannot alter com
  const context=await browser.newContext();
  try{
   const modern=await context.newPage(),oldTab=await context.newPage();
-  await bootAdditive(modern,{modern:{title:'Modern',museum:'M'}});
   await oldTab.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
+  await oldTab.evaluate(()=>localStorage.setItem('taiwan_art_favs','{}'));
   const stale=await oldTab.evaluate(()=>localStorage.getItem('taiwan_art_favs'));
+  // The cached tab captures its snapshot BEFORE the modern tab adds a record.
+  await bootAdditive(modern,{modern:{title:'Modern',museum:'M'}});
   let server={revision:0,favs:{},visited:{}};
   let posts=0;
   await modern.exposeFunction('serverExchange',async(path,opts)=>{
