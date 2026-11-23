@@ -352,3 +352,48 @@ test("next review rechecks latest state and never opens an already resolved conf
  assert.equal(posts,2);
  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/確認が必要な展示はありません/);
 });
+
+test("double-clicking next review performs only one fresh GET",async()=>{
+ const data={taiwan_art_favs:JSON.stringify({a:fav,b:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const report2={status:"needs_review",review:["a","b"].map(key=>({kind:"favs",key,reason:"explicit_deletion_conflict"}))};
+ const state={revision:3,favs:{a:{deleted:true,value:null,revision:2},b:{deleted:true,value:null,revision:2}},visited:{}};
+ let gets=0,resolveNext,posts=0;
+ const response=revision=>({ok:true,status:200,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+  json:async()=>({revision,favs:{a:{deleted:false,value:fav,revision:4},b:{deleted:true,value:null,revision:2}},visited:{}})});
+ const container=new Element("main");
+ const instance=mount({container,report:report2,doc,serverState:state,storage,localSnapshot:read(storage).snapshot,
+  request:async url=>{posts++;return url.endsWith("/issue")?{token:"synthetic"}:{revision:4};},
+  fetchImpl:async()=>{gets++;return gets===1?response(4):new Promise(resolve=>{resolveNext=resolve;});}});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await instance.submit();
+ const next=elements(container,"button").find(x=>x.textContent==="残りの展示を確認");
+ const first=next.events.click(),second=next.events.click();
+ assert.equal(gets,2);
+ resolveNext(response(4));
+ await Promise.all([first,second]);
+ assert.equal(posts,2);
+});
+test("next review GET failure leaves existing review and allows retry",async()=>{
+ const data={taiwan_art_favs:JSON.stringify({a:fav,b:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const report2={status:"needs_review",review:["a","b"].map(key=>({kind:"favs",key,reason:"explicit_deletion_conflict"}))};
+ const state={revision:3,favs:{a:{deleted:true,value:null,revision:2},b:{deleted:true,value:null,revision:2}},visited:{}};
+ let gets=0,posts=0;
+ const container=new Element("main");
+ const instance=mount({container,report:report2,doc,serverState:state,storage,localSnapshot:read(storage).snapshot,
+  request:async url=>{posts++;return url.endsWith("/issue")?{token:"synthetic"}:{revision:4};},
+  fetchImpl:async()=>{gets++;if(gets===2)throw Error("offline");return {ok:true,status:200,
+   headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{a:{deleted:false,value:fav,revision:4},b:{deleted:true,value:null,revision:2}},visited:{}})};}});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await instance.submit();
+ const next=elements(container,"button").find(x=>x.textContent==="残りの展示を確認");
+ await next.events.click();
+ assert.equal(next.disabled,false);
+ assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/もう一度お試しください/);
+ assert.equal(posts,2);
+ await next.events.click();
+ assert.equal(gets,3);
+ assert.equal(posts,2);
+});
