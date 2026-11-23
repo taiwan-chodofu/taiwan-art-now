@@ -60,5 +60,5 @@ test("missing trusted titles do not reveal storage identifiers",()=>{
   status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
   reviewItems:[{kind:"favs",key:"private-id"}]
  }});
- assert.equal(container.children[0].children[3].children[0].textContent,"展覽 1");
+ assert.equal(container.children[0].children[3].children[0].textContent,"名稱未提供的展覽");
 });
