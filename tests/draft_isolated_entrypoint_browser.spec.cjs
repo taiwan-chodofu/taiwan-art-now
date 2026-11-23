@@ -53,3 +53,28 @@ test('isolated HTML entrypoint: uncertain POST stays locked without automatic re
  await expect(page.locator('#visitedBtn')).toBeDisabled();
  expect(writes).toBe(1);
 });
+
+test('isolated HTML entrypoint: unauthenticated response cannot enable saves',async({page})=>{
+ let writes=0;
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill({status:403,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:'{"error":"forbidden"}'});
+ });
+ await page.goto(url);
+ await expect(page.locator('#notice')).toContainText('ページを再読み込み');
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
+ expect(writes).toBe(0);
+});
+test('isolated HTML entrypoint: HTML login redirect is not trusted as saved state',async({page})=>{
+ let writes=0;
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill({status:200,contentType:'text/html',body:'<html><body>Login</body></html>'});
+ });
+ await page.goto(url);
+ await expect(page.locator('#notice')).toContainText('ページを再読み込み');
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
+ expect(writes).toBe(0);
+});
