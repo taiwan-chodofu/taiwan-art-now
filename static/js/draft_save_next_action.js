@@ -12,7 +12,7 @@
      !result||result.status!=="saved_server_record_deleted"||
      result.serverSaved!==true)return {status:"not_applicable"};
   if(typeof exhibitionUrl!=="string"||
-     !/^\/(?!\/)[^\r\n]*$/.test(exhibitionUrl))return {status:"invalid_url"};
+     !/^\/(?!\/)[^\\\u0000-\u001f\u007f]*$/.test(exhibitionUrl))return {status:"invalid_url"};
   const link=doc.createElement("a");
   link.setAttribute("href",exhibitionUrl);
   link.textContent="查看展覽";
