@@ -386,3 +386,15 @@ test('draft Discover: restart in unbookmarked does not lose hidden Want when ret
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
 });
+
+test('draft Discover: empty remaining session stays empty after reload',async({page})=>{
+ await boot(page);
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('#emptyState')).toBeVisible();
+ await page.reload();
+ await expect(page.locator('#emptyState')).toBeVisible();
+ await page.locator('#restartBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+});
