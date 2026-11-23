@@ -70,3 +70,22 @@ test("mobile Chromium: deleted exhibition has a safe view link, not an automatic
  await expect(page.locator("#notice section")).toHaveAttribute("role","alert");
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
+
+test("mobile Chromium: affected exhibition titles and individual statuses are visible",async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>TanDraftSaveOutcomeNotice.render({
+  container:document.getElementById("notice"),document,
+  result:{status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
+   reviewItems:[
+    {kind:"favs",key:"a",reason:"deleted_on_server"},
+    {kind:"visited",key:"b",reason:"not_found"}
+   ],
+   exhibitionTitles:{"favs:a":"展覽甲","visited:b":"展覽乙"}}
+ }));
+ await expect(page.locator("#notice li")).toHaveCount(2);
+ await expect(page.locator("#notice li").nth(0)).toContainText("展覽甲");
+ await expect(page.locator("#notice li").nth(0)).toContainText("目前已從清單移除");
+ await expect(page.locator("#notice li").nth(1)).toContainText("展覽乙");
+ await expect(page.locator("#notice li").nth(1)).toContainText("目前無法確認");
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});
