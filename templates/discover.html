@@ -549,8 +549,8 @@
         var map = JSON.parse(localStorage.getItem(target.kind === 'favs' ? 'taiwan_art_favs' : 'taiwan_art_visited') || '{}');
         var exists = Object.prototype.hasOwnProperty.call(map, target.key);
         var label = target.kind === 'favs'
-          ? (LANG === 'en' ? 'Want to see' : (LANG === 'ja' ? '行きたい' : '想看'))
-          : (LANG === 'en' ? 'Visited' : (LANG === 'ja' ? '観た' : '看過'));
+          ? (LANG === 'en' ? 'Want to see' : (LANG === 'ja' ? '行きたい' : '想去'))
+          : (LANG === 'en' ? 'Visited' : (LANG === 'ja' ? '観た' : '已看'));
         conflictStatus.textContent = target.title + ' — ' + (LANG === 'en' ? 'On this device, ' : LANG === 'ja' ? 'この端末では ' : '此裝置上 ') + label + ': ' +
           (exists ? (LANG === 'en' ? 'Saved' : LANG === 'ja' ? '登録あり' : '已儲存')
                   : (LANG === 'en' ? 'Not saved' : LANG === 'ja' ? '登録なし' : '未儲存'));
@@ -571,8 +571,8 @@
       var messages = LANG === 'en'
         ? {stale:'The saved exhibition was changed in another tab, so Undo was not applied. Your saved information is unchanged. Please review the current saved status before making another change.', failure:'Could not save this exhibition. The card is still here and your saved information has not changed. Please tap Like or Visited again.'}
         : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant')
-          ? {stale:'這筆展覽資料已在其他分頁變更，因此無法復原。原本儲存的資料仍會保留。請先確認目前的收藏或看過狀態，再決定是否修改。', failure:'這筆展覽未能儲存。卡片仍會保留，原本的資料也不會變更。請再按一次「想看」或「看過」。'}
-          : {stale:'別のタブで展示情報が変更されたため、取り消せませんでした。現在の保存内容はそのまま残っています。登録状況を確認してから、必要に応じて操作してください。', failure:'保存できませんでした。展示カードはそのまま残り、保存内容も変更されていません。「行きたい」または「観た」をもう一度押してください。'};
+          ? {stale:'這筆展覽資料已在其他分頁變更，因此無法復原。原本儲存的資料仍會保留。請點選下方「查看此裝置的儲存狀態」，確認目前的登記內容，再決定是否需要重新操作。', failure:'這筆展覽未能儲存。卡片仍會保留，原本的資料也不會變更。請再按一次「想去」或「已看」。'}
+          : {stale:'別のタブで展示情報が変更されたため、取り消せませんでした。現在の保存内容はそのまま残っています。下の「この端末の登録状況を確認」を押して、現在の登録を確認してください。確認後、必要なら展示カードから登録し直せます。', failure:'保存できませんでした。展示カードはそのまま残り、保存内容も変更されていません。「行きたい」または「観た」をもう一度押してください。'};
       discoverError.textContent = result.status === 'stale_undo' ? messages.stale : messages.failure;
       conflictCheck.hidden = result.status !== 'stale_undo';
       conflictCheck.style.display = result.status === 'stale_undo' ? 'inline-block' : 'none';
