@@ -45,6 +45,7 @@
       try {
         const result = await statusCheck.check({fetchImpl,kind:attemptedDecision.kind,
           key:attemptedDecision.key,expectedValue:attemptedDecision.value});
+        if (disposed) return;
         status.textContent = result.status === "saved_on_server"
           ? "サーバーに登録が確認できました。ほかの展示は再読み込みして確認してください。"
           : result.status === "still_deleted"
@@ -53,7 +54,7 @@
               ? "サーバーには異なる登録内容があります。上書きせず、最新の状態で確認してください。"
               : "保存結果を確定できませんでした。再送信せず、時間をおいて再確認してください。";
       } catch (_) {
-        status.textContent = "サーバーの状態を確認できませんでした。再送信せず、時間をおいて再確認してください。";
+        if (!disposed) status.textContent = "サーバーの状態を確認できませんでした。再送信せず、時間をおいて再確認してください。";
       } finally {
         checking = false;
         if (!disposed) checkButton.disabled = false;
@@ -96,6 +97,7 @@
             localValue: local[decision.key],
             baseRevision: serverState.revision, request
           });
+          if (disposed) return;
           if (result.status !== "submitted" || !result.state ||
               !Number.isSafeInteger(result.state.revision) ||
               result.state.revision <= serverState.revision) {
@@ -110,6 +112,7 @@
         }
         status.textContent = "変更はありません。";
       } catch (_) {
+        if (disposed) return;
         status.textContent = confirmationAttempted
           ? "保存された可能性があります。再送信せず、最新の登録状況を再取得して確認してください。"
           : "通信に失敗しました。状態を再取得して確認してください。";
