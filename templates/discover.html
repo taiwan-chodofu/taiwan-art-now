@@ -509,7 +509,7 @@
     discoverError.setAttribute('role', 'alert');
     discoverError.setAttribute('aria-live', 'assertive');
     discoverError.setAttribute('aria-atomic', 'true');
-    discoverError.style.cssText = 'padding:0 16px;color:#b42318;font-size:0.82rem;text-align:center;';
+    discoverError.style.cssText = 'box-sizing:border-box;max-width:36rem;margin:0 auto;padding:0 16px;color:#b42318;font-size:0.875rem;line-height:1.6;text-align:left;overflow-wrap:anywhere;';
     actionsBar.parentNode.insertBefore(discoverError, actionsBar);
     function setDiscoverBusy(busy) {
       discoverBusy = busy;
