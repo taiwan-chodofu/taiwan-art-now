@@ -145,6 +145,57 @@ class VersionedHTTPTests(unittest.TestCase):
         self.assertEqual(read.call_args.kwargs["verified_sender_id"], "owner")
         self.assertEqual(self.db.commits, 1)
 
+    def test_two_cookies_route_to_separate_verified_owners(self):
+        """HTTP reads must use the cookie session owner, not a client-supplied ID."""
+        from browser_session import token_digest
+        token_a, token_b = "synthetic-owner-a", "synthetic-owner-b"
+        owners = {token_digest(token_a): "owner-a",
+                  token_digest(token_b): "owner-b"}
+        db = self.db
+        original_cursor = db.cursor
+
+        class SessionCursor:
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                return False
+            def execute(self, sql, params):
+                db.query = sql
+                db.queries.append(sql)
+                db.params = params
+            def fetchone(self):
+                return (owners[db.params[0]],) if db.params[0] in owners else None
+
+        db.cursor = lambda: SessionCursor()
+        private_states = {
+            "owner-a": {"revision": 1, "favs": {"a-only": {
+                "value": {"title": "A"}, "deleted": False, "revision": 1}},
+                "visited": {}},
+            "owner-b": {"revision": 1, "favs": {"b-only": {
+                "value": {"title": "B"}, "deleted": False, "revision": 1}},
+                "visited": {}},
+        }
+        try:
+            with patch("versioned_subscriber_api_routes.read_for_verified_sender",
+                       side_effect=lambda conn, verified_sender_id:
+                           private_states[verified_sender_id]) as read:
+                self.client.set_cookie("__Host-tan_session", token_a)
+                first = self.client.get("/api/private-subscribers/v2/state")
+                self.client.set_cookie("__Host-tan_session", token_b)
+                second = self.client.get("/api/private-subscribers/v2/state")
+                self.client.set_cookie("__Host-tan_session", "unknown-session")
+                denied = self.client.get("/api/private-subscribers/v2/state")
+            self.assertEqual(first.status_code, 200)
+            self.assertEqual(second.status_code, 200)
+            self.assertEqual(denied.status_code, 403)
+            self.assertEqual(set(first.json["favs"]), {"a-only"})
+            self.assertEqual(set(second.json["favs"]), {"b-only"})
+            self.assertEqual([call.kwargs["verified_sender_id"]
+                              for call in read.call_args_list],
+                             ["owner-a", "owner-b"])
+        finally:
+            db.cursor = original_cursor
+
     def test_read_rejects_sender_query(self):
         response = self.client.get("/api/private-subscribers/v2/state?sender_id=victim")
         self.assertEqual(response.status_code, 400)
