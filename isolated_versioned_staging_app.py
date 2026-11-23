@@ -10,9 +10,7 @@ from versioned_subscriber_api_routes import versioned_blueprint
 def create_isolated_staging_app(*, db_connect, canonical_origin, environment):
     if environment != "isolated-staging" or not callable(db_connect):
         raise ValueError("An explicit isolated-staging environment and DB connector are required")
-    if not isinstance(canonical_origin, str) or not canonical_origin.startswith(
-        ("http://127.0.0.1:", "http://localhost:")
-    ):
+    if not isinstance(canonical_origin, str) or canonical_origin not in ("https://localhost", "https://127.0.0.1"):
         raise ValueError("Staging canonical origin must be HTTPS loopback")
     app = Flask("tan_versioned_isolated_staging")
     app.config.update(TESTING=True, TAN_PRIVATE_DB_CONNECT=db_connect,
