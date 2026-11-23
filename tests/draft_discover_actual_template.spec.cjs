@@ -78,3 +78,21 @@ test('guarded real template: immediate undo cancels delayed render and restores 
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
 });
+
+test('guarded real template: reload resumes the next card after a successful like',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.reload();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
+test('guarded real template: skip is not persisted as a favorite or visited entry',async({page})=>{
+ await boot(page);
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+ expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+});
