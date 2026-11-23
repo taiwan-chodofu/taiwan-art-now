@@ -32,6 +32,7 @@ test('real detail markup: isolated server-first save does not invoke legacy hand
   ],onRender:x=>window.__renders.push(x)});
  });
  await page.locator('#favBtn').click();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
  await expect(page.locator('#notice')).toContainText('サーバーに保存');
  const result=await page.evaluate(()=>({state:window.__state,events:window.__renders,local:localStorage.getItem('taiwan_art_favs')}));
  expect(result.state.favs.ex_1.deleted).toBe(false);expect(result.events).toHaveLength(1);expect(result.local).toBeNull();
