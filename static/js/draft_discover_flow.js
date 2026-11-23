@@ -67,7 +67,11 @@
      history.length=0;
      return {status:'cleared'};
    }
-   return {swipe,undo,clearHistory,isBusy:()=>pending,historySize:()=>history.length};
+   function lastUndoTarget(){
+     const last=history[history.length-1];
+     return last&&last.kind?{kind:last.kind,key:last.key,title:last.card.title}:null;
+   }
+   return {swipe,undo,clearHistory,lastUndoTarget,isBusy:()=>pending,historySize:()=>history.length};
  }
  return {create};
 });
