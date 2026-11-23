@@ -33,6 +33,10 @@
     const status = doc.createElement("p");
     status.setAttribute("aria-live", "polite");
     status.setAttribute("aria-atomic", "true");
+    const nextButton = doc.createElement("button");
+    nextButton.textContent = "残りの展示を確認";
+    nextButton.setAttribute("type", "button");
+    let nextReview = null;
     const remainingList = doc.createElement("div");
     remainingList.setAttribute("aria-label", "確認が必要な展示");
     const checkButton = doc.createElement("button");
@@ -129,6 +133,10 @@
               status.textContent = pending.length
                 ? "この展示を登録しました。あと" + pending.length + "件、確認が必要な展示があります。"
                 : "この展示を登録しました。ほかに確認が必要な展示はありません。";
+              if (pending.length) {
+                nextReview = {report: {status: "needs_review", review: pending}, serverState: latest.state};
+                nextButton.disabled = false;
+              }
               for (const item of pending) {
                 const label = doc.createElement("p");
                 label.textContent = item.key + (item.kind === "favs" ? "（観たい）" : "（観た）");
@@ -155,19 +163,30 @@
         if (!disposed && confirmationAttempted && typeof fetchImpl === "function") checkButton.disabled = false;
       }
     };
+    nextButton.disabled = true;
+    nextButton.addEventListener("click", () => {
+      if (disposed || busy || !completed || !nextReview) return;
+      const next = nextReview;
+      dispose();
+      mount({container, report: next.report, doc, serverState: next.serverState,
+        localSnapshot, storage, request, fetchImpl});
+    });
     button.addEventListener("click", submit);
     container.appendChild(button);
     container.appendChild(status);
     container.appendChild(remainingList);
+    container.appendChild(nextButton);
     if (typeof fetchImpl === "function") container.appendChild(checkButton);
-    return { rendered: true, submit, inspect, dispose: () => {
+    function dispose() {
       disposed = true;
       review.dispose();
       button.remove();
       status.remove();
       remainingList.remove();
+      nextButton.remove();
       checkButton.remove();
-    } };
+    }
+    return { rendered: true, submit, inspect, dispose };
   }
   return { mount };
 });
