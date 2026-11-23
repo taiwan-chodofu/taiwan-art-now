@@ -39,7 +39,7 @@
       Object.prototype.hasOwnProperty.call(result.exhibitionTitles,item.kind+":"+item.key)
       ?result.exhibitionTitles[item.kind+":"+item.key]:null;
     row.textContent=typeof title==="string"&&title.trim()
-      ?title:"展覽 "+(index+1);
+      ?title:"名稱未提供的展覽";
     list.appendChild(row);
    }
    notice.appendChild(list);
