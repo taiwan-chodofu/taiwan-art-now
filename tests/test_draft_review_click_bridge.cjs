@@ -3,8 +3,8 @@ const assert = require("node:assert/strict");
 const { mount } = require("../static/js/draft_review_click_bridge.js");
 const { read } = require("../static/js/draft_legacy_snapshot.js");
 class Element {
-  constructor(tag) { this.tag = tag; this.children = []; this.value = ""; this.events = {}; this.textContent = ""; }
-  setAttribute() {}
+  constructor(tag) { this.tag = tag; this.children = []; this.value = ""; this.events = {}; this.textContent = ""; this.attributes = {}; }
+  setAttribute(name, value) { this.attributes[name] = value; }
   appendChild(child) { this.children.push(child); return child; }
   addEventListener(name, fn) { this.events[name] = fn; }
   remove() { this.removed = true; }
