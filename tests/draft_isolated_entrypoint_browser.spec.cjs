@@ -133,3 +133,45 @@ test('opt-in review: keeping a deletion dismisses question without writing',asyn
  await expect(page.locator('#migrationReview')).toBeEmpty();
  expect(writes).toBe(0);
 });
+
+test('explicit second confirmation restores only reviewed tombstone and preserves seen',async({page})=>{
+ let writes=0;
+ let server={revision:2,favs:{art:{revision:1,deleted:true,value:null}},visited:{art:{revision:2,deleted:false,value:true}}};
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  const request=route.request();
+  if(request.method()==='GET')return route.fulfill(response(server));
+  writes++;
+  const body=request.postDataJSON();
+  if(body.base_revision!==server.revision)return route.fulfill({status:409,body:'{}'});
+  server={...server,revision:3,favs:{art:{revision:3,deleted:false,value:body.changes.favs.art.set}}};
+  return route.fulfill(response(server));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ expect(writes).toBe(0);
+ await expect(page.locator('#restoreConfirm')).toBeVisible();
+ await page.locator('#restoreYes').click();
+ await expect(page.locator('#notice')).toContainText('「観たい」を保存しました');
+ expect(writes).toBe(1);
+ expect(server.visited.art.deleted).toBe(false);
+});
+test('cancel final confirmation does not write',async({page})=>{
+ let writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill(response({revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ await page.locator('#restoreNo').click();
+ await expect(page.locator('#restoreConfirm')).toBeHidden();
+ expect(writes).toBe(0);
+});
