@@ -54,6 +54,47 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
 
+    def test_isolated_staging_factory_real_database_ownership_and_revocation(self):
+        """The isolated app factory uses real PostgreSQL session ownership."""
+        import psycopg
+        from browser_cookie_security import COOKIE_NAME
+        from browser_session import token_digest
+        from isolated_versioned_staging_app import create_isolated_staging_app
+
+        owners=("staging-owner-a", "staging-owner-b")
+        tokens=("staging-session-a", "staging-session-b")
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                for owner, token in zip(owners,tokens):
+                    cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",(owner,))
+                    cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
+                                "VALUES (%s,%s,now()+interval '1 hour')",(token_digest(token),owner))
+        app=create_isolated_staging_app(db_connect=lambda:psycopg.connect(self.url),
+            canonical_origin="http://127.0.0.1:8765",environment="isolated-staging")
+        a,b=app.test_client(),app.test_client()
+        a.set_cookie(COOKIE_NAME,tokens[0]);b.set_cookie(COOKIE_NAME,tokens[1])
+        read="/api/private-subscribers/v2/state"
+        write="/api/private-subscribers/v2/changes"
+        origin={"Origin":"http://127.0.0.1:8765"}
+        saved=a.post(write,json={"base_revision":0,"changes":{
+            "favs":{"a-only":{"set":{"title":"A"}}},"visited":{}}},headers=origin)
+        self.assertEqual(saved.status_code,200)
+        self.assertEqual(saved.json["revision"],1)
+        other=b.get(read,headers=origin)
+        self.assertEqual(other.status_code,200)
+        self.assertEqual(other.json["revision"],0)
+        self.assertEqual(other.json["favs"],{})
+        self.assertEqual(a.post(write,json={"base_revision":1,"changes":{
+            "favs":{},"visited":{}}},headers={"Origin":"https://evil.example"}).status_code,403)
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute("UPDATE tan_private.browser_sessions SET revoked_at=now() "
+                            "WHERE token_hash=%s",(token_digest(tokens[0]),))
+        self.assertEqual(a.get(read,headers=origin).status_code,403)
+        self.assertEqual(a.post(write,json={"base_revision":1,"changes":{
+            "favs":{},"visited":{}}},headers=origin).status_code,403)
+        self.assertEqual(b.get(read,headers=origin).status_code,200)
+
     def test_two_authenticated_clients_stale_cas_then_additive_retry(self):
         """Two cookies for one owner: stale write fails, fresh additive retry preserves both."""
         import psycopg
