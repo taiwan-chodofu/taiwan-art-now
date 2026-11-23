@@ -32,10 +32,22 @@
    action:"你可以繼續瀏覽。如果想查看這筆展覽，請到「想看」或「看過」清單確認。",
    requiresReview:false
   }),
-  saved_server_record_changed:Object.freeze({
-   heading:"這筆展覽的儲存狀態已改變",
-   detail:"剛才的儲存曾經成功，但再次查看帳號時，這筆展覽已被刪除或修改，無法確認目前仍保留原本的內容。",
-   action:"請到「想看」或「看過」清單查看這筆展覽目前的狀態。確認前先不要再次儲存或刪除。",
+  saved_server_record_deleted:Object.freeze({
+   heading:"這筆展覽目前不在清單中",
+   detail:"剛才加入的展覽，現在已從帳號清單中移除。",
+   action:"如果你還想收藏這筆展覽，可以重新加入「想看」或「看過」。",
+   requiresReview:true
+  }),
+  saved_server_record_different:Object.freeze({
+   heading:"這筆展覽的資料已更新",
+   detail:"這筆展覽目前在帳號中的資料，和剛才儲存的內容不同。",
+   action:"請打開這筆展覽，查看目前的「想看」或「看過」狀態。",
+   requiresReview:true
+  }),
+  saved_server_record_unconfirmed:Object.freeze({
+   heading:"目前找不到這筆展覽的收藏",
+   detail:"剛才儲存後，再次查看帳號清單時沒有找到這筆展覽。",
+   action:"請打開「想看」或「看過」清單查看；如果仍然沒有出現，可以再收藏一次。",
    requiresReview:true
   }),
   unknown_commit:Object.freeze({
