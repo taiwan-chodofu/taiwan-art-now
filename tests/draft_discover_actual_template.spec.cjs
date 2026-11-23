@@ -252,9 +252,10 @@ test('guarded real template: malformed local registration data is not rewritten 
  await boot(page);
  await page.locator('#likeBtn').click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
- await page.evaluate(()=>localStorage.setItem('taiwan_art_favs','{broken'));
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}})));
  await page.locator('#undoBtn').click();
  await expect(page.locator('#discoverConflictCheck')).toBeVisible();
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs','{broken'));
  await page.locator('#discoverConflictCheck').click();
  await expect(page.locator('#discoverConflictStatus')).toContainText('読み取れませんでした');
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBe('{broken');
