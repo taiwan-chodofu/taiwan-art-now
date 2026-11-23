@@ -62,7 +62,7 @@ test('real detail buttons: quota error leaves buttons unchanged and sends no ana
  });
  await page.locator('#favBtn').click();
  await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
- expect(await page.evaluate(()=>__events)).toEqual(['failure']);
+ await expect.poll(()=>page.evaluate(()=>__events)).toEqual(['failure']);
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
 });
 
