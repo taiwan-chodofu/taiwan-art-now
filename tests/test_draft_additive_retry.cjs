@@ -191,7 +191,9 @@ test("cached old tab overwrites local map after POST; server-authoritative save 
   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(authoritative);
  }});
- assert.equal(result.status,"saved");
+ assert.equal(result.status,"saved_server_local_changed");
+ assert.equal(result.serverSaved,true);
+ assert.equal(result.revision,1);
  assert.equal(posts,1);
  assert.equal(authoritative.favs.a.value.title,"A");
  assert.equal(JSON.parse(local.getItem("taiwan_art_favs")).a,undefined);
@@ -235,4 +237,34 @@ test("old tab writes during server GET and checkpoint detects lost exhibition",a
   }});
  assert.equal(result.status,"local_review_required");
  assert.equal(posts,0);
+});
+
+test("confirmed POST with checkpoint loss reports server saved but local review required",async()=>{
+ const local=storage({a:fav});
+ let posts=0;
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+  fetchImpl:async(path,opts)=>{
+   if(opts.method==="GET")return response(state());
+   posts++;
+   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+   return response(state(1,{a:item(fav)}));
+  }});
+ assert.equal(result.status,"saved_server_local_review_required");
+ assert.equal(result.serverSaved,true);
+ assert.equal(result.revision,1);
+ assert.equal(result.missing[0].key,"a");
+ assert.equal(posts,1);
+});
+test("confirmed POST with unreadable local snapshot never reports fully saved",async()=>{
+ const local=storage({a:fav});
+ let posts=0;
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+  if(opts.method==="GET")return response(state());
+  posts++;
+  local.change("taiwan_art_favs",["unexpected","array"]);
+  return response(state(1,{a:item(fav)}));
+ }});
+ assert.equal(result.status,"saved_server_local_changed");
+ assert.equal(result.serverSaved,true);
+ assert.equal(posts,1);
 });
