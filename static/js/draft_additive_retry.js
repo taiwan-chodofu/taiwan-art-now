@@ -96,6 +96,18 @@
           }
         }
       }catch(_){return {status:"unknown_commit"};}
+      // A cached legacy tab can overwrite localStorage while POST is in flight.
+      // The server commit is verified, but the local snapshot may now be stale.
+      // Do not claim that both copies are synchronized or automatically resend.
+      const afterSave=checkCheckpoint(storage,checkpoint);
+      if(afterSave)return {status:"saved_server_local_review_required",
+        revision:saved.revision,retried,serverSaved:true,
+        localStatus:afterSave.localStatus,
+        missing:afterSave.missing||[],changed:afterSave.changed||[]};
+      const finalLocal=legacy.read(storage);
+      if(finalLocal.status!=="ready"||stable(finalLocal.snapshot)!==initialSnapshot)
+        return {status:"saved_server_local_changed",revision:saved.revision,
+          retried,serverSaved:true,localStatus:finalLocal.status};
       return {status:"saved",revision:saved.revision,retried,
         preservedRemote:proposal.preservedRemote,
         metadataDifferences:proposal.metadataDifferences};
