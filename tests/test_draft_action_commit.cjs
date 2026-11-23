@@ -70,3 +70,30 @@ test("UI callback exception does not pretend storage failed", async () => {
   assert.equal(result.status, "committed_callback_failed");
   assert.equal(JSON.parse(x.data.taiwan_art_favs).a.title, "A");
 });
+
+test("busy-start callback exception releases pending slot without writing", async () => {
+  const x=setup();
+  let count=0;
+  const adapter=create({storage:x.storage,locks:x.locks,
+    onCommitted:v=>x.committed.push(v),onFailure:v=>x.failures.push(v),
+    onBusy:busy=>{if(busy&&count++===0)throw Error("UI unavailable");}});
+  const first=await adapter.commit({kind:"favs",key:"a",action:"set",value:fav});
+  assert.equal(first.status,"unavailable");
+  assert.equal(x.committed.length,0);
+  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
+  const second=await adapter.commit({kind:"favs",key:"a",action:"set",value:fav});
+  assert.equal(second.status,"written_under_cooperative_lock");
+  assert.equal(x.committed.length,1);
+});
+test("busy-end callback exception cannot turn persisted success into failure", async () => {
+  const x=setup();
+  const adapter=create({storage:x.storage,locks:x.locks,
+    onCommitted:v=>x.committed.push(v),onFailure:v=>x.failures.push(v),
+    onBusy:busy=>{if(!busy)throw Error("UI end");}});
+  const first=await adapter.commit({kind:"favs",key:"a",action:"set",value:fav});
+  assert.equal(first.status,"written_under_cooperative_lock");
+  assert.equal(x.failures.length,0);
+  const second=await adapter.commit({kind:"favs",key:"a",action:"remove"});
+  assert.equal(second.status,"written_under_cooperative_lock");
+  assert.equal(x.committed.length,2);
+});
