@@ -68,3 +68,21 @@ test("independent detail buttons retain both states when writes are serialized",
  assert.ok(JSON.parse(x.data.taiwan_art_favs).ex_1);
  assert.ok(JSON.parse(x.data.taiwan_art_visited).ex_1);
 });
+
+test("navigation disposal suppresses stale UI, analytics and notification callbacks",async()=>{
+ const data={taiwan_art_favs:"{}",taiwan_art_visited:"{}"},events=[];
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ const storage={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
+ const locks={request:async(_name,_opts,fn)=>{await gate;return fn();}};
+ const adapter=create({storage,locks,key:"ex_1",metadata:{title:"展覽",museum:"M"},
+  onRender:()=>events.push("render"),onAnalytics:()=>events.push("analytics"),
+  onNotify:()=>events.push("notify"),onFailure:()=>events.push("failure"),
+  onBusy:()=>events.push("busy")});
+ const pending=adapter.toggle("favs");
+ adapter.dispose();
+ assert.equal((await adapter.toggle("visited")).status,"disposed");
+ release();
+ assert.equal((await pending).status,"written_under_cooperative_lock");
+ assert.ok(JSON.parse(data.taiwan_art_favs).ex_1);
+ assert.deepEqual(events,["busy"]);
+});
