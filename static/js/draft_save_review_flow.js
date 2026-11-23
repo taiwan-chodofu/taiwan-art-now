@@ -28,7 +28,10 @@
   // missing trusted checkpoint still needs separate review of other records.
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
-    ?{...result,status:"saved_server_verified_local_changed"}:result;
+    ?{...result,status:"saved_server_verified_local_changed"}
+    :REVIEW.has(result.status)&&verification&&
+      verification.status==="server_records_need_review"
+      ?{...result,status:"saved_server_record_changed"}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
   return {result,verification,displayResult,displayed};
