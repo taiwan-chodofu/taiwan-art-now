@@ -116,3 +116,20 @@ test('opt-in review stays invisible when registration was not explicitly deleted
  await expect(page.locator('#migrationReview')).toBeEmpty();
  expect(writes).toBe(0);
 });
+
+test('opt-in review: keeping a deletion dismisses question without writing',async({page})=>{
+ let writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill(response({revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ await expect(page.locator('#migrationReview').getByRole('button',{name:'戻さない'})).toBeVisible();
+ await page.locator('#migrationReview').getByRole('button',{name:'戻さない'}).click();
+ await expect(page.locator('#migrationReview')).toBeEmpty();
+ expect(writes).toBe(0);
+});
