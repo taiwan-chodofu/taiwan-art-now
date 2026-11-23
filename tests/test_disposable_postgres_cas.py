@@ -131,6 +131,43 @@ class DisposablePostgresCASTests(unittest.TestCase):
             self.assertEqual(latest.json,removed.json)
             self.assertEqual(latest.headers.get("Cache-Control"),"no-store")
 
+    def test_isolated_staging_two_sessions_reject_stale_delete_and_preserve_seen(self):
+        """A stale device cannot erase a newer independent seen registration."""
+        import psycopg
+        from browser_cookie_security import COOKIE_NAME
+        from browser_session import token_digest
+        from isolated_versioned_staging_app import create_isolated_staging_app
+
+        owner="staging-two-session-owner"
+        tokens=("staging-two-session-a","staging-two-session-b")
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",(owner,))
+                for token in tokens:
+                    cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
+                                "VALUES (%s,%s,now()+interval '1 hour')",(token_digest(token),owner))
+        app=create_isolated_staging_app(db_connect=lambda:psycopg.connect(self.url),
+            canonical_origin="https://127.0.0.1",environment="isolated-staging")
+        a,b=app.test_client(),app.test_client()
+        a.set_cookie(COOKIE_NAME,tokens[0])
+        b.set_cookie(COOKIE_NAME,tokens[1])
+        headers={"Origin":"https://127.0.0.1"}
+        url="/api/private-subscribers/v2/changes"
+        def write(client,revision,favs,visited):
+            return client.post(url,json={"base_revision":revision,
+                "changes":{"favs":favs,"visited":visited}},headers=headers)
+        self.assertEqual(a.get("/api/private-subscribers/v2/state",headers=headers).json["revision"],0)
+        self.assertEqual(b.get("/api/private-subscribers/v2/state",headers=headers).json["revision"],0)
+        self.assertEqual(write(a,0,{"art":{"set":{"title":"Art"}}},{}).status_code,200)
+        self.assertEqual(write(b,0,{},{"art":{"delete":True}}).status_code,409)
+        self.assertEqual(write(b,1,{},{"art":{"set":{"date":"2026-11-23"}}}).status_code,200)
+        self.assertEqual(write(a,1,{"art":{"delete":True}},{}).status_code,409)
+        final=a.get("/api/private-subscribers/v2/state",headers=headers)
+        self.assertEqual(final.status_code,200)
+        self.assertEqual(final.json["revision"],2)
+        self.assertFalse(final.json["favs"]["art"]["deleted"])
+        self.assertFalse(final.json["visited"]["art"]["deleted"])
+
     def test_two_authenticated_clients_stale_cas_then_additive_retry(self):
         """Two cookies for one owner: stale write fails, fresh additive retry preserves both."""
         import psycopg
