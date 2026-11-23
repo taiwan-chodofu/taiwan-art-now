@@ -50,11 +50,11 @@ test('real Discover markup: server-first want action never writes local exhibiti
  let state={revision:0,favs:{},visited:{}};
  await page.route('**/api/private-subscribers/v2/**',route=>{
   const req=route.request();
-  if(req.method()==='GET')return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(state)});
+  if(req.method()==='GET')return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
   const data=req.postDataJSON();
   if(data.base_revision!==state.revision)return route.fulfill({status:409,body:'{}'});
   state={revision:1,favs:{a:{revision:1,deleted:false,value:{title:'A'}}},visited:{}};
-  return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(state)});
+  return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
  });
  for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
  await page.evaluate(()=>{
