@@ -56,6 +56,7 @@ test('guarded real template: stale undo preserves a newer favorite',async({page}
  await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}})));
  await page.locator('#undoBtn').click();
  await expect(page.locator('#discoverActionError')).toContainText('変更されたため');
+ await expect(page.locator('#discoverActionError')).toContainText('登録状況を確認してから');
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}});
 });
@@ -116,6 +117,7 @@ test('guarded real template: another tab updating a favorite prevents stale undo
  },updated);
  await page.locator('#undoBtn').click();
  await expect(page.locator('#discoverActionError')).toContainText('変更されたため');
+ await expect(page.locator('#discoverActionError')).toContainText('登録状況を確認してから');
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(await second.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).a.title))
   .toBe('Updated in tab 2');
