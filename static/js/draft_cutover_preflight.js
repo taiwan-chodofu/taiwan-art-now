@@ -37,13 +37,13 @@
    if(after.status!=="consistent")
      return {status:"local_review_required",maySync:false,
        missing:after.missing||[],changed:after.changed||[]};
-   return {status:"preflight_ready",maySync:true,
+   return {status:"preflight_ready",maySync:false,previewReady:true,
      base_revision:proposal.base_revision,
      proposedAdds:Object.keys(proposal.changes.favs).length+
        Object.keys(proposal.changes.visited).length,
      preservedRemote:proposal.preservedRemote.length,
      metadataDifferences:proposal.metadataDifferences.length,
-     // Preflight is not a commit authorization or a lock on legacy tabs.
+     // Preview cannot authorize a write: old cached tabs bypass cooperative locks.
      requiresFreshCAS:true,requiresCoordinatedWriters:true};
  }
  return {inspect};
