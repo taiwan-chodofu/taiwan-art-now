@@ -8,6 +8,7 @@
  <button type="button" id="favBtn" disabled aria-pressed="false">観たい</button>
  <button type="button" id="visitedBtn" disabled aria-pressed="false">観た</button>
  <div id="migrationReview" aria-live="polite"></div>
+ <div id="restoreConfirm" hidden><p>この展示を「観たい」に戻しますか？</p><button type="button" id="restoreYes">戻す</button><button type="button" id="restoreNo">やめる</button></div>
  <p id="notice" role="status" aria-live="polite">保存状況を確認しています。</p>
 </main>
 <script src="/static/js/draft_versioned_sync.js"></script>
@@ -19,6 +20,7 @@
 <script src="/static/js/draft_legacy_snapshot.js"></script>
 <script src="/static/js/draft_migration_review.js"></script>
 <script src="/static/js/draft_simple_review_ui.js"></script>
+<script src="/static/js/draft_explicit_server_restore.js"></script>
 <script>
 (function(){
  'use strict';
@@ -41,22 +43,56 @@
   // Optional read-only migration preview, isolated to explicit test mode.
   let reviewDisposed=false;
   let reviewMount=null;
+  const confirmBox=document.getElementById("restoreConfirm");
+  const yes=document.getElementById("restoreYes");
+  const no=document.getElementById("restoreNo");
+  let pending=null,reviewed=null,submitting=false;
+  no.addEventListener("click",()=>{if(submitting)return;pending=null;confirmBox.hidden=true;notice.textContent="登録は変更していません。";});
+  yes.addEventListener("click",async()=>{
+   if(!pending||!reviewed||submitting||reviewDisposed)return;
+   submitting=true;yes.disabled=true;no.disabled=true;
+   const intent=pending;pending=null;
+   const result=await TanDraftExplicitServerRestore.restore({
+    fetchImpl:window.fetch.bind(window),kind:intent.kind,key:intent.key,
+    value:reviewed.value,reviewedRevision:reviewed.revision,
+    tombstoneRevision:reviewed.tombstoneRevision,confirmed:true
+   });
+   if(reviewDisposed)return;
+   confirmBox.hidden=true;
+   notice.textContent=result.status==="server_confirmed"
+    ?"「観たい」を保存しました。"
+    :result.status==="write_outcome_unknown"
+     ?"保存できたか確認できません。ページを再読み込みして確認してください。"
+     :"登録状況が変わりました。ページを再読み込みして確認してください。";
+   if(result.status==="server_confirmed"&&reviewMount)reviewMount.dispose();
+   // Never re-enable stale buttons or repeat an uncertain POST.
+  });
   if(params.get('review')==='1'){
    TanDraftAuthenticatedState.read({fetchImpl:window.fetch.bind(window)}).then(result=>{
     if(reviewDisposed||result.status!=='ready')return;
     const report=TanDraftMigrationReview.preview(window.localStorage,result.state);
     if(report.status!=='ready')return;
     const messages=TanDraftMigrationReview.explain(report,'ja');
+    const legacy=TanDraftLegacySnapshot.read(window.localStorage);
+    if(legacy.status!=='ready')return;
     if(reviewDisposed)return;
     reviewMount=TanDraftSimpleReviewUI.mount({container:document.getElementById('migrationReview'),
      doc:document,review:messages,onDecision:decision=>{
-      notice.textContent='この展示を戻すには、最新の登録を確認する必要があります。まだ変更していません。';
+      const row=report.rows.find(r=>r.kind===decision.kind&&r.key===decision.key&&r.status==='deleted_remotely');
+      const value=legacy.snapshot[decision.kind]?.[decision.key];
+      if(!row||value===undefined||reviewDisposed)return;
+      pending=decision;
+      reviewed={revision:report.revision,tombstoneRevision:row.remoteRevision,value};
+      confirmBox.querySelector('p').textContent=decision.kind==='favs'
+       ?'この展示を「観たい」に戻しますか？':'この展示を「観た」に戻しますか？';
+      confirmBox.hidden=false;
+      notice.textContent='まだ登録は変更していません。';
       window.__draftReviewIntent=decision;
      }});
    }).catch(()=>{});
   }
   window.addEventListener('pagehide',()=>{
-   reviewDisposed=true;
+   reviewDisposed=true;pending=null;confirmBox.hidden=true;
    if(reviewMount)reviewMount.dispose();
    lifecycle.dispose();
   },{once:true});
