@@ -17,7 +17,7 @@ test("detail check reports both saved collections without any writes",async()=>{
  assert.deepEqual(result,{status:"saved",revision:3,collections:["favs","visited"]});
 });
 test("detail check distinguishes explicit deletion from absence",async()=>{
- const deleted=await check({fetchImpl:fetchState({...base,favs:{x:{deleted:true,revision:3}}}),exhibitionKey:"x"});
+ const deleted=await check({fetchImpl:fetchState({...base,favs:{x:{value:null,deleted:true,revision:3}}}),exhibitionKey:"x"});
  assert.equal(deleted.status,"removed");
  const missing=await check({fetchImpl:fetchState(base),exhibitionKey:"x"});
  assert.equal(missing.status,"not_found");
