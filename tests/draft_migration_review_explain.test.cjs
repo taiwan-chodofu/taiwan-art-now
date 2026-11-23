@@ -15,14 +15,16 @@ test('migration review explains local-only, remote-only and explicit deletion wi
  assert.equal(report.status,'ready');
  const ja=review.explain(report,'ja');
  assert.equal(ja.status,'ready');assert.equal(ja.mayWrite,false);
- assert.match(ja.items.find(x=>x.key==='local').message,/この端末だけ/);
- assert.match(ja.items.find(x=>x.key==='remote').message,/削除しません/);
- assert.match(ja.items.find(x=>x.key==='deleted').message,/自動復元はしません/);
- assert.match(ja.items.find(x=>x.key==='seen').message,/削除しません/);
+ assert.equal(ja.items.length,1);
+ assert.equal(ja.items[0].key,'deleted');
+ assert.match(ja.items[0].title,/戻しますか/);
+ assert.match(ja.items[0].message,/以前/);
+ assert.deepEqual(ja.items[0].options.map(x=>x.id),['keep_deleted','request_restore']);
  const zh=review.explain(report,'zh');
  assert.equal(zh.mayWrite,false);
- assert.match(zh.items.find(x=>x.key==='deleted').message,/不會自動恢復/);
- assert.match(zh.items.find(x=>x.key==='remote').message,/不代表刪除/);
+ assert.equal(zh.items.length,1);
+ assert.match(zh.items[0].title,/重新加入/);
+ assert.equal(zh.items[0].options[0].label,'維持移除');
 });
 test('migration review cannot turn invalid report into permission to write',()=>{
  assert.deepEqual(review.explain(null),{status:'invalid_review',mayWrite:false,items:[]});
