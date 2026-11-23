@@ -12,7 +12,9 @@
   if(!result)return {heading:"目前無法確認收藏狀態",detail:"請稍後再試。"};
   if(result.status==="saved"){
    const labels=(result.collections||[]).map(k=>k==="favs"?"想看":"看過");
-   return {heading:"已收藏",detail:"這筆展覽目前已加入："+labels.join("、")};
+   const removed=(result.removedCollections||[]).map(k=>k==="favs"?"想看":"看過");
+   return {heading:"已收藏",detail:"這筆展覽目前已加入："+labels.join("、")+
+    (removed.length?"；已從「"+removed.join("、")+"」移除。":"。")};
   }
   if(result.status==="removed")
    return {heading:"目前未收藏",detail:"這筆展覽先前已從收藏清單移除。若想再次收藏，請自行選擇「想看」或「看過」。"};
