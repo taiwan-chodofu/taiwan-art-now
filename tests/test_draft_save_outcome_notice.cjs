@@ -18,7 +18,7 @@ test("confirmed server save with local overwrite displays alert and safe next ac
  const notice=container.children[0];
  assert.equal(notice.attributes.role,"alert");
  assert.equal(notice.attributes["aria-live"],"assertive");
- assert.match(notice.children[2].textContent,/關閉其他開著的舊分頁/);
+ assert.match(notice.children[2].textContent,/關閉那些頁面/);
  assert.doesNotMatch(notice.children[2].textContent,/重新整理/);
 });
 test("ordinary success uses polite status, not alarming alert",()=>{
