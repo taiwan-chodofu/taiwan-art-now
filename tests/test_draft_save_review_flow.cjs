@@ -82,3 +82,21 @@ test("verified server save renders polite success instead of a warning",async()=
  assert.match(container.children[0].children[0].textContent,/成功儲存/);
  assert.equal(posts,1);
 });
+
+test("server record deleted after save never receives calm verified-success copy",async()=>{
+ const local=storage();let gets=0,posts=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ const deleted={revision:2,favs:{a:{value:null,revision:2,deleted:true}},visited:{}};
+ const output=await run({storage:local,fetchImpl:async(path,options)=>{
+  if(options.method==="GET"){gets++;return response(gets===1?
+   {revision:0,favs:{},visited:{}}:deleted);}
+  posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+  return response(saved);
+ }});
+ assert.equal(output.result.serverSaved,true);
+ assert.equal(output.verification.status,"server_records_need_review");
+ assert.equal(output.verification.unresolved[0].reason,"deleted_on_server");
+ assert.equal(output.displayResult.status,"saved_server_local_changed");
+ assert.equal(posts,1);
+ assert.equal(gets,2);
+});
