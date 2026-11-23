@@ -70,12 +70,12 @@ class DisposablePostgresCASTests(unittest.TestCase):
                     cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
                                 "VALUES (%s,%s,now()+interval '1 hour')",(token_digest(token),owner))
         app=create_isolated_staging_app(db_connect=lambda:psycopg.connect(self.url),
-            canonical_origin="http://127.0.0.1:8765",environment="isolated-staging")
+            canonical_origin="https://127.0.0.1",environment="isolated-staging")
         a,b=app.test_client(),app.test_client()
         a.set_cookie(COOKIE_NAME,tokens[0]);b.set_cookie(COOKIE_NAME,tokens[1])
         read="/api/private-subscribers/v2/state"
         write="/api/private-subscribers/v2/changes"
-        origin={"Origin":"http://127.0.0.1:8765"}
+        origin={"Origin":"https://127.0.0.1"}
         saved=a.post(write,json={"base_revision":0,"changes":{
             "favs":{"a-only":{"set":{"title":"A"}}},"visited":{}}},headers=origin)
         self.assertEqual(saved.status_code,200)
