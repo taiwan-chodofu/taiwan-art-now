@@ -8,7 +8,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function() {
   "use strict";
   const CHOICES = ["keep_saved", "remove_from_list", "decide_later"];
-  function createReview(container, report, doc) {
+  function createReview(container, report, doc, localSnapshot) {
     if (!container || !doc || typeof doc.createElement !== "function" ||
         !report || !["prepared", "needs_review"].includes(report.status) ||
         !Array.isArray(report.review)) throw new Error("Invalid merge report");
@@ -33,14 +33,17 @@
         throw new Error("Invalid deletion conflict");
       const id = JSON.stringify([item.kind, item.key]);
       if (decisions.has(id)) throw new Error("Duplicate conflict");
+      const saved = localSnapshot && localSnapshot[item.kind] && localSnapshot[item.kind][item.key];
+      const title = saved && typeof saved.title === "string" && saved.title.trim()
+        ? saved.title.trim() : item.key;
       const wrapper = doc.createElement("div");
       const prompt = doc.createElement("p");
-      prompt.textContent = item.key + (item.kind === "favs"
+      prompt.textContent = title + (item.kind === "favs"
         ? "を「観たい」リストに残しますか？"
         : "の「観た」記録を残しますか？");
       wrapper.appendChild(prompt);
       const select = doc.createElement("select");
-      select.setAttribute("aria-label", item.key + " の保存状態");
+      select.setAttribute("aria-label", title + " の保存状態");
       const options = [
         ["decide_later", "あとで決める"],
         ["keep_saved", item.kind === "favs" ? "「観たい」に残す" : "「観た」記録を残す"],
