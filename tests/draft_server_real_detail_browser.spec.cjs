@@ -176,3 +176,29 @@ test('staging lifecycle starts only once and cannot restart after disposal',asyn
  expect(outcome).toEqual({first:true,second:false,third:false,disabled:true});
  expect(reads).toBe(1);
 });
+
+test('post-save stale refresh cannot remount old revision or unlock buttons',async({page})=>{
+ await page.route('**/stale-refresh',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
+ await page.goto('http://127.0.0.1:8765/stale-refresh');
+ let reads=0;
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='GET'){
+   reads++;
+   const revision=reads===2?1:0;
+   return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify({revision,favs:revision?{ex_1:{revision:1,deleted:false,value:true}}:{},visited:{}})});
+  }
+  return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify({revision:1})});
+ });
+ for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ await page.evaluate(()=>{
+  window.__refreshes=0;
+  TanDraftServerButtonBridge.mount({win:window,fetchImpl:fetch.bind(window),lang:'ja',notice:document.getElementById('notice'),buttons:[
+   {element:document.getElementById('favBtn'),kind:'favs',key:'ex_1',action:'set',value:true,expectedRevision:0}
+  ],onRefresh:()=>{window.__refreshes++}});
+ });
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#notice')).toContainText('ページを再読み込み');
+ expect(await page.evaluate(()=>window.__refreshes)).toBe(0);
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ expect(reads).toBe(3);
+});
