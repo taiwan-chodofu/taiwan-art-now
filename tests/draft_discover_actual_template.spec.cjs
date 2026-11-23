@@ -351,3 +351,24 @@ test('draft Discover: skipped exhibition does not reappear after filter toggle',
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
 });
+
+test('draft Discover: reload in unbookmarked mode does not permanently discard hidden Want',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await page.reload();
+ await expect(page.locator('#discoverModePicker button').nth(1)).toHaveAttribute('aria-pressed','true');
+ await page.locator('#discoverModePicker button').first().click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
+test('draft Discover: a skipped card stays skipped even after reload and mode toggles',async({page})=>{
+ await boot(page);
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await page.reload();
+ await page.locator('#discoverModePicker button').first().click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+});
