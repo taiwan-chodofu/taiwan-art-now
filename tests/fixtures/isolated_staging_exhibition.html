@@ -67,17 +67,25 @@
     :result.status==="write_outcome_unknown"
      ?"保存できたか確認できません。「最新の登録を表示する」を押して確認してください。"
      :"登録状況が変わりました。「最新の登録を表示する」を押して確認してください。";
-   reloadState.hidden=false;
+   // Confirmed writes can refresh in place using a fresh authenticated GET.
+   // Unknown write outcomes must never be interpreted as confirmed or retried.
+   document.getElementById("favBtn").disabled=true;
+   document.getElementById("visitedBtn").disabled=true;
    if(result.status==="server_confirmed"){
     if(reviewMount)reviewMount.dispose();
-    // The ordinary buttons were mounted before restoration. Their revision
-    // is now stale: keep them disabled until a full page reload.
-    document.getElementById("favBtn").disabled=true;
-    document.getElementById("visitedBtn").disabled=true;
-    notice.textContent+=" 「最新の登録を表示する」を押してください。";
+    const updated=await lifecycle.refresh();
+    if(reviewDisposed)return;
+    if(updated){
+     reloadState.hidden=true;
+     notice.textContent=intent.kind==="visited"
+      ?'「観た」を保存しました。最新の登録を表示しています。'
+      :'「観たい」を保存しました。最新の登録を表示しています。';
+    }else{
+     reloadState.hidden=false;
+     notice.textContent='保存しましたが、最新の表示を確認できません。「最新の登録を表示する」を押してください。';
+    }
    }else{
-    document.getElementById("favBtn").disabled=true;
-    document.getElementById("visitedBtn").disabled=true;
+    reloadState.hidden=false;
    }
    // Never re-enable stale buttons or repeat an uncertain POST.
   });
