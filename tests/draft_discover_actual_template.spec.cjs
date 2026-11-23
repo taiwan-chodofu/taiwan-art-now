@@ -1,5 +1,5 @@
-// Characterization tests of the ACTUAL Discover template, served with synthetic Jinja data.
-// These document current unsafe behavior; they do not assert that it is safe.
+// Regression tests of the actual draft Discover template with synthetic Jinja data.
+// These do not prove production readiness or safety against uncoordinated legacy tabs.
 const {test,expect}=require('@playwright/test');
 const fs=require('node:fs');
 const path=require('node:path');
@@ -22,11 +22,14 @@ function html(){
 }
 async function boot(page){
  await page.addInitScript(()=>{
+  if (sessionStorage.getItem('tan_draft_test_initialized') !== '1') {
+   localStorage.removeItem('taiwan_art_favs');
+   localStorage.removeItem('taiwan_art_visited');
+   sessionStorage.removeItem('taiwan_art_discover_deck');
+   sessionStorage.setItem('tan_draft_test_initialized','1');
+  }
   localStorage.setItem('taiwan_art_discover_tutorial_seen','1');
   localStorage.setItem('taiwan_art_ga_exclude','1');
-  localStorage.removeItem('taiwan_art_favs');
-  localStorage.removeItem('taiwan_art_visited');
-  sessionStorage.removeItem('taiwan_art_discover_deck');
  });
  await page.route('**/discover',route=>route.fulfill({status:200,contentType:'text/html',body:html()}));
  await page.goto('http://127.0.0.1:8765/discover');
