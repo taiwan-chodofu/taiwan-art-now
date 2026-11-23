@@ -78,3 +78,40 @@ test('isolated HTML entrypoint: HTML login redirect is not trusted as saved stat
  await expect(page.locator('#visitedBtn')).toBeDisabled();
  expect(writes).toBe(0);
 });
+
+test('opt-in review only asks about previously removed exhibition and does not write',async({page})=>{
+ let writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill(response({revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ const review=page.locator('#migrationReview');
+ await expect(review).toContainText('「観たい」に戻しますか？');
+ await expect(review.locator('select')).toHaveValue('keep_deleted');
+ await review.locator('select').selectOption('request_restore');
+ await expect(page.locator('#notice')).toContainText('まだ変更していません');
+ expect(writes).toBe(0);
+ expect(await page.evaluate(()=>window.__draftReviewIntent)).toEqual({
+  kind:'favs',key:'art',choice:'request_restore',requiresFreshRead:true
+ });
+});
+test('opt-in review stays invisible when registration was not explicitly deleted',async({page})=>{
+ let writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST')writes++;
+  return route.fulfill(response({revision:0,favs:{},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ await expect(page.locator('#favBtn')).toBeEnabled();
+ await expect(page.locator('#migrationReview')).toBeEmpty();
+ expect(writes).toBe(0);
+});
