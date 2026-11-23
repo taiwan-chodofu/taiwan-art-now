@@ -44,7 +44,7 @@
       const options = [
         ["decide_later", "あとで決める"],
         ["keep_saved", item.kind === "favs" ? "「観たい」に残す" : "「観た」記録を残す"],
-        ["remove_from_list", item.kind === "favs" ? "「観たい」から外す" : "「観た」記録を外す"]
+        ["remove_from_list", item.kind === "favs" ? "「観たい」から外す（まだ反映されません）" : "「観た」記録を外す（まだ反映されません）"]
       ];
       for (const [value, label] of options) {
         const option = doc.createElement("option");
@@ -60,7 +60,7 @@
       section.appendChild(wrapper);
     }
     const note = doc.createElement("p");
-    note.textContent = "選択内容はまだ保存されません。記録も変更されません。";
+    note.textContent = "「残す」を選んで確認すると、その展示だけ登録します。「外す」と「あとで決める」は記録を変更しません。";
     section.appendChild(note);
     container.appendChild(section);
     return {
