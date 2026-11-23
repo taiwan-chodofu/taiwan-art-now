@@ -16,7 +16,7 @@
         typeof storage.setItem !== "function" ||
         !locks || typeof locks.request !== "function" ||
         !["favs", "visited"].includes(kind) ||
-        typeof key !== "string" || !key ||
+        typeof key !== "string" || !key || ["__proto__", "constructor", "prototype"].includes(key) ||
         !["set", "remove", "toggle", "remove_if_equal"].includes(action))
       return { status: "not_authorized" };
     try {
