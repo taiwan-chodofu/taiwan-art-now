@@ -213,6 +213,8 @@ test('final restore uncertain POST never retries or announces success',async({pa
  await expect(page.locator('#notice')).toContainText('保存できたか確認できません');
  await expect(page.locator('#restoreYes')).toBeDisabled();
  await expect(page.locator('#reloadState')).toBeVisible();
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
  expect(writes).toBe(1);
 });
 
