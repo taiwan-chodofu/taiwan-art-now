@@ -321,3 +321,23 @@ test('draft Discover: selected mode persists only for the current tab session',a
  await page.reload();
  await expect(page.locator('#discoverModePicker button').first()).toHaveAttribute('aria-pressed','true');
 });
+
+test('draft Discover: filter click during fly-out is rejected and saved action completes',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ // During animation, mode must remain browse and the current action must finish.
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('#discoverModePicker button').first()).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
+test('draft Discover: mode switch clears obsolete Undo without removing saved Want',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
