@@ -195,3 +195,22 @@ test('guarded real template: storage error is announced through an accessible al
  await expect(alert).toContainText('もう一度押してください');
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
 });
+
+test('guarded real template: mobile error guidance remains visible and actions stay usable',async({page})=>{
+ await page.setViewportSize({width:375,height:667});
+ await boot(page);
+ await page.evaluate(()=>{
+  const original=Storage.prototype.setItem;
+  Storage.prototype.setItem=function(key,value){
+   if(key==='taiwan_art_favs')throw new DOMException('quota','QuotaExceededError');
+   return original.call(this,key,value);
+  };
+ });
+ await page.locator('#likeBtn').click();
+ const alert=page.locator('#discoverActionError');
+ await expect(alert).toBeVisible();
+ await expect(alert).toContainText('もう一度押してください');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ await expect(page.locator('#likeBtn')).toBeEnabled();
+ await expect(page.locator('#visitedBtn')).toBeEnabled();
+});
