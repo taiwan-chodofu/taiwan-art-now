@@ -176,3 +176,63 @@ test("after 409, a tombstone conflict blocks all unrelated additive POSTs until 
  assert.deepEqual(JSON.parse(local.getItem("taiwan_art_favs")),
    {conflict:fav,safe:fav});
 });
+
+test("cached old tab overwrites local map after POST; server-authoritative save survives",async()=>{
+ const local=storage({a:fav});
+ let authoritative=state();
+ let posts=0;
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+  if(opts.method==="GET")return response(authoritative);
+  posts++;
+  const request=JSON.parse(opts.body);
+  assert.equal(request.base_revision,0);
+  authoritative=state(1,{a:item(fav,1)});
+  // Simulate an old tab bypassing Web Locks and replacing the entire map.
+  local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+  return response(authoritative);
+ }});
+ assert.equal(result.status,"saved");
+ assert.equal(posts,1);
+ assert.equal(authoritative.favs.a.value.title,"A");
+ assert.equal(JSON.parse(local.getItem("taiwan_art_favs")).a,undefined);
+ // This confirms server isolation, NOT preservation of legacy localStorage.
+});
+test("cached old tab cannot resurrect tombstone through additive retry",async()=>{
+ const local=storage({a:fav});
+ let posts=0;
+ const authoritative=state(2,{a:item(null,2,true)});
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+  if(opts.method==="POST")posts++;
+  return response(authoritative);
+ }});
+ assert.equal(result.status,"needs_review");
+ assert.equal(posts,0);
+ assert.equal(authoritative.favs.a.deleted,true);
+});
+test("old tab writes during server GET; additive retry refuses stale local snapshot",async()=>{
+ const local=storage({a:fav});
+ let posts=0;
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+  if(opts.method==="GET"){
+   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+   return response(state());
+  }
+  posts++;return response(state(1));
+ }});
+ assert.equal(result.status,"local_changed");
+ assert.equal(posts,0);
+});
+test("old tab writes during server GET and checkpoint detects lost exhibition",async()=>{
+ const local=storage({a:fav});
+ let posts=0;
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+  fetchImpl:async(path,opts)=>{
+   if(opts.method==="GET"){
+    local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+    return response(state());
+   }
+   posts++;return response(state(1));
+  }});
+ assert.equal(result.status,"local_review_required");
+ assert.equal(posts,0);
+});
