@@ -298,3 +298,25 @@ test('draft Discover: restart in unbookmarked mode does not show saved Want',asy
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
 });
+
+test('draft Discover: unbookmarked selection survives reload without exposing Want',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('#discoverModePicker button').nth(1)).toHaveAttribute('aria-pressed','true');
+ await page.reload();
+ await expect(page.locator('#discoverModePicker button').nth(1)).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
+test('draft Discover: selected mode persists only for the current tab session',async({page})=>{
+ await boot(page);
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('#discoverModePicker button').nth(1)).toHaveAttribute('aria-pressed','true');
+ await page.reload();
+ await expect(page.locator('#discoverModePicker button').nth(1)).toHaveAttribute('aria-pressed','true');
+ await page.locator('#discoverModePicker button').first().click();
+ await page.reload();
+ await expect(page.locator('#discoverModePicker button').first()).toHaveAttribute('aria-pressed','true');
+});
