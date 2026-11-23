@@ -255,6 +255,11 @@
     <button class="like-btn" id="likeBtn">♡ {{ labels.like }}</button>
   </div>
 
+  <script src="/static/js/draft_legacy_snapshot.js"></script>
+  <script src="/static/js/draft_legacy_writer.js"></script>
+  <script src="/static/js/draft_page_action.js"></script>
+  <script src="/static/js/draft_page_controller.js"></script>
+  <script src="/static/js/draft_discover_flow.js"></script>
   <script>
     var ALL_CARDS = {{ cards | tojson }};
     var LABELS = {{ labels | tojson }};
@@ -425,6 +430,7 @@
       var isHorizontalSwipe = false;
 
       el.addEventListener('pointerdown', function(e) {
+        if (discoverBusy) return;
         startedInExcerpt = !!(excerptEl && excerptEl.contains(e.target));
         directionLocked = !startedInExcerpt;
         isHorizontalSwipe = !startedInExcerpt;
@@ -437,7 +443,7 @@
         }
       });
       el.addEventListener('pointermove', function(e) {
-        if (!isDragging || e.pointerId !== activePointerId) return;
+        if (discoverBusy || !isDragging || e.pointerId !== activePointerId) return;
         var dx = e.clientX - dragStartX;
         var dy = e.clientY - dragStartY;
 
@@ -494,51 +500,88 @@
       el.addEventListener('pointercancel', endDrag);
     }
 
-    function commitSwipe(action) {
-      if (!currentCard) return;
-      var card = deck.shift();
+    // Draft integration: only advance after the cooperative storage commit succeeds.
+    var discoverBusy = false;
+    var discoverRenderTimer = null;
+    var discoverError = document.createElement('p');
+    discoverError.id = 'discoverActionError';
+    discoverError.setAttribute('role', 'alert');
+    discoverError.style.cssText = 'padding:0 16px;color:#b42318;font-size:0.82rem;text-align:center;';
+    actionsBar.parentNode.insertBefore(discoverError, actionsBar);
+    function setDiscoverBusy(busy) {
+      discoverBusy = busy;
+      ['likeBtn','visitedBtn','skipBtn','undoBtn','restartBtn'].forEach(function(id) {
+        document.getElementById(id).disabled = busy;
+      });
+    }
+    function clearDiscoverError() { discoverError.textContent = ''; }
+    function failDiscover(result) {
+      discoverError.textContent = result.status === 'stale_undo'
+        ? '保存済みの展示情報が変更されたため、取り消せません。'
+        : '保存できませんでした。もう一度お試しください。';
+      if (currentCardEl) {
+        currentCardEl.style.transition = 'transform 0.2s ease';
+        currentCardEl.style.transform = '';
+      }
+    }
+    function advanceDiscover(info) {
+      if (!deck.length || _normalizeKey(deck[0].stable_key) !== _normalizeKey(info.card.stable_key))
+        throw new Error('Discover deck changed during save');
+      deck.shift();
+      saveDeckOrder();
       var el = currentCardEl;
-      var flyX = action === 'like' ? window.innerWidth : -window.innerWidth;
+      var flyX = info.action === 'like' ? window.innerWidth : -window.innerWidth;
       if (el) {
         el.style.transition = 'transform 0.3s ease';
-        el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (action === 'like' ? 20 : -20) + 'deg)';
+        el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (info.action === 'like' ? 20 : -20) + 'deg)';
       }
-      recordAction(card, action);
-      saveDeckOrder();
-      if (typeof gtag === 'function') gtag('event', 'discover_' + action, { exhibition_key: _normalizeKey(card.stable_key) });
-      setTimeout(renderCard, 220);
+      if (typeof gtag === 'function') gtag('event', 'discover_' + info.action, {exhibition_key:_normalizeKey(info.card.stable_key)});
+      discoverRenderTimer = setTimeout(function() {
+        discoverRenderTimer = null;
+        renderCard();
+      }, 220);
     }
-
-    function recordAction(card, action) {
-      // 'skip' means "not sure / not interested right now" — per the site's
-      // serendipity principle, this is NOT recorded anywhere, so the same
-      // exhibition can resurface on a future visit rather than being
-      // permanently excluded (that would create a filter bubble).
-      var key = _normalizeKey(card.stable_key);
-      if (action === 'like') {
-        var favs = _getFavs();
-        favs[key] = { title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region, event: '' };
-        _saveFavs(favs);
-      } else if (action === 'visited') {
-        var visited = _getVisited();
-        visited[key] = { date: new Date().toISOString(), title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region };
-        _saveVisited(visited);
+    var discoverFlow = TanDraftDiscoverFlow.create({
+      storage: localStorage, locks: navigator.locks, normalizeKey: _normalizeKey,
+      onAdvance: advanceDiscover,
+      onRestore: function(last) {
+        if (discoverRenderTimer) {
+          clearTimeout(discoverRenderTimer);
+          discoverRenderTimer = null;
+        }
+        deck.unshift(last.card);
+        saveDeckOrder();
+        renderCard();
+      },
+      onError: failDiscover
+    });
+    async function commitSwipe(action) {
+      if (discoverBusy || !currentCard) return;
+      clearDiscoverError();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.swipe(currentCard, action);
+        if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
+            result.status !== 'committed_ui_failed') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
       }
-      actionHistory.push({ card: card, action: action });
     }
-
-    function undo() {
-      if (actionHistory.length === 0) return;
-      var last = actionHistory.pop();
-      var key = _normalizeKey(last.card.stable_key);
-      if (last.action === 'like') {
-        var favs = _getFavs(); delete favs[key]; _saveFavs(favs);
-      } else if (last.action === 'visited') {
-        var visited = _getVisited(); delete visited[key]; _saveVisited(visited);
+    async function undo() {
+      if (discoverBusy) return;
+      clearDiscoverError();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.undo();
+        if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
+            result.status !== 'nothing_to_undo') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
       }
-      deck.unshift(last.card);
-      saveDeckOrder();
-      renderCard();
     }
 
     document.getElementById('likeBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('like'); });
@@ -547,7 +590,7 @@
     document.getElementById('undoBtn').addEventListener('click', undo);
     document.getElementById('restartBtn').addEventListener('click', function() {
       deck = ALL_CARDS.slice();
-      actionHistory = [];
+      // Restart is a new deck only; existing guarded undo history remains intact.
       saveDeckOrder();
       renderCard();
     });
