@@ -37,6 +37,7 @@
     nextButton.textContent = "残りの展示を確認";
     nextButton.setAttribute("type", "button");
     let nextReview = null;
+    let openingNext = false;
     const remainingList = doc.createElement("div");
     remainingList.setAttribute("aria-label", "確認が必要な展示");
     const checkButton = doc.createElement("button");
@@ -165,14 +166,18 @@
     };
     nextButton.disabled = true;
     nextButton.addEventListener("click", async () => {
-      if (disposed || busy || !completed || !nextReview) return;
+      if (disposed || busy || openingNext || !completed || !nextReview) return;
+      openingNext = true;
       nextButton.disabled = true;
       // A second device may have changed the list since the previous GET.
       // Read again before creating a new confirmation screen; never write here.
-      const fresh = await statusCheck.readState({fetchImpl});
+      let fresh;
+      try { fresh = await statusCheck.readState({fetchImpl}); }
+      catch (_) { fresh = {status:"unavailable"}; }
       if (disposed) return;
       if (fresh.status !== "ready") {
         status.textContent = "ほかの展示を確認できませんでした。もう一度お試しください。";
+        openingNext = false;
         nextButton.disabled = false;
         return;
       }
@@ -183,6 +188,7 @@
       });
       if (!pending.length) {
         status.textContent = "確認が必要な展示はありません。";
+        nextReview = null;
         return;
       }
       const next = {report: {status:"needs_review",review:pending}, serverState:fresh.state};
