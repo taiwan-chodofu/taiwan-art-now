@@ -656,7 +656,12 @@
 
     // DRAFT ONLY: mode switching is a deliberate fresh browse session.
     // Do not switch during writes or animation; clear stale undo history.
+    var DISCOVER_MODE_KEY = 'taiwan_art_discover_mode';
     var discoverMode = 'browse';
+    try {
+      var restoredMode = sessionStorage.getItem(DISCOVER_MODE_KEY);
+      if (restoredMode === 'unbookmarked') discoverMode = restoredMode;
+    } catch (e) {}
     var discoverSourceOrder = deck.concat(ALL_CARDS.filter(function(card) {
       return !deck.some(function(existing) {
         return _normalizeKey(existing.stable_key) === _normalizeKey(card.stable_key);
@@ -679,12 +684,27 @@
         if (discoverFlow.clearHistory().status !== 'cleared') return false;
         clearDiscoverError();
         discoverMode = nextMode;
+        try { sessionStorage.setItem(DISCOVER_MODE_KEY, discoverMode); } catch (e) {}
         deck = result.cards;
         saveDeckOrder();
         renderCard();
         return true;
       }
     });
+    // Restore the selected view after navigating away and back. Preserve
+    // session deck order while applying the active bookmark filter.
+    if (discoverMode !== 'browse') {
+      var restoredSelection = TanDraftDiscoverSelection.select({
+        cards:deck,
+        bookmarks:{favs:_getFavs(),visited:_getVisited()},
+        normalizeKey:_normalizeKey,
+        mode:discoverMode
+      });
+      if (restoredSelection.status === 'ready') {
+        deck = restoredSelection.cards;
+        saveDeckOrder();
+      }
+    }
     renderCard();
 
     var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
