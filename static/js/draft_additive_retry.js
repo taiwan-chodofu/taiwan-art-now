@@ -10,24 +10,40 @@
     typeof module==="object"&&module.exports
       ? require("./draft_legacy_snapshot.js"):root.TanDraftLegacySnapshot,
     typeof module==="object"&&module.exports
-      ? require("./draft_versioned_sync.js"):root.TanDraftSync);
+      ? require("./draft_versioned_sync.js"):root.TanDraftSync,
+    typeof module==="object"&&module.exports
+      ? require("./draft_loss_detector.js"):root.TanDraftLossDetector);
   if(typeof module==="object"&&module.exports)module.exports=api;
   else root.TanDraftAdditiveRetry=api;
-})(typeof globalThis!=="undefined"?globalThis:this,function(reader,merge,legacy,sync){
+})(typeof globalThis!=="undefined"?globalThis:this,function(reader,merge,legacy,sync,loss){
   "use strict";
   const PATH="/api/private-subscribers/v2/changes";
   const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
   const hasChanges=c=>["favs","visited"].some(k=>Object.keys(c[k]).length>0);
   const stable=x=>JSON.stringify(x);
-  async function run({storage,fetchImpl}={}){
+  function checkCheckpoint(storage,checkpoint){
+    if(!checkpoint)return null;
+    try{
+      const result=loss.inspect({storage,checkpoint});
+      return result.status==="consistent"?null:{status:"local_review_required",
+        localStatus:result.status,missing:result.missing||[],changed:result.changed||[]};
+    }catch(_){return {status:"local_review_required"};}
+  }
+  async function run({storage,fetchImpl,checkpoint}={}){
     if(!storage||typeof fetchImpl!=="function")return {status:"invalid_request"};
+    const initialLoss=checkCheckpoint(storage,checkpoint);
+    if(initialLoss)return initialLoss;
     const original=legacy.read(storage);
     if(original.status!=="ready")return {status:original.status};
     const initialSnapshot=stable(original.snapshot);
     let retried=false;
     for(let attempt=0;attempt<2;attempt++){
+      const beforeGet=checkCheckpoint(storage,checkpoint);
+      if(beforeGet)return beforeGet;
       const latest=await reader.read({fetchImpl});
       if(latest.status!=="ready")return {status:latest.status};
+      const afterGet=checkCheckpoint(storage,checkpoint);
+      if(afterGet)return afterGet;
       const local=legacy.read(storage);
       if(local.status!=="ready")return {status:local.status};
       if(stable(local.snapshot)!==initialSnapshot)return {status:"local_changed"};
@@ -42,6 +58,8 @@
       const beforePost=legacy.read(storage);
       if(beforePost.status!=="ready")return {status:beforePost.status};
       if(stable(beforePost.snapshot)!==initialSnapshot)return {status:"local_changed"};
+      const beforeSend=checkCheckpoint(storage,checkpoint);
+      if(beforeSend)return beforeSend;
       let response;
       try{
         response=await fetchImpl(PATH,{
