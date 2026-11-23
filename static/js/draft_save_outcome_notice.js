@@ -31,15 +31,25 @@
   if(message.status==="saved_server_multiple_records_unconfirmed"&&
      Array.isArray(result.reviewItems)&&result.reviewItems.length){
    const list=doc.createElement("ul");
-   for(const [index,item] of result.reviewItems.entries()){
+   for(const item of result.reviewItems){
     const row=doc.createElement("li");
     // Internal identifiers are not meaningful exhibition names. A trusted
     // title must be supplied by the calling view; never display raw keys.
     const title=result.exhibitionTitles&&
       Object.prototype.hasOwnProperty.call(result.exhibitionTitles,item.kind+":"+item.key)
       ?result.exhibitionTitles[item.kind+":"+item.key]:null;
-    row.textContent=typeof title==="string"&&title.trim()
+    const name=typeof title==="string"&&title.trim()
       ?title:"名稱未提供的展覽";
+    const heading=doc.createElement("strong");
+    heading.textContent=name;
+    const state=doc.createElement("span");
+    state.textContent=item.reason==="deleted_on_server"
+      ?"目前已從清單移除"
+      :item.reason==="different_server_value"
+       ?"目前的收藏內容與剛才不同"
+       :"目前無法確認是否仍在清單中";
+    row.appendChild(heading);
+    row.appendChild(state);
     list.appendChild(row);
    }
    notice.appendChild(list);
