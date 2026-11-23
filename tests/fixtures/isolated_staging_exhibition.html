@@ -7,6 +7,7 @@
  <p>本番サイトではありません。認証済みの隔離サーバーに接続できない場合は操作できません。</p>
  <button type="button" id="favBtn" disabled aria-pressed="false">観たい</button>
  <button type="button" id="visitedBtn" disabled aria-pressed="false">観た</button>
+ <div id="migrationReview" aria-live="polite"></div>
  <p id="notice" role="status" aria-live="polite">保存状況を確認しています。</p>
 </main>
 <script src="/static/js/draft_versioned_sync.js"></script>
@@ -15,6 +16,9 @@
 <script src="/static/js/draft_server_page_action.js"></script>
 <script src="/static/js/draft_server_button_bridge.js"></script>
 <script src="/static/js/draft_staging_page.js"></script>
+<script src="/static/js/draft_legacy_snapshot.js"></script>
+<script src="/static/js/draft_migration_review.js"></script>
+<script src="/static/js/draft_simple_review_ui.js"></script>
 <script>
 (function(){
  'use strict';
@@ -34,6 +38,20 @@
    ]
   });
   lifecycle.start();
+  // Optional read-only migration preview, isolated to explicit test mode.
+  if(params.get('review')==='1'){
+   TanDraftAuthenticatedState.read({fetchImpl:window.fetch.bind(window)}).then(result=>{
+    if(result.status!=='ready')return;
+    const report=TanDraftMigrationReview.preview(window.localStorage,result.state);
+    if(report.status!=='ready')return;
+    const messages=TanDraftMigrationReview.explain(report,'ja');
+    TanDraftSimpleReviewUI.mount({container:document.getElementById('migrationReview'),
+     doc:document,review:messages,onDecision:decision=>{
+      notice.textContent='この展示を戻すには、最新の登録を確認する必要があります。まだ変更していません。';
+      window.__draftReviewIntent=decision;
+     }});
+   }).catch(()=>{});
+  }
   window.addEventListener('pagehide',()=>lifecycle.dispose(),{once:true});
  }catch(_){
   notice.textContent='保存機能を開始できません。ページを再読み込みしてください。';
