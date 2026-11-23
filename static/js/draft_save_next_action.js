@@ -8,7 +8,12 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(){
  "use strict";
  function isSafeExhibitionUrl(url){
-  return typeof url==="string"&&/^\\/(?!\\/)[^\\\\\\u0000-\\u001f\\u007f]*$/.test(url);
+  if(typeof url!=="string"||!url.startsWith("/")||url.startsWith("//"))return false;
+  for(const char of url){
+   const n=char.charCodeAt(0);
+   if(char==="\\"||n<32||n===127)return false;
+  }
+  return true;
  }
  function mount({container,document:doc,result,exhibitionUrl}={}){
   if(!container||!doc||typeof doc.createElement!=="function"||
