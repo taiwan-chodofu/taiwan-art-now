@@ -397,3 +397,42 @@ test("next review GET failure leaves existing review and allows retry",async()=>
  assert.equal(gets,3);
  assert.equal(posts,2);
 });
+
+test("three exhibitions can be confirmed sequentially without stale revisions or extra writes",async()=>{
+ const keys=["a","b","c"];
+ const data={taiwan_art_favs:JSON.stringify(Object.fromEntries(keys.map(k=>[k,fav]))),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const report3={status:"needs_review",review:keys.map(key=>({kind:"favs",key,reason:"explicit_deletion_conflict"}))};
+ let revision=3,posts=0,gets=0;
+ const entries=Object.fromEntries(keys.map(key=>[key,{value:null,deleted:true,revision:2}]));
+ const container=new Element("main");
+ mount({container,report:report3,doc,serverState:{revision,favs:structuredClone(entries),visited:{}},
+  storage,localSnapshot:read(storage).snapshot,
+  request:async (url,payload)=>{
+   posts++;
+   if(url.endsWith("/issue"))return {token:"synthetic"};
+   const next=keys.find(k=>entries[k].deleted);
+   revision++;
+   entries[next]={value:fav,deleted:false,revision};
+   return {revision};
+  },
+  fetchImpl:async()=>{gets++;return {ok:true,status:200,
+   headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision,favs:structuredClone(entries),visited:{}})};}});
+ for(let i=0;i<3;i++){
+  const selects=elements(container,"select").filter(x=>!x.removed && x.events.change);
+  const current=selects.at(-1);
+  current.value="keep_saved";current.events.change();
+  const confirm=elements(container,"button").filter(x=>!x.removed && x.textContent==="選択した展示を確認").at(-1);
+  await confirm.events.click();
+  assert.equal(posts,(i+1)*2);
+  if(i<2){
+   const next=elements(container,"button").filter(x=>!x.removed && x.textContent==="残りの展示を確認").at(-1);
+   await next.events.click();
+   assert.equal(posts,(i+1)*2);
+  }
+ }
+ assert.equal(revision,6);
+ assert.equal(keys.every(k=>!entries[k].deleted),true);
+ assert.equal(gets,4);
+});
