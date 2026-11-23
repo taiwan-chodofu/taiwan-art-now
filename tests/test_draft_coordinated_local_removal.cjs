@@ -89,3 +89,28 @@ test("visited removal is isolated", async () => {
   assert.ok(JSON.parse(x.data.taiwan_art_favs).a);
   assert.equal(JSON.parse(x.data.taiwan_art_visited).v, undefined);
 });
+
+test("silently ignored storage write cannot be reported as successful removal", async () => {
+  const x = fixture();
+  x.storage.setItem = () => {};
+  assert.equal((await remove(x)).status, "uncertain_write");
+  assert.ok(JSON.parse(x.data.taiwan_art_favs).a);
+});
+test("unexpected modification to another exhibition during write is detected", async () => {
+  const x = fixture();
+  x.storage.setItem = (key, value) => {
+    const next = JSON.parse(value);
+    next.b = { ...fav, title: "Unexpected change" };
+    x.data[key] = JSON.stringify(next);
+  };
+  assert.equal((await remove(x)).status, "uncertain_write");
+  assert.ok(JSON.parse(x.data.taiwan_art_favs).b);
+});
+test("unexpected modification to visited records during removal is detected", async () => {
+  const x = fixture();
+  x.storage.setItem = (key, value) => {
+    x.data[key] = value;
+    x.data.taiwan_art_visited = JSON.stringify({ other: "2026-11-23" });
+  };
+  assert.equal((await remove(x)).status, "uncertain_write");
+});
