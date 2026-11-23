@@ -146,3 +146,23 @@ test('staging lifecycle rejects legacy inline handler before any network write',
  });
  expect(result).toBe('invalid staging page');
 });
+
+test('staging lifecycle starts only once and cannot restart after disposal',async({page})=>{
+ await page.route('**/staging-single-start',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
+ await page.goto('http://127.0.0.1:8765/staging-single-start');
+ let reads=0;
+ await page.route('**/api/private-subscribers/v2/state',route=>{
+  reads++;
+  return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify({revision:0,favs:{},visited:{}})});
+ });
+ for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js','draft_staging_page.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ const outcome=await page.evaluate(async()=>{
+  const lifecycle=TanDraftStagingPage.create({win:window,fetchImpl:fetch.bind(window),notice:document.getElementById('notice'),items:[{element:document.getElementById('favBtn'),kind:'favs',key:'ex_1',value:true}]});
+  const [first,second]=await Promise.all([lifecycle.start(),lifecycle.start()]);
+  lifecycle.dispose();
+  const third=await lifecycle.start();
+  return {first,second,third,disabled:document.getElementById('favBtn').disabled};
+ });
+ expect(outcome).toEqual({first:true,second:false,third:false,disabled:true});
+ expect(reads).toBe(1);
+});
