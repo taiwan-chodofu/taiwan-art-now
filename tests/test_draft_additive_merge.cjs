@@ -68,3 +68,29 @@ test("conflicts do not discard unrelated additive changes", () => {
   assert.ok(result.changes.favs.b);
   assert.equal(result.changes.favs.a, undefined);
 });
+
+test("same exhibition key in favorites and visited is reconciled independently", () => {
+  const result = plan(storage({ a: fav }, { a: visited }),
+    state({ a: entry(fav) }, {}, 2));
+  assert.equal(result.status, "prepared");
+  assert.equal(result.same.length, 1);
+  assert.equal(result.same[0].kind, "favs");
+  assert.deepEqual(JSON.parse(JSON.stringify(result.changes.visited.a)), { set: visited });
+  assert.equal(Object.keys(result.changes.favs).length, 0);
+});
+test("a deletion conflict in visited never erases an unrelated favorite", () => {
+  const result = plan(storage({ keep: fav }, { deleted: visited }),
+    state({}, { deleted: entry(null, true) }, 5));
+  assert.equal(result.status, "needs_review");
+  assert.deepEqual(result.review.map(({kind,key,reason}) => ({kind,key,reason})),
+    [{kind:"visited",key:"deleted",reason:"explicit_deletion_conflict"}]);
+  assert.deepEqual(JSON.parse(JSON.stringify(result.changes.favs.keep)), {set:fav});
+  assert.equal(Object.keys(result.changes.visited).length, 0);
+});
+test("server registrations remain preserved even if a different local record needs review", () => {
+  const result = plan(storage({ conflict: fav }),
+    state({ conflict: entry(null,true), remote: entry(fav) }, {}, 9));
+  assert.equal(result.status, "needs_review");
+  assert.deepEqual(result.preservedRemote.map(x=>x.key), ["remote"]);
+  assert.equal(Object.keys(result.changes.favs).length, 0);
+});
