@@ -7,12 +7,14 @@
  else root.TanDraftSaveNextAction=api;
 })(typeof globalThis!=="undefined"?globalThis:this,function(){
  "use strict";
+ function isSafeExhibitionUrl(url){
+  return typeof url==="string"&&/^\\/(?!\\/)[^\\\\\\u0000-\\u001f\\u007f]*$/.test(url);
+ }
  function mount({container,document:doc,result,exhibitionUrl}={}){
   if(!container||!doc||typeof doc.createElement!=="function"||
      !result||result.status!=="saved_server_record_deleted"||
      result.serverSaved!==true)return {status:"not_applicable"};
-  if(typeof exhibitionUrl!=="string"||
-     !/^\/(?!\/)[^\\\u0000-\u001f\u007f]*$/.test(exhibitionUrl))return {status:"invalid_url"};
+  if(!isSafeExhibitionUrl(exhibitionUrl))return {status:"invalid_url"};
   const link=doc.createElement("a");
   link.setAttribute("href",exhibitionUrl);
   link.textContent="查看展覽";
@@ -20,5 +22,5 @@
   container.appendChild(link);
   return {status:"rendered"};
  }
- return {mount};
+ return {mount,isSafeExhibitionUrl};
 });
