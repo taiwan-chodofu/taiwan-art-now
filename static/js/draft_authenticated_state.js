@@ -30,7 +30,7 @@
       !cacheControl||!/(?:^|,)\s*no-store\b/i.test(cacheControl))
      return {status:"invalid_response"};
    let state;
-   try{state=await response.json();sync.validateServer(state);}
+   try{state=await response.json();sync.plan({favs:{},visited:{}},state);}
    catch(_){return {status:"invalid_server"};}
    return {status:"ready",state};
  }
