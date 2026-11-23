@@ -23,6 +23,7 @@ test("after legacy tab overwrites local map, verify server via GET without retry
  }});
  assert.equal(result.result.status,"saved_server_local_changed");
  assert.equal(result.verification.status,"confirmed_on_server");
+ assert.equal(result.displayResult.status,"saved_server_verified_local_changed");
  assert.equal(posts,1);
  assert.equal(gets,2);
 });
@@ -37,5 +38,21 @@ test("read-only check failure does not trigger a second save",async()=>{
  }});
  assert.equal(result.result.serverSaved,true);
  assert.equal(result.verification.status,"could_not_verify");
+ assert.equal(result.displayResult.status,"saved_server_local_changed");
  assert.equal(posts,1);
+});
+
+test("missing trusted checkpoint remains a review even if saved record is verified",async()=>{
+ const local=storage();let gets=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+  fetchImpl:async(path,options)=>{
+   if(options.method==="GET"){gets++;return response(gets===1?
+    {revision:0,favs:{},visited:{}}:saved);}
+   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+   return response(saved);
+  }});
+ assert.equal(result.result.status,"saved_server_local_review_required");
+ assert.equal(result.verification.status,"confirmed_on_server");
+ assert.equal(result.displayResult.status,"saved_server_local_review_required");
 });
