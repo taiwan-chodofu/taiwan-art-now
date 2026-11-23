@@ -641,7 +641,15 @@
       if (discoverBusy || discoverAnimating) return;
       if (discoverFlow.clearHistory().status !== 'cleared') return;
       clearDiscoverError();
-      deck = ALL_CARDS.slice();
+      var restartMode = typeof discoverMode === 'string' ? discoverMode : 'browse';
+      var restarted = TanDraftDiscoverSelection.select({
+        cards: ALL_CARDS,
+        bookmarks: {favs:_getFavs(),visited:_getVisited()},
+        normalizeKey:_normalizeKey,
+        mode:restartMode
+      });
+      if (restarted.status !== 'ready') return;
+      deck = restarted.cards;
       saveDeckOrder();
       renderCard();
     });
