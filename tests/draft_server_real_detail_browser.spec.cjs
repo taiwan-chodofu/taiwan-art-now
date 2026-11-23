@@ -131,3 +131,18 @@ test('staging lifecycle: save want then seen without reload, preserve both state
  expect(state.favs.ex_1.deleted).toBe(false);
  expect(state.visited.ex_1.deleted).toBe(false);
 });
+
+test('staging lifecycle rejects legacy inline handler before any network write',async({page})=>{
+ await page.route('**/staging-legacy-guard',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
+ await page.goto('http://127.0.0.1:8765/staging-legacy-guard');
+ await page.addScriptTag({path:path.resolve(__dirname,'../static/js/draft_staging_page.js')});
+ const result=await page.evaluate(()=>{
+  const element=document.getElementById('favBtn');
+  element.setAttribute('onclick','legacySave()');
+  try{
+   TanDraftStagingPage.create({win:window,fetchImpl:fetch.bind(window),notice:document.getElementById('notice'),items:[{element,kind:'favs',key:'ex_1',value:true}]});
+   return 'accepted';
+  }catch(e){return e.message;}
+ });
+ expect(result).toBe('invalid staging page');
+});
