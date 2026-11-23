@@ -260,3 +260,41 @@ test('guarded real template: malformed local registration data is not rewritten 
  await expect(page.locator('#discoverConflictStatus')).toContainText('読み取れませんでした');
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBe('{broken');
 });
+
+test('draft Discover: changing filters never deletes Want or Seen',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').first().click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+ expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
+});
+test('draft Discover: Seen-only is hidden from browse and unbookmarked, Want stays saved',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#visitedBtn').click();
+ await expect(page.locator('#emptyState')).toBeVisible();
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('#emptyState')).toBeVisible();
+ const saved=await page.evaluate(()=>({
+  favs:JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'),
+  visited:JSON.parse(localStorage.getItem('taiwan_art_visited')||'{}')
+ }));
+ expect(Object.keys(saved.favs)).toEqual(['a']);
+ expect(Object.keys(saved.visited)).toEqual(['b']);
+});
+test('draft Discover: restart in unbookmarked mode does not show saved Want',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('#emptyState')).toBeVisible();
+ await page.locator('#restartBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
