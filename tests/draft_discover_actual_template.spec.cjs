@@ -341,3 +341,13 @@ test('draft Discover: mode switch clears obsolete Undo without removing saved Wa
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
 });
+
+test('draft Discover: skipped exhibition does not reappear after filter toggle',async({page})=>{
+ await boot(page);
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await page.locator('#discoverModePicker button').first().click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
+});
