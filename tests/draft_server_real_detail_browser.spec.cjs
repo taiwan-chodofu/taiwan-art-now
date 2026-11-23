@@ -71,3 +71,30 @@ test('real Discover markup: server-first want action never writes local exhibiti
  expect(state.favs.a.deleted).toBe(false);
  expect(await page.evaluate(()=>({favs:localStorage.getItem('taiwan_art_favs'),visited:localStorage.getItem('taiwan_art_visited'),renders:__renders.length}))).toEqual({favs:null,visited:null,renders:1});
 });
+
+test('detail refresh supplies authoritative state but never re-enables stale descriptors',async({page})=>{
+ await page.route('**/detail-refresh-staging',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
+ await page.goto('http://127.0.0.1:8765/detail-refresh-staging');
+ let state={revision:0,favs:{},visited:{}};
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  const req=route.request();
+  if(req.method()==='GET')return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
+  const data=req.postDataJSON();
+  if(data.base_revision!==state.revision)return route.fulfill({status:409,body:'{}'});
+  state={revision:1,favs:{ex_1:{revision:1,deleted:false,value:{title:'Exhibition'}}},visited:{}};
+  return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
+ });
+ for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ await page.evaluate(()=>{
+  window.__refreshes=[];
+  window.__bridge=TanDraftServerButtonBridge.mount({win:window,fetchImpl:fetch.bind(window),lang:'ja',notice:document.getElementById('notice'),buttons:[
+   {element:document.getElementById('favBtn'),kind:'favs',key:'ex_1',action:'set',value:{title:'Exhibition'},expectedRevision:0},
+   {element:document.getElementById('visitedBtn'),kind:'visited',key:'ex_1',action:'set',value:'2026-11-23',expectedRevision:0}
+  ],onRefresh:state=>window.__refreshes.push(state)});
+ });
+ await page.locator('#favBtn').click();
+ await expect.poll(()=>page.evaluate(()=>window.__refreshes.length)).toBe(1);
+ expect(await page.evaluate(()=>window.__refreshes[0].revision)).toBe(1);
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
+});
