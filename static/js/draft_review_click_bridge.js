@@ -126,7 +126,14 @@
           if (others.length && typeof fetchImpl === "function") {
             const latest = await statusCheck.readState({fetchImpl});
             if (disposed) return;
-            if (latest.status === "ready") {
+            const confirmed = latest.status === "ready" &&
+              latest.state.revision >= result.state.revision &&
+              latest.state[decision.kind] &&
+              latest.state[decision.kind][decision.key] &&
+              !latest.state[decision.kind][decision.key].deleted &&
+              JSON.stringify(latest.state[decision.kind][decision.key].value) ===
+                JSON.stringify(local[decision.key]);
+            if (confirmed) {
               const pending = others.filter(item => {
                 const entry = latest.state[item.kind] && latest.state[item.kind][item.key];
                 return entry && entry.deleted;
@@ -147,7 +154,7 @@
                 remainingList.appendChild(label);
               }
             } else {
-              status.textContent = "この展示を登録しました。ほかの展示の確認は一時的にできませんでした。";
+              status.textContent = "登録状況を確認できませんでした。ほかの展示へ進まず、登録状況をもう一度確認してください。";
             }
           }
           return;
