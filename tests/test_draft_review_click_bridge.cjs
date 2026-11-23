@@ -148,8 +148,8 @@ test("server check appears only after confirmation attempt and never posts", asy
         json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})};
     }});
   const buttons=elements(container,"button");
-  assert.equal(buttons.length,2);
-  assert.equal(buttons[1].disabled,true);
+  assert.equal(buttons.length,3);
+  assert.equal(buttons[2].disabled,true);
   await instance.inspect();
   assert.equal(gets,0);
   const select=elements(container,"select")[0];
@@ -157,8 +157,8 @@ test("server check appears only after confirmation attempt and never posts", asy
   await instance.submit();
   assert.equal(requests,2);
   assert.equal(buttons[0].disabled,true);
-  assert.equal(buttons[1].disabled,false);
-  await buttons[1].events.click();
+  assert.equal(buttons[2].disabled,false);
+  await buttons[2].events.click();
   assert.equal(gets,1);
   assert.equal(requests,2);
   assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/この展示は登録されています/);
@@ -180,7 +180,7 @@ test("concurrent status checks issue only one GET and allow later manual recheck
  resolveGet({status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
    json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})});
  await Promise.all([first,second]);
- assert.equal(elements(container,"button")[1].disabled,false);
+ assert.equal(elements(container,"button").find(x=>x.textContent==="登録状況をもう一度確認").disabled,false);
  const third=instance.inspect();
  assert.equal(gets,2);
  resolveGet({status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
@@ -222,12 +222,12 @@ test("server inspection stays disabled while confirmation is in flight", async (
  const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
  const pending=instance.submit();
  await Promise.resolve();await Promise.resolve();await Promise.resolve();
- assert.equal(elements(container,"button")[1].disabled,true);
+ assert.equal(elements(container,"button").find(x=>x.textContent==="登録状況をもう一度確認").disabled,true);
  await instance.inspect();
  assert.equal(gets,0);
  resolveConsume({revision:4});
  await pending;
- assert.equal(elements(container,"button")[1].disabled,false);
+ assert.equal(elements(container,"button").find(x=>x.textContent==="登録状況をもう一度確認").disabled,false);
 });
 test("missing server record is explicitly distinguished from a confirmed save", async () => {
  const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
@@ -255,8 +255,8 @@ test("review recheck button uses plain Japanese without requiring a page reload"
  mount({container,report,doc,serverState,storage,
    localSnapshot:read(storage).snapshot,request:async()=>({}),
    fetchImpl:async()=>{throw Error("not called until user requests inspection");}});
- assert.equal(elements(container,"button")[1].textContent,"登録状況をもう一度確認");
- assert.equal(elements(container,"button")[1].disabled,true);
+ assert.equal(elements(container,"button").find(x=>x.textContent==="登録状況をもう一度確認").textContent,"登録状況をもう一度確認");
+ assert.equal(elements(container,"button").find(x=>x.textContent==="登録状況をもう一度確認").disabled,true);
 });
 
 test("successful confirmation reports remaining conflicting exhibitions without writing them",async()=>{
