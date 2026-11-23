@@ -183,3 +183,7 @@ CI 45088293262 passed all jobs for the review UI/verifier. Added `draft_guarded_
 ## Chromium consented recovery tests (unmounted fixture)
 
 CI 45088479858 passed all four jobs for the guarded restore prototype. Added two Playwright Chromium tests on the inert fixture: (1) without confirmation, no write occurs; with confirmation, a single remote-active missing favorite is restored while existing local favorites remain, and (2) a fresh server tombstone or an already-present local value blocks restoration. These tests exercise injected draft modules and synthetic authenticated state, **not real authentication, live network, or production pages**. The old-tab bypass and lack of cross-device atomicity remain release blockers.
+
+## Strict draft authenticated-state reader
+
+CI 45088613834 passed all four jobs including the two real Chromium recovery fixture tests. Added `draft_authenticated_state.js` and seven Node tests. The reader requests only the unregistered same-origin `GET /api/private-subscribers/v2/state` with cookies, no-store and redirect errors, requires JSON and `Cache-Control: no-store`, validates server shape, and returns explicit failure statuses for 403, login HTML, cacheable data, offline and malformed states. **This is a client-side defense, not proof of authenticated ownership**: the server must verify its session and same-origin controls, and real integrated authenticated API tests remain to be written. No route is registered or production traffic changed.
