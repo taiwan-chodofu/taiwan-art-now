@@ -24,13 +24,14 @@
     let busy = false;
     let disposed = false;
     let completed = false;
+    let confirmationAttempted = false;
     const button = doc.createElement("button");
     button.textContent = "選択した展示を確認";
     button.setAttribute("type", "button");
     const status = doc.createElement("p");
     status.setAttribute("role", "status");
     const submit = async () => {
-      if (disposed || busy || completed) return;
+      if (disposed || busy || completed || confirmationAttempted) return;
       busy = true;
       button.disabled = true;
       try {
@@ -54,6 +55,9 @@
             status.textContent = "記録が変わりました。再読み込みして確認してください。";
             return;
           }
+          // Once confirmation starts, an interrupted response may hide a committed write.
+          // Require a fresh review instead of allowing another submit from stale context.
+          confirmationAttempted = true;
           const result = await keep.execute({
             decision, conflict: { ...conflict, itemRevision: entry.revision },
             localValue: local[decision.key],
@@ -62,7 +66,7 @@
           if (result.status !== "submitted" || !result.state ||
               !Number.isSafeInteger(result.state.revision) ||
               result.state.revision <= serverState.revision) {
-            status.textContent = "保存できませんでした。再確認してください。";
+            status.textContent = "保存結果を確認できませんでした。最新の登録状況を再取得してから確認してください。";
             return;
           }
           // A successful write increments global revision. Do not send further
@@ -73,10 +77,12 @@
         }
         status.textContent = "変更はありません。";
       } catch (_) {
-        status.textContent = "通信に失敗しました。状態を再取得して確認してください。";
+        status.textContent = confirmationAttempted
+          ? "保存された可能性があります。再送信せず、最新の登録状況を再取得して確認してください。"
+          : "通信に失敗しました。状態を再取得して確認してください。";
       } finally {
         busy = false;
-        if (!disposed && !completed) button.disabled = false;
+        if (!disposed && !completed && !confirmationAttempted) button.disabled = false;
       }
     };
     button.addEventListener("click", submit);
