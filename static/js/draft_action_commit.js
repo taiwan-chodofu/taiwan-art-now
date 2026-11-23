@@ -18,8 +18,9 @@
       const slot = kind + ":" + key;
       if (pending.has(slot)) return { status: "busy" };
       pending.add(slot);
-      if (typeof onBusy === "function") onBusy(true, { kind, key });
       try {
+        // UI callback failures must not strand the pending slot or skip cleanup.
+        if (typeof onBusy === "function") onBusy(true, { kind, key });
         const result = await writer.mutate({ storage, locks, kind, key, action, value });
         if (result.status === "written_under_cooperative_lock") {
           // Re-read after persistence; no stale optimistic UI.
@@ -42,7 +43,9 @@
         return result;
       } finally {
         pending.delete(slot);
-        if (typeof onBusy === "function") onBusy(false, { kind, key });
+        if (typeof onBusy === "function") {
+          try { onBusy(false, { kind, key }); } catch (_) { /* callback is not storage */ }
+        }
       }
     }
     return { commit };
