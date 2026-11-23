@@ -12,7 +12,7 @@ test('stale tab loss is reported as a candidate, never automatically restored',a
  const x=fixture();const before=JSON.stringify(x.data);
  const r=await inspect(x);
  assert.equal(r.status,'review_ready');assert.equal(r.mayRestore,false);assert.equal(r.localLoss,true);
- assert.deepEqual(r.candidates,[{kind:'favs',key:'a',value,item_revision:2}]);
+ assert.deepEqual(JSON.parse(JSON.stringify(r.candidates)),[{kind:'favs',key:'a',value,item_revision:2}]);
  assert.equal(JSON.stringify(x.data),before);
 });
 test('server deletion conflicts require review, not resurrection',async()=>{
