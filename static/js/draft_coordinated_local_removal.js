@@ -30,7 +30,9 @@
         const entry = fresh && fresh[kind] && fresh[kind][key];
         const original = serverState[kind] && serverState[kind][key];
         if (!fresh || fresh.revision !== expectedServerRevision ||
+            !Number.isSafeInteger(fresh.revision) || fresh.revision < 1 ||
             !original || !original.deleted ||
+            !Number.isSafeInteger(original.revision) || original.revision < 1 ||
             !entry || !entry.deleted ||
             !Number.isSafeInteger(entry.revision) ||
             entry.revision !== original.revision)
