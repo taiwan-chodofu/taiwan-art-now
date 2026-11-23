@@ -80,3 +80,16 @@ test("ordinary merge creates no button", () => {
   assert.equal(instance.rendered, false);
   assert.equal(container.children.length, 0);
 });
+
+test("successful review confirmation cannot be submitted twice with a stale revision", async () => {
+  const x = setup();
+  const select = elements(x.container, "select")[0];
+  select.value = "keep_saved"; select.events.change();
+  const button = elements(x.container, "button")[0];
+  await button.events.click();
+  assert.equal(x.calls.length, 2);
+  assert.equal(button.disabled, true);
+  await button.events.click();
+  await x.instance.submit();
+  assert.equal(x.calls.length, 2);
+});
