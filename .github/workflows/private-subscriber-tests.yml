@@ -87,6 +87,7 @@ on:
       - 'tests/test_draft_action_commit.cjs'
       - 'tests/test_draft_page_flow.cjs'
       - 'tests/draft_browser_e2e.spec.cjs'
+      - 'tests/draft_browser_fixture.html'
       - 'static/js/draft_legacy_writer.js'
       - 'tests/test_draft_legacy_writer.cjs'
       - 'tests/test_draft_legacy_real_shapes.cjs'
