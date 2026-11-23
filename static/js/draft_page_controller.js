@@ -11,7 +11,7 @@
  "use strict";
  function create({storage,locks,onBusy,onCommitted,onFailure}={}){
    const pending=new Set();
-   async function act({kind,key,action,value}={}){
+   async function act({kind,key,action,value,expectedValue}={}){
      if(!["favs","visited"].includes(kind)||typeof key!=="string"||!key)
        return {status:"invalid_request"};
      const slot=kind+":"+key;
@@ -23,7 +23,7 @@
            return {status:"ui_callback_failed"};
          }
        }
-       const result=await actions.commit({storage,locks,kind,key,action,value});
+       const result=await actions.commit({storage,locks,kind,key,action,value,expectedValue});
        if(result.status==="written_under_cooperative_lock"){
          if(typeof onCommitted==="function"){
            try{onCommitted({kind,key,action:result.action});}
