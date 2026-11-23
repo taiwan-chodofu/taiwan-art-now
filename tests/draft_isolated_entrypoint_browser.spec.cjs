@@ -155,7 +155,10 @@ test('explicit second confirmation restores only reviewed tombstone and preserve
  expect(writes).toBe(0);
  await expect(page.locator('#restoreConfirm')).toBeVisible();
  await page.locator('#restoreYes').click();
- await expect(page.locator('#notice')).toContainText('「観たい」を保存しました');
+ await expect(page.locator('#notice')).toContainText('最新の登録を表示しています');
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#visitedBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#reloadState')).toBeHidden();
  expect(writes).toBe(1);
  expect(server.visited.art.deleted).toBe(false);
 });
