@@ -161,3 +161,18 @@ test('guarded real template: a failed favorite write can be retried without losi
  await expect(page.locator('#discoverActionError')).toBeEmpty();
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
 });
+
+test('guarded real template: restart clears obsolete undo without deleting saved favorite',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#skipBtn').click();
+ await expect(page.locator('#restartBtn')).toBeVisible();
+ await page.locator('#restartBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
