@@ -41,3 +41,24 @@ test("unsupported status does not remove a prior warning",()=>{
   "unsupported_result");
  assert.equal(container.children[0],previous);
 });
+
+test("multiple affected exhibitions display their real titles, not internal IDs",()=>{
+ const {document,container}=fixture();
+ render({document,container,result:{
+  status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
+  reviewItems:[{kind:"favs",key:"internal-123"},{kind:"visited",key:"internal-123"}],
+  exhibitionTitles:{"favs:internal-123":"展覽甲","visited:internal-123":"展覽乙"}
+ }});
+ const list=container.children[0].children[3];
+ assert.equal(list.tag,"ul");
+ assert.deepEqual(list.children.map(row=>row.textContent),["展覽甲","展覽乙"]);
+ assert.doesNotMatch(list.children.map(row=>row.textContent).join(" "),/internal-123/);
+});
+test("missing trusted titles do not reveal storage identifiers",()=>{
+ const {document,container}=fixture();
+ render({document,container,result:{
+  status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
+  reviewItems:[{kind:"favs",key:"private-id"}]
+ }});
+ assert.equal(container.children[0].children[3].children[0].textContent,"展覽 1");
+});
