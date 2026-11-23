@@ -271,3 +271,25 @@ test('uncertain restore shows current server state after manual reload without a
  await expect(page.locator('#migrationReview')).toBeEmpty();
  expect(writes).toBe(1);
 });
+
+test('failed fresh-state refresh removes old action listeners and never writes',async({page})=>{
+ let reads=0,writes=0;
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST'){writes++;return route.fulfill({status:500,body:'{}'});}
+  reads++;
+  if(reads>1)return route.abort('failed');
+  return route.fulfill(response({revision:0,favs:{},visited:{}}));
+ });
+ await page.goto(url);
+ await expect(page.locator('#favBtn')).toBeEnabled();
+ const refreshed=await page.evaluate(()=>window.__draftLifecycle?.refresh?.());
+ // The fixture may keep its lifecycle private: trigger its existing manual refresh control.
+ if(refreshed===undefined){
+  await page.locator('#reloadState').click({force:true});
+ }
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
+ await page.locator('#favBtn').dispatchEvent('click');
+ await page.locator('#visitedBtn').dispatchEvent('click');
+ expect(writes).toBe(0);
+});
