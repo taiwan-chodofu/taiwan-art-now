@@ -81,3 +81,17 @@ test("each exhibition displays its own known state without asking user to invest
   "目前無法確認是否仍在清單中"
  ]);
 });
+
+test("affected exhibition gets a direct internal link but never an automatic save",()=>{
+ const {document,container}=fixture();
+ render({document,container,result:{
+  status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
+  reviewItems:[{kind:"favs",key:"a",reason:"not_found"},{kind:"visited",key:"b",reason:"deleted_on_server"}],
+  exhibitionTitles:{"favs:a":"展覽甲","visited:b":"展覽乙"},
+  exhibitionUrls:{"favs:a":"/exhibition/a","visited:b":"//evil.example"}
+ }});
+ const rows=container.children[0].children[3].children;
+ assert.equal(rows[0].children[2].tag,"a");
+ assert.equal(rows[0].children[2].attributes.href,"/exhibition/a");
+ assert.equal(rows[1].children.length,2);
+});
