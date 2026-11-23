@@ -91,3 +91,21 @@ test('real detail staging: navigation away while save is pending suppresses stal
  expect(await page.evaluate(()=>window.__events)).toEqual([]);
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).ex_1.title)).toBe('展覽');
 });
+
+test('real detail staging: actual navigation disposes adapter before pending write completes',async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>{
+  const original=Storage.prototype.setItem;
+  window.__savedWrites=[];
+  Storage.prototype.setItem=function(k,v){
+   if(k==='taiwan_art_favs')window.__savedWrites.push(v);
+   return original.call(this,k,v);
+  };
+  window.addEventListener('pagehide',()=>window.__adapter.dispose(),{once:true});
+ });
+ await page.goto('http://127.0.0.1:8765/');
+ await page.goBack();
+ await expect(page.locator('#favBtn')).toBeVisible();
+ // A fresh page has no stale callbacks; its persisted storage remains available.
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
+});
