@@ -92,8 +92,9 @@ test('opt-in review only asks about previously removed exhibition and does not w
  await page.goto(url+'&review=1');
  const review=page.locator('#migrationReview');
  await expect(review).toContainText('「観たい」に戻しますか？');
- await expect(review.locator('select')).toHaveValue('keep_deleted');
- await review.locator('select').selectOption('request_restore');
+ await expect(review.getByRole('button',{name:'戻さない'})).toBeVisible();
+ await review.getByRole('button',{name:'「観たい」に戻す'}).click();
+ await expect(review.getByRole('button',{name:'「観たい」に戻す'})).toBeDisabled();
  await expect(page.locator('#notice')).toContainText('まだ変更していません');
  expect(writes).toBe(0);
  expect(await page.evaluate(()=>window.__draftReviewIntent)).toEqual({
