@@ -52,3 +52,25 @@ test('Chromium draft: legacy inline onclick blocks staging mount',async({page})=
  const message=await page.evaluate(()=>{const b=document.createElement('button'),n=document.createElement('p');b.onclick=()=>{};try{TanDraftServerButtonBridge.mount({win:window,fetchImpl:fetch,buttons:[{element:b,kind:'favs',key:'a',action:'set',value:true,expectedRevision:0}],notice:n});return 'unexpected success';}catch(e){return e.message;}});
  expect(message).toContain('invalid staging mount');
 });
+
+test('Chromium draft: cached legacy tab can overwrite local map but not server-confirmed want',async({browser})=>{
+ const context=await browser.newContext();
+ try{
+  const modern=await context.newPage(),legacy=await context.newPage();
+  await boot(modern);
+  await legacy.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
+  const stale=await legacy.evaluate(()=>localStorage.getItem('taiwan_art_favs')||'{}');
+  await modern.locator('#want').click();
+  await expect(modern.locator('#notice')).toContainText('サーバーに保存');
+  await legacy.evaluate(raw=>{
+   const map=JSON.parse(raw);map.older={title:'Cached tab'};
+   localStorage.setItem('taiwan_art_favs',JSON.stringify(map));
+  },stale);
+  const local=await modern.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')));
+  expect(Object.keys(local)).toEqual(['older']);
+  const server=await modern.evaluate(()=>window.__syntheticServer);
+  expect(server.favs.art.deleted).toBe(false);
+  expect(server.favs.art.value.title).toBe('Art');
+  // This is isolation, not automatic recovery of the legacy local map.
+ }finally{await context.close();}
+});
