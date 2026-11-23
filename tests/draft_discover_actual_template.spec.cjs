@@ -176,3 +176,21 @@ test('guarded real template: restart clears obsolete undo without deleting saved
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
 });
+
+test('guarded real template: storage error is announced through an accessible alert',async({page})=>{
+ await boot(page);
+ const alert=page.locator('#discoverActionError');
+ await expect(alert).toHaveAttribute('role','alert');
+ await expect(alert).toHaveAttribute('aria-live','assertive');
+ await expect(alert).toHaveAttribute('aria-atomic','true');
+ await page.evaluate(()=>{
+  const original=Storage.prototype.setItem;
+  Storage.prototype.setItem=function(key,value){
+   if(key==='taiwan_art_favs')throw new DOMException('quota','QuotaExceededError');
+   return original.call(this,key,value);
+  };
+ });
+ await page.locator('#likeBtn').click();
+ await expect(alert).toContainText('保存できませんでした');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+});
