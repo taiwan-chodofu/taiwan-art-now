@@ -114,3 +114,19 @@ test("unexpected modification to visited records during removal is detected", as
   };
   assert.equal((await remove(x)).status, "uncertain_write");
 });
+
+test("malformed tombstone revisions never authorize local removal", async () => {
+  for (const revision of [null, 0, -1, 1.5, "3", Number.MAX_SAFE_INTEGER + 1]) {
+    const x = fixture();
+    x.serverState = { ...state, favs: { a: { deleted: true, revision, value: null } } };
+    x.fetchFreshState = async () => x.serverState;
+    assert.equal((await remove(x)).status, "stale_server");
+    assert.equal(x.writes.length, 0);
+  }
+});
+test("malformed fresh global revision never authorizes removal", async () => {
+  const x = fixture();
+  x.fetchFreshState = async () => ({ ...state, revision: "4" });
+  assert.equal((await remove(x)).status, "stale_server");
+  assert.equal(x.writes.length, 0);
+});
