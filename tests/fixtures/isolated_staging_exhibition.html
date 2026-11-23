@@ -10,6 +10,7 @@
  <div id="migrationReview" aria-live="polite"></div>
  <div id="restoreConfirm" hidden><p>この展示を「観たい」に戻しますか？</p><button type="button" id="restoreYes">戻す</button><button type="button" id="restoreNo">やめる</button></div>
  <p id="notice" role="status" aria-live="polite">保存状況を確認しています。</p>
+ <button type="button" id="reloadState" hidden>最新の登録を表示する</button>
 </main>
 <script src="/static/js/draft_versioned_sync.js"></script>
 <script src="/static/js/draft_authenticated_state.js"></script>
@@ -27,6 +28,8 @@
  const params=new URLSearchParams(location.search);
  const key=params.get('key');
  const notice=document.getElementById('notice');
+ const reloadState=document.getElementById('reloadState');
+ reloadState.addEventListener('click',()=>window.location.reload());
  if(!key||!/^[a-zA-Z0-9_-]{1,100}$/.test(key)){
   notice.textContent='展示IDを確認できません。正しいテスト用URLを開き直してください。';
   return;
