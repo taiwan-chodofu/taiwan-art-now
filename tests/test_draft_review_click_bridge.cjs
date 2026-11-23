@@ -112,7 +112,7 @@ test("ambiguous consume network failure locks review and prevents duplicate conf
   await button.events.click();
   assert.equal(calls.length, 2);
   assert.equal(button.disabled, true);
-  assert.match(elements(container, "p").map(x => x.textContent).join(" "), /再送信せず/);
+  assert.match(elements(container, "p").map(x => x.textContent).join(" "), /登録状況をもう一度確認/);
   await button.events.click();
   await instance.submit();
   assert.equal(calls.length, 2);
@@ -161,7 +161,7 @@ test("server check appears only after confirmation attempt and never posts", asy
   await buttons[1].events.click();
   assert.equal(gets,1);
   assert.equal(requests,2);
-  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/サーバーに登録が確認/);
+  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/この展示は登録されています/);
 });
 
 test("concurrent status checks issue only one GET and allow later manual recheck", async () => {
@@ -242,6 +242,19 @@ test("missing server record is explicitly distinguished from a confirmed save", 
  const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
  await instance.submit();await instance.inspect();
  const words=elements(container,"p").map(x=>x.textContent).join(" ");
- assert.match(words,/登録は見つかりませんでした/);
- assert.doesNotMatch(words,/サーバーに登録が確認できました/);
+ assert.match(words,/登録は確認できませんでした/);
+ assert.doesNotMatch(words,/この展示は登録されています/);
+});
+
+test("review recheck button uses plain Japanese without requiring a page reload", () => {
+ const x=setup();
+ assert.equal(elements(x.container,"button")[0].textContent,"選択した展示を確認");
+ const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const container=new Element("main");
+ mount({container,report,doc,serverState,storage,
+   localSnapshot:read(storage).snapshot,request:async()=>({}),
+   fetchImpl:async()=>{throw Error("not called until user requests inspection");}});
+ assert.equal(elements(container,"button")[1].textContent,"登録状況をもう一度確認");
+ assert.equal(elements(container,"button")[1].disabled,true);
 });
