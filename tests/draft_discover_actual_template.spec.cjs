@@ -221,3 +221,16 @@ test('guarded real template: mobile error guidance remains visible and actions s
  await expect(page.locator('#likeBtn')).toBeEnabled();
  await expect(page.locator('#visitedBtn')).toBeEnabled();
 });
+
+test('guarded real template: conflict offers read-only saved-status inspection',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}})));
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('#discoverConflictCheck')).toBeVisible();
+ await page.locator('#discoverConflictCheck').click();
+ await expect(page.locator('#discoverConflictStatus')).toContainText('Exhibition A');
+ await expect(page.locator('#discoverConflictStatus')).toContainText('登録あり');
+ expect((await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).a.title).toBe('Updated elsewhere');
+});
