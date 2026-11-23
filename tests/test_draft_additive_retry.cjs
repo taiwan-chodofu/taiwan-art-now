@@ -99,3 +99,42 @@ test("unexpected POST payload is not acknowledged as saved",async()=>{
    response(opts.method==="GET"?state():state(1))});
  assert.equal(result.status,"unknown_commit");
 });
+
+test("checkpoint loss before initial GET blocks all network writes",async()=>{
+ let calls=0;
+ const result=await run({storage:storage({}),checkpoint:{favs:{a:fav},visited:{}},
+   fetchImpl:async()=>{calls++;return response(state());}});
+ assert.equal(result.status,"local_review_required");
+ assert.equal(result.missing[0].key,"a");
+ assert.equal(calls,0);
+});
+test("checkpoint loss during authenticated GET blocks POST",async()=>{
+ const local=storage();
+ let posts=0;
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+   fetchImpl:async(path,opts)=>{
+     if(opts.method==="GET"){local.change("taiwan_art_favs",{});return response(state());}
+     posts++;return response(state(1));
+   }});
+ assert.equal(result.status,"local_review_required");
+ assert.equal(posts,0);
+});
+test("checkpoint loss between stale 409 and retry blocks another POST",async()=>{
+ const local=storage();
+ let posts=0;
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+   fetchImpl:async(path,opts)=>{
+     if(opts.method==="GET")return response(state());
+     posts++;local.change("taiwan_art_favs",{});
+     return response({},409);
+   }});
+ assert.equal(result.status,"local_review_required");
+ assert.equal(posts,1);
+});
+test("checkpoint permits additive save when local records remain intact",async()=>{
+ const local=storage();
+ const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
+   fetchImpl:async(path,opts)=>response(opts.method==="GET"?state():
+     state(1,{a:item(fav)}))});
+ assert.equal(result.status,"saved");
+});
