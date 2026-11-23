@@ -97,3 +97,20 @@ test("busy-end callback exception cannot turn persisted success into failure", a
   assert.equal(second.status,"written_under_cooperative_lock");
   assert.equal(x.committed.length,2);
 });
+
+test("non-cooperating writer replacing same key metadata cannot produce success UI",async()=>{
+ const x=setup();
+ const originalGet=x.storage.getItem;
+ let reads=0;
+ x.storage.getItem=k=>{
+   const raw=originalGet(k);
+   if(k==="taiwan_art_favs"&&JSON.parse(raw||"{}").a&&++reads>=2){
+     return JSON.stringify({a:{title:"Changed by cached tab",museum:"M"}});
+   }
+   return raw;
+ };
+ const result=await x.adapter.commit({kind:"favs",key:"a",action:"set",value:fav});
+ assert.equal(result.status,"uncertain_write");
+ assert.equal(x.committed.length,0);
+ assert.equal(x.failures.length,1);
+});
