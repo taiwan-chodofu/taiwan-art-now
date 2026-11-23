@@ -39,20 +39,27 @@
   });
   lifecycle.start();
   // Optional read-only migration preview, isolated to explicit test mode.
+  let reviewDisposed=false;
+  let reviewMount=null;
   if(params.get('review')==='1'){
    TanDraftAuthenticatedState.read({fetchImpl:window.fetch.bind(window)}).then(result=>{
-    if(result.status!=='ready')return;
+    if(reviewDisposed||result.status!=='ready')return;
     const report=TanDraftMigrationReview.preview(window.localStorage,result.state);
     if(report.status!=='ready')return;
     const messages=TanDraftMigrationReview.explain(report,'ja');
-    TanDraftSimpleReviewUI.mount({container:document.getElementById('migrationReview'),
+    if(reviewDisposed)return;
+    reviewMount=TanDraftSimpleReviewUI.mount({container:document.getElementById('migrationReview'),
      doc:document,review:messages,onDecision:decision=>{
       notice.textContent='この展示を戻すには、最新の登録を確認する必要があります。まだ変更していません。';
       window.__draftReviewIntent=decision;
      }});
    }).catch(()=>{});
   }
-  window.addEventListener('pagehide',()=>lifecycle.dispose(),{once:true});
+  window.addEventListener('pagehide',()=>{
+   reviewDisposed=true;
+   if(reviewMount)reviewMount.dispose();
+   lifecycle.dispose();
+  },{once:true});
  }catch(_){
   notice.textContent='保存機能を開始できません。ページを再読み込みしてください。';
  }
