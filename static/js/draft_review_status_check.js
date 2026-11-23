@@ -21,5 +21,5 @@
    return {status:canonical(entry.value)===canonical(expectedValue)
      ?"saved_on_server":"different_server_value",revision:latest.state.revision};
  }
- return {check};
+ return {check,readState:reader.read};
 });
