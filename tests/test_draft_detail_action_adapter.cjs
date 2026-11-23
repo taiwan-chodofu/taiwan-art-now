@@ -34,7 +34,7 @@ test("detail unavailable Web Locks never announce a saved bookmark",async()=>{
  const adapter=create({storage:{getItem:k=>x.data[k]??null,setItem:(k,v)=>{x.data[k]=v;}},
   locks:null,key:"ex_1",metadata:{title:"展覽",museum:"M"},
   onRender:()=>x.events.push(["render"]),onAnalytics:()=>x.events.push(["analytics"]),
-  onNotify:()=>x.events.push(["notify"]),onFailure:x=>x.events.push(["failure",x])});
+  onNotify:()=>x.events.push(["notify"]),onFailure:failure=>x.events.push(["failure",failure])});
  const result=await adapter.toggle("favs");
  assert.equal(result.status,"not_authorized");
  assert.deepEqual(x.events.map(e=>e[0]),["failure"]);
