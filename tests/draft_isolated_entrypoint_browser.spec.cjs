@@ -215,3 +215,31 @@ test('final restore uncertain POST never retries or announces success',async({pa
  await expect(page.locator('#reloadState')).toBeVisible();
  expect(writes).toBe(1);
 });
+
+test('confirmed restore with failed automatic refresh offers manual fallback',async({page})=>{
+ let server={revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}};
+ let reads=0,writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST'){
+   writes++;
+   const payload=route.request().postDataJSON();
+   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.changes.favs.art.set}},visited:{}};
+   return route.fulfill(response(server));
+  }
+  reads++;
+  // Initial staging read, review read, pre-write read, verification read succeed.
+  // The subsequent in-place UI refresh fails; no POST must be repeated.
+  if(reads>=5)return route.abort('failed');
+  return route.fulfill(response(server));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ await page.locator('#restoreYes').click();
+ await expect(page.locator('#notice')).toContainText('保存しましたが、最新の表示を確認できません');
+ await expect(page.locator('#reloadState')).toBeVisible();
+ expect(writes).toBe(1);
+});
