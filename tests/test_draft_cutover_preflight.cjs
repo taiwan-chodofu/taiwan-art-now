@@ -15,7 +15,8 @@ function fetcher(server,after){
 const server=(favs={},revision=0)=>({revision,favs,visited:{}});
 test("valid checkpoint and authenticated server permit preview only",async()=>{
  const result=await inspect({storage:storage(),checkpoint:snap(),fetchImpl:fetcher(server())});
- assert.equal(result.status,"preflight_ready");assert.equal(result.maySync,true);
+ assert.equal(result.status,"preflight_ready");assert.equal(result.maySync,false);
+ assert.equal(result.previewReady,true);
  assert.equal(result.proposedAdds,1);assert.equal(result.requiresFreshCAS,true);
 });
 test("missing checkpoint blocks without network",async()=>{
@@ -40,7 +41,8 @@ test("remote explicit tombstone requires review",async()=>{
 test("remote-only active record is preserved",async()=>{
  const result=await inspect({storage:storage(),checkpoint:snap(),
    fetchImpl:fetcher(server({b:{deleted:false,value:fav,revision:1}},1))});
- assert.equal(result.status,"preflight_ready");assert.equal(result.preservedRemote,1);
+ assert.equal(result.status,"preflight_ready");assert.equal(result.maySync,false);
+ assert.equal(result.preservedRemote,1);
 });
 test("local loss during remote read blocks",async()=>{
  const local=storage();
