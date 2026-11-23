@@ -78,28 +78,26 @@
     const zh = lang === "zh";
     const labels = zh ? { favs: "想去", visited: "看過" }
       : { favs: "観たい", visited: "観た" };
-    const items = report.rows.filter(row => row.status !== "same").map(row => {
-      const subject = `「${row.key}」の「${labels[row.kind]}」`;
-      const chineseSubject = `「${row.key}」的「${labels[row.kind]}」`;
-      const messages = zh ? {
-        local_only: `${chineseSubject}只存在這個裝置。確認後才能決定是否匯入。`,
-        remote_only: `${chineseSubject}已儲存在伺服器；此裝置沒有資料不代表刪除。`,
-        deleted_remotely: `${chineseSubject}已在伺服器刪除。請確認是否恢復；不會自動恢復。`,
-        remote_tombstone: `${chineseSubject}已在伺服器刪除。保持刪除狀態。`,
-        different: `${chineseSubject}在裝置與伺服器的內容不同。請先確認差異。`
-      } : {
-        local_only: `${subject}はこの端末だけにあります。内容を確認してから移行を判断してください。`,
-        remote_only: `${subject}はサーバーに保存されています。この端末になくても削除しません。`,
-        deleted_remotely: `${subject}はサーバーで削除済みです。復元するか確認してください。自動復元はしません。`,
-        remote_tombstone: `${subject}はサーバーで削除済みです。削除状態を保持します。`,
-        different: `${subject}は端末とサーバーで登録内容が異なります。差異を確認してください。`
-      };
+    // Only explicit server deletions require a decision. Other differences
+    // remain available to the coordinator, but do not interrupt the user.
+    const items = report.rows.filter(row => row.status === "deleted_remotely").map(row => {
+      const label = labels[row.kind];
       return { kind: row.kind, key: row.key, status: row.status,
-        message: messages[row.status] || (zh ? "請確認收藏狀態。" : "登録状況を確認してください。") };
+        title: zh ? `要重新加入「${label}」嗎？` : `「${label}」に戻しますか？`,
+        message: zh
+          ? `之前移除的「${label}」還留在這裡。`
+          : `以前「${label}」から外した展示が見つかりました。`,
+        options: zh
+          ? [{ id: "keep_deleted", label: "維持移除" },
+             { id: "request_restore", label: `重新加入「${label}」` }]
+          : [{ id: "keep_deleted", label: "戻さない" },
+             { id: "request_restore", label: `「${label}」に戻す` }]
+      };
     });
     return { status: "ready", mayWrite: false, items,
-      summary: zh ? "這只是確認清單，尚未修改任何收藏。"
-        : "これは確認用の一覧です。登録の変更や移行はまだ行っていません。" };
+      summary: items.length
+        ? (zh ? "請確認以下收藏。其他收藏不會變更。" : "次の登録だけ確認してください。ほかの登録は変更しません。")
+        : (zh ? "不需要確認。收藏尚未變更。" : "確認が必要な登録はありません。登録はまだ変更していません。") };
   }
   return { preview, prepareBootstrap, explain };
 });
