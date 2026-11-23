@@ -56,6 +56,11 @@
         if (storage.getItem(storageKey) !== raw) return { status: "stale_local" };
         storage.setItem(storageKey, JSON.stringify(parsed));
         const after = legacy.read(storage);
+        // A concurrent legacy writer may have changed bytes after setItem.
+        // Verify the exact persisted map, not only its parsed selected key.
+        const persistedRaw = storage.getItem(storageKey);
+        if (persistedRaw !== JSON.stringify(parsed))
+          return { status: "uncertain_write" };
         const expected = { ...reviewedSnapshot[kind] };
         delete expected[key];
         if (after.status !== "ready" ||
