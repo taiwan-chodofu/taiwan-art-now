@@ -64,7 +64,17 @@
     :result.status==="write_outcome_unknown"
      ?"保存できたか確認できません。ページを再読み込みして確認してください。"
      :"登録状況が変わりました。ページを再読み込みして確認してください。";
-   if(result.status==="server_confirmed"&&reviewMount)reviewMount.dispose();
+   if(result.status==="server_confirmed"){
+    if(reviewMount)reviewMount.dispose();
+    // The ordinary buttons were mounted before restoration. Their revision
+    // is now stale: keep them disabled until a full page reload.
+    document.getElementById("favBtn").disabled=true;
+    document.getElementById("visitedBtn").disabled=true;
+    notice.textContent+=" ページを再読み込みすると、最新の登録が表示されます。";
+   }else{
+    document.getElementById("favBtn").disabled=true;
+    document.getElementById("visitedBtn").disabled=true;
+   }
    // Never re-enable stale buttons or repeat an uncertain POST.
   });
   if(params.get('review')==='1'){
