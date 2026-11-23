@@ -45,7 +45,7 @@ test("failed write never invokes committed UI",async()=>{
 test("missing Web Lock fails closed",async()=>{
  const x=fixture();
  const r=await commit({...x,locks:null,kind:"favs",key:"a",action:"toggle",value:fav});
- assert.equal(r.status,"invalid_request");
+ assert.equal(r.status,"not_authorized");
 });
 test("explicit remove does not create a tombstone",async()=>{
  const x=fixture();
