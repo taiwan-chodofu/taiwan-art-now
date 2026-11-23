@@ -244,6 +244,62 @@ class DisposablePostgresCASTests(unittest.TestCase):
             self.assertEqual(final.status_code,200)
             self.assertEqual(final.json,latest.json)
 
+    def test_two_authenticated_owners_cannot_read_or_modify_each_other(self):
+        """Separate session cookies isolate GET and POST by verified DB owner."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+
+        owners=(("isolation-owner-a","isolation-token-a"),
+                ("isolation-owner-b","isolation-token-b"))
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                for owner,token in owners:
+                    cur.execute(
+                        "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                        (owner,))
+                    cur.execute(
+                        "INSERT INTO tan_private.browser_sessions "
+                        "(token_hash,sender_id,expires_at) "
+                        "VALUES (%s,%s,now()+interval '1 hour')",
+                        (token_digest(token),owner))
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        a,b=app.test_client(),app.test_client()
+        a.set_cookie(COOKIE_NAME,owners[0][1])
+        b.set_cookie(COOKIE_NAME,owners[1][1])
+        path="/api/private-subscribers/v2/changes"
+        state_path="/api/private-subscribers/v2/state"
+        headers={"Origin":"https://example.test"}
+        saved=a.post(path,json={"base_revision":0,"changes":{
+            "favs":{"private-a":{"set":{"title":"Only A"}}},"visited":{}}},
+            headers=headers)
+        self.assertEqual(saved.status_code,200)
+        b_state=b.get(state_path)
+        self.assertEqual(b_state.status_code,200)
+        self.assertEqual(b_state.json,{"revision":0,"favs":{},"visited":{}})
+        b_saved=b.post(path,json={"base_revision":0,"changes":{
+            "favs":{"private-b":{"set":{"title":"Only B"}}},"visited":{}}},
+            headers=headers)
+        self.assertEqual(b_saved.status_code,200)
+        a_state=a.get(state_path)
+        self.assertEqual(a_state.status_code,200)
+        self.assertEqual(set(a_state.json["favs"]),{"private-a"})
+        self.assertEqual(set(b.get(state_path).json["favs"]),{"private-b"})
+        # An unauthenticated request cannot choose another owner's identity.
+        anonymous=app.test_client()
+        denied=anonymous.get(state_path)
+        self.assertEqual(denied.status_code,403)
+        denied_write=anonymous.post(path,json={"base_revision":1,"changes":{
+            "favs":{"private-a":{"delete":True}},"visited":{}}},
+            headers=headers)
+        self.assertEqual(denied_write.status_code,403)
+        self.assertEqual(set(a.get(state_path).json["favs"]),{"private-a"})
+
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
         import psycopg
