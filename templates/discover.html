@@ -277,6 +277,7 @@
 
     var visitedKeys = _getVisited();
     var DECK_ORDER_KEY = 'taiwan_art_discover_deck';
+    var SOURCE_ORDER_KEY = 'taiwan_art_discover_source_order';
 
     // サーバーは毎リクエストで新たにシャッフルするため、詳細ページに遷移して
     // ブラウザの「戻る」で帰ってきた際にそのままだと全く別の並び・カードから
@@ -578,6 +579,7 @@
         });
       }
       saveDeckOrder();
+      if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
       discoverAnimating = true;
       var el = currentCardEl;
       var flyX = info.action === 'like' ? window.innerWidth : -window.innerWidth;
@@ -605,6 +607,7 @@
         deck.unshift(last.card);
         if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder.unshift(last.card);
         saveDeckOrder();
+        if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
         renderCard();
         setDiscoverBusy(discoverBusy);
       },
@@ -658,6 +661,7 @@
       deck = restarted.cards;
       if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder = deck.slice();
       saveDeckOrder();
+      if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
       renderCard();
     });
 
@@ -672,6 +676,26 @@
     // Keep only cards still in this browsing session. Previously swiped
     // cards must not reappear merely because the user changes the filter.
     var discoverSourceOrder = deck.slice();
+    // Mode filtering must not permanently discard cards hidden by a filter.
+    // Keep a separate remaining-card order in this tab, distinct from the
+    // currently visible deck. A swipe removes a card from both.
+    try {
+      var storedSourceOrder = JSON.parse(sessionStorage.getItem(SOURCE_ORDER_KEY) || 'null');
+      if (Array.isArray(storedSourceOrder)) {
+        var cardsByKey = {};
+        ALL_CARDS.forEach(function(card) { cardsByKey[_normalizeKey(card.stable_key)] = card; });
+        discoverSourceOrder = storedSourceOrder.map(function(key) { return cardsByKey[key]; })
+          .filter(Boolean);
+      }
+    } catch (e) {}
+    function saveDiscoverSourceOrder() {
+      try {
+        sessionStorage.setItem(SOURCE_ORDER_KEY, JSON.stringify(discoverSourceOrder.map(function(card) {
+          return _normalizeKey(card.stable_key);
+        })));
+      } catch (e) {}
+    }
+    saveDiscoverSourceOrder();
     var discoverModePicker = TanDraftDiscoverModePicker.mount({
       container: document.getElementById('discoverModePicker'),
       document: document,
@@ -700,7 +724,7 @@
     // session deck order while applying the active bookmark filter.
     if (discoverMode !== 'browse') {
       var restoredSelection = TanDraftDiscoverSelection.select({
-        cards:deck,
+        cards:discoverSourceOrder,
         bookmarks:{favs:_getFavs(),visited:_getVisited()},
         normalizeKey:_normalizeKey,
         mode:discoverMode
