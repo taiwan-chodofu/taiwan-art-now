@@ -147,3 +147,7 @@ CI 45050943565 passed after the store-level tombstone guard. Added `tests/draft_
 ## Chromium runner compatibility (2026-11-23)
 
 CI run 45086577553: synthetic Python, disposable PostgreSQL, and Node browser-sync jobs passed; new real-Chromium job failed **during installation**, before any E2E assertions, because Playwright 1.58.2 does not support GitHub's ubuntu26.04 runner. Pinned only the draft Chromium job to `ubuntu-24.04` (commit b80fddc). A passing Chromium E2E run is still required; no browser behavior is claimed verified by that failed run.
+
+## Real Chromium success and isolated fixture follow-up
+
+CI run 45086690240 passed all four jobs, including actual Playwright Chromium E2E. Its tests were synthetic draft interactions, not production template coverage. Subsequently switched the E2E entry page from the repository root to `tests/draft_browser_fixture.html`, an inert blank HTML page without application scripts; this avoids inadvertently loading any app behavior when running the local test origin. Fixture-specific CI run 45086799178 was queued at the time of this note. Production pages remain unmodified.
