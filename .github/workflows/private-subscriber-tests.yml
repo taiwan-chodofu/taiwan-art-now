@@ -17,6 +17,8 @@ on:
       - 'tests/test_flask_webhook_http.py'
       - 'scripts/check_private_destination.py'
       - 'tests/test_private_destination_preflight.py'
+      - 'scripts/rehearse_private_backup_restore.py'
+      - 'tests/test_private_backup_restore_rehearsal.py'
       - 'scripts/verify_private_backup.py'
       - 'tests/test_private_backup_verification.py'
       - 'scripts/check_source_freeze.py'
