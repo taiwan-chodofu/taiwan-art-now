@@ -114,3 +114,31 @@ test("changed server value gives specific explanation rather than generic warnin
  assert.equal(output.verification.unresolved[0].reason,"different_server_value");
  assert.equal(output.displayResult.status,"saved_server_record_different");
 });
+
+test("verified deletion adds view-exhibition link without another write",async()=>{
+ const local=storage();let gets=0,posts=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ const deleted={revision:2,favs:{a:{value:null,revision:2,deleted:true}},visited:{}};
+ class Node{
+  constructor(tag){this.tag=tag;this.attributes={};this.children=[];this.textContent="";}
+  setAttribute(k,v){this.attributes[k]=v;}
+  appendChild(node){this.children.push(node);}
+  replaceChildren(...nodes){this.children=nodes;}
+ }
+ const doc={createElement:tag=>new Node(tag)},container=new Node("div");
+ const output=await run({storage:local,document:doc,container,exhibitionUrl:"/exhibition/a",
+  fetchImpl:async(path,options)=>{
+   if(options.method==="GET"){gets++;return response(gets===1?
+    {revision:0,favs:{},visited:{}}:deleted);}
+   posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+   return response(saved);
+  }});
+ assert.equal(output.displayResult.status,"saved_server_record_deleted");
+ assert.equal(output.action.status,"rendered");
+ const section=container.children[0];
+ assert.equal(section.attributes.role,"alert");
+ assert.equal(section.children.at(-1).tag,"a");
+ assert.equal(section.children.at(-1).attributes.href,"/exhibition/a");
+ assert.equal(posts,1);
+ assert.equal(gets,2);
+});
