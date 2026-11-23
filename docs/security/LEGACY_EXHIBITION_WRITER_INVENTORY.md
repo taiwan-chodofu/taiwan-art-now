@@ -75,3 +75,7 @@ CI run 45096254136 had 225/226 Node browser-sync tests pass and all three other 
 ## Discover isolated deferred swipe and guarded undo
 
 Added unmounted `draft_discover_flow.js`: for like/visited it awaits verified per-item storage persistence before emitting `onAdvance` (the caller would later shift deck, animate, update history/analytics). Skip remains storage-free. Undo uses new `remove_if_equal` action in `draft_legacy_writer.js` under the shared Web Lock; it refuses to remove a missing item or an item whose exact metadata changed since this swipe, and retains history on failure. The UI is never mounted in `templates/discover.html`. Important limitation: exact value equality does not prove provenance; a separate identical-value re-save or cached old tab may still race. There is no durable backup, server tombstone, or cross-device atomic transaction. Tests and CI added; CI pending.
+
+## Discover Chromium isolated fixture coverage
+
+Added three Playwright Chromium tests in `tests/draft_browser_e2e.spec.cjs` against the **dedicated inert fixture**, not the production Discover template: verified like advances then undo restores; quota failure leaves the card visible; changed favorite metadata causes `stale_undo` and does not delete or rewind. The tests use real DOM events, real localStorage and navigator.locks, but a minimal synthetic card instead of the actual Discover deck/animation. Thus they do **not** establish template integration readiness, cross-device durability or old-tab safety. CI pending.
