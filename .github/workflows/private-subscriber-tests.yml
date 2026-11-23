@@ -92,6 +92,7 @@ on:
       - 'tests/test_draft_discover_flow.cjs'
       - 'tests/test_draft_detail_staging_bridge.cjs'
       - 'static/js/draft_server_button_bridge.js'
+      - 'tests/draft_server_real_detail_browser.spec.cjs'
       - 'tests/draft_server_button_browser.spec.cjs'
       - 'tests/test_draft_server_button_bridge.cjs'
       - 'static/js/draft_server_page_action.js'
@@ -268,4 +269,4 @@ jobs:
       - name: Run real Chromium tests against local synthetic origin
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/tan-draft-http.log 2>&1 &
-          npx playwright test tests/draft_server_button_browser.spec.cjs tests/draft_browser_e2e.spec.cjs tests/draft_discover_additional_browser.spec.cjs tests/draft_discover_actual_template.spec.cjs tests/draft_detail_actual_template.spec.cjs tests/draft_save_outcome_browser.spec.cjs --browser chromium --workers 1 --reporter=line
+          npx playwright test tests/draft_server_real_detail_browser.spec.cjs tests/draft_server_button_browser.spec.cjs tests/draft_browser_e2e.spec.cjs tests/draft_discover_additional_browser.spec.cjs tests/draft_discover_actual_template.spec.cjs tests/draft_detail_actual_template.spec.cjs tests/draft_save_outcome_browser.spec.cjs --browser chromium --workers 1 --reporter=line
