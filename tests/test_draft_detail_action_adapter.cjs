@@ -47,7 +47,7 @@ test("rapid repeated detail taps do not toggle twice while first write is pendin
  const gate=new Promise(resolve=>{release=resolve;});
  const storage={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
  const locks={request:async(_name,_opts,fn)=>{await gate;return fn();}};
- const adapter=create({storage,locks,key:"ex_1",metadata:{title:"展覽"},
+ const adapter=create({storage,locks,key:"ex_1",metadata:{title:"展覽",museum:"M"},
   onRender:()=>events.push("render"),onAnalytics:()=>events.push("analytics"),
   onNotify:()=>events.push("notify")});
  const first=adapter.toggle("favs");
