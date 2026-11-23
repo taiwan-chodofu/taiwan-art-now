@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const path = require('node:path');
 
 async function boot(page) {
-  await page.goto('http://127.0.0.1:8765/');
+  await page.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
   await page.evaluate(() => {
     localStorage.removeItem('taiwan_art_favs');
     localStorage.removeItem('taiwan_art_visited');
