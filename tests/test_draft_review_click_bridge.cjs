@@ -485,3 +485,14 @@ test("stale GET after confirmed write never enables next exhibition",async()=>{
  assert.equal(posts,2);
  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/登録状況を確認できませんでした/);
 });
+
+test("successful confirmation disables previous review choices to avoid misleading edits",async()=>{
+ const x=setup();
+ const select=elements(x.container,"select")[0];
+ select.value="keep_saved";select.events.change();
+ await x.instance.submit();
+ assert.equal(select.disabled,true);
+ const calls=x.calls.length;
+ await x.instance.submit();
+ assert.equal(x.calls.length,calls);
+});
