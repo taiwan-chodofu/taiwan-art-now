@@ -95,7 +95,7 @@ test('opt-in review only asks about previously removed exhibition and does not w
  await expect(review.getByRole('button',{name:'戻さない'})).toBeVisible();
  await review.getByRole('button',{name:'「観たい」に戻す'}).click();
  await expect(review.getByRole('button',{name:'「観たい」に戻す'})).toBeDisabled();
- await expect(page.locator('#notice')).toContainText('まだ変更していません');
+ await expect(page.locator('#notice')).toContainText('まだ登録は変更していません');
  expect(writes).toBe(0);
  expect(await page.evaluate(()=>window.__draftReviewIntent)).toEqual({
   kind:'favs',key:'art',choice:'request_restore',requiresFreshRead:true
@@ -174,4 +174,40 @@ test('cancel final confirmation does not write',async({page})=>{
  await page.locator('#restoreNo').click();
  await expect(page.locator('#restoreConfirm')).toBeHidden();
  expect(writes).toBe(0);
+});
+
+test('final restore refuses changed server revision without POST',async({page})=>{
+ let writes=0,reads=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST'){writes++;return route.abort();}
+  reads++;
+  const revision=reads<=2?1:2;
+  return route.fulfill(response({revision,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ await page.locator('#restoreYes').click();
+ await expect(page.locator('#notice')).toContainText('登録状況が変わりました');
+ expect(writes).toBe(0);
+});
+test('final restore uncertain POST never retries or announces success',async({page})=>{
+ let writes=0;
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST'){writes++;return route.abort('failed');}
+  return route.fulfill(response({revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ await page.locator('#restoreYes').click();
+ await expect(page.locator('#notice')).toContainText('保存できたか確認できません');
+ await expect(page.locator('#restoreYes')).toBeDisabled();
+ expect(writes).toBe(1);
 });
