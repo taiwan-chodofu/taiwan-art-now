@@ -33,3 +33,7 @@ The shared per-item Web Lock writer, persistence-first UI adapter, and isolated 
 ## Draft release gate update (2026-11-23)
 
 CI 45094588186 succeeded for the two-device Chromium mock-CAS and explicit tombstone stop tests. The E2E suite still **intentionally reproduces loss** when a cached legacy tab bypasses Web Locks and overwrites the whole localStorage map. Therefore, successful CI does not prove old-tab safety. All four templates retain independent legacy writers, including the main-page one-time migration; none is mounted to the new adapter. The next safe rollout must coordinate or retire every writer and define a controlled stale-client strategy, rather than treating Web Locks as sufficient protection. The draft UI action adapter also now handles exceptions from busy-state callbacks without stranding its pending slot or reporting a completed write as failed; regression tests added, CI pending. No production changes.
+
+## Post-write UI verification hardening
+
+The unmounted `draft_action_commit.js` now verifies exact persisted JSON value equality for a `set`, not only presence of the exhibition key. A regression test injects a cached-tab-style same-key metadata replacement between the cooperative writer's successful readback and the UI adapter's final read. The adapter must report `uncertain_write` without firing `onCommitted`. This narrows false-success reporting but **does not prevent or repair** the stale-tab overwrite; it is not a substitute for a rollout-wide writer migration or independent server backup. CI pending.
