@@ -35,6 +35,11 @@
        if(before.status!=="ready")return {status:before.status};
        if(own(before.snapshot[kind],key))return {status:"stale_local"};
        const raw=storage.getItem(storageKey);
+       let parsed;
+       try{parsed=raw===null?{}:JSON.parse(raw);
+         if(JSON.stringify(legacy.validateMap(parsed,kind))!==JSON.stringify(before.snapshot[kind]))
+           return {status:"stale_local"};
+       }catch(_){return {status:"invalid_local"};}
        const next={...before.snapshot[kind],[key]:item.value};
        const encoded=JSON.stringify(next);
        // Fail closed on any uncoordinated mutation between validation and write.
