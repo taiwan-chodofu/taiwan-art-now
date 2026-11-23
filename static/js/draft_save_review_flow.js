@@ -17,7 +17,7 @@
  "use strict";
  const REVIEW=new Set(["saved_server_local_changed",
   "saved_server_local_review_required"]);
- async function run({storage,fetchImpl,checkpoint,container,document:doc,exhibitionUrl,exhibitionTitles}={}){
+ async function run({storage,fetchImpl,checkpoint,container,document:doc,exhibitionUrl}={}){
   const result=await retry.run({storage,fetchImpl,checkpoint});
   let verification=null;
   if(REVIEW.has(result.status)&&result.serverSaved===true){
@@ -42,12 +42,25 @@
    :singleCommitted?"saved_server_record_unconfirmed"
    :"saved_server_multiple_records_unconfirmed";
   const reviewItems=unresolved.map(item=>({kind:item.kind,key:item.key,reason:item.reason}));
+  // Resolve display names from the exact committed payload, not an unrelated
+  // current localStorage snapshot that may have been overwritten by old tabs.
+  const trustedTitles=Object.create(null);
+  for(const item of reviewItems){
+   const change=result.committedChanges&&result.committedChanges[item.kind]&&
+     Object.prototype.hasOwnProperty.call(result.committedChanges[item.kind],item.key)
+     ?result.committedChanges[item.kind][item.key]:null;
+   const value=change&&change.set;
+   const title=value&&typeof value.title==="string"?value.title.trim():"";
+   if(title)trustedTitles[item.kind+":"+item.key]=title;
+  }
+  // Caller titles are deliberately not used for unresolved records: stale
+  // page data could label the wrong exhibition after a local overwrite.
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
     ?{...result,status:"saved_server_verified_local_changed"}
     :REVIEW.has(result.status)&&verification&&
       verification.status==="server_records_need_review"
-      ?{...result,status:recordStatus,reviewItems,exhibitionTitles}:result;
+      ?{...result,status:recordStatus,reviewItems,exhibitionTitles:trustedTitles}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
   // Only a verified deletion may offer a navigation link. The link never
