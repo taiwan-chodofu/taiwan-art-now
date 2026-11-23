@@ -42,6 +42,8 @@
     {element:document.getElementById('visitedBtn'),kind:'visited',key,value:true}
    ]
   });
+  // Test fixture only: exercise in-place refresh without a full navigation.
+  window.__draftStagingRefresh=()=>lifecycle.refresh();
   lifecycle.start();
   // Optional read-only migration preview, isolated to explicit test mode.
   let reviewDisposed=false;
