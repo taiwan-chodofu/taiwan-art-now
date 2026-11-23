@@ -27,7 +27,11 @@
           const raw = storage.getItem(kind === "favs" ? "taiwan_art_favs" : "taiwan_art_visited");
           const parsed = JSON.parse(raw);
           const present = Object.prototype.hasOwnProperty.call(parsed, key);
-          if ((action === "set" && !present) || (action === "remove" && present)) {
+          // Presence alone is insufficient: a non-cooperating cached tab can
+          // replace the same key with different metadata after our write.
+          const valueMatches = action !== "set" || (present &&
+            JSON.stringify(parsed[key]) === JSON.stringify(value));
+          if ((action === "set" && !valueMatches) || (action === "remove" && present)) {
             onFailure({ status: "uncertain_write" }, { kind, key, action });
             return { status: "uncertain_write" };
           }
