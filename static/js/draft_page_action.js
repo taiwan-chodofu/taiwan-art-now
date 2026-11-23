@@ -10,9 +10,14 @@
 })(typeof globalThis!=="undefined"?globalThis:this,function(writer){
  "use strict";
  async function commit({storage,locks,kind,key,action,value,expectedValue,onCommitted,onFailure}={}){
-   if(!storage||!locks||!["favs","visited"].includes(kind)||
+   if(!storage||!["favs","visited"].includes(kind)||
      typeof key!=="string"||!key||!["toggle","set","remove","remove_if_equal"].includes(action))
      return {status:"invalid_request"};
+   if(!locks||typeof locks.request!=="function"){
+     const failure={status:"not_authorized"};
+     if(typeof onFailure==="function")try{onFailure(failure);}catch(_){}
+     return failure;
+   }
    const result=await writer.mutate({storage,locks,kind,key,action,value,expectedValue});
    if(result.status==="written_under_cooperative_lock"){
      // Revalidate the exact committed item before announcing UI success.
