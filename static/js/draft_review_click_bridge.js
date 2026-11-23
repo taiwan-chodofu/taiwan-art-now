@@ -31,6 +31,8 @@
     button.textContent = "選択した展示を確認";
     button.setAttribute("type", "button");
     const status = doc.createElement("p");
+    status.setAttribute("aria-live", "polite");
+    status.setAttribute("aria-atomic", "true");
     const checkButton = doc.createElement("button");
     checkButton.textContent = "サーバーの登録状況を確認";
     checkButton.setAttribute("type", "button");
@@ -48,11 +50,13 @@
         if (disposed) return;
         status.textContent = result.status === "saved_on_server"
           ? "サーバーに登録が確認できました。ほかの展示は再読み込みして確認してください。"
+          : result.status === "not_found"
+            ? "サーバーにこの展示の登録は見つかりませんでした。保存成功とは判断できません。再送信せず、最新の状態で確認してください。"
           : result.status === "still_deleted"
             ? "サーバーには削除履歴が残っています。再送信せず、最新の状態で確認してください。"
             : result.status === "different_server_value"
               ? "サーバーには異なる登録内容があります。上書きせず、最新の状態で確認してください。"
-              : "保存結果を確定できませんでした。再送信せず、時間をおいて再確認してください。";
+              : "通信または応答の問題でサーバーの登録状況を確認できませんでした。保存の成否は不明です。再送信せず、時間をおいて再確認してください。";
       } catch (_) {
         if (!disposed) status.textContent = "サーバーの状態を確認できませんでした。再送信せず、時間をおいて再確認してください。";
       } finally {
@@ -91,7 +95,7 @@
           // Require a fresh review instead of allowing another submit from stale context.
           confirmationAttempted = true;
           attemptedDecision = {kind:decision.kind,key:decision.key,value:local[decision.key]};
-          if (typeof fetchImpl === "function") checkButton.disabled = false;
+          // Inspection remains unavailable while a confirmation request is in flight.
           const result = await keep.execute({
             decision, conflict: { ...conflict, itemRevision: entry.revision },
             localValue: local[decision.key],
@@ -119,6 +123,7 @@
       } finally {
         busy = false;
         if (!disposed && !completed && !confirmationAttempted) button.disabled = false;
+        if (!disposed && confirmationAttempted && typeof fetchImpl === "function") checkButton.disabled = false;
       }
     };
     button.addEventListener("click", submit);
