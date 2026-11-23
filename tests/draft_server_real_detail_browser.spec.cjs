@@ -39,10 +39,11 @@ test('real detail markup: isolated server-first save does not invoke legacy hand
 
 test('real Discover markup: server-first want action never writes local exhibition map',async({page})=>{
  const discover=fs.readFileSync(path.resolve(__dirname,'../templates/discover.html'),'utf8');
- const like=discover.match(/<button class="like-btn" id="likeBtn">[\\s\\S]*?<\\/button>/);
- const seen=discover.match(/<button class="visited-btn" id="visitedBtn">[\\s\\S]*?<\\/button>/);
+ const extract=(id)=>{const marker='id="'+id+'"';const at=discover.indexOf(marker);if(at<0)return null;const start=discover.lastIndexOf('<button',at);const end=discover.indexOf('</button>',at);return start>=0&&end>at?[discover.slice(start,end+9)]:null;};
+ const like=extract('likeBtn');
+ const seen=extract('visitedBtn');
  if(!like||!seen)throw Error('actual Discover action markup changed');
- const markup=(like[0]+seen[0]).replace(/{{[\\s\\S]*?}}/g,'Save');
+ const markup=(like[0]+seen[0]).replaceAll('{{ labels.like }}','Save').replaceAll('{{ labels.seen }}','Seen');
  await page.route('**/discover-server-staging',r=>r.fulfill({status:200,contentType:'text/html',body:'<!doctype html><meta charset="utf-8">'+markup+'<p id="notice"></p>'}));
  await page.goto('http://127.0.0.1:8765/discover-server-staging');
  await page.evaluate(()=>{localStorage.removeItem('taiwan_art_favs');localStorage.removeItem('taiwan_art_visited');});
