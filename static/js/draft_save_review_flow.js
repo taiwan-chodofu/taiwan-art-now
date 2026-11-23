@@ -24,9 +24,14 @@
     changes:result.committedChanges
    });
   }
+  // A verified committed exhibition can be shown as a calm success, but a
+  // missing trusted checkpoint still needs separate review of other records.
+  const displayResult=result.status==="saved_server_local_changed"&&
+   verification&&verification.status==="confirmed_on_server"
+    ?{...result,status:"saved_server_verified_local_changed"}:result;
   const displayed=container&&doc
-   ?notice.render({container,document:doc,result}):null;
-  return {result,verification,displayed};
+   ?notice.render({container,document:doc,result:displayResult}):null;
+  return {result,verification,displayResult,displayed};
  }
  return {run};
 });
