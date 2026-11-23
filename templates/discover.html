@@ -430,7 +430,7 @@
       var isHorizontalSwipe = false;
 
       el.addEventListener('pointerdown', function(e) {
-        if (discoverBusy) return;
+        if (discoverBusy || discoverAnimating) return;
         startedInExcerpt = !!(excerptEl && excerptEl.contains(e.target));
         directionLocked = !startedInExcerpt;
         isHorizontalSwipe = !startedInExcerpt;
@@ -443,7 +443,7 @@
         }
       });
       el.addEventListener('pointermove', function(e) {
-        if (discoverBusy || !isDragging || e.pointerId !== activePointerId) return;
+        if (discoverBusy || discoverAnimating || !isDragging || e.pointerId !== activePointerId) return;
         var dx = e.clientX - dragStartX;
         var dy = e.clientY - dragStartY;
 
@@ -502,6 +502,7 @@
 
     // Draft integration: only advance after the cooperative storage commit succeeds.
     var discoverBusy = false;
+    var discoverAnimating = false;
     var discoverRenderTimer = null;
     var discoverError = document.createElement('p');
     discoverError.id = 'discoverActionError';
@@ -511,7 +512,7 @@
     function setDiscoverBusy(busy) {
       discoverBusy = busy;
       ['likeBtn','visitedBtn','skipBtn','undoBtn','restartBtn'].forEach(function(id) {
-        document.getElementById(id).disabled = busy;
+        document.getElementById(id).disabled = busy || (discoverAnimating && id !== 'undoBtn');
       });
     }
     function clearDiscoverError() { discoverError.textContent = ''; }
@@ -529,6 +530,7 @@
         throw new Error('Discover deck changed during save');
       deck.shift();
       saveDeckOrder();
+      discoverAnimating = true;
       var el = currentCardEl;
       var flyX = info.action === 'like' ? window.innerWidth : -window.innerWidth;
       if (el) {
@@ -538,7 +540,9 @@
       if (typeof gtag === 'function') gtag('event', 'discover_' + info.action, {exhibition_key:_normalizeKey(info.card.stable_key)});
       discoverRenderTimer = setTimeout(function() {
         discoverRenderTimer = null;
+        discoverAnimating = false;
         renderCard();
+        setDiscoverBusy(discoverBusy);
       }, 220);
     }
     var discoverFlow = TanDraftDiscoverFlow.create({
@@ -549,14 +553,16 @@
           clearTimeout(discoverRenderTimer);
           discoverRenderTimer = null;
         }
+        discoverAnimating = false;
         deck.unshift(last.card);
         saveDeckOrder();
         renderCard();
+        setDiscoverBusy(discoverBusy);
       },
       onError: failDiscover
     });
     async function commitSwipe(action) {
-      if (discoverBusy || !currentCard) return;
+      if (discoverBusy || discoverAnimating || !currentCard) return;
       clearDiscoverError();
       setDiscoverBusy(true);
       try {
