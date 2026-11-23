@@ -32,7 +32,7 @@ async function boot(page){
  await page.goto('http://127.0.0.1:8765/discover');
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
 }
-test('current real template: quota failure incorrectly advances the deck (known blocker)',async({page})=>{
+test('guarded real template: quota failure keeps the current card',async({page})=>{
  await boot(page);
  await page.evaluate(()=>{
   const original=Storage.prototype.setItem;
@@ -42,15 +42,17 @@ test('current real template: quota failure incorrectly advances the deck (known 
   };
  });
  await page.locator('#likeBtn').click();
- await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await expect(page.locator('#discoverActionError')).toContainText('保存できませんでした');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
 });
-test('current real template: undo overwrites a newer favorite (known blocker)',async({page})=>{
+test('guarded real template: stale undo preserves a newer favorite',async({page})=>{
  await boot(page);
  await page.locator('#likeBtn').click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere'}})));
  await page.locator('#undoBtn').click();
- await expect(page.locator('.card h2')).toHaveText('Exhibition A');
- expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({});
+ await expect(page.locator('#discoverActionError')).toContainText('変更されたため');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({a:{title:'Updated elsewhere'}});
 });
