@@ -204,9 +204,20 @@ test('real Chromium: two independent devices retain both favorites after stale C
     await bootAdditive(a,{one}); await bootAdditive(b,{two});
     let revision=0, entries={};
     const calls=[];
+    let firstReads=0,releaseInitialReads;
+    const initialReadsReady=new Promise(resolve=>{releaseInitialReads=resolve;});
     const exchange=async (path,opts) => {
       calls.push({path,method:opts.method});
-      if(opts.method==='GET')return {status:200,body:{revision,favs:entries,visited:{}}};
+      if(opts.method==='GET'){
+        if(firstReads<2){
+          const snapshot={revision,favs:{...entries},visited:{}};
+          firstReads++;
+          if(firstReads===2)releaseInitialReads();
+          await initialReadsReady;
+          return {status:200,body:snapshot};
+        }
+        return {status:200,body:{revision,favs:{...entries},visited:{}}};
+      }
       const data=JSON.parse(opts.body);
       if(data.base_revision!==revision)return {status:409,body:{error:'stale_revision'}};
       revision++;
