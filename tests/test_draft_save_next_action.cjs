@@ -29,3 +29,10 @@ test("no action if deletion not confirmed",()=>{
   result:{status:"saved_server_record_deleted"},
   exhibitionUrl:"/exhibition/123"}).status,"not_applicable");
 });
+
+test("unsafe encoded navigation paths are rejected",()=>{
+ const {isSafeExhibitionUrl}=require("../static/js/draft_save_next_action.js");
+ for(const url of ["//evil.test","/%0aevil","/%5c%5cevil","/foo%7f","/foo\\\\bar","https://evil.test"])
+  assert.equal(isSafeExhibitionUrl(url),false,url);
+ assert.equal(isSafeExhibitionUrl("/exhibition/台南-藝術"),true);
+});
