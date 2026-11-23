@@ -35,6 +35,8 @@ test('real detail markup: isolated server-first save does not invoke legacy hand
  await expect(page.locator('#notice')).toContainText('サーバーに保存');
  const result=await page.evaluate(()=>({state:window.__state,events:window.__renders,local:localStorage.getItem('taiwan_art_favs')}));
  expect(result.state.favs.ex_1.deleted).toBe(false);expect(result.events).toHaveLength(1);expect(result.local).toBeNull();
+ await expect(page.locator('#favBtn')).toBeDisabled();
+ await expect(page.locator('#visitedBtn')).toBeDisabled();
 });
 
 test('real Discover markup: server-first want action never writes local exhibition map',async({page})=>{
