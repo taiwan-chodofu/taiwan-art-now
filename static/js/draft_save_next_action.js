@@ -9,6 +9,8 @@
  "use strict";
  function isSafeExhibitionUrl(url){
   if(typeof url!=="string"||!url.startsWith("/")||url.startsWith("//"))return false;
+  // Reject encoded controls, backslashes and protocol-relative path tricks.
+  if(/%(?:0[0-9a-f]|1[0-9a-f]|7f|5c)/i.test(url))return false;
   for(const char of url){
    const n=char.charCodeAt(0);
    if(char==="\\"||n<32||n===127)return false;
