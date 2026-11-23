@@ -17,7 +17,7 @@
  "use strict";
  const REVIEW=new Set(["saved_server_local_changed",
   "saved_server_local_review_required"]);
- async function run({storage,fetchImpl,checkpoint,container,document:doc,exhibitionUrl}={}){
+ async function run({storage,fetchImpl,checkpoint,container,document:doc,exhibitionUrl,exhibitionUrls}={}){
   const result=await retry.run({storage,fetchImpl,checkpoint});
   let verification=null;
   if(REVIEW.has(result.status)&&result.serverSaved===true){
@@ -60,7 +60,7 @@
     ?{...result,status:"saved_server_verified_local_changed"}
     :REVIEW.has(result.status)&&verification&&
       verification.status==="server_records_need_review"
-      ?{...result,status:recordStatus,reviewItems,exhibitionTitles:trustedTitles}:result;
+      ?{...result,status:recordStatus,reviewItems,exhibitionTitles:trustedTitles,exhibitionUrls}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
   // Only a verified deletion may offer a navigation link. The link never
