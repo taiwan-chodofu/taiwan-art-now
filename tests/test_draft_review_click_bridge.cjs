@@ -437,3 +437,26 @@ test("three exhibitions can be confirmed sequentially without stale revisions or
  assert.equal(keys.every(k=>!entries[k].deleted),true);
  assert.equal(gets,4);
 });
+
+test("next review refuses changed local records without sending another write",async()=>{
+ const data={taiwan_art_favs:JSON.stringify({a:fav,b:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const report2={status:"needs_review",review:["a","b"].map(key=>({kind:"favs",key,reason:"explicit_deletion_conflict"}))};
+ const state={revision:3,favs:{a:{deleted:true,value:null,revision:2},b:{deleted:true,value:null,revision:2}},visited:{}};
+ let gets=0,posts=0;
+ const container=new Element("main");
+ mount({container,report:report2,doc,serverState:state,storage,localSnapshot:read(storage).snapshot,
+  request:async url=>{posts++;return url.endsWith("/issue")?{token:"synthetic"}:{revision:4};},
+  fetchImpl:async()=>{gets++;return {ok:true,status:200,
+   headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{a:{deleted:false,value:fav,revision:4},b:{deleted:true,value:null,revision:2}},visited:{}})};}});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await elements(container,"button").find(x=>x.textContent==="選択した展示を確認").events.click();
+ data.taiwan_art_favs=JSON.stringify({a:fav,b:fav,c:fav});
+ const next=elements(container,"button").find(x=>x.textContent==="残りの展示を確認");
+ await next.events.click();
+ assert.equal(gets,2);
+ assert.equal(posts,2);
+ assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/この端末の記録が変わりました/);
+ assert.equal(next.disabled,true);
+});
