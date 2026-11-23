@@ -63,3 +63,7 @@ Added `static/js/draft_page_action.js` as an **unmounted** shared async entrypoi
 ## Shared adapter browser verification
 
 The unmounted cross-page action adapter now verifies the exact saved value (or confirmed removal) after the cooperative writer returns, before notifying the UI. If a cached legacy tab replaces the value at this boundary, it returns `uncertain_write` and does not claim success. A Node regression test injects that overwrite. A real Chromium two-tab test exercises simultaneous toggles of the same exhibition; a tab may truthfully report `uncertain_write` if the other removes its just-saved item before the final readback. This does not guarantee that old cached tabs cannot overwrite records later. None of the four production templates is wired. CI pending.
+
+## CI race-test correction
+
+CI run 45096254136 had 225/226 Node browser-sync tests pass and all three other jobs pass. The failing assertion incorrectly required the first of two simultaneous toggles to report a successful UI state after the second toggle had already removed its item. The draft adapter correctly returns `uncertain_write` in this case; the test now accepts that truthful outcome while requiring the second operation to commit and the final map to be empty. This is a **test expectation correction**, not a claim that all cached-tab races are solved. CI re-run pending.
