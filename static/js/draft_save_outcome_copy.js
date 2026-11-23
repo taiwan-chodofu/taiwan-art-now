@@ -32,6 +32,12 @@
    action:"你可以繼續瀏覽。如果想查看這筆展覽，請到「想看」或「看過」清單確認。",
    requiresReview:false
   }),
+  saved_server_record_changed:Object.freeze({
+   heading:"這筆展覽的儲存狀態已改變",
+   detail:"剛才的儲存曾經成功，但再次查看帳號時，這筆展覽已被刪除或修改，無法確認目前仍保留原本的內容。",
+   action:"請到「想看」或「看過」清單查看這筆展覽目前的狀態。確認前先不要再次儲存或刪除。",
+   requiresReview:true
+  }),
   unknown_commit:Object.freeze({
    heading:"目前無法確認是否儲存成功",
    detail:"送出後沒有收到可靠的儲存結果，因此不能判定成功或失敗。",
