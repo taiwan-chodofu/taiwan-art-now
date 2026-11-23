@@ -1,26 +1,28 @@
-# Discover production-page integration audit (DRAFT, NOT FOR MERGE)
+# Discover integration audit — draft branch only
 
-Source inspected: `templates/discover.html` on `feat/private-subscriber-storage-adapter-83`.
-This is an implementation gap report, not a claim that the production page has been fixed.
+Scope: `templates/discover.html` on `feat/private-subscriber-storage-adapter-83`. **No production deployment, merge, or approval is implied.**
 
-## Observed unsafe sequence
+## Implemented and tested in the draft
 
-- `commitSwipe(action)` immediately calls `deck.shift()`, begins fly-out animation, invokes `recordAction`, saves session deck order, and schedules `renderCard`.
-- `recordAction` performs unguarded read/modify/write on `taiwan_art_favs` or `taiwan_art_visited`. A storage quota error can happen **after** the card has been removed from the in-memory deck.
-- `undo()` pops history before validating whether the saved value still matches the original write. Another tab or another operation may have changed the entry.
-- The draft `TanDraftDiscoverFlow` is isolated and not mounted in `templates/discover.html`; its passing Chromium fixture tests do not demonstrate page integration.
+- Like/visited persistence is guarded by cooperative Web Locks before advancing the deck. Quota failure retains the card and permits retry.
+- Skip does not write a favorite or visited entry; guarded undo restores it.
+- Stale undo uses `remove_if_equal` to avoid deleting a newer local entry. It preserves the current deck position and shows an actionable localized message.
+- A read-only conflict inspector displays **this device's** saved status, not a server-authoritative or cross-device status. Missing and malformed local data are covered by Chromium tests.
+- Undo during animation cancels the delayed render. Rapid repeated actions and simultaneous saves of distinct items across two tabs have Chromium coverage.
+- Restart resets the draft undo history without deleting persisted registrations.
+- Save-error messages have accessible live-region attributes and mobile-width display checks.
+- Actual-template Chromium tests run in `.github/workflows/private-subscriber-tests.yml`, alongside browser-sync, synthetic unit, and disposable PostgreSQL CAS jobs.
 
-## Required safe integration contract
+Last verified full-green CI: commit `46464f7f88580900c42c2e886de9734196005884`, run `45100394763` (four jobs passed). This is a test result, not a release approval.
 
-1. Preserve the current card, deck, and session deck order while a persistence action is pending. Disable buttons and pointer swipe commits during this interval.
-2. For `like` and `visited`, await `TanDraftDiscoverFlow.swipe(card, action)`. Advance only on `written_under_cooperative_lock`; on any failure, reset the card transform and show a localized, accessible error without removing the card.
-3. For `skip`, do not write a favorite or visited record. Advance exactly once, and retain undo history for the skipped card.
-4. On success, perform deck shift, session deck persistence, analytics, and animation once. Ensure a delayed render cannot override a later undo or navigation (generation token/cancellation).
-5. Undo the latest action through guarded `remove_if_equal`; if it returns `stale_undo`, preserve the current card, saved entry, and history, and explain that the saved exhibition changed.
-6. Undo of a skipped card restores its position without any storage deletion.
-7. Recheck the actual `/discover` page under Chromium with real DOM, pointer gestures, localStorage and Web Locks. Include quota failure, changed saved value, double tap during pending write, undo during animation, and page navigation/back.
-8. Keep the PR in draft and do not merge or deploy. Existing legacy tabs that bypass Web Locks remain a separate documented concurrency blocker.
+## Open blockers / unproven properties
 
-## Acceptance gate
+1. **Legacy tabs remain unsafe.** A cached older tab that does not cooperate with Web Locks can overwrite newer localStorage snapshots. Cooperative-lock tests do not cover this.
+2. **Cross-device reconciliation is not solved by the Discover integration.** The local inspector cannot claim server state, and this draft does not prove merge semantics or durable deletion tombstones.
+3. **Explicit deletion vs registration conflict needs separate resolution semantics.** Preserve both devices' registrations by default; ask only when an explicit deletion history conflicts with a registration. Do not silently select a device or delete data.
+4. **Manual mobile and accessibility review is outstanding.** Automated assertions do not establish real-device usability, screen-reader announcements, gesture ergonomics, or animation quality.
+5. **End-to-end navigation/back and legacy-tab coexistence need further characterization** before production consideration.
 
-A passing isolated fixture is insufficient. Require a browser test against the rendered Discover template, plus passing CI and manual review of accessibility, localization, and animation behavior, before considering any production rollout.
+## Release gate
+
+Keep PR #87 in draft. Do not merge or deploy until legacy-writer risks and server reconciliation semantics are addressed, relevant browser tests pass, and manual UX/accessibility review is completed.
