@@ -11,7 +11,12 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(reader,bridge){
  'use strict';
  function create({win,fetchImpl,notice,lang='ja',items,onAnalytics}={}){
-  if(!win||typeof fetchImpl!=='function'||!notice||!Array.isArray(items)||!items.length)
+  if(!win||typeof fetchImpl!=='function'||!notice||!Array.isArray(items)||!items.length||
+     !items.every(i=>i&&i.element&&typeof i.element.addEventListener==='function'&&
+       ['favs','visited'].includes(i.kind)&&typeof i.key==='string'&&i.key&&
+       i.value!==undefined&&i.value!==null&&!i.element.hasAttribute?.('onclick')&&
+       typeof i.element.onclick!=='function')||
+     new Set(items.map(i=>i.element)).size!==items.length)
    throw Error('invalid staging page');
   let current=null,closed=false,refreshGeneration=0;
   const message=(value)=>{notice.hidden=false;notice.textContent=value;notice.setAttribute('role','status');};
@@ -23,7 +28,11 @@
    const latest=state?{status:'ready',state}:await reader.read({fetchImpl});
    if(closed||generation!==refreshGeneration)return false;
    if(latest.status!=='ready'){message(lang==='zh'?'無法確認最新收藏狀態，請重新整理頁面。':'最新の登録状況を確認できません。ページを再読み込みしてください。');return false;}
-   if(!Number.isSafeInteger(latest.state.revision)||latest.state.revision<0){message('Invalid server revision');return false;}
+   if(!latest.state||!Number.isSafeInteger(latest.state.revision)||latest.state.revision<0||
+      !latest.state.favs||typeof latest.state.favs!=='object'||
+      !latest.state.visited||typeof latest.state.visited!=='object'){
+     message(lang==='zh'?'無法確認最新收藏狀態，請重新整理頁面。':'最新の登録状況を確認できません。ページを再読み込みしてください。');return false;
+   }
    const descriptors=items.map(item=>{
     const entry=latest.state[item.kind]?.[item.key];
     const active=!!entry&&!entry.deleted;
