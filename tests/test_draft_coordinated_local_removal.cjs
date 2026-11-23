@@ -130,3 +130,39 @@ test("malformed fresh global revision never authorizes removal", async () => {
   assert.equal((await remove(x)).status, "stale_server");
   assert.equal(x.writes.length, 0);
 });
+
+test("two simultaneous different removals never overwrite one another", async () => {
+  const x = fixture();
+  x.data.taiwan_art_favs = JSON.stringify({
+    a: fav, b: { ...fav, title: "B" }, c: { ...fav, title: "C" }
+  });
+  x.reviewedSnapshot = read(x.storage).snapshot;
+  const server = { revision: 4, favs: {
+    a: { deleted: true, revision: 3, value: null },
+    b: { deleted: true, revision: 3, value: null }
+  }, visited: {} };
+  x.serverState = server;
+  x.fetchFreshState = async () => server;
+  let tail = Promise.resolve();
+  x.locks.request = (_name, _opts, fn) => {
+    const pending = tail.then(fn);
+    tail = pending.catch(() => {});
+    return pending;
+  };
+  const first = remove(x);
+  const second = remove({ ...x, decision: { kind: "favs", key: "b", choice: "remove_from_list" } });
+  assert.equal((await first).status, "removed_under_cooperative_lock");
+  assert.equal((await second).status, "stale_local");
+  assert.deepEqual(Object.keys(JSON.parse(x.data.taiwan_art_favs)), ["b", "c"]);
+  assert.equal(x.writes.length, 1);
+});
+test("server GET fails after lock acquisition without local deletion", async () => {
+  const x = fixture();
+  let entered = false;
+  x.locks.request = async (_name, _opts, fn) => { entered = true; return fn(); };
+  x.fetchFreshState = async () => { throw Error("connection lost"); };
+  assert.equal((await remove(x)).status, "unavailable");
+  assert.equal(entered, true);
+  assert.equal(x.writes.length, 0);
+  assert.ok(JSON.parse(x.data.taiwan_art_favs).a);
+});
