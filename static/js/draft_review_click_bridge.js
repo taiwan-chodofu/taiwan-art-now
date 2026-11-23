@@ -23,13 +23,14 @@
     if (!review.rendered) return { rendered: false, dispose: review.dispose };
     let busy = false;
     let disposed = false;
+    let completed = false;
     const button = doc.createElement("button");
     button.textContent = "選択した展示を確認";
     button.setAttribute("type", "button");
     const status = doc.createElement("p");
     status.setAttribute("role", "status");
     const submit = async () => {
-      if (disposed || busy) return;
+      if (disposed || busy || completed) return;
       busy = true;
       button.disabled = true;
       try {
@@ -66,6 +67,7 @@
           }
           // A successful write increments global revision. Do not send further
           // selections using the stale original revision.
+          completed = true;
           status.textContent = "保存しました。ほかの展示は再読み込みして確認してください。";
           return;
         }
@@ -74,7 +76,7 @@
         status.textContent = "通信に失敗しました。状態を再取得して確認してください。";
       } finally {
         busy = false;
-        if (!disposed) button.disabled = false;
+        if (!disposed && !completed) button.disabled = false;
       }
     };
     button.addEventListener("click", submit);
