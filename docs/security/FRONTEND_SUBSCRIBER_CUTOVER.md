@@ -143,3 +143,7 @@ CI 45050775175 failed one synthetic page-flow test because its fake UI tracked t
 ## Draft Chromium E2E (isolated local origin)
 
 CI 45050943565 passed after the store-level tombstone guard. Added `tests/draft_browser_e2e.spec.cjs` and a dedicated GitHub Actions job using Playwright Chromium on a temporary localhost HTTP server, loading **only unmounted draft JS modules** into a synthetic page. The tests exercise actual browser localStorage, Web Locks, favorite and visited add/remove, quota failure, and two cooperative tabs. This does **not** test production HTML templates, remote sync, server-side owner authentication, or old cached tabs. Never run against the live Taiwan Art Now origin or production subscriber data. Latest CI is pending.
+
+## Chromium runner compatibility (2026-11-23)
+
+CI run 45086577553: synthetic Python, disposable PostgreSQL, and Node browser-sync jobs passed; new real-Chromium job failed **during installation**, before any E2E assertions, because Playwright 1.58.2 does not support GitHub's ubuntu26.04 runner. Pinned only the draft Chromium job to `ubuntu-24.04` (commit b80fddc). A passing Chromium E2E run is still required; no browser behavior is claimed verified by that failed run.
