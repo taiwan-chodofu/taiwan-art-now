@@ -187,3 +187,7 @@ CI 45088479858 passed all four jobs for the guarded restore prototype. Added two
 ## Strict draft authenticated-state reader
 
 CI 45088613834 passed all four jobs including the two real Chromium recovery fixture tests. Added `draft_authenticated_state.js` and seven Node tests. The reader requests only the unregistered same-origin `GET /api/private-subscribers/v2/state` with cookies, no-store and redirect errors, requires JSON and `Cache-Control: no-store`, validates server shape, and returns explicit failure statuses for 403, login HTML, cacheable data, offline and malformed states. **This is a client-side defense, not proof of authenticated ownership**: the server must verify its session and same-origin controls, and real integrated authenticated API tests remain to be written. No route is registered or production traffic changed.
+
+## Disposable PostgreSQL owner isolation regression
+
+Added `test_two_verified_owners_are_strictly_isolated` to the disposable PostgreSQL CAS suite. It creates two synthetic verified subscriber IDs, writes distinct favorite entries under each identity, and verifies both immediate and fresh-transaction reads contain only that owner's records. It runs only against the CI localhost database `tan_ci_disposable`, not production. This checks store-level owner partitioning; it **does not yet verify HTTP cookie-to-owner session binding** or session revocation races. Those require Flask route integration tests with synthetic sessions and the disposable DB before any route registration. Latest CI pending.
