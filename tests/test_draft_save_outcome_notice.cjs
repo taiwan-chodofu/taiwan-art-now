@@ -51,8 +51,8 @@ test("multiple affected exhibitions display their real titles, not internal IDs"
  }});
  const list=container.children[0].children[3];
  assert.equal(list.tag,"ul");
- assert.deepEqual(list.children.map(row=>row.textContent),["展覽甲","展覽乙"]);
- assert.doesNotMatch(list.children.map(row=>row.textContent).join(" "),/internal-123/);
+ assert.deepEqual(list.children.map(row=>row.children[0].textContent),["展覽甲","展覽乙"]);
+ assert.doesNotMatch(list.children.map(row=>row.children[0].textContent).join(" "),/internal-123/);
 });
 test("missing trusted titles do not reveal storage identifiers",()=>{
  const {document,container}=fixture();
@@ -60,5 +60,24 @@ test("missing trusted titles do not reveal storage identifiers",()=>{
   status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
   reviewItems:[{kind:"favs",key:"private-id"}]
  }});
- assert.equal(container.children[0].children[3].children[0].textContent,"名稱未提供的展覽");
+ assert.equal(container.children[0].children[3].children[0].children[0].textContent,"名稱未提供的展覽");
+});
+
+test("each exhibition displays its own known state without asking user to investigate",()=>{
+ const {document,container}=fixture();
+ render({document,container,result:{
+  status:"saved_server_multiple_records_unconfirmed",serverSaved:true,
+  reviewItems:[
+   {kind:"favs",key:"a",reason:"deleted_on_server"},
+   {kind:"visited",key:"b",reason:"different_server_value"},
+   {kind:"favs",key:"c",reason:"not_found"}
+  ],
+  exhibitionTitles:{"favs:a":"展覽甲","visited:b":"展覽乙","favs:c":"展覽丙"}
+ }});
+ const rows=container.children[0].children[3].children;
+ assert.deepEqual(rows.map(row=>row.children[1].textContent),[
+  "目前已從清單移除",
+  "目前的收藏內容與剛才不同",
+  "目前無法確認是否仍在清單中"
+ ]);
 });
