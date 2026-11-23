@@ -142,3 +142,22 @@ test('guarded real template: two tabs can save different exhibitions without los
  expect(Object.keys(saved).sort()).toEqual(['a','b']);
  await second.close();
 });
+
+test('guarded real template: a failed favorite write can be retried without losing the card',async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>{
+  window.__originalDraftSetItem=Storage.prototype.setItem;
+  Storage.prototype.setItem=function(key,value){
+   if(key==='taiwan_art_favs')throw new DOMException('quota','QuotaExceededError');
+   return window.__originalDraftSetItem.call(this,key,value);
+  };
+ });
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('#discoverActionError')).toContainText('保存できませんでした');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ await page.evaluate(()=>{Storage.prototype.setItem=window.__originalDraftSetItem;});
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await expect(page.locator('#discoverActionError')).toBeEmpty();
+ expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
+});
