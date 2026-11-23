@@ -163,3 +163,48 @@ test("server check appears only after confirmation attempt and never posts", asy
   assert.equal(requests,2);
   assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/サーバーに登録が確認/);
 });
+
+test("concurrent status checks issue only one GET and allow later manual recheck", async () => {
+ const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const container=new Element("main");
+ let resolveGet,gets=0;
+ const instance=mount({container,report,doc,serverState,storage,
+   localSnapshot:read(storage).snapshot,
+   request:async url=>url.endsWith("/issue")?{token:"synthetic"}:Promise.reject(Error("lost")),
+   fetchImpl:async()=>{gets++;return new Promise(resolve=>{resolveGet=resolve;});}});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await instance.submit();
+ const first=instance.inspect(),second=instance.inspect();
+ assert.equal(gets,1);
+ resolveGet({status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})});
+ await Promise.all([first,second]);
+ assert.equal(elements(container,"button")[1].disabled,false);
+ const third=instance.inspect();
+ assert.equal(gets,2);
+ resolveGet({status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})});
+ await third;
+});
+test("late status response after review disposal does not update removed status", async () => {
+ const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const container=new Element("main");
+ let resolveGet;
+ const instance=mount({container,report,doc,serverState,storage,
+   localSnapshot:read(storage).snapshot,
+   request:async url=>url.endsWith("/issue")?{token:"synthetic"}:Promise.reject(Error("lost")),
+   fetchImpl:async()=>new Promise(resolve=>{resolveGet=resolve;})});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await instance.submit();
+ const status=elements(container,"p").at(-1);
+ const before=status.textContent;
+ const pending=instance.inspect();
+ instance.dispose();
+ resolveGet({status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})});
+ await pending;
+ assert.equal(status.textContent,before);
+ assert.equal(status.removed,true);
+});
