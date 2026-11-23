@@ -31,6 +31,11 @@
   for(const b of buttons){
    const handler=async()=>{if(disposed)return;
     const result=await controller.act({kind:b.kind,key:b.key,action:b.action,value:b.value,expectedRevision:b.expectedRevision});
+    if(!disposed&&result.status==='write_outcome_unknown'){
+      // Never invite a blind repeat after a request may have reached the server.
+      b.element.disabled=true;
+      b.element.setAttribute?.('aria-disabled','true');
+    }
     if(!disposed&&result.committed===true){show(locale.success);
       // A later click must use a newly rendered state and revision.
       b.element.disabled=true;
