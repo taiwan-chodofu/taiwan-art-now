@@ -132,3 +132,34 @@ test("failed token issue does not allow stale review to be resubmitted", async (
   assert.equal(calls, 1);
   assert.equal(elements(container, "button")[0].disabled, true);
 });
+
+test("server check appears only after confirmation attempt and never posts", async () => {
+  const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+  const storage={getItem:key=>data[key]};
+  const container=new Element("main");
+  let gets=0,requests=0;
+  const instance=mount({container,report,doc,serverState,storage,
+    localSnapshot:read(storage).snapshot,
+    request:async url=>{requests++;if(url.endsWith("/issue"))return {token:"synthetic"};throw Error("lost response");},
+    fetchImpl:async(path,opts)=>{
+      gets++;assert.equal(opts.method,"GET");
+      assert.equal(path,"/api/private-subscribers/v2/state");
+      return {status:200,ok:true,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+        json:async()=>({revision:4,favs:{a:{value:fav,deleted:false,revision:4}},visited:{}})};
+    }});
+  const buttons=elements(container,"button");
+  assert.equal(buttons.length,2);
+  assert.equal(buttons[1].disabled,true);
+  await instance.inspect();
+  assert.equal(gets,0);
+  const select=elements(container,"select")[0];
+  select.value="keep_saved";select.events.change();
+  await instance.submit();
+  assert.equal(requests,2);
+  assert.equal(buttons[0].disabled,true);
+  assert.equal(buttons[1].disabled,false);
+  await buttons[1].events.click();
+  assert.equal(gets,1);
+  assert.equal(requests,2);
+  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/サーバーに登録が確認/);
+});
