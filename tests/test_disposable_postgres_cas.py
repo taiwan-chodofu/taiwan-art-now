@@ -44,10 +44,79 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "base_revision bigint not null, item_revision bigint not null, "
                             "choice text not null, value_hash bytea not null, "
                             "expires_at timestamptz not null, used_at timestamptz)")
+                cur.execute("CREATE TABLE tan_private.browser_sessions "
+                            "(token_hash text primary key, sender_id text not null "
+                            "REFERENCES tan_private.messenger_subscribers(sender_id), "
+                            "created_at timestamptz not null default now(), "
+                            "expires_at timestamptz not null, revoked_at timestamptz)")
                 cur.execute("CREATE TABLE tan_private.subscriber_sync_states "
                             "(sender_id text primary key REFERENCES "
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
+
+    def test_flask_cookie_session_real_postgres_isolation_and_revocation(self):
+        """HTTP cookie lookup and private state read use real disposable DB."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+
+        owner_a, owner_b = "http-synthetic-owner-a", "http-synthetic-owner-b"
+        token_a, token_b = "http-synthetic-token-a", "http-synthetic-token-b"
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) "
+                    "VALUES (%s), (%s)", (owner_a, owner_b))
+                cur.execute(
+                    "INSERT INTO tan_private.browser_sessions "
+                    "(token_hash,sender_id,expires_at) "
+                    "VALUES (%s,%s,now()+interval '1 hour'), "
+                    "(%s,%s,now()+interval '1 hour')",
+                    (token_digest(token_a),owner_a,token_digest(token_b),owner_b))
+            update_for_verified_sender(
+                conn,verified_sender_id=owner_a,base_revision=0,
+                changes={"favs":{"http-only-a":{"set":{"title":"Private A"}}},
+                         "visited":{}})
+            update_for_verified_sender(
+                conn,verified_sender_id=owner_b,base_revision=0,
+                changes={"favs":{"http-only-b":{"set":{"title":"Private B"}}},
+                         "visited":{}})
+
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        client=app.test_client()
+
+        client.set_cookie(COOKIE_NAME,token_a)
+        first=client.get("/api/private-subscribers/v2/state")
+        self.assertEqual(first.status_code,200)
+        self.assertEqual(set(first.json["favs"]),{"http-only-a"})
+        self.assertEqual(first.headers["Cache-Control"],"no-store")
+
+        client.set_cookie(COOKIE_NAME,token_b)
+        second=client.get("/api/private-subscribers/v2/state")
+        self.assertEqual(second.status_code,200)
+        self.assertEqual(set(second.json["favs"]),{"http-only-b"})
+
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "UPDATE tan_private.browser_sessions SET revoked_at=now() "
+                    "WHERE token_hash=%s",(token_digest(token_a),))
+        client.set_cookie(COOKIE_NAME,token_a)
+        denied=client.get("/api/private-subscribers/v2/state")
+        self.assertEqual(denied.status_code,403)
+
+        client.set_cookie(COOKIE_NAME,token_b)
+        still_allowed=client.get("/api/private-subscribers/v2/state")
+        self.assertEqual(still_allowed.status_code,200)
+        self.assertEqual(set(still_allowed.json["favs"]),{"http-only-b"})
+
+        client.set_cookie(COOKIE_NAME,"unknown-token")
+        self.assertEqual(client.get("/api/private-subscribers/v2/state").status_code,403)
 
     def test_two_verified_owners_are_strictly_isolated(self):
         """No sender can read or mutate another sender's state via the store."""
