@@ -12,7 +12,7 @@ test('uncertain POST never reports saved and tells user next action',async()=>{
  const button=element(),notice=element(),win=element(),renders=[];let posts=0;
  const fetchImpl=async(_,opts)=>{if(opts.method==='GET')return response({revision:0,favs:{},visited:{}});posts++;throw Error('offline');};
  mount({win,fetchImpl,buttons:[{element:button,kind:'visited',key:'art',action:'set',value:'today',expectedRevision:0}],notice,lang:'ja',onRender:x=>renders.push(x)});
- await button.click();assert.equal(posts,1);assert.equal(renders.length,0);assert.match(notice.textContent,/ページを再読み込み/);assert.doesNotMatch(notice.textContent,/サーバーに保存/);
+ await button.click();assert.equal(posts,1);assert.equal(button.disabled,true);assert.equal(button.attrs['aria-disabled'],'true');assert.equal(renders.length,0);assert.match(notice.textContent,/ページを再読み込み/);assert.doesNotMatch(notice.textContent,/サーバーに保存/);
 });
 test('inline legacy onclick is rejected to prevent double write',()=>{
  const button=element();button.onclick=()=>{};
