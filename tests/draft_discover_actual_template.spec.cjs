@@ -229,8 +229,10 @@ test('guarded real template: conflict offers read-only saved-status inspection',
  await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}})));
  await page.locator('#undoBtn').click();
  await expect(page.locator('#discoverConflictCheck')).toBeVisible();
+ await expect(page.locator('#discoverConflictCheck')).toContainText('この端末');
  await page.locator('#discoverConflictCheck').click();
  await expect(page.locator('#discoverConflictStatus')).toContainText('Exhibition A');
  await expect(page.locator('#discoverConflictStatus')).toContainText('登録あり');
+ await expect(page.locator('#discoverConflictStatus')).toContainText('この端末では');
  expect((await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).a.title).toBe('Updated elsewhere');
 });
