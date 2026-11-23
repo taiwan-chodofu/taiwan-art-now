@@ -14,11 +14,11 @@ function html(){
   skip:'Skip',undo:'Undo',empty:'Empty',empty_sub:'',restart:'Restart',scroll_more:'More',
   tutorial_title:'Tutorial',tutorial_like:'Like',tutorial_seen:'Seen',
   tutorial_tap:'Tap',tutorial_got_it:'OK'};
- return raw.replace(/{{\\s*cards\\s*\\|\\s*tojson\\s*}}/g,JSON.stringify(cards))
-  .replace(/{{\\s*labels\\s*\\|\\s*tojson\\s*}}/g,JSON.stringify(labels))
-  .replace(/{{\\s*current_lang\\s*}}/g,'ja')
-  .replace(/{{\\s*labels\\.([a-z_]+)\\s*}}/g,(_,k)=>labels[k]||'')
-  .replace(/{%[\\s\\S]*?%}/g,'');
+ return raw.replace(/{{\s*cards\s*\|\s*tojson\s*}}/g,JSON.stringify(cards))
+  .replace(/{{\s*labels\s*\|\s*tojson\s*}}/g,JSON.stringify(labels))
+  .replace(/{{\s*current_lang\s*}}/g,'ja')
+  .replace(/{{\s*labels\.([a-z_]+)\s*}}/g,(_,k)=>labels[k]||'')
+  .replace(/{%[\s\S]*?%}/g,'');
 }
 async function boot(page){
  await page.addInitScript(()=>{
