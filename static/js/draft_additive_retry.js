@@ -102,7 +102,6 @@
       const afterSave=checkCheckpoint(storage,checkpoint);
       if(afterSave)return {status:"saved_server_local_review_required",
         revision:saved.revision,retried,serverSaved:true,
-        committedChanges:proposal.changes,
         committedChanges:proposal.changes,localStatus:afterSave.localStatus,
         missing:afterSave.missing||[],changed:afterSave.changed||[]};
       const finalLocal=legacy.read(storage);
