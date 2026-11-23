@@ -210,6 +210,11 @@ test('guarded real template: mobile error guidance remains visible and actions s
  const alert=page.locator('#discoverActionError');
  await expect(alert).toBeVisible();
  await expect(alert).toContainText('もう一度押してください');
+ await expect(alert).toHaveCSS('text-align','left');
+ const bounds=await alert.boundingBox();
+ expect(bounds).not.toBeNull();
+ expect(bounds.x).toBeGreaterThanOrEqual(0);
+ expect(bounds.x+bounds.width).toBeLessThanOrEqual(375);
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
  await expect(page.locator('#likeBtn')).toBeEnabled();
  await expect(page.locator('#visitedBtn')).toBeEnabled();
