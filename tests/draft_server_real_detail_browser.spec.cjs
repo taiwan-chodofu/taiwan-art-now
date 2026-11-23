@@ -98,3 +98,36 @@ test('detail refresh supplies authoritative state but never re-enables stale des
  await expect(page.locator('#favBtn')).toBeDisabled();
  await expect(page.locator('#visitedBtn')).toBeDisabled();
 });
+
+test('staging lifecycle: save want then seen without reload, preserve both states',async({page})=>{
+ await page.route('**/staging-lifecycle',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
+ await page.goto('http://127.0.0.1:8765/staging-lifecycle');
+ let state={revision:0,favs:{},visited:{}};
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  const req=route.request();
+  if(req.method()==='GET')return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
+  const data=req.postDataJSON();
+  if(data.base_revision!==state.revision)return route.fulfill({status:409,body:'{}'});
+  const next={revision:state.revision+1,favs:{...state.favs},visited:{...state.visited}};
+  for(const kind of ['favs','visited'])for(const [key,op]of Object.entries(data.changes[kind]))next[kind][key]={revision:next.revision,deleted:!!op.delete,value:op.delete?null:op.set};
+  state=next;
+  return route.fulfill({status:200,contentType:'application/json',headers:{'Cache-Control':'no-store'},body:JSON.stringify(state)});
+ });
+ for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js','draft_staging_page.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ await page.evaluate(async()=>{
+  window.__staging=TanDraftStagingPage.create({win:window,fetchImpl:fetch.bind(window),lang:'ja',notice:document.getElementById('notice'),items:[
+   {element:document.getElementById('favBtn'),kind:'favs',key:'ex_1',value:{title:'Exhibition'}},
+   {element:document.getElementById('visitedBtn'),kind:'visited',key:'ex_1',value:'2026-11-23'}
+  ]});
+  await window.__staging.start();
+ });
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#visitedBtn')).toBeEnabled();
+ await page.locator('#visitedBtn').click();
+ await expect(page.locator('#visitedBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#favBtn')).toBeEnabled();
+ expect(state.revision).toBe(2);
+ expect(state.favs.ex_1.deleted).toBe(false);
+ expect(state.visited.ex_1.deleted).toBe(false);
+});
