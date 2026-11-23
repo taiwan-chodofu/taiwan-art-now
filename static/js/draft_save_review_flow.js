@@ -8,14 +8,16 @@
   typeof module==="object"&&module.exports
    ?require("./draft_post_save_verify.js"):root.TanDraftPostSaveVerify,
   typeof module==="object"&&module.exports
-   ?require("./draft_save_outcome_notice.js"):root.TanDraftSaveOutcomeNotice);
+   ?require("./draft_save_outcome_notice.js"):root.TanDraftSaveOutcomeNotice,
+  typeof module==="object"&&module.exports
+   ?require("./draft_save_next_action.js"):root.TanDraftSaveNextAction);
  if(typeof module==="object"&&module.exports)module.exports=api;
  else root.TanDraftSaveReviewFlow=api;
-})(typeof globalThis!=="undefined"?globalThis:this,function(retry,verifier,notice){
+})(typeof globalThis!=="undefined"?globalThis:this,function(retry,verifier,notice,nextAction){
  "use strict";
  const REVIEW=new Set(["saved_server_local_changed",
   "saved_server_local_review_required"]);
- async function run({storage,fetchImpl,checkpoint,container,document:doc}={}){
+ async function run({storage,fetchImpl,checkpoint,container,document:doc,exhibitionUrl}={}){
   const result=await retry.run({storage,fetchImpl,checkpoint});
   let verification=null;
   if(REVIEW.has(result.status)&&result.serverSaved===true){
@@ -40,7 +42,13 @@
       ?{...result,status:recordStatus}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
-  return {result,verification,displayResult,displayed};
+  // Only a verified deletion may offer a navigation link. The link never
+  // performs a save or restores a tombstone; the user decides on the page.
+  const action=displayed&&displayed.status==="rendered"&&container&&doc&&
+    container.children&&container.children[0]
+   ?nextAction.mount({container:container.children[0],document:doc,
+      result:displayResult,exhibitionUrl}):null;
+  return {result,verification,displayResult,displayed,action};
  }
  return {run};
 });
