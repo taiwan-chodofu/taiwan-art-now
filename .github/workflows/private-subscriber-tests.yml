@@ -271,4 +271,24 @@ jobs:
       - name: Run real Chromium tests against local synthetic origin
         run: |
           python -m http.server 8765 --bind 127.0.0.1 >/tmp/tan-draft-http.log 2>&1 &
-          npx playwright test tests/draft_server_real_detail_browser.spec.cjs tests/draft_server_button_browser.spec.cjs tests/draft_browser_e2e.spec.cjs tests/draft_discover_additional_browser.spec.cjs tests/draft_discover_actual_template.spec.cjs tests/draft_detail_actual_template.spec.cjs tests/draft_save_outcome_browser.spec.cjs --browser chromium --workers 1 --reporter=line
+          npx playwright test tests/draft_server_real_detail_browser.spec.cjs tests/draft_server_button_browser.spec.cjs --browser chromium --workers 1 --reporter=line
+
+  draft-legacy-browser-e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated Playwright runner and Chromium
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Run legacy compatibility Chromium tests
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/tan-draft-http.log 2>&1 &
+          npx playwright test tests/draft_browser_e2e.spec.cjs tests/draft_discover_additional_browser.spec.cjs tests/draft_discover_actual_template.spec.cjs tests/draft_detail_actual_template.spec.cjs tests/draft_save_outcome_browser.spec.cjs --browser chromium --workers 1 --reporter=line
