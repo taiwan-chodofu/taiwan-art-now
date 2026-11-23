@@ -51,3 +51,22 @@ test("mobile Chromium: ambiguous POST never claims saved and invalid result pres
  await expect(page.locator("#notice section")).toHaveAttribute("role","alert");
  await expect(page.locator("#notice")).not.toContainText("展覽已成功儲存");
 });
+
+test("mobile Chromium: deleted exhibition has a safe view link, not an automatic save",async({page})=>{
+ await boot(page);
+ await page.addScriptTag({path:path.resolve(__dirname,"../static/js/draft_save_next_action.js")});
+ const outcome=await page.evaluate(()=>{
+  const container=document.getElementById("notice");
+  const result={status:"saved_server_record_deleted",serverSaved:true};
+  TanDraftSaveOutcomeNotice.render({container,document,result});
+  return TanDraftSaveNextAction.mount({
+   container:container.querySelector("section"),document,result,exhibitionUrl:"/exhibition/a"
+  });
+ });
+ expect(outcome.status).toBe("rendered");
+ const link=page.locator("#notice a");
+ await expect(link).toHaveText("查看展覽");
+ await expect(link).toHaveAttribute("href","/exhibition/a");
+ await expect(page.locator("#notice section")).toHaveAttribute("role","alert");
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+});
