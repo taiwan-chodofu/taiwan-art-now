@@ -111,3 +111,30 @@ test('real detail staging: actual navigation disposes adapter before pending wri
  // A fresh page has no stale callbacks; its persisted storage remains available.
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
 });
+
+test('detail staging: Taiwanese Mandarin failure guidance and successful retry clears alert',async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>{
+  const original=Storage.prototype.setItem;
+  window.__failOnce=true;
+  Storage.prototype.setItem=function(k,v){
+   if(k==='taiwan_art_favs'&&window.__failOnce){window.__failOnce=false;throw new DOMException('quota','QuotaExceededError');}
+   return original.call(this,k,v);
+  };
+  window.__adapter=TanDraftDetailActionAdapter.create({
+   storage:localStorage,locks:navigator.locks,key:exId,
+   metadata:{title:'展覽',museum:'M',dates:'2026',url:'/ex'},
+   onRender:()=>{document.getElementById('detailSaveError').hidden=true;updateBtns();},
+   onFailure:({status})=>{const el=document.getElementById('detailSaveError');el.textContent=TanDraftDetailFailureCopy.message(status,'zh');el.hidden=false;}
+  });
+  window.toggleFav=()=>__adapter.toggle('favs');
+ });
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#detailSaveError')).toBeVisible();
+ await expect(page.locator('#detailSaveError')).toContainText('請確認裝置儲存空間');
+ await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+ await expect(page.locator('#detailSaveError')).toBeHidden();
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).ex_1.title)).toBe('展覽');
+});
