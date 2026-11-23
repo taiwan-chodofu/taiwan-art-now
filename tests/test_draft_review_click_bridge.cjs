@@ -318,6 +318,12 @@ test("confirmed save automatically refreshes and lists only remaining tombstone 
  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/あと1件、確認が必要/);
  const pending=elements(container,"div").filter(x=>x.attributes?.["aria-label"]==="確認が必要な展示")[0];
  assert.deepEqual(elements(pending,"p").map(x=>x.textContent),["b（観たい）"]);
+ const next=elements(container,"button").find(x=>x.textContent==="残りの展示を確認");
+ assert.equal(next.disabled,false);
+ await next.events.click();
+ assert.equal(posts,2);
+ assert.equal(elements(container,"section").filter(x=>!x.removed).length,1);
+ assert.equal(elements(container,"select").filter(x=>!x.removed).length>=1,true);
  await instance.submit();
  assert.equal(posts,2);
 });
