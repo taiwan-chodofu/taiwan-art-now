@@ -34,7 +34,7 @@
     status.setAttribute("aria-live", "polite");
     status.setAttribute("aria-atomic", "true");
     const checkButton = doc.createElement("button");
-    checkButton.textContent = "サーバーの登録状況を確認";
+    checkButton.textContent = "登録状況をもう一度確認";
     checkButton.setAttribute("type", "button");
     checkButton.disabled = true;
     let attemptedDecision = null;
@@ -49,16 +49,16 @@
           key:attemptedDecision.key,expectedValue:attemptedDecision.value});
         if (disposed) return;
         status.textContent = result.status === "saved_on_server"
-          ? "サーバーに登録が確認できました。ほかの展示は再読み込みして確認してください。"
+          ? "この展示は登録されています。ほかの展示も確認してください。"
           : result.status === "not_found"
-            ? "サーバーにこの展示の登録は見つかりませんでした。保存成功とは判断できません。再送信せず、最新の状態で確認してください。"
+            ? "この展示の登録は確認できませんでした。登録状況をもう一度確認してください。"
           : result.status === "still_deleted"
-            ? "サーバーには削除履歴が残っています。再送信せず、最新の状態で確認してください。"
+            ? "この展示は以前リストから外されています。登録するかどうか、もう一度確認してください。"
             : result.status === "different_server_value"
-              ? "サーバーには異なる登録内容があります。上書きせず、最新の状態で確認してください。"
-              : "通信または応答の問題でサーバーの登録状況を確認できませんでした。保存の成否は不明です。再送信せず、時間をおいて再確認してください。";
+              ? "この展示の登録内容がほかの端末と異なります。内容を確認してください。"
+              : "登録状況を確認できませんでした。少し待ってから、もう一度確認してください。";
       } catch (_) {
-        if (!disposed) status.textContent = "サーバーの状態を確認できませんでした。再送信せず、時間をおいて再確認してください。";
+        if (!disposed) status.textContent = "登録状況を確認できませんでした。少し待ってから、もう一度確認してください。";
       } finally {
         checking = false;
         if (!disposed) checkButton.disabled = false;
@@ -105,21 +105,21 @@
           if (result.status !== "submitted" || !result.state ||
               !Number.isSafeInteger(result.state.revision) ||
               result.state.revision <= serverState.revision) {
-            status.textContent = "保存結果を確認できませんでした。最新の登録状況を再取得してから確認してください。";
+            status.textContent = "登録できたか確認できませんでした。「登録状況をもう一度確認」を押してください。";
             return;
           }
           // A successful write increments global revision. Do not send further
           // selections using the stale original revision.
           completed = true;
-          status.textContent = "保存しました。ほかの展示は再読み込みして確認してください。";
+          status.textContent = "この展示を登録しました。ほかの展示も確認してください。";
           return;
         }
         status.textContent = "変更はありません。";
       } catch (_) {
         if (disposed) return;
         status.textContent = confirmationAttempted
-          ? "保存された可能性があります。再送信せず、最新の登録状況を再取得して確認してください。"
-          : "通信に失敗しました。状態を再取得して確認してください。";
+          ? "登録できたか確認できませんでした。「登録状況をもう一度確認」を押してください。"
+          : "通信がうまくいきませんでした。もう一度確認してください。";
       } finally {
         busy = false;
         if (!disposed && !completed && !confirmationAttempted) button.disabled = false;
