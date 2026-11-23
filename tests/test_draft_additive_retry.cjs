@@ -140,11 +140,11 @@ test("checkpoint permits additive save when local records remain intact",async()
 });
 
 test("after 409, additive retry preserves unrelated server registration and both local categories",async()=>{
- const local=storage({a:fav},{visit:{date:"2026-11-23",title:"Visited"}});
+ const local=storage({a:fav},{visit:{date:"2026-11-23T00:00:00.000Z",title:"Visited"}});
  let gets=0,posts=0;
  const remote=state(1,{remote:item({title:"Other"})});
  const saved=state(2,{remote:item({title:"Other"}),a:item(fav,2)},
-   {visit:item({date:"2026-11-23",title:"Visited"},2)});
+   {visit:item({date:"2026-11-23T00:00:00.000Z",title:"Visited"},2)});
  const result=await run({storage:local,fetchImpl:async(path,opts)=>{
    if(opts.method==="GET")return response(++gets===1?state():remote);
    posts++;
