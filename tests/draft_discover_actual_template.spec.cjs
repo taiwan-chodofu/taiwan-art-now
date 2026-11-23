@@ -236,3 +236,26 @@ test('guarded real template: conflict offers read-only saved-status inspection',
  await expect(page.locator('#discoverConflictStatus')).toContainText('この端末では');
  expect((await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).a.title).toBe('Updated elsewhere');
 });
+
+test('guarded real template: conflict inspector reports missing local registration without modifying data',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs','{}'));
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('#discoverConflictCheck')).toBeVisible();
+ await page.locator('#discoverConflictCheck').click();
+ await expect(page.locator('#discoverConflictStatus')).toContainText('登録なし');
+ expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBe('{}');
+});
+test('guarded real template: malformed local registration data is not rewritten by conflict inspection',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs','{broken'));
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('#discoverConflictCheck')).toBeVisible();
+ await page.locator('#discoverConflictCheck').click();
+ await expect(page.locator('#discoverConflictStatus')).toContainText('読み取れませんでした');
+ expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBe('{broken');
+});
