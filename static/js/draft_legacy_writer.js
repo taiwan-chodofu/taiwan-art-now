@@ -17,14 +17,15 @@
         !locks || typeof locks.request !== "function" ||
         !["favs", "visited"].includes(kind) ||
         typeof key !== "string" || !key ||
-        !["set", "remove"].includes(action))
+        !["set", "remove", "toggle"].includes(action))
       return { status: "not_authorized" };
     try {
       return await locks.request(LOCK_NAME, { mode: "exclusive" }, async () => {
         const current = legacy.read(storage);
         if (current.status !== "ready") return { status: current.status };
         const next = { ...current.snapshot[kind] };
-        if (action === "set") {
+        const resolved = action === "toggle" ? (own(next,key) ? "remove" : "set") : action;
+        if (resolved === "set") {
           const validated = legacy.validateMap({ [key]: value }, kind);
           next[key] = validated[key];
         } else {
@@ -48,7 +49,7 @@
         const persisted = storage.getItem(storageKey);
         if (persisted !== JSON.stringify(next))
           return { status: "uncertain_write" };
-        return { status: "written_under_cooperative_lock" };
+        return { status: "written_under_cooperative_lock", action: resolved };
       });
     } catch (_) {
       return { status: "unavailable" };
