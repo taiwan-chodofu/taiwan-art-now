@@ -28,6 +28,22 @@
   notice.appendChild(heading);
   notice.appendChild(detail);
   notice.appendChild(action);
+  if(message.status==="saved_server_multiple_records_unconfirmed"&&
+     Array.isArray(result.reviewItems)&&result.reviewItems.length){
+   const list=doc.createElement("ul");
+   for(const [index,item] of result.reviewItems.entries()){
+    const row=doc.createElement("li");
+    // Internal identifiers are not meaningful exhibition names. A trusted
+    // title must be supplied by the calling view; never display raw keys.
+    const title=result.exhibitionTitles&&
+      Object.prototype.hasOwnProperty.call(result.exhibitionTitles,item.key)
+      ?result.exhibitionTitles[item.key]:null;
+    row.textContent=typeof title==="string"&&title.trim()
+      ?title:"展覽 "+(index+1);
+    list.appendChild(row);
+   }
+   notice.appendChild(list);
+  }
   container.replaceChildren(notice);
   return {status:"rendered",requiresReview:message.requiresReview};
  }
