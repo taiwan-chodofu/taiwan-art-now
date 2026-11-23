@@ -3,7 +3,7 @@ const path=require("node:path");
 async function boot(page){
  await page.goto("http://127.0.0.1:8765/tests/draft_browser_fixture.html");
  await page.setViewportSize({width:390,height:844});
- for(const name of ["draft_save_outcome_copy.js","draft_save_outcome_notice.js"])
+ for(const name of ["draft_save_outcome_copy.js","draft_save_next_action.js","draft_save_outcome_notice.js"])
   await page.addScriptTag({path:path.resolve(__dirname,"../static/js",name)});
  await page.evaluate(()=>{
   document.body.innerHTML='<main style="max-width:100%;overflow-wrap:anywhere"><div id="notice"></div></main>';
@@ -54,7 +54,6 @@ test("mobile Chromium: ambiguous POST never claims saved and invalid result pres
 
 test("mobile Chromium: deleted exhibition has a safe view link, not an automatic save",async({page})=>{
  await boot(page);
- await page.addScriptTag({path:path.resolve(__dirname,"../static/js/draft_save_next_action.js")});
  const outcome=await page.evaluate(()=>{
   const container=document.getElementById("notice");
   const result={status:"saved_server_record_deleted",serverSaved:true};
