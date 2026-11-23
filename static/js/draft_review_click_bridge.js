@@ -33,6 +33,8 @@
     const status = doc.createElement("p");
     status.setAttribute("aria-live", "polite");
     status.setAttribute("aria-atomic", "true");
+    const remainingList = doc.createElement("div");
+    remainingList.setAttribute("aria-label", "確認が必要な展示");
     const checkButton = doc.createElement("button");
     checkButton.textContent = "登録状況をもう一度確認";
     checkButton.setAttribute("type", "button");
@@ -132,12 +134,14 @@
     button.addEventListener("click", submit);
     container.appendChild(button);
     container.appendChild(status);
+    container.appendChild(remainingList);
     if (typeof fetchImpl === "function") container.appendChild(checkButton);
     return { rendered: true, submit, inspect, dispose: () => {
       disposed = true;
       review.dispose();
       button.remove();
       status.remove();
+      remainingList.remove();
       checkButton.remove();
     } };
   }
