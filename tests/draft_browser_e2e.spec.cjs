@@ -392,3 +392,45 @@ test('real Chromium: Discover undo refuses a different saved value',async({page}
  await expect(page.locator('#card')).toHaveText('次の展示');
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).discover_a.title)).toBe('別の更新済みタイトル');
 });
+
+test('real Chromium: cached legacy tab overwrites local map but cannot alter committed server CAS record',async({browser})=>{
+ const context=await browser.newContext();
+ try{
+  const modern=await context.newPage(),oldTab=await context.newPage();
+  await bootAdditive(modern,{modern:{title:'Modern',museum:'M'}});
+  await oldTab.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
+  const stale=await oldTab.evaluate(()=>localStorage.getItem('taiwan_art_favs'));
+  let server={revision:0,favs:{},visited:{}};
+  let posts=0;
+  await modern.exposeFunction('serverExchange',async(path,opts)=>{
+   if(opts.method==='GET')return {status:200,body:server};
+   posts++;
+   const payload=JSON.parse(opts.body);
+   if(payload.base_revision!==server.revision)return {status:409,body:{error:'stale_revision'}};
+   const next={...server.favs};
+   for(const [key,change] of Object.entries(payload.changes.favs))
+    next[key]={deleted:false,value:change.set,revision:server.revision+1};
+   server={revision:server.revision+1,favs:next,visited:{}};
+   return {status:200,body:server};
+  });
+  const result=await modern.evaluate(()=>TanDraftAdditiveRetry.run({
+   storage:localStorage,fetchImpl:async(path,opts)=>{
+    const r=await window.serverExchange(path,opts);
+    return {status:r.status,ok:r.status===200,
+     headers:{get:k=>k==='content-type'?'application/json':
+       k==='cache-control'?'no-store':null},json:async()=>r.body};
+   }
+  }));
+  expect(result.status).toBe('saved');
+  expect(posts).toBe(1);
+  await oldTab.evaluate(raw=>{
+   const map=JSON.parse(raw);
+   map.old={title:'Old',museum:'M'};
+   localStorage.setItem('taiwan_art_favs',JSON.stringify(map));
+  },stale);
+  expect(await modern.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('taiwan_art_favs'))))).toEqual(['old']);
+  expect(server.favs.modern.value.title).toBe('Modern');
+  expect(server.revision).toBe(1);
+  // This proves isolation of the mocked CAS authority, not live API readiness.
+ }finally{await context.close();}
+});
