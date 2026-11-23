@@ -96,3 +96,25 @@ test('guarded real template: skip is not persisted as a favorite or visited entr
  await page.locator('#undoBtn').click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
 });
+
+test('guarded real template: another tab updating a favorite prevents stale undo',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ const second=await page.context().newPage();
+ await second.route('**/discover',route=>route.fulfill({status:200,contentType:'text/html',body:html()}));
+ await second.goto('http://127.0.0.1:8765/discover');
+ const updated={title:'Updated in tab 2',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''};
+ await second.evaluate(async value=>{
+  const result=await TanDraftPageAction.commit({
+   storage:localStorage,locks:navigator.locks,kind:'favs',key:'a',action:'set',value
+  });
+  if(result.status!=='written_under_cooperative_lock')throw Error(result.status);
+ },updated);
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('#discoverActionError')).toContainText('変更されたため');
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ expect(await second.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).a.title))
+  .toBe('Updated in tab 2');
+ await second.close();
+});
