@@ -520,10 +520,10 @@
     function clearDiscoverError() { discoverError.textContent = ''; }
     function failDiscover(result) {
       var messages = LANG === 'en'
-        ? {stale:'The saved exhibition changed in another tab. Undo was not applied.', failure:'Could not save. Please try again.'}
+        ? {stale:'The saved exhibition was changed in another tab, so Undo was not applied. Your saved information is unchanged. Please review the current saved status before making another change.', failure:'Could not save this exhibition. The card is still here and your saved information has not changed. Please tap Like or Visited again.'}
         : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant')
-          ? {stale:'已儲存的展覽資料已變更，因此無法復原。', failure:'儲存失敗，請再試一次。'}
-          : {stale:'保存済みの展示情報が変更されたため、取り消せません。', failure:'保存できませんでした。もう一度お試しください。'};
+          ? {stale:'這筆展覽資料已在其他分頁變更，因此無法復原。原本儲存的資料仍會保留。請先確認目前的收藏或看過狀態，再決定是否修改。', failure:'這筆展覽未能儲存。卡片仍會保留，原本的資料也不會變更。請再按一次「想看」或「看過」。'}
+          : {stale:'別のタブで展示情報が変更されたため、取り消せませんでした。現在の保存内容はそのまま残っています。登録状況を確認してから、必要に応じて操作してください。', failure:'保存できませんでした。展示カードはそのまま残り、保存内容も変更されていません。「行きたい」または「観た」をもう一度押してください。'};
       discoverError.textContent = result.status === 'stale_undo' ? messages.stale : messages.failure;
       if (currentCardEl) {
         currentCardEl.style.transition = 'transform 0.2s ease';
