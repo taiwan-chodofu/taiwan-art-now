@@ -34,9 +34,11 @@ test('Chromium draft: server-confirmed button updates UI, not legacy storage',as
  const data=await page.evaluate(()=>({server:window.__syntheticServer,events:window.__renderEvents,local:localStorage.getItem('taiwan_art_favs')}));
  expect(data.server.favs.art.deleted).toBe(false);expect(data.events).toHaveLength(1);expect(data.local).toBeNull();
 });
-test('Chromium draft: second button with stale revision asks for reload, does not claim success',async({page})=>{
- await boot(page);await page.locator('#want').click();await page.locator('#seen').click();
- await expect(page.locator('#notice')).toContainText('ページを再読み込み');
+test('Chromium draft: stale second button remains disabled until authoritative refresh',async({page})=>{
+ await boot(page);await page.locator('#want').click();
+ await expect(page.locator('#want')).toBeDisabled();
+ await expect(page.locator('#seen')).toBeDisabled();
+ await expect(page.locator('#notice')).toContainText('サーバーに保存');
  const data=await page.evaluate(()=>({server:window.__syntheticServer,events:window.__renderEvents}));
  expect(data.server.visited.art).toBeUndefined();expect(data.events).toHaveLength(1);
 });
