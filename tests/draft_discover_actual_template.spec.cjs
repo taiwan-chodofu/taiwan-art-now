@@ -398,3 +398,22 @@ test('draft Discover: empty remaining session stays empty after reload',async({p
  await page.locator('#restartBtn').click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
 });
+
+test('draft Discover: Want and Seen are independent and both survive mode toggles',async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>{
+  const item={title:'Exhibition A',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''};
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({a:item}));
+  localStorage.setItem('taiwan_art_visited',JSON.stringify({a:item}));
+ });
+ await page.reload();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ await page.locator('#discoverModePicker button').nth(1).click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ const saved=await page.evaluate(()=>({
+  want:JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'),
+  seen:JSON.parse(localStorage.getItem('taiwan_art_visited')||'{}')
+ }));
+ expect(Object.keys(saved.want)).toEqual(['a']);
+ expect(Object.keys(saved.seen)).toEqual(['a']);
+});
