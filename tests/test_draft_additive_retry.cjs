@@ -138,3 +138,41 @@ test("checkpoint permits additive save when local records remain intact",async()
      state(1,{a:item(fav)}))});
  assert.equal(result.status,"saved");
 });
+
+test("after 409, additive retry preserves unrelated server registration and both local categories",async()=>{
+ const local=storage({a:fav},{visit:{date:"2026-11-23",title:"Visited"}});
+ let gets=0,posts=0;
+ const remote=state(1,{remote:item({title:"Other"})});
+ const saved=state(2,{remote:item({title:"Other"}),a:item(fav,2)},
+   {visit:item({date:"2026-11-23",title:"Visited"},2)});
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+   if(opts.method==="GET")return response(++gets===1?state():remote);
+   posts++;
+   if(posts===1)return response({error:"stale_revision"},409);
+   const payload=JSON.parse(opts.body);
+   assert.equal(payload.base_revision,1);
+   assert.deepEqual(Object.keys(payload.changes.favs),["a"]);
+   assert.deepEqual(Object.keys(payload.changes.visited),["visit"]);
+   assert.equal(Object.hasOwn(payload.changes.favs,"remote"),false);
+   return response(saved);
+ }});
+ assert.equal(result.status,"saved");
+ assert.equal(result.retried,true);
+ assert.equal(posts,2);
+ assert.deepEqual(result.preservedRemote.map(x=>x.key),["remote"]);
+});
+test("after 409, a tombstone conflict blocks all unrelated additive POSTs until review",async()=>{
+ const local=storage({conflict:fav,safe:fav});
+ let gets=0,posts=0;
+ const result=await run({storage:local,fetchImpl:async(path,opts)=>{
+   if(opts.method==="GET")return response(++gets===1?state():
+     state(1,{conflict:item(null,1,true)}));
+   posts++;
+   return response({error:"stale_revision"},409);
+ }});
+ assert.equal(result.status,"needs_review");
+ assert.deepEqual(result.review.map(x=>x.key),["conflict"]);
+ assert.equal(posts,1);
+ assert.deepEqual(JSON.parse(local.getItem("taiwan_art_favs")),
+   {conflict:fav,safe:fav});
+});
