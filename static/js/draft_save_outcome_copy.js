@@ -53,13 +53,13 @@
   saved_server_record_unconfirmed:Object.freeze({
    heading:"目前找不到這筆展覽的收藏",
    detail:"剛才儲存後，再次查看帳號清單時沒有找到這筆展覽。",
-   action:"請打開「想看」或「看過」清單查看；如果仍然沒有出現，可以再收藏一次。",
+   action:"目前還不能確定這筆展覽是否已儲存。請先查看這筆展覽的收藏狀態；確認前不會自動再次儲存。",
    requiresReview:true
   }),
   unknown_commit:Object.freeze({
    heading:"目前無法確認是否儲存成功",
    detail:"送出後沒有收到可靠的儲存結果，因此不能判定成功或失敗。",
-   action:"請先查看帳號中的「想看」或「看過」清單，確認這筆展覽是否已存在。確認前請不要連續點選儲存。",
+   action:"請先查看這筆展覽目前的收藏狀態。確認前請不要再次點選儲存。",
    requiresReview:true
   })
  });
