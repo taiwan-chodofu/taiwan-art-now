@@ -168,6 +168,7 @@ on:
       - 'tests/test_draft_decision_verifier.cjs'
       - 'static/js/draft_additive_merge.js'
       - 'tests/test_draft_additive_merge.cjs'
+      - 'tests/test_versioned_subscriber_schema_draft.py'
       - 'docs/security/VERSIONED_SUBSCRIBER_SCHEMA_DRAFT.sql'
       - 'docs/security/FRONTEND_SUBSCRIBER_CUTOVER.md'
       - 'docs/security/CLAIM_RATE_LIMIT_SCHEMA_DRAFT.sql'
