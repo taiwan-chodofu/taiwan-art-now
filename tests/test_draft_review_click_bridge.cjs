@@ -258,3 +258,34 @@ test("review recheck button uses plain Japanese without requiring a page reload"
  assert.equal(elements(container,"button")[1].textContent,"登録状況をもう一度確認");
  assert.equal(elements(container,"button")[1].disabled,true);
 });
+
+test("successful confirmation reports remaining conflicting exhibitions without writing them",async()=>{
+ const data={taiwan_art_favs:JSON.stringify({a:fav,b:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const multiReport={status:"needs_review",review:[
+   {kind:"favs",key:"a",reason:"explicit_deletion_conflict"},
+   {kind:"favs",key:"b",reason:"explicit_deletion_conflict"}]};
+ const multiState={revision:3,favs:{
+   a:{value:null,deleted:true,revision:2},
+   b:{value:null,deleted:true,revision:2}},visited:{}};
+ const calls=[];
+ const container=new Element("main");
+ const instance=mount({container,report:multiReport,doc,serverState:multiState,
+   storage,localSnapshot:read(storage).snapshot,
+   request:async(url)=>{calls.push(url);return url.endsWith("/issue")?{token:"synthetic"}:{revision:4};}});
+ const selects=elements(container,"select");
+ selects[0].value="keep_saved";selects[0].events.change();
+ await instance.submit();
+ assert.equal(calls.length,2);
+ assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/あとに確認が必要な展示が1件/);
+ await instance.submit();
+ assert.equal(calls.length,2);
+});
+test("choosing remove does not misleadingly claim removal succeeded",async()=>{
+ const x=setup();
+ const select=elements(x.container,"select")[0];
+ select.value="remove_from_list";select.events.change();
+ await x.instance.submit();
+ assert.equal(x.calls.length,0);
+ assert.match(elements(x.container,"p").map(x=>x.textContent).join(" "),/まだ反映されていません/);
+});
