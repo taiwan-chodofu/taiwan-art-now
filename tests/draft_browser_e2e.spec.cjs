@@ -182,3 +182,86 @@ test('real Chromium: fresh tombstone and existing local record block restoration
   expect(result.existing).toBe('stale_review');
   expect(result.favs.remote.title).toBe('Local');
 });
+
+async function bootAdditive(page, favs) {
+  await page.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
+  await page.evaluate(favs => {
+    localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
+    localStorage.setItem('taiwan_art_visited', '{}');
+  }, favs);
+  for (const name of [
+    'draft_legacy_snapshot.js', 'draft_versioned_sync.js',
+    'draft_authenticated_state.js', 'draft_additive_merge.js',
+    'draft_additive_retry.js'
+  ]) await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+}
+
+test('real Chromium: two independent devices retain both favorites after stale CAS retry', async ({browser}) => {
+  const aContext=await browser.newContext(), bContext=await browser.newContext();
+  try {
+    const a=await aContext.newPage(), b=await bContext.newPage();
+    const one={title:'First',museum:'M'}, two={title:'Second',museum:'M'};
+    await bootAdditive(a,{one}); await bootAdditive(b,{two});
+    let revision=0, entries={};
+    const calls=[];
+    const exchange=async (path,opts) => {
+      calls.push({path,method:opts.method});
+      if(opts.method==='GET')return {status:200,body:{revision,favs:entries,visited:{}}};
+      const data=JSON.parse(opts.body);
+      if(data.base_revision!==revision)return {status:409,body:{error:'stale_revision'}};
+      revision++;
+      for(const [key,change] of Object.entries(data.changes.favs))
+        entries[key]={value:change.set,deleted:false,revision};
+      return {status:200,body:{revision,favs:entries,visited:{}}};
+    };
+    await a.exposeFunction('draftExchange',exchange);
+    await b.exposeFunction('draftExchange',exchange);
+    const runner=() => TanDraftAdditiveRetry.run({
+      storage:localStorage,
+      fetchImpl:async(path,opts)=>{
+        const result=await window.draftExchange(path,opts);
+        return {ok:result.status>=200&&result.status<300,status:result.status,
+          headers:{get:k=>k==='content-type'?'application/json':
+            k==='cache-control'?'no-store':null},
+          json:async()=>result.body};
+      }
+    });
+    const [ar,br]=await Promise.all([a.evaluate(runner),b.evaluate(runner)]);
+    expect(ar.status).toBe('saved');
+    expect(br.status).toBe('saved');
+    expect(revision).toBe(2);
+    expect(Object.keys(entries).sort()).toEqual(['one','two']);
+    expect([ar.retried,br.retried].filter(Boolean)).toHaveLength(1);
+    expect(await a.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('taiwan_art_favs'))))).toEqual(['one']);
+    expect(await b.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('taiwan_art_favs'))))).toEqual(['two']);
+  } finally {await aContext.close();await bContext.close();}
+});
+
+test('real Chromium: remote tombstone after stale revision stops all further POSTs', async ({page}) => {
+  const fav={title:'Keep?',museum:'M'};
+  await bootAdditive(page,{deleted:fav});
+  const result=await page.evaluate(async()=>{
+    let gets=0,posts=0;
+    const outcome=await TanDraftAdditiveRetry.run({
+      storage:localStorage,
+      fetchImpl:async(path,opts)=>{
+        let status=200,body;
+        if(opts.method==='GET'){
+          gets++;
+          body=gets===1?{revision:0,favs:{},visited:{}}:
+            {revision:1,favs:{deleted:{deleted:true,revision:1,value:null}},visited:{}};
+        }else{posts++;status=409;body={error:'stale_revision'};}
+        return {status,ok:status===200,
+          headers:{get:k=>k==='content-type'?'application/json':
+            k==='cache-control'?'no-store':null},
+          json:async()=>body};
+      }
+    });
+    return {outcome,gets,posts,local:JSON.parse(localStorage.getItem('taiwan_art_favs'))};
+  });
+  expect(result.outcome.status).toBe('needs_review');
+  expect(result.outcome.review[0].key).toBe('deleted');
+  expect(result.posts).toBe(1);
+  expect(result.gets).toBe(2);
+  expect(result.local.deleted.title).toBe('Keep?');
+});
