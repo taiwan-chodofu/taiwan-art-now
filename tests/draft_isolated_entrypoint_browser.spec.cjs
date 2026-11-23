@@ -245,3 +245,29 @@ test('confirmed restore with failed automatic refresh offers manual fallback',as
  await expect(page.locator('#reloadState')).toBeVisible();
  expect(writes).toBe(1);
 });
+
+test('uncertain restore shows current server state after manual reload without a second write',async({page})=>{
+ let writes=0;
+ let server={revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}};
+ await page.addInitScript(()=>{
+  localStorage.setItem('taiwan_art_favs',JSON.stringify({art:{title:'展示',museum:'美術館'}}));
+  localStorage.setItem('taiwan_art_visited','{}');
+ });
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().method()==='POST'){
+   writes++;
+   const payload=route.request().postDataJSON();
+   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.changes.favs.art.set}},visited:{}};
+   return route.abort('failed'); // Simulate a committed write with lost response.
+  }
+  return route.fulfill(response(server));
+ });
+ await page.goto(url+'&review=1');
+ await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
+ await page.locator('#restoreYes').click();
+ await expect(page.locator('#notice')).toContainText('保存できたか確認できません');
+ await page.locator('#reloadState').click();
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#migrationReview')).toBeEmpty();
+ expect(writes).toBe(1);
+});
