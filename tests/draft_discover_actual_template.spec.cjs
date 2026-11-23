@@ -268,7 +268,8 @@ test('draft Discover: changing filters never deletes Want or Seen',async({page})
  await page.locator('#discoverModePicker button').nth(1).click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  await page.locator('#discoverModePicker button').first().click();
- await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ // The existing session deck order is preserved: B was next before A.
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(Object.keys(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}')))).toEqual(['a']);
  expect(await page.evaluate(()=>discoverFlow.historySize())).toBe(0);
 });
