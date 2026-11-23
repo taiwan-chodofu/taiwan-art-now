@@ -40,3 +40,17 @@ test("server re-verification produces a calm notice without demanding tab cleanu
  assert.doesNotMatch(copy.action,/關閉|刪除|重新整理/);
  assert.equal(forResult({status:"saved_server_verified_local_changed"}),null);
 });
+
+test("deleted exhibition offers a clear choice to save again",()=>{
+ const copy=forResult({status:"saved_server_record_deleted",serverSaved:true});
+ assert.match(copy.heading,/不在清單中/);
+ assert.match(copy.action,/重新加入/);
+ assert.doesNotMatch(copy.action,/同步|伺服器|確認前先不要/);
+});
+test("changed and missing records do not claim current save success",()=>{
+ for(const status of ["saved_server_record_different","saved_server_record_unconfirmed"]){
+  const copy=forResult({status,serverSaved:true});
+  assert.equal(copy.requiresReview,true);
+  assert.doesNotMatch(copy.heading,/成功儲存/);
+ }
+});
