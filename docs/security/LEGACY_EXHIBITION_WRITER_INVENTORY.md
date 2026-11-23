@@ -9,13 +9,14 @@ Source: the four current templates on `feat/private-subscriber-storage-adapter-8
 | `templates/nearby.html` | direct `localStorage.setItem` at ~345 and ~359 | Toggle visited adds an **ISO string**; toggle favorite adds object. |
 | `templates/exhibition_detail_page.html` | direct `localStorage.setItem` at ~509 and ~524 | Toggle visited adds an **ISO string**; favorite adds object. |
 
-## Critical findings
+## Critical findings (initial audit; status updated 2026-11-23)
 
-1. **Mixed visited schema**: the draft `draft_legacy_snapshot.js` currently accepts **only ISO strings** for `taiwan_art_visited`, but `index.html` and `discover.html` write visited **objects**. This causes legitimate existing users' data to be rejected as `invalid_local`. Any sync/cutover must first support both shapes without flattening metadata or timestamps.
-2. **Favorite metadata mismatch**: `index.html` and `discover.html` include `region` and `event`, but the draft legacy validator currently permits only `title,museum,dates,url`. This also blocks legitimate users. Do not silently strip the additional fields.
-3. **No single write choke point**: at least four templates write the two keys, and `index.html` includes direct removal and migration paths beyond the main save helpers. Locking only the review screen is insufficient.
-4. **Legacy deletions are physical key removal**, not explicit tombstones. No migration can infer deletion intent from absence.
-5. Existing `/api/subscribers/sync` calls are not the new versioned CAS protocol. Any cutover must distinguish notification sync from private cross-device state.
+1. **Mixed visited schema**: main/discover save objects; nearby/detail save ISO strings. **Addressed in unmounted draft** by `draft_legacy_snapshot.js` and `tests/test_draft_legacy_real_shapes.cjs`; both are preserved without conversion. Not deployed.
+2. **Favorite metadata mismatch**: main/discover include optional `region,event`. **Addressed in unmounted draft** validator and tests. Not deployed.
+3. **No single write choke point**: all four templates plus direct removal and `migrateStore` still write legacy keys. **Open blocker**.
+4. **Legacy deletions are physical key removal**, not explicit tombstones. Never infer deletion intent from absence. **Open migration constraint**.
+5. Existing `/api/subscribers/sync` is notification sync, not private versioned CAS. **Open integration constraint**.
+6. Web Locks protect only participating tabs. An old cached tab can overwrite a new tab's localStorage map. **Open blocker requiring rollout strategy**.
 
 ## Required migration sequence (no production changes authorized)
 
@@ -24,3 +25,7 @@ Source: the four current templates on `feat/private-subscriber-storage-adapter-8
 - Re-read state inside the exclusive Web Lock, use per-item operations rather than replacing a stale whole map, and keep notification sync separate.
 - Test real multi-tab races (including an older tab with cached legacy code), in-app browser storage isolation, and network/offline cases. Web Locks only protects participating writers; an old tab can bypass it.
 - Do not mount the draft deletion bridge until this migration is complete and production rollout is separately approved.
+
+## Current draft status
+
+The shared per-item Web Lock writer, persistence-first UI adapter, and isolated Chromium tests exist, but **none of the four real templates are wired**. Browser tests on a synthetic page are not production template E2E coverage. Old-tab bypass, legacy `migrateStore`, and remote sync remain blockers.
