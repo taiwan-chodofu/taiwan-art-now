@@ -277,7 +277,7 @@ test("successful confirmation reports remaining conflicting exhibitions without 
  selects[0].value="keep_saved";selects[0].events.change();
  await instance.submit();
  assert.equal(calls.length,2);
- assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/ほかに確認が必要な展示が1件/);
+ assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/あと1件、確認が必要な展示があります/);
  await instance.submit();
  assert.equal(calls.length,2);
 });
