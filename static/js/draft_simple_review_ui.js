@@ -22,22 +22,22 @@
    const block=doc.createElement('div');
    const heading=doc.createElement('h3');heading.textContent=item.title;block.appendChild(heading);
    const message=doc.createElement('p');message.textContent=item.message;block.appendChild(message);
-   const select=doc.createElement('select');
-   select.setAttribute('aria-label',item.title);
-   for(const choice of item.options){
-    const option=doc.createElement('option');option.value=choice.id;
-    option.textContent=choice.label;select.appendChild(option);
-   }
-   select.value='keep_deleted';
-   select.addEventListener('change',()=>{
-    if(select.value!=='request_restore')return;
-    // Intent only: never write or claim success. A separate guarded flow
-    // must obtain fresh server state and explicit confirmation.
+   const keep=doc.createElement('button');
+   keep.type='button';keep.textContent=item.options[0].label;
+   keep.addEventListener('click',()=>{block.remove();});
+   const restore=doc.createElement('button');
+   restore.type='button';restore.textContent=item.options[1].label;
+   restore.addEventListener('click',()=>{
+    if(restore.disabled)return;
+    restore.disabled=true;keep.disabled=true;
+    // This only records intent. The authenticated confirmation flow
+    // must be completed separately; do not claim restoration here.
     if(typeof onDecision==='function')onDecision({kind:item.kind,key:item.key,
       choice:'request_restore',requiresFreshRead:true});
-    select.value='keep_deleted';
    });
-   choices.push(select);block.appendChild(select);section.appendChild(block);
+   choices.push(keep,restore);block.appendChild(keep);block.appendChild(restore);
+   section.appendChild(block);
+
   }
   if(review.items.length)container.appendChild(section);
   return {rendered:review.items.length>0,dispose:()=>section.remove(),
