@@ -114,7 +114,10 @@
           status.textContent = "この展示を登録しました。ほかの展示も確認してください。";
           return;
         }
-        status.textContent = "変更はありません。";
+        const deferred = review.getDecisions();
+        status.textContent = deferred.some(d => d.choice === "remove_from_list")
+          ? "「リストから外す」はまだ反映されていません。登録内容は変更されていません。"
+          : "登録内容は変更されていません。あとで確認できます。";
       } catch (_) {
         if (disposed) return;
         status.textContent = confirmationAttempted
