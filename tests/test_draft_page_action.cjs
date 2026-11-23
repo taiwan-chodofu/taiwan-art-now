@@ -49,3 +49,23 @@ test("explicit remove does not create a tombstone",async()=>{
  assert.equal(r.status,"unchanged");
  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
 });
+
+test("cached tab changes exact saved metadata before UI callback: fail closed",async()=>{
+ const x=fixture();
+ const original=x.storage.getItem;
+ let didSet=false,reads=0;
+ const set=x.storage.setItem;
+ x.storage.setItem=(k,v)=>{set(k,v);didSet=true;};
+ x.storage.getItem=k=>{
+   const raw=original(k);
+   if(k==="taiwan_art_favs"&&didSet&&++reads>=2)
+     return JSON.stringify({a:{title:"Overwritten",museum:"M"}});
+   return raw;
+ };
+ const failures=[];
+ const r=await commit({...x,kind:"favs",key:"a",action:"toggle",value:fav,
+   onFailure:result=>failures.push(result.status)});
+ assert.equal(r.status,"uncertain_write");
+ assert.deepEqual(x.events,[]);
+ assert.deepEqual(failures,["uncertain_write"]);
+});
