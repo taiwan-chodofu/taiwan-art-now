@@ -191,3 +191,7 @@ CI 45088613834 passed all four jobs including the two real Chromium recovery fix
 ## Disposable PostgreSQL owner isolation regression
 
 Added `test_two_verified_owners_are_strictly_isolated` to the disposable PostgreSQL CAS suite. It creates two synthetic verified subscriber IDs, writes distinct favorite entries under each identity, and verifies both immediate and fresh-transaction reads contain only that owner's records. It runs only against the CI localhost database `tan_ci_disposable`, not production. This checks store-level owner partitioning; it **does not yet verify HTTP cookie-to-owner session binding** or session revocation races. Those require Flask route integration tests with synthetic sessions and the disposable DB before any route registration. Latest CI pending.
+
+## Synthetic cookie-to-owner HTTP isolation
+
+CI 45088904333 passed all four jobs including disposable PostgreSQL owner isolation. Extended `tests/test_versioned_subscriber_api_http.py` with two synthetic session cookies mapping to distinct verified owners. A mocked Flask route read returns only the respective owner's exhibition state; an unknown cookie receives 403. The test uses a synthetic session cursor and mocked store, so it is **not** a full PostgreSQL-backed HTTP integration test. Session revocation concurrency and actual authentication issuance remain unverified. No production route registration or subscriber data changes.
