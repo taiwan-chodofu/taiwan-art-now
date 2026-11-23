@@ -25,7 +25,8 @@
   const active=entries.filter(({entry})=>entry&&entry.deleted===false);
   const deleted=entries.filter(({entry})=>entry&&entry.deleted===true);
   if(active.length)return {status:"saved",revision:state.revision,
-   collections:active.map(({kind})=>kind)};
+   collections:active.map(({kind})=>kind),
+   removedCollections:deleted.map(({kind})=>kind)};
   if(deleted.length)return {status:"removed",revision:state.revision,
    collections:deleted.map(({kind})=>kind)};
   return {status:"not_found",revision:state.revision};
