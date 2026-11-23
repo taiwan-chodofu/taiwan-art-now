@@ -44,6 +44,12 @@
    action:"請打開這筆展覽，查看目前的「想看」或「看過」狀態。",
    requiresReview:true
   }),
+  saved_server_multiple_records_unconfirmed:Object.freeze({
+   heading:"有幾筆展覽需要確認",
+   detail:"剛才儲存後，再次查看清單時，部分展覽沒有顯示原本的收藏狀態。",
+   action:"請打開「想看」和「看過」清單，確認想保留的展覽。",
+   requiresReview:true
+  }),
   saved_server_record_unconfirmed:Object.freeze({
    heading:"目前找不到這筆展覽的收藏",
    detail:"剛才儲存後，再次查看帳號清單時沒有找到這筆展覽。",
