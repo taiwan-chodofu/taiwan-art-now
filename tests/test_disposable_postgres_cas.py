@@ -84,7 +84,9 @@ class DisposablePostgresCASTests(unittest.TestCase):
         state_url="/api/private-subscribers/v2/state"
         headers={"Origin":"https://example.test"}
 
-        with app.test_client() as a, app.test_client() as b:
+        a=app.test_client()
+        b=app.test_client()
+        if True:
             a.set_cookie(COOKIE_NAME,tokens[0])
             b.set_cookie(COOKIE_NAME,tokens[1])
             initial_a=a.get(state_url)
