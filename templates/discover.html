@@ -595,8 +595,10 @@
     document.getElementById('skipBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('skip'); });
     document.getElementById('undoBtn').addEventListener('click', undo);
     document.getElementById('restartBtn').addEventListener('click', function() {
+      if (discoverBusy || discoverAnimating) return;
+      if (discoverFlow.clearHistory().status !== 'cleared') return;
+      clearDiscoverError();
       deck = ALL_CARDS.slice();
-      // Restart is a new deck only; existing guarded undo history remains intact.
       saveDeckOrder();
       renderCard();
     });
