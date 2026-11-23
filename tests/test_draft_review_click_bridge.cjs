@@ -208,3 +208,40 @@ test("late status response after review disposal does not update removed status"
  assert.equal(status.textContent,before);
  assert.equal(status.removed,true);
 });
+
+test("server inspection stays disabled while confirmation is in flight", async () => {
+ const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const container=new Element("main");
+ let resolveConsume,gets=0;
+ const instance=mount({container,report,doc,serverState,storage,
+  localSnapshot:read(storage).snapshot,
+  request:async url=>url.endsWith("/issue")?{token:"synthetic"}:
+   new Promise(resolve=>{resolveConsume=resolve;}),
+  fetchImpl:async()=>{gets++;throw Error("should not inspect yet");}});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ const pending=instance.submit();
+ await Promise.resolve();await Promise.resolve();await Promise.resolve();
+ assert.equal(elements(container,"button")[1].disabled,true);
+ await instance.inspect();
+ assert.equal(gets,0);
+ resolveConsume({revision:4});
+ await pending;
+ assert.equal(elements(container,"button")[1].disabled,false);
+});
+test("missing server record is explicitly distinguished from a confirmed save", async () => {
+ const data={taiwan_art_favs:JSON.stringify({a:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const container=new Element("main");
+ const instance=mount({container,report,doc,serverState,storage,
+  localSnapshot:read(storage).snapshot,
+  request:async url=>url.endsWith("/issue")?{token:"synthetic"}:Promise.reject(Error("lost")),
+  fetchImpl:async()=>({status:200,ok:true,
+   headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+   json:async()=>({revision:4,favs:{},visited:{}})})});
+ const select=elements(container,"select")[0];select.value="keep_saved";select.events.change();
+ await instance.submit();await instance.inspect();
+ const words=elements(container,"p").map(x=>x.textContent).join(" ");
+ assert.match(words,/登録は見つかりませんでした/);
+ assert.doesNotMatch(words,/サーバーに登録が確認できました/);
+});
