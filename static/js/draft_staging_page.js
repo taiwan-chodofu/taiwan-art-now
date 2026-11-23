@@ -50,7 +50,9 @@
    return true;
   }
   disable();
-  return {start:()=>refresh(),dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
+  let started=false;
+  return {start:()=>{if(started||closed)return Promise.resolve(false);started=true;return refresh();},
+   dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
  }
  return {create};
 });
