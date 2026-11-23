@@ -164,9 +164,28 @@
       }
     };
     nextButton.disabled = true;
-    nextButton.addEventListener("click", () => {
+    nextButton.addEventListener("click", async () => {
       if (disposed || busy || !completed || !nextReview) return;
-      const next = nextReview;
+      nextButton.disabled = true;
+      // A second device may have changed the list since the previous GET.
+      // Read again before creating a new confirmation screen; never write here.
+      const fresh = await statusCheck.readState({fetchImpl});
+      if (disposed) return;
+      if (fresh.status !== "ready") {
+        status.textContent = "ほかの展示を確認できませんでした。もう一度お試しください。";
+        nextButton.disabled = false;
+        return;
+      }
+      const pending = nextReview.report.review.filter(item => {
+        const entry = fresh.state[item.kind] && fresh.state[item.kind][item.key];
+        return entry && entry.deleted && localSnapshot[item.kind] &&
+          Object.prototype.hasOwnProperty.call(localSnapshot[item.kind], item.key);
+      });
+      if (!pending.length) {
+        status.textContent = "確認が必要な展示はありません。";
+        return;
+      }
+      const next = {report: {status:"needs_review",review:pending}, serverState:fresh.state};
       dispose();
       mount({container, report: next.report, doc, serverState: next.serverState,
         localSnapshot, storage, request, fetchImpl});
