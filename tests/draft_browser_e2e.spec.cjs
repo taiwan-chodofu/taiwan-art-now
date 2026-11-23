@@ -312,3 +312,18 @@ test('real Chromium: stale cached tab overwrite is detected against checkpoint, 
     expect(report.current.legacy.title).toBe('Legacy');
   }finally{await context.close();}
 });
+
+test('real Chromium: shared page action handles two tabs toggling same favorite without stale UI choice',async({browser})=>{
+ const context=await browser.newContext();
+ try{
+   const a=await context.newPage(),b=await context.newPage();
+   await boot(a);await boot(b);
+   for(const page of [a,b])await page.addScriptTag({
+     path:path.resolve(__dirname,'../static/js/draft_page_action.js')});
+   const action=()=>TanDraftPageAction.commit({storage:localStorage,locks:navigator.locks,
+     kind:'favs',key:'shared',action:'toggle',value:{title:'Shared',museum:'M'}});
+   const results=await Promise.all([a.evaluate(action),b.evaluate(action)]);
+   expect(results.map(r=>r.action).sort()).toEqual(['remove','set']);
+   expect(await a.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
+ }finally{await context.close();}
+});
