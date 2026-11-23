@@ -6,7 +6,7 @@ function storage(favs,visited){
  return {getItem(key){return Object.hasOwn(maps,key)?maps[key]:null;}};
 }
 test('migration review explains local-only, remote-only and explicit deletion without writes',()=>{
- const local=storage({local:{title:'Local'},deleted:{title:'Old'}},{});
+ const local=storage({local:{title:'Local',museum:'M'},deleted:{title:'Old',museum:'M'}},{});
  const server={revision:3,favs:{
   remote:{revision:1,deleted:false,value:{title:'Remote'}},
   deleted:{revision:2,deleted:true,value:null}
