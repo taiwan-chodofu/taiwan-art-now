@@ -515,8 +515,8 @@
     conflictCheck.id = 'discoverConflictCheck';
     conflictCheck.type = 'button';
     conflictCheck.hidden = true;
-    conflictCheck.textContent = LANG === 'en' ? 'Check saved status'
-      : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '查看目前儲存狀態' : '現在の登録状況を確認';
+    conflictCheck.textContent = LANG === 'en' ? 'Check this device’s saved status'
+      : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '查看此裝置的儲存狀態' : 'この端末の登録状況を確認';
     conflictCheck.style.cssText = 'display:none;margin:8px 16px 12px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
     actionsBar.parentNode.insertBefore(conflictCheck, actionsBar);
     var conflictStatus = document.createElement('p');
@@ -533,7 +533,7 @@
         var label = target.kind === 'favs'
           ? (LANG === 'en' ? 'Want to see' : (LANG === 'ja' ? '行きたい' : '想看'))
           : (LANG === 'en' ? 'Visited' : (LANG === 'ja' ? '観た' : '看過'));
-        conflictStatus.textContent = target.title + ' — ' + label + ': ' +
+        conflictStatus.textContent = target.title + ' — ' + (LANG === 'en' ? 'On this device, ' : LANG === 'ja' ? 'この端末では ' : '此裝置上 ') + label + ': ' +
           (exists ? (LANG === 'en' ? 'Saved' : LANG === 'ja' ? '登録あり' : '已儲存')
                   : (LANG === 'en' ? 'Not saved' : LANG === 'ja' ? '登録なし' : '未儲存'));
       } catch (e) {
