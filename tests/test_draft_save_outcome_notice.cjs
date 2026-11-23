@@ -93,5 +93,6 @@ test("affected exhibition gets a direct internal link but never an automatic sav
  const rows=container.children[0].children[3].children;
  assert.equal(rows[0].children[2].tag,"a");
  assert.equal(rows[0].children[2].attributes.href,"/exhibition/a");
+ assert.match(rows[0].children[2].attributes["aria-label"],/展覽甲/);
  assert.equal(rows[1].children.length,2);
 });
