@@ -276,3 +276,39 @@ test('real Chromium: remote tombstone after stale revision stops all further POS
   expect(result.gets).toBe(2);
   expect(result.local.deleted.title).toBe('Keep?');
 });
+
+test('real Chromium: stale cached tab overwrite is detected against checkpoint, never silently repaired', async ({browser}) => {
+  const context=await browser.newContext();
+  try {
+    const modern=await context.newPage(), legacy=await context.newPage();
+    await boot(modern); await boot(legacy);
+    for(const name of ['draft_checkpoint.js','draft_loss_detector.js'])
+      await modern.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+    const stale=await legacy.evaluate(()=>localStorage.getItem('taiwan_art_favs')||'{}');
+    const saved=await modern.evaluate(async()=>{
+      const committed=await TanDraftActionCommit.create({
+        storage:localStorage,locks:navigator.locks,onCommitted(){},onFailure(){}
+      }).commit({kind:'favs',key:'new',action:'set',value:{title:'New',museum:'M'}});
+      const checkpoint=TanDraftCheckpoint.capture({storage:localStorage,id:'cached_tab_review_001'});
+      return {committed:committed.status,checkpoint:checkpoint.status};
+    });
+    expect(saved).toEqual({committed:'written_under_cooperative_lock',checkpoint:'saved'});
+    await legacy.evaluate(raw=>{
+      const old=JSON.parse(raw);
+      old.legacy={title:'Legacy',museum:'M'};
+      localStorage.setItem('taiwan_art_favs',JSON.stringify(old));
+    },stale);
+    const report=await modern.evaluate(()=>{
+      const loaded=TanDraftCheckpoint.load({storage:localStorage,id:'cached_tab_review_001'});
+      return {status:loaded.status,
+        report:TanDraftLossDetector.inspect({storage:localStorage,checkpoint:loaded.snapshot}),
+        current:JSON.parse(localStorage.getItem('taiwan_art_favs'))};
+    });
+    expect(report.status).toBe('ready');
+    expect(report.report.status).toBe('needs_review');
+    expect(report.report.missing).toEqual([{kind:'favs',key:'new',reason:'checkpoint_entry_missing'}]);
+    expect(report.report.additions).toEqual([{kind:'favs',key:'legacy'}]);
+    expect(report.current.new).toBeUndefined();
+    expect(report.current.legacy.title).toBe('Legacy');
+  }finally{await context.close();}
+});
