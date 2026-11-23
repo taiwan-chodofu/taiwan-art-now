@@ -86,44 +86,43 @@ class DisposablePostgresCASTests(unittest.TestCase):
 
         a=app.test_client()
         b=app.test_client()
-        if True:
-            a.set_cookie(COOKIE_NAME,tokens[0])
-            b.set_cookie(COOKIE_NAME,tokens[1])
-            initial_a=a.get(state_url)
-            initial_b=b.get(state_url)
-            self.assertEqual(initial_a.status_code,200)
-            self.assertEqual(initial_b.status_code,200)
-            self.assertEqual(initial_a.json["revision"],0)
-            self.assertEqual(initial_b.json["revision"],0)
+        a.set_cookie(COOKIE_NAME,tokens[0])
+        b.set_cookie(COOKIE_NAME,tokens[1])
+        initial_a=a.get(state_url)
+        initial_b=b.get(state_url)
+        self.assertEqual(initial_a.status_code,200)
+        self.assertEqual(initial_b.status_code,200)
+        self.assertEqual(initial_a.json["revision"],0)
+        self.assertEqual(initial_b.json["revision"],0)
 
-            first=a.post(url,json={"base_revision":0,"changes":{
-                "favs":{"device-a-fav":{"set":{"title":"A"}}},"visited":{}}},
-                headers=headers)
-            self.assertEqual(first.status_code,200)
-            self.assertEqual(first.json["revision"],1)
+        first=a.post(url,json={"base_revision":0,"changes":{
+            "favs":{"device-a-fav":{"set":{"title":"A"}}},"visited":{}}},
+            headers=headers)
+        self.assertEqual(first.status_code,200)
+        self.assertEqual(first.json["revision"],1)
 
-            stale=b.post(url,json={"base_revision":0,"changes":{
-                "favs":{},"visited":{"device-b-visited":{
-                    "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
-                headers=headers)
-            self.assertEqual(stale.status_code,409)
-            self.assertEqual(stale.json,{"error":"stale_revision"})
+        stale=b.post(url,json={"base_revision":0,"changes":{
+            "favs":{},"visited":{"device-b-visited":{
+                "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
+            headers=headers)
+        self.assertEqual(stale.status_code,409)
+        self.assertEqual(stale.json,{"error":"stale_revision"})
 
-            refreshed=b.get(state_url)
-            self.assertEqual(refreshed.status_code,200)
-            self.assertEqual(refreshed.json["revision"],1)
-            self.assertEqual(set(refreshed.json["favs"]),{"device-a-fav"})
-            retry=b.post(url,json={"base_revision":1,"changes":{
-                "favs":{},"visited":{"device-b-visited":{
-                    "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
-                headers=headers)
-            self.assertEqual(retry.status_code,200)
-            self.assertEqual(retry.json["revision"],2)
-            self.assertEqual(set(retry.json["favs"]),{"device-a-fav"})
-            self.assertEqual(set(retry.json["visited"]),{"device-b-visited"})
-            final_a=a.get(state_url)
-            self.assertEqual(final_a.status_code,200)
-            self.assertEqual(final_a.json,retry.json)
+        refreshed=b.get(state_url)
+        self.assertEqual(refreshed.status_code,200)
+        self.assertEqual(refreshed.json["revision"],1)
+        self.assertEqual(set(refreshed.json["favs"]),{"device-a-fav"})
+        retry=b.post(url,json={"base_revision":1,"changes":{
+            "favs":{},"visited":{"device-b-visited":{
+                "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
+            headers=headers)
+        self.assertEqual(retry.status_code,200)
+        self.assertEqual(retry.json["revision"],2)
+        self.assertEqual(set(retry.json["favs"]),{"device-a-fav"})
+        self.assertEqual(set(retry.json["visited"]),{"device-b-visited"})
+        final_a=a.get(state_url)
+        self.assertEqual(final_a.status_code,200)
+        self.assertEqual(final_a.json,retry.json)
 
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
