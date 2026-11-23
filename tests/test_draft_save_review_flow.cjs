@@ -96,7 +96,7 @@ test("server record deleted after save never receives calm verified-success copy
  assert.equal(output.result.serverSaved,true);
  assert.equal(output.verification.status,"server_records_need_review");
  assert.equal(output.verification.unresolved[0].reason,"deleted_on_server");
- assert.equal(output.displayResult.status,"saved_server_local_changed");
+ assert.equal(output.displayResult.status,"saved_server_record_changed");
  assert.equal(posts,1);
  assert.equal(gets,2);
 });
