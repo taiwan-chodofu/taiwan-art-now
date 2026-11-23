@@ -300,6 +300,31 @@ class DisposablePostgresCASTests(unittest.TestCase):
         self.assertEqual(denied_write.status_code,403)
         self.assertEqual(set(a.get(state_path).json["favs"]),{"private-a"})
 
+        # Identical exhibition keys are scoped independently to each owner.
+        same_a=a.post(path,json={"base_revision":1,"changes":{
+            "favs":{"shared-key":{"set":{"title":"A's private version"}}},
+            "visited":{}}},headers=headers)
+        same_b=b.post(path,json={"base_revision":1,"changes":{
+            "favs":{"shared-key":{"set":{"title":"B's private version"}}},
+            "visited":{}}},headers=headers)
+        self.assertEqual(same_a.status_code,200)
+        self.assertEqual(same_b.status_code,200)
+        self.assertEqual(
+            a.get(state_path).json["favs"]["shared-key"]["value"]["title"],
+            "A's private version")
+        self.assertEqual(
+            b.get(state_path).json["favs"]["shared-key"]["value"]["title"],
+            "B's private version")
+
+        # A malicious origin cannot mutate even the authenticated owner's data.
+        rejected=a.post(path,json={"base_revision":2,"changes":{
+            "favs":{"shared-key":{"delete":True}},"visited":{}}},
+            headers={"Origin":"https://evil.example"})
+        self.assertEqual(rejected.status_code,403)
+        self.assertFalse(a.get(state_path).json["favs"]["shared-key"]["deleted"])
+        # Query-supplied identity cannot select another owner.
+        self.assertEqual(a.get(state_path+"?sender_id="+owners[1][0]).status_code,400)
+
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
         import psycopg
