@@ -11,18 +11,21 @@
  "use strict";
  function create({storage,locks,key,metadata,onRender,onAnalytics,onNotify,onFailure,onBusy,now}={}){
    const clock=typeof now==="function"?now:()=>new Date().toISOString();
+   let disposed=false;
+   const live=(fn,arg)=>{if(!disposed)safe(fn,arg);};
    const safe=(fn,arg)=>{if(typeof fn==="function")try{fn(arg);}catch(_){}};
-   const ctrl=controller.create({storage,locks,onBusy,
+   const ctrl=controller.create({storage,locks,onBusy:x=>live(onBusy,x),
      onCommitted:({kind,action})=>{
-       safe(onRender,{kind,action});
-       safe(onAnalytics,{kind,action,event:kind==="visited"
+       live(onRender,{kind,action});
+       live(onAnalytics,{kind,action,event:kind==="visited"
          ?(action==="set"?"mark_visited":"unmark_visited")
          :(action==="set"?"add_to_favorites":"remove_from_favorites")});
-       safe(onNotify,{kind,action});
+       live(onNotify,{kind,action});
      },
-     onFailure:({kind,status})=>safe(onFailure,{kind,status})
+     onFailure:({kind,status})=>live(onFailure,{kind,status})
    });
    async function toggle(kind){
+     if(disposed)return {status:"disposed"};
      if(!["visited","favs"].includes(kind)||typeof key!=="string"||!key)
        return {status:"invalid_request"};
      // Values are supplied for a possible set; the writer decides toggle direction
@@ -30,7 +33,7 @@
      const value=kind==="visited"?clock():metadata;
      return ctrl.act({kind,key,action:"toggle",value});
    }
-   return {toggle,isBusy:ctrl.isBusy};
+   return {toggle,isBusy:ctrl.isBusy,dispose:()=>{disposed=true;}};
  }
  return {create};
 });
