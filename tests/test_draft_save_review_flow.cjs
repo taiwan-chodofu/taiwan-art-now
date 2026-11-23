@@ -56,3 +56,29 @@ test("missing trusted checkpoint remains a review even if saved record is verifi
  assert.equal(result.verification.status,"confirmed_on_server");
  assert.equal(result.displayResult.status,"saved_server_local_review_required");
 });
+
+test("verified server save renders polite success instead of a warning",async()=>{
+ const local=storage();let gets=0,posts=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ class Node{
+  constructor(tag){this.tag=tag;this.attributes={};this.children=[];this.textContent="";}
+  setAttribute(k,v){this.attributes[k]=v;}
+  appendChild(node){this.children.push(node);}
+  replaceChildren(...nodes){this.children=nodes;}
+ }
+ const doc={createElement:tag=>new Node(tag)},container=new Node("div");
+ const output=await run({storage:local,document:doc,container,
+  fetchImpl:async(path,opts)=>{
+   if(opts.method==="GET"){gets++;return response(gets===1?
+    {revision:0,favs:{},visited:{}}:saved);}
+   posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+   return response(saved);
+  }});
+ assert.equal(output.result.status,"saved_server_local_changed");
+ assert.equal(output.verification.status,"confirmed_on_server");
+ assert.equal(output.displayed.status,"rendered");
+ assert.equal(output.displayed.requiresReview,false);
+ assert.equal(container.children[0].attributes.role,"status");
+ assert.match(container.children[0].children[0].textContent,/成功儲存/);
+ assert.equal(posts,1);
+});
