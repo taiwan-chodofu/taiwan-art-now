@@ -13,12 +13,7 @@ create table if not exists tan_private.subscriber_sync_states (
         and jsonb_typeof(state->'favs') = 'object'
         and jsonb_typeof(state->'visited') = 'object'
         and jsonb_typeof(state->'revision') = 'number'
-        and (state->>'revision') ~ '^(0|[1-9][0-9]{0,18})
-    )
-);
-alter table tan_private.subscriber_sync_states enable row level security;
-revoke all on tan_private.subscriber_sync_states from public, anon, authenticated;
-
+        and (state->>'revision') ~ '^(0|[1-9][0-9]{0,18})$'
         and (state->>'revision')::numeric <= 9223372036854775807
     )
 );
