@@ -14,14 +14,14 @@ function html(){
   if(!match)throw Error('real detail button missing '+kind);
   return match[0].replace(/{%[^]*?%}/g,'');
  }).join('');
- return '<!doctype html><meta charset="utf-8">'+buttons+
+ return '<!doctype html><meta charset="utf-8"><div id="detailSaveError" role="alert" aria-live="assertive" hidden></div>'+buttons+
  '<script>var exId="ex_1";function _getVisited(){return JSON.parse(localStorage.getItem("taiwan_art_visited")||"{}")}'+
  'function _getFavs(){return JSON.parse(localStorage.getItem("taiwan_art_favs")||"{}")}'+update+'</script>';
 }
 async function boot(page){
  await page.route('**/detail-staging',r=>r.fulfill({status:200,contentType:'text/html',body:html()}));
  await page.goto('http://127.0.0.1:8765/detail-staging');
- for(const file of ['draft_legacy_snapshot.js','draft_legacy_writer.js','draft_page_action.js','draft_page_controller.js','draft_detail_action_adapter.js'])
+ for(const file of ['draft_legacy_snapshot.js','draft_legacy_writer.js','draft_page_action.js','draft_page_controller.js','draft_detail_action_adapter.js','draft_detail_failure_copy.js'])
   await page.addScriptTag({url:'http://127.0.0.1:8765/static/js/'+file});
  await page.evaluate(()=>{
   localStorage.removeItem('taiwan_art_favs');localStorage.removeItem('taiwan_art_visited');
@@ -30,10 +30,10 @@ async function boot(page){
    storage:localStorage,locks:navigator.locks,key:exId,
    metadata:{title:'展覽',museum:'M',dates:'2026',url:'/ex'},
    now:()=> '2026-11-23T00:00:00.000Z',
-   onRender:()=>{__events.push('render');updateBtns();},
+   onRender:()=>{__events.push('render');document.getElementById('detailSaveError').hidden=true;updateBtns();},
    onAnalytics:()=>__events.push('analytics'),
    onNotify:()=>__events.push('notify'),
-   onFailure:()=>__events.push('failure')
+   onFailure:({status})=>{__events.push('failure');const el=document.getElementById('detailSaveError');el.textContent=TanDraftDetailFailureCopy.message(status,'ja');el.hidden=false;}
   });
   window.toggleVisited=()=>__adapter.toggle('visited');
   window.toggleFav=()=>__adapter.toggle('favs');
@@ -63,6 +63,8 @@ test('real detail buttons: quota error leaves buttons unchanged and sends no ana
  await page.locator('#favBtn').click();
  await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
  await expect.poll(()=>page.evaluate(()=>__events)).toEqual(['failure']);
+ await expect(page.locator('#detailSaveError')).toBeVisible();
+ await expect(page.locator('#detailSaveError')).toContainText('端末の空き容量');
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
 });
 
