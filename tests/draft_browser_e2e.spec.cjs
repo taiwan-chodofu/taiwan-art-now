@@ -134,3 +134,51 @@ test('real Chromium: checkpoint survives a stale whole-map overwrite for review 
   expect(result.current.old.title).toBe('Old');
   expect(result.checkpointExists).toBe(true);
 });
+
+test('real Chromium: explicitly confirmed guarded recovery restores one remote-only item', async ({page}) => {
+  await boot(page);
+  for (const name of ['draft_versioned_sync.js','draft_server_recovery.js','draft_recovery_verifier.js','draft_guarded_recovery.js'])
+    await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+  const result=await page.evaluate(async()=>{
+    localStorage.setItem('taiwan_art_favs',JSON.stringify({existing:{title:'Existing',museum:'M'}}));
+    const server={revision:1,favs:{remote:{deleted:false,revision:1,value:{title:'Remote',museum:'M'}}},visited:{}};
+    const reviewedCandidates=TanDraftServerRecovery.plan({storage:localStorage,serverState:server}).candidates;
+    const before=localStorage.getItem('taiwan_art_favs');
+    const noConsent=await TanDraftGuardedRecovery.restore({
+      storage:localStorage,locks:navigator.locks,fetchFreshState:async()=>server,
+      expectedRevision:1,reviewedCandidates,decision:{kind:'favs',key:'remote',choice:'restore'},confirmed:false});
+    const afterNoConsent=localStorage.getItem('taiwan_art_favs');
+    const yes=await TanDraftGuardedRecovery.restore({
+      storage:localStorage,locks:navigator.locks,fetchFreshState:async()=>server,
+      expectedRevision:1,reviewedCandidates,decision:{kind:'favs',key:'remote',choice:'restore'},confirmed:true});
+    return {noConsent:noConsent.status,yes:yes.status,before,afterNoConsent,
+      favs:JSON.parse(localStorage.getItem('taiwan_art_favs'))};
+  });
+  expect(result.noConsent).toBe('not_authorized');
+  expect(result.afterNoConsent).toBe(result.before);
+  expect(result.yes).toBe('restored_under_cooperative_lock');
+  expect(result.favs.existing.title).toBe('Existing');
+  expect(result.favs.remote.title).toBe('Remote');
+});
+
+test('real Chromium: fresh tombstone and existing local record block restoration', async ({page}) => {
+  await boot(page);
+  for (const name of ['draft_versioned_sync.js','draft_server_recovery.js','draft_recovery_verifier.js','draft_guarded_recovery.js'])
+    await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+  const result=await page.evaluate(async()=>{
+    const server={revision:2,favs:{remote:{deleted:false,revision:1,value:{title:'Remote',museum:'M'}}},visited:{}};
+    const reviewedCandidates=TanDraftServerRecovery.plan({storage:localStorage,serverState:server}).candidates;
+    const request=()=>({storage:localStorage,locks:navigator.locks,fetchFreshState:async()=>server,
+      expectedRevision:2,reviewedCandidates,decision:{kind:'favs',key:'remote',choice:'restore'},confirmed:true});
+    server.favs.remote={deleted:true,revision:2,value:null};
+    const tombstone=await TanDraftGuardedRecovery.restore(request());
+    server.favs.remote={deleted:false,revision:1,value:{title:'Remote',museum:'M'}};
+    localStorage.setItem('taiwan_art_favs',JSON.stringify({remote:{title:'Local',museum:'M'}}));
+    const existing=await TanDraftGuardedRecovery.restore(request());
+    return {tombstone:tombstone.status,existing:existing.status,
+      favs:JSON.parse(localStorage.getItem('taiwan_art_favs'))};
+  });
+  expect(result.tombstone).toBe('stale_review');
+  expect(result.existing).toBe('stale_review');
+  expect(result.favs.remote.title).toBe('Local');
+});
