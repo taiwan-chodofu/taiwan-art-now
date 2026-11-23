@@ -41,12 +41,13 @@
    :specificReason==="different_server_value"?"saved_server_record_different"
    :singleCommitted?"saved_server_record_unconfirmed"
    :"saved_server_multiple_records_unconfirmed";
+  const reviewItems=unresolved.map(item=>({kind:item.kind,key:item.key,reason:item.reason}));
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
     ?{...result,status:"saved_server_verified_local_changed"}
     :REVIEW.has(result.status)&&verification&&
       verification.status==="server_records_need_review"
-      ?{...result,status:recordStatus}:result;
+      ?{...result,status:recordStatus,reviewItems}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
   // Only a verified deletion may offer a navigation link. The link never
@@ -55,7 +56,7 @@
     container.children&&container.children[0]
    ?nextAction.mount({container:container.children[0],document:doc,
       result:displayResult,exhibitionUrl}):null;
-  return {result,verification,displayResult,displayed,action};
+  return {result,verification,displayResult,displayed,action,reviewItems};
  }
  return {run};
 });
