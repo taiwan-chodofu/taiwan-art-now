@@ -130,6 +130,16 @@ test('staging lifecycle: save want then seen without reload, preserve both state
  expect(state.revision).toBe(2);
  expect(state.favs.ex_1.deleted).toBe(false);
  expect(state.visited.ex_1.deleted).toBe(false);
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','false');
+ await expect(page.locator('#visitedBtn')).toHaveAttribute('aria-pressed','true');
+ expect(state.revision).toBe(3);
+ expect(state.favs.ex_1.deleted).toBe(true);
+ expect(state.visited.ex_1.deleted).toBe(false);
+ expect(await page.evaluate(()=>({
+  favs:localStorage.getItem('taiwan_art_favs'),
+  visited:localStorage.getItem('taiwan_art_visited')
+ }))).toEqual({favs:null,visited:null});
 });
 
 test('staging lifecycle rejects legacy inline handler before any network write',async({page})=>{
