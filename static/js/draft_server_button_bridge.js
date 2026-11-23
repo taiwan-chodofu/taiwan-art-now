@@ -11,7 +11,7 @@
   ja:{busy:'保存中です…',success:'サーバーに保存しました。',stale_revision:'別の画面で登録が変更されました。ページを再読み込みして、ボタンの状態を確認してください。',deletion_review_required:'以前に削除した登録があります。ページを再読み込みして、登録内容を確認してください。',unauthorized:'登録状況を確認できません。ログイン状態を確認してから、ページを再読み込みしてください。',write_outcome_unknown:'保存できたか確認できませんでした。ページを再読み込みして登録状況を確認してください。確認するまではもう一度押さないでください。',fallback:'登録状況を確認できませんでした。ページを再読み込みして、ボタンの状態を確認してください。'},
   zh:{busy:'儲存中…',success:'已儲存至伺服器。',stale_revision:'其他頁面已更改收藏。請重新整理頁面，確認按鈕狀態。',deletion_review_required:'這筆收藏之前已刪除。請重新整理頁面，確認收藏狀態。',unauthorized:'無法確認收藏狀態。請確認登入狀態後重新整理頁面。',write_outcome_unknown:'無法確認是否儲存成功。請重新整理頁面確認收藏狀態；確認前請勿再次點擊。',fallback:'無法確認收藏狀態。請重新整理頁面，確認按鈕狀態。'}
  };
- function mount({win,fetchImpl,buttons,notice,lang='zh',onRender,onAnalytics}={}){
+ function mount({win,fetchImpl,buttons,notice,lang='zh',onRender,onAnalytics,onRefresh}={}){
   if(!win||typeof win.addEventListener!=='function'||typeof fetchImpl!=='function'||
     !notice||!Array.isArray(buttons)||buttons.length===0||
     !buttons.every(b=>b&&b.element&&typeof b.element.addEventListener==='function'&&
@@ -41,7 +41,20 @@
         item.element.setAttribute?.('aria-disabled','true');
       }
     }
-    if(!disposed&&result.committed===true)show(locale.success);
+    if(!disposed&&result.committed===true){
+      show(locale.success);
+      // The host must replace the entire stale button snapshot on refresh.
+      // This bridge never unlocks descriptors with an old revision.
+      if(typeof onRefresh==='function'){
+        try{
+          const stateApi=typeof module==='object'&&module.exports
+            ?require('./draft_authenticated_state.js'):root.TanDraftAuthenticatedState;
+          const latest=await stateApi.read({fetchImpl});
+          if(!disposed&&latest.status==='ready')await onRefresh(latest.state);
+          else if(!disposed)show(locale.fallback);
+        }catch(_){if(!disposed)show(locale.fallback);}
+      }
+    }
 
    };
    b.element.addEventListener('click',handler);handlers.push([b.element,handler]);
