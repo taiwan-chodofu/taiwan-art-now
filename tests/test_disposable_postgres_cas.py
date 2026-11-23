@@ -54,6 +54,94 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
 
+    def test_inflight_revocation_waits_for_authenticated_read_transaction(self):
+        """Session row lock prevents revocation overtaking an in-flight GET."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+        from unittest.mock import patch
+
+        owner, token = "http-race-owner", "http-race-token"
+        digest = token_digest(token)
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                    (owner,))
+                cur.execute(
+                    "INSERT INTO tan_private.browser_sessions "
+                    "(token_hash,sender_id,expires_at) "
+                    "VALUES (%s,%s,now()+interval '1 hour')", (digest,owner))
+            update_for_verified_sender(
+                conn,verified_sender_id=owner,base_revision=0,
+                changes={"favs":{"race-private":{"set":{"title":"Race"}}},
+                         "visited":{}})
+
+        entered_read=threading.Event()
+        release_read=threading.Event()
+        revocation_started=threading.Event()
+        revocation_finished=threading.Event()
+        original_read=read_for_verified_sender
+        results={}
+
+        def blocked_read(conn, *, verified_sender_id):
+            entered_read.set()
+            if not release_read.wait(timeout=10):
+                raise RuntimeError("Timed out waiting to release synthetic GET")
+            return original_read(conn,verified_sender_id=verified_sender_id)
+
+        def get_request():
+            app=Flask(__name__)
+            app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                              TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+            app.register_blueprint(versioned_blueprint)
+            with app.test_client() as client:
+                client.set_cookie(COOKIE_NAME,token)
+                with patch("versioned_subscriber_api_routes.read_for_verified_sender",
+                           side_effect=blocked_read):
+                    response=client.get("/api/private-subscribers/v2/state")
+                    results["get_status"]=response.status_code
+                    results["get_favs"]=response.json.get("favs",{})
+
+        def revoke():
+            with psycopg.connect(self.url) as conn:
+                with conn.cursor() as cur:
+                    revocation_started.set()
+                    cur.execute(
+                        "UPDATE tan_private.browser_sessions SET revoked_at=now() "
+                        "WHERE token_hash=%s", (digest,))
+                conn.commit()
+            revocation_finished.set()
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            getter=pool.submit(get_request)
+            try:
+                self.assertTrue(entered_read.wait(timeout=10))
+                revoker=pool.submit(revoke)
+                self.assertTrue(revocation_started.wait(timeout=10))
+                self.assertFalse(
+                    revocation_finished.wait(timeout=0.25),
+                    "Revocation must wait for session FOR UPDATE lock")
+            finally:
+                release_read.set()
+            getter.result(timeout=10)
+            revoker.result(timeout=10)
+
+        self.assertEqual(results["get_status"],200)
+        self.assertEqual(set(results["get_favs"]),{"race-private"})
+        self.assertTrue(revocation_finished.is_set())
+
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        with app.test_client() as client:
+            client.set_cookie(COOKIE_NAME,token)
+            self.assertEqual(
+                client.get("/api/private-subscribers/v2/state").status_code,403)
+
     def test_flask_cookie_session_real_postgres_isolation_and_revocation(self):
         """HTTP cookie lookup and private state read use real disposable DB."""
         import psycopg
