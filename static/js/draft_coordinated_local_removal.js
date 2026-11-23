@@ -54,7 +54,12 @@
         if (storage.getItem(storageKey) !== raw) return { status: "stale_local" };
         storage.setItem(storageKey, JSON.stringify(parsed));
         const after = legacy.read(storage);
-        if (after.status !== "ready" || own(after.snapshot[kind], key))
+        const expected = { ...reviewedSnapshot[kind] };
+        delete expected[key];
+        if (after.status !== "ready" ||
+            JSON.stringify(after.snapshot[kind]) !== JSON.stringify(expected) ||
+            JSON.stringify(after.snapshot[kind === "favs" ? "visited" : "favs"]) !==
+              JSON.stringify(reviewedSnapshot[kind === "favs" ? "visited" : "favs"]))
           return { status: "uncertain_write" };
         return { status: "removed_under_cooperative_lock" };
       });
