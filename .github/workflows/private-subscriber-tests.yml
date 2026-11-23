@@ -94,6 +94,9 @@ on:
       - 'tests/test_draft_checkpoint.cjs'
       - 'static/js/draft_server_recovery.js'
       - 'tests/test_draft_server_recovery.cjs'
+      - 'static/js/draft_recovery_review_ui.js'
+      - 'static/js/draft_recovery_verifier.js'
+      - 'tests/test_draft_recovery_verifier.cjs'
       - 'static/js/draft_legacy_writer.js'
       - 'tests/test_draft_legacy_writer.cjs'
       - 'tests/test_draft_legacy_real_shapes.cjs'
@@ -174,7 +177,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run synthetic browser sync tests (Node built-in runner)
-        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs tests/test_draft_conflict_review_ui.cjs tests/test_draft_decision_verifier.cjs tests/test_draft_additive_merge.cjs tests/test_draft_explicit_keep.cjs tests/test_draft_review_click_bridge.cjs tests/test_draft_guarded_local_removal.cjs tests/test_draft_coordinated_local_removal.cjs tests/test_draft_legacy_real_shapes.cjs tests/test_draft_legacy_writer.cjs tests/test_draft_action_commit.cjs tests/test_draft_page_flow.cjs tests/test_draft_loss_detector.cjs tests/test_draft_checkpoint.cjs tests/test_draft_server_recovery.cjs
+        run: node --test tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs tests/test_draft_conflict_review_ui.cjs tests/test_draft_decision_verifier.cjs tests/test_draft_additive_merge.cjs tests/test_draft_explicit_keep.cjs tests/test_draft_review_click_bridge.cjs tests/test_draft_guarded_local_removal.cjs tests/test_draft_coordinated_local_removal.cjs tests/test_draft_legacy_real_shapes.cjs tests/test_draft_legacy_writer.cjs tests/test_draft_action_commit.cjs tests/test_draft_page_flow.cjs tests/test_draft_loss_detector.cjs tests/test_draft_checkpoint.cjs tests/test_draft_server_recovery.cjs tests/test_draft_recovery_verifier.cjs
 
   draft-real-browser-e2e:
     # Playwright 1.58 Chromium does not support the ubuntu26.04 image used by ubuntu-latest.
