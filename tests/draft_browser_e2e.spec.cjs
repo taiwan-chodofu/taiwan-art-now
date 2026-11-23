@@ -330,3 +330,65 @@ test('real Chromium: shared page action handles two tabs toggling same favorite 
    expect(await a.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
  }finally{await context.close();}
 });
+
+async function bootDiscoverDraft(page){
+ await page.goto('http://127.0.0.1:8765/tests/draft_browser_fixture.html');
+ await page.evaluate(()=>{
+   localStorage.removeItem('taiwan_art_favs');localStorage.removeItem('taiwan_art_visited');
+   document.body.innerHTML='<button id="like">観たい</button><button id="undo">元に戻す</button><div id="card">台南展</div><p id="status"></p>';
+ });
+ for(const name of ['draft_legacy_snapshot.js','draft_legacy_writer.js',
+   'draft_page_action.js','draft_page_controller.js','draft_discover_flow.js'])
+   await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ await page.evaluate(()=>{
+   const card={stable_key:'discover_a',title:'台南展',museum:'M',
+     dates:'2026',detail_url:'/exhibition/a',region:'臺南'};
+   const status=document.getElementById('status');
+   window._draftFlow=TanDraftDiscoverFlow.create({
+     storage:localStorage,locks:navigator.locks,normalizeKey:s=>s,
+     onAdvance(){document.getElementById('card').textContent='次の展示';status.textContent='advanced';},
+     onRestore(){document.getElementById('card').textContent='台南展';status.textContent='restored';},
+     onError:r=>{status.textContent='error:'+r.status;}
+   });
+   document.getElementById('like').onclick=()=>window._draftFlow.swipe(card,'like');
+   document.getElementById('undo').onclick=()=>window._draftFlow.undo();
+ });
+}
+test('real Chromium: Discover only advances after favorite persists, and guarded undo restores',async({page})=>{
+ await bootDiscoverDraft(page);
+ await page.locator('#like').click();
+ await expect(page.locator('#status')).toHaveText('advanced');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).discover_a.title)).toBe('台南展');
+ await page.locator('#undo').click();
+ await expect(page.locator('#status')).toHaveText('restored');
+ await expect(page.locator('#card')).toHaveText('台南展');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({});
+});
+test('real Chromium: Discover quota failure keeps current card and never advances',async({page})=>{
+ await bootDiscoverDraft(page);
+ await page.evaluate(()=>{
+   const original=Storage.prototype.setItem;
+   Storage.prototype.setItem=function(k,v){
+     if(k==='taiwan_art_favs')throw new DOMException('quota','QuotaExceededError');
+     return original.call(this,k,v);
+   };
+ });
+ await page.locator('#like').click();
+ await expect(page.locator('#status')).toHaveText('error:unavailable');
+ await expect(page.locator('#card')).toHaveText('台南展');
+ expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+});
+test('real Chromium: Discover undo refuses a different saved value',async({page})=>{
+ await bootDiscoverDraft(page);
+ await page.locator('#like').click();
+ await expect(page.locator('#status')).toHaveText('advanced');
+ await page.evaluate(()=>{
+   localStorage.setItem('taiwan_art_favs',JSON.stringify({
+     discover_a:{title:'別の更新済みタイトル',museum:'M'}
+   }));
+ });
+ await page.locator('#undo').click();
+ await expect(page.locator('#status')).toHaveText('error:stale_undo');
+ await expect(page.locator('#card')).toHaveText('次の展示');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).discover_a.title)).toBe('別の更新済みタイトル');
+});
