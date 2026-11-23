@@ -54,6 +54,75 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
 
+    def test_two_authenticated_clients_stale_cas_then_additive_retry(self):
+        """Two cookies for one owner: stale write fails, fresh additive retry preserves both."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+
+        owner="http-two-devices-owner"
+        tokens=("http-device-a-token","http-device-b-token")
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                    (owner,))
+                for token in tokens:
+                    cur.execute(
+                        "INSERT INTO tan_private.browser_sessions "
+                        "(token_hash,sender_id,expires_at) "
+                        "VALUES (%s,%s,now()+interval '1 hour')",
+                        (token_digest(token),owner))
+
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        url="/api/private-subscribers/v2/changes"
+        state_url="/api/private-subscribers/v2/state"
+        headers={"Origin":"https://example.test"}
+
+        with app.test_client() as a, app.test_client() as b:
+            a.set_cookie(COOKIE_NAME,tokens[0])
+            b.set_cookie(COOKIE_NAME,tokens[1])
+            initial_a=a.get(state_url)
+            initial_b=b.get(state_url)
+            self.assertEqual(initial_a.status_code,200)
+            self.assertEqual(initial_b.status_code,200)
+            self.assertEqual(initial_a.json["revision"],0)
+            self.assertEqual(initial_b.json["revision"],0)
+
+            first=a.post(url,json={"base_revision":0,"changes":{
+                "favs":{"device-a-fav":{"set":{"title":"A"}}},"visited":{}}},
+                headers=headers)
+            self.assertEqual(first.status_code,200)
+            self.assertEqual(first.json["revision"],1)
+
+            stale=b.post(url,json={"base_revision":0,"changes":{
+                "favs":{},"visited":{"device-b-visited":{
+                    "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
+                headers=headers)
+            self.assertEqual(stale.status_code,409)
+            self.assertEqual(stale.json,{"error":"stale_revision"})
+
+            refreshed=b.get(state_url)
+            self.assertEqual(refreshed.status_code,200)
+            self.assertEqual(refreshed.json["revision"],1)
+            self.assertEqual(set(refreshed.json["favs"]),{"device-a-fav"})
+            retry=b.post(url,json={"base_revision":1,"changes":{
+                "favs":{},"visited":{"device-b-visited":{
+                    "set":{"date":"2026-11-23T00:00:00.000Z","title":"B"}}}}},
+                headers=headers)
+            self.assertEqual(retry.status_code,200)
+            self.assertEqual(retry.json["revision"],2)
+            self.assertEqual(set(retry.json["favs"]),{"device-a-fav"})
+            self.assertEqual(set(retry.json["visited"]),{"device-b-visited"})
+            final_a=a.get(state_url)
+            self.assertEqual(final_a.status_code,200)
+            self.assertEqual(final_a.json,retry.json)
+
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
         import psycopg
