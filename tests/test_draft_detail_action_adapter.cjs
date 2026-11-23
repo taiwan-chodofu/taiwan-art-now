@@ -40,3 +40,31 @@ test("detail unavailable Web Locks never announce a saved bookmark",async()=>{
  assert.deepEqual(x.events.map(e=>e[0]),["failure"]);
  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
 });
+
+test("rapid repeated detail taps do not toggle twice while first write is pending",async()=>{
+ const data={taiwan_art_favs:"{}",taiwan_art_visited:"{}"},events=[];
+ let release;
+ const gate=new Promise(resolve=>{release=resolve;});
+ const storage={getItem:k=>data[k]??null,setItem:(k,v)=>{data[k]=v;}};
+ const locks={request:async(_name,_opts,fn)=>{await gate;return fn();}};
+ const adapter=create({storage,locks,key:"ex_1",metadata:{title:"展覽"},
+  onRender:()=>events.push("render"),onAnalytics:()=>events.push("analytics"),
+  onNotify:()=>events.push("notify")});
+ const first=adapter.toggle("favs");
+ const second=await adapter.toggle("favs");
+ assert.equal(second.status,"busy");
+ assert.deepEqual(events,[]);
+ assert.deepEqual(JSON.parse(data.taiwan_art_favs),{});
+ release();
+ assert.equal((await first).status,"written_under_cooperative_lock");
+ assert.ok(JSON.parse(data.taiwan_art_favs).ex_1);
+ assert.deepEqual(events,["render","analytics","notify"]);
+});
+
+test("independent detail buttons retain both states when writes are serialized",async()=>{
+ const x=fixture();
+ const results=await Promise.all([x.adapter.toggle("favs"),x.adapter.toggle("visited")]);
+ assert.deepEqual(results.map(r=>r.status),["written_under_cooperative_lock","written_under_cooperative_lock"]);
+ assert.ok(JSON.parse(x.data.taiwan_art_favs).ex_1);
+ assert.ok(JSON.parse(x.data.taiwan_art_visited).ex_1);
+});
