@@ -420,14 +420,15 @@ test("three exhibitions can be confirmed sequentially without stale revisions or
    headers:{get:k=>k==="content-type"?"application/json":"no-store"},
    json:async()=>({revision,favs:structuredClone(entries),visited:{}})};}});
  for(let i=0;i<3;i++){
-  const selects=elements(container,"select").filter(x=>!x.removed && x.events.change);
-  const current=selects.at(-1);
+  const live=(root,tag)=>root.removed?[]:[...(root.tag===tag?[root]:[]),...root.children.flatMap(child=>live(child,tag))];
+  const selects=live(container,"select").filter(x=>x.events.change);
+  const current=selects[0];
   current.value="keep_saved";current.events.change();
-  const confirm=elements(container,"button").filter(x=>!x.removed && x.textContent==="選択した展示を確認").at(-1);
+  const confirm=live(container,"button").find(x=>x.textContent==="選択した展示を確認");
   await confirm.events.click();
   assert.equal(posts,(i+1)*2);
   if(i<2){
-   const next=elements(container,"button").filter(x=>!x.removed && x.textContent==="残りの展示を確認").at(-1);
+   const next=live(container,"button").find(x=>x.textContent==="残りの展示を確認");
    await next.events.click();
    assert.equal(posts,(i+1)*2);
   }
