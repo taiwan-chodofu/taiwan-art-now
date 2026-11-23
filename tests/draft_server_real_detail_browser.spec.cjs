@@ -36,3 +36,34 @@ test('real detail markup: isolated server-first save does not invoke legacy hand
  const result=await page.evaluate(()=>({state:window.__state,events:window.__renders,local:localStorage.getItem('taiwan_art_favs')}));
  expect(result.state.favs.ex_1.deleted).toBe(false);expect(result.events).toHaveLength(1);expect(result.local).toBeNull();
 });
+
+test('real Discover markup: server-first want action never writes local exhibition map',async({page})=>{
+ const discover=fs.readFileSync(path.resolve(__dirname,'../templates/discover.html'),'utf8');
+ const like=discover.match(/<button class="like-btn" id="likeBtn">[\\s\\S]*?<\\/button>/);
+ const seen=discover.match(/<button class="visited-btn" id="visitedBtn">[\\s\\S]*?<\\/button>/);
+ if(!like||!seen)throw Error('actual Discover action markup changed');
+ const markup=(like[0]+seen[0]).replace(/{{[\\s\\S]*?}}/g,'Save');
+ await page.route('**/discover-server-staging',r=>r.fulfill({status:200,contentType:'text/html',body:'<!doctype html><meta charset="utf-8">'+markup+'<p id="notice"></p>'}));
+ await page.goto('http://127.0.0.1:8765/discover-server-staging');
+ await page.evaluate(()=>{localStorage.removeItem('taiwan_art_favs');localStorage.removeItem('taiwan_art_visited');});
+ let state={revision:0,favs:{},visited:{}};
+ await page.route('**/api/private-subscribers/v2/**',route=>{
+  const req=route.request();
+  if(req.method()==='GET')return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(state)});
+  const data=req.postDataJSON();
+  if(data.base_revision!==state.revision)return route.fulfill({status:409,body:'{}'});
+  state={revision:1,favs:{a:{revision:1,deleted:false,value:{title:'A'}}},visited:{}};
+  return route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(state)});
+ });
+ for(const name of ['draft_versioned_sync.js','draft_authenticated_state.js','draft_authenticated_writer.js','draft_server_page_action.js','draft_server_button_bridge.js'])await page.addScriptTag({path:path.resolve(__dirname,'../static/js',name)});
+ await page.evaluate(()=>{
+  window.__renders=[];
+  window.__bridge=TanDraftServerButtonBridge.mount({win:window,fetchImpl:fetch.bind(window),lang:'ja',notice:document.getElementById('notice'),buttons:[
+   {element:document.getElementById('likeBtn'),kind:'favs',key:'a',action:'set',value:{title:'A'},expectedRevision:0}
+  ],onRender:x=>__renders.push(x)});
+ });
+ await page.locator('#likeBtn').click();
+ await expect(page.locator('#notice')).toContainText('サーバーに保存');
+ expect(state.favs.a.deleted).toBe(false);
+ expect(await page.evaluate(()=>({favs:localStorage.getItem('taiwan_art_favs'),visited:localStorage.getItem('taiwan_art_visited'),renders:__renders.length}))).toEqual({favs:null,visited:null,renders:1});
+});
