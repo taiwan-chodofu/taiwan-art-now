@@ -36,8 +36,8 @@
     // Internal identifiers are not meaningful exhibition names. A trusted
     // title must be supplied by the calling view; never display raw keys.
     const title=result.exhibitionTitles&&
-      Object.prototype.hasOwnProperty.call(result.exhibitionTitles,item.key)
-      ?result.exhibitionTitles[item.key]:null;
+      Object.prototype.hasOwnProperty.call(result.exhibitionTitles,item.kind+":"+item.key)
+      ?result.exhibitionTitles[item.kind+":"+item.key]:null;
     row.textContent=typeof title==="string"&&title.trim()
       ?title:"展覽 "+(index+1);
     list.appendChild(row);
