@@ -39,7 +39,8 @@
   const specificReason=singleCommitted?reason:null;
   const recordStatus=specificReason==="deleted_on_server"?"saved_server_record_deleted"
    :specificReason==="different_server_value"?"saved_server_record_different"
-   :"saved_server_record_unconfirmed";
+   :singleCommitted?"saved_server_record_unconfirmed"
+   :"saved_server_multiple_records_unconfirmed";
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
     ?{...result,status:"saved_server_verified_local_changed"}
