@@ -93,3 +93,42 @@ test("successful review confirmation cannot be submitted twice with a stale revi
   await x.instance.submit();
   assert.equal(x.calls.length, 2);
 });
+
+test("ambiguous consume network failure locks review and prevents duplicate confirmation", async () => {
+  const data = { taiwan_art_favs: JSON.stringify({ a: fav }), taiwan_art_visited: "{}" };
+  const storage = { getItem: key => data[key] };
+  const calls = [];
+  const container = new Element("main");
+  const instance = mount({ container, report, doc, serverState, storage,
+    localSnapshot: read(storage).snapshot,
+    request: async (url) => {
+      calls.push(url);
+      if (url.endsWith("/issue")) return { token: "synthetic" };
+      throw Error("response lost after server may have committed");
+    } });
+  const select = elements(container, "select")[0];
+  select.value = "keep_saved"; select.events.change();
+  const button = elements(container, "button")[0];
+  await button.events.click();
+  assert.equal(calls.length, 2);
+  assert.equal(button.disabled, true);
+  assert.match(elements(container, "p").map(x => x.textContent).join(" "), /再送信せず/);
+  await button.events.click();
+  await instance.submit();
+  assert.equal(calls.length, 2);
+});
+test("failed token issue does not allow stale review to be resubmitted", async () => {
+  const data = { taiwan_art_favs: JSON.stringify({ a: fav }), taiwan_art_visited: "{}" };
+  const storage = { getItem: key => data[key] };
+  let calls = 0;
+  const container = new Element("main");
+  const instance = mount({ container, report, doc, serverState, storage,
+    localSnapshot: read(storage).snapshot,
+    request: async () => { calls++; return {}; } });
+  const select = elements(container, "select")[0];
+  select.value = "keep_saved"; select.events.change();
+  await instance.submit();
+  await instance.submit();
+  assert.equal(calls, 1);
+  assert.equal(elements(container, "button")[0].disabled, true);
+});
