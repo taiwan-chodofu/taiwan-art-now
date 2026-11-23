@@ -317,7 +317,7 @@ test("confirmed save automatically refreshes and lists only remaining tombstone 
  assert.equal(posts,2);
  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/あと1件、確認が必要/);
  const pending=elements(container,"div").filter(x=>x.attributes?.["aria-label"]==="確認が必要な展示")[0];
- assert.deepEqual(elements(pending,"p").map(x=>x.textContent),["b（観たい）"]);
+ assert.deepEqual(elements(pending,"p").map(x=>x.textContent),["A（観たい）"]);
  const next=elements(container,"button").find(x=>x.textContent==="残りの展示を確認");
  assert.equal(next.disabled,false);
  await next.events.click();
@@ -459,4 +459,10 @@ test("next review refuses changed local records without sending another write",a
  assert.equal(posts,2);
  assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/この端末の記録が変わりました/);
  assert.equal(next.disabled,true);
+});
+
+test("review shows the exhibition title instead of an opaque storage key",()=>{
+ const x=setup();
+ const prompts=elements(x.container,"p").map(node=>node.textContent);
+ assert.equal(prompts.some(line=>line.includes("Aを「観たい」リストに残しますか？")),true);
 });
