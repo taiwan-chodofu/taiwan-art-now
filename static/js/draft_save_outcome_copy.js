@@ -26,6 +26,12 @@
    action:"請保留這個頁面。如果還開著其他 Taiwan Art Now 頁面，請先關閉那些頁面，再回來查看「想看」和「看過」清單。確認前請不要刪除紀錄。",
    requiresReview:true
   }),
+  saved_server_verified_local_changed:Object.freeze({
+   heading:"展覽已成功儲存",
+   detail:"已再次確認這筆展覽保存在你的帳號中。這台裝置的清單可能還沒顯示最新內容。",
+   action:"你可以繼續瀏覽。如果想查看這筆展覽，請到「想看」或「看過」清單確認。",
+   requiresReview:false
+  }),
   unknown_commit:Object.freeze({
    heading:"目前無法確認是否儲存成功",
    detail:"送出後沒有收到可靠的儲存結果，因此不能判定成功或失敗。",
