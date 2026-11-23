@@ -73,3 +73,13 @@ test("cached tab changes exact saved metadata before UI callback: fail closed",a
  assert.deepEqual(x.events,[]);
  assert.deepEqual(failures,["uncertain_write"]);
 });
+
+test("unsafe property names never write or report a saved exhibition",async()=>{
+ for(const key of ["__proto__","constructor","prototype"]){
+  const x=fixture();
+  const r=await commit({...x,kind:"favs",key,action:"set",value:fav});
+  assert.equal(r.status,"not_authorized");
+  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
+  assert.deepEqual(x.events,[]);
+ }
+});
