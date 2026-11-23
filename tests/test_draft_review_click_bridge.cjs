@@ -289,3 +289,35 @@ test("choosing remove does not misleadingly claim removal succeeded",async()=>{
  assert.equal(x.calls.length,0);
  assert.match(elements(x.container,"p").map(x=>x.textContent).join(" "),/まだ反映されていません/);
 });
+
+test("confirmed save automatically refreshes and lists only remaining tombstone conflicts",async()=>{
+ const data={taiwan_art_favs:JSON.stringify({a:fav,b:fav,c:fav}),taiwan_art_visited:"{}"};
+ const storage={getItem:key=>data[key]};
+ const report3={status:"needs_review",review:["a","b","c"].map(key=>({
+   kind:"favs",key,reason:"explicit_deletion_conflict"}))};
+ const server3={revision:3,favs:Object.fromEntries(["a","b","c"].map(key=>
+   [key,{value:null,deleted:true,revision:2}])),visited:{}};
+ let gets=0,posts=0;
+ const container=new Element("main");
+ const instance=mount({container,report:report3,doc,serverState:server3,storage,
+  localSnapshot:read(storage).snapshot,
+  request:async url=>{posts++;return url.endsWith("/issue")?{token:"synthetic"}:{revision:4};},
+  fetchImpl:async(path,opts)=>{
+   gets++;assert.equal(opts.method,"GET");
+   return {ok:true,status:200,headers:{get:k=>k==="content-type"?"application/json":"no-store"},
+    json:async()=>({revision:4,favs:{
+     a:{value:fav,deleted:false,revision:4},
+     b:{value:null,deleted:true,revision:2},
+     c:{value:fav,deleted:false,revision:4}},visited:{}})};
+  }});
+ const select=elements(container,"select")[0];
+ select.value="keep_saved";select.events.change();
+ await instance.submit();
+ assert.equal(gets,1);
+ assert.equal(posts,2);
+ assert.match(elements(container,"p").map(x=>x.textContent).join(" "),/あと1件、確認が必要/);
+ const pending=elements(container,"div").filter(x=>x.attributes?.["aria-label"]==="確認が必要な展示")[0];
+ assert.deepEqual(elements(pending,"p").map(x=>x.textContent),["b（観たい）"]);
+ await instance.submit();
+ assert.equal(posts,2);
+});
