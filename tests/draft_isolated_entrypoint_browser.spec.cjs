@@ -290,3 +290,31 @@ test('failed fresh-state refresh removes old action listeners and never writes',
  await page.locator('#visitedBtn').dispatchEvent('click');
  expect(writes).toBe(0);
 });
+
+test('out-of-order refresh responses cannot overwrite newer button state',async({page})=>{
+ let reads=0;
+ let releaseOld;
+ const oldPending=new Promise(resolve=>{releaseOld=resolve;});
+ await page.route('**/api/private-subscribers/v2/**',async route=>{
+  if(route.request().method()==='POST')return route.fulfill({status:500,body:'{}'});
+  reads++;
+  if(reads===2){
+   await oldPending;
+   return route.fulfill(response({revision:1,favs:{},visited:{}})).catch(()=>{});
+  }
+  return route.fulfill(response(reads>=3
+   ?{revision:2,favs:{art:{revision:2,deleted:false,value:true}},visited:{}}
+   :{revision:1,favs:{},visited:{}}));
+ });
+ await page.goto(url);
+ await expect(page.locator('#favBtn')).toBeEnabled();
+ const old=page.evaluate(()=>window.__draftStagingRefresh());
+ await expect.poll(()=>reads).toBe(2);
+ const newer=await page.evaluate(()=>window.__draftStagingRefresh());
+ expect(newer).toBe(true);
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+ releaseOld();
+ expect(await old).toBe(false);
+ await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+ await expect(page.locator('#favBtn')).toBeEnabled();
+});
