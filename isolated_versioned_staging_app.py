@@ -13,7 +13,7 @@ def create_isolated_staging_app(*, db_connect, canonical_origin, environment):
     if not isinstance(canonical_origin, str) or not canonical_origin.startswith(
         ("http://127.0.0.1:", "http://localhost:")
     ):
-        raise ValueError("Staging canonical origin must be loopback")
+        raise ValueError("Staging canonical origin must be HTTPS loopback")
     app = Flask("tan_versioned_isolated_staging")
     app.config.update(TESTING=True, TAN_PRIVATE_DB_CONNECT=db_connect,
                       TAN_CANONICAL_ORIGIN=canonical_origin)
