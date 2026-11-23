@@ -50,11 +50,11 @@ test('guarded real template: stale undo preserves a newer favorite',async({page}
  await boot(page);
  await page.locator('#likeBtn').click();
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
- await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere'}})));
+ await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',JSON.stringify({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}})));
  await page.locator('#undoBtn').click();
  await expect(page.locator('#discoverActionError')).toContainText('変更されたため');
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
- expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({a:{title:'Updated elsewhere'}});
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({a:{title:'Updated elsewhere',museum:'Museum',dates:'2026',url:'/a',region:'臺南',event:''}});
 });
 
 test('guarded real template: rapid second action during fly-out cannot save the same card twice',async({page})=>{
