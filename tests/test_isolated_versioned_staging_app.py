@@ -8,7 +8,7 @@ class IsolatedStagingFactoryTests(unittest.TestCase):
             with self.subTest(env=env):
                 with self.assertRaises(ValueError):
                     create_isolated_staging_app(db_connect=connector,
-                        canonical_origin="http://127.0.0.1:8765", environment=env)
+                        canonical_origin="https://127.0.0.1", environment=env)
 
     def test_refuses_external_origin(self):
         with self.assertRaises(ValueError):
@@ -30,13 +30,13 @@ class IsolatedStagingFactoryTests(unittest.TestCase):
                     def fetchone(self): return None
                 return Cursor()
         app=create_isolated_staging_app(db_connect=FakeConnection,
-            canonical_origin="http://127.0.0.1:8765", environment="isolated-staging")
+            canonical_origin="https://127.0.0.1", environment="isolated-staging")
         routes={rule.rule for rule in app.url_map.iter_rules() if rule.rule!="/static/<path:filename>"}
         self.assertEqual(routes,{"/api/private-subscribers/v2/state",
                                  "/api/private-subscribers/v2/changes"})
         with app.test_client() as client:
             response=client.get("/api/private-subscribers/v2/state",
-                headers={"Origin":"http://127.0.0.1:8765"})
+                headers={"Origin":"https://127.0.0.1"})
             self.assertEqual(response.status_code,403)
 
 
