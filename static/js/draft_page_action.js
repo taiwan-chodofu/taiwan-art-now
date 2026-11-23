@@ -9,11 +9,11 @@
  else root.TanDraftPageAction=api;
 })(typeof globalThis!=="undefined"?globalThis:this,function(writer){
  "use strict";
- async function commit({storage,locks,kind,key,action,value,onCommitted,onFailure}={}){
+ async function commit({storage,locks,kind,key,action,value,expectedValue,onCommitted,onFailure}={}){
    if(!storage||!locks||!["favs","visited"].includes(kind)||
-     typeof key!=="string"||!key||!["toggle","set","remove"].includes(action))
+     typeof key!=="string"||!key||!["toggle","set","remove","remove_if_equal"].includes(action))
      return {status:"invalid_request"};
-   const result=await writer.mutate({storage,locks,kind,key,action,value});
+   const result=await writer.mutate({storage,locks,kind,key,action,value,expectedValue});
    if(result.status==="written_under_cooperative_lock"){
      // Revalidate the exact committed item before announcing UI success.
      // Cached tabs may write outside the cooperative lock after writer readback.
