@@ -63,10 +63,10 @@
    if(reviewDisposed)return;
    confirmBox.hidden=true;
    notice.textContent=result.status==="server_confirmed"
-    ?"「観たい」を保存しました。"
+    ?(intent.kind==="visited"?"「観た」を保存しました。":"「観たい」を保存しました。")
     :result.status==="write_outcome_unknown"
-     ?"保存できたか確認できません。ページを再読み込みして確認してください。"
-     :"登録状況が変わりました。ページを再読み込みして確認してください。";
+     ?"保存できたか確認できません。「最新の登録を表示する」を押して確認してください。"
+     :"登録状況が変わりました。「最新の登録を表示する」を押して確認してください。";
    reloadState.hidden=false;
    if(result.status==="server_confirmed"){
     if(reviewMount)reviewMount.dispose();
