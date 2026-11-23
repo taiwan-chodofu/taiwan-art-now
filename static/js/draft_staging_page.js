@@ -13,14 +13,15 @@
  function create({win,fetchImpl,notice,lang='ja',items,onAnalytics}={}){
   if(!win||typeof fetchImpl!=='function'||!notice||!Array.isArray(items)||!items.length)
    throw Error('invalid staging page');
-  let current=null,closed=false,refreshing=false;
+  let current=null,closed=false,refreshGeneration=0;
   const message=(value)=>{notice.hidden=false;notice.textContent=value;notice.setAttribute('role','status');};
   const disable=()=>items.forEach(i=>{i.element.disabled=true;i.element.setAttribute('aria-disabled','true');});
   async function refresh(state){
    if(closed)return false;
+   const generation=++refreshGeneration;
    disable();
    const latest=state?{status:'ready',state}:await reader.read({fetchImpl});
-   if(closed)return false;
+   if(closed||generation!==refreshGeneration)return false;
    if(latest.status!=='ready'){message(lang==='zh'?'無法確認最新收藏狀態，請重新整理頁面。':'最新の登録状況を確認できません。ページを再読み込みしてください。');return false;}
    if(!Number.isSafeInteger(latest.state.revision)||latest.state.revision<0){message('Invalid server revision');return false;}
    const descriptors=items.map(item=>{
@@ -40,7 +41,7 @@
    return true;
   }
   disable();
-  return {start:()=>refresh(),dispose:()=>{closed=true;if(current)current.dispose();disable();}};
+  return {start:()=>refresh(),dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
  }
  return {create};
 });
