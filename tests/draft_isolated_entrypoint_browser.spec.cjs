@@ -282,11 +282,8 @@ test('failed fresh-state refresh removes old action listeners and never writes',
  });
  await page.goto(url);
  await expect(page.locator('#favBtn')).toBeEnabled();
- const refreshed=await page.evaluate(()=>window.__draftLifecycle?.refresh?.());
- // The fixture may keep its lifecycle private: trigger its existing manual refresh control.
- if(refreshed===undefined){
-  await page.locator('#reloadState').click({force:true});
- }
+ const refreshed=await page.evaluate(()=>window.__draftStagingRefresh());
+ expect(refreshed).toBe(false);
  await expect(page.locator('#favBtn')).toBeDisabled();
  await expect(page.locator('#visitedBtn')).toBeDisabled();
  await page.locator('#favBtn').dispatchEvent('click');
