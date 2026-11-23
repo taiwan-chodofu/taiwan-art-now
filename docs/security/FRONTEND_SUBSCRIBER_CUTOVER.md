@@ -151,3 +151,7 @@ CI run 45086577553: synthetic Python, disposable PostgreSQL, and Node browser-sy
 ## Real Chromium success and isolated fixture follow-up
 
 CI run 45086690240 passed all four jobs, including actual Playwright Chromium E2E. Its tests were synthetic draft interactions, not production template coverage. Subsequently switched the E2E entry page from the repository root to `tests/draft_browser_fixture.html`, an inert blank HTML page without application scripts; this avoids inadvertently loading any app behavior when running the local test origin. Fixture-specific CI run 45086799178 was queued at the time of this note. Production pages remain unmodified.
+
+## Cached-tab destructive overwrite regression (known unresolved blocker)
+
+CI 45086841219 passed all four jobs with the dedicated inert HTML fixture. Added a real Chromium two-tab test in `tests/draft_browser_e2e.spec.cjs` that intentionally snapshots the legacy whole-map before a cooperative writer adds an exhibition, then simulates a cached old tab writing its stale map back. The test asserts the newer item is **lost**: this is a documented reproduction of a dangerous limitation, **not a safety success**. Before any rollout, choose a migration strategy that cannot treat the legacy map as authoritative over verified server records, and define a recovery/old-tab policy. Never enable production sync solely because this test passes.
