@@ -65,3 +65,29 @@ test('real detail buttons: quota error leaves buttons unchanged and sends no ana
  expect(await page.evaluate(()=>__events)).toEqual(['failure']);
  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
 });
+
+test('real detail staging: navigation away while save is pending suppresses stale callbacks',async({page})=>{
+ await boot(page);
+ await page.evaluate(()=>{
+  window.__releaseLock=null;
+  const gate=new Promise(resolve=>{window.__releaseLock=resolve;});
+  window.__events=[];
+  window.__adapter=TanDraftDetailActionAdapter.create({
+   storage:localStorage,
+   locks:{request:async(_name,_options,fn)=>{await gate;return fn();}},
+   key:exId,metadata:{title:'展覽',museum:'M',dates:'2026',url:'/ex'},
+   onRender:()=>{__events.push('render');updateBtns();},
+   onAnalytics:()=>__events.push('analytics'),
+   onNotify:()=>__events.push('notify'),
+   onFailure:()=>__events.push('failure')
+  });
+  window.toggleFav=()=>__adapter.toggle('favs');
+  window.__pending=window.toggleFav();
+  window.addEventListener('pagehide',()=>window.__adapter.dispose(),{once:true});
+ });
+ await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+ await page.evaluate(()=>window.__releaseLock());
+ expect(await page.evaluate(()=>window.__pending)).toMatchObject({status:'written_under_cooperative_lock'});
+ expect(await page.evaluate(()=>window.__events)).toEqual([]);
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).ex_1.title)).toBe('展覽');
+});
