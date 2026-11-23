@@ -101,10 +101,13 @@ test("busy-end callback exception cannot turn persisted success into failure", a
 test("non-cooperating writer replacing same key metadata cannot produce success UI",async()=>{
  const x=setup();
  const originalGet=x.storage.getItem;
- let reads=0;
+ let readsAfterSet=0;
+ const originalSet=x.storage.setItem;
+ let didSet=false;
+ x.storage.setItem=(k,v)=>{originalSet(k,v);didSet=true;};
  x.storage.getItem=k=>{
    const raw=originalGet(k);
-   if(k==="taiwan_art_favs"&&JSON.parse(raw||"{}").a&&++reads>=2){
+   if(k==="taiwan_art_favs"&&didSet&&++readsAfterSet>=2){
      return JSON.stringify({a:{title:"Changed by cached tab",museum:"M"}});
    }
    return raw;
