@@ -138,3 +138,42 @@ test('detail staging: Taiwanese Mandarin failure guidance and successful retry c
  await expect(page.locator('#detailSaveError')).toBeHidden();
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).ex_1.title)).toBe('展覽');
 });
+
+test('staging bridge: buttons, localized error, retry, analytics, disposal',async({page})=>{
+ await boot(page);
+ await page.addScriptTag({url:'http://127.0.0.1:8765/static/js/draft_detail_staging_bridge.js'});
+ await page.evaluate(()=>{
+  window.__bridgeEvents=[];
+  document.getElementById('favBtn').removeAttribute('onclick');
+  document.getElementById('visitedBtn').removeAttribute('onclick');
+  const original=Storage.prototype.setItem;
+  window.__failOnce=true;
+  Storage.prototype.setItem=function(k,v){
+   if(k==='taiwan_art_favs'&&window.__failOnce){window.__failOnce=false;throw new DOMException('quota','QuotaExceededError');}
+   return original.call(this,k,v);
+  };
+  window.__bridge=TanDraftDetailStagingBridge.mount({
+   win:window,storage:localStorage,locks:navigator.locks,key:exId,lang:'zh',
+   metadata:{title:'展覽',museum:'M',dates:'2026',url:'/ex'},
+   buttons:[{kind:'favs',element:document.getElementById('favBtn')},{kind:'visited',element:document.getElementById('visitedBtn')}],
+   errorElement:document.getElementById('detailSaveError'),
+   render:()=>{__bridgeEvents.push('render');updateBtns();},
+   analytics:()=>__bridgeEvents.push('analytics'),
+   notify:()=>__bridgeEvents.push('notify')
+  });
+ });
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#detailSaveError')).toContainText('請確認裝置儲存空間');
+ await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
+ expect(await page.evaluate(()=>__bridgeEvents)).toEqual([]);
+ await page.locator('#favBtn').click();
+ await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+ await expect(page.locator('#detailSaveError')).toBeHidden();
+ await page.locator('#visitedBtn').click();
+ await expect(page.locator('#visitedBtn')).toHaveClass(/saved/);
+ expect(await page.evaluate(()=>__bridgeEvents)).toEqual(['render','analytics','notify','render','analytics','notify']);
+ await page.evaluate(()=>__bridge.dispose());
+ await page.locator('#favBtn').click();
+ expect(await page.evaluate(()=>__bridgeEvents)).toHaveLength(6);
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')).ex_1.title)).toBe('展覽');
+});
