@@ -57,7 +57,7 @@ test("changed and missing records do not claim current save success",()=>{
 
 test("multiple uncertain records never describe one exhibition as missing",()=>{
  const copy=forResult({status:"saved_server_multiple_records_unconfirmed",serverSaved:true});
- assert.match(copy.heading,/幾筆展覽/);
+ assert.match(copy.heading,/部分展覽/);
  assert.doesNotMatch(copy.heading,/這筆展覽/);
  assert.equal(copy.requiresReview,true);
  assert.equal(forResult({status:"saved_server_multiple_records_unconfirmed"}),null);
