@@ -25,6 +25,9 @@
    if(closed)return false;
    const generation=++refreshGeneration;
    disable();
+   // A failed refresh must not leave stale click handlers mounted.
+   // Detach them before any asynchronous read, not only after success.
+   if(current){current.dispose();current=null;}
    const latest=state?{status:'ready',state}:await reader.read({fetchImpl});
    if(closed||generation!==refreshGeneration)return false;
    if(latest.status!=='ready'){message(lang==='zh'?'無法確認最新收藏狀態，請重新整理頁面。':'最新の登録状況を確認できません。ページを再読み込みしてください。');return false;}
@@ -42,7 +45,6 @@
     return {element:item.element,kind:item.kind,key:item.key,action,
       value:action==='set'?item.value:undefined,expectedRevision:latest.state.revision};
    });
-   if(current)current.dispose();
    if(closed)return false;
    current=bridge.mount({win,fetchImpl,notice,lang,buttons:descriptors,onAnalytics,
      onRefresh:async next=>{await refresh(next);}});
