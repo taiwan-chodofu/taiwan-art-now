@@ -52,6 +52,7 @@
   disable();
   let started=false;
   return {start:()=>{if(started||closed)return Promise.resolve(false);started=true;return refresh();},
+   refresh:()=>started&&!closed?refresh():Promise.resolve(false),
    dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
  }
  return {create};
