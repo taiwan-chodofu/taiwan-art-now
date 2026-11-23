@@ -312,6 +312,17 @@
         sessionStorage.setItem(DECK_ORDER_KEY, JSON.stringify(deck.map(function(c) { return _normalizeKey(c.stable_key); })));
       } catch (e) {}
     }
+    // The remaining-card pool is authoritative on reload, including an empty
+    // array. A saved empty deck must not silently restart the session.
+    try {
+      var remainingOrder = JSON.parse(sessionStorage.getItem(SOURCE_ORDER_KEY) || 'null');
+      if (Array.isArray(remainingOrder)) {
+        var remainingByKey = {};
+        ALL_CARDS.forEach(function(card) { remainingByKey[_normalizeKey(card.stable_key)] = card; });
+        deck = remainingOrder.map(function(key) { return remainingByKey[key]; })
+          .filter(function(card) { return card && !visitedKeys[_normalizeKey(card.stable_key)]; });
+      }
+    } catch (e) {}
     saveDeckOrder();
 
     var actionHistory = []; // {card, action} for undo
