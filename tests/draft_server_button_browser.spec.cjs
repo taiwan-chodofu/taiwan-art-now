@@ -43,6 +43,7 @@ test('Chromium draft: second button with stale revision asks for reload, does no
 test('Chromium draft: failed POST never announces success or auto-retries',async({page})=>{
  await boot(page,{failPost:true});await page.locator('#want').click();
  await expect(page.locator('#notice')).toContainText('保存できたか確認できません');
+ await expect(page.locator('#want')).toBeDisabled();
  expect(await page.evaluate(()=>window.__renderEvents.length)).toBe(0);
 });
 test('Chromium draft: legacy inline onclick blocks staging mount',async({page})=>{
