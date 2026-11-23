@@ -12,12 +12,12 @@ function fetchState(state){
 }
 const base={revision:3,favs:{},visited:{}};
 test("detail check reports both saved collections without any writes",async()=>{
- const state={...base,favs:{x:{value:1,deleted:false}},visited:{x:{value:1,deleted:false}}};
+ const state={...base,favs:{x:{value:{title:"X"},deleted:false,revision:3}},visited:{x:{value:{title:"X"},deleted:false,revision:3}}};
  const result=await check({fetchImpl:fetchState(state),exhibitionKey:"x"});
  assert.deepEqual(result,{status:"saved",revision:3,collections:["favs","visited"]});
 });
 test("detail check distinguishes explicit deletion from absence",async()=>{
- const deleted=await check({fetchImpl:fetchState({...base,favs:{x:{deleted:true}}}),exhibitionKey:"x"});
+ const deleted=await check({fetchImpl:fetchState({...base,favs:{x:{deleted:true,revision:3}}}),exhibitionKey:"x"});
  assert.equal(deleted.status,"removed");
  const missing=await check({fetchImpl:fetchState(base),exhibitionKey:"x"});
  assert.equal(missing.status,"not_found");
