@@ -37,3 +37,9 @@ CI 45094588186 succeeded for the two-device Chromium mock-CAS and explicit tombs
 ## Post-write UI verification hardening
 
 The unmounted `draft_action_commit.js` now verifies exact persisted JSON value equality for a `set`, not only presence of the exhibition key. A regression test injects a cached-tab-style same-key metadata replacement between the cooperative writer's successful readback and the UI adapter's final read. The adapter must report `uncertain_write` without firing `onCommitted`. This narrows false-success reporting but **does not prevent or repair** the stale-tab overwrite; it is not a substitute for a rollout-wide writer migration or independent server backup. CI pending.
+
+## Combined cached-tab regression and release decision
+
+Added a Chromium test with two actual tabs sharing browser localStorage: a modern cooperative writer saves an item, a separately retained append-only checkpoint records the verified snapshot, and an old tab subsequently overwrites the whole map from a stale copy. The loss detector must report the missing modern item and the old-tab addition as review-only, with **no automatic restoration**. This deliberately confirms the safety gap remains, rather than presenting detection as prevention. The checkpoint is localStorage-only and not durable against browser storage eviction, clearing, or device loss.
+
+**Cutover must remain blocked** until (a) every template writer and main-page migration path are coordinated, (b) an independent owner-authenticated server-side preservation/backup path is available and tested, (c) stale cached/PWA tabs have an explicit safe handling and rollback plan, and (d) deletion intent and review are kept distinct from accidental absence. CI for the combined test pending. No live subscriber data or production routes were changed.
