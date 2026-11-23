@@ -21,7 +21,7 @@
         !Number.isSafeInteger(serverState.revision) ||
         !localSnapshot || !storage || typeof request !== "function")
       throw new Error("Invalid review context");
-    const review = ui.createReview(container, report, doc);
+    const review = ui.createReview(container, report, doc, localSnapshot);
     if (!review.rendered) return { rendered: false, dispose: review.dispose };
     let busy = false;
     let disposed = false;
@@ -140,7 +140,10 @@
               }
               for (const item of pending) {
                 const label = doc.createElement("p");
-                label.textContent = item.key + (item.kind === "favs" ? "（観たい）" : "（観た）");
+                const saved = localSnapshot[item.kind] && localSnapshot[item.kind][item.key];
+                const title = saved && typeof saved.title === "string" && saved.title.trim()
+                  ? saved.title.trim() : item.key;
+                label.textContent = title + (item.kind === "favs" ? "（観たい）" : "（観た）");
                 remainingList.appendChild(label);
               }
             } else {
