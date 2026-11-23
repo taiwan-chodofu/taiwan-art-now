@@ -107,3 +107,30 @@ test('legacy cached tab bypassing Web Locks can still overwrite newer data (know
     expect(keys).toEqual(['older']);
   } finally { await context.close(); }
 });
+
+test('real Chromium: checkpoint survives a stale whole-map overwrite for review only', async ({page}) => {
+  await boot(page);
+  await page.addScriptTag({path:path.resolve(__dirname,'../static/js/draft_checkpoint.js')});
+  await page.addScriptTag({path:path.resolve(__dirname,'../static/js/draft_loss_detector.js')});
+  await page.locator('#fav').click();
+  await expect(page.locator('#status')).toHaveText('favs:set');
+  const result=await page.evaluate(() => {
+    const saved=TanDraftCheckpoint.capture({storage:localStorage,id:'checkpoint_browser_001'});
+    const raw=localStorage.getItem('taiwan_art_favs');
+    localStorage.setItem('taiwan_art_favs',JSON.stringify({old:{title:'Old',museum:'M'}}));
+    const loaded=TanDraftCheckpoint.load({storage:localStorage,id:'checkpoint_browser_001'});
+    const review=TanDraftLossDetector.inspect({storage:localStorage,checkpoint:loaded.snapshot});
+    return {saved:saved.status,loaded:loaded.status,review,
+      original:JSON.parse(raw).a.title,
+      current:JSON.parse(localStorage.getItem('taiwan_art_favs')),
+      checkpointExists:localStorage.getItem(TanDraftCheckpoint.PREFIX+'checkpoint_browser_001')!==null};
+  });
+  expect(result.saved).toBe('saved');
+  expect(result.loaded).toBe('ready');
+  expect(result.review.status).toBe('needs_review');
+  expect(result.review.missing).toEqual([{kind:'favs',key:'a',reason:'checkpoint_entry_missing'}]);
+  expect(result.original).toBe('台南展覽');
+  expect(result.current.a).toBeUndefined();
+  expect(result.current.old.title).toBe('Old');
+  expect(result.checkpointExists).toBe(true);
+});
