@@ -142,3 +142,17 @@ test("verified deletion adds view-exhibition link without another write",async()
  assert.equal(posts,1);
  assert.equal(gets,2);
 });
+
+test("missing server record never claims it was deleted",async()=>{
+ const local=storage();let gets=0;
+ const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
+ const missing={revision:2,favs:{},visited:{}};
+ const output=await run({storage:local,fetchImpl:async(path,options)=>{
+  if(options.method==="GET"){gets++;return response(gets===1?
+   {revision:0,favs:{},visited:{}}:missing);}
+  local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
+  return response(saved);
+ }});
+ assert.equal(output.verification.unresolved[0].reason,"not_found");
+ assert.equal(output.displayResult.status,"saved_server_record_unconfirmed");
+});
