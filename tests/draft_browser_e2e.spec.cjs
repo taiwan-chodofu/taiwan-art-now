@@ -84,3 +84,26 @@ test('real Chromium: two tabs serialize independent favorite additions', async (
     expect(keys).toEqual(['one','two']);
   } finally { await context.close(); }
 });
+
+test('legacy cached tab bypassing Web Locks can still overwrite newer data (known blocker)', async ({browser}) => {
+  const context = await browser.newContext();
+  try {
+    const modern = await context.newPage(), legacy = await context.newPage();
+    await boot(modern); await boot(legacy);
+    // Cached old code snapshots the whole map without taking the shared lock.
+    const stale = await legacy.evaluate(() => localStorage.getItem('taiwan_art_favs') || '{}');
+    const result = await modern.evaluate(() => TanDraftActionCommit.create({
+      storage: localStorage, locks: navigator.locks,
+      onCommitted(){}, onFailure(){}
+    }).commit({kind:'favs',key:'newer',action:'set',value:{title:'Newer',museum:'M'}}));
+    expect(result.status).toBe('written_under_cooperative_lock');
+    await legacy.evaluate(raw => {
+      const map = JSON.parse(raw);
+      map.older = {title:'Older',museum:'M'};
+      localStorage.setItem('taiwan_art_favs', JSON.stringify(map));
+    }, stale);
+    const keys = await modern.evaluate(() => Object.keys(JSON.parse(localStorage.getItem('taiwan_art_favs'))));
+    // This intentionally documents the unresolved unsafe old-tab behavior.
+    expect(keys).toEqual(['older']);
+  } finally { await context.close(); }
+});
