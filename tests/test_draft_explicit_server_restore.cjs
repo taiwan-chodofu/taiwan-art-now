@@ -33,3 +33,45 @@ test('uncertain POST never retries',async()=>{
  const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,reviewedRevision:1,tombstoneRevision:1,confirmed:true});
  assert.equal(result.status,'write_outcome_unknown');assert.equal(posts,1);
 });
+
+test('unauthorized fresh read never submits a write',async()=>{
+ let posts=0;
+ const fetchImpl=async(_url,options)=>{
+  if(options.method==='POST')posts++;
+  return response({},403);
+ };
+ const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,
+  reviewedRevision:1,tombstoneRevision:1,confirmed:true});
+ assert.equal(result.status,'unauthorized');assert.equal(posts,0);
+});
+test('tombstone changed while global revision is same fails closed',async()=>{
+ let posts=0;
+ const fetchImpl=async(_url,options)=>{
+  if(options.method==='POST')posts++;
+  return response({revision:2,favs:{art:{revision:2,deleted:false,value:true}},visited:{}});
+ };
+ const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,
+  reviewedRevision:2,tombstoneRevision:1,confirmed:true});
+ assert.equal(result.status,'review_expired');assert.equal(posts,0);
+});
+test('409 conflict never retries a stale restore',async()=>{
+ let posts=0;
+ const fetchImpl=async(_url,options)=>{
+  if(options.method==='POST'){posts++;return response({},409);}
+  return response(state(1));
+ };
+ const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,
+  reviewedRevision:1,tombstoneRevision:1,confirmed:true});
+ assert.equal(result.status,'review_expired');assert.equal(posts,1);
+});
+test('post-write verification mismatch never announces success',async()=>{
+ let posts=0,reads=0;
+ const fetchImpl=async(_url,options)=>{
+  if(options.method==='POST'){posts++;return response({revision:2});}
+  reads++;return response(reads===1?state(1):{
+   revision:2,favs:{art:{revision:2,deleted:false,value:false}},visited:{}});
+ };
+ const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,
+  reviewedRevision:1,tombstoneRevision:1,confirmed:true});
+ assert.equal(result.status,'write_outcome_unknown');assert.equal(posts,1);
+});
