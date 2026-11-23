@@ -193,6 +193,57 @@ class DisposablePostgresCASTests(unittest.TestCase):
             self.assertEqual(final.json["revision"],2)
             self.assertTrue(final.json["favs"]["modern"]["deleted"])
 
+    def test_fresh_revision_cannot_silently_resurrect_tombstone(self):
+        """Even after GET of latest revision, ordinary save cannot undo deletion."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+
+        owner, token = "http-tombstone-guard-owner", "http-tombstone-guard-token"
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                    (owner,))
+                cur.execute(
+                    "INSERT INTO tan_private.browser_sessions "
+                    "(token_hash,sender_id,expires_at) "
+                    "VALUES (%s,%s,now()+interval '1 hour')",
+                    (token_digest(token),owner))
+
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        with app.test_client() as client:
+            client.set_cookie(COOKIE_NAME,token)
+            path="/api/private-subscribers/v2/changes"
+            state_path="/api/private-subscribers/v2/state"
+            headers={"Origin":"https://example.test"}
+            added=client.post(path,json={"base_revision":0,"changes":{
+                "favs":{"exhibit":{"set":{"title":"Exhibit"}}},"visited":{}}},
+                headers=headers)
+            self.assertEqual(added.status_code,200)
+            deleted=client.post(path,json={"base_revision":1,"changes":{
+                "favs":{"exhibit":{"delete":True}},"visited":{}}},
+                headers=headers)
+            self.assertEqual(deleted.status_code,200)
+            latest=client.get(state_path)
+            self.assertEqual(latest.status_code,200)
+            self.assertEqual(latest.json["revision"],2)
+            self.assertTrue(latest.json["favs"]["exhibit"]["deleted"])
+
+            # This is NOT a stale revision: explicit deletion still wins.
+            resurrect=client.post(path,json={"base_revision":2,"changes":{
+                "favs":{"exhibit":{"set":{"title":"Old cached value"}}},
+                "visited":{}}},headers=headers)
+            self.assertEqual(resurrect.status_code,409)
+            final=client.get(state_path)
+            self.assertEqual(final.status_code,200)
+            self.assertEqual(final.json,latest.json)
+
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
         import psycopg
