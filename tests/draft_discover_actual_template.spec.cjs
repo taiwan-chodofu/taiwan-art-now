@@ -192,5 +192,6 @@ test('guarded real template: storage error is announced through an accessible al
  });
  await page.locator('#likeBtn').click();
  await expect(alert).toContainText('保存できませんでした');
+ await expect(alert).toContainText('もう一度押してください');
  await expect(page.locator('.card h2')).toHaveText('Exhibition A');
 });
