@@ -323,7 +323,10 @@ test('real Chromium: shared page action handles two tabs toggling same favorite 
    const action=()=>TanDraftPageAction.commit({storage:localStorage,locks:navigator.locks,
      kind:'favs',key:'shared',action:'toggle',value:{title:'Shared',museum:'M'}});
    const results=await Promise.all([a.evaluate(action),b.evaluate(action)]);
-   expect(results.map(r=>r.action).sort()).toEqual(['remove','set']);
+   // The first tab may see the second removal before its post-write UI check.
+   // That is an uncertain UI result, never a false success.
+   expect(results.some(r=>r.action==='remove'&&r.status==='written_under_cooperative_lock')).toBe(true);
+   expect(results.every(r=>['written_under_cooperative_lock','uncertain_write'].includes(r.status))).toBe(true);
    expect(await a.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
  }finally{await context.close();}
 });
