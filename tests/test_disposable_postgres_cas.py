@@ -49,6 +49,43 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
 
+    def test_two_verified_owners_are_strictly_isolated(self):
+        """No sender can read or mutate another sender's state via the store."""
+        import psycopg
+        second = "synthetic-second-owner"
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers (sender_id) "
+                    "VALUES (%s) ON CONFLICT DO NOTHING", (second,))
+            first_before = read_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner")
+            second_before = read_for_verified_sender(
+                conn, verified_sender_id=second)
+            self.assertNotIn("owner-one-private", second_before["favs"])
+            first_after = update_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner",
+                base_revision=first_before["revision"],
+                changes={"favs": {"owner-one-private": {
+                    "set": {"title": "Private owner one"}}}, "visited": {}})
+            second_after = update_for_verified_sender(
+                conn, verified_sender_id=second,
+                base_revision=second_before["revision"],
+                changes={"favs": {"owner-two-private": {
+                    "set": {"title": "Private owner two"}}}, "visited": {}})
+            self.assertIn("owner-one-private", first_after["favs"])
+            self.assertNotIn("owner-two-private", first_after["favs"])
+            self.assertIn("owner-two-private", second_after["favs"])
+            self.assertNotIn("owner-one-private", second_after["favs"])
+        with psycopg.connect(self.url) as conn:
+            first = read_for_verified_sender(
+                conn, verified_sender_id="synthetic-owner")
+            second_state = read_for_verified_sender(
+                conn, verified_sender_id=second)
+            self.assertNotIn("owner-two-private", first["favs"])
+            self.assertNotIn("owner-one-private", second_state["favs"])
+            self.assertEqual(second_state["revision"], 1)
+
     def test_concurrent_writers_only_one_succeeds(self):
         import psycopg
         barrier = threading.Barrier(8)
