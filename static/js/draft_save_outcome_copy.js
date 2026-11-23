@@ -45,9 +45,9 @@
    requiresReview:true
   }),
   saved_server_multiple_records_unconfirmed:Object.freeze({
-   heading:"有幾筆展覽需要確認",
-   detail:"剛才儲存後，再次查看清單時，部分展覽沒有顯示原本的收藏狀態。",
-   action:"請打開「想看」和「看過」清單，確認想保留的展覽。",
+   heading:"部分展覽尚未確認儲存",
+   detail:"我們已再次檢查，但還無法確認以下展覽目前是否保留在清單中。",
+   action:"請查看下方列出的展覽。無法確認的項目不會自動重新儲存。",
    requiresReview:true
   }),
   saved_server_record_unconfirmed:Object.freeze({
