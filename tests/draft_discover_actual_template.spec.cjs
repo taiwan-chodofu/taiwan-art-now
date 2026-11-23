@@ -118,3 +118,24 @@ test('guarded real template: another tab updating a favorite prevents stale undo
   .toBe('Updated in tab 2');
  await second.close();
 });
+
+test('guarded real template: two tabs can save different exhibitions without losing either',async({page})=>{
+ await boot(page);
+ const second=await page.context().newPage();
+ await second.route('**/discover',route=>route.fulfill({status:200,contentType:'text/html',body:html()}));
+ await second.goto('http://127.0.0.1:8765/discover');
+ await Promise.all([
+  page.locator('#likeBtn').click(),
+  second.evaluate(async()=>{
+   const value={title:'Exhibition B',museum:'Museum',dates:'2026',url:'/b',region:'臺北',event:''};
+   const result=await TanDraftPageAction.commit({
+    storage:localStorage,locks:navigator.locks,kind:'favs',key:'b',action:'set',value
+   });
+   if(result.status!=='written_under_cooperative_lock')throw Error(result.status);
+  })
+ ]);
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ const saved=await second.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'));
+ expect(Object.keys(saved).sort()).toEqual(['a','b']);
+ await second.close();
+});
