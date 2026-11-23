@@ -54,6 +54,107 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
 
+    def test_inflight_write_serializes_with_session_revocation(self):
+        """A session lock covers a CAS write; post-revocation writes are denied."""
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+        from unittest.mock import patch
+
+        owner,token="http-write-race-owner","http-write-race-token"
+        digest=token_digest(token)
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                    (owner,))
+                cur.execute(
+                    "INSERT INTO tan_private.browser_sessions "
+                    "(token_hash,sender_id,expires_at) "
+                    "VALUES (%s,%s,now()+interval '1 hour')",(digest,owner))
+
+        entered_write=threading.Event()
+        release_write=threading.Event()
+        revocation_started=threading.Event()
+        revocation_finished=threading.Event()
+        results={}
+        original_update=update_for_verified_sender
+        payload={"base_revision":0,"changes":{
+            "favs":{"write-race-item":{"set":{"title":"Authenticated write"}}},
+            "visited":{}}}
+
+        def paused_update(conn, *, verified_sender_id, base_revision, changes):
+            entered_write.set()
+            if not release_write.wait(timeout=10):
+                raise RuntimeError("Timed out waiting for test write release")
+            return original_update(
+                conn,verified_sender_id=verified_sender_id,
+                base_revision=base_revision,changes=changes)
+
+        def make_app():
+            app=Flask(__name__)
+            app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                              TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+            app.register_blueprint(versioned_blueprint)
+            return app
+
+        def write_request():
+            with make_app().test_client() as client:
+                client.set_cookie(COOKIE_NAME,token)
+                with patch("versioned_subscriber_api_routes.update_for_verified_sender",
+                           side_effect=paused_update):
+                    response=client.post("/api/private-subscribers/v2/changes",
+                                         json=payload,
+                                         headers={"Origin":"https://example.test"})
+                    results["first_status"]=response.status_code
+                    results["first_body"]=response.json
+
+        def revoke():
+            with psycopg.connect(self.url) as conn:
+                with conn.cursor() as cur:
+                    revocation_started.set()
+                    cur.execute(
+                        "UPDATE tan_private.browser_sessions SET revoked_at=now() "
+                        "WHERE token_hash=%s",(digest,))
+                conn.commit()
+            revocation_finished.set()
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            writer=pool.submit(write_request)
+            try:
+                self.assertTrue(entered_write.wait(timeout=10))
+                revoker=pool.submit(revoke)
+                self.assertTrue(revocation_started.wait(timeout=10))
+                self.assertFalse(
+                    revocation_finished.wait(timeout=0.25),
+                    "Revocation must wait for in-flight authenticated CAS")
+            finally:
+                release_write.set()
+            writer.result(timeout=10)
+            revoker.result(timeout=10)
+
+        self.assertEqual(results["first_status"],200)
+        self.assertEqual(results["first_body"]["revision"],1)
+        self.assertTrue(revocation_finished.is_set())
+        with psycopg.connect(self.url) as conn:
+            state=read_for_verified_sender(conn,verified_sender_id=owner)
+        self.assertEqual(set(state["favs"]),{"write-race-item"})
+
+        with make_app().test_client() as client:
+            client.set_cookie(COOKIE_NAME,token)
+            denied=client.post(
+                "/api/private-subscribers/v2/changes",
+                json={"base_revision":1,"changes":{
+                    "favs":{"post-revoke-item":{"set":{"title":"Denied"}}},
+                    "visited":{}}},
+                headers={"Origin":"https://example.test"})
+            self.assertEqual(denied.status_code,403)
+        with psycopg.connect(self.url) as conn:
+            after=read_for_verified_sender(conn,verified_sender_id=owner)
+        self.assertEqual(after,state)
+
     def test_inflight_revocation_waits_for_authenticated_read_transaction(self):
         """Session row lock prevents revocation overtaking an in-flight GET."""
         import psycopg
