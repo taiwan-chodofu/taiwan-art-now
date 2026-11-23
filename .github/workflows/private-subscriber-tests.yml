@@ -103,6 +103,11 @@ on:
       - 'tests/test_draft_authenticated_state.cjs'
       - 'static/js/draft_additive_retry.js'
       - 'tests/test_draft_additive_retry.cjs'
+      - 'scripts/audit_legacy_exhibition_writers.py'
+      - 'templates/index.html'
+      - 'templates/discover.html'
+      - 'templates/nearby.html'
+      - 'templates/exhibition_detail_page.html'
       - 'static/js/draft_cutover_preflight.js'
       - 'tests/test_draft_cutover_preflight.cjs'
       - 'static/js/draft_legacy_writer.js'
@@ -144,6 +149,8 @@ jobs:
           python-version: '3.11'
       - name: Install pinned Flask and psycopg for isolated tests
         run: python -m pip install flask==3.1.0 'psycopg[binary]==3.2.6'
+      - name: Audit all four legacy exhibition writer surfaces
+        run: python scripts/audit_legacy_exhibition_writers.py
       - name: Compile security modules
         run: python -m py_compile private_subscriber_store.py private_inbox.py private_inbox_admin.py subscriber_mutations.py webhook_security.py scripts/import_private_subscribers.py
       - name: Run synthetic-only unit tests
