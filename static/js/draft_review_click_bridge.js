@@ -181,6 +181,13 @@
         nextButton.disabled = false;
         return;
       }
+      const localNow = legacy.read(storage);
+      if (localNow.status !== "ready" ||
+          JSON.stringify(localNow.snapshot) !== JSON.stringify(localSnapshot)) {
+        status.textContent = "この端末の記録が変わりました。最新の内容を確認してください。";
+        nextReview = null;
+        return;
+      }
       const pending = nextReview.report.review.filter(item => {
         const entry = fresh.state[item.kind] && fresh.state[item.kind][item.key];
         return entry && entry.deleted && localSnapshot[item.kind] &&
