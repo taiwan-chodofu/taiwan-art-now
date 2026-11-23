@@ -56,3 +56,25 @@ test('guarded real template: stale undo preserves a newer favorite',async({page}
  await expect(page.locator('.card h2')).toHaveText('Exhibition B');
  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')))).toEqual({a:{title:'Updated elsewhere'}});
 });
+
+test('guarded real template: rapid second action during fly-out cannot save the same card twice',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await page.evaluate(()=>commitSwipe('visited'));
+ await expect(page.locator('.card h2')).toHaveText('Exhibition B');
+ const saved=await page.evaluate(()=>({
+  favs:JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'),
+  visited:JSON.parse(localStorage.getItem('taiwan_art_visited')||'{}')
+ }));
+ expect(Object.keys(saved.favs)).toEqual(['a']);
+ expect(saved.visited).toEqual({});
+});
+test('guarded real template: immediate undo cancels delayed render and restores first card',async({page})=>{
+ await boot(page);
+ await page.locator('#likeBtn').click();
+ await page.locator('#undoBtn').click();
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ await page.waitForTimeout(300);
+ await expect(page.locator('.card h2')).toHaveText('Exhibition A');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs')||'{}'))).toEqual({});
+});
