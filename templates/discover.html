@@ -572,6 +572,11 @@
       if (!deck.length || _normalizeKey(deck[0].stable_key) !== _normalizeKey(info.card.stable_key))
         throw new Error('Discover deck changed during save');
       deck.shift();
+      if (typeof discoverSourceOrder !== 'undefined') {
+        discoverSourceOrder = discoverSourceOrder.filter(function(card) {
+          return _normalizeKey(card.stable_key) !== _normalizeKey(info.card.stable_key);
+        });
+      }
       saveDeckOrder();
       discoverAnimating = true;
       var el = currentCardEl;
@@ -598,6 +603,7 @@
         }
         discoverAnimating = false;
         deck.unshift(last.card);
+        if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder.unshift(last.card);
         saveDeckOrder();
         renderCard();
         setDiscoverBusy(discoverBusy);
@@ -650,6 +656,7 @@
       });
       if (restarted.status !== 'ready') return;
       deck = restarted.cards;
+      if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder = deck.slice();
       saveDeckOrder();
       renderCard();
     });
@@ -662,11 +669,9 @@
       var restoredMode = sessionStorage.getItem(DISCOVER_MODE_KEY);
       if (restoredMode === 'unbookmarked') discoverMode = restoredMode;
     } catch (e) {}
-    var discoverSourceOrder = deck.concat(ALL_CARDS.filter(function(card) {
-      return !deck.some(function(existing) {
-        return _normalizeKey(existing.stable_key) === _normalizeKey(card.stable_key);
-      });
-    }));
+    // Keep only cards still in this browsing session. Previously swiped
+    // cards must not reappear merely because the user changes the filter.
+    var discoverSourceOrder = deck.slice();
     var discoverModePicker = TanDraftDiscoverModePicker.mount({
       container: document.getElementById('discoverModePicker'),
       document: document,
