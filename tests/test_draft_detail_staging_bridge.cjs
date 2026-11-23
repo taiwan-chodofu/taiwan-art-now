@@ -32,3 +32,9 @@ test('bridge displays localized failure without analytics or notification',async
  assert.match(x.errorElement.textContent,/請確認裝置儲存空間/);
  assert.deepEqual(x.events,[]);
 });
+
+test('legacy inline click handler is rejected before bridge attaches',()=>{
+ const x=fixture();x.fav.hasAttribute=name=>name==='onclick';
+ assert.throws(()=>mount(x.args),/invalid staging mount/);
+ assert.equal(x.fav.handlers.size,0);assert.equal(x.listeners.size,0);
+});
