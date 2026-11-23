@@ -14,6 +14,7 @@
         !Array.isArray(report.review)) throw new Error("Invalid merge report");
     const pending = report.review;
     const decisions = new Map();
+    const controls = [];
     // Ordinary sync must not create even a hidden or empty review screen.
     if (pending.length === 0) return {
       rendered: false, getDecisions: () => [], dispose: () => {}
@@ -59,6 +60,7 @@
       select.addEventListener("change", () => {
         if (CHOICES.includes(select.value)) decisions.set(id, select.value);
       });
+      controls.push(select);
       wrapper.appendChild(select);
       section.appendChild(wrapper);
     }
@@ -68,6 +70,7 @@
     container.appendChild(section);
     return {
       rendered: true,
+      disableChoices: () => { for (const select of controls) select.disabled = true; },
       getDecisions: () => Array.from(decisions, ([id, choice]) => {
         const [kind, key] = JSON.parse(id);
         return { kind, key, choice };
