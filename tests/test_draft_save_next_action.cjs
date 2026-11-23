@@ -17,7 +17,7 @@ test("deleted exhibition offers navigation only, without mutation",()=>{
 test("reject external, protocol-relative, or invalid links",()=>{
  const container={appendChild(){throw Error("must not append");}};
  const doc={createElement:()=>({})};
- for(const exhibitionUrl of ["https://evil.example","//evil.example","javascript:alert(1)","/a\nb"]){
+ for(const exhibitionUrl of ["https://evil.example","//evil.example","javascript:alert(1)","/a\nb","/\\evil.example","/a\tb"]){
   assert.equal(mount({container,document:doc,
    result:{status:"saved_server_record_deleted",serverSaved:true},
    exhibitionUrl}).status,"invalid_url");
