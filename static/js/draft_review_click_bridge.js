@@ -118,6 +118,7 @@
           // A successful write increments global revision. Do not send further
           // selections using the stale original revision.
           completed = true;
+          review.disableChoices();
           const others = report.review.filter(item =>
             item.kind !== decision.kind || item.key !== decision.key);
           status.textContent = others.length
