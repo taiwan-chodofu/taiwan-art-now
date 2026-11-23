@@ -21,20 +21,21 @@
       !b.element.hasAttribute?.('onclick')&&typeof b.element.onclick!=='function'))
    throw Error('invalid staging mount');
   const locale=strings[lang]||strings.ja;
-  let disposed=false;
+  let disposed=false,locked=false,inFlight=false;
   const safe=(fn,v)=>{if(typeof fn==='function')try{fn(v);}catch(_){}};
   const show=(text)=>{if(disposed)return;notice.textContent=text;notice.hidden=false;notice.setAttribute?.('role','status');};
   const controller=page.create({fetchImpl,onRender:x=>safe(onRender,x),onAnalytics:x=>safe(onAnalytics,x),
    onFailure:x=>show(locale[x.status]||locale.fallback),
-   onBusy:({kind,key,busy})=>{for(const b of buttons)if(b.kind===kind&&b.key===key){b.element.disabled=busy;b.element.setAttribute?.('aria-busy',String(busy));}if(busy)show(locale.busy);}});
+   onBusy:({busy})=>{inFlight=busy;for(const b of buttons){b.element.disabled=busy||locked;b.element.setAttribute?.('aria-busy',String(busy));}if(busy)show(locale.busy);}});
   const handlers=[];
   for(const b of buttons){
-   const handler=async()=>{if(disposed)return;
+   const handler=async()=>{if(disposed||locked||inFlight)return;
     const result=await controller.act({kind:b.kind,key:b.key,action:b.action,value:b.value,expectedRevision:b.expectedRevision});
     if(!disposed&&(result.status==='write_outcome_unknown'||result.committed===true)){
       // Every button in this mounted snapshot shares a revision. After any
       // confirmed write (or uncertain outcome), none may reuse that revision.
       // Require a fresh authoritative GET and a new mount before further edits.
+      locked=true;
       for(const item of buttons){
         item.element.disabled=true;
         item.element.setAttribute?.('aria-disabled','true');
