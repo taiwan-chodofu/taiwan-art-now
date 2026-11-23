@@ -31,8 +31,14 @@
   const unresolved=verification&&verification.status==="server_records_need_review"
    ?verification.unresolved||[]:[];
   const reason=unresolved.length===1?unresolved[0].reason:null;
-  const recordStatus=reason==="deleted_on_server"?"saved_server_record_deleted"
-   :reason==="different_server_value"?"saved_server_record_different"
+  // Never describe a specific exhibition as deleted when several unrelated
+  // records failed verification. Their identities must be reviewed separately.
+  const singleCommitted=result.committedChanges&&
+   ["favs","visited"].reduce((n,kind)=>n+
+    Object.keys(result.committedChanges[kind]||{}).length,0)===1;
+  const specificReason=singleCommitted?reason:null;
+  const recordStatus=specificReason==="deleted_on_server"?"saved_server_record_deleted"
+   :specificReason==="different_server_value"?"saved_server_record_different"
    :"saved_server_record_unconfirmed";
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
