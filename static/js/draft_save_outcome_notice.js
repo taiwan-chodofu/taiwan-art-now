@@ -3,10 +3,12 @@
  */
 (function(root,factory){
  const api=factory(typeof module==="object"&&module.exports
-  ?require("./draft_save_outcome_copy.js"):root.TanDraftSaveOutcomeCopy);
+  ?require("./draft_save_outcome_copy.js"):root.TanDraftSaveOutcomeCopy,
+  typeof module==="object"&&module.exports
+  ?require("./draft_save_next_action.js"):root.TanDraftSaveNextAction);
  if(typeof module==="object"&&module.exports)module.exports=api;
  else root.TanDraftSaveOutcomeNotice=api;
-})(typeof globalThis!=="undefined"?globalThis:this,function(copy){
+})(typeof globalThis!=="undefined"?globalThis:this,function(copy,nextAction){
  "use strict";
  function render({container,document:doc,result}={}){
   if(!container||!doc||typeof doc.createElement!=="function")
@@ -50,6 +52,15 @@
        :"目前無法確認是否仍在清單中";
     row.appendChild(heading);
     row.appendChild(state);
+    const itemUrl=result.exhibitionUrls&&
+      Object.prototype.hasOwnProperty.call(result.exhibitionUrls,item.kind+":"+item.key)
+      ?result.exhibitionUrls[item.kind+":"+item.key]:null;
+    if(nextAction.isSafeExhibitionUrl(itemUrl)){
+     const link=doc.createElement("a");
+     link.setAttribute("href",itemUrl);
+     link.textContent="查看這筆展覽";
+     row.appendChild(link);
+    }
     list.appendChild(row);
    }
    notice.appendChild(list);
