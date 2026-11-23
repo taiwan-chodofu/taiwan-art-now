@@ -32,3 +32,11 @@ test("unverified or unknown statuses cannot use confirmed-commit copy",()=>{
  assert.equal(forResult({status:"unavailable"}),null);
  assert.equal(forResult(null),null);
 });
+
+test("server re-verification produces a calm notice without demanding tab cleanup",()=>{
+ const copy=forResult({status:"saved_server_verified_local_changed",serverSaved:true});
+ assert.equal(copy.requiresReview,false);
+ assert.match(copy.heading,/成功儲存/);
+ assert.doesNotMatch(copy.action,/關閉|刪除|重新整理/);
+ assert.equal(forResult({status:"saved_server_verified_local_changed"}),null);
+});
