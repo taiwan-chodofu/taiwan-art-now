@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>Isolated exhibition state staging</title></head>
+<body>
+<main>
+ <h1>展示の保存操作（隔離テスト専用）</h1>
+ <p>本番サイトではありません。認証済みの隔離サーバーに接続できない場合は操作できません。</p>
+ <button type="button" id="favBtn" disabled aria-pressed="false">観たい</button>
+ <button type="button" id="visitedBtn" disabled aria-pressed="false">観た</button>
+ <p id="notice" role="status" aria-live="polite">保存状況を確認しています。</p>
+</main>
+<script src="/static/js/draft_versioned_sync.js"></script>
+<script src="/static/js/draft_authenticated_state.js"></script>
+<script src="/static/js/draft_authenticated_writer.js"></script>
+<script src="/static/js/draft_server_page_action.js"></script>
+<script src="/static/js/draft_server_button_bridge.js"></script>
+<script src="/static/js/draft_staging_page.js"></script>
+<script>
+(function(){
+ 'use strict';
+ const params=new URLSearchParams(location.search);
+ const key=params.get('key');
+ const notice=document.getElementById('notice');
+ if(!key||!/^[a-zA-Z0-9_-]{1,100}$/.test(key)){
+  notice.textContent='展示IDを確認できません。正しいテスト用URLを開き直してください。';
+  return;
+ }
+ try{
+  const lifecycle=TanDraftStagingPage.create({
+   win:window,fetchImpl:window.fetch.bind(window),notice,lang:'ja',
+   items:[
+    {element:document.getElementById('favBtn'),kind:'favs',key,value:true},
+    {element:document.getElementById('visitedBtn'),kind:'visited',key,value:true}
+   ]
+  });
+  lifecycle.start();
+  window.addEventListener('pagehide',()=>lifecycle.dispose(),{once:true});
+ }catch(_){
+  notice.textContent='保存機能を開始できません。ページを再読み込みしてください。';
+ }
+})();
+</script>
+</body></html>
