@@ -48,7 +48,7 @@
       if(typeof onRefresh==='function'){
         try{
           const stateApi=typeof module==='object'&&module.exports
-            ?require('./draft_authenticated_state.js'):root.TanDraftAuthenticatedState;
+            ?require('./draft_authenticated_state.js'):globalThis.TanDraftAuthenticatedState;
           const latest=await stateApi.read({fetchImpl});
           if(!disposed&&latest.status==='ready')await onRefresh(latest.state);
           else if(!disposed)show(locale.fallback);
