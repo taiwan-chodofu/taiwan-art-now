@@ -659,7 +659,17 @@
       });
       if (restarted.status !== 'ready') return;
       deck = restarted.cards;
-      if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder = deck.slice();
+      // Restart resets the remaining-card pool, not just the visible subset.
+      // Otherwise switching back from unbookmarked would lose wanted cards.
+      if (typeof discoverSourceOrder !== 'undefined') {
+        var resetSource = TanDraftDiscoverSelection.select({
+          cards:ALL_CARDS,
+          bookmarks:{favs:_getFavs(),visited:_getVisited()},
+          normalizeKey:_normalizeKey,
+          mode:'browse'
+        });
+        if (resetSource.status === 'ready') discoverSourceOrder = resetSource.cards;
+      }
       saveDeckOrder();
       if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
       renderCard();
