@@ -55,10 +55,12 @@
     const itemUrl=result.exhibitionUrls&&
       Object.prototype.hasOwnProperty.call(result.exhibitionUrls,item.kind+":"+item.key)
       ?result.exhibitionUrls[item.kind+":"+item.key]:null;
-    if(nextAction.isSafeExhibitionUrl(itemUrl)){
+    if(nextAction&&typeof nextAction.isSafeExhibitionUrl==="function"&&
+       nextAction.isSafeExhibitionUrl(itemUrl)){
      const link=doc.createElement("a");
      link.setAttribute("href",itemUrl);
      link.textContent="查看這筆展覽";
+     link.setAttribute("aria-label","查看展覽："+name+"，確認目前的收藏狀態");
      row.appendChild(link);
     }
     list.appendChild(row);
