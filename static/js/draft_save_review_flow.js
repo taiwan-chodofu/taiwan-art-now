@@ -26,12 +26,18 @@
   }
   // A verified committed exhibition can be shown as a calm success, but a
   // missing trusted checkpoint still needs separate review of other records.
+  const unresolved=verification&&verification.status==="server_records_need_review"
+   ?verification.unresolved||[]:[];
+  const reason=unresolved.length===1?unresolved[0].reason:null;
+  const recordStatus=reason==="deleted_on_server"?"saved_server_record_deleted"
+   :reason==="different_server_value"?"saved_server_record_different"
+   :"saved_server_record_unconfirmed";
   const displayResult=result.status==="saved_server_local_changed"&&
    verification&&verification.status==="confirmed_on_server"
     ?{...result,status:"saved_server_verified_local_changed"}
     :REVIEW.has(result.status)&&verification&&
       verification.status==="server_records_need_review"
-      ?{...result,status:"saved_server_record_changed"}:result;
+      ?{...result,status:recordStatus}:result;
   const displayed=container&&doc
    ?notice.render({container,document:doc,result:displayResult}):null;
   return {result,verification,displayResult,displayed};
