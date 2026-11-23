@@ -166,3 +166,12 @@ test("server GET fails after lock acquisition without local deletion", async () 
   assert.equal(x.writes.length, 0);
   assert.ok(JSON.parse(x.data.taiwan_art_favs).a);
 });
+
+test("unexpected raw serialization after write is reported uncertain", async () => {
+  const x = fixture();
+  x.storage.setItem = (key, value) => {
+    x.data[key] = JSON.stringify(JSON.parse(value), null, 2);
+  };
+  assert.equal((await remove(x)).status, "uncertain_write");
+  assert.deepEqual(Object.keys(JSON.parse(x.data.taiwan_art_favs)), ["b"]);
+});
