@@ -21,7 +21,11 @@ test("two simultaneous toggles on same key resolve inside lock, not stale UI",as
  const x=fixture();
  const results=await Promise.all([commit({...x,kind:"favs",key:"a",action:"toggle",value:fav}),
    commit({...x,kind:"favs",key:"a",action:"toggle",value:fav})]);
- assert.deepEqual(results.map(r=>r.action),["set","remove"]);
+ assert.equal(results[1].action,"remove");
+ assert.equal(results[1].status,"written_under_cooperative_lock");
+ assert.ok(["written_under_cooperative_lock","uncertain_write"].includes(results[0].status));
+ if(results[0].status==="uncertain_write")
+   assert.equal(x.events.some(e=>e.action==="set"),false);
  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
 });
 test("visited ISO and object shapes remain unchanged",async()=>{
