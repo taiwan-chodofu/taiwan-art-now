@@ -62,7 +62,12 @@
        return result;
      }finally{pending=false;}
    }
-   return {swipe,undo,isBusy:()=>pending,historySize:()=>history.length};
+   function clearHistory(){
+     if(pending)return {status:'busy'};
+     history.length=0;
+     return {status:'cleared'};
+   }
+   return {swipe,undo,clearHistory,isBusy:()=>pending,historySize:()=>history.length};
  }
  return {create};
 });
