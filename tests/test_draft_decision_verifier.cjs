@@ -94,3 +94,21 @@ test("visited tombstone has independent decision", () => {
     state({}, { a: record(null, true) }), [decision("keep_saved", "a", "visited")]);
   assert.equal(result.proposals[0].kind, "visited");
 });
+
+test("deferred deletion conflict cannot become a write proposal while unrelated addition remains only proposed", () => {
+  const result = run(storage({ deleted: fav, fresh: fav }),
+    state({ deleted: record(null, true) }), [decision("decide_later", "deleted")]);
+  assert.equal(result.status, "requires_review");
+  assert.deepEqual(result.unresolved.map(x => x.key), ["deleted"]);
+  assert.deepEqual(result.proposals.map(x => x.key), ["fresh"]);
+  assert.equal(result.proposals[0].requiresAuthenticatedCAS, true);
+});
+test("explicit keep decision for visited never implicitly revives a favorite tombstone", () => {
+  const stamp = "2026-11-23T00:00:00.000Z";
+  const result = run(storage({ a: fav }, { a: stamp }),
+    state({ a: record(null, true) }, { a: record(null, true) }),
+    [decision("keep_saved", "a", "visited")]);
+  assert.equal(result.status, "requires_review");
+  assert.deepEqual(result.proposals.map(x => [x.kind, x.key]), [["visited", "a"]]);
+  assert.deepEqual(result.unresolved.map(x => [x.kind, x.key]), [["favs", "a"]]);
+});
