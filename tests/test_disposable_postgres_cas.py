@@ -124,6 +124,75 @@ class DisposablePostgresCASTests(unittest.TestCase):
         self.assertEqual(final_a.status_code,200)
         self.assertEqual(final_a.json,retry.json)
 
+    def test_authenticated_server_state_survives_uncooperative_legacy_tab_and_tombstone(self):
+        """Real HTTP + disposable PostgreSQL: stale local map cannot change CAS state.
+
+        A cached tab can still lose localStorage records. This test proves only
+        that its independent local write cannot mutate the authenticated server.
+        """
+        import psycopg
+        from flask import Flask
+        from browser_session import token_digest
+        from browser_cookie_security import COOKIE_NAME
+        from versioned_subscriber_api_routes import versioned_blueprint
+
+        owner, token = "http-stale-legacy-owner", "http-stale-legacy-token"
+        with psycopg.connect(self.url) as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                    (owner,))
+                cur.execute(
+                    "INSERT INTO tan_private.browser_sessions "
+                    "(token_hash,sender_id,expires_at) "
+                    "VALUES (%s,%s,now()+interval '1 hour')",
+                    (token_digest(token),owner))
+
+        app=Flask(__name__)
+        app.config.update(TESTING=True,TAN_CANONICAL_ORIGIN="https://example.test",
+                          TAN_PRIVATE_DB_CONNECT=lambda:psycopg.connect(self.url))
+        app.register_blueprint(versioned_blueprint)
+        with app.test_client() as client:
+            client.set_cookie(COOKIE_NAME,token)
+            path="/api/private-subscribers/v2/changes"
+            state_path="/api/private-subscribers/v2/state"
+            headers={"Origin":"https://example.test"}
+            initial=client.get(state_path)
+            self.assertEqual(initial.status_code,200)
+            self.assertEqual(initial.json["revision"],0)
+
+            local_legacy={"favs":{},"visited":{}}
+            stale_copy={"favs":dict(local_legacy["favs"]),"visited":{}}
+            saved=client.post(path,json={"base_revision":0,"changes":{
+                "favs":{"modern":{"set":{"title":"Modern","museum":"M"}}},
+                "visited":{}}},headers=headers)
+            self.assertEqual(saved.status_code,200)
+            self.assertEqual(saved.json["revision"],1)
+
+            # The old tab replaces a stale localStorage map, bypassing Web Locks.
+            local_legacy=stale_copy
+            local_legacy["favs"]["old"]={"title":"Old","museum":"M"}
+            self.assertNotIn("modern",local_legacy["favs"])
+            still_saved=client.get(state_path)
+            self.assertEqual(still_saved.status_code,200)
+            self.assertIn("modern",still_saved.json["favs"])
+
+            removed=client.post(path,json={"base_revision":1,"changes":{
+                "favs":{"modern":{"delete":True}},"visited":{}}},headers=headers)
+            self.assertEqual(removed.status_code,200)
+            self.assertEqual(removed.json["revision"],2)
+            self.assertTrue(removed.json["favs"]["modern"]["deleted"])
+
+            # A stale request must not undo the explicit deletion.
+            stale=client.post(path,json={"base_revision":1,"changes":{
+                "favs":{"modern":{"set":{"title":"Stale","museum":"M"}}},
+                "visited":{}}},headers=headers)
+            self.assertEqual(stale.status_code,409)
+            final=client.get(state_path)
+            self.assertEqual(final.status_code,200)
+            self.assertEqual(final.json["revision"],2)
+            self.assertTrue(final.json["favs"]["modern"]["deleted"])
+
     def test_inflight_write_serializes_with_session_revocation(self):
         """A session lock covers a CAS write; post-revocation writes are denied."""
         import psycopg
