@@ -36,7 +36,7 @@ test("detail unavailable Web Locks never announce a saved bookmark",async()=>{
   onRender:()=>x.events.push(["render"]),onAnalytics:()=>x.events.push(["analytics"]),
   onNotify:()=>x.events.push(["notify"]),onFailure:x=>x.events.push(["failure",x])});
  const result=await adapter.toggle("favs");
- assert.equal(result.status,"not_authorized");
+ assert.equal(result.status,"invalid_request");
  assert.deepEqual(x.events.map(e=>e[0]),["failure"]);
  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs),{});
 });
