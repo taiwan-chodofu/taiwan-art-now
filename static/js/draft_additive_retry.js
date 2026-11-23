@@ -102,12 +102,13 @@
       const afterSave=checkCheckpoint(storage,checkpoint);
       if(afterSave)return {status:"saved_server_local_review_required",
         revision:saved.revision,retried,serverSaved:true,
-        localStatus:afterSave.localStatus,
+        committedChanges:proposal.changes,localStatus:afterSave.localStatus,
         missing:afterSave.missing||[],changed:afterSave.changed||[]};
       const finalLocal=legacy.read(storage);
       if(finalLocal.status!=="ready"||stable(finalLocal.snapshot)!==initialSnapshot)
         return {status:"saved_server_local_changed",revision:saved.revision,
-          retried,serverSaved:true,localStatus:finalLocal.status};
+          retried,serverSaved:true,committedChanges:proposal.changes,
+          localStatus:finalLocal.status};
       return {status:"saved",revision:saved.revision,retried,
         preservedRemote:proposal.preservedRemote,
         metadataDifferences:proposal.metadataDifferences};
