@@ -8,13 +8,15 @@
     typeof module === "object" && module.exports
       ? require("./draft_explicit_keep.js") : root.TanDraftExplicitKeep,
     typeof module === "object" && module.exports
-      ? require("./draft_legacy_snapshot.js") : root.TanDraftLegacySnapshot
+      ? require("./draft_legacy_snapshot.js") : root.TanDraftLegacySnapshot,
+    typeof module === "object" && module.exports
+      ? require("./draft_review_status_check.js") : root.TanDraftReviewStatusCheck
   );
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.TanDraftReviewClickBridge = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function(ui, keep, legacy) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function(ui, keep, legacy, statusCheck) {
   "use strict";
-  function mount({ container, report, doc, serverState, localSnapshot, storage, request }) {
+  function mount({ container, report, doc, serverState, localSnapshot, storage, request, fetchImpl }) {
     if (!container || !doc || !serverState ||
         !Number.isSafeInteger(serverState.revision) ||
         !localSnapshot || !storage || typeof request !== "function")
@@ -29,6 +31,35 @@
     button.textContent = "選択した展示を確認";
     button.setAttribute("type", "button");
     const status = doc.createElement("p");
+    const checkButton = doc.createElement("button");
+    checkButton.textContent = "サーバーの登録状況を確認";
+    checkButton.setAttribute("type", "button");
+    checkButton.disabled = true;
+    let attemptedDecision = null;
+    let checking = false;
+    const inspect = async () => {
+      if (disposed || busy || checking || !confirmationAttempted || !attemptedDecision ||
+          typeof fetchImpl !== "function") return;
+      checking = true;
+      checkButton.disabled = true;
+      try {
+        const result = await statusCheck.check({fetchImpl,kind:attemptedDecision.kind,
+          key:attemptedDecision.key,expectedValue:attemptedDecision.value});
+        status.textContent = result.status === "saved_on_server"
+          ? "サーバーに登録が確認できました。ほかの展示は再読み込みして確認してください。"
+          : result.status === "still_deleted"
+            ? "サーバーには削除履歴が残っています。再送信せず、最新の状態で確認してください。"
+            : result.status === "different_server_value"
+              ? "サーバーには異なる登録内容があります。上書きせず、最新の状態で確認してください。"
+              : "保存結果を確定できませんでした。再送信せず、時間をおいて再確認してください。";
+      } catch (_) {
+        status.textContent = "サーバーの状態を確認できませんでした。再送信せず、時間をおいて再確認してください。";
+      } finally {
+        checking = false;
+        if (!disposed) checkButton.disabled = false;
+      }
+    };
+    checkButton.addEventListener("click", inspect);
     status.setAttribute("role", "status");
     const submit = async () => {
       if (disposed || busy || completed || confirmationAttempted) return;
@@ -58,6 +89,8 @@
           // Once confirmation starts, an interrupted response may hide a committed write.
           // Require a fresh review instead of allowing another submit from stale context.
           confirmationAttempted = true;
+          attemptedDecision = {kind:decision.kind,key:decision.key,value:local[decision.key]};
+          if (typeof fetchImpl === "function") checkButton.disabled = false;
           const result = await keep.execute({
             decision, conflict: { ...conflict, itemRevision: entry.revision },
             localValue: local[decision.key],
@@ -88,11 +121,13 @@
     button.addEventListener("click", submit);
     container.appendChild(button);
     container.appendChild(status);
-    return { rendered: true, submit, dispose: () => {
+    if (typeof fetchImpl === "function") container.appendChild(checkButton);
+    return { rendered: true, submit, inspect, dispose: () => {
       disposed = true;
       review.dispose();
       button.remove();
       status.remove();
+      checkButton.remove();
     } };
   }
   return { mount };
