@@ -109,3 +109,47 @@ test("invalid server state does not POST", async () => {
   assert.equal(result.status, "invalid_server");
   assert.equal(calls, 1);
 });
+
+test("a registration added by another device between GET and POST causes 409 without overwrite or retry", async () => {
+  const deviceA = local({ a: { title: "A" } });
+  const before = JSON.stringify(deviceA);
+  let current = server({}, {}, 0);
+  const methods = [];
+  const result = await synchronize({ localSnapshot: deviceA,
+    fetchImpl: async (_, options) => {
+      methods.push(options.method);
+      if (options.method === "GET") {
+        const snapshot = JSON.parse(JSON.stringify(current));
+        current = server({ b: entry({ title: "B" }, false, 1) }, {}, 1);
+        return reply(snapshot);
+      }
+      const body = JSON.parse(options.body);
+      assert.equal(body.base_revision, 0);
+      assert.deepEqual(Object.keys(body.changes.favs), ["a"]);
+      if (body.base_revision !== current.revision) return reply({error:"stale_revision"},409);
+      throw Error("stale write must never be accepted");
+    } });
+  assert.equal(result.status, "stale_revision");
+  assert.deepEqual(methods, ["GET", "POST"]);
+  assert.deepEqual(Object.keys(current.favs), ["b"]);
+  assert.equal(JSON.stringify(deviceA), before);
+});
+test("a deletion tombstone arriving between GET and POST blocks stale resurrection", async () => {
+  const device = local({ a: { title: "Old local registration" } });
+  let current = server({}, {}, 0);
+  let writes = 0;
+  const result = await synchronize({ localSnapshot: device,
+    fetchImpl: async (_, options) => {
+      if (options.method === "GET") {
+        current = server({ a: entry(null, true, 1) }, {}, 1);
+        return reply(server({}, {}, 0));
+      }
+      writes++;
+      assert.equal(JSON.parse(options.body).base_revision, 0);
+      return reply({error:"stale_revision"},409);
+    } });
+  assert.equal(result.status, "stale_revision");
+  assert.equal(writes, 1);
+  assert.equal(current.favs.a.deleted, true);
+  assert.deepEqual(device.favs.a, {title:"Old local registration"});
+});
