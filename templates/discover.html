@@ -507,6 +507,8 @@
     var discoverError = document.createElement('p');
     discoverError.id = 'discoverActionError';
     discoverError.setAttribute('role', 'alert');
+    discoverError.setAttribute('aria-live', 'assertive');
+    discoverError.setAttribute('aria-atomic', 'true');
     discoverError.style.cssText = 'padding:0 16px;color:#b42318;font-size:0.82rem;text-align:center;';
     actionsBar.parentNode.insertBefore(discoverError, actionsBar);
     function setDiscoverBusy(busy) {
@@ -519,7 +521,7 @@
     function failDiscover(result) {
       var messages = LANG === 'en'
         ? {stale:'The saved exhibition changed in another tab. Undo was not applied.', failure:'Could not save. Please try again.'}
-        : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant' || LANG === 'zh-TW')
+        : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant')
           ? {stale:'已儲存的展覽資料已變更，因此無法復原。', failure:'儲存失敗，請再試一次。'}
           : {stale:'保存済みの展示情報が変更されたため、取り消せません。', failure:'保存できませんでした。もう一度お試しください。'};
       discoverError.textContent = result.status === 'stale_undo' ? messages.stale : messages.failure;
