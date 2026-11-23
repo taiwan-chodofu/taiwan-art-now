@@ -7,7 +7,7 @@
 })(typeof globalThis!=='undefined'?globalThis:this,function(adapterApi,copy){
  'use strict';
  function mount({win,storage,locks,key,metadata,lang='zh',render,analytics,notify,warn,buttons,errorElement}={}){
-  if(!win||!storage||!key||!Array.isArray(buttons)||!errorElement)throw Error('invalid staging mount');
+  if(!win||!storage||typeof key!=='string'||!key||!Array.isArray(buttons)||buttons.length!==2||!errorElement||!buttons.every(b=>b&&['favs','visited'].includes(b.kind)&&b.element)||new Set(buttons.map(b=>b.kind)).size!==2)throw Error('invalid staging mount');
   let disposed=false;
   const setBusy=({kind,busy})=>{const button=buttons.find(b=>b.kind===kind)?.element;if(button){button.disabled=busy;button.setAttribute('aria-busy',String(busy));}};
   const instance=adapterApi.create({storage,locks,key,metadata,
@@ -18,7 +18,7 @@
    onFailure:({status})=>{errorElement.textContent=copy.message(status,lang);errorElement.hidden=false;}
   });
   const handlers=[];
-  for(const {kind,element} of buttons){if(!['favs','visited'].includes(kind)||!element)throw Error('invalid button');
+  for(const {kind,element} of buttons){
    const fn=()=>{void instance.toggle(kind);};element.addEventListener('click',fn);handlers.push([element,fn]);}
   const dispose=()=>{if(disposed)return;disposed=true;instance.dispose();for(const [el,fn] of handlers)el.removeEventListener('click',fn);win.removeEventListener('pagehide',dispose);};
   win.addEventListener('pagehide',dispose,{once:true});
