@@ -15,3 +15,9 @@ test("removed state offers choice but never performs it",()=>{
 test("invalid rendering container does not fetch",async()=>{
  assert.equal((await show({})).status,"invalid_request");
 });
+
+test("partial removal explains both states in the same sentence",()=>{
+ const message=describe({status:"saved",collections:["favs"],removedCollections:["visited"]});
+ assert.match(message.detail,/已加入：想看/);
+ assert.match(message.detail,/已從「看過」移除/);
+});
