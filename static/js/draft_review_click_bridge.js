@@ -113,7 +113,31 @@
           // A successful write increments global revision. Do not send further
           // selections using the stale original revision.
           completed = true;
-          status.textContent = "この展示を登録しました。ほかの展示も確認してください。";
+          const others = report.review.filter(item =>
+            item.kind !== decision.kind || item.key !== decision.key);
+          status.textContent = others.length
+            ? "この展示を登録しました。あと" + others.length + "件、確認が必要な展示があります。"
+            : "この展示を登録しました。";
+          if (others.length && typeof fetchImpl === "function") {
+            const latest = await statusCheck.readState({fetchImpl});
+            if (disposed) return;
+            if (latest.status === "ready") {
+              const pending = others.filter(item => {
+                const entry = latest.state[item.kind] && latest.state[item.kind][item.key];
+                return entry && entry.deleted;
+              });
+              status.textContent = pending.length
+                ? "この展示を登録しました。あと" + pending.length + "件、確認が必要な展示があります。"
+                : "この展示を登録しました。ほかに確認が必要な展示はありません。";
+              for (const item of pending) {
+                const label = doc.createElement("p");
+                label.textContent = item.key + (item.kind === "favs" ? "（観たい）" : "（観た）");
+                remainingList.appendChild(label);
+              }
+            } else {
+              status.textContent = "この展示を登録しました。ほかの展示の確認は一時的にできませんでした。";
+            }
+          }
           return;
         }
         const deferred = review.getDecisions();
