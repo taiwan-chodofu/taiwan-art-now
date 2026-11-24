@@ -37,7 +37,7 @@
         else if (localPresent && !record) status = "local_only";
         else if (!localPresent && remotePresent) status = "remote_only";
         else if (localPresent && remotePresent &&
-          JSON.stringify(local[key]) === JSON.stringify(record.value)) status = "same";
+          sync.sameJson(local[key], record.value)) status = "same";
         else status = "different";
         rows.push(Object.freeze({
           kind, key, status, localPresent, remotePresent,

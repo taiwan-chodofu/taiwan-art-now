@@ -16,6 +16,17 @@
       !Array.isArray(value) && (Object.getPrototypeOf(value) === Object.prototype ||
       Object.getPrototypeOf(value) === null);
   }
+  // JSON object member order can change across Flask and PostgreSQL JSONB.
+  function sameJson(a, b) {
+    if (a === b) return true;
+    if (Array.isArray(a) || Array.isArray(b))
+      return Array.isArray(a) && Array.isArray(b) && a.length === b.length &&
+        a.every((value, index) => sameJson(value, b[index]));
+    if (!plain(a) || !plain(b)) return false;
+    const keys = Object.keys(a);
+    return keys.length === Object.keys(b).length &&
+      keys.every(key => own(b, key) && sameJson(a[key], b[key]));
+  }
   function validateSnapshot(snapshot) {
     if (!plain(snapshot) || Object.keys(snapshot).sort().join(",") !== "favs,visited")
       throw new Error("Invalid snapshot");
@@ -56,7 +67,7 @@
       for (const [key, entry] of Object.entries(server[kind])) {
         if (!own(local[kind], key)) {
           if (!entry.deleted) remoteOnly[kind].push(key);
-        } else if (entry.deleted || JSON.stringify(local[kind][key]) !== JSON.stringify(entry.value)) {
+        } else if (entry.deleted || !sameJson(local[kind][key], entry.value)) {
           conflicts[kind].push(key);
         }
       }
@@ -108,5 +119,5 @@
     catch (_) { return { status: "unknown_commit" }; }
     return { status: "saved", revision: result.revision };
   }
-  return { plan, synchronize };
+  return { plan, synchronize, sameJson };
 });

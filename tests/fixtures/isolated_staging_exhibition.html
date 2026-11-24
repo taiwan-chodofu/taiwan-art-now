@@ -44,7 +44,7 @@
    ]
   });
   // Test fixture only: exercise in-place refresh without a full navigation.
-  window.__draftStagingRefresh=()=>lifecycle.refresh();
+  window.__draftStagingRefresh=()=>submitting?Promise.resolve(false):lifecycle.refresh();
   // Optional read-only migration preview, isolated to explicit test mode.
   let reviewDisposed=false;
   let reviewMount=null;
@@ -55,13 +55,14 @@
   no.addEventListener("click",()=>{if(submitting)return;pending=null;confirmBox.hidden=true;notice.textContent="登録は変更していません。";});
   yes.addEventListener("click",async()=>{
    if(!pending||!reviewed||submitting||reviewDisposed)return;
+   if(!lifecycle.pause()){notice.textContent='保存中です。表示が更新されるまでお待ちください。';return;}
    submitting=true;yes.disabled=true;no.disabled=true;
    const intent=pending,selection=reviewed;pending=null;
    reviewMount?.disable();
    const result=await TanDraftExplicitServerRestore.restore({
     fetchImpl:window.fetch.bind(window),kind:intent.kind,key:intent.key,
     value:selection.value,reviewedRevision:selection.revision,
-    tombstoneRevision:selection.tombstoneRevision,confirmed:true
+    tombstoneRevision:selection.tombstoneRevision,confirmed:true,isActive:()=>!reviewDisposed
    });
    if(reviewDisposed)return;
    confirmBox.hidden=true;

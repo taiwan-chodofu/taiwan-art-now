@@ -14,7 +14,7 @@
  const validKey=k=>typeof k==='string'&&k.length>0&&k.length<=512&&
   !['__proto__','constructor','prototype'].includes(k);
  async function restore({fetchImpl,kind,key,value,reviewedRevision,tombstoneRevision,
-  confirmed}={}){
+  confirmed,isActive=()=>true}={}){
   if(confirmed!==true||typeof fetchImpl!=='function'||
    !['favs','visited'].includes(kind)||!validKey(key)||
    value===undefined||value===null||
@@ -29,6 +29,7 @@
    return {status:'review_expired',committed:false};
   let failure='confirmation_unavailable',written;
   async function request(path,payload){
+   if(!isActive()){failure='disposed';throw Error('Review closed');}
    if(path.endsWith('/consume'))failure='write_outcome_unknown';
    const response=await fetchImpl(path,{
     method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',mode:'same-origin',
@@ -54,7 +55,7 @@
   if(verified.status!=='ready')return {status:'write_outcome_unknown',committed:false};
   const saved=verified.state[kind][key];
   if(!saved||saved.deleted||saved.revision<=tombstoneRevision||
-   JSON.stringify(saved.value)!==JSON.stringify(value)||
+   !auth.sameJson(saved.value,value)||
    verified.state.revision!==written?.revision)
    return {status:'write_outcome_unknown',committed:false};
   return {status:'server_confirmed',committed:true,revision:verified.state.revision};

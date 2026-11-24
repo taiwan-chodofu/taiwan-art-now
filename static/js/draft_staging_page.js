@@ -21,14 +21,18 @@
   let current=null,closed=false,refreshGeneration=0,highestRevision=0;
   const message=(value)=>{notice.hidden=false;notice.textContent=value;notice.setAttribute('role','status');};
   const disable=()=>items.forEach(i=>{i.element.disabled=true;i.element.setAttribute('aria-disabled','true');});
-  async function refresh(state,minimumRevision=0){
+  function pause(){
    if(closed||current?.isBusy())return false;
-   highestRevision=Math.max(highestRevision,minimumRevision,current?.minimumRevision()||0);
-   const generation=++refreshGeneration;
+   highestRevision=Math.max(highestRevision,current?.minimumRevision()||0);
+   refreshGeneration++;
    disable();
-   // A failed refresh must not leave stale click handlers mounted.
-   // Detach them before any asynchronous read, not only after success.
-   if(current){current.dispose();current=null;}
+   current?.dispose();current=null;
+   return true;
+  }
+  async function refresh(state,minimumRevision=0){
+   if(!pause())return false;
+   highestRevision=Math.max(highestRevision,minimumRevision);
+   const generation=refreshGeneration;
    const latest=state?{status:'ready',state}:await reader.read({fetchImpl});
    if(closed||generation!==refreshGeneration)return false;
    if(latest.status==='worker_update_required'){
@@ -60,7 +64,7 @@
   }
   disable();
   let started=false;
-  return {start:()=>{if(started||closed)return Promise.resolve(false);started=true;return refresh();},
+  return {pause,start:()=>{if(started||closed)return Promise.resolve(false);started=true;return refresh();},
    refresh:(minimumRevision=0)=>started&&!closed?refresh(null,minimumRevision):Promise.resolve(false),
    dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
  }

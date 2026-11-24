@@ -153,3 +153,11 @@ test("a deletion tombstone arriving between GET and POST blocks stale resurrecti
   assert.equal(current.favs.a.deleted, true);
   assert.deepEqual(device.favs.a, {title:"Old local registration"});
 });
+
+test('metadata survives JSONB key reordering while array order and missing fields remain significant',()=>{
+ const {sameJson}=require('../static/js/draft_versioned_sync.js');
+ assert.equal(sameJson({title:'Art',museum:'M',dates:['a','b']},
+                       {dates:['a','b'],museum:'M',title:'Art'}),true);
+ assert.equal(sameJson({dates:['a','b']},{dates:['b','a']}),false);
+ assert.equal(sameJson({title:null},{}),false);
+});

@@ -10,7 +10,7 @@
  'use strict';
  const PATH='/api/private-subscribers/v2/changes';
  const validKey=k=>typeof k==='string'&&k.length>0&&k.length<=512;
- async function commit({fetchImpl,kind,key,action,value,expectedRevision}={}){
+ async function commit({fetchImpl,kind,key,action,value,expectedRevision,isActive=()=>true}={}){
   if(typeof fetchImpl!=='function'||!['favs','visited'].includes(kind)||
     !validKey(key)||!['set','remove'].includes(action)||
     !Number.isSafeInteger(expectedRevision)||expectedRevision<0||
@@ -19,6 +19,7 @@
   // A fresh authenticated read is required. The caller's revision is only a
   // conflict guard; never replace it silently with a newer revision.
   const current=await auth.read({fetchImpl});
+  if(!isActive())return {status:'disposed',committed:false};
   if(current.status!=='ready')return {status:current.status,committed:false};
   if(current.state.revision!==expectedRevision)
     return {status:'stale_revision',committed:false};
@@ -52,7 +53,7 @@
   if(confirmed.status!=='ready')return {status:'write_outcome_unknown',committed:false};
   const entry=confirmed.state[kind][key];
   if(!entry||entry.revision<=expectedRevision||
-    (action==='set'&&(entry.deleted||JSON.stringify(entry.value)!==JSON.stringify(value)))||
+    (action==='set'&&(entry.deleted||!auth.sameJson(entry.value,value)))||
     (action==='remove'&&!entry.deleted))
     return {status:'write_outcome_unknown',committed:false};
   if(!written||written.revision!==confirmed.state.revision)

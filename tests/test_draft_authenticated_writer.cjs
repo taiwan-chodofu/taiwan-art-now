@@ -47,3 +47,19 @@ test('readback mismatch never reports success',async()=>{
  const r=await commit({fetchImpl,kind:'favs',key:'a',action:'set',value:true,expectedRevision:0});
  assert.equal(r.status,'write_outcome_unknown');assert.equal(r.committed,false);
 });
+
+test('disposing the owner during preflight prevents a subsequent POST',async()=>{
+ let active=true;
+ const methods=[];
+ const result=await require('../static/js/draft_authenticated_writer.js').commit({
+  kind:'favs',key:'art',action:'set',value:true,expectedRevision:0,isActive:()=>active,
+  fetchImpl:async(_,options)=>{
+   methods.push(options.method);
+   active=false;
+   return {ok:true,headers:{get:k=>k==='content-type'?'application/json':'no-store'},
+    json:async()=>({revision:0,favs:{},visited:{}})};
+  }
+ });
+ assert.equal(result.status,'disposed');
+ assert.deepEqual(methods,['GET']);
+});

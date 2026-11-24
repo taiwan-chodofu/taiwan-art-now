@@ -19,7 +19,7 @@
    if(pending.has(slot))return {status:'busy',committed:false};
    pending.add(slot);safe(onBusy,{kind,key,busy:true});
    try{
-    const result=await writer.commit({fetchImpl,kind,key,action,value,expectedRevision});
+    const result=await writer.commit({fetchImpl,kind,key,action,value,expectedRevision,isActive:()=>!disposed});
     if(result.committed===true&&result.status==='server_confirmed'){
      safe(onRender,{kind,key,action,revision:result.revision});
      safe(onAnalytics,{kind,key,action,event:kind==='visited'

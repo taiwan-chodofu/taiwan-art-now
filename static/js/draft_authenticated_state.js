@@ -57,5 +57,5 @@
    if(serviceWorker?.controller!==controller)return {status:"worker_update_required"};
    return {status:"ready",state};
  }
- return {read,PATH};
+ return {read,PATH,sameJson:sync.sameJson};
 });

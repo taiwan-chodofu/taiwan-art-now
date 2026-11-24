@@ -76,3 +76,18 @@ test('post-write verification mismatch never announces success',async()=>{
   reviewedRevision:1,tombstoneRevision:1,confirmed:true});
  assert.equal(result.status,'write_outcome_unknown');assert.equal(posts,1);
 });
+
+test('leaving the page while confirmation is being issued prevents consumption',async()=>{
+ let active=true;
+ const paths=[];
+ const fetchImpl=async(path,options)=>{
+  if(options.method==='GET')return response(state(1));
+  paths.push(path);
+  active=false;
+  return response({token:'synthetic'});
+ };
+ const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,reviewedRevision:1,
+  tombstoneRevision:1,confirmed:true,isActive:()=>active});
+ assert.equal(result.status,'disposed');
+ assert.deepEqual(paths,['/api/private-subscribers/v2/review/keep/issue']);
+});
