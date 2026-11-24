@@ -76,7 +76,7 @@
         continue;
       }
       if(response.status===401||response.status===403)return {status:"unauthorized"};
-      if(!response.ok)return {status:"unavailable"};
+      if(!response.ok)return {status:"unknown_commit"};
       let saved;
       try{
         const ct=response.headers&&response.headers.get("content-type");
@@ -91,11 +91,14 @@
           for(const [key,change] of Object.entries(proposal.changes[kind])){
             const item=saved[kind][key];
             if(!item||item.deleted||!own(item,"value")||
-               stable(item.value)!==stable(change.set))
+               !sync.sameJson(item.value,change.set))
               return {status:"unknown_commit"};
           }
         }
       }catch(_){return {status:"unknown_commit"};}
+      const verified=await reader.read({fetchImpl});
+      if(verified.status!=="ready"||!sync.sameJson(saved,verified.state))
+        return {status:"unknown_commit"};
       // A cached legacy tab can overwrite localStorage while POST is in flight.
       // The server commit is verified, but the local snapshot may now be stale.
       // Do not claim that both copies are synchronized or automatically resend.

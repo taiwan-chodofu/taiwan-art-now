@@ -17,3 +17,6 @@ An authenticated GET may update both independent controls after an uncertain wri
 
 ## 2026-11-24 — Private reads under a controlling PWA worker
 Cache-Control alone cannot establish freshness when a legacy worker replays the original response headers. Require a network-only capability acknowledgement from the current worker before a draft authenticated state read. An old or unresponsive controller blocks the read. Recheck the controller before exposing state. Public exhibition pages retain their existing offline strategy.
+
+## 2026-11-24 — Additive migration acknowledgement
+A migration reports saved only after an authenticated GET agrees with the validated POST state. A differing or unavailable readback remains uncertain and cannot trigger a mutation retry. HTTP server errors after a mutation also remain uncertain. JSON object member order has no semantic significance in the comparison.

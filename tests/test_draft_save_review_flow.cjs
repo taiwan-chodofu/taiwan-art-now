@@ -16,7 +16,7 @@ test("after legacy tab overwrites local map, verify server via GET without retry
  const local=storage();let gets=0,posts=0;
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const result=await run({storage:local,fetchImpl:async(path,options)=>{
-  if(options.method==="GET"){gets++;return response(gets===1?
+  if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
    {revision:0,favs:{},visited:{}}:saved);}
   posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(saved);
@@ -25,14 +25,14 @@ test("after legacy tab overwrites local map, verify server via GET without retry
  assert.equal(result.verification.status,"confirmed_on_server");
  assert.equal(result.displayResult.status,"saved_server_verified_local_changed");
  assert.equal(posts,1);
- assert.equal(gets,2);
+ assert.equal(gets,3);
 });
 test("read-only check failure does not trigger a second save",async()=>{
  const local=storage();let gets=0,posts=0;
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const result=await run({storage:local,fetchImpl:async(path,options)=>{
-  if(options.method==="GET"){gets++;if(gets===2)throw Error("offline");
-   return response({revision:0,favs:{},visited:{}});}
+  if(options.method==="GET"){gets++;if(gets===2)return response(saved);if(gets===3)throw Error("offline");
+   return response(gets===1?{revision:0,favs:{},visited:{}}:saved);}
   posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(saved);
  }});
@@ -47,7 +47,7 @@ test("missing trusted checkpoint remains a review even if saved record is verifi
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
   fetchImpl:async(path,options)=>{
-   if(options.method==="GET"){gets++;return response(gets===1?
+   if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
     {revision:0,favs:{},visited:{}}:saved);}
    local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
    return response(saved);
@@ -69,7 +69,7 @@ test("verified server save renders polite success instead of a warning",async()=
  const doc={createElement:tag=>new Node(tag)},container=new Node("div");
  const output=await run({storage:local,document:doc,container,
   fetchImpl:async(path,opts)=>{
-   if(opts.method==="GET"){gets++;return response(gets===1?
+   if(opts.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
     {revision:0,favs:{},visited:{}}:saved);}
    posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
    return response(saved);
@@ -88,7 +88,7 @@ test("server record deleted after save never receives calm verified-success copy
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const deleted={revision:2,favs:{a:{value:null,revision:2,deleted:true}},visited:{}};
  const output=await run({storage:local,fetchImpl:async(path,options)=>{
-  if(options.method==="GET"){gets++;return response(gets===1?
+  if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
    {revision:0,favs:{},visited:{}}:deleted);}
   posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(saved);
@@ -98,7 +98,7 @@ test("server record deleted after save never receives calm verified-success copy
  assert.equal(output.verification.unresolved[0].reason,"deleted_on_server");
  assert.equal(output.displayResult.status,"saved_server_record_deleted");
  assert.equal(posts,1);
- assert.equal(gets,2);
+ assert.equal(gets,3);
 });
 
 test("changed server value gives specific explanation rather than generic warning",async()=>{
@@ -106,7 +106,7 @@ test("changed server value gives specific explanation rather than generic warnin
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const changed={revision:2,favs:{a:{value:{...fav,title:"Updated"},revision:2,deleted:false}},visited:{}};
  const output=await run({storage:local,fetchImpl:async(path,options)=>{
-  if(options.method==="GET"){gets++;return response(gets===1?
+  if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
    {revision:0,favs:{},visited:{}}:changed);}
   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(saved);
@@ -128,7 +128,7 @@ test("verified deletion adds view-exhibition link without another write",async()
  const doc={createElement:tag=>new Node(tag)},container=new Node("div");
  const output=await run({storage:local,document:doc,container,exhibitionUrl:"/exhibition/a",
   fetchImpl:async(path,options)=>{
-   if(options.method==="GET"){gets++;return response(gets===1?
+   if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
     {revision:0,favs:{},visited:{}}:deleted);}
    posts++;local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
    return response(saved);
@@ -140,7 +140,7 @@ test("verified deletion adds view-exhibition link without another write",async()
  assert.equal(section.children.at(-1).tag,"a");
  assert.equal(section.children.at(-1).attributes.href,"/exhibition/a");
  assert.equal(posts,1);
- assert.equal(gets,2);
+ assert.equal(gets,3);
 });
 
 test("missing server record never claims it was deleted",async()=>{
@@ -148,7 +148,7 @@ test("missing server record never claims it was deleted",async()=>{
  const saved={revision:1,favs:{a:{value:fav,revision:1,deleted:false}},visited:{}};
  const missing={revision:2,favs:{},visited:{}};
  const output=await run({storage:local,fetchImpl:async(path,options)=>{
-  if(options.method==="GET"){gets++;return response(gets===1?
+  if(options.method==="GET"){gets++;if(gets===2)return response(saved);return response(gets===1?
    {revision:0,favs:{},visited:{}}:missing);}
   local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
   return response(saved);

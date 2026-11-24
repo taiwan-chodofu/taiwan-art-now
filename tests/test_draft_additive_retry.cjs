@@ -23,7 +23,7 @@ test("stale revision re-fetches and preserves remote favorite with local additio
  const fetchImpl=async(path,opts)=>{
    calls.push({path,opts});
    if(opts.method==="GET")return response(calls.filter(c=>c.opts.method==="GET").length===1
-     ?state():remote);
+     ?state():calls.filter(c=>c.opts.method==="POST").length===2?saved:remote);
    return response(calls.filter(c=>c.opts.method==="POST").length===1
      ?{error:"stale_revision"}:saved,
      calls.filter(c=>c.opts.method==="POST").length===1?409:200);
@@ -133,9 +133,9 @@ test("checkpoint loss between stale 409 and retry blocks another POST",async()=>
 });
 test("checkpoint permits additive save when local records remain intact",async()=>{
  const local=storage();
+ let saved=false;
  const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
-   fetchImpl:async(path,opts)=>response(opts.method==="GET"?state():
-     state(1,{a:item(fav)}))});
+   fetchImpl:async(path,opts)=>{if(opts.method==="POST")saved=true;return response(saved?state(1,{a:item(fav)}):state());}});
  assert.equal(result.status,"saved");
 });
 
@@ -146,7 +146,7 @@ test("after 409, additive retry preserves unrelated server registration and both
  const saved=state(2,{remote:item({title:"Other"}),a:item(fav,2)},
    {visit:item({date:"2026-11-23T00:00:00.000Z",title:"Visited"},2)});
  const result=await run({storage:local,fetchImpl:async(path,opts)=>{
-   if(opts.method==="GET")return response(++gets===1?state():remote);
+   if(opts.method==="GET")return response(++gets===1?state():posts===2?saved:remote);
    posts++;
    if(posts===1)return response({error:"stale_revision"},409);
    const payload=JSON.parse(opts.body);
@@ -244,7 +244,7 @@ test("confirmed POST with checkpoint loss reports server saved but local review 
  let posts=0;
  const result=await run({storage:local,checkpoint:{favs:{a:fav},visited:{}},
   fetchImpl:async(path,opts)=>{
-   if(opts.method==="GET")return response(state());
+   if(opts.method==="GET")return response(posts?state(1,{a:item(fav)}):state());
    posts++;
    local.change("taiwan_art_favs",{old:{title:"Old",museum:"M"}});
    return response(state(1,{a:item(fav)}));
@@ -259,12 +259,43 @@ test("confirmed POST with unreadable local snapshot never reports fully saved",a
  const local=storage({a:fav});
  let posts=0;
  const result=await run({storage:local,fetchImpl:async(path,opts)=>{
-  if(opts.method==="GET")return response(state());
+  if(opts.method==="GET")return response(posts?state(1,{a:item(fav)}):state());
   posts++;
   local.change("taiwan_art_favs",["unexpected","array"]);
   return response(state(1,{a:item(fav)}));
  }});
  assert.equal(result.status,"saved_server_local_changed");
  assert.equal(result.serverSaved,true);
+ assert.equal(posts,1);
+});
+
+test("successful POST without durable readback stays uncertain and never resends",async()=>{
+ const methods=[];
+ const result=await run({storage:storage(),fetchImpl:async(_,opts)=>{
+  methods.push(opts.method);
+  return response(opts.method==="POST"?state(1,{a:item(fav)}):state());
+ }});
+ assert.equal(result.status,"unknown_commit");
+ assert.deepEqual(methods,["GET","POST","GET"]);
+});
+test("JSONB reordering in a verified migration preserves both registrations",async()=>{
+ let current=state();
+ const result=await run({storage:storage({a:fav},{a:"2026-11-23T00:00:00.000Z"}),
+  fetchImpl:async(_,opts)=>{
+   if(opts.method==="POST")current=state(1,
+    {a:item({url:"",dates:"2026",museum:"M",title:"A"})},
+    {a:item("2026-11-23T00:00:00.000Z")});
+   return response(current);
+  }});
+ assert.equal(result.status,"saved");
+ assert.equal(current.visited.a.deleted,false);
+});
+test("server error after migration POST remains uncertain",async()=>{
+ let posts=0;
+ const result=await run({storage:storage(),fetchImpl:async(_,opts)=>{
+  if(opts.method==="GET")return response(state());
+  posts++;return response({},503);
+ }});
+ assert.equal(result.status,"unknown_commit");
  assert.equal(posts,1);
 });
