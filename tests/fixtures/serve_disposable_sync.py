@@ -20,12 +20,17 @@ def serve(cert, key):
             cur.execute("SELECT current_database(), current_user")
             if cur.fetchone() != ("tan_ci_disposable", "tan_ci"):
                 raise RuntimeError("Unexpected disposable database identity")
-            cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
-                        ("browser-drill-owner",))
-            for session in ("browser-drill-one", "browser-drill-two"):
-                cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
-                            "VALUES (%s,%s,now()+interval '10 minutes')",
-                            (token_digest(session), "browser-drill-owner"))
+            owners = {
+                "browser-drill-owner": ("browser-drill-one", "browser-drill-two"),
+                "browser-migration-owner": ("browser-migration-session", "browser-migration-other"),
+            }
+            for owner, sessions in owners.items():
+                cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                            (owner,))
+                for session in sessions:
+                    cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
+                                "VALUES (%s,%s,now()+interval '10 minutes')",
+                                (token_digest(session), owner))
 
     app = create_isolated_staging_app(db_connect=lambda: psycopg.connect(DATABASE),
                                       environment="isolated-staging", canonical_origin=ORIGIN)
