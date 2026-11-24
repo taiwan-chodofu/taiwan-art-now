@@ -1528,3 +1528,10 @@
 [SHARED LINK] 6 exhibitions share link: https://artemperor.tw/tidbits
 [MISSING FIELD] qidustation: '潮起、潮湧、潮未來：基隆四百特展' is missing 'link'
 [MIXED LANGUAGE IN ZH] fugui: '【掌心玩物 Palm Treasures】日本藝術家創作展' description field contains Japanese kana
+
+--- Validation 2026-11-24 11:05 ---
+[SHARED LINK] 4 exhibitions share link: https://kdmofa.tnua.edu.tw
+[SHARED LINK] 2 exhibitions share link: https://ncpi.ntmofa.gov.tw/
+[SHARED LINK] 6 exhibitions share link: https://artemperor.tw/tidbits
+[MISSING FIELD] qidustation: '潮起、潮湧、潮未來：基隆四百特展' is missing 'link'
+[MIXED LANGUAGE IN ZH] fugui: '【掌心玩物 Palm Treasures】日本藝術家創作展' description field contains Japanese kana
