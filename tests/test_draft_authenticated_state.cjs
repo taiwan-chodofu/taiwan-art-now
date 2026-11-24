@@ -31,3 +31,31 @@ test("offline never returns data",async()=>{
 test("no fetch dependency fails closed",async()=>{
  assert.equal((await read({})).status,"invalid_request");
 });
+
+test('a legacy controller cannot serve cached owner state',async()=>{
+ let reads=0;
+ const serviceWorker={controller:{postMessage(){}}};
+ const result=await read({serviceWorker,fetchImpl:async()=>{reads++;return response();}});
+ assert.equal(result.status,'worker_update_required');
+ assert.equal(reads,0);
+});
+
+test('the shipped worker bypasses private fetches and a controller switch invalidates the read',async()=>{
+ const handlers={};
+ const vm=require('node:vm'),fs=require('node:fs');
+ vm.runInNewContext(fs.readFileSync(require.resolve('../static/sw.js'),'utf8'),{
+  URL,self:{addEventListener:(event,handler)=>{handlers[event]=handler;}}
+ });
+ const serviceWorker={controller:{postMessage(data,ports){handlers.message({data,ports});}}};
+ const result=await read({serviceWorker,fetchImpl:async path=>{
+  handlers.fetch({request:{method:'GET',url:'https://example.test'+path},
+    respondWith(){throw Error('private read intercepted');}});
+  return response();
+ }});
+ assert.equal(result.status,'ready');
+ const changed=await read({serviceWorker,fetchImpl:async()=>{
+  serviceWorker.controller=null;
+  return response();
+ }});
+ assert.equal(changed.status,'worker_update_required');
+});

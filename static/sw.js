@@ -61,15 +61,24 @@ self.addEventListener('notificationclick', (event) => {
   );
 });
 
+// Only workers with the private network-only rule can acknowledge this check.
+self.addEventListener('message', (event) => {
+  if (event.data === 'tan-private-network-only-v1') {
+    event.ports[0]?.postMessage('tan-private-network-only-v1');
+  }
+});
+
 // フェッチ: ネットワーク優先、失敗時キャッシュ
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+  if (event.request.method !== 'GET' || event.request.cache === 'no-store' ||
+      new URL(event.request.url).pathname.startsWith('/api/private-subscribers/')) return;
 
   event.respondWith(
     fetch(event.request)
       .then((response) => {
         // 成功したらキャッシュに保存
-        if (response.status === 200) {
+        if (response.status === 200 &&
+            !/(?:^|,)\s*(?:no-store|private)\b/i.test(response.headers.get('Cache-Control') || '')) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, clone);

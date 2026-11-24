@@ -31,6 +31,10 @@
    if(current){current.dispose();current=null;}
    const latest=state?{status:'ready',state}:await reader.read({fetchImpl});
    if(closed||generation!==refreshGeneration)return false;
+   if(latest.status==='worker_update_required'){
+     message(lang==='zh'?'請關閉所有 Taiwan Art Now 頁面和 App，再連上網路重新開啟。':'Taiwan Art Now のタブとアプリをすべて閉じ、オンラインで開き直してください。');
+     return false;
+   }
    if(latest.status!=='ready'){message(lang==='zh'?'無法確認最新收藏狀態，請重新整理頁面。':'最新の登録状況を確認できません。ページを再読み込みしてください。');return false;}
    if(!latest.state||!Number.isSafeInteger(latest.state.revision)||latest.state.revision<highestRevision||
       !latest.state.favs||typeof latest.state.favs!=='object'||

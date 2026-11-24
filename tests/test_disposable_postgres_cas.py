@@ -840,7 +840,7 @@ class DisposablePostgresCASTests(unittest.TestCase):
     def test_review_token_single_use_and_owner_binding(self):
         import psycopg
         from subscriber_review_confirmation import (
-            issue_keep_confirmation, consume_keep_confirmation)
+            issue_keep_confirmation, consume_keep_confirmation, _digest)
         with psycopg.connect(self.url) as conn:
             current = read_for_verified_sender(conn, verified_sender_id="synthetic-owner")
             deleted = update_for_verified_sender(
@@ -869,7 +869,7 @@ class DisposablePostgresCASTests(unittest.TestCase):
                     local_value={"title": "Restored"})
             with conn.cursor() as cur:
                 cur.execute("SELECT count(*) FROM tan_private.subscriber_review_confirmations "
-                            "WHERE used_at IS NOT NULL")
+                            "WHERE token_hash=%s AND used_at IS NOT NULL", (_digest(token),))
                 self.assertEqual(cur.fetchone()[0], 1)
 
     def test_review_token_stale_revision_preserves_unused_token(self):

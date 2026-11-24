@@ -362,3 +362,49 @@ test('lost reply after a write displays current state from both browser contexts
   await second.close();
  }
 });
+
+test('installed worker never caches private state and an old controller cannot supply it offline',async({browser})=>{
+ const http=require('node:http'),fs=require('node:fs');
+ const worker=fs.readFileSync(path.resolve(__dirname,'../static/sw.js'),'utf8');
+ let privateReads=0;
+ const server=http.createServer((req,res)=>{
+  const send=(type,body)=>{res.setHeader('Content-Type',type);res.end(body);};
+  if(req.url==='/worker.js')return send('text/javascript',worker);
+  if(req.url==='/legacy.js')return send('text/javascript',
+   "self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));"+
+   "self.addEventListener('fetch',e=>{if(new URL(e.request.url).pathname.includes('private-subscribers'))e.respondWith(new Response(JSON.stringify({revision:8,favs:{},visited:{}}),{headers:{'Content-Type':'application/json','Cache-Control':'no-store'}}));});");
+  if(req.url==='/api/private-subscribers/v2/state'){
+   privateReads++;
+   res.setHeader('Cache-Control','no-store');
+   return send('application/json',JSON.stringify({revision:1,favs:{},visited:{}}));
+  }
+  send('text/html','<!doctype html><title>Offline worker rehearsal</title>');
+ });
+ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+ const origin='http://127.0.0.1:'+server.address().port;
+ try{
+  for(const script of ['/worker.js','/legacy.js']){
+   const context=await browser.newContext();
+   try{
+    const page=await context.newPage();
+    await page.goto(origin);
+    await page.evaluate(async script=>{
+     await navigator.serviceWorker.register(script);
+     await navigator.serviceWorker.ready;
+     if(!navigator.serviceWorker.controller)await new Promise(resolve=>
+      navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));
+    },script);
+    for(const file of ['draft_versioned_sync.js','draft_authenticated_state.js'])
+     await page.addScriptTag({path:path.resolve(__dirname,'../static/js',file)});
+    if(script==='/worker.js'){
+     expect(await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).status)).toBe('ready');
+     expect(await page.evaluate(async()=>!!await caches.match('/api/private-subscribers/v2/state'))).toBe(false);
+    }
+    await context.setOffline(true);
+    expect(await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).status))
+      .toBe(script==='/worker.js'?'unavailable':'worker_update_required');
+   }finally{await context.close();}
+  }
+  expect(privateReads).toBe(1);
+ }finally{await new Promise(resolve=>server.close(resolve));}
+});

@@ -3,6 +3,7 @@ name: Private subscriber safety tests
 on:
   pull_request:
     paths:
+      - 'static/sw.js'
       - 'private_subscriber_store.py'
       - 'private_inbox.py'
       - 'private_inbox_admin.py'
