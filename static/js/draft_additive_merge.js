@@ -35,7 +35,7 @@
         const remote = serverState[kind][key];
         if (remote.deleted) {
           review.push({ kind, key, reason: "explicit_deletion_conflict" });
-        } else if (JSON.stringify(value) === JSON.stringify(remote.value)) {
+        } else if (sync.sameJson(value,remote.value)) {
           same.push({ kind, key });
         } else {
           // Same exhibition remains saved; differing metadata/timestamps

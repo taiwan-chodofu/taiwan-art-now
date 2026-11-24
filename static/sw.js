@@ -70,15 +70,14 @@ self.addEventListener('message', (event) => {
 
 // フェッチ: ネットワーク優先、失敗時キャッシュ
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET' || event.request.cache === 'no-store' ||
+  if (event.request.method !== 'GET' ||
       new URL(event.request.url).pathname.startsWith('/api/private-subscribers/')) return;
 
   event.respondWith(
     fetch(event.request)
       .then((response) => {
         // 成功したらキャッシュに保存
-        if (response.status === 200 &&
-            !/(?:^|,)\s*(?:no-store|private)\b/i.test(response.headers.get('Cache-Control') || '')) {
+        if (response.status === 200) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(event.request, clone);

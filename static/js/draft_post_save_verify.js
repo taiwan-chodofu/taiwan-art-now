@@ -32,7 +32,7 @@
   for(const {kind,key,value} of expected){
    const entry=latest.state[kind][key];
    if(!entry||entry.deleted||!own(entry,"value")||
-      JSON.stringify(entry.value)!==JSON.stringify(value))
+      !reader.sameJson(entry.value,value))
     unresolved.push({kind,key,reason:!entry?"not_found":entry.deleted?
       "deleted_on_server":"different_server_value"});
   }

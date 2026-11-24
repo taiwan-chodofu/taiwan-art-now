@@ -32,7 +32,7 @@
         try {value=legacy.validateMap({[key]:remote.value},kind)[key];}
         catch(_){return {status:"invalid_server_value",kind,key};}
         if(!present)candidates.push({kind,key,value,item_revision:remote.revision});
-        else if(JSON.stringify(value)!==JSON.stringify(local.snapshot[kind][key]))
+        else if(!sync.sameJson(value,local.snapshot[kind][key]))
           metadataDifferences.push({kind,key,reason:"metadata_diff_preserved"});
       }
       for(const key of Object.keys(local.snapshot[kind]))

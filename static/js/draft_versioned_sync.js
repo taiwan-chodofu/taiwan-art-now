@@ -83,19 +83,61 @@
     return { safeToWrite: safe, baseRevision: server.revision,
       changes, conflicts, remoteOnly };
   }
-  async function synchronize({ fetchImpl, localSnapshot }) {
+ const PATH="/api/private-subscribers/v2/state";
+ const trustedWorkers=new WeakSet();
+ async function supportsPrivateReads(worker){
+   if(!worker||trustedWorkers.has(worker))return true;
+   if(typeof MessageChannel!=="function")return false;
+   const marker="tan-private-network-only-v1";
+   return new Promise(resolve=>{
+     const channel=new MessageChannel();
+     const finish=ok=>{
+       clearTimeout(timer);
+       channel.port1.close();
+       if(ok)trustedWorkers.add(worker);
+       resolve(ok);
+     };
+     const timer=setTimeout(()=>finish(false),1500);
+     channel.port1.onmessage=e=>finish(e.data===marker);
+     try{worker.postMessage(marker,[channel.port2]);}
+     catch(_){channel.port2.close();finish(false);}
+   });
+ }
+ async function read({fetchImpl,serviceWorker=globalThis.navigator?.serviceWorker}){
+   if(typeof fetchImpl!=="function")return {status:"invalid_request"};
+   const controller=serviceWorker?.controller;
+   if(controller&&(!await supportsPrivateReads(controller)||serviceWorker?.controller!==controller))
+     return {status:"worker_update_required"};
+   let response;
+   try{response=await fetchImpl(PATH,{method:"GET",credentials:"same-origin",
+     cache:"no-store",redirect:"error",mode:"same-origin",
+     headers:{"Accept":"application/json"}});}
+   catch(_){return {status:"unavailable",offline:true};}
+   if(!response)return {status:"unavailable"};
+   if(response.status===401||response.status===403)return {status:"unauthorized"};
+   if(!response.ok)return {status:"unavailable"};
+   // A login redirect, HTML response or cacheable response must never be
+   // interpreted as an authenticated, current subscriber state.
+   const contentType=response.headers&&typeof response.headers.get==="function"
+     ? response.headers.get("content-type"):null;
+   const cacheControl=response.headers&&typeof response.headers.get==="function"
+     ? response.headers.get("cache-control"):null;
+   if(!contentType||!/^application\/json(?:\s*;|\s*$)/i.test(contentType)||
+      !cacheControl||!/(?:^|,)\s*no-store\b/i.test(cacheControl))
+     return {status:"invalid_response"};
+   let state;
+   try{state=await response.json();validateServer(state);}
+   catch(_){return {status:"invalid_server"};}
+   if(serviceWorker?.controller!==controller)return {status:"worker_update_required"};
+   return {status:"ready",state};
+ }
+  async function synchronize({ fetchImpl, localSnapshot, serviceWorker }) {
     if (typeof fetchImpl !== "function") throw new Error("Fetch dependency required");
     validateSnapshot(localSnapshot);
+    const latest = await read({fetchImpl, serviceWorker});
+    if (latest.status !== "ready") return {status: latest.offline ? "offline" : latest.status};
+    const server = latest.state;
     let response;
-    try {
-      response = await fetchImpl("/api/private-subscribers/v2/state", {
-        method: "GET", credentials: "same-origin", cache: "no-store"
-      });
-    } catch (_) { return { status: "offline" }; }
-    if (!response || response.status === 403) return { status: "unauthorized" };
-    if (!response.ok) return { status: "unavailable" };
-    let server;
-    try { server = await response.json(); } catch (_) { return { status: "invalid_server" }; }
     let proposed;
     try { proposed = plan(localSnapshot, server); }
     catch (_) { return { status: "invalid_server" }; }
@@ -113,11 +155,19 @@
     if (!response) return { status: "unknown_commit" };
     if (response.status === 409) return { status: "stale_revision" };
     if (response.status === 403) return { status: "unauthorized" };
-    if (!response.ok) return { status: "unavailable" };
+    if (!response.ok) return { status: "unknown_commit" };
     let result;
     try { result = await response.json(); validateServer(result); }
     catch (_) { return { status: "unknown_commit" }; }
+    const verified = await read({fetchImpl, serviceWorker});
+    if (verified.status !== "ready" || result.revision <= proposed.baseRevision ||
+        verified.state.revision !== result.revision ||
+        !KINDS.every(kind => Object.entries(proposed.changes[kind]).every(([key, op]) => {
+          const entry = verified.state[kind][key];
+          return entry && !entry.deleted && entry.revision === result.revision &&
+            sameJson(entry.value, op.set);
+        }))) return { status: "unknown_commit" };
     return { status: "saved", revision: result.revision };
   }
-  return { plan, synchronize, sameJson };
+  return { plan, synchronize, sameJson, read, PATH };
 });

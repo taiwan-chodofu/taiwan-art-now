@@ -6,6 +6,7 @@ const local = (favs = {}, visited = {}) => ({ favs, visited });
 const server = (favs = {}, visited = {}, revision = 1) => ({ revision, favs, visited });
 const entry = (value, deleted = false, revision = 1) => ({ value, deleted, revision });
 const reply = (body, status = 200) => ({
+  headers:{get:key=>key==='content-type'?'application/json':'no-store'},
   status, ok: status >= 200 && status < 300, json: async () => body
 });
 
@@ -92,9 +93,10 @@ test("successful write sends no identity and uses credentials", async () => {
   let sent;
   const result = await synchronize({ localSnapshot: local({ a: true }),
     fetchImpl: async (_, options) => {
-      if (options.method === "GET") return reply(server());
+      if (options.method === "GET" && !sent) return reply(server());
+      if (options.method === "GET") return reply(server({a:entry(true,false,2)}, {}, 2));
       sent = options;
-      return reply(server({ a: entry(true) }, {}, 2));
+      return reply(server({ a: entry(true,false,2) }, {}, 2));
     } });
   assert.equal(result.status, "saved");
   assert.equal(sent.credentials, "same-origin");
@@ -160,4 +162,14 @@ test('metadata survives JSONB key reordering while array order and missing field
                        {dates:['a','b'],museum:'M',title:'Art'}),true);
  assert.equal(sameJson({dates:['a','b']},{dates:['b','a']}),false);
  assert.equal(sameJson({title:null},{}),false);
+});
+
+test('bootstrap never reports success from a POST if the fresh GET still lacks the item',async()=>{
+ const methods=[];
+ const result=await synchronize({localSnapshot:local({a:true}),fetchImpl:async(_,opts)=>{
+  methods.push(opts.method);
+  return opts.method==='POST'?reply(server({a:entry(true,false,2)}, {}, 2)):reply(server());
+ }});
+ assert.equal(result.status,'unknown_commit');
+ assert.deepEqual(methods,['GET','POST','GET']);
 });
