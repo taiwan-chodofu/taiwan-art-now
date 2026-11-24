@@ -21,6 +21,7 @@
 <script src="/static/js/draft_legacy_snapshot.js"></script>
 <script src="/static/js/draft_migration_review.js"></script>
 <script src="/static/js/draft_simple_review_ui.js"></script>
+<script src="/static/js/draft_explicit_keep.js"></script>
 <script src="/static/js/draft_explicit_server_restore.js"></script>
 <script>
 (function(){
@@ -36,7 +37,7 @@
  }
  try{
   const lifecycle=TanDraftStagingPage.create({
-   win:window,fetchImpl:window.fetch.bind(window),notice,lang:'ja',
+   win:window,fetchImpl:window.fetch.bind(window),notice,lang:'ja',onState:state=>{if(params.get('review')==='1')renderReview(state);},
    items:[
     {element:document.getElementById('favBtn'),kind:'favs',key,value:true},
     {element:document.getElementById('visitedBtn'),kind:'visited',key,value:true}
@@ -44,7 +45,6 @@
   });
   // Test fixture only: exercise in-place refresh without a full navigation.
   window.__draftStagingRefresh=()=>lifecycle.refresh();
-  lifecycle.start();
   // Optional read-only migration preview, isolated to explicit test mode.
   let reviewDisposed=false;
   let reviewMount=null;
@@ -56,11 +56,12 @@
   yes.addEventListener("click",async()=>{
    if(!pending||!reviewed||submitting||reviewDisposed)return;
    submitting=true;yes.disabled=true;no.disabled=true;
-   const intent=pending;pending=null;
+   const intent=pending,selection=reviewed;pending=null;
+   reviewMount?.disable();
    const result=await TanDraftExplicitServerRestore.restore({
     fetchImpl:window.fetch.bind(window),kind:intent.kind,key:intent.key,
-    value:reviewed.value,reviewedRevision:reviewed.revision,
-    tombstoneRevision:reviewed.tombstoneRevision,confirmed:true
+    value:selection.value,reviewedRevision:selection.revision,
+    tombstoneRevision:selection.tombstoneRevision,confirmed:true
    });
    if(reviewDisposed)return;
    confirmBox.hidden=true;
@@ -68,33 +69,36 @@
     ?(intent.kind==="visited"?"「観た」を保存しました。":"「観たい」を保存しました。")
     :result.status==="write_outcome_unknown"
      ?"保存できたか確認できません。「最新の登録を表示する」を押して確認してください。"
+     :result.status==="confirmation_unavailable"?"復元の確認を開始できませんでした。「最新の登録を表示する」を押してください。"
      :"登録状況が変わりました。「最新の登録を表示する」を押して確認してください。";
    // Confirmed writes can refresh in place using a fresh authenticated GET.
    // Unknown write outcomes must never be interpreted as confirmed or retried.
    document.getElementById("favBtn").disabled=true;
    document.getElementById("visitedBtn").disabled=true;
-   if(result.status==="server_confirmed"){
+   if(result.status==="server_confirmed"||result.status==="write_outcome_unknown"){
     if(reviewMount)reviewMount.dispose();
-    const updated=await lifecycle.refresh();
+    const confirmed=result.status==="server_confirmed";
+    const updated=await lifecycle.refresh(confirmed?result.revision:selection.revision+1);
     if(reviewDisposed)return;
     if(updated){
+     submitting=false;yes.disabled=false;no.disabled=false;
      reloadState.hidden=true;
-     notice.textContent=intent.kind==="visited"
+     notice.textContent=!confirmed?'最新の登録状況を表示しています。':intent.kind==="visited"
       ?'「観た」を保存しました。最新の登録を表示しています。'
       :'「観たい」を保存しました。最新の登録を表示しています。';
     }else{
      reloadState.hidden=false;
-     notice.textContent='保存しましたが、最新の表示を確認できません。「最新の登録を表示する」を押してください。';
+     notice.textContent=confirmed?'保存しましたが、最新の表示を確認できません。「最新の登録を表示する」を押してください。':'保存できたか確認できません。「最新の登録を表示する」を押してください。';
     }
    }else{
     reloadState.hidden=false;
    }
    // Never re-enable stale buttons or repeat an uncertain POST.
   });
-  if(params.get('review')==='1'){
-   TanDraftAuthenticatedState.read({fetchImpl:window.fetch.bind(window)}).then(result=>{
-    if(reviewDisposed||result.status!=='ready')return;
-    const report=TanDraftMigrationReview.preview(window.localStorage,result.state);
+  function renderReview(state){
+    if(reviewDisposed)return;
+    reviewMount?.dispose();pending=null;confirmBox.hidden=true;
+    const report=TanDraftMigrationReview.preview(window.localStorage,state);
     if(report.status!=='ready')return;
     const messages=TanDraftMigrationReview.explain(report,'ja');
     const legacy=TanDraftLegacySnapshot.read(window.localStorage);
@@ -113,8 +117,8 @@
       notice.textContent='まだ登録は変更していません。';
       window.__draftReviewIntent=decision;
      }});
-   }).catch(()=>{});
   }
+  lifecycle.start();
   window.addEventListener('pagehide',()=>{
    reviewDisposed=true;pending=null;confirmBox.hidden=true;
    if(reviewMount)reviewMount.dispose();

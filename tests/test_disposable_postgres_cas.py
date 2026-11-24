@@ -131,6 +131,33 @@ class DisposablePostgresCASTests(unittest.TestCase):
             self.assertEqual(latest.json,removed.json)
             self.assertEqual(latest.headers.get("Cache-Control"),"no-store")
 
+            value = {"title": "Art"}
+            self.assertEqual(write(3, {"art": {"set": value}}, {}).status_code, 409)
+            issue = "/api/private-subscribers/v2/review/keep/issue"
+            consume = "/api/private-subscribers/v2/review/keep/consume"
+            choice = {"choice": "keep_saved", "kind": "favs", "key": "art",
+                      "base_revision": 3, "reviewed_item_revision": 3, "local_value": value}
+            issued = client.post(issue, json=choice, headers=headers)
+            self.assertEqual(issued.status_code, 200)
+            confirmation = {"token": issued.json["token"], "local_value": value}
+
+            # Restart the isolated entrypoint read-only against the same state.
+            frozen = create_isolated_staging_app(db_connect=lambda: psycopg.connect(self.url),
+                canonical_origin="https://127.0.0.1", environment="isolated-staging", read_only=True)
+            with frozen.test_client() as viewer:
+                viewer.set_cookie(COOKIE_NAME, token)
+                for path, body in [(url, {"base_revision": 3, "changes": {"favs": {}, "visited": {}}}),
+                                   (issue, choice), (consume, confirmation)]:
+                    self.assertEqual(viewer.post(path, json=body, headers=headers).status_code, 503)
+                self.assertEqual(viewer.get("/api/private-subscribers/v2/state", headers=headers).json,
+                                 removed.json)
+            restored = client.post(consume, json=confirmation, headers=headers)
+            self.assertEqual(restored.status_code, 200)
+            self.assertEqual(restored.json["revision"], 4)
+            self.assertEqual(restored.json["favs"]["art"]["value"], value)
+            self.assertEqual(restored.json["visited"], removed.json["visited"])
+            self.assertEqual(client.post(consume, json=confirmation, headers=headers).status_code, 400)
+
     def test_isolated_staging_two_sessions_reject_stale_delete_and_preserve_seen(self):
         """A stale device cannot erase a newer independent seen registration."""
         import psycopg

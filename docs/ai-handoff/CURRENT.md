@@ -32,3 +32,11 @@ Establish a durable handoff between ChatGPT and Claude Code for Taiwan Art Now, 
 ## Source of truth
 Repository: https://github.com/taiwan-chodofu/taiwan-art-now
 This file records shared work only; private AI conversation history is not automatically synced.
+
+## 2026-11-24 — Active handoff for #83 / draft PR #87
+
+Branch feat/private-subscriber-storage-adapter-83, reviewed baseline aada244. The PR reports 784 commits and 210 changed files at this baseline. Its scope grew from the private storage adapter and guarded import to session ownership, revisioned item writes, migration review, four-page legacy writer audits, browser fixtures and backup drills. The older collaboration-foundation status above is historical. Latest baseline Actions run 45206023027 passed all five jobs.
+
+This change updates the isolated staging app factory, draft browser bridge/lifecycle and explicit restore client, isolated exhibition fixture, browser/unit/DB tests and handoff notes. The review fixture previously sent tombstone restores to the ordinary changes route, which the server rejects. Explicit review now uses the actual consent protocol. Ambiguous writes and stale descriptors trigger a read-only check. Old replies cannot replace a later displayed revision. The PostgreSQL drill now exports the inserted source row, and a read-only staging factory exercises interruption between issuing and consuming a confirmation.
+
+Local checks: 407 Node tests passed. Python discovery ran 336 with 18 database-only skips. Local Chromium startup was denied by the executor's socket policy; check the latest Actions run for Chromium and disposable PostgreSQL. Real hardware with a previously installed PWA, independently stored encrypted backups, isolated-environment restore with retention and timing, provider routing/draining during rollback, and existing-user migration remain unverified. Production release is blocked. For the next staging rehearsal use only synthetic identities and a separate database. Compare per-item values, revisions and tombstones before and after the rehearsal. This PR remains draft.

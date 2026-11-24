@@ -142,12 +142,14 @@ test('explicit second confirmation restores only reviewed tombstone and preserve
   localStorage.setItem('taiwan_art_visited','{}');
  });
  await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().url().endsWith('/issue'))return route.fulfill(response({token:'synthetic'}));
+  if(route.request().method()==='POST')expect(route.request().url()).toMatch(/review\/keep\/consume$/);
   const request=route.request();
   if(request.method()==='GET')return route.fulfill(response(server));
   writes++;
   const body=request.postDataJSON();
-  if(body.base_revision!==server.revision)return route.fulfill({status:409,body:'{}'});
-  server={...server,revision:3,favs:{art:{revision:3,deleted:false,value:body.changes.favs.art.set}}};
+  expect(body.token).toBe('synthetic');
+  server={...server,revision:3,favs:{art:{revision:3,deleted:false,value:body.local_value}}};
   return route.fulfill(response(server));
  });
  await page.goto(url+'&review=1');
@@ -188,7 +190,7 @@ test('final restore refuses changed server revision without POST',async({page})=
  await page.route('**/api/private-subscribers/v2/**',route=>{
   if(route.request().method()==='POST'){writes++;return route.abort();}
   reads++;
-  const revision=reads<=2?1:2;
+  const revision=reads===1?1:2;
   return route.fulfill(response({revision,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
  });
  await page.goto(url+'&review=1');
@@ -204,6 +206,8 @@ test('final restore uncertain POST never retries or announces success',async({pa
   localStorage.setItem('taiwan_art_visited','{}');
  });
  await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().url().endsWith('/issue'))return route.fulfill(response({token:'synthetic'}));
+  if(route.request().method()==='POST')expect(route.request().url()).toMatch(/review\/keep\/consume$/);
   if(route.request().method()==='POST'){writes++;return route.abort('failed');}
   return route.fulfill(response({revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}}));
  });
@@ -226,16 +230,18 @@ test('confirmed restore with failed automatic refresh offers manual fallback',as
   localStorage.setItem('taiwan_art_visited','{}');
  });
  await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().url().endsWith('/issue'))return route.fulfill(response({token:'synthetic'}));
+  if(route.request().method()==='POST')expect(route.request().url()).toMatch(/review\/keep\/consume$/);
   if(route.request().method()==='POST'){
    writes++;
    const payload=route.request().postDataJSON();
-   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.changes.favs.art.set}},visited:{}};
+   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.local_value}},visited:{}};
    return route.fulfill(response(server));
   }
   reads++;
-  // Initial staging read, review read, pre-write read, verification read succeed.
+  // Initial staging and review read, pre-write read, verification read succeed.
   // The subsequent in-place UI refresh fails; no POST must be repeated.
-  if(reads>=5)return route.abort('failed');
+  if(reads>=4)return route.abort('failed');
   return route.fulfill(response(server));
  });
  await page.goto(url+'&review=1');
@@ -246,7 +252,7 @@ test('confirmed restore with failed automatic refresh offers manual fallback',as
  expect(writes).toBe(1);
 });
 
-test('uncertain restore shows current server state after manual reload without a second write',async({page})=>{
+test('uncertain restore shows current server state automatically without a second write',async({page})=>{
  let writes=0;
  let server={revision:1,favs:{art:{revision:1,deleted:true,value:null}},visited:{}};
  await page.addInitScript(()=>{
@@ -254,10 +260,12 @@ test('uncertain restore shows current server state after manual reload without a
   localStorage.setItem('taiwan_art_visited','{}');
  });
  await page.route('**/api/private-subscribers/v2/**',route=>{
+  if(route.request().url().endsWith('/issue'))return route.fulfill(response({token:'synthetic'}));
+  if(route.request().method()==='POST')expect(route.request().url()).toMatch(/review\/keep\/consume$/);
   if(route.request().method()==='POST'){
    writes++;
    const payload=route.request().postDataJSON();
-   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.changes.favs.art.set}},visited:{}};
+   server={revision:2,favs:{art:{revision:2,deleted:false,value:payload.local_value}},visited:{}};
    return route.abort('failed'); // Simulate a committed write with lost response.
   }
   return route.fulfill(response(server));
@@ -265,8 +273,8 @@ test('uncertain restore shows current server state after manual reload without a
  await page.goto(url+'&review=1');
  await page.locator('#migrationReview').getByRole('button',{name:'「観たい」に戻す'}).click();
  await page.locator('#restoreYes').click();
- await expect(page.locator('#notice')).toContainText('保存できたか確認できません');
- await page.locator('#reloadState').click();
+ await expect(page.locator('#notice')).toContainText('最新の登録状況を表示しています');
+ await expect(page.locator('#reloadState')).toBeHidden();
  await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
  await expect(page.locator('#migrationReview')).toBeEmpty();
  expect(writes).toBe(1);
@@ -317,4 +325,40 @@ test('out-of-order refresh responses cannot overwrite newer button state',async(
  expect(await old).toBe(false);
  await expect(page.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
  await expect(page.locator('#favBtn')).toBeEnabled();
+});
+
+test('lost reply after a write displays current state from both browser contexts',async({browser})=>{
+ const first=await browser.newContext();
+ const second=await browser.newContext();
+ let server={revision:0,favs:{},visited:{}};
+ const writes=[];
+ try{
+  for(const [context,kind] of [[first,'favs'],[second,'visited']]){
+   await context.route('**/api/private-subscribers/v2/**',route=>{
+    const request=route.request();
+    if(request.method()==='GET')return route.fulfill(response(server));
+    const {base_revision,changes}=request.postDataJSON();
+    writes.push(kind);
+    if(base_revision!==server.revision)return route.fulfill({status:409,body:'{}'});
+    const revision=server.revision+1;
+    server={...server,revision,[kind]:{art:{revision,deleted:false,value:changes[kind].art.set}}};
+    return kind==='visited'?route.abort('failed'):route.fulfill(response(server));
+   });
+  }
+  const a=await first.newPage(),b=await second.newPage();
+  await a.goto(url);
+  await b.goto(url);
+  await a.locator('#favBtn').click();
+  await expect(a.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+  await b.locator('#visitedBtn').click(); // Old revision can only refresh.
+  await expect(b.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+  await b.locator('#visitedBtn').click();
+  await expect(b.locator('#notice')).toHaveText('この展示は現在「観た」に登録されています。');
+  await expect(b.locator('#favBtn')).toHaveAttribute('aria-pressed','true');
+  await expect(b.locator('#visitedBtn')).toHaveAttribute('aria-pressed','true');
+  expect(writes).toEqual(['favs','visited']);
+ }finally{
+  await first.close();
+  await second.close();
+ }
 });

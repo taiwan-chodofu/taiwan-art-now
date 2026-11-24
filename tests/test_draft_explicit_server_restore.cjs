@@ -12,9 +12,9 @@ test('confirmed tombstone restored only after fresh GET, CAS and verification',a
  let server=state(1),posts=0;
  const fetchImpl=async(_url,options)=>{
   if(options.method==='GET')return response(server);
-  posts++;const payload=JSON.parse(options.body);
-  assert.equal(payload.base_revision,1);
-  assert.deepEqual(payload.changes.favs.art,{set:true});
+  if(_url.endsWith('/issue')){assert.equal(JSON.parse(options.body).base_revision,1);return response({token:'synthetic'});}
+  assert.ok(_url.endsWith('/consume'));posts++;const payload=JSON.parse(options.body);
+  assert.deepEqual(payload,{token:'synthetic',local_value:true});
   server={revision:2,favs:{art:{revision:2,deleted:false,value:true}},visited:{}};
   return response(server);
  };
@@ -29,7 +29,7 @@ test('changed revision rejects restore before POST',async()=>{
 });
 test('uncertain POST never retries',async()=>{
  let posts=0;
- const fetchImpl=async(_url,options)=>{if(options.method==='POST'){posts++;throw Error('network');}return response(state(1));};
+ const fetchImpl=async(_url,options)=>{if(_url.endsWith('/issue'))return response({token:'synthetic'});if(options.method==='POST'){posts++;throw Error('network');}return response(state(1));};
  const result=await restore({fetchImpl,kind:'favs',key:'art',value:true,reviewedRevision:1,tombstoneRevision:1,confirmed:true});
  assert.equal(result.status,'write_outcome_unknown');assert.equal(posts,1);
 });
@@ -67,6 +67,7 @@ test('409 conflict never retries a stale restore',async()=>{
 test('post-write verification mismatch never announces success',async()=>{
  let posts=0,reads=0;
  const fetchImpl=async(_url,options)=>{
+  if(_url.endsWith('/issue'))return response({token:'synthetic'});
   if(options.method==='POST'){posts++;return response({revision:2});}
   reads++;return response(reads===1?state(1):{
    revision:2,favs:{art:{revision:2,deleted:false,value:false}},visited:{}});

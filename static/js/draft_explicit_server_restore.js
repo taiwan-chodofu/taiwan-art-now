@@ -5,10 +5,11 @@
  */
 (function(root,factory){
  const api=factory(typeof module==='object'&&module.exports
-  ?require('./draft_authenticated_state.js'):root.TanDraftAuthenticatedState);
+  ?require('./draft_authenticated_state.js'):root.TanDraftAuthenticatedState,
+  typeof module==='object'&&module.exports?require('./draft_explicit_keep.js'):root.TanDraftExplicitKeep);
  if(typeof module==='object'&&module.exports)module.exports=api;
  else root.TanDraftExplicitServerRestore=api;
-})(typeof globalThis!=='undefined'?globalThis:this,function(auth){
+})(typeof globalThis!=='undefined'?globalThis:this,function(auth,keep){
  'use strict';
  const validKey=k=>typeof k==='string'&&k.length>0&&k.length<=512&&
   !['__proto__','constructor','prototype'].includes(k);
@@ -26,25 +27,29 @@
   if(current.state.revision!==reviewedRevision||!entry||!entry.deleted||
    entry.revision!==tombstoneRevision)
    return {status:'review_expired',committed:false};
-  const changes={favs:{},visited:{}};
-  changes[kind][key]={set:value};
-  let response;
-  try{response=await fetchImpl('/api/private-subscribers/v2/changes',{
-   method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',
-   mode:'same-origin',headers:{'Accept':'application/json','Content-Type':'application/json'},
-   body:JSON.stringify({base_revision:reviewedRevision,changes})
-  });}catch(_){return {status:'write_outcome_unknown',committed:false};}
-  if(!response)return {status:'write_outcome_unknown',committed:false};
-  if(response.status===409)return {status:'review_expired',committed:false};
-  if(response.status===401||response.status===403)
-   return {status:'unauthorized',committed:false};
-  if(!response.ok||!/\bapplication\/json\b/i.test(response.headers?.get?.('content-type')||'')||
-   !/(?:^|,)\s*no-store\b/i.test(response.headers?.get?.('cache-control')||''))
-   return {status:'write_outcome_unknown',committed:false};
-  let written;
-  try{written=await response.json();}catch(_){
-   return {status:'write_outcome_unknown',committed:false};
+  let failure='confirmation_unavailable',written;
+  async function request(path,payload){
+   if(path.endsWith('/consume'))failure='write_outcome_unknown';
+   const response=await fetchImpl(path,{
+    method:'POST',credentials:'same-origin',cache:'no-store',redirect:'error',mode:'same-origin',
+    headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(payload)
+   });
+   if(response?.status===409)failure='review_expired';
+   if(response?.status===401||response?.status===403)failure='unauthorized';
+   if(!response?.ok||!/^application\/json(?:\s*;|\s*$)/i.test(response.headers?.get?.('content-type')||'')||
+      !/(?:^|,)\s*no-store\b/i.test(response.headers?.get?.('cache-control')||''))
+    throw Error('Invalid confirmation response');
+   return response.json();
   }
+  try{
+   const result=await keep.execute({
+    decision:{kind,key,choice:'keep_saved'},
+    conflict:{kind,key,itemRevision:tombstoneRevision,reason:'explicit_deletion_conflict'},
+    localValue:value,baseRevision:reviewedRevision,request
+   });
+   if(result.status!=='submitted')return {status:failure,committed:false};
+   written=result.state;
+  }catch(_){return {status:failure,committed:false};}
   const verified=await auth.read({fetchImpl});
   if(verified.status!=='ready')return {status:'write_outcome_unknown',committed:false};
   const saved=verified.state[kind][key];

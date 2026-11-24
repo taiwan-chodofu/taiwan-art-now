@@ -16,7 +16,7 @@ class IsolatedStagingFactoryTests(unittest.TestCase):
                 canonical_origin="https://taiwan-art-now.onrender.com",
                 environment="isolated-staging")
 
-    def test_registers_only_two_versioned_routes_and_denies_without_cookie(self):
+    def test_registers_only_versioned_and_review_routes_and_denies_without_cookie(self):
         class FakeConnection:
             autocommit = False
             def __enter__(self): return self
@@ -33,7 +33,9 @@ class IsolatedStagingFactoryTests(unittest.TestCase):
             canonical_origin="https://127.0.0.1", environment="isolated-staging")
         routes={rule.rule for rule in app.url_map.iter_rules() if rule.rule!="/static/<path:filename>"}
         self.assertEqual(routes,{"/api/private-subscribers/v2/state",
-                                 "/api/private-subscribers/v2/changes"})
+                                 "/api/private-subscribers/v2/changes",
+                                 "/api/private-subscribers/v2/review/keep/issue",
+                                 "/api/private-subscribers/v2/review/keep/consume"})
         with app.test_client() as client:
             response=client.get("/api/private-subscribers/v2/state",
                 headers={"Origin":"https://127.0.0.1"})

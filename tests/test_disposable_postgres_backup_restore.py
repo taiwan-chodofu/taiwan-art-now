@@ -33,10 +33,6 @@ class DisposableExhibitionRestoreTests(unittest.TestCase):
   validate_state(state)
   with tempfile.TemporaryDirectory() as tmp:
    snapshot=Path(tmp)/'snapshot.json';manifest=Path(tmp)/'manifest.json'
-   snapshot.write_text(json.dumps(state),encoding='utf-8')
-   manifest.write_text(json.dumps({'sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest()}))
-   self.assertEqual(verify(snapshot,manifest)['status'],'offline_exhibition_replay_verified')
-   restored=json.loads(snapshot.read_text(encoding='utf-8'))
    with psycopg.connect(url) as conn:
     with conn.cursor() as cur:
      cur.execute('SELECT current_database()')
@@ -47,6 +43,12 @@ class DisposableExhibitionRestoreTests(unittest.TestCase):
      cur.execute('INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)',('synthetic-backup-restore-source',))
      cur.execute('INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)',('synthetic-backup-restore-destination',))
      cur.execute('INSERT INTO tan_private.subscriber_sync_states(sender_id,state) VALUES (%s,%s)',('synthetic-backup-restore-source',Jsonb(state)))
+     # Export the persisted JSONB row, including its exact independent flags.
+     cur.execute('SELECT state FROM tan_private.subscriber_sync_states WHERE sender_id=%s',('synthetic-backup-restore-source',))
+     snapshot.write_text(json.dumps(cur.fetchone()[0]),encoding='utf-8')
+     manifest.write_text(json.dumps({'sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest()}))
+     self.assertEqual(verify(snapshot,manifest)['status'],'offline_exhibition_replay_verified')
+     restored=json.loads(snapshot.read_text(encoding='utf-8'))
      cur.execute('INSERT INTO tan_private.subscriber_sync_states(sender_id,state) VALUES (%s,%s)',('synthetic-backup-restore-destination',Jsonb(restored)))
      cur.execute('SELECT state FROM tan_private.subscriber_sync_states WHERE sender_id=%s',('synthetic-backup-restore-destination',))
      replayed=cur.fetchone()[0]
