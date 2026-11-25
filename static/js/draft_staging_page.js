@@ -10,7 +10,7 @@
  else root.TanDraftStagingPage=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(reader,bridge){
  'use strict';
- function create({win,fetchImpl,notice,lang='ja',items,onAnalytics,onState}={}){
+ function create({win,fetchImpl,notice,lang='ja',items,onAnalytics,onState,restoreImpl}={}){
   if(!win||typeof fetchImpl!=='function'||!notice||!Array.isArray(items)||!items.length||
      !items.every(i=>i&&i.element&&typeof i.element.addEventListener==='function'&&
        ['favs','visited'].includes(i.kind)&&typeof i.key==='string'&&i.key&&
@@ -53,10 +53,11 @@
     item.element.setAttribute('aria-pressed',String(active));
     item.element.setAttribute('data-saved',String(active));
     return {element:item.element,kind:item.kind,key:item.key,action,
+      tombstoneRevision:typeof restoreImpl==='function'&&entry?.deleted?entry.revision:undefined,
       value:action==='set'?item.value:undefined,expectedRevision:latest.state.revision};
    });
    if(closed)return false;
-   current=bridge.mount({win,fetchImpl,notice,lang,buttons:descriptors,onAnalytics,
+   current=bridge.mount({win,fetchImpl,notice,lang,buttons:descriptors,onAnalytics,restoreImpl,
      onRefresh:async next=>{await refresh(next);}});
    items.forEach(i=>{i.element.disabled=false;i.element.removeAttribute('aria-disabled');});
    if(onState)onState(latest.state);

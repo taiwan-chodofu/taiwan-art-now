@@ -129,6 +129,35 @@ test('complete detail template uses one authenticated writer and preserves legac
   await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
   await expect(page.locator('#visitedBtn')).toHaveClass(/saved/);
   expect([writes,legacyWrites]).toEqual([3,0]);
+  await expect(page.locator('#favText')).toHaveText('「観たい」に戻す');
+  let consumes=0;
+  await page.route('**/review/keep/consume',async route=>{
+   consumes++;
+   const response=await route.fetch();
+   expect(response.status()).toBe(200);
+   await route.abort('failed');
+  });
+  await page.locator('#favBtn').click();
+  await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+  await expect(page.locator('#visitedBtn')).toHaveClass(/saved/);
+  await expect(page.locator('#syncNotice')).toHaveText('この展示は現在「観たい」に登録されています。');
+  expect(consumes).toBe(1);
+  expect(writes).toBe(3);
+  await page.unroute('**/review/keep/consume');
+  await page.locator('#favBtn').click();
+  await expect(page.locator('#favText')).toHaveText('「観たい」に戻す');
+  // Refresh the second tab to the same tombstone, then change the first.
+  const second=await context.newPage();
+  await second.goto('https://127.0.0.1/actual-detail?lang=zh');
+  await expect(second.locator('#favText')).toHaveText('重新加入「想看」');
+  await page.locator('#favBtn').click();
+  await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+  let stalePosts=0;
+  second.on('request',r=>{if(r.method()==='POST')stalePosts++;});
+  await second.locator('#favBtn').click();
+  await expect(second.locator('#favBtn')).toHaveClass(/saved/);
+  expect(stalePosts).toBe(0);
+  await second.close();
   expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs'))))
    .toEqual({legacy:{title:'Old',museum:'M'}});
  }finally{await context.close();}

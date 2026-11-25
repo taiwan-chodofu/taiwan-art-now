@@ -23,3 +23,6 @@ A migration reports saved only after an authenticated GET agrees with the valida
 
 ## 2026-11-25 — Detail writer selection
 Select the detail writer while rendering on the server. Isolated synchronization omits the legacy handlers and starts disabled until an authenticated state read succeeds. The flag is set only in the disposable fixture. This permits full-template tests while preventing two active handlers on a single button.
+
+## 2026-11-25 — Explicit restore button on detail
+A detail control backed by an observed tombstone explicitly says restore the named collection. That click supplies consent to the existing short-lived confirmation protocol. Generic set operations continue to reject tombstones. This avoids asking for a second confirmation after an already explicit restore action.

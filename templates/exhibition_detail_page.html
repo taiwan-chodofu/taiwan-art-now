@@ -585,7 +585,7 @@
     </script>
     {% if isolated_sync %}
     <p id="syncNotice" role="status" aria-live="polite"></p>
-    {% for script in ["versioned_sync","authenticated_state","authenticated_writer","server_page_action","server_button_bridge","staging_page"] %}
+    {% for script in ["versioned_sync","authenticated_state","authenticated_writer","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
     <script src="/static/js/draft_{{ script }}.js"></script>
     {% endfor %}
     <script>
@@ -594,7 +594,7 @@
       const metadata={{ {"title":exhibition.title,"museum":museum.name,"dates":exhibition.dates}|tojson }};
       const page=TanDraftStagingPage.create({
         win:window,fetchImpl:window.fetch.bind(window),notice:document.getElementById('syncNotice'),
-        lang:{{ current_lang|tojson }},
+        lang:{{ current_lang|tojson }},restoreImpl:TanDraftExplicitServerRestore.restore,
         items:[
           {element:document.getElementById('favBtn'),kind:'favs',key,value:metadata},
           {element:document.getElementById('visitedBtn'),kind:'visited',key,value:new Date().toISOString()}
@@ -604,6 +604,12 @@
             const active=!!state[kind][key]&&!state[kind][key].deleted;
             document.getElementById(prefix+'Btn').classList.toggle('saved',active);
             document.getElementById(prefix+'Icon').textContent=active?filled:empty;
+            const zh={{ (current_lang == 'zh')|tojson }};
+            const label=kind==='favs'?(zh?'想看':'観たい'):(zh?'看過':'観た');
+            const removed=state[kind][key]?.deleted;
+            document.getElementById(prefix+'Text').textContent=removed
+              ?(zh?'重新加入「'+label+'」':'「'+label+'」に戻す')
+              :(active?(zh?'已加入「'+label+'」':'「'+label+'」登録済み'):label);
           }
         }
       });

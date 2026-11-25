@@ -9,17 +9,20 @@
  else root.TanDraftServerPageAction=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(writer){
  'use strict';
- function create({fetchImpl,onRender,onAnalytics,onFailure,onBusy}={}){
+ function create({fetchImpl,onRender,onAnalytics,onFailure,onBusy,restoreImpl}={}){
   if(typeof fetchImpl!=='function')throw Error('authenticated fetch required');
   const pending=new Set();let disposed=false;
   const safe=(fn,value)=>{if(!disposed&&typeof fn==='function')try{fn(value);}catch(_){}};
-  async function act({kind,key,action,value,expectedRevision}={}){
+  async function act({kind,key,action,value,expectedRevision,tombstoneRevision}={}){
    if(disposed)return {status:'disposed',committed:false};
    const slot=kind+':'+key;
    if(pending.has(slot))return {status:'busy',committed:false};
    pending.add(slot);safe(onBusy,{kind,key,busy:true});
    try{
-    const result=await writer.commit({fetchImpl,kind,key,action,value,expectedRevision,isActive:()=>!disposed});
+    const result=Number.isSafeInteger(tombstoneRevision)&&action==='set'&&typeof restoreImpl==='function'
+     ?await restoreImpl({fetchImpl,kind,key,value,reviewedRevision:expectedRevision,
+       tombstoneRevision,confirmed:true,isActive:()=>!disposed})
+     :await writer.commit({fetchImpl,kind,key,action,value,expectedRevision,isActive:()=>!disposed});
     if(result.committed===true&&result.status==='server_confirmed'){
      safe(onRender,{kind,key,action,revision:result.revision});
      safe(onAnalytics,{kind,key,action,event:kind==='visited'
