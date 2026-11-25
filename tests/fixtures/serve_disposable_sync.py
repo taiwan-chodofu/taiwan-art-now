@@ -22,6 +22,7 @@ def serve(cert, key):
                 raise RuntimeError("Unexpected disposable database identity")
             owners = {
                 "browser-drill-owner": ("browser-drill-one", "browser-drill-two"),
+                "browser-nearby-owner": ("browser-nearby-session",),
                 "browser-detail-owner": ("browser-detail-session",),
                 "browser-migration-owner": ("browser-migration-session", "browser-migration-other"),
             }
@@ -37,6 +38,18 @@ def serve(cert, key):
                                       environment="isolated-staging", canonical_origin=ORIGIN)
 
     app.config["TAN_ISOLATED_DETAIL_SYNC"] = True
+
+    app.config["TAN_ISOLATED_NEARBY_SYNC"] = True
+
+    @app.get("/actual-nearby")
+    def actual_nearby():
+        exhibitions = [{"title": "Synthetic " + key, "fav_key": key,
+                        "dates": "2026", "detail_url": "/exhibition?key=" + key,
+                        "days_left": None, "days_until_start": None}
+                       for key in ("nearby-a", "nearby-b")]
+        return render_template("nearby.html", current_lang="zh", museum_name="Synthetic Origin",
+                               nearby=[{"name": "Synthetic Museum", "distance_km": 1,
+                                        "exhibitions": exhibitions}])
 
     @app.get("/actual-detail")
     def actual_detail():

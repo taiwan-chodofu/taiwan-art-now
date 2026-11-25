@@ -162,3 +162,34 @@ test('complete detail template uses one authenticated writer and preserves legac
    .toEqual({legacy:{title:'Old',museum:'M'}});
  }finally{await context.close();}
 });
+
+test('full nearby page shares one revision across multiple exhibitions and restores explicitly',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-nearby-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const page=await context.newPage();
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.goto('https://127.0.0.1/actual-nearby');
+  const a=page.locator('[data-action="fav"][data-key="nearby-a"]');
+  const b=page.locator('[data-action="visited"][data-key="nearby-b"]');
+  expect(await page.evaluate(()=>typeof toggleAction)).toBe('undefined');
+  await a.click();
+  await expect(a).toHaveAttribute('aria-pressed','true');
+  await b.click();
+  await expect(b).toHaveAttribute('aria-pressed','true');
+  await a.click();
+  await expect(a).toHaveText('重新加入「想看」');
+  await expect(b).toHaveAttribute('aria-pressed','true');
+  await a.click();
+  await expect(a).toHaveAttribute('aria-pressed','true');
+  await expect(b).toHaveAttribute('aria-pressed','true');
+  expect(writes).toBe(3);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.revision).toBe(4);
+  expect(state.visited['nearby-b'].revision).toBe(2);
+ }finally{await context.close();}
+});
