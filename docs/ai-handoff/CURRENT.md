@@ -1,5 +1,9 @@
 # Current AI handoff
 
+## Active handoff — 2026-11-25
+Next implementation owner is Claude Code. Read [SYNC_CLAUDE_HANDOFF.md](SYNC_CLAUDE_HANDOFF.md) first for the consolidated state, code map, unresolved issues and verification instructions. Verified implementation baseline is 3953c77, all five jobs passed in Actions run 45581227251. Earlier sections below are historical. ChatGPT has paused implementation for this handoff.
+
+
 Updated: 2026-11-22
 Author: ChatGPT
 Status: Collaboration infrastructure proposed on `chore/ai-handoff-foundation`; awaiting review and merge.
