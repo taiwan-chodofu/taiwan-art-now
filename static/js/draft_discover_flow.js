@@ -29,12 +29,15 @@
        const key=normalizeKey(card.stable_key);
        if(action!=="skip"){
          const kind=action==="like"?"favs":"visited",value=valueFor(card,action);
-         result=await controller.act({kind,key,action:"set",value});
-         if(result.status!=="written_under_cooperative_lock"){
+         result=await controller.act({kind,key,action:"set_if_absent",value});
+         if(result.status!=="written_under_cooperative_lock"&&result.status!=="unchanged"){
            if(typeof onError==="function")try{onError(result);}catch(_){}
            return result;
          }
-         history.push({card,action,kind,key,value});
+         if(result.status==="unchanged"){
+           history.push({card,action});
+           result={status:"skipped",preservedExisting:true};
+         }else history.push({card,action,kind,key,value});
        }else history.push({card,action});
        if(typeof onAdvance==="function")try{onAdvance({card,action});}
          catch(_){return {status:"committed_ui_failed",writeStatus:result.status};}

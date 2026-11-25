@@ -11,7 +11,7 @@
  "use strict";
  async function commit({storage,locks,kind,key,action,value,expectedValue,onCommitted,onFailure}={}){
    if(!storage||!["favs","visited"].includes(kind)||
-     typeof key!=="string"||!key||!["toggle","set","remove","remove_if_equal"].includes(action))
+     typeof key!=="string"||!key||!["toggle","set","set_if_absent","remove","remove_if_equal"].includes(action))
      return {status:"invalid_request"};
    if(!locks||typeof locks.request!=="function"){
      const failure={status:"not_authorized"};

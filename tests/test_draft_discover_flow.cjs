@@ -68,3 +68,35 @@ test("busy swipe is suppressed while earlier write waits",async()=>{
  await release();await first;
  assert.deepEqual(events,["advance"]);
 });
+
+for(const [action,storageKey,value] of [
+ ["like","taiwan_art_favs",{title:"Earlier title",museum:"Earlier museum",url:"/original"}],
+ ["visited","taiwan_art_visited","2026-01-02T00:00:00.000Z"]
+]){
+ test(action+" preserves an existing registration and undo only restores the card",async()=>{
+  const x=fixture();
+  const raw=JSON.stringify({a:value});
+  x.data[storageKey]=raw;
+  let writes=0;
+  x.storage.setItem=()=>{writes++;throw Error("must preserve existing entry");};
+  const result=await x.flow.swipe(card,action);
+  assert.equal(result.preservedExisting,true);
+  assert.equal(x.data[storageKey],raw);
+  assert.equal((await x.flow.undo()).status,"skipped");
+  assert.equal(x.data[storageKey],raw);
+  assert.equal(writes,0);
+  assert.deepEqual(x.events,["advance:"+action,"restore:"+action]);
+ });
+}
+test("another tab registers while swipe waits for its lock; undo preserves that registration",async()=>{
+ const x=fixture();
+ const earlier={title:"Other tab",museum:"M"};
+ const locks={request:async(_name,_options,callback)=>{
+  x.data.taiwan_art_favs=JSON.stringify({a:earlier});
+  return callback();
+ }};
+ const flow=create({storage:x.storage,locks,normalizeKey:s=>s});
+ assert.equal((await flow.swipe(card,"like")).preservedExisting,true);
+ await flow.undo();
+ assert.deepEqual(JSON.parse(x.data.taiwan_art_favs).a,earlier);
+});

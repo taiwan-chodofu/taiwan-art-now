@@ -17,14 +17,15 @@
         !locks || typeof locks.request !== "function" ||
         !["favs", "visited"].includes(kind) ||
         typeof key !== "string" || !key || ["__proto__", "constructor", "prototype"].includes(key) ||
-        !["set", "remove", "toggle", "remove_if_equal"].includes(action))
+        !["set", "set_if_absent", "remove", "toggle", "remove_if_equal"].includes(action))
       return { status: "not_authorized" };
     try {
       return await locks.request(LOCK_NAME, { mode: "exclusive" }, async () => {
         const current = legacy.read(storage);
         if (current.status !== "ready") return { status: current.status };
         const next = { ...current.snapshot[kind] };
-        const resolved = action === "toggle" ? (own(next,key) ? "remove" : "set") : action;
+        if(action==="set_if_absent"&&own(next,key))return {status:"unchanged"};
+        const resolved = action === "toggle" ? (own(next,key) ? "remove" : "set") : action==="set_if_absent"?"set":action;
         if (resolved === "remove_if_equal") {
           if (!own(next,key)) return {status:"stale_undo"};
           if (JSON.stringify(next[key]) !== JSON.stringify(expectedValue))

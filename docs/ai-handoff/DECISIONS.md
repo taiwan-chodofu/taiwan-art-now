@@ -26,3 +26,6 @@ Select the detail writer while rendering on the server. Isolated synchronization
 
 ## 2026-11-25 — Explicit restore button on detail
 A detail control backed by an observed tombstone explicitly says restore the named collection. That click supplies consent to the existing short-lived confirmation protocol. Generic set operations continue to reject tombstones. This avoids asking for a second confirmation after an already explicit restore action.
+
+## 2026-11-25 — Discover undo ownership
+Only a registration created by the current swipe may be deleted by its undo. Check existence inside the cooperative lock, preserve existing values, and record a card-only undo when no registration was created. This prevents loss of older dates and metadata when an already registered card reappears.
