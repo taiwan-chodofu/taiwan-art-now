@@ -70,8 +70,9 @@
    };
    b.element.addEventListener('click',handler);handlers.push([b.element,handler]);
   }
-  const dispose=()=>{if(disposed)return;disposed=true;controller.dispose();for(const [el,fn] of handlers)el.removeEventListener('click',fn);win.removeEventListener('pagehide',dispose);};
-  win.addEventListener('pagehide',dispose,{once:true});
+  const dispose=()=>{if(disposed)return;disposed=true;controller.dispose();for(const [el,fn] of handlers)el.removeEventListener('click',fn);win.removeEventListener('pagehide',onPageHide);};
+  const onPageHide=event=>{if(!event.persisted)dispose();};
+  win.addEventListener('pagehide',onPageHide);
   return {dispose,isBusy:()=>inFlight,minimumRevision:()=>minimumRevision};
  }
  return {mount};

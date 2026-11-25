@@ -615,7 +615,7 @@
         }
       });
       page.start();
-      window.addEventListener('pagehide',()=>page.dispose(),{once:true});
+      window.addEventListener('pagehide',event=>{if(!event.persisted)page.dispose();});
     })();
     </script>
     {% endif %}

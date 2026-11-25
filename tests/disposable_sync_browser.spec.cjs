@@ -222,7 +222,10 @@ test('nearby reconnect refreshes another tabs changes with GET only',async({brow
   expect([reads,writes]).toEqual([1,0]);
   await second.locator(selector).click();
   await expect(second.locator(selector)).toHaveAttribute('aria-pressed','true');
-  await first.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+  await first.evaluate(()=>{
+   window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));
+   window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true}));
+  });
   await expect(first.locator(selector)).toHaveAttribute('aria-pressed','true');
   expect([reads,writes]).toEqual([2,0]);
  }finally{await context.close();}
