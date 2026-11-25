@@ -20,3 +20,6 @@ Cache-Control alone cannot establish freshness when a legacy worker replays the 
 
 ## 2026-11-24 — Additive migration acknowledgement
 A migration reports saved only after an authenticated GET agrees with the validated POST state. A differing or unavailable readback remains uncertain and cannot trigger a mutation retry. HTTP server errors after a mutation also remain uncertain. JSON object member order has no semantic significance in the comparison.
+
+## 2026-11-25 — Detail writer selection
+Select the detail writer while rendering on the server. Isolated synchronization omits the legacy handlers and starts disabled until an authenticated state read succeeds. The flag is set only in the disposable fixture. This permits full-template tests while preventing two active handlers on a single button.

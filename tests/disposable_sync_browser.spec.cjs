@@ -100,3 +100,36 @@ test('legacy migration survives a lost reply and a second device preserves indep
   }finally{await other.close();}
  }finally{await context.close();}
 });
+
+test('complete detail template uses one authenticated writer and preserves legacy storage',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-detail-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_ga_exclude','1');
+   localStorage.setItem('taiwan_art_favs','{"legacy":{"title":"Old","museum":"M"}}');
+  });
+  const page=await context.newPage();
+  let writes=0,legacyWrites=0;
+  page.on('request',request=>{
+   if(request.method()==='POST'){
+    if(request.url().endsWith('/v2/changes'))writes++;
+    else legacyWrites++;
+   }
+  });
+  await page.goto('https://127.0.0.1/actual-detail');
+  await expect(page.locator('#favBtn')).toBeEnabled();
+  expect(await page.evaluate(()=>typeof toggleFav)).toBe('undefined');
+  await page.locator('#favBtn').click();
+  await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+  await page.locator('#visitedBtn').click();
+  await expect(page.locator('#visitedBtn')).toHaveClass(/saved/);
+  await page.locator('#favBtn').click();
+  await expect(page.locator('#favBtn')).not.toHaveClass(/saved/);
+  await expect(page.locator('#visitedBtn')).toHaveClass(/saved/);
+  expect([writes,legacyWrites]).toEqual([3,0]);
+  expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_favs'))))
+   .toEqual({legacy:{title:'Old',museum:'M'}});
+ }finally{await context.close();}
+});

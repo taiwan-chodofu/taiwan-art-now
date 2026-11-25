@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 import psycopg
-from flask import send_file
+from flask import send_file, render_template, request
 from werkzeug.serving import run_simple
 
 from browser_session import token_digest
@@ -22,6 +22,7 @@ def serve(cert, key):
                 raise RuntimeError("Unexpected disposable database identity")
             owners = {
                 "browser-drill-owner": ("browser-drill-one", "browser-drill-two"),
+                "browser-detail-owner": ("browser-detail-session",),
                 "browser-migration-owner": ("browser-migration-session", "browser-migration-other"),
             }
             for owner, sessions in owners.items():
@@ -34,6 +35,17 @@ def serve(cert, key):
 
     app = create_isolated_staging_app(db_connect=lambda: psycopg.connect(DATABASE),
                                       environment="isolated-staging", canonical_origin=ORIGIN)
+
+    app.config["TAN_ISOLATED_DETAIL_SYNC"] = True
+
+    @app.get("/actual-detail")
+    def actual_detail():
+        return render_template("exhibition_detail_page.html",
+            current_lang=request.args.get("lang", "ja"), museum_id="synthetic", idx=0,
+            structured_data={}, labels={}, other_exhibitions=[],
+            exhibition={"title": "Synthetic Art", "stable_key": "actual-detail",
+                        "dates": "2026", "days_left": None, "artists": [], "description": "Synthetic exhibition"},
+            museum={"name": "Synthetic Museum", "address": "", "url": ""})
 
     @app.get("/exhibition")
     def exhibition():
