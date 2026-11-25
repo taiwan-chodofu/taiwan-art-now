@@ -3323,20 +3323,6 @@
     },
     {
       "museum": "khcc",
-      "title_zh": "前行－2026臺灣南方藝術聯盟年度大展",
-      "title_en": "Forward: 2026 Taiwan Southern Art Alliance Annual Exhibition",
-      "title_ja": "前行－2026台湾南方藝術聯盟年度大展",
-      "dates": "2026.11.13 – 2026.11.24",
-      "location": "高雄市立文化中心 至真堂一館",
-      "link": "https://khcc.kcg.gov.tw/rwd_home03.aspx?ID=$M102&IDK=2&EXEC=D&DATA=4334",
-      "description": "臺灣南方藝術聯盟會員年度聯展，於高雄市立文化中心至真堂一館展出。",
-      "description_en": "The annual group exhibition of members of the Taiwan Southern Art Alliance, held at Hall 1 of the Chih-Chen Hall, Kaohsiung Cultural Center.",
-      "description_ja": "台湾南方藝術聯盟会員による年次グループ展で、高雄市立文化中心の至真堂一館にて開催される。",
-      "artists": [],
-      "added_at": "2026-11-17T17:53:58.114632+09:00"
-    },
-    {
-      "museum": "khcc",
       "title_zh": "浮生行履一尋覓夢中的桃花源 雷紫玲創作展",
       "title_en": "The Course of a Fleeting Life — Searching for the Peach Blossom Land of Dreams: Lei Tzu-Ling Solo Exhibition",
       "title_ja": "浮生行履－夢の中の桃源郷を求めて 雷紫玲創作展",
@@ -3710,49 +3696,6 @@
           "note_en": "",
           "note_ja": "",
           "source_url": "https://www.instagram.com/nhcue_artspace/"
-        }
-      ]
-    },
-    {
-      "museum": "xinbangallery",
-      "title_zh": "未命名的水域－陳洛晗、曹程凱雙個展",
-      "title_en": "Unnamed Waters: Chen Luo-Han & Tsao Cheng-Kai Dual Solo Exhibition",
-      "title_ja": "名もなき水域－陳洛晗、曹程凱 二人個展",
-      "dates": "2026.10.29 – 2026.11.24",
-      "location": "新板藝廊（新北市板橋區漢生東路166號3樓）",
-      "link": "https://www.ntpc.gov.tw/",
-      "description": "當世界的邊界漸次模糊，我們該如何錨定內心的不安？水域無形，映照出生命中最真實的流動與不可捉摸；雙個展《未命名的水域》由藝術家陳洛晗與曹程凱共同呈現，以截然不同的視覺語彙探索現代人的存在狀態與心靈棲居。陳洛晗以《微光邊界》為展名，用低飽和的色彩描繪如水母般透明、游移且界線未定的存在，將時間化為流動的海水，捕捉感知在交錯與滲透間的細微變化。曹程凱則在個展《魚幻境—凝望》裡，以經典的「琉金」金魚為載體，藉由穩定的三角形構圖與細膩質感，在水波盪漾中築起抵抗外界喧囂的精神避難所，隱喻著從入世繁華走向出世安定的心路歷程。",
-      "description_en": "As the boundaries of the world gradually blur, how do we anchor our inner unease? Water, formless, reflects life's truest currents and unpredictability. The dual solo exhibition \"Unnamed Waters\" brings together artists Chen Luo-Han and Tsao Cheng-Kai, who explore the state of existence and the dwelling of the spirit in contemporary life through two starkly different visual vocabularies. Chen Luo-Han's \"Glimmering Edge\" uses desaturated color to depict beings as transparent, drifting and undefined as jellyfish, turning time into flowing seawater that captures subtle shifts in perception across intersection and permeation. Tsao Cheng-Kai's \"Fantasia of Fish — Gazing\" takes the classic ryukin goldfish as its vehicle, using stable triangular compositions and delicate texture to build, amid rippling water, a spiritual refuge against outer noise — a metaphor for the journey from worldly bustle toward a settled withdrawal from it.",
-      "description_ja": "世界の境界が次第に曖昧になっていく中で、私たちは内なる不安をどこに繋留すればよいのだろうか。水域は形をもたず、生命の中で最も真実な流動と捉え難さを映し出す。二人展《未命名的水域（名もなき水域）》は、陳洛晗と曹程凱という二人の作家による展示で、まったく異なる視覚言語を用いながら、現代人の存在の状態と心の住まい方を探る。陳洛晗は《微光邊界（微かな光の境界）》と題し、低彩度の色彩で、クラゲのように透明で漂い、境界の定まらない存在を描く。時間を流れる海水に変え、交錯と浸透の間で生じる知覚の微細な変化を捉える。曹程凱は個展《魚幻境―凝望（魚の幻境―見つめること）》の中で、古典的な「琉金」の金魚を媒体として、安定した三角構図と繊細な質感によって、波立つ水の中に外の喧騒に抗う精神的な避難所を築く。これは、俗世の繁栄から出世的な安定へと向かう心の軌跡の隠喩でもある。",
-      "artists": [
-        "陳洛晗",
-        "曹程凱"
-      ],
-      "added_at": "2026-11-18T14:50:16.095429+09:00",
-      "events": [
-        {
-          "type": "opening",
-          "date": "2026/11/01",
-          "time": "14:00",
-          "title_zh": "開幕導覽",
-          "title_en": "Opening Guided Tour",
-          "title_ja": "オープニングガイドツアー",
-          "note_zh": "",
-          "note_en": "",
-          "note_ja": "",
-          "source_url": "https://www.accupass.com/event/2610270714592115440532"
-        },
-        {
-          "type": "workshop",
-          "date": "2026/11/15",
-          "time": "14:00",
-          "title_zh": "膠彩工作坊",
-          "title_en": "Gouache Workshop",
-          "title_ja": "膠彩ワークショップ",
-          "note_zh": "",
-          "note_en": "",
-          "note_ja": "",
-          "source_url": "https://www.accupass.com/event/2610270714592115440532"
         }
       ]
     },
