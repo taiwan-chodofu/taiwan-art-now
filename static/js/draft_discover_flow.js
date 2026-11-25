@@ -4,13 +4,37 @@
  */
 (function(root,factory){
  const api=factory(typeof module==="object"&&module.exports
-  ?require("./draft_page_controller.js"):root.TanDraftPageController);
+  ?require("./draft_page_controller.js"):root.TanDraftPageController,
+  typeof module==="object"&&module.exports?require("./draft_authenticated_state.js"):root.TanDraftAuthenticatedState,
+  typeof module==="object"&&module.exports?require("./draft_authenticated_writer.js"):root.TanDraftAuthenticatedWriter);
  if(typeof module==="object"&&module.exports)module.exports=api;
  else root.TanDraftDiscoverFlow=api;
-})(typeof globalThis!=="undefined"?globalThis:this,function(page){
+})(typeof globalThis!=="undefined"?globalThis:this,function(page,reader,writer){
  "use strict";
- function create({storage,locks,normalizeKey,onAdvance,onRestore,onError}={}){
-   const controller=page.create({storage,locks});
+ function create({storage,locks,normalizeKey,onAdvance,onRestore,onError,fetchImpl}={}){
+   const localController=fetchImpl?null:page.create({storage,locks});
+   let uncertain=false;
+   const createdRevisions=new Map();
+   const controller={act:async intent=>{
+     if(!fetchImpl)return localController.act(intent);
+     if(uncertain)return {status:"unknown_commit"};
+     const latest=await reader.read({fetchImpl});
+     if(latest.status!=="ready")return {status:latest.status};
+     const entry=latest.state[intent.kind][intent.key];
+     const slot=JSON.stringify([intent.kind,intent.key]);
+     if(intent.action==="set_if_absent"&&entry&&!entry.deleted)return {status:"unchanged"};
+     if(intent.action==="remove_if_equal"&&(!entry||entry.deleted||
+        entry.revision!==createdRevisions.get(slot)||!reader.sameJson(entry.value,intent.expectedValue)))
+       return {status:"stale_undo"};
+     const result=await writer.commit({fetchImpl,kind:intent.kind,key:intent.key,
+       action:intent.action==="set_if_absent"?"set":"remove",value:intent.value,
+       expectedRevision:latest.state.revision});
+     if(result.status==="write_outcome_unknown")uncertain=true;
+     if(!result.committed)return result;
+     if(intent.action==="set_if_absent")createdRevisions.set(slot,result.revision);
+     else createdRevisions.delete(slot);
+     return {status:"written_under_cooperative_lock",revision:result.revision};
+   }};
    const history=[];
    let pending=false;
    function valueFor(card,action){
@@ -21,6 +45,7 @@
    }
    async function swipe(card,action){
      if(pending)return {status:"busy"};
+     if(uncertain)return {status:"unknown_commit"};
      if(!card||!["like","visited","skip"].includes(action)||typeof normalizeKey!=="function")
        return {status:"invalid_request"};
      pending=true;
@@ -46,6 +71,7 @@
    }
    async function undo(){
      if(pending)return {status:"busy"};
+     if(uncertain)return {status:"unknown_commit"};
      if(!history.length)return {status:"nothing_to_undo"};
      pending=true;
      try{

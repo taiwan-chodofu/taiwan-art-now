@@ -100,3 +100,55 @@ test("another tab registers while swipe waits for its lock; undo preserves that 
  await flow.undo();
  assert.deepEqual(JSON.parse(x.data.taiwan_art_favs).a,earlier);
 });
+
+function serverFixture(){
+ let state={revision:0,favs:{},visited:{}},posts=0;
+ const response=()=>({ok:true,status:200,headers:{get:k=>k==='content-type'?'application/json':'no-store'},json:async()=>structuredClone(state)});
+ const fetchImpl=async(_,options)=>{
+  if(options.method==='POST'){
+   posts++;
+   const body=JSON.parse(options.body);
+   assert.equal(body.base_revision,state.revision);
+   const revision=++state.revision;
+   for(const kind of ['favs','visited'])for(const [key,op] of Object.entries(body.changes[kind]))
+    state[kind][key]={revision,deleted:!!op.delete,value:op.delete?null:op.set};
+  }
+  return response();
+ };
+ return {fetchImpl,get state(){return state;},get posts(){return posts;}};
+}
+test('server Discover saves and undoes want while preserving seen',async()=>{
+ const server=serverFixture(),events=[];
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s,
+  onAdvance:()=>events.push('advance'),onRestore:()=>events.push('restore')});
+ await flow.swipe(card,'visited');
+ await flow.swipe(card,'like');
+ await flow.undo();
+ assert.equal(server.state.favs.a.deleted,true);
+ assert.equal(server.state.visited.a.deleted,false);
+ assert.deepEqual(events,['advance','advance','restore']);
+});
+test('server undo rejects a newer registration with identical metadata',async()=>{
+ const server=serverFixture();
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s});
+ await flow.swipe(card,'like');
+ server.state.revision++;
+ server.state.favs.a.revision=server.state.revision;
+ assert.equal((await flow.undo()).status,'stale_undo');
+ assert.equal(server.posts,1);
+});
+test('lost server reply locks Discover without advancing or retrying even on skip',async()=>{
+ const server=serverFixture(),events=[];
+ const flow=create({normalizeKey:s=>s,onAdvance:()=>events.push('advance'),
+  fetchImpl:async(path,options)=>{
+   const result=await server.fetchImpl(path,options);
+   if(options.method==='POST')throw Error('lost reply');
+   return result;
+  }});
+ assert.equal((await flow.swipe(card,'like')).status,'write_outcome_unknown');
+ assert.equal((await flow.swipe(card,'like')).status,'unknown_commit');
+ assert.equal((await flow.swipe(card,'skip')).status,'unknown_commit');
+ assert.equal(server.posts,1);
+ assert.equal(flow.historySize(),0);
+ assert.deepEqual(events,[]);
+});

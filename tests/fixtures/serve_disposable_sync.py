@@ -22,6 +22,7 @@ def serve(cert, key):
                 raise RuntimeError("Unexpected disposable database identity")
             owners = {
                 "browser-drill-owner": ("browser-drill-one", "browser-drill-two"),
+                "browser-discover-owner": ("browser-discover-session",),
                 "browser-nearby-owner": ("browser-nearby-session",),
                 "browser-detail-owner": ("browser-detail-session",),
                 "browser-migration-owner": ("browser-migration-session", "browser-migration-other"),

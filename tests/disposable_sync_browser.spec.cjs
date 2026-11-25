@@ -230,3 +230,30 @@ test('nearby reconnect refreshes another tabs changes with GET only',async({brow
   expect([reads,writes]).toEqual([2,0]);
  }finally{await context.close();}
 });
+
+test('Discover server flow preserves existing seen across database-backed save and undo',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-discover-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/exhibition?key=discover');
+  await page.addScriptTag({url:'/static/js/draft_discover_flow.js'});
+  const result=await page.evaluate(async()=>{
+   const card={stable_key:'discover',title:'Art',museum:'M',dates:'2026',detail_url:'/a',region:'臺南'};
+   const flow=TanDraftDiscoverFlow.create({fetchImpl:fetch,normalizeKey:key=>key});
+   await flow.swipe(card,'visited');
+   await flow.swipe(card,'like');
+   const undo=await flow.undo();
+   const afterUndo=(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state;
+   const preserved=await flow.swipe(card,'visited');
+   await flow.undo();
+   return {undo,afterUndo,preserved};
+  });
+  expect(result.undo.status).toBe('written_under_cooperative_lock');
+  expect(result.afterUndo.favs.discover.deleted).toBe(true);
+  expect(result.afterUndo.visited.discover.deleted).toBe(false);
+  expect(result.preserved.preservedExisting).toBe(true);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
+ }finally{await context.close();}
+});
