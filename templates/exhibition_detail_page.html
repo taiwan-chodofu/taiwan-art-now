@@ -593,6 +593,7 @@
       const key={{ exhibition.stable_key|tojson }};
       const metadata={{ {"title":exhibition.title,"museum":museum.name,"dates":exhibition.dates}|tojson }};
       const page=TanDraftStagingPage.create({
+      autoRefresh:true,
         win:window,fetchImpl:window.fetch.bind(window),notice:document.getElementById('syncNotice'),
         lang:{{ current_lang|tojson }},restoreImpl:TanDraftExplicitServerRestore.restore,
         items:[

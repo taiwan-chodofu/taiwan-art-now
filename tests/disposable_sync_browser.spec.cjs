@@ -193,3 +193,37 @@ test('full nearby page shares one revision across multiple exhibitions and resto
   expect(state.visited['nearby-b'].revision).toBe(2);
  }finally{await context.close();}
 });
+
+test('nearby reconnect refreshes another tabs changes with GET only',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-nearby-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const first=await context.newPage(),second=await context.newPage();
+  await first.goto('https://127.0.0.1/actual-nearby');
+  const selector='[data-action="fav"][data-key="nearby-a"]';
+  await expect(first.locator(selector)).toBeEnabled();
+  if(await first.locator(selector).getAttribute('aria-pressed')!=='true')await first.locator(selector).click();
+  await expect(first.locator(selector)).toHaveAttribute('aria-pressed','true');
+  await second.goto('https://127.0.0.1/actual-nearby');
+  await second.locator(selector).click();
+  await expect(second.locator(selector)).toHaveAttribute('aria-pressed','false');
+  let reads=0,writes=0;
+  first.on('request',r=>{
+   if(r.url().endsWith('/v2/state'))reads++;
+   if(r.method()==='POST')writes++;
+  });
+  await first.evaluate(()=>{
+   window.dispatchEvent(new Event('online'));
+   window.dispatchEvent(new Event('online'));
+  });
+  await expect(first.locator(selector)).toHaveText('重新加入「想看」');
+  expect([reads,writes]).toEqual([1,0]);
+  await second.locator(selector).click();
+  await expect(second.locator(selector)).toHaveAttribute('aria-pressed','true');
+  await first.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+  await expect(first.locator(selector)).toHaveAttribute('aria-pressed','true');
+  expect([reads,writes]).toEqual([2,0]);
+ }finally{await context.close();}
+});

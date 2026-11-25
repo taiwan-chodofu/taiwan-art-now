@@ -10,7 +10,7 @@
  else root.TanDraftStagingPage=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(reader,bridge){
  'use strict';
- function create({win,fetchImpl,notice,lang='ja',items,onAnalytics,onState,restoreImpl}={}){
+ function create({win,fetchImpl,notice,lang='ja',items,onAnalytics,onState,restoreImpl,autoRefresh=false}={}){
   if(!win||typeof fetchImpl!=='function'||!notice||!Array.isArray(items)||!items.length||
      !items.every(i=>i&&i.element&&typeof i.element.addEventListener==='function'&&
        ['favs','visited'].includes(i.kind)&&typeof i.key==='string'&&i.key&&
@@ -64,10 +64,21 @@
    return true;
   }
   disable();
-  let started=false;
+  let started=false,automaticRead=null;
+  const refreshWhenAvailable=event=>{
+   if(!started||closed||current?.isBusy()||automaticRead||
+      (event.type==='pageshow'&&!event.persisted))return;
+   automaticRead=refresh().finally(()=>{automaticRead=null;});
+  };
+  if(autoRefresh){
+   win.addEventListener('online',refreshWhenAvailable);
+   win.addEventListener('pageshow',refreshWhenAvailable);
+  }
   return {pause,start:()=>{if(started||closed)return Promise.resolve(false);started=true;return refresh();},
    refresh:(minimumRevision=0)=>started&&!closed?refresh(null,minimumRevision):Promise.resolve(false),
-   dispose:()=>{closed=true;refreshGeneration++;if(current)current.dispose();disable();}};
+   dispose:()=>{closed=true;
+    win.removeEventListener('online',refreshWhenAvailable);
+    win.removeEventListener('pageshow',refreshWhenAvailable);refreshGeneration++;if(current)current.dispose();disable();}};
  }
  return {create};
 });
