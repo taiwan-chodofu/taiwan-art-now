@@ -7,7 +7,7 @@ function html(){
  const buttons=['visited','fav'].map(kind=>{
   const m=raw.match(new RegExp('<button class="action-btn" id="'+kind+'Btn"[\\s\\S]*?<\\/button>'));
   if(!m)throw Error('real button missing: '+kind);
-  return m[0].replace(/\s+onclick="[^"]*"/g,'').replace(/{%[\s\S]*?%}/g,'').replace(/{{[\s\S]*?}}/g,'');
+  return m[0].replace(/{% if isolated_sync %}[\s\S]*?{% else %}([\s\S]*?){% endif %}/g,'$1').replace(/\s+onclick="[^"]*"/g,'').replace(/{%[\s\S]*?%}/g,'').replace(/{{[\s\S]*?}}/g,'');
  });
  return '<!doctype html><meta charset="utf-8">'+buttons.join('')+'<p id="notice" hidden></p>';
 }

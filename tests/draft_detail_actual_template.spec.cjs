@@ -12,7 +12,7 @@ function html(){
   const id=kind==='visited'?'visited':'fav';
   const match=raw.match(new RegExp('<button class="action-btn" id="'+id+'Btn"[\\s\\S]*?<\\/button>'));
   if(!match)throw Error('real detail button missing '+kind);
-  return match[0].replace(/{%[^]*?%}/g,'');
+  return match[0].replace(/{% if isolated_sync %}[\s\S]*?{% else %}([\s\S]*?){% endif %}/g,'$1').replace(/{%[^]*?%}/g,'');
  }).join('');
  return '<!doctype html><meta charset="utf-8"><div id="detailSaveError" role="alert" aria-live="assertive" hidden></div>'+buttons+
  '<script>var exId="ex_1";function _getVisited(){return JSON.parse(localStorage.getItem("taiwan_art_visited")||"{}")}'+
