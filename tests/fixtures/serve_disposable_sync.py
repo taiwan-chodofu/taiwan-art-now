@@ -26,6 +26,7 @@ def serve(cert, key):
                 "browser-nearby-owner": ("browser-nearby-session",),
                 "browser-detail-owner": ("browser-detail-session",),
                 "browser-migration-owner": ("browser-migration-session", "browser-migration-other"),
+                "browser-home-owner": ("browser-home-session",),
             }
             for owner, sessions in owners.items():
                 cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
@@ -43,6 +44,24 @@ def serve(cert, key):
     app.config["TAN_ISOLATED_NEARBY_SYNC"] = True
 
     app.config["TAN_ISOLATED_DISCOVER_SYNC"] = True
+
+    app.config["TAN_ISOLATED_HOME_SYNC"] = True
+
+    @app.get("/actual-home")
+    def actual_home():
+        ex = {"title": "Synthetic Home Exhibition", "stable_key": "home-a",
+              "detail_url": "/exhibition?key=home-a", "status": "current", "recently_added": False,
+              "type": "exhibition", "days_until_start": None, "days_left": 5,
+              "dates": "2026.01.01 - 2026.02.01", "artists": [], "excerpt": "Synthetic excerpt",
+              "next_notice": None, "next_event": None}
+        museum = {"id": "m1", "name": "Synthetic Museum", "category": "public", "closed_today": False,
+                  "has_current": True, "has_upcoming": False, "exhibitions": [ex], "venue_events": [],
+                  "lat": 0, "lng": 0, "hours": ""}
+        region = {"id": "r1", "name": "Synthetic Region", "museums": [museum]}
+        return render_template("index.html", current_lang=request.args.get("lang", "ja"),
+            regions=[region], closing_soon=[], todays_events=[], labels={},
+            region_names_json="{}", museum_name_to_id_json="{}",
+            holiday_today=None, last_updated="2026-01-01")
 
     @app.get("/actual-discover")
     def actual_discover():

@@ -296,3 +296,40 @@ test('actual Discover template swipes and undoes through the authenticated write
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
  }finally{await context.close();}
 });
+
+test('actual Home template toggles fav/visited through the authenticated writer without navigating away',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const page=await context.newPage();
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.goto('https://127.0.0.1/actual-home');
+  const favBtn=page.locator('span.ex-action-btn[data-action="fav"]').first();
+  const visitedBtn=page.locator('span.ex-action-btn[data-action="visited"]').first();
+  const card=page.locator('.ex-item').first();
+  await favBtn.click();
+  await expect(favBtn).toHaveClass(/active-fav/);
+  await expect(card).toHaveClass(/favorited-item/);
+  expect(page.url()).toContain('/actual-home'); // clicking never navigated to the detail page
+  expect(writes).toBe(1);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_messenger_prompted'))).toBe('1');
+  await visitedBtn.click();
+  await expect(visitedBtn).toHaveClass(/active-visited/);
+  await expect(card).toHaveClass(/visited-item/);
+  await expect(card).not.toHaveClass(/favorited-item/); // visited takes precedence, per legacy _renderActions()
+  expect(writes).toBe(2);
+  let state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['home-a']).toMatchObject({deleted:false});
+  expect(state.visited['home-a']).toMatchObject({deleted:false});
+  await favBtn.click(); // toggle fav back off
+  await expect(favBtn).not.toHaveClass(/active-fav/);
+  expect(writes).toBe(3);
+  state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['home-a']).toMatchObject({deleted:true});
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
+ }finally{await context.close();}
+});

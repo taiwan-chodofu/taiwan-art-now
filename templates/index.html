@@ -1,3 +1,4 @@
+{% set isolated_sync = config.get("TAN_ISOLATED_HOME_SYNC", false) %}
 <!DOCTYPE html>
 <html lang="{{ current_lang }}">
 <head>
@@ -1133,12 +1134,22 @@
             {% endif %}
             {# curator hidden from list view - shown in detail page only #}
             <div class="ex-actions">
+              {% if isolated_sync %}
+              <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}">
+                <span class="act-icon">○</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
+              </span>
+              <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}"
+                data-metadata='{{ {"title":ex.title,"museum":museum.name,"dates":ex.dates,"url":ex.detail_url,"region":region.id,"event":(ex.next_event.title if ex.next_event else "")}|tojson }}'>
+                <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
+              </span>
+              {% else %}
               <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">○</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
               </span>
               <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
               </span>
+              {% endif %}
             </div>
             {% if ex.next_notice %}
             <div class="ex-notice">
@@ -2572,5 +2583,60 @@
     if (btn) btn.setAttribute('aria-expanded', 'false');
   }
   </script>
+  {% if isolated_sync %}
+  <p id="syncNotice" role="status" aria-live="polite"></p>
+  {% for script in ["versioned_sync","authenticated_state","authenticated_writer","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
+  <script src="/static/js/draft_{{ script }}.js"></script>
+  {% endfor %}
+  <script>
+  (function(){
+    // Nested inside .ex-item (an <a>): without this, clicking a button here
+    // would also navigate to the exhibition detail page. preventDefault()
+    // alone is correct and sufficient -- stopPropagation() here would also
+    // skip the staging bridge's own click listener added below (both are
+    // registered on this same element; per the DOM dispatch algorithm,
+    // stopPropagation() skips every listener on the current node that has
+    // not yet run, not only listeners on other nodes).
+    document.querySelectorAll('.ex-action-btn').forEach(function(el){
+      el.addEventListener('click', function(event){ event.preventDefault(); }, {capture:true});
+    });
+    const items=Array.from(document.querySelectorAll('span.ex-action-btn')).map(element=>({
+      element,key:element.dataset.key,kind:element.dataset.action==='fav'?'favs':'visited',
+      value:element.dataset.action==='fav'?JSON.parse(element.dataset.metadata):new Date().toISOString()
+    }));
+    if(!items.length)return;
+    const zh={{ (current_lang == 'zh')|tojson }};
+    const page=TanDraftStagingPage.create({
+      autoRefresh:true,
+      win:window,fetchImpl:window.fetch.bind(window),notice:document.getElementById('syncNotice'),
+      lang:{{ current_lang|tojson }},items,restoreImpl:TanDraftExplicitServerRestore.restore,
+      onAnalytics:function(payload){
+        if(typeof gtag==='function')gtag('event',payload.event,{exhibition_key:payload.key});
+        if(payload.event==='add_to_favorites'&&typeof _promptMessengerOnce==='function')_promptMessengerOnce('fav');
+        if(payload.event==='mark_visited'&&typeof _promptMessengerOnce==='function')_promptMessengerOnce('visited');
+        if(typeof _maybeWarnInAppSave==='function')_maybeWarnInAppSave();
+      },
+      onState:function(state){
+        for(const item of items){
+          const entry=state[item.kind][item.key],active=!!entry&&!entry.deleted;
+          const icon=item.element.querySelector('.act-icon');
+          if(item.kind==='visited'){icon.textContent=active?'✓':'○';item.element.classList.toggle('active-visited',active);}
+          else{icon.textContent=active?'♥':'♡';item.element.classList.toggle('active-fav',active);}
+          const card=item.element.closest('.ex-item');
+          if(card&&item.kind==='visited')card.classList.toggle('visited-item',active);
+        }
+        for(const card of document.querySelectorAll('.ex-item[data-fav-key]')){
+          const key=card.getAttribute('data-fav-key');
+          const visited=!!state.visited[key]&&!state.visited[key].deleted;
+          const fav=!!state.favs[key]&&!state.favs[key].deleted;
+          card.classList.toggle('favorited-item',fav&&!visited);
+        }
+      }
+    });
+    page.start();
+    window.addEventListener('pagehide',event=>{if(!event.persisted)page.dispose();});
+  })();
+  </script>
+  {% endif %}
 </body>
 </html>
