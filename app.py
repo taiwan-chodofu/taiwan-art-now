@@ -10,11 +10,11 @@ app = Flask(__name__)
 
 # 公開前の特集ページ用プレビュートークン。このURLクエリを知っている人だけが見られる。
 # 本番公開時にこのゲートは外す。
-PREVIEW_TOKEN = os.environ.get("PREVIEW_TOKEN", "CdrvzWrhnMJiYhoa0wVDPw")
+PREVIEW_TOKEN = os.environ.get("PREVIEW_TOKEN", "")
 
 
 def _require_preview_token():
-    if request.args.get("preview") != PREVIEW_TOKEN:
+    if not PREVIEW_TOKEN or request.args.get("preview") != PREVIEW_TOKEN:
         abort(404)
 
 
