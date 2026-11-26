@@ -286,6 +286,39 @@
     function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
     function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
 
+    // ISOLATED_SYNC only: deck/filter selection above still reads local
+    // storage directly (always empty here, since isolated_sync never writes
+    // it), so it optimistically shows every card that mode would allow.
+    // That can never wrongly HIDE a card, only show one the server would
+    // actually filter out (already favorited/visited/mismatched mode on
+    // another device). This reconciles against the real authenticated state
+    // shortly after, narrowing deck/discoverSourceOrder down and re-rendering
+    // only if the visible card actually changed. See docs/ai-handoff/
+    // DECISIONS.md 2026-11-26 for why this additive-reconcile approach was
+    // chosen over restructuring the synchronous initial render to await a
+    // fetch.
+    function reconcileWithServerBookmarks(mode) {
+      if (!ISOLATED_SYNC) return;
+      TanDraftAuthenticatedState.read({fetchImpl: window.fetch.bind(window)}).then(function(result) {
+        if (result.status !== 'ready' || discoverBusy || discoverAnimating) return;
+        var bookmarks = {favs: result.state.favs, visited: result.state.visited};
+        var reselected = TanDraftDiscoverSelection.select({
+          cards: ALL_CARDS, bookmarks: bookmarks, normalizeKey: function(k) { return k; }, mode: mode
+        });
+        if (reselected.status !== 'ready') return;
+        var allowedKeys = {};
+        reselected.cards.forEach(function(c) { allowedKeys[c.stable_key] = true; });
+        var beforeHead = deck.length ? deck[0].stable_key : null;
+        deck = deck.filter(function(c) { return allowedKeys[c.stable_key]; });
+        if (typeof discoverSourceOrder !== 'undefined') {
+          discoverSourceOrder = discoverSourceOrder.filter(function(c) { return allowedKeys[c.stable_key]; });
+        }
+        saveDeckOrder();
+        if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
+        if (!deck.length || deck[0].stable_key !== beforeHead) renderCard();
+      }).catch(function() {});
+    }
+
     var visitedKeys = _getVisited();
     var DECK_ORDER_KEY = 'taiwan_art_discover_deck';
     var SOURCE_ORDER_KEY = 'taiwan_art_discover_source_order';
@@ -702,6 +735,7 @@
       saveDeckOrder();
       if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
       renderCard();
+      reconcileWithServerBookmarks(restartMode);
     });
 
     // DRAFT ONLY: mode switching is a deliberate fresh browse session.
@@ -756,6 +790,7 @@
         deck = result.cards;
         saveDeckOrder();
         renderCard();
+        reconcileWithServerBookmarks(nextMode);
         return true;
       }
     });
@@ -774,6 +809,7 @@
       }
     }
     renderCard();
+    reconcileWithServerBookmarks(discoverMode);
 
     var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
     if (!localStorage.getItem(TUTORIAL_KEY)) {
