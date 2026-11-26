@@ -2,11 +2,23 @@
 
 from flask import Flask, render_template, request, Response, abort, jsonify
 from scraper import fetch_all_exhibitions, MUSEUMS
+from werkzeug.middleware.proxy_fix import ProxyFix
 import json
 import os
 import re
 
 app = Flask(__name__)
+# Render terminates TLS and forwards over HTTP through exactly one load
+# balancer hop (per Render's own docs: "Render's load balancer terminates
+# SSL for inbound HTTPS requests, then forwards those requests to your web
+# service over HTTP") -- no other proxy/CDN sits between it and this app.
+# x_for=1 trusts only the single rightmost X-Forwarded-For entry, which is
+# that load balancer's own appended value, not anything a client sent
+# directly. This is the standard Werkzeug pattern for exactly this
+# single-hop PaaS shape; see docs/ai-handoff/DECISIONS.md for the research
+# that went into this (Render's docs don't explicitly confirm header
+# handling, so this is the industry-standard choice, not a confirmed one).
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
 
 # 公開前の特集ページ用プレビュートークン。このURLクエリを知っている人だけが見られる。
 # 本番公開時にこのゲートは外す。
@@ -2485,19 +2497,28 @@ def webhook_receive():
 SITE_URL = "https://taiwan-art-now.onrender.com"
 
 # Private browser-claim handshake (see docs/ai-handoff/DECISIONS.md). Reuses
-# the same DB connector the webhook already relies on. TAN_PRIVATE_CLAIM_LIMITER
-# is deliberately left unset: that config gates /api/private-auth/claim, which
-# already fails closed (503 "unavailable") without it -- see
-# private_claim_limiter_adapter.py's own warning that the client identity
-# resolver must come from verified deployment network metadata, not a raw
-# X-Forwarded-For header, which has not been confirmed for this host yet.
-# Setting this up incorrectly would be a rate-limit-bypass risk, not merely
-# an inert gap, so it is being left for a deliberate follow-up rather than
-# guessed at here.
+# the same DB connector the webhook already relies on. The rate limiter
+# resolves the client identity from request.remote_addr, which is only
+# trustworthy because of the ProxyFix(x_for=1) applied above -- without
+# that, this would be the exact raw-X-Forwarded-For risk
+# private_claim_limiter_adapter.py's own docstring warns against. The
+# limiter still fails closed (503 "unavailable") if TAN_RATE_LIMIT_HMAC_KEY
+# is not configured, which it is not yet in production -- that is a secret
+# the user must set, not something to generate here.
 from private_browser_claim_routes import claim_blueprint
 from private_subscriber_store import _connect as _private_db_connect
+from private_claim_limiter_adapter import build_claim_limiter
+
+
+def _trusted_client_identity(req):
+    return req.remote_addr or ""
+
+
 app.config.setdefault("TAN_CANONICAL_ORIGIN", SITE_URL)
 app.config.setdefault("TAN_PRIVATE_DB_CONNECT", _private_db_connect)
+app.config.setdefault("TAN_PRIVATE_CLAIM_LIMITER", build_claim_limiter(
+    _private_db_connect, _trusted_client_identity,
+    secret=os.environ.get("TAN_RATE_LIMIT_HMAC_KEY", "")))
 app.register_blueprint(claim_blueprint)
 
 
