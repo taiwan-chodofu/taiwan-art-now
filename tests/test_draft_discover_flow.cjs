@@ -152,3 +152,52 @@ test('lost server reply locks Discover without advancing or retrying even on ski
  assert.equal(flow.historySize(),0);
  assert.deepEqual(events,[]);
 });
+test('recover stays locked when global revision has not moved past the uncertain write',async()=>{
+ const server=serverFixture();
+ let dropNextPost=true;
+ const flow=create({normalizeKey:s=>s,fetchImpl:async(path,options)=>{
+  // Simulate the request never reaching the server at all (not merely a lost
+  // reply after a successful commit), so revision genuinely never advances.
+  if(options.method==='POST'&&dropNextPost){dropNextPost=false;throw Error('network error');}
+  return server.fetchImpl(path,options);
+ }});
+ assert.equal((await flow.swipe(card,'like')).status,'write_outcome_unknown');
+ assert.equal(flow.isUncertain(),true);
+ assert.equal(server.state.revision,0);
+ assert.equal((await flow.recover()).status,'still_unknown_commit');
+ assert.equal(flow.isUncertain(),true);
+ assert.equal((await flow.swipe(card,'skip')).status,'unknown_commit');
+});
+test('recover clears the lock once global revision has advanced past the attempted write',async()=>{
+ const server=serverFixture();
+ let dropNextPost=true;
+ const flow=create({normalizeKey:s=>s,fetchImpl:async(path,options)=>{
+  const result=await server.fetchImpl(path,options);
+  if(options.method==='POST'&&dropNextPost){dropNextPost=false;throw Error('lost reply');}
+  return result;
+ }});
+ assert.equal((await flow.swipe(card,'like')).status,'write_outcome_unknown');
+ server.state.revision++;
+ const recovered=await flow.recover();
+ assert.equal(recovered.status,'recovered');
+ assert.equal(recovered.revision,server.state.revision);
+ assert.equal(flow.isUncertain(),false);
+ const second=await flow.swipe(card,'visited');
+ assert.equal(second.status,'written_under_cooperative_lock');
+});
+test('recover is a no-op outside the uncertain state and unavailable without fetchImpl',async()=>{
+ const server=serverFixture();
+ const serverFlow=create({normalizeKey:s=>s,fetchImpl:server.fetchImpl});
+ assert.equal((await serverFlow.recover()).status,'not_uncertain');
+ const x=fixture();
+ assert.equal((await x.flow.recover()).status,'not_applicable');
+});
+test('disposed flow refuses to swipe, undo, clearHistory or recover',async()=>{
+ const x=fixture();
+ await x.flow.swipe(card,'like');
+ x.flow.dispose();
+ assert.equal((await x.flow.swipe(card,'visited')).status,'disposed');
+ assert.equal((await x.flow.undo()).status,'disposed');
+ assert.equal(x.flow.clearHistory().status,'disposed');
+ assert.equal((await x.flow.recover()).status,'disposed');
+});

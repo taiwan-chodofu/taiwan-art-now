@@ -13,7 +13,7 @@
  "use strict";
  function create({storage,locks,normalizeKey,onAdvance,onRestore,onError,fetchImpl}={}){
    const localController=fetchImpl?null:page.create({storage,locks});
-   let uncertain=false;
+   let uncertain=false,uncertainSinceRevision=null,disposed=false;
    const createdRevisions=new Map();
    const controller={act:async intent=>{
      if(!fetchImpl)return localController.act(intent);
@@ -29,7 +29,7 @@
      const result=await writer.commit({fetchImpl,kind:intent.kind,key:intent.key,
        action:intent.action==="set_if_absent"?"set":"remove",value:intent.value,
        expectedRevision:latest.state.revision});
-     if(result.status==="write_outcome_unknown")uncertain=true;
+     if(result.status==="write_outcome_unknown"){uncertain=true;uncertainSinceRevision=latest.state.revision;}
      if(!result.committed)return result;
      if(intent.action==="set_if_absent")createdRevisions.set(slot,result.revision);
      else createdRevisions.delete(slot);
@@ -44,6 +44,7 @@
        dates:card.dates,url:card.detail_url,region:card.region};
    }
    async function swipe(card,action){
+     if(disposed)return {status:"disposed"};
      if(pending)return {status:"busy"};
      if(uncertain)return {status:"unknown_commit"};
      if(!card||!["like","visited","skip"].includes(action)||typeof normalizeKey!=="function")
@@ -70,6 +71,7 @@
      }finally{pending=false;}
    }
    async function undo(){
+     if(disposed)return {status:"disposed"};
      if(pending)return {status:"busy"};
      if(uncertain)return {status:"unknown_commit"};
      if(!history.length)return {status:"nothing_to_undo"};
@@ -92,6 +94,7 @@
      }finally{pending=false;}
    }
    function clearHistory(){
+     if(disposed)return {status:'disposed'};
      if(pending)return {status:'busy'};
      history.length=0;
      return {status:'cleared'};
@@ -100,7 +103,28 @@
      const last=history[history.length-1];
      return last&&last.kind?{kind:last.kind,key:last.key,title:last.card.title}:null;
    }
-   return {swipe,undo,clearHistory,lastUndoTarget,isBusy:()=>pending,historySize:()=>history.length};
+   async function recover(){
+     // Mirrors the detail/nearby recovery rule: a fresh authenticated read
+     // only clears the lock once global revision has moved past the
+     // uncertain write's own base revision. An unchanged revision leaves
+     // open the possibility of a delayed write, so stay locked and never
+     // replay the mutation (see DECISIONS.md 2026-11-24).
+     if(disposed)return {status:"disposed"};
+     if(pending)return {status:"busy"};
+     if(!fetchImpl)return {status:"not_applicable"};
+     if(!uncertain)return {status:"not_uncertain"};
+     pending=true;
+     try{
+       const latest=await reader.read({fetchImpl});
+       if(latest.status!=="ready")return {status:latest.status};
+       if(latest.state.revision<=uncertainSinceRevision)return {status:"still_unknown_commit"};
+       uncertain=false;uncertainSinceRevision=null;
+       return {status:"recovered",revision:latest.state.revision};
+     }finally{pending=false;}
+   }
+   function dispose(){disposed=true;}
+   return {swipe,undo,clearHistory,recover,dispose,lastUndoTarget,
+     isBusy:()=>pending,isUncertain:()=>uncertain,historySize:()=>history.length};
  }
  return {create};
 });
