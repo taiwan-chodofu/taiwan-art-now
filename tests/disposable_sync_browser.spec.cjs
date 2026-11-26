@@ -384,3 +384,35 @@ test('actual Home mylist panel marks visited and removes through the authenticat
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
  }finally{await context.close();}
 });
+
+test('actual connect-devices page completes the full browser-claim handshake against real Postgres',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-connect-devices');
+  await expect(page.locator('#step1')).toHaveClass(/active/);
+  await page.locator('#startBtn').click();
+  await expect(page.locator('#step2')).toHaveClass(/active/);
+  const pending=await page.evaluate(()=>JSON.parse(localStorage.getItem('taiwan_art_private_claim_pending')));
+  expect(typeof pending.messenger_code).toBe('string');
+  expect(typeof pending.browser_secret).toBe('string');
+  expect(await page.locator('#messengerLink').getAttribute('href'))
+   .toBe('https://m.me/61591281572640?ref='+encodeURIComponent(pending.messenger_code));
+  // Confirming before Meta has verified anything must fail closed, not
+  // silently succeed or crash.
+  await page.locator('#confirmBtn').click();
+  await expect(page.locator('#notice')).toContainText('まだ確認できていません');
+  await expect(page.locator('#step2')).toHaveClass(/active/);
+  // Simulate the signature-verified Meta webhook (test-only route; the real
+  // one is covered separately by test_flask_webhook_http.py /
+  // test_try_mark_meta_verified.py).
+  const verifyResult=await page.request.post('https://127.0.0.1/actual-mark-verified',{
+   data:{messenger_code:pending.messenger_code,sender_id:'synthetic-connect-sender'}});
+  expect((await verifyResult.json()).ok).toBe(true);
+  await page.locator('#confirmBtn').click();
+  await expect(page.locator('#step3')).toHaveClass(/active/);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_private_claim_pending'))).toBeNull();
+  const cookies=await context.cookies();
+  expect(cookies.some(c=>c.name==='__Host-tan_session')).toBe(true);
+ }finally{await context.close();}
+});

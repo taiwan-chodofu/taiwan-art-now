@@ -53,6 +53,23 @@ class DisposablePostgresCASTests(unittest.TestCase):
                             "(sender_id text primary key REFERENCES "
                             "tan_private.messenger_subscribers(sender_id), "
                             "state jsonb not null, updated_at timestamptz default now())")
+                # Simplified for this plain disposable container: same
+                # columns/constraints as the drafts (docs/security/
+                # MESSENGER_LINK_SCHEMA_DRAFT.sql, CLAIM_RATE_LIMIT_SCHEMA_
+                # DRAFT.sql) minus the Supabase-specific RLS/role statements,
+                # which don't apply here (no anon/authenticated roles exist
+                # on this container) -- same convention the tables above
+                # already use.
+                cur.execute("CREATE TABLE tan_private.messenger_link_challenges "
+                            "(token_hash text primary key, "
+                            "browser_claim_hash text not null unique, "
+                            "created_at timestamptz not null default now(), "
+                            "expires_at timestamptz not null, "
+                            "verified_at timestamptz, consumed_at timestamptz, "
+                            "sender_id text)")
+                cur.execute("CREATE TABLE tan_private.auth_rate_limits "
+                            "(bucket_hash text primary key, "
+                            "attempts integer not null, expires_at timestamptz not null)")
 
     def test_isolated_staging_factory_real_database_ownership_and_revocation(self):
         """The isolated app factory uses real PostgreSQL session ownership."""

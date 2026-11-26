@@ -2554,6 +2554,16 @@ def private_auth_initiate():
     return response
 
 
+@app.get("/connect-devices")
+def connect_devices_page():
+    """Browser-side UI driving the private browser-claim handshake (calls
+    /api/private-auth/initiate then /api/private-auth/claim). Safe to expose
+    today even though the handshake is still inert in production (no schema
+    migration, no TAN_RATE_LIMIT_HMAC_KEY yet) -- both endpoints already fail
+    closed with a clear "try again later" message in that case."""
+    return render_template("connect_devices.html", current_lang=request.args.get("lang", "ja"))
+
+
 @app.route("/robots.txt")
 def robots_txt():
     body = f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n"

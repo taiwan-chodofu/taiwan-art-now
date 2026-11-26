@@ -3,11 +3,14 @@ import sys
 from pathlib import Path
 
 import psycopg
-from flask import send_file, render_template, request
+from flask import send_file, render_template, request, jsonify
 from werkzeug.serving import run_simple
 
+from browser_cookie_security import require_same_origin
 from browser_session import token_digest
 from isolated_versioned_staging_app import create_isolated_staging_app
+from messenger_browser_claim import issue_pair, mark_meta_verified
+from private_browser_claim_routes import claim_blueprint
 
 ORIGIN = "https://127.0.0.1"
 DATABASE = "postgresql://tan_ci:synthetic_only_ci@127.0.0.1:5432/tan_ci_disposable"
@@ -47,6 +50,41 @@ def serve(cert, key):
     app.config["TAN_ISOLATED_DISCOVER_SYNC"] = True
 
     app.config["TAN_ISOLATED_HOME_SYNC"] = True
+
+    # Private browser-claim handshake, mirroring the real app.py wiring
+    # (TAN_CANONICAL_ORIGIN/TAN_PRIVATE_DB_CONNECT already set by
+    # create_isolated_staging_app above). An always-permit limiter is fine
+    # for this isolated fixture -- private_claim_rate_limit.py's own SQL is
+    # already covered by its dedicated unit tests, not re-tested here.
+    app.config["TAN_PRIVATE_CLAIM_LIMITER"] = lambda req: True
+    app.register_blueprint(claim_blueprint)
+
+    @app.post("/api/private-auth/initiate")
+    def actual_private_auth_initiate():
+        if not require_same_origin(
+            request.method, request.headers.get("Origin"), ORIGIN,
+            request.headers.get("Sec-Fetch-Site"),
+        ):
+            return jsonify(error="forbidden"), 403
+        with psycopg.connect(DATABASE) as conn:
+            messenger_code, browser_secret = issue_pair(conn)
+        response = jsonify(messenger_code=messenger_code, browser_secret=browser_secret)
+        response.headers["Cache-Control"] = "no-store"
+        return response
+
+    @app.post("/actual-mark-verified")
+    def actual_mark_verified():
+        """Test-only: simulates the signature-verified Meta webhook calling
+        mark_meta_verified, without needing a real webhook round-trip."""
+        body = request.get_json(silent=True) or {}
+        with psycopg.connect(DATABASE) as conn:
+            ok = mark_meta_verified(conn, messenger_code=body.get("messenger_code"),
+                                    verified_sender_id=body.get("sender_id"))
+        return jsonify(ok=ok)
+
+    @app.get("/actual-connect-devices")
+    def actual_connect_devices():
+        return render_template("connect_devices.html", current_lang=request.args.get("lang", "ja"))
 
     @app.get("/actual-home")
     def actual_home():
