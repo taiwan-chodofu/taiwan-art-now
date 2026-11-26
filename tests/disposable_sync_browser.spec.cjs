@@ -341,7 +341,11 @@ test('actual Home template toggles fav/visited through the authenticated writer 
 test('actual Home mylist panel marks visited and removes through the authenticated writer',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{
-  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-session',
+  // Dedicated session, distinct from browser-home-session above: that test
+  // ends with home-a's fav tombstoned, and reusing its session here would
+  // make this test's first fav click resurrect a tombstone (a different,
+  // already-covered code path) instead of registering a fresh fav.
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-mylist-session',
    url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
   await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
   const page=await context.newPage();
