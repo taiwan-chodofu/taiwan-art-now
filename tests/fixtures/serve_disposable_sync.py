@@ -39,6 +39,12 @@ def serve(cert, key):
                     cur.execute("INSERT INTO tan_private.browser_sessions(token_hash,sender_id,expires_at) "
                                 "VALUES (%s,%s,now()+interval '10 minutes')",
                                 (token_digest(session), owner))
+            # No pre-made browser_sessions row -- the connect-devices E2E
+            # test's whole point is that the claim flow itself creates one.
+            # browser_sessions.sender_id has a foreign key into this table,
+            # so claim_browser_session's own INSERT would otherwise fail.
+            cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
+                        ("synthetic-connect-sender",))
 
     app = create_isolated_staging_app(db_connect=lambda: psycopg.connect(DATABASE),
                                       environment="isolated-staging", canonical_origin=ORIGIN)
