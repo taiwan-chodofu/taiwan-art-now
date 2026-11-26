@@ -8773,6 +8773,37 @@
         }
       ],
       "status": "ended"
+    },
+    {
+      "museum": "yingcai",
+      "title_zh": "光影行旅 簡君惠創作個展",
+      "title_en": "Journey of Light and Shadow: Chien Chun-Hui Solo Exhibition",
+      "title_ja": "光と影の旅－簡君惠個展",
+      "dates": "2026.10.01 – 2026.11.25",
+      "location": "",
+      "link": "https://artemperor.tw/tidbits/20651",
+      "description": "簡君惠年輕時赴日本留學，進入川端畫學院學習油畫，投入創作逾五十年，喜愛印象派對光影與色彩的表現，透過旅行寫生累積創作養分，題材涵蓋中橫、燕子口、東北角及海外日本、澳洲、歐洲等地景色，延伸至人物、花卉、靜物與貓咪等創作。",
+      "description_en": "Chien Chun-Hui studied oil painting at the Kawabata Art School in Japan in her youth and has created for over fifty years, drawn to Impressionism's treatment of light and color, building her practice through travel sketching. Her subjects span Taiwan's Central Cross-Island Highway, Yanzikou, the Northeast Coast, and overseas scenes from Japan, Australia and Europe, extending to figures, flowers, still life and cats.",
+      "description_ja": "簡君惠は若い頃日本に留学し、川端画学院で油絵を学んで以来50年以上創作を続けてきた。印象派の光と色彩の表現を好み、旅先でのスケッチを通じて創作の糧を蓄えてきた。題材は台湾の中部横貫道路や燕子口、東北角、さらに日本・オーストラリア・ヨーロッパなど海外の風景にも及び、人物、花、静物、猫などの創作へと広がる。",
+      "artists": [
+        "簡君惠"
+      ],
+      "added_at": "2026-11-17T16:55:54.083744+09:00",
+      "events": [
+        {
+          "type": "opening",
+          "date": "2026/10/06",
+          "time": "14:30",
+          "title_zh": "開幕式",
+          "title_en": "Opening Reception",
+          "title_ja": "オープニング",
+          "note_zh": "",
+          "note_en": "",
+          "note_ja": "",
+          "source_url": "https://artemperor.tw/tidbits/20651"
+        }
+      ],
+      "status": "ended"
     }
   ]
 }
