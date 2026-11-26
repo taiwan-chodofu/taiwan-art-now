@@ -263,7 +263,12 @@ test('actual Discover template swipes and undoes through the authenticated write
  try{
   await context.addCookies([{name:'__Host-tan_session',value:'browser-discover-session',
    url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
-  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_ga_exclude','1');
+   // Otherwise the first-visit tutorial overlay covers the action buttons
+   // and every click() hangs until Playwright's own action timeout.
+   localStorage.setItem('taiwan_art_discover_tutorial_seen','1');
+  });
   const page=await context.newPage();
   let writes=0;
   page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});

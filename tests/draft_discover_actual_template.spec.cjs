@@ -17,7 +17,12 @@ function html(){
  return raw.replace(/{{\s*cards\s*\|\s*tojson\s*}}/g,JSON.stringify(cards))
   .replace(/{{\s*labels\s*\|\s*tojson\s*}}/g,JSON.stringify(labels))
   .replace(/{{\s*current_lang\s*}}/g,'ja')
+  .replace(/{{\s*isolated_sync\s*\|\s*tojson\s*}}/g,'false')
   .replace(/{{\s*labels\.([a-z_]+)\s*}}/g,(_,k)=>labels[k]||'')
+  // This synthetic harness has no Flask config, so it always represents the
+  // legacy (isolated_sync=false) rendering path; drop the server-sync block
+  // entirely rather than leaving its script tags in unconditionally.
+  .replace(/{%\s*if isolated_sync\s*%}[\s\S]*?{%\s*endif\s*%}/g,'')
   .replace(/{%[\s\S]*?%}/g,'');
 }
 async function boot(page){
