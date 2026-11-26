@@ -338,6 +338,25 @@ def _normalize_dates(raw_dates):
     return raw_dates, None, None
 
 
+def _stable_key(museum_id, exhibition):
+    """展示の安定キー。museum_id + タイトル + 開始日で一意性を確保する。
+
+    タイトルのみ（旧実装）では同一(museum,title)の別展示と衝突する
+    （例: 年次シリーズでタイトルが年を含まない場合）。開始日を含めることで
+    これを解消する。終了日はあえて含めない — archive.jsonには同一開始日で
+    終了日だけ後から訂正された実例（museum 99dac「維度游移Ⅱ-張可昱創作個展」）
+    があり、これは同一展示の継続とみなすべきで、終了日の訂正だけで
+    favs/visitedの登録先キーが変わってしまうのは望ましくないため。
+    開始日が取得できない場合はタイトルのみにフォールバックする
+    （この場合の衝突リスクは残るが、存在しない日付を捏造するよりは安全。
+    docs/ai-handoff/DECISIONS.md 2026-11-26「stable_key is not yet safe...」参照）。
+    """
+    title = exhibition.get("title_zh", "") or exhibition.get("title_en", "") or ""
+    _, start_dt, _ = _normalize_dates(exhibition.get("dates", ""))
+    date_part = start_dt.strftime("%Y%m%d") if start_dt else ""
+    return museum_id + "__" + title + ("__" + date_part if date_part else "")
+
+
 def _calc_days_left(end_dt):
     """終了日までの残日数を計算する。Noneまたは14日超はNone。
     最終日当日は1と表示（「今日が最後」）。"""
@@ -438,7 +457,7 @@ def index():
                         next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "days_until": days_until}
             except (ValueError, KeyError):
                 pass
-        stable_key = key + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+        stable_key = _stable_key(key, ex)
         recently_added = False
         added_at = ex.get("added_at")
         if added_at:
@@ -908,7 +927,6 @@ def discover():
         if len(artists) > 3:
             artists_label += "…"
 
-        title_zh = ex.get("title_zh", "") or ex.get("title_en", "")
         cards.append({
             "title": _get_display_title(ex, lang),
             "museum": _get_localized(m.get("name", {}), lang) or mid,
@@ -917,7 +935,7 @@ def discover():
             "days_left": _calc_days_left(end_dt),
             "artists": artists_label,
             "excerpt": excerpt,
-            "stable_key": mid + "__" + title_zh,
+            "stable_key": _stable_key(mid, ex),
             "detail_url": f"/exhibition/{mid}/{idx}?lang={lang}",
         })
 
@@ -1490,7 +1508,7 @@ def exhibition_detail(museum_id, idx):
                 "source_url": evt.get("source_url", ""),
             })
 
-    stable_key = museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+    stable_key = _stable_key(museum_id, ex)
 
     # Other exhibitions at same museum
     other_exs = []
