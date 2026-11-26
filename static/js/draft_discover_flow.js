@@ -11,7 +11,7 @@
  else root.TanDraftDiscoverFlow=api;
 })(typeof globalThis!=="undefined"?globalThis:this,function(page,reader,writer){
  "use strict";
- function create({storage,locks,normalizeKey,onAdvance,onRestore,onError,fetchImpl}={}){
+ function create({storage,locks,normalizeKey,onAdvance,onRestore,onError,fetchImpl,restoreImpl}={}){
    const localController=fetchImpl?null:page.create({storage,locks});
    let uncertain=false,uncertainSinceRevision=null,disposed=false;
    const createdRevisions=new Map();
@@ -56,11 +56,20 @@
        if(action!=="skip"){
          const kind=action==="like"?"favs":"visited",value=valueFor(card,action);
          result=await controller.act({kind,key,action:"set_if_absent",value});
-         if(result.status!=="written_under_cooperative_lock"&&result.status!=="unchanged"){
+         if(result.status==="deletion_review_required"){
+           // A prior removal (possibly from another device) tombstoned this
+           // item; a blind set is never allowed to resurrect it. Advance the
+           // deck instead of getting stuck, but do not claim it was saved.
+           // The card-only history entry (no kind/key/value) means undo just
+           // restores the card, matching the "unchanged" shape below; the
+           // caller may call confirmRestore(card,action) later to resurrect
+           // it explicitly, which pushes its own live history entry on success.
+           history.push({card,action});
+           result={status:"needs_restore_review",kind,key};
+         }else if(result.status!=="written_under_cooperative_lock"&&result.status!=="unchanged"){
            if(typeof onError==="function")try{onError(result);}catch(_){}
            return result;
-         }
-         if(result.status==="unchanged"){
+         }else if(result.status==="unchanged"){
            history.push({card,action});
            result={status:"skipped",preservedExisting:true};
          }else history.push({card,action,kind,key,value});
@@ -122,8 +131,42 @@
        return {status:"recovered",revision:latest.state.revision};
      }finally{pending=false;}
    }
+   async function confirmRestore(card,action){
+     // The only path that may resurrect a tombstone, and only on an explicit
+     // caller-initiated call (never from swipe/undo itself). Mirrors detail's
+     // explicit restore: a fresh read supplies both the global revision and
+     // the item's exact tombstone revision, which the server re-verifies.
+     if(disposed)return {status:"disposed"};
+     if(pending)return {status:"busy"};
+     if(uncertain)return {status:"unknown_commit"};
+     if(!fetchImpl||typeof restoreImpl!=="function")return {status:"not_applicable"};
+     if(!card||!["like","visited"].includes(action)||typeof normalizeKey!=="function")
+       return {status:"invalid_request"};
+     pending=true;
+     try{
+       const key=normalizeKey(card.stable_key),kind=action==="like"?"favs":"visited";
+       const latest=await reader.read({fetchImpl});
+       if(latest.status!=="ready")return {status:latest.status};
+       const entry=latest.state[kind][key];
+       if(!entry||!entry.deleted)return {status:"not_tombstoned"};
+       const value=valueFor(card,action);
+       const result=await restoreImpl({fetchImpl,kind,key,value,
+         reviewedRevision:latest.state.revision,tombstoneRevision:entry.revision,
+         confirmed:true,isActive:()=>!disposed});
+       if(result.status==="write_outcome_unknown"){uncertain=true;uncertainSinceRevision=latest.state.revision;}
+       if(!result.committed){
+         if(typeof onError==="function")try{onError(result);}catch(_){}
+         return result;
+       }
+       createdRevisions.set(JSON.stringify([kind,key]),result.revision);
+       history.push({card,action,kind,key,value});
+       if(typeof onAdvance==="function")try{onAdvance({card,action,restored:true});}
+         catch(_){return {status:"committed_ui_failed",writeStatus:result.status};}
+       return {status:"written_under_cooperative_lock",revision:result.revision};
+     }finally{pending=false;}
+   }
    function dispose(){disposed=true;}
-   return {swipe,undo,clearHistory,recover,dispose,lastUndoTarget,
+   return {swipe,undo,clearHistory,recover,dispose,confirmRestore,lastUndoTarget,
      isBusy:()=>pending,isUncertain:()=>uncertain,historySize:()=>history.length};
  }
  return {create};

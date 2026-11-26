@@ -1,5 +1,6 @@
 const test=require("node:test"),assert=require("node:assert/strict");
 const {create}=require("../static/js/draft_discover_flow.js");
+const {restore}=require("../static/js/draft_explicit_server_restore.js");
 const card={stable_key:"a",title:"展覽",museum:"M",dates:"2026",detail_url:"/a",region:"臺南"};
 function fixture(){
  const data={taiwan_art_favs:"{}",taiwan_art_visited:"{}"};
@@ -200,4 +201,99 @@ test('disposed flow refuses to swipe, undo, clearHistory or recover',async()=>{
  assert.equal((await x.flow.undo()).status,'disposed');
  assert.equal(x.flow.clearHistory().status,'disposed');
  assert.equal((await x.flow.recover()).status,'disposed');
+});
+
+function restoreCapableServerFixture(){
+ let state={revision:0,favs:{},visited:{}},posts=0,issued=null;
+ const response=()=>({ok:true,status:200,
+  headers:{get:k=>k==='content-type'?'application/json':'no-store'},
+  json:async()=>structuredClone(state)});
+ const fetchImpl=async(path,options)=>{
+  if(options.method!=='POST')return response();
+  posts++;
+  if(path.endsWith('/review/keep/issue')){
+   const body=JSON.parse(options.body);
+   assert.equal(body.base_revision,state.revision);
+   issued={token:'tok-'+posts,kind:body.kind,key:body.key,local_value:body.local_value};
+   return {ok:true,status:200,
+    headers:{get:k=>k==='content-type'?'application/json':'no-store'},
+    json:async()=>({token:issued.token})};
+  }
+  if(path.endsWith('/review/keep/consume')){
+   const body=JSON.parse(options.body);
+   assert.equal(body.token,issued&&issued.token);
+   const revision=++state.revision;
+   state[issued.kind][issued.key]={revision,deleted:false,value:body.local_value};
+   issued=null;
+   return response();
+  }
+  const body=JSON.parse(options.body);
+  assert.equal(body.base_revision,state.revision);
+  const revision=++state.revision;
+  for(const kind of ['favs','visited'])for(const [key,op] of Object.entries(body.changes[kind]))
+   state[kind][key]={revision,deleted:!!op.delete,value:op.delete?null:op.set};
+  return response();
+ };
+ return {fetchImpl,get state(){return state;},get posts(){return posts;}};
+}
+test('swiping a tombstoned card advances without resurrecting it, and its undo is card-only',async()=>{
+ const server=restoreCapableServerFixture(),events=[];
+ server.state.favs.a={revision:1,deleted:true,value:null};
+ server.state.revision=1;
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s,restoreImpl:restore,
+  onAdvance:()=>events.push('advance'),onError:x=>events.push('error:'+x.status)});
+ const result=await flow.swipe(card,'like');
+ assert.equal(result.status,'needs_restore_review');
+ assert.deepEqual(events,['advance']);
+ assert.equal(server.posts,0);
+ assert.equal(server.state.favs.a.deleted,true);
+ assert.equal((await flow.undo()).status,'skipped');
+ assert.equal(server.posts,0);
+ assert.equal(server.state.favs.a.deleted,true);
+});
+test('confirmRestore resurrects a tombstone only on explicit call, and normal undo removes it afterward',async()=>{
+ const server=restoreCapableServerFixture(),events=[];
+ server.state.favs.a={revision:1,deleted:true,value:null};
+ server.state.revision=1;
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s,restoreImpl:restore,
+  onAdvance:()=>events.push('advance')});
+ await flow.swipe(card,'like');
+ const restored=await flow.confirmRestore(card,'like');
+ assert.equal(restored.status,'written_under_cooperative_lock');
+ assert.equal(server.state.favs.a.deleted,false);
+ assert.equal(server.state.favs.a.value.title,'展覽');
+ assert.deepEqual(events,['advance','advance']);
+ assert.equal((await flow.undo()).status,'written_under_cooperative_lock');
+ assert.equal(server.state.favs.a.deleted,true);
+});
+test('confirmRestore refuses an item that is not actually tombstoned, and requires restoreImpl',async()=>{
+ const server=restoreCapableServerFixture();
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s,restoreImpl:restore});
+ assert.equal((await flow.confirmRestore(card,'like')).status,'not_tombstoned');
+ const noRestoreImpl=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s});
+ assert.equal((await noRestoreImpl.confirmRestore(card,'like')).status,'not_applicable');
+ const x=fixture();
+ assert.equal((await x.flow.confirmRestore(card,'like')).status,'not_applicable');
+});
+test('a second swipe sharing a normalized key with an already-live registration cannot undo that registration',async()=>{
+ // Guards the createdRevisions/history ownership model: two distinct card
+ // objects whose stable_key normalizes to the identical key (the exact risk
+ // documented in DECISIONS.md 2026-11-26 for the legacy lossy normalizer)
+ // must never let the second swipe's undo delete the first swipe's write.
+ const server=restoreCapableServerFixture();
+ const cardA={stable_key:"a",title:"Card A",museum:"M",dates:"2026",detail_url:"/a",region:"R"};
+ const cardB={stable_key:"a",title:"Card B (collides with A under normalizeKey)",museum:"M",dates:"2026",detail_url:"/b",region:"R"};
+ const flow=create({fetchImpl:server.fetchImpl,normalizeKey:s=>s});
+ const first=await flow.swipe(cardA,'like');
+ assert.equal(first.status,'written_under_cooperative_lock');
+ const second=await flow.swipe(cardB,'like');
+ assert.equal(second.status,'skipped');
+ assert.equal(second.preservedExisting,true);
+ const undoSecond=await flow.undo();
+ assert.equal(undoSecond.status,'skipped');
+ assert.equal(server.state.favs.a.deleted,false);
+ assert.equal(server.state.favs.a.value.title,'Card A');
+ const undoFirst=await flow.undo();
+ assert.equal(undoFirst.status,'written_under_cooperative_lock');
+ assert.equal(server.state.favs.a.deleted,true);
 });
