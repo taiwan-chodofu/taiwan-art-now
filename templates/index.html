@@ -1900,9 +1900,16 @@
     var MIGRATED_KEY = 'taiwan_art_keys_migrated_v1';
     if (localStorage.getItem(MIGRATED_KEY)) return;
     var nameToId = {{ museum_name_to_id_json | safe }};
+    // Returns true only if this store's data is now fully consistent
+    // (nothing left to migrate, or migration completed without error).
+    // The caller must not mark the whole migration complete unless every
+    // store it ran returns true, or a thrown error on one store would
+    // silently and permanently skip that store's migration on every future
+    // load (docs/security/FOUR_PAGE_WRITER_MIGRATION_MATRIX_DRAFT.md: "Never
+    // ... mark migration complete after partial failure").
     function migrateStore(storeName) {
       var raw = localStorage.getItem(storeName);
-      if (!raw) return;
+      if (!raw) return true;
       try {
         var data = JSON.parse(raw);
         var newData = {};
@@ -1926,18 +1933,28 @@
           });
           if (mid) {
             var newKey = (mid + '__' + titlePart).replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-            newData[newKey] = data[oldKey];
-            changed = true;
+            // Never silently drop a colliding entry: if two different old
+            // keys resolve to the same new key (e.g. two historical name
+            // spellings for the same museum, same title), only the first
+            // one processed takes the new key; the rest keep their original
+            // old key so no saved item is overwritten or lost.
+            if (Object.prototype.hasOwnProperty.call(newData, newKey) && newKey !== oldKey) {
+              newData[oldKey] = data[oldKey];
+            } else {
+              newData[newKey] = data[oldKey];
+              changed = true;
+            }
           } else {
             newData[oldKey] = data[oldKey];
           }
         });
         if (changed) localStorage.setItem(storeName, JSON.stringify(newData));
-      } catch(e) {}
+        return true;
+      } catch(e) { return false; }
     }
-    migrateStore('taiwan_art_favs');
-    migrateStore('taiwan_art_visited');
-    localStorage.setItem(MIGRATED_KEY, '1');
+    var favsOk = migrateStore('taiwan_art_favs');
+    var visitedOk = migrateStore('taiwan_art_visited');
+    if (favsOk && visitedOk) localStorage.setItem(MIGRATED_KEY, '1');
   })();
 
   // Init actions on page load
