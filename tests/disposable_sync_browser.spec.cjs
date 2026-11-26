@@ -257,3 +257,37 @@ test('Discover server flow preserves existing seen across database-backed save a
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
  }finally{await context.close();}
 });
+
+test('actual Discover template swipes and undoes through the authenticated writer, not legacy storage',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-discover-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const page=await context.newPage();
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.goto('https://127.0.0.1/actual-discover');
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover A');
+  await page.locator('#likeBtn').click();
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover B');
+  expect(writes).toBe(1);
+  let state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['discover-a']).toMatchObject({deleted:false});
+  await page.locator('#undoBtn').click();
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover A');
+  expect(writes).toBe(2);
+  state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['discover-a']).toMatchObject({deleted:true});
+  await page.locator('#skipBtn').click();
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover B');
+  expect(writes).toBe(2); // skip never writes
+  await page.locator('#visitedBtn').click();
+  await expect(page.locator('#emptyState')).toBeVisible();
+  expect(writes).toBe(3);
+  state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.visited['discover-b']).toMatchObject({deleted:false});
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
+ }finally{await context.close();}
+});

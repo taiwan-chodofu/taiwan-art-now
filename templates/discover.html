@@ -258,10 +258,18 @@
     <button class="like-btn" id="likeBtn">♡ {{ labels.like }}</button>
   </div>
 
+  {% set isolated_sync = config.get("TAN_ISOLATED_DISCOVER_SYNC", false) %}
   <script src="/static/js/draft_legacy_snapshot.js"></script>
   <script src="/static/js/draft_legacy_writer.js"></script>
   <script src="/static/js/draft_page_action.js"></script>
   <script src="/static/js/draft_page_controller.js"></script>
+  {% if isolated_sync %}
+  <script src="/static/js/draft_versioned_sync.js"></script>
+  <script src="/static/js/draft_authenticated_state.js"></script>
+  <script src="/static/js/draft_authenticated_writer.js"></script>
+  <script src="/static/js/draft_explicit_keep.js"></script>
+  <script src="/static/js/draft_explicit_server_restore.js"></script>
+  {% endif %}
   <script src="/static/js/draft_discover_flow.js"></script>
   <script src="/static/js/draft_exhibition_filters.js"></script>
   <script src="/static/js/draft_discover_selection.js"></script>
@@ -270,6 +278,7 @@
     var ALL_CARDS = {{ cards | tojson }};
     var LABELS = {{ labels | tojson }};
     var LANG = "{{ current_lang }}";
+    var ISOLATED_SYNC = {{ isolated_sync | tojson }};
 
     function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
     function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
@@ -608,8 +617,11 @@
         setDiscoverBusy(discoverBusy);
       }, 220);
     }
-    var discoverFlow = TanDraftDiscoverFlow.create({
-      storage: localStorage, locks: navigator.locks, normalizeKey: _normalizeKey,
+    var discoverFlow = TanDraftDiscoverFlow.create(Object.assign(
+      ISOLATED_SYNC
+        ? {fetchImpl: window.fetch.bind(window), restoreImpl: TanDraftExplicitServerRestore.restore, normalizeKey: function(k){ return k; }}
+        : {storage: localStorage, locks: navigator.locks, normalizeKey: _normalizeKey},
+      {
       onAdvance: advanceDiscover,
       onRestore: function(last) {
         if (discoverRenderTimer) {
@@ -625,15 +637,19 @@
         setDiscoverBusy(discoverBusy);
       },
       onError: failDiscover
-    });
+    }));
     async function commitSwipe(action) {
       if (discoverBusy || discoverAnimating || !currentCard) return;
       clearDiscoverError();
       setDiscoverBusy(true);
       try {
         var result = await discoverFlow.swipe(currentCard, action);
+        // needs_restore_review: card already advanced (a tombstoned match was
+        // found); the explicit restore-confirmation UI is not yet wired here
+        // (see docs/ai-handoff/DECISIONS.md), so treat it as a normal advance
+        // rather than a spurious error for now.
         if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
-            result.status !== 'committed_ui_failed') failDiscover(result);
+            result.status !== 'committed_ui_failed' && result.status !== 'needs_restore_review') failDiscover(result);
       } catch (e) {
         failDiscover({status:'unexpected_error'});
       } finally {

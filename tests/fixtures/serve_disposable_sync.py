@@ -42,6 +42,27 @@ def serve(cert, key):
 
     app.config["TAN_ISOLATED_NEARBY_SYNC"] = True
 
+    app.config["TAN_ISOLATED_DISCOVER_SYNC"] = True
+
+    @app.get("/actual-discover")
+    def actual_discover():
+        cards = [
+            {"stable_key": "discover-a", "title": "Synthetic Discover A", "museum": "Synthetic Museum",
+             "dates": "2026", "detail_url": "/exhibition?key=discover-a",
+             "excerpt": "Synthetic excerpt A", "region": "Synthetic Region", "days_left": None},
+            {"stable_key": "discover-b", "title": "Synthetic Discover B", "museum": "Synthetic Museum",
+             "dates": "2026", "detail_url": "/exhibition?key=discover-b",
+             "excerpt": "Synthetic excerpt B", "region": "Synthetic Region", "days_left": None},
+        ]
+        labels = {"title": "Discover", "subtitle": "", "back": "Back", "heading": "Discover",
+                  "count_left": "left", "today_last": "Today", "days_left": " days",
+                  "view_details": "Details", "like": "Like", "seen": "Seen", "skip": "Skip",
+                  "undo": "Undo", "empty": "Empty", "empty_sub": "", "restart": "Restart",
+                  "scroll_more": "More", "tutorial_title": "Tutorial", "tutorial_like": "Like",
+                  "tutorial_seen": "Seen", "tutorial_tap": "Tap", "tutorial_got_it": "OK"}
+        return render_template("discover.html", current_lang=request.args.get("lang", "ja"),
+                               cards=cards, labels=labels)
+
     @app.get("/actual-nearby")
     def actual_nearby():
         exhibitions = [{"title": "Synthetic " + key, "fav_key": key,
