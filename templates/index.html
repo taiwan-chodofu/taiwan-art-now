@@ -1135,7 +1135,8 @@
             {# curator hidden from list view - shown in detail page only #}
             <div class="ex-actions">
               {% if isolated_sync %}
-              <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}">
+              <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}"
+                data-metadata='{{ {"title":ex.title,"museum":museum.name,"dates":ex.dates,"url":ex.detail_url,"region":region.id}|tojson }}'>
                 <span class="act-icon">○</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
               </span>
               <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}"
@@ -1355,6 +1356,10 @@
     if (e.target === this) this.style.display = 'none';
   });
 
+  var ISOLATED_SYNC = {{ isolated_sync | tojson }};
+  // Populated by the isolated-sync script block near the end of this file
+  // (window._tanHomeMylist*) once its modules have loaded. Left undefined
+  // in legacy mode, where ISOLATED_SYNC guards every reference to it.
   var _mylistTab = 'wantgo';
   var _archiveCache = null;
   function toggleMylistHeader(e) {
@@ -1375,9 +1380,28 @@
   }
 
   function renderMylist() {
+    if (ISOLATED_SYNC) {
+      TanDraftAuthenticatedState.read({fetchImpl: window.fetch.bind(window)}).then(function(result) {
+        var favs = {}, visited = {};
+        if (result.status === 'ready') {
+          window._tanHomeMylistRevision = result.state.revision;
+          Object.keys(result.state.favs).forEach(function(k) {
+            if (!result.state.favs[k].deleted) favs[k] = result.state.favs[k].value;
+          });
+          Object.keys(result.state.visited).forEach(function(k) {
+            if (!result.state.visited[k].deleted) visited[k] = result.state.visited[k].value;
+          });
+        }
+        window._tanHomeMylistFavs = favs;
+        _renderMylistWith(favs, visited);
+      });
+      return;
+    }
+    _renderMylistWith(_getFavs(), _getVisited());
+  }
+
+  function _renderMylistWith(favs, visited) {
     var content = document.getElementById('favsContent');
-    var favs = _getFavs();
-    var visited = _getVisited();
 
     var tabs = '<div style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);">';
     tabs += '<button onclick="_mylistTab=\'wantgo\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'transparent') + ';color:' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'var(--text-sub)') + ';">♡ {% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Want to go{% endif %}</button>';
@@ -1493,6 +1517,18 @@
   }
 
   function markVisitedFromMylist(key) {
+    if (ISOLATED_SYNC) {
+      var f = (window._tanHomeMylistFavs || {})[key] || {};
+      var value = { date: new Date().toISOString(), title: f.title || '', museum: f.museum || '', dates: f.dates || '', url: f.url || '', region: f.region || '' };
+      window._tanHomeMylistAction.act({kind: 'visited', key: key, action: 'set', value: value,
+        expectedRevision: window._tanHomeMylistRevision || 0}).then(function(result) {
+        if (result.committed) {
+          renderMylist();
+          if (window._tanHomeMainPage) window._tanHomeMainPage.refresh();
+        }
+      });
+      return;
+    }
     var visited = _getVisited();
     var favs = _getFavs();
     var f = favs[key] || {};
@@ -1504,6 +1540,16 @@
   }
 
   function removeFromMylist(key, type) {
+    if (ISOLATED_SYNC) {
+      window._tanHomeMylistAction.act({kind: type === 'fav' ? 'favs' : 'visited', key: key, action: 'remove',
+        expectedRevision: window._tanHomeMylistRevision || 0}).then(function(result) {
+        if (result.committed) {
+          renderMylist();
+          if (window._tanHomeMainPage) window._tanHomeMainPage.refresh();
+        }
+      });
+      return;
+    }
     if (type === 'fav') {
       var favs = _getFavs(); delete favs[key];
       localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
@@ -2617,10 +2663,15 @@
     document.querySelectorAll('.ex-action-btn').forEach(function(el){
       el.addEventListener('click', function(event){ event.preventDefault(); }, {capture:true});
     });
-    const items=Array.from(document.querySelectorAll('span.ex-action-btn')).map(element=>({
-      element,key:element.dataset.key,kind:element.dataset.action==='fav'?'favs':'visited',
-      value:element.dataset.action==='fav'?JSON.parse(element.dataset.metadata):new Date().toISOString()
-    }));
+    const items=Array.from(document.querySelectorAll('span.ex-action-btn')).map(element=>{
+      const metadata=JSON.parse(element.dataset.metadata);
+      return {element,key:element.dataset.key,kind:element.dataset.action==='fav'?'favs':'visited',
+        // visited mirrors markVisitedFromMylist's own richer object shape
+        // (date+title+museum+dates+url+region), not a bare ISO string, so
+        // the mylist "visited" tab can read title/museum straight from it
+        // without falling back to stale favs data.
+        value:element.dataset.action==='fav'?metadata:Object.assign({date:new Date().toISOString()},metadata)};
+    });
     if(!items.length)return;
     const zh={{ (current_lang == 'zh')|tojson }};
     const page=TanDraftStagingPage.create({
@@ -2662,7 +2713,18 @@
       }
     });
     page.start();
-    window.addEventListener('pagehide',event=>{if(!event.persisted)page.dispose();});
+    window._tanHomeMainPage=page;
+    window._tanHomeMylistAction=TanDraftServerPageAction.create({
+      fetchImpl:window.fetch.bind(window),
+      onAnalytics:function(payload){
+        if(typeof gtag==='function')gtag('event',payload.event,{exhibition_key:payload.key,source:'mylist'});
+      },
+      onFailure:function(){
+        const notice=document.getElementById('syncNotice');
+        if(notice){notice.hidden=false;notice.textContent={{ ('無法儲存，請稍後再試。' if current_lang == 'zh' else ('保存できませんでした。しばらくしてからもう一度お試しください。' if current_lang == 'ja' else 'Could not save. Please try again later.'))|tojson }};}
+      }
+    });
+    window.addEventListener('pagehide',event=>{if(!event.persisted){page.dispose();window._tanHomeMylistAction.dispose();}});
   })();
   </script>
   {% endif %}

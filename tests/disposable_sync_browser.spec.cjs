@@ -337,3 +337,41 @@ test('actual Home template toggles fav/visited through the authenticated writer 
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
  }finally{await context.close();}
 });
+
+test('actual Home mylist panel marks visited and removes through the authenticated writer',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const page=await context.newPage();
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.goto('https://127.0.0.1/actual-home');
+  // Favorite the exhibition from the main list first, like a real user would.
+  await page.locator('span.ex-action-btn[data-action="fav"]').first().click();
+  expect(writes).toBe(1);
+  // Open the mylist panel through its real entry point.
+  await page.locator('#mylistNavBtn').click();
+  await expect(page.locator('#favsContent')).toContainText('Synthetic Home Exhibition');
+  // "Seen" link inside the mylist item (ja: "✓ 観た").
+  await page.getByRole('link',{name:'✓ 観た'}).click();
+  await expect(page.locator('#favsContent')).not.toContainText('Synthetic Home Exhibition'); // moved out of the want-to-go tab
+  expect(writes).toBe(2);
+  let state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.visited['home-a']).toMatchObject({deleted:false});
+  expect(state.visited['home-a'].value).toMatchObject({title:'Synthetic Home Exhibition',museum:'Synthetic Museum'});
+  // The main list's own visited button must reflect the mylist-driven change.
+  await expect(page.locator('span.ex-action-btn[data-action="visited"]').first()).toHaveClass(/active-visited/);
+  // Switch to the Seen tab and remove it from there.
+  await page.getByRole('button',{name:'✓ 観た',exact:false}).first().click();
+  await expect(page.locator('#favsContent')).toContainText('Synthetic Home Exhibition');
+  await page.getByRole('link',{name:'削除'}).click();
+  await expect(page.locator('#favsContent')).not.toContainText('Synthetic Home Exhibition');
+  expect(writes).toBe(3);
+  state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.visited['home-a']).toMatchObject({deleted:true});
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_visited'))).toBeNull();
+ }finally{await context.close();}
+});
