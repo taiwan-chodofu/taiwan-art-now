@@ -1,6 +1,6 @@
 """台湾現代アート展覧会情報アプリ"""
 
-from flask import Flask, render_template, request, Response, abort
+from flask import Flask, render_template, request, Response, abort, jsonify
 from scraper import fetch_all_exhibitions, MUSEUMS
 import json
 import os
@@ -2483,6 +2483,54 @@ def webhook_receive():
 
 
 SITE_URL = "https://taiwan-art-now.onrender.com"
+
+# Private browser-claim handshake (see docs/ai-handoff/DECISIONS.md). Reuses
+# the same DB connector the webhook already relies on. TAN_PRIVATE_CLAIM_LIMITER
+# is deliberately left unset: that config gates /api/private-auth/claim, which
+# already fails closed (503 "unavailable") without it -- see
+# private_claim_limiter_adapter.py's own warning that the client identity
+# resolver must come from verified deployment network metadata, not a raw
+# X-Forwarded-For header, which has not been confirmed for this host yet.
+# Setting this up incorrectly would be a rate-limit-bypass risk, not merely
+# an inert gap, so it is being left for a deliberate follow-up rather than
+# guessed at here.
+from private_browser_claim_routes import claim_blueprint
+from private_subscriber_store import _connect as _private_db_connect
+app.config.setdefault("TAN_CANONICAL_ORIGIN", SITE_URL)
+app.config.setdefault("TAN_PRIVATE_DB_CONNECT", _private_db_connect)
+app.register_blueprint(claim_blueprint)
+
+
+@app.post("/api/private-auth/initiate")
+def private_auth_initiate():
+    """Issue a fresh Messenger-code/browser-secret pair to start the private
+    browser-claim handshake (messenger_browser_claim.issue_pair). No browser
+    UI calls this yet (see DECISIONS.md) -- it exists so the handshake's
+    server half can be tested and reviewed independently of that UI.
+    Per-request rate limiting is deliberately deferred for the same reason
+    noted above the blueprint registration; issue_pair's own TTL cap (max
+    900s per challenge) bounds exposure regardless.
+    """
+    from browser_cookie_security import require_same_origin
+    from messenger_browser_claim import issue_pair
+    allowed = app.config.get("TAN_CANONICAL_ORIGIN")
+    if not require_same_origin(
+        request.method, request.headers.get("Origin"), allowed,
+        request.headers.get("Sec-Fetch-Site"),
+    ):
+        return jsonify(error="forbidden"), 403
+    connector = app.config.get("TAN_PRIVATE_DB_CONNECT")
+    if not callable(connector):
+        return jsonify(error="unavailable"), 503
+    try:
+        with connector() as conn:
+            messenger_code, browser_secret = issue_pair(conn)
+    except Exception:
+        app.logger.warning("Private auth initiate unavailable")
+        return jsonify(error="unavailable"), 503
+    response = jsonify(messenger_code=messenger_code, browser_secret=browser_secret)
+    response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @app.route("/robots.txt")
