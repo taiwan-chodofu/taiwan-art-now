@@ -2648,6 +2648,17 @@
           const fav=!!state.favs[key]&&!state.favs[key].deleted;
           card.classList.toggle('favorited-item',fav&&!visited);
         }
+        // Bottom-nav mylist badge, matching _renderActions()'s own logic --
+        // tombstoned favs entries must not count toward the visible total.
+        const mylistIcon=document.getElementById('mylistNavIcon');
+        if(mylistIcon){
+          const favCount=Object.values(state.favs).filter(entry=>entry&&!entry.deleted).length;
+          let badge=mylistIcon.querySelector('.bn-badge');
+          if(favCount>0){
+            if(!badge){badge=document.createElement('span');badge.className='bn-badge';mylistIcon.appendChild(badge);}
+            badge.textContent=favCount>99?'99+':String(favCount);
+          }else if(badge)badge.remove();
+        }
       }
     });
     page.start();

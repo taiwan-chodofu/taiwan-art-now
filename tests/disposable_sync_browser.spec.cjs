@@ -310,12 +310,15 @@ test('actual Home template toggles fav/visited through the authenticated writer 
   const favBtn=page.locator('span.ex-action-btn[data-action="fav"]').first();
   const visitedBtn=page.locator('span.ex-action-btn[data-action="visited"]').first();
   const card=page.locator('.ex-item').first();
+  const mylistBadge=page.locator('#mylistNavIcon .bn-badge');
+  await expect(mylistBadge).toHaveCount(0);
   await favBtn.click();
   await expect(favBtn).toHaveClass(/active-fav/);
   await expect(card).toHaveClass(/favorited-item/);
   expect(page.url()).toContain('/actual-home'); // clicking never navigated to the detail page
   expect(writes).toBe(1);
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_messenger_prompted'))).toBe('1');
+  await expect(mylistBadge).toHaveText('1');
   await visitedBtn.click();
   await expect(visitedBtn).toHaveClass(/active-visited/);
   await expect(card).toHaveClass(/visited-item/);
@@ -327,6 +330,7 @@ test('actual Home template toggles fav/visited through the authenticated writer 
   await favBtn.click(); // toggle fav back off
   await expect(favBtn).not.toHaveClass(/active-fav/);
   expect(writes).toBe(3);
+  await expect(mylistBadge).toHaveCount(0); // tombstoned fav must not count toward the badge
   state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
   expect(state.favs['home-a']).toMatchObject({deleted:true});
   expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_favs'))).toBeNull();
