@@ -602,13 +602,78 @@
           : '目前無法讀取儲存狀態，請稍後再試。';
       }
     });
+    // ISOLATED_SYNC only: a swipe that would resurrect another device's
+    // explicit deletion never writes silently (see draft_discover_flow.js's
+    // needs_restore_review). Offer the same kind of deliberate, explicit
+    // confirmation detail/nearby already require before restoring a
+    // tombstone (section 2 of the handoff: "明示的削除はrevision付きtombstone。
+    // 通常のsetで復活させない").
+    var pendingRestoreReview = null;
+    var restorePrompt = document.createElement('p');
+    restorePrompt.id = 'discoverRestorePrompt';
+    restorePrompt.setAttribute('role', 'status');
+    restorePrompt.setAttribute('aria-live', 'polite');
+    restorePrompt.hidden = true;
+    restorePrompt.style.cssText = 'box-sizing:border-box;max-width:36rem;margin:0 auto;padding:0 16px;font-size:0.875rem;line-height:1.6;text-align:left;overflow-wrap:anywhere;';
+    actionsBar.parentNode.insertBefore(restorePrompt, actionsBar);
+    var restoreYesBtn = document.createElement('button');
+    restoreYesBtn.id = 'discoverRestoreYesBtn';
+    restoreYesBtn.type = 'button';
+    restoreYesBtn.hidden = true;
+    restoreYesBtn.textContent = LANG === 'en' ? 'Yes, register it' : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '是，重新登記' : 'はい、登録する';
+    restoreYesBtn.style.cssText = 'display:none;margin:8px 16px 0 16px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
+    actionsBar.parentNode.insertBefore(restoreYesBtn, actionsBar);
+    var restoreNoBtn = document.createElement('button');
+    restoreNoBtn.id = 'discoverRestoreNoBtn';
+    restoreNoBtn.type = 'button';
+    restoreNoBtn.hidden = true;
+    restoreNoBtn.textContent = LANG === 'en' ? 'No' : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '不要' : 'いいえ';
+    restoreNoBtn.style.cssText = 'display:none;margin:8px 16px 12px 8px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
+    actionsBar.parentNode.insertBefore(restoreNoBtn, actionsBar);
+    function hideRestorePrompt() {
+      pendingRestoreReview = null;
+      restorePrompt.hidden = true; restorePrompt.textContent = '';
+      restoreYesBtn.hidden = true; restoreYesBtn.style.display = 'none';
+      restoreNoBtn.hidden = true; restoreNoBtn.style.display = 'none';
+    }
+    function showRestoreReviewPrompt(card, action) {
+      pendingRestoreReview = {card: card, action: action};
+      var label = action === 'like' ? LABELS.like : LABELS.seen;
+      restorePrompt.textContent = card.title + ' — ' +
+        (LANG === 'en' ? 'this was previously removed from "' + label + '" on another device. Register it again?'
+         : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '先前已在其他裝置從「' + label + '」中移除。要重新登記嗎？'
+         : 'この端末以外で「' + label + '」から削除されています。もう一度登録しますか？');
+      restorePrompt.hidden = false;
+      restoreYesBtn.hidden = false; restoreYesBtn.style.display = 'inline-block';
+      restoreNoBtn.hidden = false; restoreNoBtn.style.display = 'inline-block';
+    }
+    restoreYesBtn.addEventListener('click', async function() {
+      if (!pendingRestoreReview || discoverBusy) return;
+      var target = pendingRestoreReview;
+      hideRestorePrompt();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.confirmRestore(target.card, target.action);
+        if (result.status !== 'written_under_cooperative_lock') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
+      }
+    });
+    restoreNoBtn.addEventListener('click', function() { hideRestorePrompt(); });
     function setDiscoverBusy(busy) {
       discoverBusy = busy;
       ['likeBtn','visitedBtn','skipBtn','undoBtn','restartBtn'].forEach(function(id) {
         document.getElementById(id).disabled = busy || (discoverAnimating && id !== 'undoBtn');
       });
+      restoreYesBtn.disabled = busy;
+      restoreNoBtn.disabled = busy;
     }
-    function clearDiscoverError() { discoverError.textContent = ''; conflictCheck.hidden = true; conflictCheck.style.display = 'none'; conflictStatus.textContent = ''; }
+    function clearDiscoverError() {
+      discoverError.textContent = ''; conflictCheck.hidden = true; conflictCheck.style.display = 'none'; conflictStatus.textContent = '';
+      hideRestorePrompt();
+    }
     function failDiscover(result) {
       var messages = LANG === 'en'
         ? {stale:'The saved exhibition was changed in another tab, so Undo was not applied. Your saved information is unchanged. Please review the current saved status before making another change.', failure:'Could not save this exhibition. The card is still here and your saved information has not changed. Please tap Like or Visited again.'}
@@ -625,6 +690,13 @@
       }
     }
     function advanceDiscover(info) {
+      if (info.restored) {
+        // confirmRestore() re-registers an item whose card already left the
+        // deck during the original swipe (that is what made it eligible for
+        // restore review in the first place) — there is no deck position to
+        // advance here, only the server-side registration changed.
+        return;
+      }
       if (!deck.length || _normalizeKey(deck[0].stable_key) !== _normalizeKey(info.card.stable_key))
         throw new Error('Discover deck changed during save');
       deck.shift();
@@ -673,16 +745,18 @@
     }));
     async function commitSwipe(action) {
       if (discoverBusy || discoverAnimating || !currentCard) return;
+      var swipedCard = currentCard;
       clearDiscoverError();
       setDiscoverBusy(true);
       try {
-        var result = await discoverFlow.swipe(currentCard, action);
-        // needs_restore_review: card already advanced (a tombstoned match was
-        // found); the explicit restore-confirmation UI is not yet wired here
-        // (see docs/ai-handoff/DECISIONS.md), so treat it as a normal advance
-        // rather than a spurious error for now.
-        if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
-            result.status !== 'committed_ui_failed' && result.status !== 'needs_restore_review') failDiscover(result);
+        var result = await discoverFlow.swipe(swipedCard, action);
+        if (result.status === 'needs_restore_review') {
+          // The card already advanced (a tombstoned match was found); offer
+          // the explicit restore confirmation instead of silently dropping
+          // the registration or falsely claiming it was saved.
+          showRestoreReviewPrompt(swipedCard, action);
+        } else if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
+            result.status !== 'committed_ui_failed') failDiscover(result);
       } catch (e) {
         failDiscover({status:'unexpected_error'});
       } finally {
