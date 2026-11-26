@@ -352,8 +352,13 @@ test('actual Home mylist panel marks visited and removes through the authenticat
   let writes=0;
   page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
   await page.goto('https://127.0.0.1/actual-home');
+  const favBtn=page.locator('span.ex-action-btn[data-action="fav"]').first();
   // Favorite the exhibition from the main list first, like a real user would.
-  await page.locator('span.ex-action-btn[data-action="fav"]').first().click();
+  await favBtn.click();
+  // click() resolves on dispatch, not once the write settles -- wait for the
+  // class only onState sets post-write before checking writes synchronously,
+  // same as the toggleAction test above.
+  await expect(favBtn).toHaveClass(/active-fav/);
   expect(writes).toBe(1);
   // Open the mylist panel through its real entry point.
   await page.locator('#mylistNavBtn').click();
