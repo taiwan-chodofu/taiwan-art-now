@@ -117,6 +117,45 @@ class FlaskWebhookTests(unittest.TestCase):
             result = self.client.post("/webhook", data=body, headers=headers)
         self.assertEqual(result.status_code, 503)
 
+    def test_standalone_referral_bridges_ref_to_the_private_claim_handshake(self):
+        payload = {"object": "page", "entry": [{"messaging": [
+            {"sender": {"id": "synthetic-sender"}, "referral": {"ref": "synthetic-code"}}]}]}
+        body, headers = signed(payload)
+        calls = []
+        with patch.dict(scope, {"_add_subscriber": lambda *a, **k: None,
+                                 "_send_messenger_reply": lambda *a, **k: None,
+                                 "_try_mark_meta_verified": lambda *a: calls.append(a)}):
+            result = self.client.post("/webhook", data=body, headers=headers)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(calls, [("synthetic-code", "synthetic-sender")])
+
+    def test_postback_referral_bridges_ref_regardless_of_payload(self):
+        # Meta can deliver the claim ref alongside any postback (e.g. the
+        # user's first "Get Started" tap), not only SUBSCRIBE_NOTIFICATIONS.
+        payload = {"object": "page", "entry": [{"messaging": [
+            {"sender": {"id": "synthetic-sender"},
+             "postback": {"payload": "GET_STARTED", "referral": {"ref": "synthetic-code"}}}]}]}
+        body, headers = signed(payload)
+        calls = []
+        with patch.dict(scope, {"_add_subscriber": lambda *a, **k: None,
+                                 "_send_messenger_reply": lambda *a, **k: None,
+                                 "_try_mark_meta_verified": lambda *a: calls.append(a)}):
+            result = self.client.post("/webhook", data=body, headers=headers)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(calls, [("synthetic-code", "synthetic-sender")])
+
+    def test_referral_without_ref_does_not_call_the_claim_bridge(self):
+        payload = {"object": "page", "entry": [{"messaging": [
+            {"sender": {"id": "synthetic-sender"}, "referral": {}}]}]}
+        body, headers = signed(payload)
+        calls = []
+        with patch.dict(scope, {"_add_subscriber": lambda *a, **k: None,
+                                 "_send_messenger_reply": lambda *a, **k: None,
+                                 "_try_mark_meta_verified": lambda *a: calls.append(a)}):
+            result = self.client.post("/webhook", data=body, headers=headers)
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(calls, [])
+
 
 if __name__ == "__main__":
     unittest.main()

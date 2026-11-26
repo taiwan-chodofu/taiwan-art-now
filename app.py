@@ -2284,6 +2284,27 @@ def _add_subscriber(sender_id, ref_code=None):
     return is_new
 
 
+def _try_mark_meta_verified(ref_code, sender_id):
+    """Best-effort bridge from the referral `ref` Meta attaches to this event
+    into the private browser-claim handshake
+    (messenger_browser_claim.issue_pair/mark_meta_verified). Most of the time
+    ref_code belongs to the existing simple subscriber ref system and will
+    not match any pending claim challenge; mark_meta_verified already treats
+    that as a safe no-op (its UPDATE affects 0 rows). The claim schema
+    (tan_private.messenger_link_challenges) is not yet migrated in
+    production, so this currently always no-ops via the except below — that
+    is intentional until the migration is separately applied and approved.
+    Never let a failure here affect the existing subscriber/reply flow.
+    """
+    try:
+        from messenger_browser_claim import mark_meta_verified
+        from private_subscriber_store import _connect
+        with _connect() as conn:
+            mark_meta_verified(conn, messenger_code=ref_code, verified_sender_id=sender_id)
+    except Exception:
+        pass
+
+
 def _notify_admin_new_subscriber(new_sender_id):
     page_token = os.environ.get("MESSENGER_PAGE_TOKEN", "")
     if not page_token:
@@ -2364,6 +2385,7 @@ def webhook_receive():
                 ref_code = referral.get("ref", "")
                 if ref_code:
                     _add_subscriber(sender_id, ref_code=ref_code)
+                    _try_mark_meta_verified(ref_code, sender_id)
                     _send_messenger_reply(sender_id,
                         "✓ 已連結 / Connected\n\n"
                         "🌐 https://taiwan-art-now.onrender.com/")
@@ -2373,6 +2395,8 @@ def webhook_receive():
             postback = event.get("postback", {})
             referral_from_postback = event.get("referral", {}) or postback.get("referral", {})
             ref_code = referral_from_postback.get("ref", "") if referral_from_postback else ""
+            if ref_code:
+                _try_mark_meta_verified(ref_code, sender_id)
             if postback:
                 payload = postback.get("payload", "")
                 if payload == "SUBSCRIBE_NOTIFICATIONS":
