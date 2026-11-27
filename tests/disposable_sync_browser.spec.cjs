@@ -109,6 +109,12 @@ test('complete detail template uses one authenticated writer and preserves legac
   await context.addInitScript(()=>{
    localStorage.setItem('taiwan_art_ga_exclude','1');
    localStorage.setItem('taiwan_art_favs','{"legacy":{"title":"Old","museum":"M"}}');
+   // This test is about the writer bridge, not the (separately, thoroughly
+   // tested) legacy migration added 2026-11-27 -- without this, the
+   // migration would silently add "legacy" to the server on first load,
+   // adding one unaccounted-for /v2/changes POST before this test's own
+   // write-count assertions even start.
+   localStorage.setItem('taiwan_art_legacy_server_migration_v1','1');
   });
   const page=await context.newPage();
   let writes=0,legacyWrites=0;
