@@ -48,6 +48,7 @@ designed to be inert/fail-closed until the two pending approvals below land:
 | Nearby page, same pattern | Done |
 | Discover: authenticated action path, `recover()`/`dispose()`, tombstone-swipe restore UI, `createdRevisions` ownership re-check | Done |
 | Discover: template wiring (increment 1 — swipe/undo/skip actions only; deck build, filter, restart, `saveDeckOrder` still read legacy localStorage even in isolated mode, by design — see DECISIONS.md 2026-11-26) | Partial, as scoped |
+| Discover: online/pageshow reconnect wired to `recover()` (fixes a real stuck-forever bug after any lost write) | Done |
 | Home: `toggleAction`, `migrateStore` collision fix, mylist-nav badge, `markVisitedFromMylist`/`removeFromMylist` | Done |
 | `stable_key` date disambiguator (closes the legacy `_normalizeKey` collision precondition for production migration) | Done |
 | Auth-bootstrap webhook trigger (`mark_meta_verified` wired into `/webhook`) | Done |
@@ -73,9 +74,15 @@ yet in this PR:
    tested per-screen with synthetic 1–2-tab Playwright scenarios inside a
    single CI job — never across screens in the same session, and never with
    a genuinely stale service-worker-cached tab from before this PR existed.
-2. **Offline recovery.** Reconnect-and-refresh (`online`/`pageshow`) is
-   implemented and unit-tested for detail/nearby; Discover/Home's own offline
-   round-trip has not been separately exercised.
+2. **Offline recovery.** ~~Discover/Home's own offline round-trip has not
+   been separately exercised~~ — corrected same day: Home already shares
+   detail/nearby's `draft_staging_page.js` reconnect bridge (`autoRefresh:true`),
+   and Discover's own `online`/`pageshow` -> `recover()` wiring was added and
+   CI-verified today (closing a real stuck-forever bug — see DECISIONS.md
+   2026-11-27). All four screens now have *some* reconnect coverage. What
+   remains genuinely untested is still real: true cross-screen/cross-tab
+   conflict in one session (item 1 above), and reconnect behavior against a
+   real flaky/offline network rather than a single simulated lost reply.
 3. **Durable, independently-recoverable backup/restore.** Only the disposable
    CI database has ever been backed up and restored (`pg_dump`/`pg_restore`
    into a second throwaway database within the same CI job). No

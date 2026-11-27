@@ -743,6 +743,28 @@
       },
       onError: failDiscover
     }));
+    if (ISOLATED_SYNC) {
+      // Mirrors detail/nearby/home's existing online/pageshow reconnect
+      // pattern (draft_staging_page.js). Without this, a write-outcome-
+      // unknown swipe leaves discoverFlow permanently locked -- swipe()/
+      // undo() both short-circuit to {status:"unknown_commit"} forever,
+      // so the "please tap again" message in failDiscover() would keep
+      // failing the same way with no way out short of a full page reload.
+      // recover() itself only clears the lock once a fresh read proves the
+      // revision has actually moved past the uncertain write's own base
+      // revision (see draft_discover_flow.js), so this never blindly
+      // assumes success.
+      var discoverRecoverPending = null;
+      var recoverDiscoverWhenAvailable = function(event) {
+        if (!discoverFlow.isUncertain() || discoverRecoverPending ||
+            (event.type === 'pageshow' && !event.persisted)) return;
+        discoverRecoverPending = discoverFlow.recover().then(function(result) {
+          if (result.status === 'recovered') clearDiscoverError();
+        }).finally(function() { discoverRecoverPending = null; });
+      };
+      window.addEventListener('online', recoverDiscoverWhenAvailable);
+      window.addEventListener('pageshow', recoverDiscoverWhenAvailable);
+    }
     async function commitSwipe(action) {
       if (discoverBusy || discoverAnimating || !currentCard) return;
       var swipedCard = currentCard;

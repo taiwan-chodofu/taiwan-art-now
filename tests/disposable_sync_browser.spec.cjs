@@ -297,6 +297,60 @@ test('actual Discover template swipes and undoes through the authenticated write
  }finally{await context.close();}
 });
 
+test('Discover recovers from a lost write reply on reconnect instead of staying stuck forever',async({browser})=>{
+ // Before this fix, discover.html never called draft_discover_flow.js's own
+ // recover()/isUncertain() -- once a write's outcome was unknown, swipe()/
+ // undo() both short-circuit to {status:"unknown_commit"} permanently, so
+ // the "please tap again" message would keep failing the same way with no
+ // way out short of a full page reload. See DECISIONS.md 2026-11-27.
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-discover-recover-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_ga_exclude','1');
+   localStorage.setItem('taiwan_art_discover_tutorial_seen','1');
+  });
+  const page=await context.newPage();
+  let lostOnce=false;
+  await page.route('**/v2/changes',async route=>{
+   if(lostOnce){await route.continue();return;}
+   lostOnce=true;
+   // The write really reaches and commits on the real server; only the
+   // client's view of the response is lost, matching the established
+   // "lost database write response" pattern used elsewhere in this file.
+   const committed=await route.fetch();
+   expect(committed.status()).toBe(200);
+   await route.abort('failed');
+  });
+  await page.goto('https://127.0.0.1/actual-discover');
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover A');
+  await page.locator('#likeBtn').click();
+  await expect(page.locator('#discoverActionError')).toContainText('保存できませんでした');
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover A');
+  expect(await page.evaluate(()=>discoverFlow.isUncertain())).toBe(true);
+  // Retrying immediately must stay locked -- recover() has not run yet.
+  await page.locator('#likeBtn').click();
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover A');
+  expect(await page.evaluate(()=>discoverFlow.isUncertain())).toBe(true);
+  // Reconnect: recover() does a fresh authenticated read, sees the revision
+  // really did move past the uncertain write's own base revision (the lost
+  // write DID commit), and only then clears the lock and the error message.
+  await page.evaluate(()=>window.dispatchEvent(new Event('online')));
+  await expect(page.locator('#discoverActionError')).toHaveText('');
+  expect(await page.evaluate(()=>discoverFlow.isUncertain())).toBe(false);
+  // The surviving registration is preserved (set_if_absent on an existing,
+  // non-deleted entry), so this swipe advances without a second write.
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.locator('#likeBtn').click();
+  await expect(page.locator('.card h2')).toHaveText('Synthetic Discover B');
+  expect(writes).toBe(0);
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['discover-a']).toMatchObject({deleted:false});
+ }finally{await context.close();}
+});
+
 test('actual Home template toggles fav/visited through the authenticated writer without navigating away',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{
