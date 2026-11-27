@@ -11,6 +11,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="Taiwan Art Now">
 <meta property="og:type" content="{{ 'article' if paragraphs else 'website' }}">
+{% if paragraphs %}<meta property="og:image" content="https://taiwan-art-now.onrender.com/og-image/essays/001"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{{ title }} — Taiwan Art Now"><meta name="twitter:card" content="summary_large_image">{% endif %}
 <link rel="stylesheet" href="{{ url_for('static', filename='essay.css') }}">
 <script defer src="{{ url_for('static', filename='essay.js') }}"></script>
 </head>
