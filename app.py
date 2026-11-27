@@ -2639,5 +2639,30 @@ def editorial_001():
     )
 
 
+@app.route("/og-image/essays/001")
+def editorial_og_001():
+    from PIL import Image, ImageDraw, ImageFont
+    from io import BytesIO
+    from pathlib import Path
+    from flask import send_file
+    fonts = Path(app.root_path) / "static" / "fonts"
+    bold = fonts / "NotoSansTC-Bold.otf"
+    regular = fonts / "NotoSansTC-Regular.otf"
+    img = Image.new("RGB", (1200, 630), "#f5f3ed")
+    draw = ImageDraw.Draw(img)
+    draw.text((64, 52), "TAIWAN ART NOW / ESSAY 001", font=ImageFont.truetype(str(bold), 25), fill="#171717")
+    draw.line((64, 108, 1136, 108), fill="#aaa69e", width=1)
+    draw.rectangle((860, 145, 1135, 420), fill="#171717")
+    draw.text((64, 220), "既是一，", font=ImageFont.truetype(str(bold), 78), fill="#171717")
+    draw.text((64, 320), "又不只是一", font=ImageFont.truetype(str(bold), 78), fill="#171717")
+    draw.text((64, 455), "關於投票與身體的複數性", font=ImageFont.truetype(str(regular), 32), fill="#171717")
+    draw.line((64, 535, 1136, 535), fill="#aaa69e", width=1)
+    draw.text((64, 560), "TAIWAN ART NOW", font=ImageFont.truetype(str(regular), 23), fill="#171717")
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return send_file(buf, mimetype="image/png", max_age=86400)
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
