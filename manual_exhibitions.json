@@ -2185,20 +2185,6 @@
       "added_at": "2026-10-20T14:59:42.690469+09:00"
     },
     {
-      "museum": "qidustation",
-      "title_zh": "潮起、潮湧、潮未來：基隆四百特展",
-      "title_en": "Where Tides Meet: Keelung 400 Special Exhibition",
-      "title_ja": "潮起・潮湧・潮未来：基隆四百特別展",
-      "dates": "2026.10.22 – 2026.11.26",
-      "location": "台鐵七堵站光明路側（西出口）大廳",
-      "link": "",
-      "description": "基隆四百年來站在時代浪潮交會的第一線，學習山的韌性、貫徹海的包容，將衝擊化為養分，把衝突轉為信任。多元文化在這片歷史沃土上共生，展覽邀請觀者走進文化潮間帶，沿著自己的路徑回溯過去、想像未來，透過物件及背後的故事，從不同角度重新認識基隆。",
-      "description_en": "For four hundred years Keelung has stood at the front line where tides of history converge, learning the resilience of mountains and the tolerance of the sea, turning impact into nourishment and conflict into trust. The exhibition invites visitors into this cultural tidal zone to trace the past and imagine the future through objects and the stories behind them, reconsidering Keelung from different angles.",
-      "description_ja": "四百年にわたり時代の潮流が交わる最前線に立ってきた基隆。山の忍耐と海の包容力を学び、衝突を信頼へと変えてきた。本展は観客をこの文化の潮間帯へと招き、物とその背景にある物語を通じて、それぞれの道をたどりながら過去を振り返り、未来を想像し、基隆を異なる視点から再発見する。",
-      "artists": [],
-      "added_at": "2026-11-13T13:24:10.982538+09:00"
-    },
-    {
       "museum": "fotoaura",
       "title_zh": "100歲 One hundred years old｜賴志盛、蘇育賢",
       "title_en": "One Hundred Years Old: Lai Chih-Sheng, Su Yu-Hsien",
@@ -3584,46 +3570,6 @@
           "note_en": "Sun Song-Yong × Lin Zhe-Zhi",
           "note_ja": "孫松榮 × 林哲志",
           "source_url": "https://www.instagram.com/the_middle_art_space/"
-        }
-      ]
-    },
-    {
-      "museum": "yipingbookroom",
-      "title_zh": "度口計畫－第十七站－一坪書室",
-      "title_en": "The Dukou Project — Stop 17: Yi Ping Book Room",
-      "title_ja": "度口計画－第十七駅－一坪書室",
-      "dates": "2026.10.31 – 2026.11.26",
-      "location": "一坪書室（高雄市鹽埕區新樂街213-15號）",
-      "link": "https://www.instagram.com/3.3058m2book/",
-      "description": "一場關於告別、重逢與藝術的行動——「度口」，是與過去告別的度口，也是重拾生命的入口。本計畫由兩部攝影作品——《去花蓮 找 莊德樹》與《回滿州》交織而成，是兩本關於父親與岳父告別的紀錄，更是一場在不同城市間穿梭、持續發生對話的藝術行動。〔去花蓮 找 莊德樹〕重新走過35年前與父親在花蓮的旅遊路徑，透過沿途的風景與樹與樹的自拍，試圖填補父子之間錯落的親情時差；〔回滿州〕則在整理岳父喪禮影像的過程中，因意外被AI消除的靈車，重新思索生命的「消失」與「留下」。自2025年11月起，計畫已跨越8座城市，執行16場展覽與133位與談人完成120場對話講座。",
-      "description_en": "An action around farewell, reunion and art — \"Dukou\" is both the crossing that bids farewell to the past and the entrance that reclaims life. The project is woven from two photographic works — \"Going to Hualien to Find Chuang Te-Shu\" and \"Returning to Manzhou\" — records of bidding farewell to a father and a father-in-law, and an ongoing artistic dialogue that moves between different cities. \"Going to Hualien to Find Chuang Te-Shu\" retraces a journey taken with the artist's father 35 years ago, using landscapes and self-portraits beside trees along the way to try to bridge the gap in time between father and son; \"Returning to Manzhou\" arose while sorting through footage of a father-in-law's funeral, when a hearse was accidentally erased by AI, prompting renewed reflection on what disappears and what remains in life. Since November 2025, the project has crossed 8 cities, staging 16 exhibitions and 120 dialogue talks with 133 speakers.",
-      "description_ja": "別れ、再会、そして芸術をめぐる行動――「度口」は、過去との別れの渡し場であり、同時に生命を取り戻す入口でもある。本計画は二つの写真作品――《花蓮へ行き、莊德樹を訪ねる》と《満州へ帰る》が織り合わされており、父と岳父への別れを記録したものでありながら、異なる都市を移動しながら続く芸術的対話の行動でもある。《花蓮へ行き、莊德樹を訪ねる》は35年前に父と花蓮を旅した道をもう一度歩み、道中の風景や木々との自撮りを通じて、父子の間にずれた時間を埋めようとする。《満州へ帰る》は岳父の葬儀の映像を整理する過程で、AIによって誤って消された霊柩車をきっかけに、生命における「消失」と「残存」を再考するものである。2025年11月以降、本計画は8都市を巡り、16回の展示と133名の対話者による120回の対話講座を行ってきた。",
-      "artists": [],
-      "added_at": "2026-11-18T14:47:27.039299+09:00",
-      "events": [
-        {
-          "type": "talk",
-          "date": "2026/11/01",
-          "time": "13:00-17:00",
-          "title_zh": "系列講座",
-          "title_en": "Dialogue Talk Series",
-          "title_ja": "シリーズ講座",
-          "note_zh": "張鈺珩、劉子嘉、沈裕融、李杰恩",
-          "note_en": "Chang Yu-Heng, Liu Tzu-Chia, Shen Yu-Jung, Lee Chieh-En",
-          "note_ja": "張鈺珩、劉子嘉、沈裕融、李杰恩",
-          "source_url": "https://www.instagram.com/3.3058m2book/"
-        },
-        {
-          "type": "talk",
-          "date": "2026/11/22",
-          "time": "13:00-17:00",
-          "title_zh": "系列講座",
-          "title_en": "Dialogue Talk Series",
-          "title_ja": "シリーズ講座",
-          "note_zh": "施順中、曾建元、王建建、劉耀斌",
-          "note_en": "Shih Shun-Chung, Tseng Chien-Yuan, Wang Chien-Chien, Liu Yao-Pin",
-          "note_ja": "施順中、曾建元、王建建、劉耀斌",
-          "source_url": "https://www.instagram.com/3.3058m2book/"
         }
       ]
     },
