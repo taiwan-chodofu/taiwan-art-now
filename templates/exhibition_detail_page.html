@@ -1,3 +1,4 @@
+{% set isolated_sync = config.get("TAN_ISOLATED_DETAIL_SYNC", false) %}
 <!DOCTYPE html>
 <html lang="{{ current_lang }}">
 <head>
@@ -409,11 +410,11 @@
     </div>
 
     <div class="actions">
-      <button class="action-btn" id="visitedBtn" onclick="toggleVisited()">
+      <button class="action-btn" id="visitedBtn" {% if isolated_sync %}disabled aria-pressed="false"{% else %}onclick="toggleVisited()"{% endif %}>
         <span id="visitedIcon">○</span>
         <span id="visitedText">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
       </button>
-      <button class="action-btn" id="favBtn" onclick="toggleFav()">
+      <button class="action-btn" id="favBtn" {% if isolated_sync %}disabled aria-pressed="false"{% else %}onclick="toggleFav()"{% endif %}>
         <span id="favIcon">♡</span>
         <span id="favText">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
       </button>
@@ -477,6 +478,7 @@
     <script>
     var exId = '{{ exhibition.stable_key }}'.replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
 
+    {% if not isolated_sync %}
     function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
     function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
 
@@ -556,6 +558,7 @@
       }
     }
     updateBtns();
+    {% endif %}
 
     function shareExhibition() {
       var shareData = { title: '{{ exhibition.title }}', text: '{{ exhibition.title }} @ {{ museum.name }}\n{{ exhibition.dates }}', url: window.location.href };
@@ -580,6 +583,74 @@
       alert('{% if current_lang == "zh" %}感謝回報，我們會盡快確認！{% elif current_lang == "ja" %}ありがとうございます。確認します。{% else %}Thanks! We will review this.{% endif %}');
     }
     </script>
+    {% if isolated_sync %}
+    <p id="syncNotice" role="status" aria-live="polite"></p>
+    <div id="legacyMigrationReview"></div>
+    {% for script in ["versioned_sync","authenticated_state","authenticated_writer","legacy_snapshot","legacy_candidate_policy","migration_review","simple_review_ui","legacy_migration_bootstrap","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
+    <script src="/static/js/draft_{{ script }}.js"></script>
+    {% endfor %}
+    <script>
+    (function(){
+      const key={{ exhibition.stable_key|tojson }};
+      const metadata={{ {"title":exhibition.title,"museum":museum.name,"dates":exhibition.dates}|tojson }};
+      const page=TanDraftStagingPage.create({
+      autoRefresh:true,
+        win:window,fetchImpl:window.fetch.bind(window),notice:document.getElementById('syncNotice'),
+        lang:{{ current_lang|tojson }},restoreImpl:TanDraftExplicitServerRestore.restore,
+        items:[
+          {element:document.getElementById('favBtn'),kind:'favs',key,value:metadata},
+          {element:document.getElementById('visitedBtn'),kind:'visited',key,value:new Date().toISOString()}
+        ],
+        onState:state=>{
+          for(const [kind,prefix,filled,empty] of [['favs','fav','♥','♡'],['visited','visited','✓','○']]){
+            const active=!!state[kind][key]&&!state[kind][key].deleted;
+            document.getElementById(prefix+'Btn').classList.toggle('saved',active);
+            document.getElementById(prefix+'Icon').textContent=active?filled:empty;
+            const zh={{ (current_lang == 'zh')|tojson }};
+            const label=kind==='favs'?(zh?'想看':'観たい'):(zh?'看過':'観た');
+            const removed=state[kind][key]?.deleted;
+            document.getElementById(prefix+'Text').textContent=removed
+              ?(zh?'重新加入「'+label+'」':'「'+label+'」に戻す')
+              :(active?(zh?'已加入「'+label+'」':'「'+label+'」登録済み'):label);
+          }
+        }
+      });
+      page.start();
+      var legacyMigration=null;
+      window.addEventListener('pagehide',event=>{if(!event.persisted){
+        page.dispose();
+        if(legacyMigration)legacyMigration.dispose();
+      }});
+      // Same one-time, whole-browser migration as Home (see DECISIONS.md
+      // 2026-11-27) -- whichever isolated-sync screen the user happens to
+      // load first performs it for all of their legacy data, not just this
+      // page's own exhibition. Independent of this page's own writer above;
+      // a real click racing the batch just gets the normal stale-revision
+      // outcome that writer already handles.
+      var LEGACY_MIGRATION_KEY='taiwan_art_legacy_server_migration_v1';
+      if(localStorage.getItem(LEGACY_MIGRATION_KEY)!=='1'){
+        legacyMigration=TanDraftLegacyMigrationBootstrap.create({
+          fetchImpl:window.fetch.bind(window),storage:localStorage,
+          restoreImpl:TanDraftExplicitServerRestore.restore});
+        legacyMigration.run({{ current_lang|tojson }}).then(function(result){
+          if(result.status!=='ready')return;
+          localStorage.setItem(LEGACY_MIGRATION_KEY,'1');
+          if(result.submitted>0)page.refresh();
+          if(result.review&&result.review.items&&result.review.items.length){
+            TanDraftSimpleReviewUI.mount({
+              container:document.getElementById('legacyMigrationReview'),doc:document,review:result.review,
+              onDecision:function(decision){
+                legacyMigration.resolveReviewItem(decision).then(function(outcome){
+                  if(outcome.committed)page.refresh();
+                });
+              }
+            });
+          }
+        });
+      }
+    })();
+    </script>
+    {% endif %}
   </div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+{% set isolated_sync = config.get("TAN_ISOLATED_NEARBY_SYNC", false) %}
 <!DOCTYPE html>
 <html lang="{{ current_lang }}">
 <head>
@@ -279,12 +280,21 @@
         </div>
         {% endif %}
         <div class="nearby-ex-actions">
+          {% if isolated_sync %}
+          {% for action in ["visited","fav"] %}
+          <button type="button" disabled class="nearby-action-btn" data-action="{{ action }}" data-key="{{ ex.fav_key }}"
+            data-metadata='{{ {"title":ex.title,"museum":venue.name,"dates":ex.dates,"url":ex.detail_url}|tojson }}'>
+            {{ "観た" if action == "visited" else "観たい" }}
+          </button>
+          {% endfor %}
+          {% else %}
           <span class="nearby-action-btn" data-action="visited" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
             <span class="act-icon">○</span> {% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}
           </span>
           <span class="nearby-action-btn" data-action="fav" data-key="{{ ex.fav_key }}" onclick="toggleAction(this)">
             <span class="act-icon">♡</span> {% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}
           </span>
+          {% endif %}
         </div>
       </div>
       {% endfor %}
@@ -306,6 +316,7 @@
     {% endif %}
   </div>
 
+  {% if not isolated_sync %}
   <script>
   function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
   function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
@@ -387,5 +398,73 @@
 
   renderAll();
   </script>
+  {% else %}
+  <p id="syncNotice" role="status" aria-live="polite"></p>
+  <div id="legacyMigrationReview"></div>
+  {% for script in ["versioned_sync","authenticated_state","authenticated_writer","legacy_snapshot","legacy_candidate_policy","migration_review","simple_review_ui","legacy_migration_bootstrap","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
+  <script src="/static/js/draft_{{ script }}.js"></script>
+  {% endfor %}
+  <script>
+  (function(){
+    const items=Array.from(document.querySelectorAll('button.nearby-action-btn')).map(element=>({
+      element,key:element.dataset.key,kind:element.dataset.action==='fav'?'favs':'visited',
+      value:element.dataset.action==='fav'?JSON.parse(element.dataset.metadata):new Date().toISOString()
+    }));
+    if(!items.length)return;
+    const zh={{ (current_lang == 'zh')|tojson }};
+    const page=TanDraftStagingPage.create({
+      autoRefresh:true,
+      win:window,fetchImpl:fetch.bind(window),notice:document.getElementById('syncNotice'),
+      lang:{{ current_lang|tojson }},items,restoreImpl:TanDraftExplicitServerRestore.restore,
+      onState:state=>{
+        for(const item of items){
+          const entry=state[item.kind][item.key],active=!!entry&&!entry.deleted;
+          const label=item.kind==='favs'?(zh?'想看':'観たい'):(zh?'看過':'観た');
+          item.element.textContent=entry?.deleted
+            ?(zh?'重新加入「'+label+'」':'「'+label+'」に戻す')
+            :(active?'✓ '+label:label);
+          item.element.classList.toggle('active-fav',item.kind==='favs'&&active);
+          item.element.classList.toggle('active-visited',item.kind==='visited'&&active);
+          item.element.closest('.nearby-ex').classList.toggle('visited-item',
+            !!state.visited[item.key]&&!state.visited[item.key].deleted);
+        }
+      }
+    });
+    page.start();
+    var legacyMigration=null;
+    window.addEventListener('pagehide',event=>{if(!event.persisted){
+      page.dispose();
+      if(legacyMigration)legacyMigration.dispose();
+    }});
+    // Same one-time, whole-browser migration as Home/Detail (see
+    // DECISIONS.md 2026-11-27). Only reached when this page has at least
+    // one nearby exhibition (the items.length guard above returns earlier
+    // otherwise) -- a known, narrow residual: a nearby page with zero
+    // items can't trigger it, so migration is simply deferred until the
+    // user visits a qualifying page instead, never lost.
+    var LEGACY_MIGRATION_KEY='taiwan_art_legacy_server_migration_v1';
+    if(localStorage.getItem(LEGACY_MIGRATION_KEY)!=='1'){
+      legacyMigration=TanDraftLegacyMigrationBootstrap.create({
+        fetchImpl:fetch.bind(window),storage:localStorage,
+        restoreImpl:TanDraftExplicitServerRestore.restore});
+      legacyMigration.run({{ current_lang|tojson }}).then(function(result){
+        if(result.status!=='ready')return;
+        localStorage.setItem(LEGACY_MIGRATION_KEY,'1');
+        if(result.submitted>0)page.refresh();
+        if(result.review&&result.review.items&&result.review.items.length){
+          TanDraftSimpleReviewUI.mount({
+            container:document.getElementById('legacyMigrationReview'),doc:document,review:result.review,
+            onDecision:function(decision){
+              legacyMigration.resolveReviewItem(decision).then(function(outcome){
+                if(outcome.committed)page.refresh();
+              });
+            }
+          });
+        }
+      });
+    }
+  })();
+  </script>
+  {% endif %}
 </body>
 </html>

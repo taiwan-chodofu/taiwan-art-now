@@ -1,0 +1,58 @@
+/* DRAFT ONLY: UI-facing commit adapter; no production mounting.
+ * A successful local write is the sole trigger for UI refresh, notifications,
+ * and analytics. Failed/uncertain writes never claim success.
+ */
+(function(root, factory) {
+  const api = factory(typeof module === "object" && module.exports
+    ? require("./draft_legacy_writer.js") : root.TanDraftLegacyWriter);
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.TanDraftActionCommit = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function(writer) {
+  "use strict";
+  function create({ storage, locks, onCommitted, onFailure, onBusy }) {
+    if (!writer || typeof writer.mutate !== "function" ||
+        typeof onCommitted !== "function" || typeof onFailure !== "function")
+      throw new Error("Explicit writer and callbacks required");
+    const pending = new Set();
+    async function commit({ kind, key, action, value }) {
+      const slot = kind + ":" + key;
+      if (pending.has(slot)) return { status: "busy" };
+      pending.add(slot);
+      try {
+        // UI callback failures must not strand the pending slot or skip cleanup.
+        if (typeof onBusy === "function") onBusy(true, { kind, key });
+        const result = await writer.mutate({ storage, locks, kind, key, action, value });
+        if (result.status === "written_under_cooperative_lock") {
+          // Re-read after persistence; no stale optimistic UI.
+          const raw = storage.getItem(kind === "favs" ? "taiwan_art_favs" : "taiwan_art_visited");
+          const parsed = JSON.parse(raw);
+          const present = Object.prototype.hasOwnProperty.call(parsed, key);
+          // Presence alone is insufficient: a non-cooperating cached tab can
+          // replace the same key with different metadata after our write.
+          const valueMatches = action !== "set" || (present &&
+            JSON.stringify(parsed[key]) === JSON.stringify(value));
+          if ((action === "set" && !valueMatches) || (action === "remove" && present)) {
+            onFailure({ status: "uncertain_write" }, { kind, key, action });
+            return { status: "uncertain_write" };
+          }
+          try { onCommitted({ kind, key, action, value: present ? parsed[key] : undefined }); }
+          catch (_) { return { status: "committed_callback_failed" }; }
+        } else if (result.status !== "unchanged") {
+          onFailure(result, { kind, key, action });
+        }
+        return result;
+      } catch (_) {
+        const result = { status: "unavailable" };
+        onFailure(result, { kind, key, action });
+        return result;
+      } finally {
+        pending.delete(slot);
+        if (typeof onBusy === "function") {
+          try { onBusy(false, { kind, key }); } catch (_) { /* callback is not storage */ }
+        }
+      }
+    }
+    return { commit };
+  }
+  return { create };
+});

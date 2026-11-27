@@ -1,20 +1,32 @@
 """台湾現代アート展覧会情報アプリ"""
 
-from flask import Flask, render_template, request, Response, abort
+from flask import Flask, render_template, request, Response, abort, jsonify
 from scraper import fetch_all_exhibitions, MUSEUMS
+from werkzeug.middleware.proxy_fix import ProxyFix
 import json
 import os
 import re
 
 app = Flask(__name__)
+# Render terminates TLS and forwards over HTTP through exactly one load
+# balancer hop (per Render's own docs: "Render's load balancer terminates
+# SSL for inbound HTTPS requests, then forwards those requests to your web
+# service over HTTP") -- no other proxy/CDN sits between it and this app.
+# x_for=1 trusts only the single rightmost X-Forwarded-For entry, which is
+# that load balancer's own appended value, not anything a client sent
+# directly. This is the standard Werkzeug pattern for exactly this
+# single-hop PaaS shape; see docs/ai-handoff/DECISIONS.md for the research
+# that went into this (Render's docs don't explicitly confirm header
+# handling, so this is the industry-standard choice, not a confirmed one).
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
 
 # 公開前の特集ページ用プレビュートークン。このURLクエリを知っている人だけが見られる。
 # 本番公開時にこのゲートは外す。
-PREVIEW_TOKEN = os.environ.get("PREVIEW_TOKEN", "CdrvzWrhnMJiYhoa0wVDPw")
+PREVIEW_TOKEN = os.environ.get("PREVIEW_TOKEN", "")
 
 
 def _require_preview_token():
-    if request.args.get("preview") != PREVIEW_TOKEN:
+    if not PREVIEW_TOKEN or request.args.get("preview") != PREVIEW_TOKEN:
         abort(404)
 
 
@@ -338,6 +350,25 @@ def _normalize_dates(raw_dates):
     return raw_dates, None, None
 
 
+def _stable_key(museum_id, exhibition):
+    """展示の安定キー。museum_id + タイトル + 開始日で一意性を確保する。
+
+    タイトルのみ（旧実装）では同一(museum,title)の別展示と衝突する
+    （例: 年次シリーズでタイトルが年を含まない場合）。開始日を含めることで
+    これを解消する。終了日はあえて含めない — archive.jsonには同一開始日で
+    終了日だけ後から訂正された実例（museum 99dac「維度游移Ⅱ-張可昱創作個展」）
+    があり、これは同一展示の継続とみなすべきで、終了日の訂正だけで
+    favs/visitedの登録先キーが変わってしまうのは望ましくないため。
+    開始日が取得できない場合はタイトルのみにフォールバックする
+    （この場合の衝突リスクは残るが、存在しない日付を捏造するよりは安全。
+    docs/ai-handoff/DECISIONS.md 2026-11-26「stable_key is not yet safe...」参照）。
+    """
+    title = exhibition.get("title_zh", "") or exhibition.get("title_en", "") or ""
+    _, start_dt, _ = _normalize_dates(exhibition.get("dates", ""))
+    date_part = start_dt.strftime("%Y%m%d") if start_dt else ""
+    return museum_id + "__" + title + ("__" + date_part if date_part else "")
+
+
 def _calc_days_left(end_dt):
     """終了日までの残日数を計算する。Noneまたは14日超はNone。
     最終日当日は1と表示（「今日が最後」）。"""
@@ -438,7 +469,7 @@ def index():
                         next_event = {"date": evt["date"], "time": evt.get("time", ""), "title": evt_title, "days_until": days_until}
             except (ValueError, KeyError):
                 pass
-        stable_key = key + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+        stable_key = _stable_key(key, ex)
         recently_added = False
         added_at = ex.get("added_at")
         if added_at:
@@ -908,7 +939,6 @@ def discover():
         if len(artists) > 3:
             artists_label += "…"
 
-        title_zh = ex.get("title_zh", "") or ex.get("title_en", "")
         cards.append({
             "title": _get_display_title(ex, lang),
             "museum": _get_localized(m.get("name", {}), lang) or mid,
@@ -917,7 +947,7 @@ def discover():
             "days_left": _calc_days_left(end_dt),
             "artists": artists_label,
             "excerpt": excerpt,
-            "stable_key": mid + "__" + title_zh,
+            "stable_key": _stable_key(mid, ex),
             "detail_url": f"/exhibition/{mid}/{idx}?lang={lang}",
         })
 
@@ -1490,7 +1520,7 @@ def exhibition_detail(museum_id, idx):
                 "source_url": evt.get("source_url", ""),
             })
 
-    stable_key = museum_id + "__" + (ex.get("title_zh", "") or ex.get("title_en", "") or "")
+    stable_key = _stable_key(museum_id, ex)
 
     # Other exhibitions at same museum
     other_exs = []
@@ -2098,7 +2128,7 @@ def disaster_alerts_api():
     return json.dumps(result, ensure_ascii=False), 200, {"Content-Type": "application/json", "Cache-Control": "public, max-age=600"}
 
 
-MESSENGER_VERIFY_TOKEN = "taiwanartnow2026"
+MESSENGER_VERIFY_TOKEN = os.environ.get("MESSENGER_VERIFY_TOKEN", "")
 MESSENGER_PAGE_TOKEN = os.environ.get("MESSENGER_PAGE_TOKEN", "")
 
 
@@ -2108,7 +2138,8 @@ def webhook_verify():
     mode = request.args.get("hub.mode")
     token = request.args.get("hub.verify_token")
     challenge = request.args.get("hub.challenge")
-    if mode == "subscribe" and token == MESSENGER_VERIFY_TOKEN:
+    if (mode == "subscribe" and MESSENGER_VERIFY_TOKEN
+            and token == MESSENGER_VERIFY_TOKEN and isinstance(challenge, str)):
         return challenge, 200
     return "Forbidden", 403
 
@@ -2265,6 +2296,27 @@ def _add_subscriber(sender_id, ref_code=None):
     return is_new
 
 
+def _try_mark_meta_verified(ref_code, sender_id):
+    """Best-effort bridge from the referral `ref` Meta attaches to this event
+    into the private browser-claim handshake
+    (messenger_browser_claim.issue_pair/mark_meta_verified). Most of the time
+    ref_code belongs to the existing simple subscriber ref system and will
+    not match any pending claim challenge; mark_meta_verified already treats
+    that as a safe no-op (its UPDATE affects 0 rows). The claim schema
+    (tan_private.messenger_link_challenges) is not yet migrated in
+    production, so this currently always no-ops via the except below — that
+    is intentional until the migration is separately applied and approved.
+    Never let a failure here affect the existing subscriber/reply flow.
+    """
+    try:
+        from messenger_browser_claim import mark_meta_verified
+        from private_subscriber_store import _connect
+        with _connect() as conn:
+            mark_meta_verified(conn, messenger_code=ref_code, verified_sender_id=sender_id)
+    except Exception:
+        pass
+
+
 def _notify_admin_new_subscriber(new_sender_id):
     page_token = os.environ.get("MESSENGER_PAGE_TOKEN", "")
     if not page_token:
@@ -2298,16 +2350,46 @@ def _send_messenger_reply(sender_id, text):
 
 @app.route("/webhook", methods=["POST"])
 def webhook_receive():
-    """Receive messages from Messenger and create GitHub issues."""
+    """Receive signed Meta messages and persist private inbox submissions."""
     import urllib.request as urllib_req
     from datetime import datetime, timezone, timedelta
 
-    body = request.get_json(silent=True) or {}
-    channel = "Instagram" if body.get("object") == "instagram" else "Messenger"
+    # Verify the raw body before processing any user-controlled event.
+    # Configure META_APP_SECRET in Render before merging/deploying this change.
+    from webhook_security import verify_meta_webhook
+    if not verify_meta_webhook(request.get_data(cache=True),
+                               request.headers.get("X-Hub-Signature-256", "")):
+        abort(403)
+    body = request.get_json(silent=True)
+    if not isinstance(body, dict) or body.get("object") not in ("page", "instagram"):
+        return "Bad Request", 400
     entries = body.get("entry", [])
+    if not isinstance(entries, list):
+        return "Bad Request", 400
+    # Validate the entire batch before any subscription or message side effects.
+    for entry in entries:
+        if not isinstance(entry, dict) or not isinstance(entry.get("messaging", []), list):
+            return "Bad Request", 400
+        for event in entry.get("messaging", []):
+            if not isinstance(event, dict) or not isinstance(event.get("sender"), dict):
+                return "Bad Request", 400
+            if not isinstance(event["sender"].get("id"), str) or not event["sender"]["id"]:
+                return "Bad Request", 400
+            for field in ("message", "postback", "referral"):
+                if field in event and not isinstance(event[field], dict):
+                    return "Bad Request", 400
+            message = event.get("message", {})
+            if not isinstance(message.get("attachments", []), list):
+                return "Bad Request", 400
+            if not isinstance(message.get("text", ""), str):
+                return "Bad Request", 400
+            for attachment in message.get("attachments", []):
+                if not isinstance(attachment, dict) or not isinstance(attachment.get("payload", {}), dict):
+                    return "Bad Request", 400
+    channel = "Instagram" if body["object"] == "instagram" else "Messenger"
     for entry in entries:
         for event in entry.get("messaging", []):
-            sender_id = event.get("sender", {}).get("id", "")
+            sender_id = event["sender"]["id"]
 
             # Handle standalone referral (existing user clicks m.me?ref=xxx)
             referral = event.get("referral", {})
@@ -2315,6 +2397,7 @@ def webhook_receive():
                 ref_code = referral.get("ref", "")
                 if ref_code:
                     _add_subscriber(sender_id, ref_code=ref_code)
+                    _try_mark_meta_verified(ref_code, sender_id)
                     _send_messenger_reply(sender_id,
                         "✓ 已連結 / Connected\n\n"
                         "🌐 https://taiwan-art-now.onrender.com/")
@@ -2324,6 +2407,8 @@ def webhook_receive():
             postback = event.get("postback", {})
             referral_from_postback = event.get("referral", {}) or postback.get("referral", {})
             ref_code = referral_from_postback.get("ref", "") if referral_from_postback else ""
+            if ref_code:
+                _try_mark_meta_verified(ref_code, sender_id)
             if postback:
                 payload = postback.get("payload", "")
                 if payload == "SUBSCRIBE_NOTIFICATIONS":
@@ -2390,45 +2475,93 @@ def webhook_receive():
                     "取消訂閱 Unsubscribe: 輸入「取消」或「unsubscribe」")
                 continue
 
-            # Auto-subscribe anyone who messages the page
-            _add_subscriber(sender_id)
+            # Persist user submission before changing subscriber state.
+            # Private intake only. Never create public GitHub issues for user messages.
+            # Failure returns 503 so Meta can retry delivery; no public fallback.
+            from private_inbox import store_inbound, event_key_for
+            try:
+                is_new_message = store_inbound(channel, sender_id, text, image_urls,
+                                               event_key_for(channel, sender_id, event))
+            except Exception:
+                # Do not log exception details: database errors can contain private values.
+                app.logger.error("Private inbound message persistence failed")
+                return "Service Unavailable", 503
 
-            body_parts = [f"**From {channel}:** sender_id={sender_id}"]
-            if text:
-                body_parts.append(f"**Message:** {text}")
-            for img in image_urls:
-                body_parts.append(f"**Image:** ![photo]({img})")
-            tw_now = datetime.now(timezone(timedelta(hours=8)))
-            body_parts.append(f"**Received:** {tw_now.isoformat()}")
-
-            issue_body = "\n\n".join(body_parts)
-            issue_data = json.dumps({
-                "title": f"[{channel}] {text[:50] or 'Image submission'}",
-                "body": issue_body,
-                "labels": ["user-request"],
-            }).encode()
-
-            gh_token = os.environ.get("GH_TOKEN", "")
-            if gh_token:
-                req = urllib_req.Request(
-                    "https://api.github.com/repos/taiwan-chodofu/taiwan-art-now/issues",
-                    data=issue_data,
-                    headers={
-                        "Authorization": f"token {gh_token}",
-                        "Content-Type": "application/json",
-                        "Accept": "application/vnd.github.v3+json",
-                    },
-                    method="POST",
-                )
-                try:
-                    urllib_req.urlopen(req, timeout=10)
-                except Exception:
-                    pass
+            # A replay is already persisted: do not repeat subscription writes.
+            if is_new_message:
+                _add_subscriber(sender_id)
 
     return "OK", 200
 
 
 SITE_URL = "https://taiwan-art-now.onrender.com"
+
+# Private browser-claim handshake (see docs/ai-handoff/DECISIONS.md). Reuses
+# the same DB connector the webhook already relies on. The rate limiter
+# resolves the client identity from request.remote_addr, which is only
+# trustworthy because of the ProxyFix(x_for=1) applied above -- without
+# that, this would be the exact raw-X-Forwarded-For risk
+# private_claim_limiter_adapter.py's own docstring warns against. The
+# limiter still fails closed (503 "unavailable") if TAN_RATE_LIMIT_HMAC_KEY
+# is not configured, which it is not yet in production -- that is a secret
+# the user must set, not something to generate here.
+from private_browser_claim_routes import claim_blueprint
+from private_subscriber_store import _connect as _private_db_connect
+from private_claim_limiter_adapter import build_claim_limiter
+
+
+def _trusted_client_identity(req):
+    return req.remote_addr or ""
+
+
+app.config.setdefault("TAN_CANONICAL_ORIGIN", SITE_URL)
+app.config.setdefault("TAN_PRIVATE_DB_CONNECT", _private_db_connect)
+app.config.setdefault("TAN_PRIVATE_CLAIM_LIMITER", build_claim_limiter(
+    _private_db_connect, _trusted_client_identity,
+    secret=os.environ.get("TAN_RATE_LIMIT_HMAC_KEY", "")))
+app.register_blueprint(claim_blueprint)
+
+
+@app.post("/api/private-auth/initiate")
+def private_auth_initiate():
+    """Issue a fresh Messenger-code/browser-secret pair to start the private
+    browser-claim handshake (messenger_browser_claim.issue_pair). No browser
+    UI calls this yet (see DECISIONS.md) -- it exists so the handshake's
+    server half can be tested and reviewed independently of that UI.
+    Per-request rate limiting is deliberately deferred for the same reason
+    noted above the blueprint registration; issue_pair's own TTL cap (max
+    900s per challenge) bounds exposure regardless.
+    """
+    from browser_cookie_security import require_same_origin
+    from messenger_browser_claim import issue_pair
+    allowed = app.config.get("TAN_CANONICAL_ORIGIN")
+    if not require_same_origin(
+        request.method, request.headers.get("Origin"), allowed,
+        request.headers.get("Sec-Fetch-Site"),
+    ):
+        return jsonify(error="forbidden"), 403
+    connector = app.config.get("TAN_PRIVATE_DB_CONNECT")
+    if not callable(connector):
+        return jsonify(error="unavailable"), 503
+    try:
+        with connector() as conn:
+            messenger_code, browser_secret = issue_pair(conn)
+    except Exception:
+        app.logger.warning("Private auth initiate unavailable")
+        return jsonify(error="unavailable"), 503
+    response = jsonify(messenger_code=messenger_code, browser_secret=browser_secret)
+    response.headers["Cache-Control"] = "no-store"
+    return response
+
+
+@app.get("/connect-devices")
+def connect_devices_page():
+    """Browser-side UI driving the private browser-claim handshake (calls
+    /api/private-auth/initiate then /api/private-auth/claim). Safe to expose
+    today even though the handshake is still inert in production (no schema
+    migration, no TAN_RATE_LIMIT_HMAC_KEY yet) -- both endpoints already fail
+    closed with a clear "try again later" message in that case."""
+    return render_template("connect_devices.html", current_lang=request.args.get("lang", "ja"))
 
 
 @app.route("/robots.txt")

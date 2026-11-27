@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if current_lang == 'zh' %}連結裝置{% elif current_lang == 'ja' %}端末を連携{% else %}Connect devices{% endif %} — Taiwan Art Now</title>
+  <style>
+    :root { --bg:#fff; --text:#111; --text-sub:#666; --border:#e8e8e8; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1a1a1a; --text:#e8e8e8; --text-sub:#aaa; --border:#333; }
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Noto Sans TC","Noto Sans JP",-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    .wrap { max-width:420px; margin:0 auto; padding:24px 16px; }
+    h1 { font-size:1.1rem; margin-bottom:12px; }
+    p { font-size:0.85rem; color:var(--text-sub); margin-bottom:16px; }
+    .step { display:none; }
+    .step.active { display:block; }
+    .btn { display:block; width:100%; text-align:center; padding:12px; border-radius:8px; border:none;
+      font-size:0.9rem; font-weight:600; cursor:pointer; text-decoration:none; }
+    .btn-primary { background:#0084FF; color:#fff; }
+    .btn-secondary { background:transparent; color:var(--text); border:1px solid var(--border); margin-top:10px; }
+    .btn:disabled { opacity:0.5; cursor:default; }
+    #notice { font-size:0.8rem; padding:10px 0; min-height:1.2em; }
+    #notice.error { color:#d63031; }
+    #notice.success { color:#2e7d32; }
+    a.btn { box-sizing:border-box; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>{% if current_lang == 'zh' %}在其他裝置上同步你的收藏{% elif current_lang == 'ja' %}他の端末でもお気に入りを同期{% else %}Sync your saves across devices{% endif %}</h1>
+
+    <div class="step active" id="step1">
+      <p>{% if current_lang == 'zh' %}透過 Messenger 連結此瀏覽器，即可在手機與電腦間同步「想去」與「已看」。{% elif current_lang == 'ja' %}Messengerでこのブラウザを連携すると、スマホとパソコンで「行きたい」「観た」を同期できます。{% else %}Connect this browser via Messenger to sync your Want/Seen lists across your devices.{% endif %}</p>
+      <button type="button" class="btn btn-primary" id="startBtn">{% if current_lang == 'zh' %}開始連結{% elif current_lang == 'ja' %}連携を開始{% else %}Start connecting{% endif %}</button>
+    </div>
+
+    <div class="step" id="step2">
+      <p>{% if current_lang == 'zh' %}1. 點擊下方按鈕前往 Messenger，直接傳送即可（不需輸入文字）。<br>2. 傳送後，回到這個頁面，按下「已傳送，確認連結」。{% elif current_lang == 'ja' %}1. 下のボタンでMessengerを開き、そのまま送信してください（文字入力は不要です）。<br>2. 送信したら、このページに戻って「送信した、確認する」を押してください。{% else %}1. Tap below to open Messenger and send (no need to type anything).<br>2. Come back to this page and tap "I sent it, confirm" below.{% endif %}</p>
+      <a href="https://m.me/61591281572640?ref=" id="messengerLink" class="btn btn-primary" target="_blank" rel="noopener">{% if current_lang == 'zh' %}前往 Messenger{% elif current_lang == 'ja' %}Messengerを開く{% else %}Open Messenger{% endif %}</a>
+      <button type="button" class="btn btn-secondary" id="confirmBtn">{% if current_lang == 'zh' %}已傳送，確認連結{% elif current_lang == 'ja' %}送信した、確認する{% else %}I sent it, confirm{% endif %}</button>
+      <p id="notice" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="step" id="step3">
+      <p style="color:#2e7d32;font-weight:600;">{% if current_lang == 'zh' %}✓ 連結完成！這個裝置現在會與其他裝置同步。{% elif current_lang == 'ja' %}✓ 連携が完了しました！この端末は他の端末と同期されます。{% else %}✓ Connected! This device will now sync with your others.{% endif %}</p>
+      <a href="/" class="btn btn-primary">{% if current_lang == 'zh' %}返回首頁{% elif current_lang == 'ja' %}ホームに戻る{% else %}Back to home{% endif %}</a>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var STORAGE_KEY = 'taiwan_art_private_claim_pending';
+    var step1 = document.getElementById('step1');
+    var step2 = document.getElementById('step2');
+    var step3 = document.getElementById('step3');
+    var notice = document.getElementById('notice');
+    var startBtn = document.getElementById('startBtn');
+    var confirmBtn = document.getElementById('confirmBtn');
+    var messengerLink = document.getElementById('messengerLink');
+
+    function showStep(step) {
+      [step1, step2, step3].forEach(function(s) { s.classList.remove('active'); });
+      step.classList.add('active');
+    }
+    function setNotice(text, kind) {
+      notice.textContent = text || '';
+      notice.className = kind || '';
+    }
+    var MSG = {
+      unavailable: {{ ('目前無法連結，請稍後再試。' if current_lang == 'zh' else ('現在は連携できません。しばらくしてからもう一度お試しください。' if current_lang == 'ja' else 'Could not start right now. Please try again later.'))|tojson }},
+      not_verified: {{ ('尚未確認，請先在 Messenger 傳送訊息。' if current_lang == 'zh' else ('まだ確認できていません。先にMessengerでメッセージを送信してください。' if current_lang == 'ja' else 'Not confirmed yet -- please send the message in Messenger first.'))|tojson }},
+      rate_limited: {{ ('嘗試次數過多，請稍後再試。' if current_lang == 'zh' else ('試行回数が多すぎます。しばらくしてからもう一度お試しください。' if current_lang == 'ja' else 'Too many attempts. Please wait and try again.'))|tojson }}
+    };
+
+    function loadPending() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        var data = JSON.parse(raw);
+        if (!data || !data.messenger_code || !data.browser_secret || !data.expires_at) return null;
+        if (Date.now() > data.expires_at) { localStorage.removeItem(STORAGE_KEY); return null; }
+        return data;
+      } catch (e) { return null; }
+    }
+
+    var pending = loadPending();
+    if (pending) {
+      messengerLink.href = 'https://m.me/61591281572640?ref=' + encodeURIComponent(pending.messenger_code);
+      showStep(step2);
+    }
+
+    startBtn.addEventListener('click', function() {
+      startBtn.disabled = true;
+      fetch('/api/private-auth/initiate', {method: 'POST', credentials: 'same-origin'})
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function(data) {
+          var record = {messenger_code: data.messenger_code, browser_secret: data.browser_secret,
+            expires_at: Date.now() + 870000}; // a little under the server's 900s max
+          try { localStorage.setItem(STORAGE_KEY, JSON.stringify(record)); } catch (e) {}
+          messengerLink.href = 'https://m.me/61591281572640?ref=' + encodeURIComponent(data.messenger_code);
+          showStep(step2);
+        })
+        .catch(function() { setNotice(MSG.unavailable, 'error'); startBtn.disabled = false; });
+    });
+
+    confirmBtn.addEventListener('click', function() {
+      var data = loadPending();
+      if (!data) { setNotice(MSG.unavailable, 'error'); showStep(step1); startBtn.disabled = false; return; }
+      confirmBtn.disabled = true;
+      setNotice('');
+      fetch('/api/private-auth/claim', {
+        method: 'POST', credentials: 'same-origin',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({messenger_code: data.messenger_code, browser_secret: data.browser_secret})
+      }).then(function(r) {
+        if (r.status === 200) {
+          localStorage.removeItem(STORAGE_KEY);
+          showStep(step3);
+          return;
+        }
+        confirmBtn.disabled = false;
+        if (r.status === 403) { setNotice(MSG.not_verified, 'error'); return; }
+        if (r.status === 429) { setNotice(MSG.rate_limited, 'error'); return; }
+        setNotice(MSG.unavailable, 'error');
+      }).catch(function() {
+        confirmBtn.disabled = false;
+        setNotice(MSG.unavailable, 'error');
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -52,11 +52,12 @@
     .stage {
       flex: 1 1 auto; position: relative;
       display: flex; align-items: center; justify-content: center;
-      padding: 16px; min-height: 0;
+      padding: 16px; min-height: 0; overflow: hidden;
     }
     .card {
       position: relative; width: min(92vw, 440px);
       height: min(82vh, 720px); height: min(82dvh, 720px);
+      max-height: 100%; min-height: 0;
       background: var(--bg); border: 1px solid var(--border); border-radius: 18px;
       padding: 28px 26px; display: flex; flex-direction: column;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
@@ -116,7 +117,8 @@
     .stamp.like { right: 20px; color: var(--like); background: var(--like-bg); transform: rotate(8deg); }
     .stamp.seen { left: 20px; color: var(--seen); background: var(--seen-bg); transform: rotate(-8deg); }
     .actions {
-      flex: 0 0 auto; display: flex; justify-content: center; gap: 8px;
+      flex: 0 0 auto; position: relative; z-index: 1;
+      display: flex; justify-content: center; gap: 8px;
       padding: 16px 12px calc(16px + env(safe-area-inset-bottom));
       border-top: 1px solid var(--border);
     }
@@ -240,6 +242,7 @@
     <button class="got-it-btn" id="tutorialGotIt">{{ labels.tutorial_got_it }}</button>
   </div>
 
+  <div id="discoverModePicker" style="max-width:36rem;margin:8px auto;padding:0 16px;"></div>
   <div class="stage" id="stage">
     <div class="empty-state" id="emptyState" style="display:none;">
       <p>{{ labels.empty }}</p>
@@ -255,10 +258,31 @@
     <button class="like-btn" id="likeBtn">♡ {{ labels.like }}</button>
   </div>
 
+  {% set isolated_sync = config.get("TAN_ISOLATED_DISCOVER_SYNC", false) %}
+  <script src="/static/js/draft_legacy_snapshot.js"></script>
+  <script src="/static/js/draft_legacy_writer.js"></script>
+  <script src="/static/js/draft_page_action.js"></script>
+  <script src="/static/js/draft_page_controller.js"></script>
+  {% if isolated_sync %}
+  <script src="/static/js/draft_versioned_sync.js"></script>
+  <script src="/static/js/draft_authenticated_state.js"></script>
+  <script src="/static/js/draft_authenticated_writer.js"></script>
+  <script src="/static/js/draft_legacy_candidate_policy.js"></script>
+  <script src="/static/js/draft_migration_review.js"></script>
+  <script src="/static/js/draft_simple_review_ui.js"></script>
+  <script src="/static/js/draft_legacy_migration_bootstrap.js"></script>
+  <script src="/static/js/draft_explicit_keep.js"></script>
+  <script src="/static/js/draft_explicit_server_restore.js"></script>
+  {% endif %}
+  <script src="/static/js/draft_discover_flow.js"></script>
+  <script src="/static/js/draft_exhibition_filters.js"></script>
+  <script src="/static/js/draft_discover_selection.js"></script>
+  <script src="/static/js/draft_discover_mode_picker.js"></script>
   <script>
     var ALL_CARDS = {{ cards | tojson }};
     var LABELS = {{ labels | tojson }};
     var LANG = "{{ current_lang }}";
+    var ISOLATED_SYNC = {{ isolated_sync | tojson }};
 
     function _normalizeKey(raw) { return (raw || '').replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_'); }
     function _getFavs() { try { return JSON.parse(localStorage.getItem('taiwan_art_favs') || '{}'); } catch(e) { return {}; } }
@@ -266,8 +290,42 @@
     function _getVisited() { try { return JSON.parse(localStorage.getItem('taiwan_art_visited') || '{}'); } catch(e) { return {}; } }
     function _saveVisited(v) { localStorage.setItem('taiwan_art_visited', JSON.stringify(v)); }
 
+    // ISOLATED_SYNC only: deck/filter selection above still reads local
+    // storage directly (always empty here, since isolated_sync never writes
+    // it), so it optimistically shows every card that mode would allow.
+    // That can never wrongly HIDE a card, only show one the server would
+    // actually filter out (already favorited/visited/mismatched mode on
+    // another device). This reconciles against the real authenticated state
+    // shortly after, narrowing deck/discoverSourceOrder down and re-rendering
+    // only if the visible card actually changed. See docs/ai-handoff/
+    // DECISIONS.md 2026-11-26 for why this additive-reconcile approach was
+    // chosen over restructuring the synchronous initial render to await a
+    // fetch.
+    function reconcileWithServerBookmarks(mode) {
+      if (!ISOLATED_SYNC) return;
+      TanDraftAuthenticatedState.read({fetchImpl: window.fetch.bind(window)}).then(function(result) {
+        if (result.status !== 'ready' || discoverBusy || discoverAnimating) return;
+        var bookmarks = {favs: result.state.favs, visited: result.state.visited};
+        var reselected = TanDraftDiscoverSelection.select({
+          cards: ALL_CARDS, bookmarks: bookmarks, normalizeKey: function(k) { return k; }, mode: mode
+        });
+        if (reselected.status !== 'ready') return;
+        var allowedKeys = {};
+        reselected.cards.forEach(function(c) { allowedKeys[c.stable_key] = true; });
+        var beforeHead = deck.length ? deck[0].stable_key : null;
+        deck = deck.filter(function(c) { return allowedKeys[c.stable_key]; });
+        if (typeof discoverSourceOrder !== 'undefined') {
+          discoverSourceOrder = discoverSourceOrder.filter(function(c) { return allowedKeys[c.stable_key]; });
+        }
+        saveDeckOrder();
+        if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
+        if (!deck.length || deck[0].stable_key !== beforeHead) renderCard();
+      }).catch(function() {});
+    }
+
     var visitedKeys = _getVisited();
     var DECK_ORDER_KEY = 'taiwan_art_discover_deck';
+    var SOURCE_ORDER_KEY = 'taiwan_art_discover_source_order';
 
     // サーバーは毎リクエストで新たにシャッフルするため、詳細ページに遷移して
     // ブラウザの「戻る」で帰ってきた際にそのままだと全く別の並び・カードから
@@ -302,6 +360,17 @@
         sessionStorage.setItem(DECK_ORDER_KEY, JSON.stringify(deck.map(function(c) { return _normalizeKey(c.stable_key); })));
       } catch (e) {}
     }
+    // The remaining-card pool is authoritative on reload, including an empty
+    // array. A saved empty deck must not silently restart the session.
+    try {
+      var remainingOrder = JSON.parse(sessionStorage.getItem(SOURCE_ORDER_KEY) || 'null');
+      if (Array.isArray(remainingOrder)) {
+        var remainingByKey = {};
+        ALL_CARDS.forEach(function(card) { remainingByKey[_normalizeKey(card.stable_key)] = card; });
+        deck = remainingOrder.map(function(key) { return remainingByKey[key]; })
+          .filter(function(card) { return card && !visitedKeys[_normalizeKey(card.stable_key)]; });
+      }
+    } catch (e) {}
     saveDeckOrder();
 
     var actionHistory = []; // {card, action} for undo
@@ -425,6 +494,7 @@
       var isHorizontalSwipe = false;
 
       el.addEventListener('pointerdown', function(e) {
+        if (discoverBusy || discoverAnimating) return;
         startedInExcerpt = !!(excerptEl && excerptEl.contains(e.target));
         directionLocked = !startedInExcerpt;
         isHorizontalSwipe = !startedInExcerpt;
@@ -437,7 +507,7 @@
         }
       });
       el.addEventListener('pointermove', function(e) {
-        if (!isDragging || e.pointerId !== activePointerId) return;
+        if (discoverBusy || discoverAnimating || !isDragging || e.pointerId !== activePointerId) return;
         var dx = e.clientX - dragStartX;
         var dy = e.clientY - dragStartY;
 
@@ -494,51 +564,244 @@
       el.addEventListener('pointercancel', endDrag);
     }
 
-    function commitSwipe(action) {
-      if (!currentCard) return;
-      var card = deck.shift();
+    // Draft integration: only advance after the cooperative storage commit succeeds.
+    var discoverBusy = false;
+    var discoverAnimating = false;
+    var discoverRenderTimer = null;
+    var discoverError = document.createElement('p');
+    discoverError.id = 'discoverActionError';
+    discoverError.setAttribute('role', 'alert');
+    discoverError.setAttribute('aria-live', 'assertive');
+    discoverError.setAttribute('aria-atomic', 'true');
+    discoverError.style.cssText = 'box-sizing:border-box;max-width:36rem;margin:0 auto;padding:0 16px;color:#b42318;font-size:0.875rem;line-height:1.6;text-align:left;overflow-wrap:anywhere;';
+    actionsBar.parentNode.insertBefore(discoverError, actionsBar);
+    var conflictCheck = document.createElement('button');
+    conflictCheck.id = 'discoverConflictCheck';
+    conflictCheck.type = 'button';
+    conflictCheck.hidden = true;
+    conflictCheck.textContent = LANG === 'en' ? 'Check this device’s saved status'
+      : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '查看此裝置的儲存狀態' : 'この端末の登録状況を確認';
+    conflictCheck.style.cssText = 'display:none;margin:8px 16px 12px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
+    actionsBar.parentNode.insertBefore(conflictCheck, actionsBar);
+    var conflictStatus = document.createElement('p');
+    conflictStatus.id = 'discoverConflictStatus';
+    conflictStatus.setAttribute('role', 'status');
+    conflictStatus.style.cssText = 'padding:0 16px;font-size:0.875rem;line-height:1.6;overflow-wrap:anywhere;';
+    actionsBar.parentNode.insertBefore(conflictStatus, actionsBar);
+    conflictCheck.addEventListener('click', function() {
+      var target = discoverFlow.lastUndoTarget();
+      if (!target) return;
+      try {
+        var map = JSON.parse(localStorage.getItem(target.kind === 'favs' ? 'taiwan_art_favs' : 'taiwan_art_visited') || '{}');
+        var exists = Object.prototype.hasOwnProperty.call(map, target.key);
+        var label = target.kind === 'favs'
+          ? (LANG === 'en' ? 'Want to see' : (LANG === 'ja' ? '行きたい' : '想去'))
+          : (LANG === 'en' ? 'Visited' : (LANG === 'ja' ? '観た' : '已看'));
+        conflictStatus.textContent = target.title + ' — ' + (LANG === 'en' ? 'On this device, ' : LANG === 'ja' ? 'この端末では ' : '此裝置上 ') + label + ': ' +
+          (exists ? (LANG === 'en' ? 'Saved' : LANG === 'ja' ? '登録あり' : '已儲存')
+                  : (LANG === 'en' ? 'Not saved' : LANG === 'ja' ? '登録なし' : '未儲存'));
+      } catch (e) {
+        conflictStatus.textContent = LANG === 'en' ? 'Could not read the saved status. Please try again later.'
+          : LANG === 'ja' ? '登録状況を読み取れませんでした。時間をおいてもう一度お試しください。'
+          : '目前無法讀取儲存狀態，請稍後再試。';
+      }
+    });
+    // ISOLATED_SYNC only: a swipe that would resurrect another device's
+    // explicit deletion never writes silently (see draft_discover_flow.js's
+    // needs_restore_review). Offer the same kind of deliberate, explicit
+    // confirmation detail/nearby already require before restoring a
+    // tombstone (section 2 of the handoff: "明示的削除はrevision付きtombstone。
+    // 通常のsetで復活させない").
+    var pendingRestoreReview = null;
+    var restorePrompt = document.createElement('p');
+    restorePrompt.id = 'discoverRestorePrompt';
+    restorePrompt.setAttribute('role', 'status');
+    restorePrompt.setAttribute('aria-live', 'polite');
+    restorePrompt.hidden = true;
+    restorePrompt.style.cssText = 'box-sizing:border-box;max-width:36rem;margin:0 auto;padding:0 16px;font-size:0.875rem;line-height:1.6;text-align:left;overflow-wrap:anywhere;';
+    actionsBar.parentNode.insertBefore(restorePrompt, actionsBar);
+    var restoreYesBtn = document.createElement('button');
+    restoreYesBtn.id = 'discoverRestoreYesBtn';
+    restoreYesBtn.type = 'button';
+    restoreYesBtn.hidden = true;
+    restoreYesBtn.textContent = LANG === 'en' ? 'Yes, register it' : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '是，重新登記' : 'はい、登録する';
+    restoreYesBtn.style.cssText = 'display:none;margin:8px 16px 0 16px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
+    actionsBar.parentNode.insertBefore(restoreYesBtn, actionsBar);
+    var restoreNoBtn = document.createElement('button');
+    restoreNoBtn.id = 'discoverRestoreNoBtn';
+    restoreNoBtn.type = 'button';
+    restoreNoBtn.hidden = true;
+    restoreNoBtn.textContent = LANG === 'en' ? 'No' : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '不要' : 'いいえ';
+    restoreNoBtn.style.cssText = 'display:none;margin:8px 16px 12px 8px;padding:10px 14px;border:1px solid currentColor;border-radius:6px;background:transparent;color:inherit;font:inherit;cursor:pointer;';
+    actionsBar.parentNode.insertBefore(restoreNoBtn, actionsBar);
+    function hideRestorePrompt() {
+      pendingRestoreReview = null;
+      restorePrompt.hidden = true; restorePrompt.textContent = '';
+      restoreYesBtn.hidden = true; restoreYesBtn.style.display = 'none';
+      restoreNoBtn.hidden = true; restoreNoBtn.style.display = 'none';
+    }
+    function showRestoreReviewPrompt(card, action) {
+      pendingRestoreReview = {card: card, action: action};
+      var label = action === 'like' ? LABELS.like : LABELS.seen;
+      restorePrompt.textContent = card.title + ' — ' +
+        (LANG === 'en' ? 'this was previously removed from "' + label + '" on another device. Register it again?'
+         : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant') ? '先前已在其他裝置從「' + label + '」中移除。要重新登記嗎？'
+         : 'この端末以外で「' + label + '」から削除されています。もう一度登録しますか？');
+      restorePrompt.hidden = false;
+      restoreYesBtn.hidden = false; restoreYesBtn.style.display = 'inline-block';
+      restoreNoBtn.hidden = false; restoreNoBtn.style.display = 'inline-block';
+    }
+    restoreYesBtn.addEventListener('click', async function() {
+      if (!pendingRestoreReview || discoverBusy) return;
+      var target = pendingRestoreReview;
+      hideRestorePrompt();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.confirmRestore(target.card, target.action);
+        if (result.status !== 'written_under_cooperative_lock') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
+      }
+    });
+    restoreNoBtn.addEventListener('click', function() { hideRestorePrompt(); });
+    function setDiscoverBusy(busy) {
+      discoverBusy = busy;
+      ['likeBtn','visitedBtn','skipBtn','undoBtn','restartBtn'].forEach(function(id) {
+        document.getElementById(id).disabled = busy || (discoverAnimating && id !== 'undoBtn');
+      });
+      restoreYesBtn.disabled = busy;
+      restoreNoBtn.disabled = busy;
+    }
+    function clearDiscoverError() {
+      discoverError.textContent = ''; conflictCheck.hidden = true; conflictCheck.style.display = 'none'; conflictStatus.textContent = '';
+      hideRestorePrompt();
+    }
+    function failDiscover(result) {
+      var messages = LANG === 'en'
+        ? {stale:'The saved exhibition was changed in another tab, so Undo was not applied. Your saved information is unchanged. Please review the current saved status before making another change.', failure:'Could not save this exhibition. The card is still here and your saved information has not changed. Please tap Like or Visited again.'}
+        : (LANG === 'zh' || LANG === 'zh-TW' || LANG === 'zh_Hant')
+          ? {stale:'這筆展覽資料已在其他分頁變更，因此無法復原。原本儲存的資料仍會保留。請點選下方「查看此裝置的儲存狀態」，確認目前的登記內容，再決定是否需要重新操作。', failure:'這筆展覽未能儲存。卡片仍會保留，原本的資料也不會變更。請再按一次「想去」或「已看」。'}
+          : {stale:'別のタブで展示情報が変更されたため、取り消せませんでした。現在の保存内容はそのまま残っています。下の「この端末の登録状況を確認」を押して、現在の登録を確認してください。確認後、必要なら展示カードから登録し直せます。', failure:'保存できませんでした。展示カードはそのまま残り、保存内容も変更されていません。「行きたい」または「観た」をもう一度押してください。'};
+      discoverError.textContent = result.status === 'stale_undo' ? messages.stale : messages.failure;
+      conflictCheck.hidden = result.status !== 'stale_undo';
+      conflictCheck.style.display = result.status === 'stale_undo' ? 'inline-block' : 'none';
+      conflictStatus.textContent = '';
+      if (currentCardEl) {
+        currentCardEl.style.transition = 'transform 0.2s ease';
+        currentCardEl.style.transform = '';
+      }
+    }
+    function advanceDiscover(info) {
+      if (info.restored) {
+        // confirmRestore() re-registers an item whose card already left the
+        // deck during the original swipe (that is what made it eligible for
+        // restore review in the first place) — there is no deck position to
+        // advance here, only the server-side registration changed.
+        return;
+      }
+      if (!deck.length || _normalizeKey(deck[0].stable_key) !== _normalizeKey(info.card.stable_key))
+        throw new Error('Discover deck changed during save');
+      deck.shift();
+      if (typeof discoverSourceOrder !== 'undefined') {
+        discoverSourceOrder = discoverSourceOrder.filter(function(card) {
+          return _normalizeKey(card.stable_key) !== _normalizeKey(info.card.stable_key);
+        });
+      }
+      saveDeckOrder();
+      if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
+      discoverAnimating = true;
       var el = currentCardEl;
-      var flyX = action === 'like' ? window.innerWidth : -window.innerWidth;
+      var flyX = info.action === 'like' ? window.innerWidth : -window.innerWidth;
       if (el) {
         el.style.transition = 'transform 0.3s ease';
-        el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (action === 'like' ? 20 : -20) + 'deg)';
+        el.style.transform = 'translate(' + flyX + 'px, -40px) rotate(' + (info.action === 'like' ? 20 : -20) + 'deg)';
       }
-      recordAction(card, action);
-      saveDeckOrder();
-      if (typeof gtag === 'function') gtag('event', 'discover_' + action, { exhibition_key: _normalizeKey(card.stable_key) });
-      setTimeout(renderCard, 220);
+      if (typeof gtag === 'function') gtag('event', 'discover_' + info.action, {exhibition_key:_normalizeKey(info.card.stable_key)});
+      discoverRenderTimer = setTimeout(function() {
+        discoverRenderTimer = null;
+        discoverAnimating = false;
+        renderCard();
+        setDiscoverBusy(discoverBusy);
+      }, 220);
     }
-
-    function recordAction(card, action) {
-      // 'skip' means "not sure / not interested right now" — per the site's
-      // serendipity principle, this is NOT recorded anywhere, so the same
-      // exhibition can resurface on a future visit rather than being
-      // permanently excluded (that would create a filter bubble).
-      var key = _normalizeKey(card.stable_key);
-      if (action === 'like') {
-        var favs = _getFavs();
-        favs[key] = { title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region, event: '' };
-        _saveFavs(favs);
-      } else if (action === 'visited') {
-        var visited = _getVisited();
-        visited[key] = { date: new Date().toISOString(), title: card.title, museum: card.museum, dates: card.dates, url: card.detail_url, region: card.region };
-        _saveVisited(visited);
-      }
-      actionHistory.push({ card: card, action: action });
+    var discoverFlow = TanDraftDiscoverFlow.create(Object.assign(
+      ISOLATED_SYNC
+        ? {fetchImpl: window.fetch.bind(window), restoreImpl: TanDraftExplicitServerRestore.restore, normalizeKey: function(k){ return k; }}
+        : {storage: localStorage, locks: navigator.locks, normalizeKey: _normalizeKey},
+      {
+      onAdvance: advanceDiscover,
+      onRestore: function(last) {
+        if (discoverRenderTimer) {
+          clearTimeout(discoverRenderTimer);
+          discoverRenderTimer = null;
+        }
+        discoverAnimating = false;
+        deck.unshift(last.card);
+        if (typeof discoverSourceOrder !== 'undefined') discoverSourceOrder.unshift(last.card);
+        saveDeckOrder();
+        if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
+        renderCard();
+        setDiscoverBusy(discoverBusy);
+      },
+      onError: failDiscover
+    }));
+    if (ISOLATED_SYNC) {
+      // Mirrors detail/nearby/home's existing online/pageshow reconnect
+      // pattern (draft_staging_page.js). Without this, a write-outcome-
+      // unknown swipe leaves discoverFlow permanently locked -- swipe()/
+      // undo() both short-circuit to {status:"unknown_commit"} forever,
+      // so the "please tap again" message in failDiscover() would keep
+      // failing the same way with no way out short of a full page reload.
+      // recover() itself only clears the lock once a fresh read proves the
+      // revision has actually moved past the uncertain write's own base
+      // revision (see draft_discover_flow.js), so this never blindly
+      // assumes success.
+      var discoverRecoverPending = null;
+      var recoverDiscoverWhenAvailable = function(event) {
+        if (!discoverFlow.isUncertain() || discoverRecoverPending ||
+            (event.type === 'pageshow' && !event.persisted)) return;
+        discoverRecoverPending = discoverFlow.recover().then(function(result) {
+          if (result.status === 'recovered') clearDiscoverError();
+        }).finally(function() { discoverRecoverPending = null; });
+      };
+      window.addEventListener('online', recoverDiscoverWhenAvailable);
+      window.addEventListener('pageshow', recoverDiscoverWhenAvailable);
     }
-
-    function undo() {
-      if (actionHistory.length === 0) return;
-      var last = actionHistory.pop();
-      var key = _normalizeKey(last.card.stable_key);
-      if (last.action === 'like') {
-        var favs = _getFavs(); delete favs[key]; _saveFavs(favs);
-      } else if (last.action === 'visited') {
-        var visited = _getVisited(); delete visited[key]; _saveVisited(visited);
+    async function commitSwipe(action) {
+      if (discoverBusy || discoverAnimating || !currentCard) return;
+      var swipedCard = currentCard;
+      clearDiscoverError();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.swipe(swipedCard, action);
+        if (result.status === 'needs_restore_review') {
+          // The card already advanced (a tombstoned match was found); offer
+          // the explicit restore confirmation instead of silently dropping
+          // the registration or falsely claiming it was saved.
+          showRestoreReviewPrompt(swipedCard, action);
+        } else if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
+            result.status !== 'committed_ui_failed') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
       }
-      deck.unshift(last.card);
-      saveDeckOrder();
-      renderCard();
+    }
+    async function undo() {
+      if (discoverBusy) return;
+      clearDiscoverError();
+      setDiscoverBusy(true);
+      try {
+        var result = await discoverFlow.undo();
+        if (result.status !== 'written_under_cooperative_lock' && result.status !== 'skipped' &&
+            result.status !== 'nothing_to_undo') failDiscover(result);
+      } catch (e) {
+        failDiscover({status:'unexpected_error'});
+      } finally {
+        setDiscoverBusy(false);
+      }
     }
 
     document.getElementById('likeBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('like'); });
@@ -546,13 +809,152 @@
     document.getElementById('skipBtn').addEventListener('click', function(){ if (currentCard) commitSwipe('skip'); });
     document.getElementById('undoBtn').addEventListener('click', undo);
     document.getElementById('restartBtn').addEventListener('click', function() {
-      deck = ALL_CARDS.slice();
-      actionHistory = [];
+      if (discoverBusy || discoverAnimating) return;
+      if (discoverFlow.clearHistory().status !== 'cleared') return;
+      clearDiscoverError();
+      var restartMode = typeof discoverMode === 'string' ? discoverMode : 'browse';
+      var restarted = TanDraftDiscoverSelection.select({
+        cards: ALL_CARDS,
+        bookmarks: {favs:_getFavs(),visited:_getVisited()},
+        normalizeKey:_normalizeKey,
+        mode:restartMode
+      });
+      if (restarted.status !== 'ready') return;
+      deck = restarted.cards;
+      // Restart resets the remaining-card pool, not just the visible subset.
+      // Otherwise switching back from unbookmarked would lose wanted cards.
+      if (typeof discoverSourceOrder !== 'undefined') {
+        var resetSource = TanDraftDiscoverSelection.select({
+          cards:ALL_CARDS,
+          bookmarks:{favs:_getFavs(),visited:_getVisited()},
+          normalizeKey:_normalizeKey,
+          mode:'browse'
+        });
+        if (resetSource.status === 'ready') discoverSourceOrder = resetSource.cards;
+      }
       saveDeckOrder();
+      if (typeof saveDiscoverSourceOrder === 'function') saveDiscoverSourceOrder();
       renderCard();
+      reconcileWithServerBookmarks(restartMode);
     });
 
+    // DRAFT ONLY: mode switching is a deliberate fresh browse session.
+    // Do not switch during writes or animation; clear stale undo history.
+    var DISCOVER_MODE_KEY = 'taiwan_art_discover_mode';
+    var discoverMode = 'browse';
+    try {
+      var restoredMode = sessionStorage.getItem(DISCOVER_MODE_KEY);
+      if (restoredMode === 'unbookmarked') discoverMode = restoredMode;
+    } catch (e) {}
+    // Keep only cards still in this browsing session. Previously swiped
+    // cards must not reappear merely because the user changes the filter.
+    var discoverSourceOrder = deck.slice();
+    // Mode filtering must not permanently discard cards hidden by a filter.
+    // Keep a separate remaining-card order in this tab, distinct from the
+    // currently visible deck. A swipe removes a card from both.
+    try {
+      var storedSourceOrder = JSON.parse(sessionStorage.getItem(SOURCE_ORDER_KEY) || 'null');
+      if (Array.isArray(storedSourceOrder)) {
+        var cardsByKey = {};
+        ALL_CARDS.forEach(function(card) { cardsByKey[_normalizeKey(card.stable_key)] = card; });
+        discoverSourceOrder = storedSourceOrder.map(function(key) { return cardsByKey[key]; })
+          .filter(Boolean);
+      }
+    } catch (e) {}
+    function saveDiscoverSourceOrder() {
+      try {
+        sessionStorage.setItem(SOURCE_ORDER_KEY, JSON.stringify(discoverSourceOrder.map(function(card) {
+          return _normalizeKey(card.stable_key);
+        })));
+      } catch (e) {}
+    }
+    saveDiscoverSourceOrder();
+    var discoverModePicker = TanDraftDiscoverModePicker.mount({
+      container: document.getElementById('discoverModePicker'),
+      document: document,
+      lang: LANG,
+      mode: discoverMode,
+      onChange: function(nextMode) {
+        if (discoverBusy || discoverAnimating) return false;
+        var result = TanDraftDiscoverSelection.select({
+          cards: discoverSourceOrder,
+          bookmarks: {favs:_getFavs(),visited:_getVisited()},
+          normalizeKey:_normalizeKey,
+          mode:nextMode
+        });
+        if (result.status !== 'ready') return false;
+        if (discoverFlow.clearHistory().status !== 'cleared') return false;
+        clearDiscoverError();
+        discoverMode = nextMode;
+        try { sessionStorage.setItem(DISCOVER_MODE_KEY, discoverMode); } catch (e) {}
+        deck = result.cards;
+        saveDeckOrder();
+        renderCard();
+        reconcileWithServerBookmarks(nextMode);
+        return true;
+      }
+    });
+    // Restore the selected view after navigating away and back. Preserve
+    // session deck order while applying the active bookmark filter.
+    if (discoverMode !== 'browse') {
+      var restoredSelection = TanDraftDiscoverSelection.select({
+        cards:discoverSourceOrder,
+        bookmarks:{favs:_getFavs(),visited:_getVisited()},
+        normalizeKey:_normalizeKey,
+        mode:discoverMode
+      });
+      if (restoredSelection.status === 'ready') {
+        deck = restoredSelection.cards;
+        saveDeckOrder();
+      }
+    }
     renderCard();
+    reconcileWithServerBookmarks(discoverMode);
+
+    if (ISOLATED_SYNC) {
+      // Same one-time, whole-browser migration as Home/Detail/Nearby (see
+      // DECISIONS.md 2026-11-27) -- whichever isolated-sync screen the user
+      // happens to load first performs it for all of their legacy data.
+      // Reuses the existing reconcileWithServerBookmarks(mode) as the
+      // "refresh" step after a successful migration, rather than inventing
+      // a new refresh path: it already does a fresh authenticated read and
+      // narrows deck/discoverSourceOrder down when a card is now
+      // favorited/visited server-side, which is exactly what should happen
+      // to a card that migration just silently added.
+      var legacyMigration = null;
+      window.addEventListener('pagehide', function(event) {
+        if (!event.persisted && legacyMigration) legacyMigration.dispose();
+      });
+      var LEGACY_MIGRATION_KEY = 'taiwan_art_legacy_server_migration_v1';
+      if (localStorage.getItem(LEGACY_MIGRATION_KEY) !== '1') {
+        legacyMigration = TanDraftLegacyMigrationBootstrap.create({
+          fetchImpl: window.fetch.bind(window), storage: localStorage,
+          restoreImpl: TanDraftExplicitServerRestore.restore
+        });
+        legacyMigration.run(LANG).then(function(result) {
+          if (result.status !== 'ready') return;
+          localStorage.setItem(LEGACY_MIGRATION_KEY, '1');
+          if (result.submitted > 0) reconcileWithServerBookmarks(discoverMode);
+          if (result.review && result.review.items && result.review.items.length) {
+            // Created on demand, matching this page's own convention
+            // (discoverError/conflictCheck below are also created via
+            // document.createElement rather than static markup) -- unlike
+            // Home/Detail/Nearby, Discover has no static #syncNotice either.
+            var reviewContainer = document.createElement('div');
+            reviewContainer.id = 'legacyMigrationReview';
+            document.body.insertBefore(reviewContainer, document.body.firstChild);
+            TanDraftSimpleReviewUI.mount({
+              container: reviewContainer, doc: document, review: result.review,
+              onDecision: function(decision) {
+                legacyMigration.resolveReviewItem(decision).then(function(outcome) {
+                  if (outcome.committed) reconcileWithServerBookmarks(discoverMode);
+                });
+              }
+            });
+          }
+        });
+      }
+    }
 
     var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
     if (!localStorage.getItem(TUTORIAL_KEY)) {

@@ -61,9 +61,17 @@ self.addEventListener('notificationclick', (event) => {
   );
 });
 
+// Only workers with the private network-only rule can acknowledge this check.
+self.addEventListener('message', (event) => {
+  if (event.data === 'tan-private-network-only-v1') {
+    event.ports[0]?.postMessage('tan-private-network-only-v1');
+  }
+});
+
 // フェッチ: ネットワーク優先、失敗時キャッシュ
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+  if (event.request.method !== 'GET' ||
+      new URL(event.request.url).pathname.startsWith('/api/private-subscribers/')) return;
 
   event.respondWith(
     fetch(event.request)

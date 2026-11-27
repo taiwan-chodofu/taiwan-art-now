@@ -1,3 +1,4 @@
+{% set isolated_sync = config.get("TAN_ISOLATED_HOME_SYNC", false) %}
 <!DOCTYPE html>
 <html lang="{{ current_lang }}">
 <head>
@@ -1133,12 +1134,23 @@
             {% endif %}
             {# curator hidden from list view - shown in detail page only #}
             <div class="ex-actions">
+              {% if isolated_sync %}
+              <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}"
+                data-metadata='{{ {"title":ex.title,"museum":museum.name,"dates":ex.dates,"url":ex.detail_url,"region":region.id}|tojson }}'>
+                <span class="act-icon">○</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
+              </span>
+              <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}"
+                data-metadata='{{ {"title":ex.title,"museum":museum.name,"dates":ex.dates,"url":ex.detail_url,"region":region.id,"event":(ex.next_event.title if ex.next_event else "")}|tojson }}'>
+                <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
+              </span>
+              {% else %}
               <span class="ex-action-btn" data-action="visited" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">○</span> <span class="act-label">{% if current_lang == 'zh' %}已看{% elif current_lang == 'ja' %}観た{% else %}Seen{% endif %}</span>
               </span>
               <span class="ex-action-btn" data-action="fav" data-key="{{ ex.stable_key }}" onclick="toggleAction(event, this)">
                 <span class="act-icon">♡</span> <span class="act-label">{% if current_lang == 'zh' %}想去{% elif current_lang == 'ja' %}行きたい{% else %}Save{% endif %}</span>
               </span>
+              {% endif %}
             </div>
             {% if ex.next_notice %}
             <div class="ex-notice">
@@ -1344,6 +1356,10 @@
     if (e.target === this) this.style.display = 'none';
   });
 
+  var ISOLATED_SYNC = {{ isolated_sync | tojson }};
+  // Populated by the isolated-sync script block near the end of this file
+  // (window._tanHomeMylist*) once its modules have loaded. Left undefined
+  // in legacy mode, where ISOLATED_SYNC guards every reference to it.
   var _mylistTab = 'wantgo';
   var _archiveCache = null;
   function toggleMylistHeader(e) {
@@ -1364,9 +1380,28 @@
   }
 
   function renderMylist() {
+    if (ISOLATED_SYNC) {
+      TanDraftAuthenticatedState.read({fetchImpl: window.fetch.bind(window)}).then(function(result) {
+        var favs = {}, visited = {};
+        if (result.status === 'ready') {
+          window._tanHomeMylistRevision = result.state.revision;
+          Object.keys(result.state.favs).forEach(function(k) {
+            if (!result.state.favs[k].deleted) favs[k] = result.state.favs[k].value;
+          });
+          Object.keys(result.state.visited).forEach(function(k) {
+            if (!result.state.visited[k].deleted) visited[k] = result.state.visited[k].value;
+          });
+        }
+        window._tanHomeMylistFavs = favs;
+        _renderMylistWith(favs, visited);
+      });
+      return;
+    }
+    _renderMylistWith(_getFavs(), _getVisited());
+  }
+
+  function _renderMylistWith(favs, visited) {
     var content = document.getElementById('favsContent');
-    var favs = _getFavs();
-    var visited = _getVisited();
 
     var tabs = '<div style="display:flex;gap:0;margin-bottom:12px;border-bottom:1px solid var(--border);">';
     tabs += '<button onclick="_mylistTab=\'wantgo\';renderMylist()" style="flex:1;padding:8px 4px;border:none;background:none;font-size:0.75rem;cursor:pointer;border-bottom:2px solid ' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'transparent') + ';color:' + (_mylistTab === 'wantgo' ? 'var(--red)' : 'var(--text-sub)') + ';">♡ {% if current_lang == "zh" %}想去{% elif current_lang == "ja" %}行きたい{% else %}Want to go{% endif %}</button>';
@@ -1482,6 +1517,18 @@
   }
 
   function markVisitedFromMylist(key) {
+    if (ISOLATED_SYNC) {
+      var f = (window._tanHomeMylistFavs || {})[key] || {};
+      var value = { date: new Date().toISOString(), title: f.title || '', museum: f.museum || '', dates: f.dates || '', url: f.url || '', region: f.region || '' };
+      window._tanHomeMylistAction.act({kind: 'visited', key: key, action: 'set', value: value,
+        expectedRevision: window._tanHomeMylistRevision || 0}).then(function(result) {
+        if (result.committed) {
+          renderMylist();
+          if (window._tanHomeMainPage) window._tanHomeMainPage.refresh();
+        }
+      });
+      return;
+    }
     var visited = _getVisited();
     var favs = _getFavs();
     var f = favs[key] || {};
@@ -1493,6 +1540,16 @@
   }
 
   function removeFromMylist(key, type) {
+    if (ISOLATED_SYNC) {
+      window._tanHomeMylistAction.act({kind: type === 'fav' ? 'favs' : 'visited', key: key, action: 'remove',
+        expectedRevision: window._tanHomeMylistRevision || 0}).then(function(result) {
+        if (result.committed) {
+          renderMylist();
+          if (window._tanHomeMainPage) window._tanHomeMainPage.refresh();
+        }
+      });
+      return;
+    }
     if (type === 'fav') {
       var favs = _getFavs(); delete favs[key];
       localStorage.setItem('taiwan_art_favs', JSON.stringify(favs));
@@ -1889,9 +1946,16 @@
     var MIGRATED_KEY = 'taiwan_art_keys_migrated_v1';
     if (localStorage.getItem(MIGRATED_KEY)) return;
     var nameToId = {{ museum_name_to_id_json | safe }};
+    // Returns true only if this store's data is now fully consistent
+    // (nothing left to migrate, or migration completed without error).
+    // The caller must not mark the whole migration complete unless every
+    // store it ran returns true, or a thrown error on one store would
+    // silently and permanently skip that store's migration on every future
+    // load (docs/security/FOUR_PAGE_WRITER_MIGRATION_MATRIX_DRAFT.md: "Never
+    // ... mark migration complete after partial failure").
     function migrateStore(storeName) {
       var raw = localStorage.getItem(storeName);
-      if (!raw) return;
+      if (!raw) return true;
       try {
         var data = JSON.parse(raw);
         var newData = {};
@@ -1915,18 +1979,28 @@
           });
           if (mid) {
             var newKey = (mid + '__' + titlePart).replace(/[^a-zA-Z0-9一-鿿㐀-䶿]/g, '_');
-            newData[newKey] = data[oldKey];
-            changed = true;
+            // Never silently drop a colliding entry: if two different old
+            // keys resolve to the same new key (e.g. two historical name
+            // spellings for the same museum, same title), only the first
+            // one processed takes the new key; the rest keep their original
+            // old key so no saved item is overwritten or lost.
+            if (Object.prototype.hasOwnProperty.call(newData, newKey) && newKey !== oldKey) {
+              newData[oldKey] = data[oldKey];
+            } else {
+              newData[newKey] = data[oldKey];
+              changed = true;
+            }
           } else {
             newData[oldKey] = data[oldKey];
           }
         });
         if (changed) localStorage.setItem(storeName, JSON.stringify(newData));
-      } catch(e) {}
+        return true;
+      } catch(e) { return false; }
     }
-    migrateStore('taiwan_art_favs');
-    migrateStore('taiwan_art_visited');
-    localStorage.setItem(MIGRATED_KEY, '1');
+    var favsOk = migrateStore('taiwan_art_favs');
+    var visitedOk = migrateStore('taiwan_art_visited');
+    if (favsOk && visitedOk) localStorage.setItem(MIGRATED_KEY, '1');
   })();
 
   // Init actions on page load
@@ -2528,6 +2602,7 @@
     <a class="more-sheet-item" href="/artists?lang={{ current_lang }}">👥 Artists</a>
     <a class="more-sheet-item" href="/archive?lang={{ current_lang }}">📚 Archive</a>
     <a class="more-sheet-item" href="/search?lang={{ current_lang }}">🔍 {% if current_lang == 'zh' %}搜尋{% elif current_lang == 'ja' %}検索{% else %}Search{% endif %}</a>
+    <a class="more-sheet-item" href="/connect-devices?lang={{ current_lang }}">🔗 {% if current_lang == 'zh' %}連結裝置{% elif current_lang == 'ja' %}端末を連携{% else %}Connect devices{% endif %}</a>
     <div class="more-sheet-lang-row">
       <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
       <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
@@ -2572,5 +2647,128 @@
     if (btn) btn.setAttribute('aria-expanded', 'false');
   }
   </script>
+  {% if isolated_sync %}
+  <p id="syncNotice" role="status" aria-live="polite"></p>
+  <div id="legacyMigrationReview"></div>
+  {% for script in ["versioned_sync","authenticated_state","authenticated_writer","legacy_snapshot","legacy_candidate_policy","migration_review","simple_review_ui","legacy_migration_bootstrap","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
+  <script src="/static/js/draft_{{ script }}.js"></script>
+  {% endfor %}
+  <script>
+  (function(){
+    // Nested inside .ex-item (an <a>): without this, clicking a button here
+    // would also navigate to the exhibition detail page. preventDefault()
+    // alone is correct and sufficient -- stopPropagation() here would also
+    // skip the staging bridge's own click listener added below (both are
+    // registered on this same element; per the DOM dispatch algorithm,
+    // stopPropagation() skips every listener on the current node that has
+    // not yet run, not only listeners on other nodes).
+    document.querySelectorAll('.ex-action-btn').forEach(function(el){
+      el.addEventListener('click', function(event){ event.preventDefault(); }, {capture:true});
+    });
+    const items=Array.from(document.querySelectorAll('span.ex-action-btn')).map(element=>{
+      const metadata=JSON.parse(element.dataset.metadata);
+      return {element,key:element.dataset.key,kind:element.dataset.action==='fav'?'favs':'visited',
+        // visited mirrors markVisitedFromMylist's own richer object shape
+        // (date+title+museum+dates+url+region), not a bare ISO string, so
+        // the mylist "visited" tab can read title/museum straight from it
+        // without falling back to stale favs data.
+        value:element.dataset.action==='fav'?metadata:Object.assign({date:new Date().toISOString()},metadata)};
+    });
+    if(!items.length)return;
+    const zh={{ (current_lang == 'zh')|tojson }};
+    const page=TanDraftStagingPage.create({
+      autoRefresh:true,
+      win:window,fetchImpl:window.fetch.bind(window),notice:document.getElementById('syncNotice'),
+      lang:{{ current_lang|tojson }},items,restoreImpl:TanDraftExplicitServerRestore.restore,
+      onAnalytics:function(payload){
+        if(typeof gtag==='function')gtag('event',payload.event,{exhibition_key:payload.key});
+        if(payload.event==='add_to_favorites'&&typeof _promptMessengerOnce==='function')_promptMessengerOnce('fav');
+        if(payload.event==='mark_visited'&&typeof _promptMessengerOnce==='function')_promptMessengerOnce('visited');
+        if(typeof _maybeWarnInAppSave==='function')_maybeWarnInAppSave();
+      },
+      onState:function(state){
+        for(const item of items){
+          const entry=state[item.kind][item.key],active=!!entry&&!entry.deleted;
+          const icon=item.element.querySelector('.act-icon');
+          if(item.kind==='visited'){icon.textContent=active?'✓':'○';item.element.classList.toggle('active-visited',active);}
+          else{icon.textContent=active?'♥':'♡';item.element.classList.toggle('active-fav',active);}
+          const card=item.element.closest('.ex-item');
+          if(card&&item.kind==='visited')card.classList.toggle('visited-item',active);
+        }
+        for(const card of document.querySelectorAll('.ex-item[data-fav-key]')){
+          const key=card.getAttribute('data-fav-key');
+          const visited=!!state.visited[key]&&!state.visited[key].deleted;
+          const fav=!!state.favs[key]&&!state.favs[key].deleted;
+          card.classList.toggle('favorited-item',fav&&!visited);
+        }
+        // Bottom-nav mylist badge, matching _renderActions()'s own logic --
+        // tombstoned favs entries must not count toward the visible total.
+        const mylistIcon=document.getElementById('mylistNavIcon');
+        if(mylistIcon){
+          const favCount=Object.values(state.favs).filter(entry=>entry&&!entry.deleted).length;
+          let badge=mylistIcon.querySelector('.bn-badge');
+          if(favCount>0){
+            if(!badge){badge=document.createElement('span');badge.className='bn-badge';mylistIcon.appendChild(badge);}
+            badge.textContent=favCount>99?'99+':String(favCount);
+          }else if(badge)badge.remove();
+        }
+      }
+    });
+    page.start();
+    window._tanHomeMainPage=page;
+    window._tanHomeMylistAction=TanDraftServerPageAction.create({
+      fetchImpl:window.fetch.bind(window),
+      onAnalytics:function(payload){
+        if(typeof gtag==='function')gtag('event',payload.event,{exhibition_key:payload.key,source:'mylist'});
+      },
+      onFailure:function(){
+        const notice=document.getElementById('syncNotice');
+        if(notice){notice.hidden=false;notice.textContent={{ ('無法儲存，請稍後再試。' if current_lang == 'zh' else ('保存できませんでした。しばらくしてからもう一度お試しください。' if current_lang == 'ja' else 'Could not save. Please try again later.'))|tojson }};}
+      }
+    });
+    var legacyMigration=null;
+    window.addEventListener('pagehide',event=>{if(!event.persisted){
+      page.dispose();window._tanHomeMylistAction.dispose();
+      if(legacyMigration)legacyMigration.dispose();
+    }});
+    // One-time (per browser, not per page load) push of any pre-existing
+    // legacy localStorage favorites/visited into the server. Deliberately
+    // independent of the main page/mylist writers above: both are ordinary
+    // CAS writers against the same server state, so if a real button click
+    // races this batch, whichever loses simply gets a normal stale-revision
+    // failure already handled by that writer's own existing UI -- no new
+    // coordination needed. See DECISIONS.md 2026-11-27 for why this exists:
+    // without it, an existing user's local data would silently vanish from
+    // view the moment this screen's isolated-sync flag is enabled.
+    var LEGACY_MIGRATION_KEY='taiwan_art_legacy_server_migration_v1';
+    if(localStorage.getItem(LEGACY_MIGRATION_KEY)!=='1'){
+      legacyMigration=TanDraftLegacyMigrationBootstrap.create({
+        fetchImpl:window.fetch.bind(window),storage:localStorage,
+        restoreImpl:TanDraftExplicitServerRestore.restore});
+      legacyMigration.run({{ current_lang|tojson }}).then(function(result){
+        if(result.status!=='ready')return; // partial/invalid/unavailable: retry next load, nothing lost
+        localStorage.setItem(LEGACY_MIGRATION_KEY,'1');
+        if(result.submitted>0){
+          if(window._tanHomeMainPage)window._tanHomeMainPage.refresh();
+          renderMylist();
+        }
+        if(result.review&&result.review.items&&result.review.items.length){
+          TanDraftSimpleReviewUI.mount({
+            container:document.getElementById('legacyMigrationReview'),doc:document,review:result.review,
+            onDecision:function(decision){
+              legacyMigration.resolveReviewItem(decision).then(function(outcome){
+                if(outcome.committed){
+                  if(window._tanHomeMainPage)window._tanHomeMainPage.refresh();
+                  renderMylist();
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  })();
+  </script>
+  {% endif %}
 </body>
 </html>

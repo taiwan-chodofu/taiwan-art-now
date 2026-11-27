@@ -1,0 +1,342 @@
+name: Private subscriber safety tests
+
+on:
+  pull_request:
+    paths:
+      - 'static/sw.js'
+      - 'tests/fixtures/serve_disposable_sync.py'
+      - 'tests/disposable_sync_browser.spec.cjs'
+      - 'private_subscriber_store.py'
+      - 'private_inbox.py'
+      - 'private_inbox_admin.py'
+      - 'subscriber_mutations.py'
+      - 'webhook_security.py'
+      - 'app.py'
+      - 'scripts/import_private_subscribers.py'
+      - 'tests/test_private_*.py'
+      - 'tests/test_subscriber_mutations.py'
+      - 'tests/test_webhook_security.py'
+      - 'tests/test_webhook_wiring.py'
+      - 'tests/test_flask_webhook_http.py'
+      - 'scripts/check_private_destination.py'
+      - 'tests/test_private_destination_preflight.py'
+      - 'scripts/verify_exhibition_state_backup.py'
+      - 'tests/test_disposable_postgres_backup_restore.py'
+      - 'tests/test_exhibition_state_backup.py'
+      - 'scripts/rehearse_private_backup_restore.py'
+      - 'tests/test_private_backup_restore_rehearsal.py'
+      - 'scripts/verify_private_backup.py'
+      - 'tests/test_private_backup_verification.py'
+      - 'scripts/check_source_freeze.py'
+      - 'tests/test_source_freeze.py'
+      - 'scripts/audit_subscriber_ownership.py'
+      - 'tests/test_subscriber_ownership_audit.py'
+      - 'messenger_link_challenge.py'
+      - 'tests/test_messenger_link_challenge.py'
+      - 'messenger_link_store.py'
+      - 'tests/test_messenger_link_store.py'
+      - 'scripts/drill_messenger_link_concurrency.py'
+      - 'tests/test_staging_drill_guard.py'
+      - 'browser_session.py'
+      - 'tests/test_browser_session.py'
+      - 'browser_session_store.py'
+      - 'tests/test_browser_session_store.py'
+      - 'browser_cookie_security.py'
+      - 'tests/test_browser_cookie_security.py'
+      - 'messenger_session_exchange.py'
+      - 'tests/test_messenger_session_exchange.py'
+      - 'messenger_browser_claim.py'
+      - 'tests/test_messenger_browser_claim.py'
+      - 'private_browser_claim_routes.py'
+      - 'tests/test_private_browser_claim_http.py'
+      - 'subscriber_ownership.py'
+      - 'tests/test_subscriber_ownership.py'
+      - 'private_claim_rate_limit.py'
+      - 'tests/test_private_claim_rate_limit.py'
+      - 'private_claim_limiter_adapter.py'
+      - 'tests/test_private_claim_limiter_adapter.py'
+      - 'scripts/drill_claim_rate_limit_concurrency.py'
+      - 'tests/test_claim_rate_limit_staging_guard.py'
+      - 'private_subscriber_route_guard.py'
+      - 'tests/test_private_subscriber_route_guard_http.py'
+      - 'private_messenger_operations.py'
+      - 'tests/test_private_messenger_operations.py'
+      - 'private_messenger_api_routes.py'
+      - 'tests/test_private_messenger_api_http.py'
+      - 'scripts/audit_frontend_subscriber_calls.py'
+      - 'tests/test_frontend_subscriber_audit.py'
+      - 'subscriber_reconciliation.py'
+      - 'tests/test_subscriber_reconciliation.py'
+      - 'versioned_subscriber_sync.py'
+      - 'tests/test_versioned_subscriber_sync.py'
+      - 'static/js/draft_coordinated_local_removal.js'
+      - 'tests/test_draft_coordinated_local_removal.cjs'
+      - 'static/js/draft_guarded_local_removal.js'
+      - 'tests/test_draft_guarded_local_removal.cjs'
+      - 'static/js/draft_review_click_bridge.js'
+      - 'tests/test_draft_review_click_bridge.cjs tests/test_draft_review_status_check.cjs'
+      - 'static/js/draft_explicit_keep.js'
+      - 'tests/test_draft_explicit_keep.cjs'
+      - 'subscriber_review_api_routes.py'
+      - 'tests/test_subscriber_review_api_http.py'
+      - 'subscriber_review_confirmation.py'
+      - 'tests/test_subscriber_review_confirmation.py'
+      - 'docs/security/SUBSCRIBER_REVIEW_CONFIRMATION_SCHEMA_DRAFT.sql'
+      - 'reviewed_subscriber_intent.py'
+      - 'tests/test_reviewed_subscriber_intent.py'
+      - 'versioned_subscriber_store.py'
+      - 'tests/test_versioned_subscriber_store.py'
+      - 'tests/test_disposable_postgres_cas.py'
+      - 'isolated_versioned_staging_app.py'
+      - 'tests/test_isolated_versioned_staging_app.py'
+      - 'versioned_subscriber_api_routes.py'
+      - 'tests/test_versioned_subscriber_api_http.py'
+      - 'static/js/draft_versioned_sync.js'
+      - 'tests/test_draft_versioned_sync.cjs'
+      - 'static/js/draft_discover_flow.js'
+      - 'tests/test_draft_discover_flow.cjs'
+      - 'tests/test_draft_detail_staging_bridge.cjs'
+      - 'static/js/draft_server_button_bridge.js'
+      - 'tests/draft_server_real_detail_browser.spec.cjs'
+      - 'tests/draft_server_button_browser.spec.cjs'
+      - 'tests/test_draft_server_button_bridge.cjs'
+      - 'static/js/draft_server_page_action.js'
+      - 'tests/test_draft_server_page_action.cjs'
+      - 'static/js/draft_explicit_server_restore.js'
+      - 'tests/test_draft_explicit_server_restore.cjs'
+      - 'static/js/draft_authenticated_writer.js'
+      - 'tests/test_draft_authenticated_writer.cjs'
+      - 'static/js/draft_authenticated_guarded_restore.js'
+      - 'tests/test_draft_stale_tab_recovery_roundtrip.cjs'
+      - 'tests/test_draft_authenticated_guarded_restore.cjs'
+      - 'static/js/draft_authenticated_recovery_review.js'
+      - 'tests/test_draft_authenticated_recovery_review.cjs'
+      - 'static/js/draft_detail_staging_bridge.js'
+      - 'static/js/draft_detail_failure_copy.js'
+      - 'static/js/draft_detail_action_adapter.js'
+      - 'tests/draft_detail_actual_template.spec.cjs'
+      - 'static/js/draft_page_controller.js'
+      - 'tests/test_draft_page_controller.cjs'
+      - 'tests/test_draft_detail_action_adapter.cjs'
+      - 'static/js/draft_page_action.js'
+      - 'tests/test_draft_page_action.cjs'
+      - 'static/js/draft_action_commit.js'
+      - 'tests/test_draft_action_commit.cjs'
+      - 'tests/test_draft_page_flow.cjs'
+      - 'tests/draft_browser_e2e.spec.cjs'
+      - 'tests/draft_save_outcome_browser.spec.cjs'
+      - 'tests/draft_browser_fixture.html'
+      - 'static/js/draft_loss_detector.js'
+      - 'tests/test_draft_loss_detector.cjs'
+      - 'static/js/draft_checkpoint.js'
+      - 'tests/test_draft_checkpoint.cjs'
+      - 'static/js/draft_server_recovery.js'
+      - 'tests/test_draft_server_recovery.cjs'
+      - 'static/js/draft_recovery_review_ui.js'
+      - 'static/js/draft_recovery_verifier.js'
+      - 'tests/test_draft_recovery_verifier.cjs'
+      - 'static/js/draft_guarded_recovery.js'
+      - 'tests/test_draft_guarded_recovery.cjs'
+      - 'static/js/draft_authenticated_state.js'
+      - 'tests/test_draft_authenticated_state.cjs'
+      - 'static/js/draft_exhibition_current_state.js'
+      - 'tests/test_draft_exhibition_current_state.cjs'
+      - 'static/js/draft_exhibition_state_view.js'
+      - 'tests/test_draft_exhibition_state_view.cjs'
+      - 'static/js/draft_exhibition_filters.js'
+      - 'tests/test_draft_exhibition_filters.cjs'
+      - 'static/js/draft_collection_view_model.js'
+      - 'tests/test_draft_collection_view_model.cjs'
+      - 'static/js/draft_discover_selection.js'
+      - 'tests/test_draft_discover_selection.cjs'
+      - 'static/js/draft_discover_mode_picker.js'
+      - 'tests/test_draft_discover_mode_picker.cjs'
+      - 'static/js/draft_discover_mode_session.js'
+      - 'tests/test_draft_discover_mode_session.cjs'
+      - 'static/js/draft_additive_retry.js'
+      - 'tests/test_draft_additive_retry.cjs'
+      - 'static/js/draft_save_outcome_copy.js'
+      - 'tests/test_draft_save_outcome_copy.cjs'
+      - 'static/js/draft_save_outcome_notice.js'
+      - 'tests/test_draft_save_outcome_notice.cjs'
+      - 'static/js/draft_post_save_verify.js'
+      - 'tests/test_draft_post_save_verify.cjs'
+      - 'static/js/draft_save_review_flow.js'
+      - 'tests/test_draft_save_review_flow.cjs'
+      - 'static/js/draft_save_next_action.js'
+      - 'tests/test_draft_save_next_action.cjs'
+      - 'scripts/audit_legacy_exhibition_writers.py'
+      - 'templates/index.html'
+      - 'templates/discover.html'
+      - 'templates/nearby.html'
+      - 'templates/exhibition_detail_page.html'
+      - 'static/js/draft_cutover_preflight.js'
+      - 'tests/test_draft_cutover_preflight.cjs'
+      - 'static/js/draft_legacy_writer.js'
+      - 'tests/test_draft_legacy_writer.cjs'
+      - 'tests/test_draft_legacy_real_shapes.cjs'
+      - 'docs/security/LEGACY_EXHIBITION_WRITER_INVENTORY.md'
+      - 'static/js/draft_legacy_snapshot.js'
+      - 'tests/test_draft_legacy_snapshot.cjs'
+      - 'static/js/draft_migration_review.js'
+      - 'static/js/draft_simple_review_ui.js'
+      - 'tests/test_draft_migration_review.cjs'
+      - 'tests/draft_migration_review_explain.test.cjs'
+      - 'static/js/draft_conflict_review_ui.js'
+      - 'tests/test_draft_conflict_review_ui.cjs'
+      - 'static/js/draft_decision_verifier.js'
+      - 'tests/test_draft_decision_verifier.cjs'
+      - 'static/js/draft_additive_merge.js'
+      - 'tests/test_draft_additive_merge.cjs'
+      - 'tests/test_versioned_subscriber_schema_draft.py'
+      - 'docs/security/VERSIONED_SUBSCRIBER_SCHEMA_DRAFT.sql'
+      - 'docs/security/FRONTEND_SUBSCRIBER_CUTOVER.md'
+      - 'docs/security/CLAIM_RATE_LIMIT_SCHEMA_DRAFT.sql'
+      - 'docs/security/BROWSER_SESSION_SCHEMA_DRAFT.sql'
+      - 'docs/security/STAGING_DRILL_GUARD_DRAFT.sql'
+      - 'docs/security/MESSENGER_LINK_SCHEMA_DRAFT.sql'
+      - '.github/workflows/private-subscriber-tests.yml'
+  push:
+    branches:
+      - 'feat/private-subscriber-storage-adapter-83'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned Flask and psycopg for isolated tests
+        run: python -m pip install flask==3.1.0 'psycopg[binary]==3.2.6'
+      - name: Audit all four legacy exhibition writer surfaces
+        run: python scripts/audit_legacy_exhibition_writers.py
+      - name: Compile security modules
+        run: python -m py_compile private_subscriber_store.py private_inbox.py private_inbox_admin.py subscriber_mutations.py webhook_security.py scripts/import_private_subscribers.py
+      - name: Run synthetic-only unit tests
+        run: python -m unittest discover -s tests -p 'test_private_*.py' -v && python -m unittest discover -s tests -p 'test_subscriber_mutations.py' -v && python -m unittest discover -s tests -p 'test_webhook_security.py' -v && python -m unittest discover -s tests -p 'test_webhook_wiring.py' -v && python -m unittest discover -s tests -p 'test_flask_webhook_http.py' -v && python -m unittest discover -s tests -p 'test_private_destination_preflight.py' -v && python -m unittest discover -s tests -p 'test_private_backup_verification.py' -v && python -m unittest discover -s tests -p 'test_exhibition_state_backup.py' -v && python -m unittest discover -s tests -p 'test_versioned_subscriber_schema_draft.py' -v && python -m unittest discover -s tests -p 'test_source_freeze.py' -v && python -m unittest discover -s tests -p 'test_subscriber_ownership_audit.py' -v && python -m unittest discover -s tests -p 'test_messenger_link_challenge.py' -v && python -m unittest discover -s tests -p 'test_messenger_link_store.py' -v && python -m unittest discover -s tests -p 'test_staging_drill_guard.py' -v && python -m unittest discover -s tests -p 'test_browser_session.py' -v && python -m unittest discover -s tests -p 'test_browser_session_store.py' -v && python -m unittest discover -s tests -p 'test_browser_cookie_security.py' -v && python -m unittest discover -s tests -p 'test_messenger_session_exchange.py' -v && python -m unittest discover -s tests -p 'test_messenger_browser_claim.py' -v && python -m unittest discover -s tests -p 'test_private_browser_claim_http.py' -v && python -m unittest discover -s tests -p 'test_subscriber_ownership.py' -v && python -m unittest discover -s tests -p 'test_private_claim_rate_limit.py' -v && python -m unittest discover -s tests -p 'test_private_claim_limiter_adapter.py' -v && python -m unittest discover -s tests -p 'test_claim_rate_limit_staging_guard.py' -v && python -m unittest discover -s tests -p 'test_private_subscriber_route_guard_http.py' -v && python -m unittest discover -s tests -p 'test_private_messenger_operations.py' -v && python -m unittest discover -s tests -p 'test_private_messenger_api_http.py' -v && python -m unittest discover -s tests -p 'test_frontend_subscriber_audit.py' -v && python -m unittest discover -s tests -p 'test_subscriber_reconciliation.py' -v && python -m unittest discover -s tests -p 'test_versioned_subscriber_sync.py' -v && python -m unittest discover -s tests -p 'test_versioned_subscriber_store.py' -v && python -m unittest discover -s tests -p 'test_versioned_subscriber_api_http.py' -v && python -m unittest discover -s tests -p 'test_isolated_versioned_staging_app.py' -v && python -m unittest discover -s tests -p 'test_reviewed_subscriber_intent.py' -v && python -m unittest discover -s tests -p 'test_subscriber_review_confirmation.py' -v && python -m unittest discover -s tests -p 'test_subscriber_review_api_http.py' -v && python scripts/audit_frontend_subscriber_calls.py --report-only && python scripts/audit_subscriber_ownership.py --report-only
+
+  disposable-postgres-cas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: tan_ci
+          POSTGRES_PASSWORD: synthetic_only_ci
+          POSTGRES_DB: tan_ci_disposable
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U tan_ci -d tan_ci_disposable"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      TAN_CI_DISPOSABLE_POSTGRES: '1'
+      TAN_CI_DATABASE_URL: postgresql://tan_ci:synthetic_only_ci@127.0.0.1:5432/tan_ci_disposable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned Flask and psycopg
+        run: python -m pip install flask==3.1.0 'psycopg[binary]==3.2.6'
+      - name: Run concurrent synthetic writes on disposable local PostgreSQL
+        run: python -m unittest discover -s tests -p 'test_disposable_postgres_cas.py' -v && python -m unittest discover -s tests -p 'test_disposable_postgres_backup_restore.py' -v
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exercise two authenticated browser sessions against Flask and PostgreSQL
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock @playwright/test@1.58.2
+          npx playwright install --with-deps chromium
+          tls_dir=$(mktemp -d)
+          trap 'rm -rf "$tls_dir"' EXIT
+          openssl req -x509 -newkey rsa:2048 -nodes -days 1 -subj /CN=127.0.0.1 -keyout "$tls_dir/key" -out "$tls_dir/cert" 2>/dev/null
+          sudo env PYTHONPATH="$PWD" "$(command -v python)" tests/fixtures/serve_disposable_sync.py "$tls_dir/cert" "$tls_dir/key" &
+          for attempt in {1..30}; do
+            if curl -fksS https://127.0.0.1/exhibition -o /dev/null 2>/dev/null; then break; fi
+            sleep 1
+          done
+          npx playwright test tests/disposable_sync_browser.spec.cjs --browser chromium --workers 1 --reporter=line
+      - name: Restore the disposable private schema into a separate empty database
+        env:
+          PG_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          set -euo pipefail
+          umask 077
+          drill_dir=$(mktemp -d)
+          trap 'rm -rf "$drill_dir"' EXIT
+          pg() { docker exec -i "$PG_CONTAINER" "$@"; }
+          pg pg_dump -U tan_ci -d tan_ci_disposable -n tan_private -Fc > "$drill_dir/private.dump"
+          pg createdb -U tan_ci tan_ci_restore
+          start=$SECONDS
+          pg pg_restore --exit-on-error --single-transaction -U tan_ci -d tan_ci_restore < "$drill_dir/private.dump"
+          tables=$(pg psql -XAt -v ON_ERROR_STOP=1 -U tan_ci -d tan_ci_disposable -c "SELECT tablename FROM pg_tables WHERE schemaname='tan_private' ORDER BY tablename")
+          test -n "$tables"
+          for table in $tables; do
+            [[ "$table" =~ ^[a-z_]+$ ]]
+            for database in tan_ci_disposable tan_ci_restore; do
+              pg psql -XAt -v ON_ERROR_STOP=1 -U tan_ci -d "$database" \
+                -c "SELECT to_jsonb(t)::text FROM tan_private.$table t ORDER BY to_jsonb(t)::text COLLATE \"C\"" > "$drill_dir/$database.rows"
+            done
+            cmp -s "$drill_dir/tan_ci_disposable.rows" "$drill_dir/tan_ci_restore.rows"
+          done
+          echo "Separate-database restore and per-table comparison completed in $((SECONDS-start)) seconds."
+
+  browser-sync-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run synthetic browser sync tests (Node built-in runner)
+        run: node --test tests/test_draft_legacy_candidate_policy.cjs tests/test_draft_versioned_sync.cjs tests/test_draft_legacy_snapshot.cjs tests/test_draft_migration_review.cjs tests/draft_migration_review_explain.test.cjs tests/test_draft_conflict_review_ui.cjs tests/test_draft_decision_verifier.cjs tests/test_draft_additive_merge.cjs tests/test_draft_explicit_keep.cjs tests/test_draft_review_click_bridge.cjs tests/test_draft_guarded_local_removal.cjs tests/test_draft_coordinated_local_removal.cjs tests/test_draft_legacy_real_shapes.cjs tests/test_draft_legacy_writer.cjs tests/test_draft_action_commit.cjs tests/test_draft_page_flow.cjs tests/test_draft_loss_detector.cjs tests/test_draft_checkpoint.cjs tests/test_draft_server_recovery.cjs tests/test_draft_recovery_verifier.cjs tests/test_draft_guarded_recovery.cjs tests/test_draft_authenticated_state.cjs tests/test_draft_exhibition_current_state.cjs tests/test_draft_exhibition_state_view.cjs tests/test_draft_exhibition_filters.cjs tests/test_draft_collection_view_model.cjs tests/test_draft_discover_selection.cjs tests/test_draft_discover_mode_picker.cjs tests/test_draft_discover_mode_session.cjs tests/test_draft_additive_retry.cjs tests/test_draft_save_outcome_copy.cjs tests/test_draft_save_outcome_notice.cjs tests/test_draft_post_save_verify.cjs tests/test_draft_save_review_flow.cjs tests/test_draft_save_next_action.cjs tests/test_draft_cutover_preflight.cjs tests/test_draft_page_action.cjs tests/test_draft_page_controller.cjs tests/test_draft_detail_action_adapter.cjs tests/test_draft_detail_staging_bridge.cjs tests/test_draft_authenticated_recovery_review.cjs tests/test_draft_authenticated_guarded_restore.cjs tests/test_draft_authenticated_writer.cjs tests/test_draft_explicit_server_restore.cjs tests/test_draft_server_page_action.cjs tests/test_draft_server_button_bridge.cjs tests/test_draft_stale_tab_recovery_roundtrip.cjs tests/test_draft_discover_flow.cjs tests/test_home_migrate_store.cjs tests/test_draft_legacy_migration_bootstrap.cjs
+
+  draft-real-browser-e2e:
+    # Playwright 1.58 Chromium does not support the ubuntu26.04 image used by ubuntu-latest.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated Playwright runner and Chromium
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Run real Chromium tests against local synthetic origin
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/tan-draft-http.log 2>&1 &
+          npx playwright test tests/draft_isolated_entrypoint_browser.spec.cjs tests/draft_server_real_detail_browser.spec.cjs tests/draft_server_button_browser.spec.cjs --browser chromium --workers 1 --reporter=line
+
+  draft-legacy-browser-e2e:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install isolated Playwright runner and Chromium
+        run: |
+          npm install --no-save --no-package-lock @playwright/test@1.58.2
+          npx playwright install --with-deps chromium
+      - name: Run legacy compatibility Chromium tests
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 >/tmp/tan-draft-http.log 2>&1 &
+          npx playwright test tests/draft_browser_e2e.spec.cjs tests/draft_discover_additional_browser.spec.cjs tests/draft_discover_actual_template.spec.cjs tests/draft_detail_actual_template.spec.cjs tests/draft_save_outcome_browser.spec.cjs --browser chromium --workers 1 --reporter=line
