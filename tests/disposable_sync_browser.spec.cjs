@@ -264,6 +264,35 @@ test('Discover server flow preserves existing seen across database-backed save a
  }finally{await context.close();}
 });
 
+test('Discover silently migrates a pre-existing legacy favorite into the server on first load',async({browser})=>{
+ // Last of the four screens to get the migration wiring (DECISIONS.md
+ // 2026-11-27). Unlike the other three, there is no page.refresh() to call
+ // afterward -- reconcileWithServerBookmarks(discoverMode) is reused
+ // instead, so this test only checks the server-side result directly
+ // rather than a visible deck change (discoverMode's filtering semantics
+ // are orthogonal to what this wiring itself needs to prove).
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-discover-migration-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_ga_exclude','1');
+   localStorage.setItem('taiwan_art_discover_tutorial_seen','1');
+   localStorage.setItem('taiwan_art_favs',JSON.stringify({'discover-a':{title:'Legacy Title',museum:'Legacy Museum'}}));
+  });
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-discover');
+  await expect(page.locator('.card h2')).toHaveText(/Synthetic Discover/);
+  await expect.poll(async()=>{
+   const result=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+   return result.favs['discover-a'] && result.favs['discover-a'].deleted;
+  }).toBe(false);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['discover-a'].value.title).toBe('Legacy Title');
+ }finally{await context.close();}
+});
+
 test('actual Discover template swipes and undoes through the authenticated writer, not legacy storage',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{

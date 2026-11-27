@@ -40,35 +40,35 @@ designed to be inert/fail-closed until the two pending approvals below land:
   applied. Confirmed by reading the route handlers directly (both wrap the DB
   call in `try/except Exception`).
 
-## Top-priority finding (added same day): existing users' data would vanish from view on cutover
+## Top-priority finding (added same day, closed same day): existing users' data would have vanished from view on cutover
 
-Found while working the cross-screen/offline bucket, and more urgent than
-anything else in this document: `draft_migration_review.js` /
+Found while working the cross-screen/offline bucket: `draft_migration_review.js` /
 `draft_legacy_candidate_policy.js` / `draft_simple_review_ui.js` (the logic
 that reconciles a user's existing legacy localStorage favorites/visited
-against the server) has never been required by any of the four real
-templates — confirmed by grep, zero matches. Every isolated-sync screen's
-`onState` renders purely from server state, never from localStorage. **This
-means flipping any `TAN_ISOLATED_*_SYNC` flag today would make every
-existing user's current favorites/visited data disappear from their own
-view the instant they load that screen.** The data itself is not deleted —
-it stays untouched in `localStorage` — but nothing pushes it to the server
-and nothing reads it for display once isolated mode is on, so from the
-user's perspective it is simply gone. This is now being actively addressed:
-a submission orchestrator (`static/js/draft_legacy_migration_bootstrap.js`)
-tying together the three existing pieces was built and unit-tested
-(10 Node tests) as increment 1, then wired into **Home, Detail, and Nearby**
-as increments 2–3 (real Playwright E2E against disposable Postgres on all
-three: a pre-existing legacy favorite silently appears with zero clicks on
-each screen; Home's own test additionally confirms a server-tombstoned item
-correctly surfaces the Japanese restore prompt instead of being silently
-dropped or resurrected — the same review-UI code path is identical on all
-screens, so it was not re-tested per-screen). **Discover remains unwired** —
-its architecture differs (deck/filter state intentionally still reads legacy
-localStorage directly, no generic `page.refresh()` to reuse) and needs its
-own increment rather than the other three screens' shared boilerplate. This
-is still the single highest-priority remaining code gap in this PR, ahead of
-the cross-screen/offline items below, until Discover has it too.
+against the server) had never been required by any of the four real
+templates — confirmed by grep, zero matches at the time. Every
+isolated-sync screen's `onState` renders purely from server state, never
+from localStorage, so flipping any `TAN_ISOLATED_*_SYNC` flag would have
+made every existing user's current favorites/visited data disappear from
+their own view the instant they loaded that screen. **This is now fully
+closed**: a submission orchestrator (`static/js/draft_legacy_migration_bootstrap.js`,
+10 Node unit tests) was built as increment 1, then wired into **all four
+real templates** — Home and Detail/Nearby (increments 2–3, reusing each
+screen's `page.refresh()`) and finally Discover (increment 4, reusing its
+existing `reconcileWithServerBookmarks(mode)` instead, since Discover has
+no `TanDraftStagingPage`/`page.refresh()` to share). Each screen has its own
+real Playwright E2E test against disposable Postgres proving a pre-existing
+legacy favorite silently appears with zero clicks; Home's test additionally
+proves the one case requiring human review (a server-tombstoned item)
+surfaces the Japanese restore prompt correctly rather than being silently
+dropped or resurrected — that code path is identical on every screen, so it
+was deliberately not re-tested per screen. CI caught one real regression
+along the way (a pre-existing Detail test's own legacy-storage fixture data
+got silently migrated once Detail was wired, breaking its write-count
+assertion) — fixed by opting that one test out via the same one-time guard,
+not by changing migration behavior. All code-level work on this finding is
+done; what's `## Production actions` below remains the only path to this
+actually mattering in production.
 
 ## Done and CI-verified (code level, isolated-sync fixture only)
 
@@ -89,7 +89,7 @@ the cross-screen/offline items below, until Discover has it too.
 | Legacy-to-server migration submission orchestrator (logic only, unit-tested) | Done |
 | Legacy-to-server migration wired into Home (silent add + explicit review, real E2E) | Done |
 | Legacy-to-server migration wired into Detail and Nearby (same pattern, real E2E) | Done |
-| Legacy-to-server migration wired into Discover | **Not done — see top-priority finding above** |
+| Legacy-to-server migration wired into Discover (final screen, reuses `reconcileWithServerBookmarks`) | Done |
 
 All of the above pass in CI (`synthetic-unit-tests`, `disposable-postgres-cas`,
 `browser-sync-tests`, `draft-real-browser-e2e`, `draft-legacy-browser-e2e`) as

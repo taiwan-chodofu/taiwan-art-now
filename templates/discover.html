@@ -267,6 +267,10 @@
   <script src="/static/js/draft_versioned_sync.js"></script>
   <script src="/static/js/draft_authenticated_state.js"></script>
   <script src="/static/js/draft_authenticated_writer.js"></script>
+  <script src="/static/js/draft_legacy_candidate_policy.js"></script>
+  <script src="/static/js/draft_migration_review.js"></script>
+  <script src="/static/js/draft_simple_review_ui.js"></script>
+  <script src="/static/js/draft_legacy_migration_bootstrap.js"></script>
   <script src="/static/js/draft_explicit_keep.js"></script>
   <script src="/static/js/draft_explicit_server_restore.js"></script>
   {% endif %}
@@ -906,6 +910,51 @@
     }
     renderCard();
     reconcileWithServerBookmarks(discoverMode);
+
+    if (ISOLATED_SYNC) {
+      // Same one-time, whole-browser migration as Home/Detail/Nearby (see
+      // DECISIONS.md 2026-11-27) -- whichever isolated-sync screen the user
+      // happens to load first performs it for all of their legacy data.
+      // Reuses the existing reconcileWithServerBookmarks(mode) as the
+      // "refresh" step after a successful migration, rather than inventing
+      // a new refresh path: it already does a fresh authenticated read and
+      // narrows deck/discoverSourceOrder down when a card is now
+      // favorited/visited server-side, which is exactly what should happen
+      // to a card that migration just silently added.
+      var legacyMigration = null;
+      window.addEventListener('pagehide', function(event) {
+        if (!event.persisted && legacyMigration) legacyMigration.dispose();
+      });
+      var LEGACY_MIGRATION_KEY = 'taiwan_art_legacy_server_migration_v1';
+      if (localStorage.getItem(LEGACY_MIGRATION_KEY) !== '1') {
+        legacyMigration = TanDraftLegacyMigrationBootstrap.create({
+          fetchImpl: window.fetch.bind(window), storage: localStorage,
+          restoreImpl: TanDraftExplicitServerRestore.restore
+        });
+        legacyMigration.run({{ current_lang|tojson }}).then(function(result) {
+          if (result.status !== 'ready') return;
+          localStorage.setItem(LEGACY_MIGRATION_KEY, '1');
+          if (result.submitted > 0) reconcileWithServerBookmarks(discoverMode);
+          if (result.review && result.review.items && result.review.items.length) {
+            // Created on demand, matching this page's own convention
+            // (discoverError/conflictCheck below are also created via
+            // document.createElement rather than static markup) -- unlike
+            // Home/Detail/Nearby, Discover has no static #syncNotice either.
+            var reviewContainer = document.createElement('div');
+            reviewContainer.id = 'legacyMigrationReview';
+            document.body.insertBefore(reviewContainer, document.body.firstChild);
+            TanDraftSimpleReviewUI.mount({
+              container: reviewContainer, doc: document, review: result.review,
+              onDecision: function(decision) {
+                legacyMigration.resolveReviewItem(decision).then(function(outcome) {
+                  if (outcome.committed) reconcileWithServerBookmarks(discoverMode);
+                });
+              }
+            });
+          }
+        });
+      }
+    }
 
     var TUTORIAL_KEY = 'taiwan_art_discover_tutorial_seen';
     if (!localStorage.getItem(TUTORIAL_KEY)) {
