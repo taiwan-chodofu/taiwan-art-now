@@ -76,7 +76,7 @@
       Artists
       <small>{{ labels.subtitle }}</small>
     </div>
-    <nav class="header-nav">
+    <nav class="header-nav"><a href="/essays" style="display:inline-flex;align-items:center;min-height:44px;white-space:nowrap">{% if current_lang == 'ja' %}記事{% elif current_lang == 'en' %}Essays{% else %}文章{% endif %}</a>
       <a href="/artists?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>En</a>
       <a href="/artists?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日</a>
       <a href="/artists?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中</a>
