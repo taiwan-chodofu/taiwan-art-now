@@ -1,2 +1,31 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f3ed;color:#171717;font-family:"Noto Sans TC","PingFang TC",sans-serif}a{color:inherit;text-underline-offset:.25em}button,input{font:inherit;color:inherit}button,a{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid #171717;outline-offset:4px}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:white;z-index:5}.masthead{max-width:1100px;margin:auto;padding:22px 24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-bottom:1px solid #bcbab3}.brand{font-weight:700;letter-spacing:.08em;text-decoration:none}.masthead nav{display:flex;gap:20px;flex-wrap:wrap}.masthead nav a{text-decoration:none}main{max-width:728px;margin:auto;padding:0 24px}.cover{padding:48px 0 36px;border-bottom:1px solid #aaa}.folio{font-size:12px;letter-spacing:.15em}.square{display:block;background:#171717;width:clamp(90px,24vw,180px);aspect-ratio:1;margin:24px 0 24px auto}h1{font-family:"Noto Serif TC","Songti TC",serif;font-size:clamp(36px,7vw,68px);line-height:1.3;font-weight:600;margin:20px 0}.subtitle{font-size:18px}.prose{font-family:"Noto Serif TC","Songti TC",serif;font-size:20px;line-height:1.95;padding:24px 0}.prose p{margin:0 0 1.55em;white-space:pre-line;overflow-wrap:anywhere}.section{border-top:1px solid #aaa;padding:32px 0;line-height:1.8}.section h2{font-size:22px;font-weight:600;margin:0 0 20px}.preserve{white-space:pre-line}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.actions a,.actions button{background:transparent;border:1px solid #777;padding:10px 14px;text-decoration:none;cursor:pointer;min-height:44px}.actions button[hidden]{display:none}input{width:100%;padding:10px;border:1px solid #aaa;background:transparent}details{border-bottom:1px solid #bbb;padding:14px 0}summary{cursor:pointer;min-height:44px}li{margin-bottom:12px;overflow-wrap:anywhere}.explore a{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #bbb;text-decoration:none}.essay-card{display:block;padding:24px 0;text-decoration:none}footer{max-width:728px;margin:auto;padding:24px;border-top:1px solid #aaa}progress{position:fixed;top:0;left:0;width:100%;height:3px;appearance:none;border:0;background:transparent;z-index:4}progress::-webkit-progress-bar{background:transparent}progress::-webkit-progress-value{background:#171717}progress::-moz-progress-bar{background:#171717}@media(max-width:600px){.prose{font-size:18px}.masthead{padding:18px 24px}.cover{padding-top:30px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .editorial-footer .footer-brand,.editorial-footer .footer-url{display:block;width:fit-content;max-width:100%;margin-inline:auto}.editorial-footer .footer-brand{font-size:1rem;font-weight:600}.editorial-footer .footer-url{font-size:.75rem;font-weight:400;margin-top:.4rem;overflow-wrap:anywhere}
+
+/* Mobile editorial typography and accessible touch targets. */
+.prose p{overflow-wrap:break-word;word-break:normal;line-break:strict}
+.section p,.section li,.section summary{overflow-wrap:break-word;line-break:strict}
+.section summary{padding:10px 0;line-height:1.6}
+.section li a{display:inline-block;padding:5px 0}
+.editorial-note{font-size:.875rem;color:#595750}
+#share-url{font-size:16px;min-height:44px}
+.cover>a{display:inline-flex;align-items:center;min-height:44px}
+.explore a{min-height:48px;align-items:center;gap:16px}
+.editorial-footer a{min-height:44px;display:flex;align-items:center;justify-content:center}
+@media(max-width:600px){
+ main{padding-inline:clamp(18px,5.5vw,24px)}
+ .masthead{display:block;padding:16px clamp(18px,5.5vw,24px)}
+ .masthead nav{margin-top:8px;gap:20px;align-items:center}
+ .masthead nav a{display:inline-flex;align-items:center;min-height:44px;font-size:15px}
+ .cover{padding:24px 0 28px}
+ .cover .square{width:clamp(90px,28vw,128px);margin-block:16px}
+ h1{font-size:clamp(32px,9vw,44px);line-height:1.35;line-break:strict}
+ .subtitle{font-size:17px;line-height:1.7}
+ .prose{font-size:18px;line-height:1.95;padding-top:28px}
+ .prose p{margin-bottom:1.45em}
+ .section{padding-block:28px;font-size:16px}
+ .section h2{font-size:20px;line-height:1.5}
+ .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .actions a,.actions button{display:flex;align-items:center;justify-content:center;min-height:48px;text-align:center}
+ .section ul{padding-inline-start:1.25em}
+ .editorial-footer{padding-inline:18px}
+}
