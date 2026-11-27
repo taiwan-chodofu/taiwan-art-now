@@ -213,7 +213,7 @@
       <div class="progress" id="progressLabel"></div>
       <div class="lang-dropdown">
         <button class="lang-btn" id="langBtn" onclick="document.getElementById('langMenu').classList.toggle('show')">🌐</button>
-        <div class="lang-menu" id="langMenu">
+        <div class="lang-menu" id="langMenu"><a href="/essays" style="display:inline-flex;align-items:center;min-height:44px;white-space:nowrap">{% if current_lang == 'ja' %}記事{% elif current_lang == 'en' %}Essays{% else %}文章{% endif %}</a>
           <a href="?lang=zh" {% if current_lang == 'zh' %}class="active"{% endif %}>中文</a>
           <a href="?lang=ja" {% if current_lang == 'ja' %}class="active"{% endif %}>日本語</a>
           <a href="?lang=en" {% if current_lang == 'en' %}class="active"{% endif %}>English</a>
