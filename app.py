@@ -2450,6 +2450,8 @@ def sitemap_xml():
         {"loc": f"{SITE_URL}/taishin", "changefreq": "monthly", "priority": "0.5"},
         {"loc": f"{SITE_URL}/featured", "changefreq": "weekly", "priority": "0.6"},
         {"loc": f"{SITE_URL}/archive", "changefreq": "weekly", "priority": "0.4"},
+        {"loc": f"{SITE_URL}/essays", "changefreq": "weekly", "priority": "0.6"},
+        {"loc": f"{SITE_URL}/essays/001", "changefreq": "monthly", "priority": "0.6"},
     ]
 
     exhibitions = fetch_all_exhibitions()
