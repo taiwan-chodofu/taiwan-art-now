@@ -32,3 +32,7 @@ Establish a durable handoff between ChatGPT and Claude Code for Taiwan Art Now, 
 ## Source of truth
 Repository: https://github.com/taiwan-chodofu/taiwan-art-now
 This file records shared work only; private AI conversation history is not automatically synced.
+
+
+## 2026-11-27 — Editorial issue #88 (ChatGPT)
+Branch `feat/editorial-essays-88`. Added full editorial/001.txt, templates/essay.html, static/essay.css, static/essay.js and two isolated routes in app.py. Static manuscript section/reference counts checked; no runtime or browser tests executed. Next: test routes, exact text and links, verify exhibition record and official dates, integrate navigation, OG/sitemap/GA4 and existing saved-list flow safely. No deployment or merge. Existing security work remains independent.
