@@ -2664,5 +2664,22 @@ def editorial_og_001():
     return send_file(buf, mimetype="image/png", max_age=86400)
 
 
+@app.route("/essays/001/exhibition")
+def editorial_exhibition_001():
+    from flask import redirect
+    from scraper import fetch_all_exhibitions
+    matches = []
+    index = 0
+    for ex in fetch_all_exhibitions():
+        if ex.get("museum") != "fotoaura":
+            continue
+        if ex.get("link") == "https://www.facebook.com/events/1464742292528914/":
+            matches.append(index)
+        index += 1
+    if len(matches) == 1:
+        return redirect(f"/exhibition/fotoaura/{matches[0]}?lang=zh", code=302)
+    return redirect("/search?q=100%E6%AD%B2&lang=zh", code=302)
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
