@@ -1,5 +1,11 @@
 # Taiwan Art Now: isolated staging integration and exit criteria
 
+**Superseded status snapshot — see `ROLLOUT_READINESS_2026-11-27.md` for the current state.**
+The acceptance-evidence table below is frozen at head `b408a5e`; several rows
+(Discover + detail integration, in particular) say "NOT RUN" for work that is
+now done and CI-green. The process description (steps 1–8) is still accurate
+decision-gate guidance and is not superseded, only this file's status claims.
+
 **Draft only. No production changes, no real subscriber data, no merge or deploy authorization.**
 
 ## Verified in CI (head b408a5e)
