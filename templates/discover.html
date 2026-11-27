@@ -931,7 +931,7 @@
           fetchImpl: window.fetch.bind(window), storage: localStorage,
           restoreImpl: TanDraftExplicitServerRestore.restore
         });
-        legacyMigration.run({{ current_lang|tojson }}).then(function(result) {
+        legacyMigration.run(LANG).then(function(result) {
           if (result.status !== 'ready') return;
           localStorage.setItem(LEGACY_MIGRATION_KEY, '1');
           if (result.submitted > 0) reconcileWithServerBookmarks(discoverMode);

@@ -283,11 +283,17 @@ test('Discover silently migrates a pre-existing legacy favorite into the server 
   const page=await context.newPage();
   await page.goto('https://127.0.0.1/actual-discover');
   await expect(page.locator('.card h2')).toHaveText(/Synthetic Discover/);
+  // The server-side write and the client-side one-time guard are two
+  // separate effects of the same run() promise, settling at different
+  // points -- a fresh read against the server can observe the committed
+  // write before run()'s own remaining internal work (one more GET plus
+  // building the review report) finishes and sets the flag. Poll both,
+  // not just the first.
   await expect.poll(async()=>{
    const result=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
    return result.favs['discover-a'] && result.favs['discover-a'].deleted;
   }).toBe(false);
-  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
+  await expect.poll(()=>page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
   const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
   expect(state.favs['discover-a'].value.title).toBe('Legacy Title');
  }finally{await context.close();}
