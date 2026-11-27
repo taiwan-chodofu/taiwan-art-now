@@ -10,3 +10,7 @@ Tradeoffs: Agents must explicitly update and commit handoff notes; no automatic 
 Status: Proposed; not an implementation authorization.
 Decision: Prioritize subscriber security and preview access, followed by archive/CI data integrity, then stable exhibition IDs and link migration, before extensive UI redesign.
 Rationale: Protect user data and continuity before structural UI changes.
+
+
+## 2026-11-27 — Editorial content (#88)
+Status: draft. Store approved manuscript independently of UI; preserve all paragraphs and 18 references. Use isolated routes and styles; no artwork photos or changes to subscriber storage. Canonical URL excludes tracking parameters. Related exhibition linkage requires verified record and stable URL; do not guess indexes.

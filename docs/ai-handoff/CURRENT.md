@@ -32,3 +32,17 @@ Establish a durable handoff between ChatGPT and Claude Code for Taiwan Art Now, 
 ## Source of truth
 Repository: https://github.com/taiwan-chodofu/taiwan-art-now
 This file records shared work only; private AI conversation history is not automatically synced.
+
+
+## 2026-11-27 — Editorial issue #88 (ChatGPT)
+Branch `feat/editorial-essays-88`. Added full editorial/001.txt, templates/essay.html, static/essay.css, static/essay.js and two isolated routes in app.py. Static manuscript section/reference counts checked; no runtime or browser tests executed. Next: test routes, exact text and links, verify exhibition record and official dates, integrate navigation, OG/sitemap/GA4 and existing saved-list flow safely. No deployment or merge. Existing security work remains independent.
+
+Follow-up: added home More menu entry, existing mylist deep link, exhibition title search fallback, sitemap and OG locale/site metadata, GA4 editorial events respecting existing exclusion. No direct exhibition ID assumed. Browser/runtime tests, OG image and official source verification remain pending. Draft PR #89.
+
+Follow-up: added 1200x630 PNG OG route using confirmed bundled TC fonts; linked metadata; confirmed existing fotoaura record and dates in manual_exhibitions.json (official Facebook not independently checked). Related route resolves unique source URL dynamically, falls back to search. Added tests/test_editorial.py (not executed). Next run python -m unittest discover -s tests -p test_editorial.py, browser checks, source verification. No merge/deploy.
+
+CI update: runs 46009799654 and 46009788447 passed all four Flask tests and JS syntax check. Added Playwright iPhone 13 WebKit and desktop Chromium checks with screenshots; runs 46009939727 and 46010010806 pending at time of handoff. Publication date label 2026.11.28 is provisional. Before merge, review latest CI and screenshots, verify sources and obtain explicit publication approval. No deployment.
+
+Mobile refinement: stacked footer brand/URL, strict CJK line breaks, 18px body, adaptive margins, 48px share targets, two-column mobile share layout. CI runs 46011873918 and 46011863629 passed existing iPhone/desktop browser tests. Expanded checks to 320/375/430px plus iPhone and desktop, footer geometry, font size and touch target; new results pending. No manuscript edits or deployment.
+
+Editorial navigation added to index, artist and exhibition detail, Discover, search, artists and archive. Search uses exact keyword matches; Discover link is in language menu and needs UX review. CI 46014486601 passed expanded mobile tests after navigation changes. Added template compilation and multilingual card tests in 0175e85; runs 46015252881/46015241953 pending. Existing feature interaction regression and visual/source review remain incomplete. No merge/deploy authorized.

@@ -68,7 +68,7 @@
 <body>
   <header class="site-header">
     <div class="site-title">Search</div>
-    <nav class="header-nav">
+    <nav class="header-nav"><a href="/essays" style="display:inline-flex;align-items:center;min-height:44px;white-space:nowrap">{% if current_lang == 'ja' %}記事{% elif current_lang == 'en' %}Essays{% else %}文章{% endif %}</a>
       <a href="/?lang={{ current_lang }}">← {{ labels.back }}</a>
     </nav>
   </header>
@@ -79,6 +79,10 @@
       <input type="text" name="q" class="search-input" value="{{ query }}"
              placeholder="{{ labels.placeholder }}" autofocus>
     </form>
+{% if query and query|trim and query|trim|lower in ['既是一，又不只是一','投票','身體','選舉','賴志盛','蘇育賢','白雙全','良知暁','gregor schneider','lai chih-sheng','so yo-hen','su yu-hsien','pak sheung chuen','akira rachi','公園','100歲','你哥影視社'] %}
+<div class="section-label">{% if current_lang == 'ja' %}関連記事{% elif current_lang == 'en' %}Related essay{% else %}相關文章{% endif %}</div>
+{% include 'editorial_card.html' %}
+{% endif %}
 
     {% if not query %}
     <div class="empty-msg">{{ labels.type_to_search }}</div>

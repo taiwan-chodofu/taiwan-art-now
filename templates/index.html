@@ -1037,6 +1037,7 @@
   </style>
 
   <main>
+{% include 'editorial_card.html' %}
     <div class="empty-state" id="emptyState">No results matching filters</div>
 
     {% for region in regions %}
@@ -2525,6 +2526,7 @@
     <div class="more-sheet-handle"></div>
     <a class="more-sheet-item" href="/taishin?lang={{ current_lang }}">🏆 Taishin Award</a>
     <a class="more-sheet-item" href="/featured?lang={{ current_lang }}">⭐ Featured</a>
+    <a class="more-sheet-item" href="/essays">{% if current_lang == 'zh' %}文章{% elif current_lang == 'ja' %}批評・エッセイ{% else %}Essays{% endif %}</a>
     <a class="more-sheet-item" href="/artists?lang={{ current_lang }}">👥 Artists</a>
     <a class="more-sheet-item" href="/archive?lang={{ current_lang }}">📚 Archive</a>
     <a class="more-sheet-item" href="/search?lang={{ current_lang }}">🔍 {% if current_lang == 'zh' %}搜尋{% elif current_lang == 'ja' %}検索{% else %}Search{% endif %}</a>

@@ -59,7 +59,7 @@
       Archive
       <small>{{ labels.subtitle }}</small>
     </div>
-    <nav class="header-nav">
+    <nav class="header-nav"><a href="/essays" style="display:inline-flex;align-items:center;min-height:44px;white-space:nowrap">{% if current_lang == 'ja' %}記事{% elif current_lang == 'en' %}Essays{% else %}文章{% endif %}</a>
       <a href="/?lang={{ current_lang }}">← {{ labels.back }}</a>
     </nav>
   </header>

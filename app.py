@@ -2450,6 +2450,8 @@ def sitemap_xml():
         {"loc": f"{SITE_URL}/taishin", "changefreq": "monthly", "priority": "0.5"},
         {"loc": f"{SITE_URL}/featured", "changefreq": "weekly", "priority": "0.6"},
         {"loc": f"{SITE_URL}/archive", "changefreq": "weekly", "priority": "0.4"},
+        {"loc": f"{SITE_URL}/essays", "changefreq": "weekly", "priority": "0.6"},
+        {"loc": f"{SITE_URL}/essays/001", "changefreq": "monthly", "priority": "0.6"},
     ]
 
     exhibitions = fetch_all_exhibitions()
@@ -2604,6 +2606,79 @@ def submit_request():
             pass
 
     return json.dumps({"ok": True}), 200
+
+
+@app.route("/essays")
+def editorial_index():
+    return render_template("essay.html", title="文章", description="Taiwan Art Now 藝術評論", canonical="https://taiwan-art-now.onrender.com/essays", paragraphs=[])
+
+
+@app.route("/essays/001")
+def editorial_001():
+    from pathlib import Path
+    from urllib.parse import urlencode
+    manuscript = (Path(__file__).resolve().parent / "editorial" / "001.txt").read_text(encoding="utf-8").strip()
+    body, appendix, sources, footer = manuscript.split("\n\n⸻\n\n")
+    title, *paragraphs = body.split("\n\n")
+    appendix_heading, *appendix_paragraphs = appendix.split("\n\n")
+    source_heading, intro, *blocks = sources.split("\n\n")
+    groups = []
+    for block in blocks:
+        if re.match(r"^0[1-5]｜", block):
+            groups.append({"title": block, "items": []})
+        else:
+            label, url = block.rsplit("\n", 1)
+            groups[-1]["items"].append({"label": label, "url": url})
+    canonical = "https://taiwan-art-now.onrender.com/essays/001"
+    return render_template(
+        "essay.html", title=title, description="關於投票與身體的複數性",
+        canonical=canonical, paragraphs=paragraphs, appendix=appendix_paragraphs,
+        reference_intro=intro, references=groups,
+        line_url="https://social-plugins.line.me/lineit/share?" + urlencode({"url": canonical}),
+        facebook_url="https://www.facebook.com/sharer/sharer.php?" + urlencode({"u": canonical}),
+    )
+
+
+@app.route("/og-image/essays/001")
+def editorial_og_001():
+    from PIL import Image, ImageDraw, ImageFont
+    from io import BytesIO
+    from pathlib import Path
+    from flask import send_file
+    fonts = Path(app.root_path) / "static" / "fonts"
+    bold = fonts / "NotoSansTC-Bold.otf"
+    regular = fonts / "NotoSansTC-Regular.otf"
+    img = Image.new("RGB", (1200, 630), "#f5f3ed")
+    draw = ImageDraw.Draw(img)
+    draw.text((64, 52), "TAIWAN ART NOW / ESSAY 001", font=ImageFont.truetype(str(bold), 25), fill="#171717")
+    draw.line((64, 108, 1136, 108), fill="#aaa69e", width=1)
+    draw.rectangle((860, 145, 1135, 420), fill="#171717")
+    draw.text((64, 220), "既是一，", font=ImageFont.truetype(str(bold), 78), fill="#171717")
+    draw.text((64, 320), "又不只是一", font=ImageFont.truetype(str(bold), 78), fill="#171717")
+    draw.text((64, 455), "關於投票與身體的複數性", font=ImageFont.truetype(str(regular), 32), fill="#171717")
+    draw.line((64, 535, 1136, 535), fill="#aaa69e", width=1)
+    draw.text((64, 560), "TAIWAN ART NOW", font=ImageFont.truetype(str(regular), 23), fill="#171717")
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return send_file(buf, mimetype="image/png", max_age=86400)
+
+
+@app.route("/essays/001/exhibition")
+def editorial_exhibition_001():
+    from flask import redirect
+    from scraper import fetch_all_exhibitions
+    matches = []
+    index = 0
+    for ex in fetch_all_exhibitions():
+        if ex.get("museum") != "fotoaura":
+            continue
+        if ex.get("link") == "https://www.facebook.com/events/1464742292528914/":
+            matches.append(index)
+        index += 1
+    if len(matches) == 1:
+        return redirect(f"/exhibition/fotoaura/{matches[0]}?lang=zh", code=302)
+    return redirect("/search?q=100%E6%AD%B2&lang=zh", code=302)
 
 
 if __name__ == "__main__":

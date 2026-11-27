@@ -305,6 +305,7 @@
     </div>
 
     <h1>{{ exhibition.title }}</h1>
+{% if museum_id == 'fotoaura' and exhibition.title_zh == '100歲 One hundred years old｜賴志盛、蘇育賢' %}{% include 'editorial_card.html' %}{% endif %}
 
     <div class="meta-row">
       {% if exhibition.status == 'current' %}
