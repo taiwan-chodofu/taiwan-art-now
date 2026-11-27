@@ -49,6 +49,7 @@ designed to be inert/fail-closed until the two pending approvals below land:
 | Discover: authenticated action path, `recover()`/`dispose()`, tombstone-swipe restore UI, `createdRevisions` ownership re-check | Done |
 | Discover: template wiring (increment 1 — swipe/undo/skip actions only; deck build, filter, restart, `saveDeckOrder` still read legacy localStorage even in isolated mode, by design — see DECISIONS.md 2026-11-26) | Partial, as scoped |
 | Discover: online/pageshow reconnect wired to `recover()` (fixes a real stuck-forever bug after any lost write) | Done |
+| First genuine cross-screen test (Home + Detail, same item, one session) | Done |
 | Home: `toggleAction`, `migrateStore` collision fix, mylist-nav badge, `markVisitedFromMylist`/`removeFromMylist` | Done |
 | `stable_key` date disambiguator (closes the legacy `_normalizeKey` collision precondition for production migration) | Done |
 | Auth-bootstrap webhook trigger (`mark_meta_verified` wired into `/webhook`) | Done |
@@ -70,10 +71,18 @@ yet in this PR:
 
 1. **Cross-screen / multi-tab / multi-device conflict testing.** Two real
    tabs or devices acting on the same owner's data concurrently, including an
-   old cached/legacy tab writing after a modern tab, has only ever been
-   tested per-screen with synthetic 1–2-tab Playwright scenarios inside a
-   single CI job — never across screens in the same session, and never with
-   a genuinely stale service-worker-cached tab from before this PR existed.
+   old cached/legacy tab writing after a modern tab, was only ever tested
+   per-screen (same template in both tabs) until today: a new test opens
+   Home and Detail simultaneously against the same item (`/actual-detail`
+   now accepts `?key=` for exactly this) and confirms each picks up the
+   other's write only after its own reconnect, not before. What's still
+   genuinely untested: three or more screens/tabs in one session, real
+   multi-device (separate physical hardware, not just separate browser
+   contexts in one CI job), and a genuinely stale service-worker-cached
+   legacy tab (`isolated_sync=false`) coexisting with a modern tab — that
+   last one is fundamentally a rollout-timing scenario (the two versions can
+   only coexist during a deploy transition window) and needs either a second
+   fixture route or a real staging rehearsal, not another synthetic test.
 2. **Offline recovery.** ~~Discover/Home's own offline round-trip has not
    been separately exercised~~ — corrected same day: Home already shares
    detail/nearby's `draft_staging_page.js` reconnect bridge (`autoRefresh:true`),

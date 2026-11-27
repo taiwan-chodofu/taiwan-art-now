@@ -32,6 +32,7 @@ def serve(cert, key):
                 "browser-home-owner": ("browser-home-session",),
                 "browser-home-mylist-owner": ("browser-home-mylist-session",),
                 "browser-discover-recover-owner": ("browser-discover-recover-session",),
+                "browser-home-detail-cross-owner": ("browser-home-detail-cross-session",),
             }
             for owner, sessions in owners.items():
                 cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",
@@ -140,10 +141,15 @@ def serve(cert, key):
 
     @app.get("/actual-detail")
     def actual_detail():
+        # ?key= lets a test address the exact same server-side item as
+        # another screen's fixture route (e.g. Home's "home-a"), to exercise
+        # genuine cross-screen reconnect/conflict behavior in one session --
+        # previously only ever tested per-screen. Default preserves every
+        # existing single-screen detail test unchanged.
         return render_template("exhibition_detail_page.html",
             current_lang=request.args.get("lang", "ja"), museum_id="synthetic", idx=0,
             structured_data={}, labels={}, other_exhibitions=[],
-            exhibition={"title": "Synthetic Art", "stable_key": "actual-detail",
+            exhibition={"title": "Synthetic Art", "stable_key": request.args.get("key", "actual-detail"),
                         "dates": "2026", "days_left": None, "artists": [], "description": "Synthetic exhibition"},
             museum={"name": "Synthetic Museum", "address": "", "url": ""})
 

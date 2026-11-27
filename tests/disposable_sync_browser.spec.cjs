@@ -351,6 +351,48 @@ test('Discover recovers from a lost write reply on reconnect instead of staying 
  }finally{await context.close();}
 });
 
+test('Home and Detail stay consistent across screens for the same exhibition in one session',async({browser})=>{
+ // Every prior reconnect/conflict test exercised multiple tabs of the SAME
+ // template (two Home tabs, two Nearby tabs, etc). This is the first test
+ // where two DIFFERENT screens -- Home and Detail -- address the exact same
+ // server-side item in one session, closing the "never tested across
+ // screens" gap named in docs/security/ROLLOUT_READINESS_2026-11-27.md.
+ // /actual-detail?key=home-a (added for this test) lets Detail target
+ // Home's own fixture key instead of its usual independent synthetic key.
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-detail-cross-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const home=await context.newPage(),detail=await context.newPage();
+  await home.goto('https://127.0.0.1/actual-home');
+  await detail.goto('https://127.0.0.1/actual-detail?key=home-a');
+  await expect(detail.locator('#favBtn')).toBeEnabled();
+  const favBtnHome=home.locator('span.ex-action-btn[data-action="fav"]').first();
+  const cardHome=home.locator('.ex-item').first();
+  const mylistBadge=home.locator('#mylistNavIcon .bn-badge');
+  await expect(detail.locator('#favBtn')).not.toHaveClass(/saved/);
+  // Favorite from Home; Detail (already open, opened before this write)
+  // must pick it up on its own reconnect, not just on a fresh load.
+  await favBtnHome.click();
+  await expect(favBtnHome).toHaveClass(/active-fav/);
+  await expect(detail.locator('#favBtn')).not.toHaveClass(/saved/);
+  await detail.evaluate(()=>window.dispatchEvent(new Event('online')));
+  await expect(detail.locator('#favBtn')).toHaveClass(/saved/);
+  // Mark visited from Detail; Home must pick it up on its own reconnect.
+  await detail.locator('#visitedBtn').click();
+  await expect(detail.locator('#visitedBtn')).toHaveClass(/saved/);
+  await expect(cardHome).not.toHaveClass(/visited-item/);
+  await home.evaluate(()=>window.dispatchEvent(new Event('online')));
+  await expect(cardHome).toHaveClass(/visited-item/);
+  await expect(cardHome).not.toHaveClass(/favorited-item/); // visited takes precedence, per legacy _renderActions()
+  await expect(mylistBadge).toHaveText('1'); // the fav itself was never removed, only visited was added alongside
+  const state=await home.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['home-a']).toMatchObject({deleted:false});
+  expect(state.visited['home-a']).toMatchObject({deleted:false});
+ }finally{await context.close();}
+});
+
 test('actual Home template toggles fav/visited through the authenticated writer without navigating away',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{
