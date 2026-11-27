@@ -7,6 +7,7 @@ on:
       - 'static/essay.*'
       - 'app.py'
       - 'tests/test_editorial.py'
+      - 'tests/editorial_browser.py'
       - '.github/workflows/editorial-tests.yml'
   push:
     branches: ['feat/editorial-essays-88']
@@ -23,3 +24,17 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -p test_editorial.py -v
       - run: node --check static/essay.js
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium webkit
+      - run: |
+          python -m flask --app app run --port 5050 > /tmp/editorial-flask.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:5050/essays >/dev/null; then break; fi
+            sleep 1
+          done
+          python tests/editorial_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: editorial-screenshots
+          path: editorial-test-output/
