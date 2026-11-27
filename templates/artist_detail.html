@@ -80,7 +80,8 @@
       </div>
     {% if ex.link %}</a>{% else %}</div>{% endif %}
     {% endfor %}
-  </main>
+  {% if artist_name in ['賴志盛','蘇育賢','Lai Chih-Sheng','So Yo-hen','Su Yu-Hsien'] %}{% include 'editorial_card.html' %}{% endif %}
+</main>
 
   <footer class="site-footer">
     <span>Taiwan Art Now</span>
