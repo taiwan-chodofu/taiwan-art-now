@@ -459,6 +459,42 @@ test('Home surfaces a legacy favorite the server already deleted elsewhere for e
  }finally{await context.close();}
 });
 
+test('Detail silently migrates a pre-existing legacy favorite into the server on first load',async({browser})=>{
+ // Same wiring as Home (DECISIONS.md 2026-11-27), now on exhibition_detail_page.html.
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-detail-migration-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_favs',JSON.stringify({'actual-detail':{title:'Legacy Title',museum:'Legacy Museum'}}));
+  });
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-detail');
+  await expect(page.locator('#favBtn')).toHaveClass(/saved/);
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['actual-detail']).toMatchObject({deleted:false});
+ }finally{await context.close();}
+});
+
+test('Nearby silently migrates a pre-existing legacy favorite into the server on first load',async({browser})=>{
+ // Same wiring as Home/Detail (DECISIONS.md 2026-11-27), now on nearby.html.
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-nearby-migration-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_favs',JSON.stringify({'nearby-a':{title:'Legacy Title',museum:'Legacy Museum'}}));
+  });
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-nearby');
+  await expect(page.locator('[data-action="fav"][data-key="nearby-a"]')).toHaveAttribute('aria-pressed','true');
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['nearby-a']).toMatchObject({deleted:false});
+ }finally{await context.close();}
+});
+
 test('actual Home template toggles fav/visited through the authenticated writer without navigating away',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{
