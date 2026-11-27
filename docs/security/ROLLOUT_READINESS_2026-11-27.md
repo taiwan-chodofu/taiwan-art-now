@@ -57,9 +57,14 @@ and nothing reads it for display once isolated mode is on, so from the
 user's perspective it is simply gone. This is now being actively addressed:
 a submission orchestrator (`static/js/draft_legacy_migration_bootstrap.js`)
 tying together the three existing pieces was built and unit-tested
-(10 Node tests) as increment 1. **Not yet wired into any template** — no
-migration has run against real data yet. This is the single highest-priority
-remaining code gap in this PR, ahead of the cross-screen/offline items below.
+(10 Node tests) as increment 1, then wired into **Home only** as increment 2
+(real Playwright E2E against disposable Postgres: a pre-existing legacy
+favorite silently appears with zero clicks; a server-tombstoned item
+correctly surfaces the Japanese restore prompt instead of being silently
+dropped or resurrected). **Discover/Detail/Nearby remain unwired** — same
+orchestrator, same pattern, just not yet repeated for them. This is still
+the single highest-priority remaining code gap in this PR, ahead of the
+cross-screen/offline items below, until all four screens have it.
 
 ## Done and CI-verified (code level, isolated-sync fixture only)
 
@@ -78,7 +83,8 @@ remaining code gap in this PR, ahead of the cross-screen/offline items below.
 | Browser-side claim UI (`/connect-devices`) with real Postgres E2E | Done |
 | `/connect-devices` discoverable from site navigation | Done |
 | Legacy-to-server migration submission orchestrator (logic only, unit-tested) | Done |
-| Legacy-to-server migration wired into any real template | **Not done — see top-priority finding above** |
+| Legacy-to-server migration wired into Home (silent add + explicit review, real E2E) | Done |
+| Legacy-to-server migration wired into Discover/Detail/Nearby | **Not done — see top-priority finding above** |
 
 All of the above pass in CI (`synthetic-unit-tests`, `disposable-postgres-cas`,
 `browser-sync-tests`, `draft-real-browser-e2e`, `draft-legacy-browser-e2e`) as

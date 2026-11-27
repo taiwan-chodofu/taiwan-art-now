@@ -2649,7 +2649,8 @@
   </script>
   {% if isolated_sync %}
   <p id="syncNotice" role="status" aria-live="polite"></p>
-  {% for script in ["versioned_sync","authenticated_state","authenticated_writer","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
+  <div id="legacyMigrationReview"></div>
+  {% for script in ["versioned_sync","authenticated_state","authenticated_writer","legacy_snapshot","legacy_candidate_policy","migration_review","simple_review_ui","legacy_migration_bootstrap","explicit_keep","explicit_server_restore","server_page_action","server_button_bridge","staging_page"] %}
   <script src="/static/js/draft_{{ script }}.js"></script>
   {% endfor %}
   <script>
@@ -2725,7 +2726,47 @@
         if(notice){notice.hidden=false;notice.textContent={{ ('無法儲存，請稍後再試。' if current_lang == 'zh' else ('保存できませんでした。しばらくしてからもう一度お試しください。' if current_lang == 'ja' else 'Could not save. Please try again later.'))|tojson }};}
       }
     });
-    window.addEventListener('pagehide',event=>{if(!event.persisted){page.dispose();window._tanHomeMylistAction.dispose();}});
+    var legacyMigration=null;
+    window.addEventListener('pagehide',event=>{if(!event.persisted){
+      page.dispose();window._tanHomeMylistAction.dispose();
+      if(legacyMigration)legacyMigration.dispose();
+    }});
+    // One-time (per browser, not per page load) push of any pre-existing
+    // legacy localStorage favorites/visited into the server. Deliberately
+    // independent of the main page/mylist writers above: both are ordinary
+    // CAS writers against the same server state, so if a real button click
+    // races this batch, whichever loses simply gets a normal stale-revision
+    // failure already handled by that writer's own existing UI -- no new
+    // coordination needed. See DECISIONS.md 2026-11-27 for why this exists:
+    // without it, an existing user's local data would silently vanish from
+    // view the moment this screen's isolated-sync flag is enabled.
+    var LEGACY_MIGRATION_KEY='taiwan_art_legacy_server_migration_v1';
+    if(localStorage.getItem(LEGACY_MIGRATION_KEY)!=='1'){
+      legacyMigration=TanDraftLegacyMigrationBootstrap.create({
+        fetchImpl:window.fetch.bind(window),storage:localStorage,
+        restoreImpl:TanDraftExplicitServerRestore.restore});
+      legacyMigration.run({{ current_lang|tojson }}).then(function(result){
+        if(result.status!=='ready')return; // partial/invalid/unavailable: retry next load, nothing lost
+        localStorage.setItem(LEGACY_MIGRATION_KEY,'1');
+        if(result.submitted>0){
+          if(window._tanHomeMainPage)window._tanHomeMainPage.refresh();
+          renderMylist();
+        }
+        if(result.review&&result.review.items&&result.review.items.length){
+          TanDraftSimpleReviewUI.mount({
+            container:document.getElementById('legacyMigrationReview'),doc:document,review:result.review,
+            onDecision:function(decision){
+              legacyMigration.resolveReviewItem(decision).then(function(outcome){
+                if(outcome.committed){
+                  if(window._tanHomeMainPage)window._tanHomeMainPage.refresh();
+                  renderMylist();
+                }
+              });
+            }
+          });
+        }
+      });
+    }
   })();
   </script>
   {% endif %}

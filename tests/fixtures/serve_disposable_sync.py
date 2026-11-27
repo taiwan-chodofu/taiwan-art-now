@@ -33,6 +33,8 @@ def serve(cert, key):
                 "browser-home-mylist-owner": ("browser-home-mylist-session",),
                 "browser-discover-recover-owner": ("browser-discover-recover-session",),
                 "browser-home-detail-cross-owner": ("browser-home-detail-cross-session",),
+                "browser-home-migration-owner": ("browser-home-migration-session",),
+                "browser-home-migration-review-owner": ("browser-home-migration-review-session",),
             }
             for owner, sessions in owners.items():
                 cur.execute("INSERT INTO tan_private.messenger_subscribers(sender_id) VALUES (%s)",

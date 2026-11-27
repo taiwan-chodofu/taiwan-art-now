@@ -393,6 +393,72 @@ test('Home and Detail stay consistent across screens for the same exhibition in 
  }finally{await context.close();}
 });
 
+test('Home silently migrates a pre-existing legacy favorite into the server on first load',async({browser})=>{
+ // Closes the gap recorded in DECISIONS.md 2026-11-27: without this wiring,
+ // an existing user's local favorite would never appear once this screen's
+ // isolated-sync flag is on. No click happens in this test at all -- the
+ // migration itself must be what produces the favorited state below.
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-migration-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>{
+   localStorage.setItem('taiwan_art_ga_exclude','1');
+   localStorage.setItem('taiwan_art_favs',JSON.stringify({'home-a':{title:'Legacy Title',museum:'Legacy Museum'}}));
+  });
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-home');
+  const favBtn=page.locator('span.ex-action-btn[data-action="fav"]').first();
+  const mylistBadge=page.locator('#mylistNavIcon .bn-badge');
+  await expect(favBtn).toHaveClass(/active-fav/);
+  await expect(mylistBadge).toHaveText('1');
+  expect(await page.evaluate(()=>localStorage.getItem('taiwan_art_legacy_server_migration_v1'))).toBe('1');
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['home-a']).toMatchObject({deleted:false});
+  expect(state.favs['home-a'].value.title).toBe('Legacy Title');
+  // The one-time guard must prevent a second migration attempt on reload.
+  let writes=0;
+  page.on('request',r=>{if(r.url().endsWith('/v2/changes')&&r.method()==='POST')writes++;});
+  await page.reload();
+  await expect(favBtn).toHaveClass(/active-fav/);
+  expect(writes).toBe(0);
+ }finally{await context.close();}
+});
+
+test('Home surfaces a legacy favorite the server already deleted elsewhere for explicit review',async({browser})=>{
+ const context=await browser.newContext({ignoreHTTPSErrors:true});
+ try{
+  await context.addCookies([{name:'__Host-tan_session',value:'browser-home-migration-review-session',
+   url:'https://127.0.0.1',secure:true,httpOnly:true,sameSite:'Lax'}]);
+  await context.addInitScript(()=>localStorage.setItem('taiwan_art_ga_exclude','1'));
+  const page=await context.newPage();
+  await page.goto('https://127.0.0.1/actual-home');
+  const favBtn=page.locator('span.ex-action-btn[data-action="fav"]').first();
+  // Produce a real server-side tombstone for home-a through ordinary use.
+  await favBtn.click();
+  await expect(favBtn).toHaveClass(/active-fav/);
+  await favBtn.click();
+  await expect(favBtn).not.toHaveClass(/active-fav/);
+  // Simulate this same browser also still holding stale local data from
+  // before it ever talked to the server (e.g. the pre-cutover legacy page).
+  await page.evaluate(()=>localStorage.setItem('taiwan_art_favs',
+   JSON.stringify({'home-a':{title:'Legacy Title',museum:'Legacy Museum'}})));
+  await page.reload();
+  const restoreBtn=page.getByRole('button',{name:'「観たい」に戻す'});
+  await expect(restoreBtn).toBeVisible();
+  await restoreBtn.click();
+  await expect(favBtn).toHaveClass(/active-fav/);
+  // draft_simple_review_ui.js disables the row's buttons on decision but does
+  // not remove it (removal is only exposed per-section, which would be wrong
+  // if other items were still pending review) -- a known, documented UX
+  // rough edge, not a correctness issue.
+  await expect(restoreBtn).toBeDisabled();
+  const state=await page.evaluate(async()=>(await TanDraftAuthenticatedState.read({fetchImpl:fetch})).state);
+  expect(state.favs['home-a']).toMatchObject({deleted:false});
+  expect(state.favs['home-a'].value.title).toBe('Legacy Title');
+ }finally{await context.close();}
+});
+
 test('actual Home template toggles fav/visited through the authenticated writer without navigating away',async({browser})=>{
  const context=await browser.newContext({ignoreHTTPSErrors:true});
  try{
