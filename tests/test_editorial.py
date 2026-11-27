@@ -28,6 +28,22 @@ class EditorialTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'href="/essays/001"', response.data)
 
+    def test_editorial_navigation_templates(self):
+        with app.test_request_context("/"):
+            from flask import render_template
+            for lang in ("zh", "ja", "en"):
+                soup = BeautifulSoup(render_template("editorial_card.html", current_lang=lang), "html.parser")
+                self.assertEqual(soup.a["href"], "/essays/001")
+                self.assertIn("既是一，又不只是一", soup.a.get_text())
+        for path in ("discover", "search", "artists", "archive"):
+            template = (Path(app.root_path) / "templates" / (path + ".html")).read_text(encoding="utf-8")
+            self.assertIn('href="/essays"', template)
+            app.jinja_env.get_template(path + ".html")
+        for path in ("index", "artist_detail", "exhibition_detail_page"):
+            template = (Path(app.root_path) / "templates" / (path + ".html")).read_text(encoding="utf-8")
+            self.assertIn("include 'editorial_card.html'", template)
+            app.jinja_env.get_template(path + ".html")
+
     def test_og(self):
         response = self.client.get("/og-image/essays/001")
         self.assertEqual(response.status_code, 200)
