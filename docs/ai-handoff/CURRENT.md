@@ -36,3 +36,5 @@ This file records shared work only; private AI conversation history is not autom
 
 ## 2026-11-27 — Editorial issue #88 (ChatGPT)
 Branch `feat/editorial-essays-88`. Added full editorial/001.txt, templates/essay.html, static/essay.css, static/essay.js and two isolated routes in app.py. Static manuscript section/reference counts checked; no runtime or browser tests executed. Next: test routes, exact text and links, verify exhibition record and official dates, integrate navigation, OG/sitemap/GA4 and existing saved-list flow safely. No deployment or merge. Existing security work remains independent.
+
+Follow-up: added home More menu entry, existing mylist deep link, exhibition title search fallback, sitemap and OG locale/site metadata, GA4 editorial events respecting existing exclusion. No direct exhibition ID assumed. Browser/runtime tests, OG image and official source verification remain pending. Draft PR #89.
