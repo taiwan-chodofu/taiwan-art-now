@@ -2606,5 +2606,36 @@ def submit_request():
     return json.dumps({"ok": True}), 200
 
 
+@app.route("/essays")
+def editorial_index():
+    return render_template("essay.html", title="文章", description="Taiwan Art Now 藝術評論", canonical="https://taiwan-art-now.onrender.com/essays", paragraphs=[])
+
+
+@app.route("/essays/001")
+def editorial_001():
+    from pathlib import Path
+    from urllib.parse import urlencode
+    manuscript = (Path(__file__).resolve().parent / "editorial" / "001.txt").read_text(encoding="utf-8").strip()
+    body, appendix, sources, footer = manuscript.split("\n\n⸻\n\n")
+    title, *paragraphs = body.split("\n\n")
+    appendix_heading, *appendix_paragraphs = appendix.split("\n\n")
+    source_heading, intro, *blocks = sources.split("\n\n")
+    groups = []
+    for block in blocks:
+        if re.match(r"^0[1-5]｜", block):
+            groups.append({"title": block, "items": []})
+        else:
+            label, url = block.rsplit("\n", 1)
+            groups[-1]["items"].append({"label": label, "url": url})
+    canonical = "https://taiwan-art-now.onrender.com/essays/001"
+    return render_template(
+        "essay.html", title=title, description="關於投票與身體的複數性",
+        canonical=canonical, paragraphs=paragraphs, appendix=appendix_paragraphs,
+        reference_intro=intro, references=groups,
+        line_url="https://social-plugins.line.me/lineit/share?" + urlencode({"url": canonical}),
+        facebook_url="https://www.facebook.com/sharer/sharer.php?" + urlencode({"u": canonical}),
+    )
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
