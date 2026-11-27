@@ -40,6 +40,27 @@ designed to be inert/fail-closed until the two pending approvals below land:
   applied. Confirmed by reading the route handlers directly (both wrap the DB
   call in `try/except Exception`).
 
+## Top-priority finding (added same day): existing users' data would vanish from view on cutover
+
+Found while working the cross-screen/offline bucket, and more urgent than
+anything else in this document: `draft_migration_review.js` /
+`draft_legacy_candidate_policy.js` / `draft_simple_review_ui.js` (the logic
+that reconciles a user's existing legacy localStorage favorites/visited
+against the server) has never been required by any of the four real
+templates — confirmed by grep, zero matches. Every isolated-sync screen's
+`onState` renders purely from server state, never from localStorage. **This
+means flipping any `TAN_ISOLATED_*_SYNC` flag today would make every
+existing user's current favorites/visited data disappear from their own
+view the instant they load that screen.** The data itself is not deleted —
+it stays untouched in `localStorage` — but nothing pushes it to the server
+and nothing reads it for display once isolated mode is on, so from the
+user's perspective it is simply gone. This is now being actively addressed:
+a submission orchestrator (`static/js/draft_legacy_migration_bootstrap.js`)
+tying together the three existing pieces was built and unit-tested
+(10 Node tests) as increment 1. **Not yet wired into any template** — no
+migration has run against real data yet. This is the single highest-priority
+remaining code gap in this PR, ahead of the cross-screen/offline items below.
+
 ## Done and CI-verified (code level, isolated-sync fixture only)
 
 | Area | Status |
@@ -56,6 +77,8 @@ designed to be inert/fail-closed until the two pending approvals below land:
 | `issue_pair` endpoint, `claim_blueprint`, `ProxyFix(x_for=1)`, rate limiter | Done |
 | Browser-side claim UI (`/connect-devices`) with real Postgres E2E | Done |
 | `/connect-devices` discoverable from site navigation | Done |
+| Legacy-to-server migration submission orchestrator (logic only, unit-tested) | Done |
+| Legacy-to-server migration wired into any real template | **Not done — see top-priority finding above** |
 
 All of the above pass in CI (`synthetic-unit-tests`, `disposable-postgres-cas`,
 `browser-sync-tests`, `draft-real-browser-e2e`, `draft-legacy-browser-e2e`) as
