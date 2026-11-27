@@ -8,6 +8,8 @@
 <meta property="og:title" content="{{ title }} — Taiwan Art Now">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ canonical }}">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Taiwan Art Now">
 <meta property="og:type" content="{{ 'article' if paragraphs else 'website' }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='essay.css') }}">
 <script defer src="{{ url_for('static', filename='essay.js') }}"></script>
@@ -23,12 +25,12 @@
 <div class="prose" id="essay-body">{% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</div>
 </article>
 <section id="share" class="section" aria-labelledby="share-title"><h2 id="share-title">分享這篇文章</h2><div class="actions"><button id="native-share" hidden>分享</button><a href="{{ line_url }}" target="_blank" rel="noopener noreferrer">LINE ↗</a><a href="{{ facebook_url }}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button id="copy-link">複製連結</button></div><label for="share-url">文章連結</label><input id="share-url" readonly value="{{ canonical }}"><p id="share-status" role="status"></p></section>
-<section class="section"><h2>附記｜目前展出的展覽</h2>{% for paragraph in appendix %}<p class="preserve">{{ paragraph }}</p>{% endfor %}<a href="/search">搜尋展覽 ↗</a></section>
+<section class="section"><h2>附記｜目前展出的展覽</h2>{% for paragraph in appendix %}<p class="preserve">{{ paragraph }}</p>{% endfor %}<a href="/search?q=100%E6%AD%B2&amp;lang=zh">搜尋《100歲》 ↗</a></section>
 <section class="section"><h2>參考資料｜References</h2><p>{{ reference_intro }}</p>{% for group in references %}<details><summary>{{ group.title }}</summary><ul>{% for item in group['items'] %}<li><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }} ↗</a></li>{% endfor %}</ul></details>{% endfor %}</section>
 {% else %}
 <header class="cover"><p class="folio">TAIWAN ART NOW / ESSAYS</p><h1>文章</h1></header>
 <a class="essay-card" href="/essays/001"><span class="square" aria-hidden="true"></span><span class="folio">ESSAY 001</span><h2>既是一，又不只是一</h2><p>關於投票與身體的複數性</p><span>閱讀全文 ↗</span></a>
 {% endif %}
-<section class="section explore"><h2>探索臺灣當代藝術</h2><a href="/">近期展覽 <span>↗</span></a><a href="/discover">探索展覽 <span>↗</span></a><a href="/search">搜尋展覽 <span>↗</span></a><a href="/artists">藝術家 <span>↗</span></a><a href="/archive">展覽回顧 <span>↗</span></a><a href="/essays">所有文章 <span>↗</span></a></section>
+<section class="section explore"><h2>探索臺灣當代藝術</h2><a href="/">近期展覽 <span>↗</span></a><a href="/discover">探索展覽 <span>↗</span></a><a href="/search">搜尋展覽 <span>↗</span></a><a href="/artists">藝術家 <span>↗</span></a><a href="/?open=mylist&amp;lang=zh">我的展覽清單 <span>↗</span></a><a href="/archive">展覽回顧 <span>↗</span></a><a href="/essays">所有文章 <span>↗</span></a></section>
 </main><footer><a href="/">Taiwan Art Now</a></footer>
 </body></html>
