@@ -2452,6 +2452,7 @@ def sitemap_xml():
         {"loc": f"{SITE_URL}/archive", "changefreq": "weekly", "priority": "0.4"},
         {"loc": f"{SITE_URL}/essays", "changefreq": "weekly", "priority": "0.6"},
         {"loc": f"{SITE_URL}/essays/001", "changefreq": "monthly", "priority": "0.6"},
+        {"loc": f"{SITE_URL}/essays/001/second", "changefreq": "monthly", "priority": "0.6"},
     ]
 
     exhibitions = fetch_all_exhibitions()
@@ -2610,7 +2611,7 @@ def submit_request():
 
 @app.route("/essays")
 def editorial_index():
-    return render_template("essay.html", title="文章", description="Taiwan Art Now 藝術評論", canonical="https://taiwan-art-now.onrender.com/essays", paragraphs=[])
+    return render_template("essay.html", title="文章", description="Taiwan Art Now 藝術評論", canonical="https://taiwan-art-now.onrender.com/essays", paragraphs=[], second_available=True)
 
 
 @app.route("/essays/001")
@@ -2633,7 +2634,7 @@ def editorial_001():
     return render_template(
         "essay.html", title=title, description="關於投票與身體的複數性",
         canonical=canonical, paragraphs=paragraphs, appendix=appendix_paragraphs,
-        reference_intro=intro, references=groups,
+        reference_intro=intro, references=groups, second_available=True,
         line_url="https://social-plugins.line.me/lineit/share?" + urlencode({"url": canonical}),
         facebook_url="https://www.facebook.com/sharer/sharer.php?" + urlencode({"u": canonical}),
     )
@@ -2657,7 +2658,7 @@ def editorial_001_second():
     for block in blocks:
         if block.startswith("## ") and re.match(r"^## [ⅠⅡⅢⅣⅤⅥⅦⅧ]", block):
             chapters.append({"id": f"chapter-{len(chapters)+1}", "title": block[3:].strip(), "paragraphs": []})
-        elif block.startswith("## ") or block in ("Taiwan Art Now", "第二稿｜投票之後", "— Taiwan Art Now"):
+        elif block.startswith("## ") or block in ("Taiwan Art Now", "第二稿｜投票之後"):
             continue
         else:
             (chapters[-1]["paragraphs"] if chapters else paragraphs).append(block)
@@ -2692,6 +2693,7 @@ def editorial_001_second():
 
 
 @app.route("/og-image/essays/001")
+@app.route("/og-image/essays/001/second")
 def editorial_og_001():
     from PIL import Image, ImageDraw, ImageFont
     from io import BytesIO
@@ -2707,9 +2709,9 @@ def editorial_og_001():
     draw.rectangle((860, 145, 1135, 420), fill="#171717")
     draw.text((64, 220), "既是一，", font=ImageFont.truetype(str(bold), 78), fill="#171717")
     draw.text((64, 320), "又不只是一", font=ImageFont.truetype(str(bold), 78), fill="#171717")
-    draw.text((64, 455), "關於投票與身體的複數性", font=ImageFont.truetype(str(regular), 32), fill="#171717")
+    draw.text((64, 455), "論投票與身體的複數性" if request.path.endswith("/second") else "關於投票與身體的複數性", font=ImageFont.truetype(str(regular), 32), fill="#171717")
     draw.line((64, 535, 1136, 535), fill="#aaa69e", width=1)
-    draw.text((64, 560), "TAIWAN ART NOW", font=ImageFont.truetype(str(regular), 23), fill="#171717")
+    draw.text((64, 560), "第二稿｜投票之後" if request.path.endswith("/second") else "TAIWAN ART NOW", font=ImageFont.truetype(str(regular), 23), fill="#171717")
     buf = BytesIO()
     img.save(buf, format="PNG")
     buf.seek(0)
