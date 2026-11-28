@@ -48,7 +48,10 @@ with sync_playwright() as p:
         page.screenshot(path=f"editorial-test-output/{name}-second-toc.png")
         toc.nth(7).click()
         assert page.url.endswith("#chapter-8")
-        assert page.locator("#chapter-8").is_in_viewport() if hasattr(page.locator("#chapter-8"), "is_in_viewport") else page.locator("#chapter-8").evaluate("(el) => el.getBoundingClientRect().top >= 0 && el.getBoundingClientRect().top < innerHeight")
+        page.wait_for_function("""() => {
+            const rect = document.querySelector('#chapter-8').getBoundingClientRect();
+            return rect.bottom > 0 && rect.top < innerHeight;
+        }""", timeout=10000)
         page.screenshot(path=f"editorial-test-output/{name}-second-chapter.png")
         assert "投下一票的，是一個人。" in page.locator("#essay-body").inner_text()
         page.locator("#share").scroll_into_view_if_needed()
