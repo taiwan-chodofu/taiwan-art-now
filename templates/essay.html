@@ -22,12 +22,14 @@
 <main id="main">
 {% if paragraphs %}
 <article>
-<header class="cover"><p class="folio">ESSAY 001 · 2026.11.28</p><div class="square" aria-hidden="true"></div><h1>{{ title }}</h1><p class="subtitle">{{ description }}</p><a href="#share">分享文章 ↓</a></header>
-<div class="prose" id="essay-body">{% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</div>
+<header class="cover"><p class="folio">ESSAY 001 · {{ edition_date|default("2026.11.28") }}</p><div class="square" aria-hidden="true"></div><h1>{{ title }}</h1><p class="subtitle">{{ description }}</p><a href="#share">分享文章 ↓</a></header>
+{% if second_available %}<nav class="section" aria-label="文章版本"><a href="/essays/001" {% if not second_edition %}aria-current="page"{% endif %}>第一稿｜投票之前</a> · <a href="/essays/001/second" {% if second_edition %}aria-current="page"{% endif %}>第二稿｜投票之後</a></nav>{% endif %}
+{% if chapters %}<nav class="section" aria-label="目錄"><h2>目錄</h2><ol>{% for chapter in chapters %}<li><a href="#{{ chapter.id }}">{{ chapter.title }}</a></li>{% endfor %}</ol></nav>{% endif %}
+<div class="prose" id="essay-body">{% for paragraph in paragraphs %}<p>{{ paragraph }}</p>{% endfor %}{% for chapter in chapters|default([]) %}<section aria-labelledby="{{ chapter.id }}"><h2 id="{{ chapter.id }}">{{ chapter.title }}</h2>{% for paragraph in chapter.paragraphs %}<p>{{ paragraph }}</p>{% endfor %}</section>{% endfor %}</div>
 </article>
 <section id="share" class="section" aria-labelledby="share-title"><h2 id="share-title">分享這篇文章</h2><div class="actions"><button id="native-share" hidden>分享</button><a href="{{ line_url }}" target="_blank" rel="noopener noreferrer">LINE ↗</a><a href="{{ facebook_url }}" target="_blank" rel="noopener noreferrer">Facebook ↗</a><button id="copy-link">複製連結</button></div><label for="share-url">文章連結</label><input id="share-url" readonly value="{{ canonical }}"><p id="share-status" role="status"></p></section>
 <section class="section"><h2>附記｜目前展出的展覽</h2>{% for paragraph in appendix %}<p class="preserve">{{ paragraph }}</p>{% endfor %}<p class="editorial-note">展覽資訊以文章刊載時為準。</p><a href="/essays/001/exhibition">查看《100歲》展覽資訊 ↗</a></section>
-<section class="section"><h2>參考資料｜References</h2><p>{{ reference_intro }}</p>{% for group in references %}<details><summary>{{ group.title }}</summary><ul>{% for item in group['items'] %}<li><a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }} ↗</a></li>{% endfor %}</ul></details>{% endfor %}</section>
+<section class="section"><h2>參考資料｜References</h2><p>{{ reference_intro }}</p>{% for group in references %}<details><summary>{{ group.title }}</summary><ul>{% for item in group['items'] %}<li>{% if item.url %}<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer">{{ item.label }} ↗</a>{% else %}{{ item.label }}{% endif %}</li>{% endfor %}</ul></details>{% endfor %}</section>
 {% else %}
 <header class="cover"><p class="folio">TAIWAN ART NOW / ESSAYS</p><h1>文章</h1></header>
 <a class="essay-card" href="/essays/001"><span class="square" aria-hidden="true"></span><span class="folio">ESSAY 001 · 2026.11.28</span><h2>既是一，又不只是一</h2><p>關於投票與身體的複數性</p><span>閱讀全文 ↗</span></a>
