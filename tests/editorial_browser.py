@@ -35,5 +35,31 @@ with sync_playwright() as p:
         assert page.locator("details a").count() == 18
         page.locator(".explore").scroll_into_view_if_needed()
         page.screenshot(path=f"editorial-test-output/{name}-navigation.png")
+        page.locator('nav[aria-label="文章版本"] a[href="/essays/001/second"]').click()
+        assert page.url.endswith("/essays/001/second")
+        assert page.locator("#essay-body h2").count() == 8
+        assert page.locator("#essay-body p").count() > 200
+        assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        page.screenshot(path=f"editorial-test-output/{name}-second-cover.png")
+        toc = page.locator('nav[aria-label="目錄"] a')
+        assert toc.count() == 8
+        assert toc.first.bounding_box()["height"] >= 44
+        toc.first.scroll_into_view_if_needed()
+        page.screenshot(path=f"editorial-test-output/{name}-second-toc.png")
+        toc.nth(7).click()
+        assert page.url.endswith("#chapter-8")
+        page.wait_for_function("""() => {
+            const rect = document.querySelector('#chapter-8').getBoundingClientRect();
+            return rect.bottom > 0 && rect.top < innerHeight;
+        }""", timeout=10000)
+        page.screenshot(path=f"editorial-test-output/{name}-second-chapter.png")
+        assert "投下一票的，是一個人。" in page.locator("#essay-body").inner_text()
+        page.locator("#share").scroll_into_view_if_needed()
+        assert page.locator("#share-url").input_value().endswith("/essays/001/second")
+        page.locator("details summary").first.click()
+        assert page.locator("details a").count() == 28
+        page.locator('nav[aria-label="文章版本"] a[href="/essays/001"]').click()
+        assert page.url.endswith("/essays/001")
+        assert page.locator("#essay-body p").count() == 31
         assert not errors, errors
         browser.close()

@@ -57,5 +57,50 @@ class EditorialTests(unittest.TestCase):
         with patch("scraper.fetch_all_exhibitions", return_value=[]):
             self.assertIn("/search?", self.client.get("/essays/001/exhibition").location)
 
+
+    def test_second_edition_full_text_and_navigation(self):
+        import re
+        from urllib.parse import parse_qs, urlparse
+        response = self.client.get("/essays/001/second?utm_source=instagram")
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.data, "html.parser")
+        manuscript = (Path(app.root_path) / "editorial/001-second.txt").read_text(encoding="utf-8").strip()
+        body, _, backmatter = manuscript.partition("\n---\n")
+        blocks = re.split(r"\n\s*\n", body.strip())
+        expected = [b for b in blocks if not b.startswith("#") and b not in ("Taiwan Art Now", "第二稿｜投票之後")]
+        self.assertEqual([p.get_text() for p in soup.select("#essay-body p")], expected)
+        headings = [b[3:] for b in blocks if re.match(r"^## [ⅠⅡⅢⅣⅤⅥⅦⅧ]", b)]
+        self.assertEqual(len(headings), 8)
+        self.assertEqual([h.get_text() for h in soup.select("#essay-body h2")], headings)
+        toc = soup.select('nav[aria-label="目錄"] a')
+        self.assertEqual(len(toc), 8)
+        for a in toc:
+            self.assertIsNotNone(soup.find(id=a["href"][1:]))
+        canonical = "https://taiwan-art-now.onrender.com/essays/001/second"
+        self.assertEqual(soup.select_one('link[rel="canonical"]')["href"], canonical)
+        self.assertEqual(soup.select_one("#share-url")["value"], canonical)
+        self.assertEqual(soup.select_one('meta[property="og:url"]')["content"], canonical)
+        self.assertTrue(soup.select_one('meta[property="og:image"]')["content"].endswith("/001/second"))
+        for name, key in (("LINE", "url"), ("Facebook", "u")):
+            a = next(a for a in soup.select("#share a") if name in a.get_text())
+            self.assertEqual(parse_qs(urlparse(a["href"]).query)[key], [canonical])
+        sources = backmatter.split("### 參考資料｜References", 1)[1]
+        self.assertEqual([a["href"] for a in soup.select("details a")], [l.strip() for l in sources.splitlines() if l.strip().startswith("https://")])
+        self.assertIn("Paul Celan", soup.get_text())
+        self.assertIn("尚未觀看", soup.get_text())
+        self.assertTrue(soup.select_one('nav[aria-label="文章版本"] a[href="/essays/001"]'))
+        first = BeautifulSoup(self.client.get("/essays/001").data, "html.parser")
+        self.assertTrue(first.select_one('nav[aria-label="文章版本"] a[href="/essays/001/second"]'))
+        index = BeautifulSoup(self.client.get("/essays").data, "html.parser")
+        self.assertEqual([a["href"] for a in index.select(".essay-card")], ["/essays/001/second", "/essays/001"])
+
+    def test_second_edition_og(self):
+        first = self.client.get("/og-image/essays/001")
+        second = self.client.get("/og-image/essays/001/second")
+        self.assertEqual(second.status_code, 200)
+        self.assertEqual(second.mimetype, "image/png")
+        self.assertEqual(Image.open(BytesIO(second.data)).size, (1200, 630))
+        self.assertNotEqual(first.data, second.data)
+
 if __name__ == "__main__":
     unittest.main()

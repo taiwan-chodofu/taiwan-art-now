@@ -14,3 +14,6 @@ Rationale: Protect user data and continuity before structural UI changes.
 
 ## 2026-11-27 — Editorial content (#88)
 Status: draft. Store approved manuscript independently of UI; preserve all paragraphs and 18 references. Use isolated routes and styles; no artwork photos or changes to subscriber storage. Canonical URL excludes tracking parameters. Related exhibition linkage requires verified record and stable URL; do not guess indexes.
+
+## 2026-11-28 — Editorial second edition (#90)
+Status: implemented on feature branch, verification pending. Preserve both original manuscript files independently; new canonical `/essays/001/second`, reciprocal edition links and latest-first index. Eight chapter headings and reference groups parsed server-side; distinct OG image and canonical share URL. Do not merge or deploy before approval and tests. No exhibition data changes.
