@@ -2639,6 +2639,58 @@ def editorial_001():
     )
 
 
+@app.route("/essays/001/second")
+def editorial_001_second():
+    from pathlib import Path
+    from urllib.parse import urlencode
+    from flask import abort
+    path = Path(__file__).resolve().parent / "editorial" / "001-second.txt"
+    if not path.is_file():
+        abort(404)
+    manuscript = path.read_text(encoding="utf-8").strip()
+    body, separator, backmatter = manuscript.partition("\n---\n")
+    if not separator:
+        abort(404)
+    blocks = re.split(r"\n\s*\n", body.strip())
+    title = blocks.pop(0).removeprefix("# ").strip()
+    paragraphs, chapters = [], []
+    for block in blocks:
+        if block.startswith("## ") and re.match(r"^## [ⅠⅡⅢⅣⅤⅥⅦⅧ]", block):
+            chapters.append({"id": f"chapter-{len(chapters)+1}", "title": block[3:].strip(), "paragraphs": []})
+        elif block.startswith("## ") or block in ("Taiwan Art Now", "第二稿｜投票之後", "— Taiwan Art Now"):
+            continue
+        else:
+            (chapters[-1]["paragraphs"] if chapters else paragraphs).append(block)
+    if len(chapters) != 8:
+        abort(404)
+    appendix_text, separator, sources = backmatter.partition("### 參考資料｜References")
+    if not separator:
+        abort(404)
+    appendix = [b.replace("**", "") for b in re.split(r"\n\s*\n", appendix_text.strip()) if not b.startswith(("### ", "---"))]
+    references = []
+    for line in sources.splitlines():
+        line = line.strip()
+        if line.startswith("**") and line.endswith("**"):
+            references.append({"title": line.strip("*"), "items": []})
+        elif line.startswith("- ") and references:
+            references[-1]["items"].append({"label": line[2:], "url": None})
+        elif line.startswith("https://") and references and references[-1]["items"]:
+            items = references[-1]["items"]
+            if items[-1]["url"]:
+                items.append({"label": line, "url": line})
+            else:
+                items[-1]["url"] = line
+    canonical = "https://taiwan-art-now.onrender.com/essays/001/second"
+    return render_template(
+        "essay.html", title=title, description="論投票與身體的複數性",
+        canonical=canonical, paragraphs=paragraphs, chapters=chapters,
+        appendix=appendix, references=references, reference_intro="",
+        second_available=True, second_edition=True,
+        line_url="https://social-plugins.line.me/lineit/share?" + urlencode({"url": canonical}),
+        facebook_url="https://www.facebook.com/sharer/sharer.php?" + urlencode({"u": canonical}),
+    )
+
+
 @app.route("/og-image/essays/001")
 def editorial_og_001():
     from PIL import Image, ImageDraw, ImageFont
